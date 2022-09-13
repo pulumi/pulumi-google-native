@@ -181,6 +181,8 @@ from .machine_image_iam_member import *
 from .machine_image_iam_policy import *
 from .network import *
 from .network_attachment import *
+from .network_attachment_iam_binding import *
+from .network_attachment_iam_member import *
 from .network_attachment_iam_policy import *
 from .network_edge_security_service import *
 from .network_endpoint_group import *

@@ -8,7 +8,9 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * TODO
+ * Sets the access control policy for a resource. If the policy exists, it is replaced. Caller must have the right Google IAM permission on the resource.
+ * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+ * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class TenantIamMember extends pulumi.CustomResource {
     /**
@@ -63,7 +65,7 @@ export class TenantIamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly project!: pulumi.Output<string>;
     /**
-     * The role that should be applied. Only one `IamBinding` can be used per role.
+     * The role that should be applied.
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -128,7 +130,7 @@ export interface TenantIamMemberArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The role that should be applied. Only one `IamBinding` can be used per role.
+     * The role that should be applied.
      */
     role: pulumi.Input<string>;
 }

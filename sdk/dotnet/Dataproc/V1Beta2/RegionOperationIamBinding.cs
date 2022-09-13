@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
     /// <summary>
-    /// TODO
+    /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:RegionOperationIamBinding")]
     public partial class RegionOperationIamBinding : global::Pulumi.CustomResource
@@ -28,12 +30,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Identities that will be granted the privilege in role. Each entry can have one of the following values:
-        /// 
-        ///  * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        ///  * serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        ///  * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
-        ///  * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -51,7 +48,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;

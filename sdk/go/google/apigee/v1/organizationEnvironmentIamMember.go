@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// TODO
+// Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type OrganizationEnvironmentIamMember struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +33,7 @@ type OrganizationEnvironmentIamMember struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, a default will be supplied.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -94,7 +96,7 @@ type organizationEnvironmentIamMemberArgs struct {
 	Member string `pulumi:"member"`
 	// The name of the resource to manage IAM policies for.
 	Name string `pulumi:"name"`
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role string `pulumi:"role"`
 }
 
@@ -111,7 +113,7 @@ type OrganizationEnvironmentIamMemberArgs struct {
 	Member pulumi.StringInput
 	// The name of the resource to manage IAM policies for.
 	Name pulumi.StringInput
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role pulumi.StringInput
 }
 
@@ -182,7 +184,7 @@ func (o OrganizationEnvironmentIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationEnvironmentIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The role that should be applied. Only one `IamBinding` can be used per role.
+// The role that should be applied.
 func (o OrganizationEnvironmentIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationEnvironmentIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

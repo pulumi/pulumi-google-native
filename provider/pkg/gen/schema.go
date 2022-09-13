@@ -31,6 +31,7 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/deepcopy"
 	"google.golang.org/api/discovery/v1"
 )
 
@@ -449,36 +450,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	ops map[string]*operation) error {
 	resourceTok := g.genToken(typeName)
 
-	g.pkg.Types["google-native:iam/v1:Condition"] = schema.ComplexTypeSpec{
-		ObjectTypeSpec: schema.ObjectTypeSpec{
-			Description: "An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.",
-			Type:        "object",
-			Properties: map[string]schema.PropertySpec{
-				"description": {
-					Description: "An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.",
-					TypeSpec: schema.TypeSpec{
-						Type: "string",
-					},
-				},
-				"expression": {
-					Description: "Textual representation of an expression in Common Expression Language syntax.",
-					TypeSpec: schema.TypeSpec{
-						Type: "string",
-					},
-				},
-				"title": {
-					Description: "A title for the expression, i.e. a short string describing its purpose.",
-					TypeSpec: schema.TypeSpec{
-						Type: "string",
-					},
-				},
-			},
-			Required: []string{
-				"expression",
-				"title",
-			},
-		},
-	}
+	g.pkg.Types["google-native:iam/v1:Condition"] = iamCondition
 
 	properties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
@@ -557,6 +529,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		},
 	}
 
+	// Populate the resource name key for `getIamPolicy` and `setIamPolicy` methods.
 	if strings.HasSuffix(typeName, "IamPolicy") {
 		switch g.mod {
 		case "storage/v1":
@@ -926,11 +899,62 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		resourceMeta.Delete.SDKProperties = resourceMeta.Update.SDKProperties
 		resourceMeta.Delete.Verb = resourceMeta.Update.Verb
 
+		// Override default descriptions for overlay properties if a corresponding description is present in the schema.
+		// Note: the layout of these properties is inconsistent across resources, so we check multiple alternatives.
+		// It doesn't look like these Policy/Binding types are currently populated in the pkg.Types, so we manually
+		// parse the schema maps to get this information for now.
+		binding := deepcopy.Copy(iamBindingSpec).(schema.ResourceSpec)
+		binding.Description = resourceSpec.Description
+		member := deepcopy.Copy(iamMemberSpec).(schema.ResourceSpec)
+		member.Description = resourceSpec.Description
+
+		bindingMembers := binding.Properties["members"]
+		bindingRole := binding.Properties["role"]
+		memberMember := member.Properties["member"]
+		memberRole := member.Properties["role"]
+		if policy, ok := g.rest.Schemas["Policy"]; ok {
+			if bindings, ok := policy.Properties["bindings"]; ok {
+				if bindings.Items != nil && bindings.Items.Ref == "Binding" {
+					if bindingSchema, ok := g.rest.Schemas["Binding"]; ok {
+						if members, ok := bindingSchema.Properties["members"]; ok {
+							bindingMembers.Description = members.Description
+							binding.Properties["members"] = bindingMembers
+							memberMember.Description = members.Description
+							member.Properties["member"] = memberMember
+						}
+						if role, ok := bindingSchema.Properties["role"]; ok {
+							bindingRole.Description = role.Description
+							binding.Properties["role"] = bindingRole
+							memberRole.Description = role.Description
+							member.Properties["role"] = memberRole
+						}
+					}
+				}
+				if bindings.Items != nil {
+					if members, ok := bindings.Items.Properties["members"]; ok {
+						bindingMembers.Description = members.Description
+						binding.Properties["members"] = bindingMembers
+						memberMember.Description = members.Description
+						member.Properties["member"] = memberMember
+					}
+					if role, ok := bindings.Items.Properties["role"]; ok {
+						bindingRole.Description = role.Description
+						binding.Properties["role"] = bindingRole
+						memberRole.Description = role.Description
+						member.Properties["role"] = memberRole
+					}
+				}
+			}
+		}
+
+		// Add the IamBinding resource overlay
 		iamBindingToken := strings.TrimSuffix(resourceTok, "Policy") + "Binding"
-		g.pkg.Resources[iamBindingToken] = iamBindingSpec
+		g.pkg.Resources[iamBindingToken] = binding
 		g.metadata.Resources[iamBindingToken] = resourceMeta
+
+		// Add the IamMember resource overlay
 		iamMemberToken := strings.TrimSuffix(resourceTok, "Policy") + "Member"
-		g.pkg.Resources[iamMemberToken] = iamMemberSpec
+		g.pkg.Resources[iamMemberToken] = member
 		g.metadata.Resources[iamMemberToken] = resourceMeta
 	}
 

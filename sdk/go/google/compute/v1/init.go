@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendBucket{}
 	case "google-native:compute/v1:BackendService":
 		r = &BackendService{}
+	case "google-native:compute/v1:BackendServiceIamBinding":
+		r = &BackendServiceIamBinding{}
+	case "google-native:compute/v1:BackendServiceIamMember":
+		r = &BackendServiceIamMember{}
 	case "google-native:compute/v1:BackendServiceIamPolicy":
 		r = &BackendServiceIamPolicy{}
 	case "google-native:compute/v1:Disk":
@@ -155,6 +159,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionAutoscaler{}
 	case "google-native:compute/v1:RegionBackendService":
 		r = &RegionBackendService{}
+	case "google-native:compute/v1:RegionBackendServiceIamBinding":
+		r = &RegionBackendServiceIamBinding{}
+	case "google-native:compute/v1:RegionBackendServiceIamMember":
+		r = &RegionBackendServiceIamMember{}
 	case "google-native:compute/v1:RegionBackendServiceIamPolicy":
 		r = &RegionBackendServiceIamPolicy{}
 	case "google-native:compute/v1:RegionCommitment":

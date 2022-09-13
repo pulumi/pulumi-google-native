@@ -23,8 +23,7 @@ import (
 
 var iamBindingSpec = schema.ResourceSpec{
 	ObjectTypeSpec: schema.ObjectTypeSpec{
-		Description: "TODO",
-		Type:        "object",
+		Type: "object",
 		Properties: map[string]schema.PropertySpec{
 			"condition": {
 				Description: "An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.",
@@ -112,8 +111,7 @@ var iamBindingSpec = schema.ResourceSpec{
 
 var iamMemberSpec = schema.ResourceSpec{
 	ObjectTypeSpec: schema.ObjectTypeSpec{
-		Description: "TODO",
-		Type:        "object",
+		Type: "object",
 		Properties: map[string]schema.PropertySpec{
 			"condition": {
 				Description: "An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.",
@@ -146,7 +144,7 @@ var iamMemberSpec = schema.ResourceSpec{
 				},
 			},
 			"role": {
-				Description: "The role that should be applied. Only one `IamBinding` can be used per role.",
+				Description: "The role that should be applied.",
 				TypeSpec: schema.TypeSpec{
 					Type: "string",
 				},
@@ -180,7 +178,7 @@ var iamMemberSpec = schema.ResourceSpec{
 			},
 		},
 		"role": {
-			Description: "The role that should be applied. Only one `IamBinding` can be used per role.",
+			Description: "The role that should be applied.",
 			TypeSpec: schema.TypeSpec{
 				Type: "string",
 			},
@@ -190,5 +188,35 @@ var iamMemberSpec = schema.ResourceSpec{
 		"member",
 		"name",
 		"role",
+	},
+}
+var iamCondition = schema.ComplexTypeSpec{
+	ObjectTypeSpec: schema.ObjectTypeSpec{
+		Description: "An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.",
+		Type:        "object",
+		Properties: map[string]schema.PropertySpec{
+			"description": {
+				Description: "An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.",
+				TypeSpec: schema.TypeSpec{
+					Type: "string",
+				},
+			},
+			"expression": {
+				Description: "Textual representation of an expression in Common Expression Language syntax.",
+				TypeSpec: schema.TypeSpec{
+					Type: "string",
+				},
+			},
+			"title": {
+				Description: "A title for the expression, i.e. a short string describing its purpose.",
+				TypeSpec: schema.TypeSpec{
+					Type: "string",
+				},
+			},
+		},
+		Required: []string{
+			"expression",
+			"title",
+		},
 	},
 }

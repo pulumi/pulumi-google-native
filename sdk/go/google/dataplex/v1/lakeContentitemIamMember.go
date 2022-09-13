@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// TODO
+// Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type LakeContentitemIamMember struct {
 	pulumi.CustomResourceState
 
@@ -31,7 +33,7 @@ type LakeContentitemIamMember struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, a default will be supplied.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -94,7 +96,7 @@ type lakeContentitemIamMemberArgs struct {
 	Member string `pulumi:"member"`
 	// The name of the resource to manage IAM policies for.
 	Name string `pulumi:"name"`
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role string `pulumi:"role"`
 }
 
@@ -111,7 +113,7 @@ type LakeContentitemIamMemberArgs struct {
 	Member pulumi.StringInput
 	// The name of the resource to manage IAM policies for.
 	Name pulumi.StringInput
-	// The role that should be applied. Only one `IamBinding` can be used per role.
+	// The role that should be applied.
 	Role pulumi.StringInput
 }
 
@@ -182,7 +184,7 @@ func (o LakeContentitemIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeContentitemIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The role that should be applied. Only one `IamBinding` can be used per role.
+// The role that should be applied.
 func (o LakeContentitemIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeContentitemIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

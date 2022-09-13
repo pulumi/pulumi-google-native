@@ -21,6 +21,14 @@ export { BackendServiceArgs } from "./backendService";
 export type BackendService = import("./backendService").BackendService;
 export const BackendService: typeof import("./backendService").BackendService = null as any;
 
+export { BackendServiceIamBindingArgs } from "./backendServiceIamBinding";
+export type BackendServiceIamBinding = import("./backendServiceIamBinding").BackendServiceIamBinding;
+export const BackendServiceIamBinding: typeof import("./backendServiceIamBinding").BackendServiceIamBinding = null as any;
+
+export { BackendServiceIamMemberArgs } from "./backendServiceIamMember";
+export type BackendServiceIamMember = import("./backendServiceIamMember").BackendServiceIamMember;
+export const BackendServiceIamMember: typeof import("./backendServiceIamMember").BackendServiceIamMember = null as any;
+
 export { BackendServiceIamPolicyArgs } from "./backendServiceIamPolicy";
 export type BackendServiceIamPolicy = import("./backendServiceIamPolicy").BackendServiceIamPolicy;
 export const BackendServiceIamPolicy: typeof import("./backendServiceIamPolicy").BackendServiceIamPolicy = null as any;
@@ -637,6 +645,14 @@ export { RegionBackendServiceArgs } from "./regionBackendService";
 export type RegionBackendService = import("./regionBackendService").RegionBackendService;
 export const RegionBackendService: typeof import("./regionBackendService").RegionBackendService = null as any;
 
+export { RegionBackendServiceIamBindingArgs } from "./regionBackendServiceIamBinding";
+export type RegionBackendServiceIamBinding = import("./regionBackendServiceIamBinding").RegionBackendServiceIamBinding;
+export const RegionBackendServiceIamBinding: typeof import("./regionBackendServiceIamBinding").RegionBackendServiceIamBinding = null as any;
+
+export { RegionBackendServiceIamMemberArgs } from "./regionBackendServiceIamMember";
+export type RegionBackendServiceIamMember = import("./regionBackendServiceIamMember").RegionBackendServiceIamMember;
+export const RegionBackendServiceIamMember: typeof import("./regionBackendServiceIamMember").RegionBackendServiceIamMember = null as any;
+
 export { RegionBackendServiceIamPolicyArgs } from "./regionBackendServiceIamPolicy";
 export type RegionBackendServiceIamPolicy = import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy;
 export const RegionBackendServiceIamPolicy: typeof import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy = null as any;
@@ -873,6 +889,8 @@ utilities.lazyLoad(exports, ["Address"], () => require("./address"));
 utilities.lazyLoad(exports, ["Autoscaler"], () => require("./autoscaler"));
 utilities.lazyLoad(exports, ["BackendBucket"], () => require("./backendBucket"));
 utilities.lazyLoad(exports, ["BackendService"], () => require("./backendService"));
+utilities.lazyLoad(exports, ["BackendServiceIamBinding"], () => require("./backendServiceIamBinding"));
+utilities.lazyLoad(exports, ["BackendServiceIamMember"], () => require("./backendServiceIamMember"));
 utilities.lazyLoad(exports, ["BackendServiceIamPolicy"], () => require("./backendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
 utilities.lazyLoad(exports, ["DiskIamBinding"], () => require("./diskIamBinding"));
@@ -1027,6 +1045,8 @@ utilities.lazyLoad(exports, ["PublicAdvertisedPrefix"], () => require("./publicA
 utilities.lazyLoad(exports, ["PublicDelegatedPrefix"], () => require("./publicDelegatedPrefix"));
 utilities.lazyLoad(exports, ["RegionAutoscaler"], () => require("./regionAutoscaler"));
 utilities.lazyLoad(exports, ["RegionBackendService"], () => require("./regionBackendService"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamBinding"], () => require("./regionBackendServiceIamBinding"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamMember"], () => require("./regionBackendServiceIamMember"));
 utilities.lazyLoad(exports, ["RegionBackendServiceIamPolicy"], () => require("./regionBackendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["RegionCommitment"], () => require("./regionCommitment"));
 utilities.lazyLoad(exports, ["RegionDisk"], () => require("./regionDisk"));
@@ -1101,6 +1121,10 @@ const _module = {
                 return new BackendBucket(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendServiceIamBinding":
+                return new BackendServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendServiceIamMember":
+                return new BackendServiceIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendServiceIamPolicy":
                 return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Disk":
@@ -1227,6 +1251,10 @@ const _module = {
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionBackendServiceIamBinding":
+                return new RegionBackendServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionBackendServiceIamMember":
+                return new RegionBackendServiceIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionBackendServiceIamPolicy":
                 return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionCommitment":

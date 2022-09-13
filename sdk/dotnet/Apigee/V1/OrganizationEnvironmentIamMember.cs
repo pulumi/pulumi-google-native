@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
-    /// TODO
+    /// Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentIamMember")]
     public partial class OrganizationEnvironmentIamMember : global::Pulumi.CustomResource
@@ -51,7 +53,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -125,7 +127,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

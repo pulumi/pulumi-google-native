@@ -28,7 +28,7 @@ class LakeEnvironmentIamMemberArgs:
                 * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
                 * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] name: The name of the resource to manage IAM policies for.
-        :param pulumi.Input[str] role: The role that should be applied. Only one `IamBinding` can be used per role.
+        :param pulumi.Input[str] role: The role that should be applied.
         :param pulumi.Input['_iam.v1.ConditionArgs'] condition: An IAM Condition for a given binding.
         """
         pulumi.set(__self__, "member", member)
@@ -70,7 +70,7 @@ class LakeEnvironmentIamMemberArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        The role that should be applied. Only one `IamBinding` can be used per role.
+        The role that should be applied.
         """
         return pulumi.get(self, "role")
 
@@ -102,7 +102,9 @@ class LakeEnvironmentIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        TODO
+        Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,7 +116,7 @@ class LakeEnvironmentIamMember(pulumi.CustomResource):
                 * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
                 * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] name: The name of the resource to manage IAM policies for.
-        :param pulumi.Input[str] role: The role that should be applied. Only one `IamBinding` can be used per role.
+        :param pulumi.Input[str] role: The role that should be applied.
         """
         ...
     @overload
@@ -123,7 +125,9 @@ class LakeEnvironmentIamMember(pulumi.CustomResource):
                  args: LakeEnvironmentIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        TODO
+        Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param LakeEnvironmentIamMemberArgs args: The arguments to use to populate this resource's properties.
@@ -244,7 +248,7 @@ class LakeEnvironmentIamMember(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        The role that should be applied. Only one `IamBinding` can be used per role.
+        The role that should be applied.
         """
         return pulumi.get(self, "role")
 

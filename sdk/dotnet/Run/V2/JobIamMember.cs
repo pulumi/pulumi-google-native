@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V2
 {
     /// <summary>
-    /// TODO
+    /// Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v2:JobIamMember")]
     public partial class JobIamMember : global::Pulumi.CustomResource
@@ -51,7 +53,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -125,7 +127,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

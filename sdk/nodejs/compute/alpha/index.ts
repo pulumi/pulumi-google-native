@@ -705,6 +705,14 @@ export { NetworkAttachmentArgs } from "./networkAttachment";
 export type NetworkAttachment = import("./networkAttachment").NetworkAttachment;
 export const NetworkAttachment: typeof import("./networkAttachment").NetworkAttachment = null as any;
 
+export { NetworkAttachmentIamBindingArgs } from "./networkAttachmentIamBinding";
+export type NetworkAttachmentIamBinding = import("./networkAttachmentIamBinding").NetworkAttachmentIamBinding;
+export const NetworkAttachmentIamBinding: typeof import("./networkAttachmentIamBinding").NetworkAttachmentIamBinding = null as any;
+
+export { NetworkAttachmentIamMemberArgs } from "./networkAttachmentIamMember";
+export type NetworkAttachmentIamMember = import("./networkAttachmentIamMember").NetworkAttachmentIamMember;
+export const NetworkAttachmentIamMember: typeof import("./networkAttachmentIamMember").NetworkAttachmentIamMember = null as any;
+
 export { NetworkAttachmentIamPolicyArgs } from "./networkAttachmentIamPolicy";
 export type NetworkAttachmentIamPolicy = import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy;
 export const NetworkAttachmentIamPolicy: typeof import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy = null as any;
@@ -1228,6 +1236,8 @@ utilities.lazyLoad(exports, ["MachineImageIamMember"], () => require("./machineI
 utilities.lazyLoad(exports, ["MachineImageIamPolicy"], () => require("./machineImageIamPolicy"));
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 utilities.lazyLoad(exports, ["NetworkAttachment"], () => require("./networkAttachment"));
+utilities.lazyLoad(exports, ["NetworkAttachmentIamBinding"], () => require("./networkAttachmentIamBinding"));
+utilities.lazyLoad(exports, ["NetworkAttachmentIamMember"], () => require("./networkAttachmentIamMember"));
 utilities.lazyLoad(exports, ["NetworkAttachmentIamPolicy"], () => require("./networkAttachmentIamPolicy"));
 utilities.lazyLoad(exports, ["NetworkEdgeSecurityService"], () => require("./networkEdgeSecurityService"));
 utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
@@ -1461,6 +1471,10 @@ const _module = {
                 return new Network(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkAttachment":
                 return new NetworkAttachment(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:NetworkAttachmentIamBinding":
+                return new NetworkAttachmentIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:NetworkAttachmentIamMember":
+                return new NetworkAttachmentIamMember(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkAttachmentIamPolicy":
                 return new NetworkAttachmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkEdgeSecurityService":

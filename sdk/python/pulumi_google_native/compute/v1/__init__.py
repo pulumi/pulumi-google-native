@@ -10,6 +10,8 @@ from .address import *
 from .autoscaler import *
 from .backend_bucket import *
 from .backend_service import *
+from .backend_service_iam_binding import *
+from .backend_service_iam_member import *
 from .backend_service_iam_policy import *
 from .disk import *
 from .disk_iam_binding import *
@@ -164,6 +166,8 @@ from .public_advertised_prefix import *
 from .public_delegated_prefix import *
 from .region_autoscaler import *
 from .region_backend_service import *
+from .region_backend_service_iam_binding import *
+from .region_backend_service_iam_member import *
 from .region_backend_service_iam_policy import *
 from .region_commitment import *
 from .region_disk import *

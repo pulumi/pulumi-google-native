@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
-    /// TODO
+    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:ModelIamMember")]
     public partial class ModelIamMember : global::Pulumi.CustomResource
@@ -51,7 +53,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -125,7 +127,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The role that should be applied. Only one `IamBinding` can be used per role.
+        /// The role that should be applied.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

@@ -29,7 +29,7 @@ class ServiceAccountIamMemberArgs:
                 * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
                 * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] name: The name of the resource to manage IAM policies for.
-        :param pulumi.Input[str] role: The role that should be applied. Only one `IamBinding` can be used per role.
+        :param pulumi.Input[str] role: The role that should be applied.
         :param pulumi.Input['ConditionArgs'] condition: An IAM Condition for a given binding.
         """
         pulumi.set(__self__, "member", member)
@@ -71,7 +71,7 @@ class ServiceAccountIamMemberArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
         """
-        The role that should be applied. Only one `IamBinding` can be used per role.
+        The role that should be applied.
         """
         return pulumi.get(self, "role")
 
@@ -103,7 +103,9 @@ class ServiceAccountIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        TODO
+        Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to the service account. For example, you could grant a principal the ability to impersonate the service account. This method does not enable the service account to access other resources. To grant roles to a service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed instructions, see [Manage access to project, folders, and organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts) or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,7 +117,7 @@ class ServiceAccountIamMember(pulumi.CustomResource):
                 * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
                 * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] name: The name of the resource to manage IAM policies for.
-        :param pulumi.Input[str] role: The role that should be applied. Only one `IamBinding` can be used per role.
+        :param pulumi.Input[str] role: The role that should be applied.
         """
         ...
     @overload
@@ -124,7 +126,9 @@ class ServiceAccountIamMember(pulumi.CustomResource):
                  args: ServiceAccountIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        TODO
+        Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to the service account. For example, you could grant a principal the ability to impersonate the service account. This method does not enable the service account to access other resources. To grant roles to a service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed instructions, see [Manage access to project, folders, and organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts) or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources).
+        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param ServiceAccountIamMemberArgs args: The arguments to use to populate this resource's properties.
@@ -216,12 +220,7 @@ class ServiceAccountIamMember(pulumi.CustomResource):
     @pulumi.getter
     def member(self) -> pulumi.Output[str]:
         """
-        Identity that will be granted the privilege in role. The entry can have one of the following values:
-
-         * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-         * serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * group:{emailid}: An email address that represents a Google group. For example, admins@example.com.
-         * domain:{domain}: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "member")
 
@@ -245,7 +244,7 @@ class ServiceAccountIamMember(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        The role that should be applied. Only one `IamBinding` can be used per role.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
 

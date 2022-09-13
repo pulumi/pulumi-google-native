@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataplex.V1
 {
     /// <summary>
-    /// TODO
+    /// Sets the access control policy on the specified contentitem resource. Replaces any existing policy.Caller must have Google IAM dataplex.content.setIamPolicy permission on the resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:LakeContentitemIamBinding")]
     public partial class LakeContentitemIamBinding : global::Pulumi.CustomResource

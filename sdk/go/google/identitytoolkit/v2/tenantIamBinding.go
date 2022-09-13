@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// TODO
+// Sets the access control policy for a resource. If the policy exists, it is replaced. Caller must have the right Google IAM permission on the resource.
+// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+// on Google Cloud even though it will be deleted from Pulumi state.
 type TenantIamBinding struct {
 	pulumi.CustomResourceState
 
