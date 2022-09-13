@@ -569,7 +569,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	logging.V(9).Infof("Looked up metadata for %q: %+v", resourceKey, res)
 
 	// Handle IamMember, IamBinding resources.
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		inputs, err = inputsForIAMOverlayCreate(res, urn, inputs, p.client)
 		if err != nil {
 			return nil, err
@@ -651,7 +651,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, fmt.Errorf("failed to extract defaults from response: %w", err)
 	}
 	// Checkpoint defaults, outputs and inputs into the state.
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		resp = unmodifiedInputs.Mappable()
 	}
 	checkpoint, err := plugin.MarshalProperties(
@@ -991,7 +991,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	inputs := parseCheckpointObject(oldState)
 
 	// Handle IamMember, IamBinding resources.
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		inputs, err = inputsForIAMOverlayUpdate(res, urn, inputs, oldState, p.client)
 		if err != nil {
 			return nil, err
@@ -1088,7 +1088,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	}
 
 	// Handle IamMember, IamBinding resources.
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		inputs, err = inputsForIAMOverlayUpdate(res, urn, inputs, oldState, p.client)
 		if err != nil {
 			return nil, err
@@ -1209,7 +1209,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
 	}
 
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		resp = unmodifiedInputs.Mappable()
 	}
 
@@ -1267,7 +1267,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	if isIamOverlay(urn) {
+	if isIAMOverlay(urn) {
 		inputs, err = inputsForIAMOverlayDelete(res, urn, inputs, p.client)
 		if err != nil {
 			return nil, err

@@ -45,15 +45,15 @@ type iamPolicyCondition struct {
 
 var iamOverlayRegex = regexp.MustCompile(`Iam(Member|Binding)$`)
 
-func isIamOverlay(urn resource.URN) bool {
+func isIAMOverlay(urn resource.URN) bool {
 	return iamOverlayRegex.MatchString(urn.Type().String())
 }
 
-func isIamMember(urn resource.URN) bool {
+func isIAMMember(urn resource.URN) bool {
 	return strings.HasSuffix(urn.Type().String(), "IamMember")
 }
 
-func isIamBinding(urn resource.URN) bool {
+func isIAMBinding(urn resource.URN) bool {
 	return strings.HasSuffix(urn.Type().String(), "IamBinding")
 }
 
@@ -74,7 +74,7 @@ func normalizeIamOverlayInputs(
 	delete(values, "name")
 
 	// Transform member (string) -> members ([]string)
-	if isIamMember(urn) {
+	if isIAMMember(urn) {
 		values[resource.PropertyKey("members")] = resource.NewArrayProperty(
 			[]resource.PropertyValue{
 				values[resource.PropertyKey("member")],
@@ -144,7 +144,7 @@ func inputsForIAMOverlayCreate(
 	}
 
 	// For IamBinding type, drop any existing bindings matching the role.
-	if isIamBinding(urn) {
+	if isIAMBinding(urn) {
 		stateStruct.Bindings = filterBindingsWithRoleAndCondition(
 			stateStruct.Bindings, newBinding.Role, newBinding.Condition)
 	}
@@ -178,7 +178,7 @@ func inputsForIAMOverlayUpdate(
 		return nil, err
 	}
 
-	if isIamBinding(urn) {
+	if isIAMBinding(urn) {
 		// For IamBinding type, drop any existing bindings matching the role.
 		stateStruct.Bindings = filterBindingsWithRoleAndCondition(
 			stateStruct.Bindings, newBinding.Role, newBinding.Condition)
@@ -211,7 +211,7 @@ func inputsForIAMOverlayDelete(
 	}
 
 	// For IamBinding type, drop any existing bindings matching the role.
-	if isIamBinding(urn) {
+	if isIAMBinding(urn) {
 		stateStruct.Bindings = filterBindingsWithRoleAndCondition(
 			stateStruct.Bindings, newBinding.Role, newBinding.Condition)
 	}
