@@ -24,6 +24,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -149,12 +150,30 @@ func copyJSONFile(url, outDir, path string) error {
 		return err
 	}
 
-	var ifce interface{}
+	ifce := map[string]interface{}{}
 	err = json.Unmarshal(body, &ifce)
 	if err != nil {
 		return err
 	}
 
+	if rev, ok := ifce["revision"].(string); ok {
+		f, err := os.Open(filepath.Join(outDir, path))
+		if err == nil {
+			existing := map[string]interface{}{}
+			if err := json.NewDecoder(f).Decode(&existing); err != nil {
+				return err
+			}
+			existingRev, ok := existing["revision"].(string)
+			if ok && existingRev > rev {
+				// We sometimes get older revisions from discovery calls. Ignore if this is the case.
+				fmt.Printf("Existing revision for %s (%s) is newer than retrieved (%s), skipping.\n", path,
+					existingRev, rev)
+				return nil
+			}
+		} else if !os.IsNotExist(err) {
+			return err
+		}
+	}
 	// Marshaller will write JSON nodes in alphanumeric order which makes the files "stable",
 	// and we can track the history more easily.
 	output, err := json.MarshalIndent(ifce, "", "  ")
