@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTenantResult:
-    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, name=None, test_phone_numbers=None):
+    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, monitoring=None, name=None, test_phone_numbers=None):
         if allow_password_signup and not isinstance(allow_password_signup, bool):
             raise TypeError("Expected argument 'allow_password_signup' to be a bool")
         pulumi.set(__self__, "allow_password_signup", allow_password_signup)
@@ -50,6 +50,9 @@ class GetTenantResult:
         if mfa_config and not isinstance(mfa_config, dict):
             raise TypeError("Expected argument 'mfa_config' to be a dict")
         pulumi.set(__self__, "mfa_config", mfa_config)
+        if monitoring and not isinstance(monitoring, dict):
+            raise TypeError("Expected argument 'monitoring' to be a dict")
+        pulumi.set(__self__, "monitoring", monitoring)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -139,6 +142,14 @@ class GetTenantResult:
 
     @property
     @pulumi.getter
+    def monitoring(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse':
+        """
+        Configuration related to monitoring project activity.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
@@ -170,6 +181,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             hash_config=self.hash_config,
             inheritance=self.inheritance,
             mfa_config=self.mfa_config,
+            monitoring=self.monitoring,
             name=self.name,
             test_phone_numbers=self.test_phone_numbers)
 
@@ -197,6 +209,7 @@ def get_tenant(project: Optional[str] = None,
         hash_config=__ret__.hash_config,
         inheritance=__ret__.inheritance,
         mfa_config=__ret__.mfa_config,
+        monitoring=__ret__.monitoring,
         name=__ret__.name,
         test_phone_numbers=__ret__.test_phone_numbers)
 

@@ -35,6 +35,8 @@ type Tenant struct {
 	Inheritance GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput `pulumi:"inheritance"`
 	// The tenant-level configuration of MFA options.
 	MfaConfig GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput `pulumi:"mfaConfig"`
+	// Configuration related to monitoring project activity.
+	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -103,7 +105,9 @@ type tenantArgs struct {
 	Inheritance *GoogleCloudIdentitytoolkitAdminV2Inheritance `pulumi:"inheritance"`
 	// The tenant-level configuration of MFA options.
 	MfaConfig *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig `pulumi:"mfaConfig"`
-	Project   *string                                                 `pulumi:"project"`
+	// Configuration related to monitoring project activity.
+	Monitoring *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig `pulumi:"monitoring"`
+	Project    *string                                            `pulumi:"project"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
 	TestPhoneNumbers map[string]string `pulumi:"testPhoneNumbers"`
 }
@@ -128,7 +132,9 @@ type TenantArgs struct {
 	Inheritance GoogleCloudIdentitytoolkitAdminV2InheritancePtrInput
 	// The tenant-level configuration of MFA options.
 	MfaConfig GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrInput
-	Project   pulumi.StringPtrInput
+	// Configuration related to monitoring project activity.
+	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput
+	Project    pulumi.StringPtrInput
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
 	TestPhoneNumbers pulumi.StringMapInput
 }
@@ -220,6 +226,11 @@ func (o TenantOutput) MfaConfig() GoogleCloudIdentitytoolkitAdminV2MultiFactorAu
 	return o.ApplyT(func(v *Tenant) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput {
 		return v.MfaConfig
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput)
+}
+
+// Configuration related to monitoring project activity.
+func (o TenantOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput {
+	return o.ApplyT(func(v *Tenant) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput { return v.Monitoring }).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput)
 }
 
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"

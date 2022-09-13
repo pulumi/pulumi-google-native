@@ -18,8 +18,10 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2IdpCertificateArgs',
     'GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2InheritanceArgs',
+    'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs',
+    'GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
@@ -304,6 +306,30 @@ class GoogleCloudIdentitytoolkitAdminV2InheritanceArgs:
 
 
 @pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs:
+    def __init__(__self__, *,
+                 request_logging: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs']] = None):
+        """
+        Configuration related to monitoring project activity.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs'] request_logging: Configuration for logging requests made to this project to Stackdriver Logging
+        """
+        if request_logging is not None:
+            pulumi.set(__self__, "request_logging", request_logging)
+
+    @property
+    @pulumi.getter(name="requestLogging")
+    def request_logging(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs']]:
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        """
+        return pulumi.get(self, "request_logging")
+
+    @request_logging.setter
+    def request_logging(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs']]):
+        pulumi.set(self, "request_logging", value)
+
+
+@pulumi.input_type
 class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs:
     def __init__(__self__, *,
                  enabled_providers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem']]]] = None,
@@ -397,6 +423,30 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        :param pulumi.Input[bool] enabled: Whether logging is enabled for this project or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether logging is enabled for this project or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

@@ -77,6 +77,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse> MfaConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// </summary>
+        [Output("monitoring")]
+        public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse> Monitoring { get; private set; } = null!;
+
+        /// <summary>
         /// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
         /// </summary>
         [Output("name")]
@@ -193,6 +199,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         [Input("mfaConfig")]
         public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs>? MfaConfig { get; set; }
+
+        /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// </summary>
+        [Input("monitoring")]
+        public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>? Monitoring { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

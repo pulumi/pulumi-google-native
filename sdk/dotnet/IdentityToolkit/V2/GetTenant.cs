@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse MfaConfig;
         /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse Monitoring;
+        /// <summary>
         /// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
         /// </summary>
         public readonly string Name;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
             Outputs.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse mfaConfig,
 
+            Outputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse monitoring,
+
             string name,
 
             ImmutableDictionary<string, string> testPhoneNumbers)
@@ -142,6 +148,7 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
             HashConfig = hashConfig;
             Inheritance = inheritance;
             MfaConfig = mfaConfig;
+            Monitoring = monitoring;
             Name = name;
             TestPhoneNumbers = testPhoneNumbers;
         }
