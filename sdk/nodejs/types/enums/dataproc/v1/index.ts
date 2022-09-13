@@ -64,6 +64,10 @@ export const InstanceGroupConfigPreemptibility = {
      * Instances are preemptible.This option is allowed only for secondary worker groups.
      */
     Preemptible: "PREEMPTIBLE",
+    /**
+     * Instances are Spot VMsThis option is allowed only for secondary worker groups. See Spot VMs (https://cloud.google.com/compute/docs/instances/spot).
+     */
+    Spot: "SPOT",
 } as const;
 
 /**

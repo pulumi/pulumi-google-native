@@ -52,7 +52,7 @@ export class Index extends pulumi.CustomResource {
     public readonly kind!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
      */
     public readonly properties!: pulumi.Output<outputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyResponse[]>;
     /**
@@ -115,7 +115,7 @@ export interface IndexArgs {
     kind: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
      */
     properties: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
 }

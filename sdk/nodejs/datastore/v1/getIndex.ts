@@ -45,7 +45,7 @@ export interface GetIndexResult {
      */
     readonly project: string;
     /**
-     * An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
      */
     readonly properties: outputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyResponse[];
     /**

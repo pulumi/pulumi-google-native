@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomConstraintResult:
-    def __init__(__self__, action_type=None, condition=None, description=None, display_name=None, method_types=None, name=None, resource_types=None):
+    def __init__(__self__, action_type=None, condition=None, description=None, display_name=None, method_types=None, name=None, resource_types=None, update_time=None):
         if action_type and not isinstance(action_type, str):
             raise TypeError("Expected argument 'action_type' to be a str")
         pulumi.set(__self__, "action_type", action_type)
@@ -40,6 +40,9 @@ class GetCustomConstraintResult:
         if resource_types and not isinstance(resource_types, list):
             raise TypeError("Expected argument 'resource_types' to be a list")
         pulumi.set(__self__, "resource_types", resource_types)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="actionType")
@@ -97,6 +100,14 @@ class GetCustomConstraintResult:
         """
         return pulumi.get(self, "resource_types")
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        """
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetCustomConstraintResult(GetCustomConstraintResult):
     # pylint: disable=using-constant-test
@@ -110,7 +121,8 @@ class AwaitableGetCustomConstraintResult(GetCustomConstraintResult):
             display_name=self.display_name,
             method_types=self.method_types,
             name=self.name,
-            resource_types=self.resource_types)
+            resource_types=self.resource_types,
+            update_time=self.update_time)
 
 
 def get_custom_constraint(custom_constraint_id: Optional[str] = None,
@@ -132,7 +144,8 @@ def get_custom_constraint(custom_constraint_id: Optional[str] = None,
         display_name=__ret__.display_name,
         method_types=__ret__.method_types,
         name=__ret__.name,
-        resource_types=__ret__.resource_types)
+        resource_types=__ret__.resource_types,
+        update_time=__ret__.update_time)
 
 
 @_utilities.lift_output_func(get_custom_constraint)

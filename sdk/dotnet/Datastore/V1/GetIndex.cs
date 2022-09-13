@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleDatastoreAdminV1IndexedPropertyResponse> Properties;
         /// <summary>

@@ -23,7 +23,7 @@ type Index struct {
 	// The entity kind to which this index applies.
 	Kind    pulumi.StringOutput `pulumi:"kind"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput `pulumi:"properties"`
 	// The state of the index.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -86,7 +86,7 @@ type indexArgs struct {
 	// The entity kind to which this index applies.
 	Kind    string  `pulumi:"kind"`
 	Project *string `pulumi:"project"`
-	// An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 	Properties []GoogleDatastoreAdminV1IndexedProperty `pulumi:"properties"`
 }
 
@@ -97,7 +97,7 @@ type IndexArgs struct {
 	// The entity kind to which this index applies.
 	Kind    pulumi.StringInput
 	Project pulumi.StringPtrInput
-	// An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 	Properties GoogleDatastoreAdminV1IndexedPropertyArrayInput
 }
 
@@ -157,7 +157,7 @@ func (o IndexOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// An ordered sequence of property names and their index attributes.
+// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 func (o IndexOutput) Properties() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
 	return o.ApplyT(func(v *Index) GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput { return v.Properties }).(GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput)
 }

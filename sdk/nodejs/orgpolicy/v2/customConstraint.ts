@@ -66,6 +66,10 @@ export class CustomConstraint extends pulumi.CustomResource {
      * Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
      */
     public readonly resourceTypes!: pulumi.Output<string[]>;
+    /**
+     * The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a CustomConstraint resource with the given unique name, arguments, and options.
@@ -89,6 +93,7 @@ export class CustomConstraint extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["resourceTypes"] = args ? args.resourceTypes : undefined;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["actionType"] = undefined /*out*/;
             resourceInputs["condition"] = undefined /*out*/;
@@ -98,6 +103,7 @@ export class CustomConstraint extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["resourceTypes"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["organizationId"] };

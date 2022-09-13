@@ -30,6 +30,8 @@ type CustomConstraint struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
 	ResourceTypes pulumi.StringArrayOutput `pulumi:"resourceTypes"`
+	// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewCustomConstraint registers a new resource with the given unique name, arguments, and options.
@@ -188,6 +190,11 @@ func (o CustomConstraintOutput) OrganizationId() pulumi.StringOutput {
 // Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
 func (o CustomConstraintOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringArrayOutput { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+func (o CustomConstraintOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

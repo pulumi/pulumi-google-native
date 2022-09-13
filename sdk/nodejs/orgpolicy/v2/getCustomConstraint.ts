@@ -53,6 +53,10 @@ export interface GetCustomConstraintResult {
      * Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
      */
     readonly resourceTypes: string[];
+    /**
+     * The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+     */
+    readonly updateTime: string;
 }
 
 export function getCustomConstraintOutput(args: GetCustomConstraintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomConstraintResult> {

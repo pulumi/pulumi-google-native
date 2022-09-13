@@ -221,6 +221,7 @@ class CustomConstraint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["resource_types"] = resource_types
+            __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomConstraint, __self__).__init__(
@@ -253,6 +254,7 @@ class CustomConstraint(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["organization_id"] = None
         __props__.__dict__["resource_types"] = None
+        __props__.__dict__["update_time"] = None
         return CustomConstraint(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -315,4 +317,12 @@ class CustomConstraint(pulumi.CustomResource):
         Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
         """
         return pulumi.get(self, "resource_types")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        """
+        return pulumi.get(self, "update_time")
 

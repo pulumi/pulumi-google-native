@@ -25,7 +25,7 @@ class IndexArgs:
         The set of arguments for constructing a Index resource.
         :param pulumi.Input['IndexAncestor'] ancestor: The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         :param pulumi.Input[str] kind: The entity kind to which this index applies.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]] properties: An ordered sequence of property names and their index attributes.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]] properties: An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         pulumi.set(__self__, "ancestor", ancestor)
         pulumi.set(__self__, "kind", kind)
@@ -61,7 +61,7 @@ class IndexArgs:
     @pulumi.getter
     def properties(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]:
         """
-        An ordered sequence of property names and their index attributes.
+        An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         return pulumi.get(self, "properties")
 
@@ -97,7 +97,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['IndexAncestor'] ancestor: The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         :param pulumi.Input[str] kind: The entity kind to which this index applies.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: An ordered sequence of property names and their index attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         ...
     @overload
@@ -214,7 +214,7 @@ class Index(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Sequence['outputs.GoogleDatastoreAdminV1IndexedPropertyResponse']]:
         """
-        An ordered sequence of property names and their index attributes.
+        An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         return pulumi.get(self, "properties")
 

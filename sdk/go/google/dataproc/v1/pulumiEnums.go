@@ -408,6 +408,8 @@ const (
 	InstanceGroupConfigPreemptibilityNonPreemptible = InstanceGroupConfigPreemptibility("NON_PREEMPTIBLE")
 	// Instances are preemptible.This option is allowed only for secondary worker groups.
 	InstanceGroupConfigPreemptibilityPreemptible = InstanceGroupConfigPreemptibility("PREEMPTIBLE")
+	// Instances are Spot VMsThis option is allowed only for secondary worker groups. See Spot VMs (https://cloud.google.com/compute/docs/instances/spot).
+	InstanceGroupConfigPreemptibilitySpot = InstanceGroupConfigPreemptibility("SPOT")
 )
 
 func (InstanceGroupConfigPreemptibility) ElementType() reflect.Type {

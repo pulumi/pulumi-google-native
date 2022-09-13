@@ -34,7 +34,7 @@ type LookupIndexResult struct {
 	Kind string `pulumi:"kind"`
 	// Project ID.
 	Project string `pulumi:"project"`
-	// An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
 	// The state of the index.
 	State string `pulumi:"state"`
@@ -96,7 +96,7 @@ func (o LookupIndexResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIndexResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// An ordered sequence of property names and their index attributes.
+// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
 func (o LookupIndexResultOutput) Properties() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
 	return o.ApplyT(func(v LookupIndexResult) []GoogleDatastoreAdminV1IndexedPropertyResponse { return v.Properties }).(GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput)
 }

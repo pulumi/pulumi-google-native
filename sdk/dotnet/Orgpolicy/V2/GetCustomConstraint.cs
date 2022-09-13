@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
         /// </summary>
         public readonly ImmutableArray<string> ResourceTypes;
+        /// <summary>
+        /// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetCustomConstraintResult(
@@ -100,7 +104,9 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
 
             string name,
 
-            ImmutableArray<string> resourceTypes)
+            ImmutableArray<string> resourceTypes,
+
+            string updateTime)
         {
             ActionType = actionType;
             Condition = condition;
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
             MethodTypes = methodTypes;
             Name = name;
             ResourceTypes = resourceTypes;
+            UpdateTime = updateTime;
         }
     }
 }

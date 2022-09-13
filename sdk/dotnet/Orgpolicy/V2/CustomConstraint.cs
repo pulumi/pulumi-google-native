@@ -60,6 +60,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Output("resourceTypes")]
         public Output<ImmutableArray<string>> ResourceTypes { get; private set; } = null!;
 
+        /// <summary>
+        /// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a CustomConstraint resource with the given unique name, arguments, and options.

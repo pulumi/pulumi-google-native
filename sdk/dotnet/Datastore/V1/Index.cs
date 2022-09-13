@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableArray<Outputs.GoogleDatastoreAdminV1IndexedPropertyResponse>> Properties { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         private InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs>? _properties;
 
         /// <summary>
-        /// An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         /// </summary>
         public InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs> Properties
         {

@@ -75,6 +75,10 @@ class InstanceGroupConfigPreemptibility(str, Enum):
     """
     Instances are preemptible.This option is allowed only for secondary worker groups.
     """
+    SPOT = "SPOT"
+    """
+    Instances are Spot VMsThis option is allowed only for secondary worker groups. See Spot VMs (https://cloud.google.com/compute/docs/instances/spot).
+    """
 
 
 class MetricMetricSource(str, Enum):

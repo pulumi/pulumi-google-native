@@ -75,7 +75,7 @@ class GetIndexResult:
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GoogleDatastoreAdminV1IndexedPropertyResponse']:
         """
-        An ordered sequence of property names and their index attributes.
+        An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         return pulumi.get(self, "properties")
 

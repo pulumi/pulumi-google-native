@@ -123,6 +123,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Instances are preemptible.This option is allowed only for secondary worker groups.
         /// </summary>
         public static InstanceGroupConfigPreemptibility Preemptible { get; } = new InstanceGroupConfigPreemptibility("PREEMPTIBLE");
+        /// <summary>
+        /// Instances are Spot VMsThis option is allowed only for secondary worker groups. See Spot VMs (https://cloud.google.com/compute/docs/instances/spot).
+        /// </summary>
+        public static InstanceGroupConfigPreemptibility Spot { get; } = new InstanceGroupConfigPreemptibility("SPOT");
 
         public static bool operator ==(InstanceGroupConfigPreemptibility left, InstanceGroupConfigPreemptibility right) => left.Equals(right);
         public static bool operator !=(InstanceGroupConfigPreemptibility left, InstanceGroupConfigPreemptibility right) => !left.Equals(right);
