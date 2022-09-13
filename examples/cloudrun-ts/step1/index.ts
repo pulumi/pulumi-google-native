@@ -17,6 +17,7 @@ const service = new google.run.v1.Service("service", {
     kind: "Service",
     metadata: {
         name: serviceName,
+        namespace: "default",
     },
     spec: {
         template: {
