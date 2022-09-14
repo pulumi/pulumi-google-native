@@ -550,11 +550,11 @@
                       "httpMethod": "POST",
                       "id": "cloudtasks.projects.locations.queues.tasks.buffer",
                       "parameterOrder": [
-                        "parent",
+                        "queue",
                         "taskId"
                       ],
                       "parameters": {
-                        "parent": {
+                        "queue": {
                           "description": "Required. The parent queue name. For example: projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.",
                           "location": "path",
                           "pattern": "^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
@@ -568,7 +568,7 @@
                           "type": "string"
                         }
                       },
-                      "path": "v2beta2/{+parent}/tasks/{taskId}:buffer",
+                      "path": "v2beta2/{+queue}/tasks/{taskId}:buffer",
                       "request": {
                         "$ref": "BufferTaskRequest"
                       },
@@ -1122,11 +1122,11 @@
       "id": "Header",
       "properties": {
         "key": {
-          "format": "byte",
+          "description": "The key of the header.",
           "type": "string"
         },
         "value": {
-          "format": "byte",
+          "description": "The value of the header.",
           "type": "string"
         }
       },
