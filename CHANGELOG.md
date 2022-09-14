@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+
+### BUG FIXES/ENHANCEMENTS
+- Add IamBinding and IamMember resources to make it easier to manage IAM policies [#653](https://github.com/pulumi/pulumi-google-native/pull/653)
 
 ## 0.25.0 (2022-09-01)
 ### BREAKING CHANGE
