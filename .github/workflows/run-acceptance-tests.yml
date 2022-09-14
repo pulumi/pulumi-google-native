@@ -27,6 +27,9 @@ env:
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
+  GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
+  GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
   GOOGLE_PROJECT: pulumi-ci-gcp-provider
   GOOGLE_REGION: us-central1
   GOOGLE_ZONE: us-central1-a
@@ -65,12 +68,12 @@ jobs:
     name: prerequisites
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         lfs: true
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -172,12 +175,12 @@ jobs:
     name: build_sdks
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         lfs: true
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -272,14 +275,17 @@ jobs:
         - go
         - java
     name: test
+    permissions:
+      contents: read
+      id-token: write
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         lfs: true
         ref: ${{ env.PR_COMMIT_SHA }}
     - name: Checkout Scripts Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         path: ci-scripts
         repository: pulumi/scripts
@@ -344,14 +350,14 @@ jobs:
         pip3 install pipenv
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
-    - name: Configure GCP credentials
-      uses: google-github-actions/setup-gcloud@v0
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0
       with:
-        install_components: 'gke-gcloud-auth-plugin'
-        project_id: ${{ env.GOOGLE_PROJECT }}
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
+        workload_identity_provider: projects/${{ env.GOOGLE_PROJECT
+          }}/locations/global/workloadIdentityPools/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
     - name: Install gotestfmt
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
