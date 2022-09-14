@@ -21,17 +21,24 @@ __all__ = [
     'CloudRunMetadataResponse',
     'DefaultPoolResponse',
     'DeliveryPipelineResponse',
+    'DeployJobResponse',
+    'DeploymentJobsResponse',
     'ExecutionConfigResponse',
     'ExprResponse',
     'GkeClusterResponse',
+    'JobResponse',
     'MetadataResponse',
+    'PhaseResponse',
     'PipelineConditionResponse',
     'PipelineReadyConditionResponse',
     'PrivatePoolResponse',
     'SerialPipelineResponse',
     'StageResponse',
+    'StandardResponse',
+    'StrategyResponse',
     'TargetResponse',
     'TargetsPresentConditionResponse',
+    'VerifyJobResponse',
 ]
 
 @pulumi.output_type
@@ -244,7 +251,7 @@ class CloudRunLocationResponse(dict):
                  location: str):
         """
         Information specifying where to deploy a Cloud Run Service.
-        :param str location: The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        :param str location: The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         """
         pulumi.set(__self__, "location", location)
 
@@ -252,7 +259,7 @@ class CloudRunLocationResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         """
         return pulumi.get(self, "location")
 
@@ -524,6 +531,70 @@ class DeliveryPipelineResponse(dict):
 
 
 @pulumi.output_type
+class DeployJobResponse(dict):
+    """
+    A deploy Job.
+    """
+    def __init__(__self__):
+        """
+        A deploy Job.
+        """
+        pass
+
+
+@pulumi.output_type
+class DeploymentJobsResponse(dict):
+    """
+    Deployment job composition.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployJob":
+            suggest = "deploy_job"
+        elif key == "verifyJob":
+            suggest = "verify_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeploymentJobsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeploymentJobsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeploymentJobsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deploy_job: 'outputs.JobResponse',
+                 verify_job: 'outputs.JobResponse'):
+        """
+        Deployment job composition.
+        :param 'JobResponse' deploy_job: The deploy Job. This is the first job run in the phase.
+        :param 'JobResponse' verify_job: The verify Job. Runs after a deploy if the deploy succeeds.
+        """
+        pulumi.set(__self__, "deploy_job", deploy_job)
+        pulumi.set(__self__, "verify_job", verify_job)
+
+    @property
+    @pulumi.getter(name="deployJob")
+    def deploy_job(self) -> 'outputs.JobResponse':
+        """
+        The deploy Job. This is the first job run in the phase.
+        """
+        return pulumi.get(self, "deploy_job")
+
+    @property
+    @pulumi.getter(name="verifyJob")
+    def verify_job(self) -> 'outputs.JobResponse':
+        """
+        The verify Job. Runs after a deploy if the deploy succeeds.
+        """
+        return pulumi.get(self, "verify_job")
+
+
+@pulumi.output_type
 class ExecutionConfigResponse(dict):
     """
     Configuration of the environment to use when calling Skaffold.
@@ -744,9 +815,85 @@ class GkeClusterResponse(dict):
 
 
 @pulumi.output_type
+class JobResponse(dict):
+    """
+    Job represents an operation for a `Rollout`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployJob":
+            suggest = "deploy_job"
+        elif key == "jobRun":
+            suggest = "job_run"
+        elif key == "verifyJob":
+            suggest = "verify_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deploy_job: 'outputs.DeployJobResponse',
+                 job_run: str,
+                 state: str,
+                 verify_job: 'outputs.VerifyJobResponse'):
+        """
+        Job represents an operation for a `Rollout`.
+        :param 'DeployJobResponse' deploy_job: A deploy Job.
+        :param str job_run: The name of the `JobRun` responsible for the most recent invocation of this Job.
+        :param str state: The current state of the Job.
+        :param 'VerifyJobResponse' verify_job: A verify Job.
+        """
+        pulumi.set(__self__, "deploy_job", deploy_job)
+        pulumi.set(__self__, "job_run", job_run)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "verify_job", verify_job)
+
+    @property
+    @pulumi.getter(name="deployJob")
+    def deploy_job(self) -> 'outputs.DeployJobResponse':
+        """
+        A deploy Job.
+        """
+        return pulumi.get(self, "deploy_job")
+
+    @property
+    @pulumi.getter(name="jobRun")
+    def job_run(self) -> str:
+        """
+        The name of the `JobRun` responsible for the most recent invocation of this Job.
+        """
+        return pulumi.get(self, "job_run")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the Job.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="verifyJob")
+    def verify_job(self) -> 'outputs.VerifyJobResponse':
+        """
+        A verify Job.
+        """
+        return pulumi.get(self, "verify_job")
+
+
+@pulumi.output_type
 class MetadataResponse(dict):
     """
-    Metadata surfaces information associated with a `Rollout` to the user.
+    Metadata includes information associated with a `Rollout`.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -768,7 +915,7 @@ class MetadataResponse(dict):
     def __init__(__self__, *,
                  cloud_run: 'outputs.CloudRunMetadataResponse'):
         """
-        Metadata surfaces information associated with a `Rollout` to the user.
+        Metadata includes information associated with a `Rollout`.
         :param 'CloudRunMetadataResponse' cloud_run: The name of the Cloud Run Service that is associated with a `Rollout`.
         """
         pulumi.set(__self__, "cloud_run", cloud_run)
@@ -780,6 +927,56 @@ class MetadataResponse(dict):
         The name of the Cloud Run Service that is associated with a `Rollout`.
         """
         return pulumi.get(self, "cloud_run")
+
+
+@pulumi.output_type
+class PhaseResponse(dict):
+    """
+    Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentJobs":
+            suggest = "deployment_jobs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhaseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhaseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhaseResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment_jobs: 'outputs.DeploymentJobsResponse',
+                 state: str):
+        """
+        Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
+        :param 'DeploymentJobsResponse' deployment_jobs: Deployment job composition.
+        :param str state: Current state of the Phase.
+        """
+        pulumi.set(__self__, "deployment_jobs", deployment_jobs)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="deploymentJobs")
+    def deployment_jobs(self) -> 'outputs.DeploymentJobsResponse':
+        """
+        Deployment job composition.
+        """
+        return pulumi.get(self, "deployment_jobs")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Current state of the Phase.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -995,13 +1192,16 @@ class StageResponse(dict):
 
     def __init__(__self__, *,
                  profiles: Sequence[str],
+                 strategy: 'outputs.StrategyResponse',
                  target_id: str):
         """
         Stage specifies a location to which to deploy.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+        :param 'StrategyResponse' strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         pulumi.set(__self__, "profiles", profiles)
+        pulumi.set(__self__, "strategy", strategy)
         pulumi.set(__self__, "target_id", target_id)
 
     @property
@@ -1013,12 +1213,64 @@ class StageResponse(dict):
         return pulumi.get(self, "profiles")
 
     @property
+    @pulumi.getter
+    def strategy(self) -> 'outputs.StrategyResponse':
+        """
+        Optional. The strategy to use for a `Rollout` to this stage.
+        """
+        return pulumi.get(self, "strategy")
+
+    @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
         The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         return pulumi.get(self, "target_id")
+
+
+@pulumi.output_type
+class StandardResponse(dict):
+    """
+    Standard represents the standard deployment strategy.
+    """
+    def __init__(__self__, *,
+                 verify: bool):
+        """
+        Standard represents the standard deployment strategy.
+        :param bool verify: Whether to verify a deployment.
+        """
+        pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> bool:
+        """
+        Whether to verify a deployment.
+        """
+        return pulumi.get(self, "verify")
+
+
+@pulumi.output_type
+class StrategyResponse(dict):
+    """
+    Strategy contains deployment strategy information.
+    """
+    def __init__(__self__, *,
+                 standard: 'outputs.StandardResponse'):
+        """
+        Strategy contains deployment strategy information.
+        :param 'StandardResponse' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def standard(self) -> 'outputs.StandardResponse':
+        """
+        Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        return pulumi.get(self, "standard")
 
 
 @pulumi.output_type
@@ -1274,5 +1526,17 @@ class TargetsPresentConditionResponse(dict):
         Last time the condition was updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class VerifyJobResponse(dict):
+    """
+    A verify Job.
+    """
+    def __init__(__self__):
+        """
+        A verify Job.
+        """
+        pass
 
 

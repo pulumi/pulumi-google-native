@@ -29,6 +29,10 @@ export { GetInstanceBackupIamPolicyArgs, GetInstanceBackupIamPolicyResult, GetIn
 export const getInstanceBackupIamPolicy: typeof import("./getInstanceBackupIamPolicy").getInstanceBackupIamPolicy = null as any;
 export const getInstanceBackupIamPolicyOutput: typeof import("./getInstanceBackupIamPolicy").getInstanceBackupIamPolicyOutput = null as any;
 
+export { GetInstanceConfigArgs, GetInstanceConfigResult, GetInstanceConfigOutputArgs } from "./getInstanceConfig";
+export const getInstanceConfig: typeof import("./getInstanceConfig").getInstanceConfig = null as any;
+export const getInstanceConfigOutput: typeof import("./getInstanceConfig").getInstanceConfigOutput = null as any;
+
 export { GetInstanceDatabaseIamPolicyArgs, GetInstanceDatabaseIamPolicyResult, GetInstanceDatabaseIamPolicyOutputArgs } from "./getInstanceDatabaseIamPolicy";
 export const getInstanceDatabaseIamPolicy: typeof import("./getInstanceDatabaseIamPolicy").getInstanceDatabaseIamPolicy = null as any;
 export const getInstanceDatabaseIamPolicyOutput: typeof import("./getInstanceDatabaseIamPolicy").getInstanceDatabaseIamPolicyOutput = null as any;
@@ -49,6 +53,10 @@ export { InstanceBackupIamPolicyArgs } from "./instanceBackupIamPolicy";
 export type InstanceBackupIamPolicy = import("./instanceBackupIamPolicy").InstanceBackupIamPolicy;
 export const InstanceBackupIamPolicy: typeof import("./instanceBackupIamPolicy").InstanceBackupIamPolicy = null as any;
 
+export { InstanceConfigArgs } from "./instanceConfig";
+export type InstanceConfig = import("./instanceConfig").InstanceConfig;
+export const InstanceConfig: typeof import("./instanceConfig").InstanceConfig = null as any;
+
 export { InstanceDatabaseIamPolicyArgs } from "./instanceDatabaseIamPolicy";
 export type InstanceDatabaseIamPolicy = import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy;
 export const InstanceDatabaseIamPolicy: typeof import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy = null as any;
@@ -67,11 +75,13 @@ utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./ge
 utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
 utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 utilities.lazyLoad(exports, ["getInstanceBackupIamPolicy","getInstanceBackupIamPolicyOutput"], () => require("./getInstanceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["getInstanceConfig","getInstanceConfigOutput"], () => require("./getInstanceConfig"));
 utilities.lazyLoad(exports, ["getInstanceDatabaseIamPolicy","getInstanceDatabaseIamPolicyOutput"], () => require("./getInstanceDatabaseIamPolicy"));
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 utilities.lazyLoad(exports, ["getSession","getSessionOutput"], () => require("./getSession"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 utilities.lazyLoad(exports, ["InstanceBackupIamPolicy"], () => require("./instanceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceConfig"], () => require("./instanceConfig"));
 utilities.lazyLoad(exports, ["InstanceDatabaseIamPolicy"], () => require("./instanceDatabaseIamPolicy"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 utilities.lazyLoad(exports, ["Session"], () => require("./session"));
@@ -91,6 +101,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceBackupIamPolicy":
                 return new InstanceBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceConfig":
+                return new InstanceConfig(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceDatabaseIamPolicy":
                 return new InstanceDatabaseIamPolicy(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceIamPolicy":

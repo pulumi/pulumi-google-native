@@ -59,6 +59,8 @@ type LookupRolloutResult struct {
 	Metadata MetadataResponse `pulumi:"metadata"`
 	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 	Name string `pulumi:"name"`
+	// The phases that represent the workflows of this `Rollout`.
+	Phases []PhaseResponse `pulumi:"phases"`
 	// Current state of the `Rollout`.
 	State string `pulumi:"state"`
 	// The ID of Target to which this `Rollout` is deploying.
@@ -179,6 +181,11 @@ func (o LookupRolloutResultOutput) Metadata() MetadataResponseOutput {
 // Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 func (o LookupRolloutResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The phases that represent the workflows of this `Rollout`.
+func (o LookupRolloutResultOutput) Phases() PhaseResponseArrayOutput {
+	return o.ApplyT(func(v LookupRolloutResult) []PhaseResponse { return v.Phases }).(PhaseResponseArrayOutput)
 }
 
 // Current state of the `Rollout`.

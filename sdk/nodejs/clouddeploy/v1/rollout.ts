@@ -102,6 +102,10 @@ export class Rollout extends pulumi.CustomResource {
      * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The phases that represent the workflows of this `Rollout`.
+     */
+    public /*out*/ readonly phases!: pulumi.Output<outputs.clouddeploy.v1.PhaseResponse[]>;
     public readonly project!: pulumi.Output<string>;
     public readonly releaseId!: pulumi.Output<string>;
     /**
@@ -175,6 +179,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["enqueueTime"] = undefined /*out*/;
             resourceInputs["failureReason"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["phases"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         } else {
@@ -195,6 +200,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["phases"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["releaseId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

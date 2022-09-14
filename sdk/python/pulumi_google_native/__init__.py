@@ -2812,6 +2812,7 @@ _utilities.register(
    "google-native:spanner/v1:Database": "Database",
    "google-native:spanner/v1:Instance": "Instance",
    "google-native:spanner/v1:InstanceBackupIamPolicy": "InstanceBackupIamPolicy",
+   "google-native:spanner/v1:InstanceConfig": "InstanceConfig",
    "google-native:spanner/v1:InstanceDatabaseIamPolicy": "InstanceDatabaseIamPolicy",
    "google-native:spanner/v1:InstanceIamPolicy": "InstanceIamPolicy",
    "google-native:spanner/v1:Session": "Session"

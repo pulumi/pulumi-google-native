@@ -16,7 +16,13 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
     [OutputType]
     public sealed class HeaderResponse
     {
+        /// <summary>
+        /// The key of the header.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The value of the header.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

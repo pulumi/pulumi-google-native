@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class CloudRunLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        /// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

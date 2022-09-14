@@ -49,9 +49,11 @@ type Rollout struct {
 	// Metadata contains information about the rollout.
 	Metadata MetadataResponseOutput `pulumi:"metadata"`
 	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
-	Name      pulumi.StringOutput `pulumi:"name"`
-	Project   pulumi.StringOutput `pulumi:"project"`
-	ReleaseId pulumi.StringOutput `pulumi:"releaseId"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The phases that represent the workflows of this `Rollout`.
+	Phases    PhaseResponseArrayOutput `pulumi:"phases"`
+	Project   pulumi.StringOutput      `pulumi:"project"`
+	ReleaseId pulumi.StringOutput      `pulumi:"releaseId"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Required. ID of the `Rollout`.
@@ -293,6 +295,11 @@ func (o RolloutOutput) Metadata() MetadataResponseOutput {
 // Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 func (o RolloutOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The phases that represent the workflows of this `Rollout`.
+func (o RolloutOutput) Phases() PhaseResponseArrayOutput {
+	return o.ApplyT(func(v *Rollout) PhaseResponseArrayOutput { return v.Phases }).(PhaseResponseArrayOutput)
 }
 
 func (o RolloutOutput) Project() pulumi.StringOutput {

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class CloudRunLocationResponse
     {
         /// <summary>
-        /// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        /// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         /// </summary>
         public readonly string Location;
 

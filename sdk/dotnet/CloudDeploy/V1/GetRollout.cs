@@ -136,6 +136,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The phases that represent the workflows of this `Rollout`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PhaseResponse> Phases;
+        /// <summary>
         /// Current state of the `Rollout`.
         /// </summary>
         public readonly string State;
@@ -180,6 +184,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string name,
 
+            ImmutableArray<Outputs.PhaseResponse> phases,
+
             string state,
 
             string targetId,
@@ -201,6 +207,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Labels = labels;
             Metadata = metadata;
             Name = name;
+            Phases = phases;
             State = state;
             TargetId = targetId;
             Uid = uid;

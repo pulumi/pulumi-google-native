@@ -39,6 +39,10 @@ export const ExecutionConfigUsagesItem = {
      * Use for deploying and deployment hooks.
      */
     Deploy: "DEPLOY",
+    /**
+     * Use for deployment verification.
+     */
+    Verify: "VERIFY",
 } as const;
 
 export type ExecutionConfigUsagesItem = (typeof ExecutionConfigUsagesItem)[keyof typeof ExecutionConfigUsagesItem];

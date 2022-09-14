@@ -45,3 +45,7 @@ class ExecutionConfigUsagesItem(str, Enum):
     """
     Use for deploying and deployment hooks.
     """
+    VERIFY = "VERIFY"
+    """
+    Use for deployment verification.
+    """

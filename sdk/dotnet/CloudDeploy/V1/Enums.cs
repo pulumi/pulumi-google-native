@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Use for deploying and deployment hooks.
         /// </summary>
         public static ExecutionConfigUsagesItem Deploy { get; } = new ExecutionConfigUsagesItem("DEPLOY");
+        /// <summary>
+        /// Use for deployment verification.
+        /// </summary>
+        public static ExecutionConfigUsagesItem Verify { get; } = new ExecutionConfigUsagesItem("VERIFY");
 
         public static bool operator ==(ExecutionConfigUsagesItem left, ExecutionConfigUsagesItem right) => left.Equals(right);
         public static bool operator !=(ExecutionConfigUsagesItem left, ExecutionConfigUsagesItem right) => !left.Equals(right);

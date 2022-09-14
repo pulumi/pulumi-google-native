@@ -129,4 +129,49 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// The type of replica.
+    /// </summary>
+    [EnumType]
+    public readonly struct ReplicaInfoType : IEquatable<ReplicaInfoType>
+    {
+        private readonly string _value;
+
+        private ReplicaInfoType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified.
+        /// </summary>
+        public static ReplicaInfoType TypeUnspecified { get; } = new ReplicaInfoType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Read-write replicas support both reads and writes. These replicas: * Maintain a full copy of your data. * Serve reads. * Can vote whether to commit a write. * Participate in leadership election. * Are eligible to become a leader.
+        /// </summary>
+        public static ReplicaInfoType ReadWrite { get; } = new ReplicaInfoType("READ_WRITE");
+        /// <summary>
+        /// Read-only replicas only support reads (not writes). Read-only replicas: * Maintain a full copy of your data. * Serve reads. * Do not participate in voting to commit writes. * Are not eligible to become a leader.
+        /// </summary>
+        public static ReplicaInfoType ReadOnly { get; } = new ReplicaInfoType("READ_ONLY");
+        /// <summary>
+        /// Witness replicas don't support reads but do participate in voting to commit writes. Witness replicas: * Do not maintain a full copy of data. * Do not serve reads. * Vote whether to commit writes. * Participate in leader election but are not eligible to become leader.
+        /// </summary>
+        public static ReplicaInfoType Witness { get; } = new ReplicaInfoType("WITNESS");
+
+        public static bool operator ==(ReplicaInfoType left, ReplicaInfoType right) => left.Equals(right);
+        public static bool operator !=(ReplicaInfoType left, ReplicaInfoType right) => !left.Equals(right);
+
+        public static explicit operator string(ReplicaInfoType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ReplicaInfoType other && Equals(other);
+        public bool Equals(ReplicaInfoType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

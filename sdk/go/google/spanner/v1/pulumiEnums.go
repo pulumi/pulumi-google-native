@@ -517,6 +517,177 @@ func (in *instanceInstanceTypePtr) ToInstanceInstanceTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceInstanceTypePtrOutput)
 }
 
+// The type of replica.
+type ReplicaInfoType string
+
+const (
+	// Not specified.
+	ReplicaInfoTypeTypeUnspecified = ReplicaInfoType("TYPE_UNSPECIFIED")
+	// Read-write replicas support both reads and writes. These replicas: * Maintain a full copy of your data. * Serve reads. * Can vote whether to commit a write. * Participate in leadership election. * Are eligible to become a leader.
+	ReplicaInfoTypeReadWrite = ReplicaInfoType("READ_WRITE")
+	// Read-only replicas only support reads (not writes). Read-only replicas: * Maintain a full copy of your data. * Serve reads. * Do not participate in voting to commit writes. * Are not eligible to become a leader.
+	ReplicaInfoTypeReadOnly = ReplicaInfoType("READ_ONLY")
+	// Witness replicas don't support reads but do participate in voting to commit writes. Witness replicas: * Do not maintain a full copy of data. * Do not serve reads. * Vote whether to commit writes. * Participate in leader election but are not eligible to become leader.
+	ReplicaInfoTypeWitness = ReplicaInfoType("WITNESS")
+)
+
+func (ReplicaInfoType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaInfoType)(nil)).Elem()
+}
+
+func (e ReplicaInfoType) ToReplicaInfoTypeOutput() ReplicaInfoTypeOutput {
+	return pulumi.ToOutput(e).(ReplicaInfoTypeOutput)
+}
+
+func (e ReplicaInfoType) ToReplicaInfoTypeOutputWithContext(ctx context.Context) ReplicaInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ReplicaInfoTypeOutput)
+}
+
+func (e ReplicaInfoType) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOutput {
+	return e.ToReplicaInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (e ReplicaInfoType) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
+	return ReplicaInfoType(e).ToReplicaInfoTypeOutputWithContext(ctx).ToReplicaInfoTypePtrOutputWithContext(ctx)
+}
+
+func (e ReplicaInfoType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReplicaInfoType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReplicaInfoType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ReplicaInfoType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ReplicaInfoTypeOutput struct{ *pulumi.OutputState }
+
+func (ReplicaInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaInfoType)(nil)).Elem()
+}
+
+func (o ReplicaInfoTypeOutput) ToReplicaInfoTypeOutput() ReplicaInfoTypeOutput {
+	return o
+}
+
+func (o ReplicaInfoTypeOutput) ToReplicaInfoTypeOutputWithContext(ctx context.Context) ReplicaInfoTypeOutput {
+	return o
+}
+
+func (o ReplicaInfoTypeOutput) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOutput {
+	return o.ToReplicaInfoTypePtrOutputWithContext(context.Background())
+}
+
+func (o ReplicaInfoTypeOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicaInfoType) *ReplicaInfoType {
+		return &v
+	}).(ReplicaInfoTypePtrOutput)
+}
+
+func (o ReplicaInfoTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ReplicaInfoTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReplicaInfoType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ReplicaInfoTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicaInfoTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReplicaInfoType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReplicaInfoTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicaInfoTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicaInfoType)(nil)).Elem()
+}
+
+func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOutput {
+	return o
+}
+
+func (o ReplicaInfoTypePtrOutput) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
+	return o
+}
+
+func (o ReplicaInfoTypePtrOutput) Elem() ReplicaInfoTypeOutput {
+	return o.ApplyT(func(v *ReplicaInfoType) ReplicaInfoType {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicaInfoType
+		return ret
+	}).(ReplicaInfoTypeOutput)
+}
+
+func (o ReplicaInfoTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicaInfoTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ReplicaInfoType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ReplicaInfoTypeInput is an input type that accepts ReplicaInfoTypeArgs and ReplicaInfoTypeOutput values.
+// You can construct a concrete instance of `ReplicaInfoTypeInput` via:
+//
+//	ReplicaInfoTypeArgs{...}
+type ReplicaInfoTypeInput interface {
+	pulumi.Input
+
+	ToReplicaInfoTypeOutput() ReplicaInfoTypeOutput
+	ToReplicaInfoTypeOutputWithContext(context.Context) ReplicaInfoTypeOutput
+}
+
+var replicaInfoTypePtrType = reflect.TypeOf((**ReplicaInfoType)(nil)).Elem()
+
+type ReplicaInfoTypePtrInput interface {
+	pulumi.Input
+
+	ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOutput
+	ToReplicaInfoTypePtrOutputWithContext(context.Context) ReplicaInfoTypePtrOutput
+}
+
+type replicaInfoTypePtr string
+
+func ReplicaInfoTypePtr(v string) ReplicaInfoTypePtrInput {
+	return (*replicaInfoTypePtr)(&v)
+}
+
+func (*replicaInfoTypePtr) ElementType() reflect.Type {
+	return replicaInfoTypePtrType
+}
+
+func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutput() ReplicaInfoTypePtrOutput {
+	return pulumi.ToOutput(in).(ReplicaInfoTypePtrOutput)
+}
+
+func (in *replicaInfoTypePtr) ToReplicaInfoTypePtrOutputWithContext(ctx context.Context) ReplicaInfoTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ReplicaInfoTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDatabaseDialectInput)(nil)).Elem(), DatabaseDatabaseDialect("DATABASE_DIALECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDatabaseDialectPtrInput)(nil)).Elem(), DatabaseDatabaseDialect("DATABASE_DIALECT_UNSPECIFIED"))
@@ -524,10 +695,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FreeInstanceMetadataExpireBehaviorPtrInput)(nil)).Elem(), FreeInstanceMetadataExpireBehavior("EXPIRE_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypeInput)(nil)).Elem(), InstanceInstanceType("INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInstanceTypePtrInput)(nil)).Elem(), InstanceInstanceType("INSTANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaInfoTypeInput)(nil)).Elem(), ReplicaInfoType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaInfoTypePtrInput)(nil)).Elem(), ReplicaInfoType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DatabaseDatabaseDialectOutput{})
 	pulumi.RegisterOutputType(DatabaseDatabaseDialectPtrOutput{})
 	pulumi.RegisterOutputType(FreeInstanceMetadataExpireBehaviorOutput{})
 	pulumi.RegisterOutputType(FreeInstanceMetadataExpireBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceInstanceTypePtrOutput{})
+	pulumi.RegisterOutputType(ReplicaInfoTypeOutput{})
+	pulumi.RegisterOutputType(ReplicaInfoTypePtrOutput{})
 }

@@ -61,3 +61,27 @@ export const InstanceInstanceType = {
  * The `InstanceType` of the current instance.
  */
 export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];
+
+export const ReplicaInfoType = {
+    /**
+     * Not specified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Read-write replicas support both reads and writes. These replicas: * Maintain a full copy of your data. * Serve reads. * Can vote whether to commit a write. * Participate in leadership election. * Are eligible to become a leader.
+     */
+    ReadWrite: "READ_WRITE",
+    /**
+     * Read-only replicas only support reads (not writes). Read-only replicas: * Maintain a full copy of your data. * Serve reads. * Do not participate in voting to commit writes. * Are not eligible to become a leader.
+     */
+    ReadOnly: "READ_ONLY",
+    /**
+     * Witness replicas don't support reads but do participate in voting to commit writes. Witness replicas: * Do not maintain a full copy of data. * Do not serve reads. * Vote whether to commit writes. * Participate in leader election but are not eligible to become leader.
+     */
+    Witness: "WITNESS",
+} as const;
+
+/**
+ * The type of replica.
+ */
+export type ReplicaInfoType = (typeof ReplicaInfoType)[keyof typeof ReplicaInfoType];

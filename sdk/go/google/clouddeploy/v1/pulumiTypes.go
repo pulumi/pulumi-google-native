@@ -842,7 +842,7 @@ func (o BuildArtifactResponseArrayOutput) Index(i pulumi.IntInput) BuildArtifact
 
 // Information specifying where to deploy a Cloud Run Service.
 type CloudRunLocation struct {
-	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 	Location string `pulumi:"location"`
 }
 
@@ -859,7 +859,7 @@ type CloudRunLocationInput interface {
 
 // Information specifying where to deploy a Cloud Run Service.
 type CloudRunLocationArgs struct {
-	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 	Location pulumi.StringInput `pulumi:"location"`
 }
 
@@ -941,7 +941,7 @@ func (o CloudRunLocationOutput) ToCloudRunLocationPtrOutputWithContext(ctx conte
 	}).(CloudRunLocationPtrOutput)
 }
 
-// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 func (o CloudRunLocationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunLocation) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -970,7 +970,7 @@ func (o CloudRunLocationPtrOutput) Elem() CloudRunLocationOutput {
 	}).(CloudRunLocationOutput)
 }
 
-// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 func (o CloudRunLocationPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRunLocation) *string {
 		if v == nil {
@@ -982,7 +982,7 @@ func (o CloudRunLocationPtrOutput) Location() pulumi.StringPtrOutput {
 
 // Information specifying where to deploy a Cloud Run Service.
 type CloudRunLocationResponse struct {
-	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 	Location string `pulumi:"location"`
 }
 
@@ -1001,7 +1001,7 @@ func (o CloudRunLocationResponseOutput) ToCloudRunLocationResponseOutputWithCont
 	return o
 }
 
-// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
 func (o CloudRunLocationResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunLocationResponse) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -1332,6 +1332,58 @@ func (o DeliveryPipelineResponseOutput) Uid() pulumi.StringOutput {
 // Most recent time at which the pipeline was updated.
 func (o DeliveryPipelineResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A deploy Job.
+type DeployJobResponse struct {
+}
+
+// A deploy Job.
+type DeployJobResponseOutput struct{ *pulumi.OutputState }
+
+func (DeployJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployJobResponse)(nil)).Elem()
+}
+
+func (o DeployJobResponseOutput) ToDeployJobResponseOutput() DeployJobResponseOutput {
+	return o
+}
+
+func (o DeployJobResponseOutput) ToDeployJobResponseOutputWithContext(ctx context.Context) DeployJobResponseOutput {
+	return o
+}
+
+// Deployment job composition.
+type DeploymentJobsResponse struct {
+	// The deploy Job. This is the first job run in the phase.
+	DeployJob JobResponse `pulumi:"deployJob"`
+	// The verify Job. Runs after a deploy if the deploy succeeds.
+	VerifyJob JobResponse `pulumi:"verifyJob"`
+}
+
+// Deployment job composition.
+type DeploymentJobsResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentJobsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentJobsResponse)(nil)).Elem()
+}
+
+func (o DeploymentJobsResponseOutput) ToDeploymentJobsResponseOutput() DeploymentJobsResponseOutput {
+	return o
+}
+
+func (o DeploymentJobsResponseOutput) ToDeploymentJobsResponseOutputWithContext(ctx context.Context) DeploymentJobsResponseOutput {
+	return o
+}
+
+// The deploy Job. This is the first job run in the phase.
+func (o DeploymentJobsResponseOutput) DeployJob() JobResponseOutput {
+	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.DeployJob }).(JobResponseOutput)
+}
+
+// The verify Job. Runs after a deploy if the deploy succeeds.
+func (o DeploymentJobsResponseOutput) VerifyJob() JobResponseOutput {
+	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.VerifyJob }).(JobResponseOutput)
 }
 
 // Configuration of the environment to use when calling Skaffold.
@@ -2012,13 +2064,60 @@ func (o GkeClusterResponseOutput) InternalIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeClusterResponse) bool { return v.InternalIp }).(pulumi.BoolOutput)
 }
 
-// Metadata surfaces information associated with a `Rollout` to the user.
+// Job represents an operation for a `Rollout`.
+type JobResponse struct {
+	// A deploy Job.
+	DeployJob DeployJobResponse `pulumi:"deployJob"`
+	// The name of the `JobRun` responsible for the most recent invocation of this Job.
+	JobRun string `pulumi:"jobRun"`
+	// The current state of the Job.
+	State string `pulumi:"state"`
+	// A verify Job.
+	VerifyJob VerifyJobResponse `pulumi:"verifyJob"`
+}
+
+// Job represents an operation for a `Rollout`.
+type JobResponseOutput struct{ *pulumi.OutputState }
+
+func (JobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResponse)(nil)).Elem()
+}
+
+func (o JobResponseOutput) ToJobResponseOutput() JobResponseOutput {
+	return o
+}
+
+func (o JobResponseOutput) ToJobResponseOutputWithContext(ctx context.Context) JobResponseOutput {
+	return o
+}
+
+// A deploy Job.
+func (o JobResponseOutput) DeployJob() DeployJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) DeployJobResponse { return v.DeployJob }).(DeployJobResponseOutput)
+}
+
+// The name of the `JobRun` responsible for the most recent invocation of this Job.
+func (o JobResponseOutput) JobRun() pulumi.StringOutput {
+	return o.ApplyT(func(v JobResponse) string { return v.JobRun }).(pulumi.StringOutput)
+}
+
+// The current state of the Job.
+func (o JobResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v JobResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// A verify Job.
+func (o JobResponseOutput) VerifyJob() VerifyJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) VerifyJobResponse { return v.VerifyJob }).(VerifyJobResponseOutput)
+}
+
+// Metadata includes information associated with a `Rollout`.
 type MetadataResponse struct {
 	// The name of the Cloud Run Service that is associated with a `Rollout`.
 	CloudRun CloudRunMetadataResponse `pulumi:"cloudRun"`
 }
 
-// Metadata surfaces information associated with a `Rollout` to the user.
+// Metadata includes information associated with a `Rollout`.
 type MetadataResponseOutput struct{ *pulumi.OutputState }
 
 func (MetadataResponseOutput) ElementType() reflect.Type {
@@ -2036,6 +2135,59 @@ func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.
 // The name of the Cloud Run Service that is associated with a `Rollout`.
 func (o MetadataResponseOutput) CloudRun() CloudRunMetadataResponseOutput {
 	return o.ApplyT(func(v MetadataResponse) CloudRunMetadataResponse { return v.CloudRun }).(CloudRunMetadataResponseOutput)
+}
+
+// Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
+type PhaseResponse struct {
+	// Deployment job composition.
+	DeploymentJobs DeploymentJobsResponse `pulumi:"deploymentJobs"`
+	// Current state of the Phase.
+	State string `pulumi:"state"`
+}
+
+// Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
+type PhaseResponseOutput struct{ *pulumi.OutputState }
+
+func (PhaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhaseResponse)(nil)).Elem()
+}
+
+func (o PhaseResponseOutput) ToPhaseResponseOutput() PhaseResponseOutput {
+	return o
+}
+
+func (o PhaseResponseOutput) ToPhaseResponseOutputWithContext(ctx context.Context) PhaseResponseOutput {
+	return o
+}
+
+// Deployment job composition.
+func (o PhaseResponseOutput) DeploymentJobs() DeploymentJobsResponseOutput {
+	return o.ApplyT(func(v PhaseResponse) DeploymentJobsResponse { return v.DeploymentJobs }).(DeploymentJobsResponseOutput)
+}
+
+// Current state of the Phase.
+func (o PhaseResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type PhaseResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PhaseResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhaseResponse)(nil)).Elem()
+}
+
+func (o PhaseResponseArrayOutput) ToPhaseResponseArrayOutput() PhaseResponseArrayOutput {
+	return o
+}
+
+func (o PhaseResponseArrayOutput) ToPhaseResponseArrayOutputWithContext(ctx context.Context) PhaseResponseArrayOutput {
+	return o
+}
+
+func (o PhaseResponseArrayOutput) Index(i pulumi.IntInput) PhaseResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseResponse {
+		return vs[0].([]PhaseResponse)[vs[1].(int)]
+	}).(PhaseResponseOutput)
 }
 
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.
@@ -2492,6 +2644,8 @@ func (o SerialPipelineResponseOutput) Stages() StageResponseArrayOutput {
 type Stage struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
+	// Optional. The strategy to use for a `Rollout` to this stage.
+	Strategy *Strategy `pulumi:"strategy"`
 	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId *string `pulumi:"targetId"`
 }
@@ -2511,6 +2665,8 @@ type StageInput interface {
 type StageArgs struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
+	// Optional. The strategy to use for a `Rollout` to this stage.
+	Strategy StrategyPtrInput `pulumi:"strategy"`
 	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
 }
@@ -2572,6 +2728,11 @@ func (o StageOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Stage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
+// Optional. The strategy to use for a `Rollout` to this stage.
+func (o StageOutput) Strategy() StrategyPtrOutput {
+	return o.ApplyT(func(v Stage) *Strategy { return v.Strategy }).(StrategyPtrOutput)
+}
+
 // The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 func (o StageOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Stage) *string { return v.TargetId }).(pulumi.StringPtrOutput)
@@ -2601,6 +2762,8 @@ func (o StageArrayOutput) Index(i pulumi.IntInput) StageOutput {
 type StageResponse struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
+	// Optional. The strategy to use for a `Rollout` to this stage.
+	Strategy StrategyResponse `pulumi:"strategy"`
 	// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId string `pulumi:"targetId"`
 }
@@ -2623,6 +2786,11 @@ func (o StageResponseOutput) ToStageResponseOutputWithContext(ctx context.Contex
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 func (o StageResponseOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StageResponse) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The strategy to use for a `Rollout` to this stage.
+func (o StageResponseOutput) Strategy() StrategyResponseOutput {
+	return o.ApplyT(func(v StageResponse) StrategyResponse { return v.Strategy }).(StrategyResponseOutput)
 }
 
 // The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
@@ -2648,6 +2816,338 @@ func (o StageResponseArrayOutput) Index(i pulumi.IntInput) StageResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StageResponse {
 		return vs[0].([]StageResponse)[vs[1].(int)]
 	}).(StageResponseOutput)
+}
+
+// Standard represents the standard deployment strategy.
+type Standard struct {
+	// Whether to verify a deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// StandardInput is an input type that accepts StandardArgs and StandardOutput values.
+// You can construct a concrete instance of `StandardInput` via:
+//
+//	StandardArgs{...}
+type StandardInput interface {
+	pulumi.Input
+
+	ToStandardOutput() StandardOutput
+	ToStandardOutputWithContext(context.Context) StandardOutput
+}
+
+// Standard represents the standard deployment strategy.
+type StandardArgs struct {
+	// Whether to verify a deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (StandardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Standard)(nil)).Elem()
+}
+
+func (i StandardArgs) ToStandardOutput() StandardOutput {
+	return i.ToStandardOutputWithContext(context.Background())
+}
+
+func (i StandardArgs) ToStandardOutputWithContext(ctx context.Context) StandardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardOutput)
+}
+
+func (i StandardArgs) ToStandardPtrOutput() StandardPtrOutput {
+	return i.ToStandardPtrOutputWithContext(context.Background())
+}
+
+func (i StandardArgs) ToStandardPtrOutputWithContext(ctx context.Context) StandardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardOutput).ToStandardPtrOutputWithContext(ctx)
+}
+
+// StandardPtrInput is an input type that accepts StandardArgs, StandardPtr and StandardPtrOutput values.
+// You can construct a concrete instance of `StandardPtrInput` via:
+//
+//	        StandardArgs{...}
+//
+//	or:
+//
+//	        nil
+type StandardPtrInput interface {
+	pulumi.Input
+
+	ToStandardPtrOutput() StandardPtrOutput
+	ToStandardPtrOutputWithContext(context.Context) StandardPtrOutput
+}
+
+type standardPtrType StandardArgs
+
+func StandardPtr(v *StandardArgs) StandardPtrInput {
+	return (*standardPtrType)(v)
+}
+
+func (*standardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Standard)(nil)).Elem()
+}
+
+func (i *standardPtrType) ToStandardPtrOutput() StandardPtrOutput {
+	return i.ToStandardPtrOutputWithContext(context.Background())
+}
+
+func (i *standardPtrType) ToStandardPtrOutputWithContext(ctx context.Context) StandardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardPtrOutput)
+}
+
+// Standard represents the standard deployment strategy.
+type StandardOutput struct{ *pulumi.OutputState }
+
+func (StandardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Standard)(nil)).Elem()
+}
+
+func (o StandardOutput) ToStandardOutput() StandardOutput {
+	return o
+}
+
+func (o StandardOutput) ToStandardOutputWithContext(ctx context.Context) StandardOutput {
+	return o
+}
+
+func (o StandardOutput) ToStandardPtrOutput() StandardPtrOutput {
+	return o.ToStandardPtrOutputWithContext(context.Background())
+}
+
+func (o StandardOutput) ToStandardPtrOutputWithContext(ctx context.Context) StandardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Standard) *Standard {
+		return &v
+	}).(StandardPtrOutput)
+}
+
+// Whether to verify a deployment.
+func (o StandardOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Standard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+type StandardPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Standard)(nil)).Elem()
+}
+
+func (o StandardPtrOutput) ToStandardPtrOutput() StandardPtrOutput {
+	return o
+}
+
+func (o StandardPtrOutput) ToStandardPtrOutputWithContext(ctx context.Context) StandardPtrOutput {
+	return o
+}
+
+func (o StandardPtrOutput) Elem() StandardOutput {
+	return o.ApplyT(func(v *Standard) Standard {
+		if v != nil {
+			return *v
+		}
+		var ret Standard
+		return ret
+	}).(StandardOutput)
+}
+
+// Whether to verify a deployment.
+func (o StandardPtrOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Standard) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Verify
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Standard represents the standard deployment strategy.
+type StandardResponse struct {
+	// Whether to verify a deployment.
+	Verify bool `pulumi:"verify"`
+}
+
+// Standard represents the standard deployment strategy.
+type StandardResponseOutput struct{ *pulumi.OutputState }
+
+func (StandardResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardResponse)(nil)).Elem()
+}
+
+func (o StandardResponseOutput) ToStandardResponseOutput() StandardResponseOutput {
+	return o
+}
+
+func (o StandardResponseOutput) ToStandardResponseOutputWithContext(ctx context.Context) StandardResponseOutput {
+	return o
+}
+
+// Whether to verify a deployment.
+func (o StandardResponseOutput) Verify() pulumi.BoolOutput {
+	return o.ApplyT(func(v StandardResponse) bool { return v.Verify }).(pulumi.BoolOutput)
+}
+
+// Strategy contains deployment strategy information.
+type Strategy struct {
+	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+	Standard *Standard `pulumi:"standard"`
+}
+
+// StrategyInput is an input type that accepts StrategyArgs and StrategyOutput values.
+// You can construct a concrete instance of `StrategyInput` via:
+//
+//	StrategyArgs{...}
+type StrategyInput interface {
+	pulumi.Input
+
+	ToStrategyOutput() StrategyOutput
+	ToStrategyOutputWithContext(context.Context) StrategyOutput
+}
+
+// Strategy contains deployment strategy information.
+type StrategyArgs struct {
+	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+	Standard StandardPtrInput `pulumi:"standard"`
+}
+
+func (StrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Strategy)(nil)).Elem()
+}
+
+func (i StrategyArgs) ToStrategyOutput() StrategyOutput {
+	return i.ToStrategyOutputWithContext(context.Background())
+}
+
+func (i StrategyArgs) ToStrategyOutputWithContext(ctx context.Context) StrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrategyOutput)
+}
+
+func (i StrategyArgs) ToStrategyPtrOutput() StrategyPtrOutput {
+	return i.ToStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i StrategyArgs) ToStrategyPtrOutputWithContext(ctx context.Context) StrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrategyOutput).ToStrategyPtrOutputWithContext(ctx)
+}
+
+// StrategyPtrInput is an input type that accepts StrategyArgs, StrategyPtr and StrategyPtrOutput values.
+// You can construct a concrete instance of `StrategyPtrInput` via:
+//
+//	        StrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type StrategyPtrInput interface {
+	pulumi.Input
+
+	ToStrategyPtrOutput() StrategyPtrOutput
+	ToStrategyPtrOutputWithContext(context.Context) StrategyPtrOutput
+}
+
+type strategyPtrType StrategyArgs
+
+func StrategyPtr(v *StrategyArgs) StrategyPtrInput {
+	return (*strategyPtrType)(v)
+}
+
+func (*strategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Strategy)(nil)).Elem()
+}
+
+func (i *strategyPtrType) ToStrategyPtrOutput() StrategyPtrOutput {
+	return i.ToStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *strategyPtrType) ToStrategyPtrOutputWithContext(ctx context.Context) StrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrategyPtrOutput)
+}
+
+// Strategy contains deployment strategy information.
+type StrategyOutput struct{ *pulumi.OutputState }
+
+func (StrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Strategy)(nil)).Elem()
+}
+
+func (o StrategyOutput) ToStrategyOutput() StrategyOutput {
+	return o
+}
+
+func (o StrategyOutput) ToStrategyOutputWithContext(ctx context.Context) StrategyOutput {
+	return o
+}
+
+func (o StrategyOutput) ToStrategyPtrOutput() StrategyPtrOutput {
+	return o.ToStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o StrategyOutput) ToStrategyPtrOutputWithContext(ctx context.Context) StrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Strategy) *Strategy {
+		return &v
+	}).(StrategyPtrOutput)
+}
+
+// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+func (o StrategyOutput) Standard() StandardPtrOutput {
+	return o.ApplyT(func(v Strategy) *Standard { return v.Standard }).(StandardPtrOutput)
+}
+
+type StrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (StrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Strategy)(nil)).Elem()
+}
+
+func (o StrategyPtrOutput) ToStrategyPtrOutput() StrategyPtrOutput {
+	return o
+}
+
+func (o StrategyPtrOutput) ToStrategyPtrOutputWithContext(ctx context.Context) StrategyPtrOutput {
+	return o
+}
+
+func (o StrategyPtrOutput) Elem() StrategyOutput {
+	return o.ApplyT(func(v *Strategy) Strategy {
+		if v != nil {
+			return *v
+		}
+		var ret Strategy
+		return ret
+	}).(StrategyOutput)
+}
+
+// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+func (o StrategyPtrOutput) Standard() StandardPtrOutput {
+	return o.ApplyT(func(v *Strategy) *Standard {
+		if v == nil {
+			return nil
+		}
+		return v.Standard
+	}).(StandardPtrOutput)
+}
+
+// Strategy contains deployment strategy information.
+type StrategyResponse struct {
+	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+	Standard StandardResponse `pulumi:"standard"`
+}
+
+// Strategy contains deployment strategy information.
+type StrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (StrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StrategyResponse)(nil)).Elem()
+}
+
+func (o StrategyResponseOutput) ToStrategyResponseOutput() StrategyResponseOutput {
+	return o
+}
+
+func (o StrategyResponseOutput) ToStrategyResponseOutputWithContext(ctx context.Context) StrategyResponseOutput {
+	return o
+}
+
+// Standard deployment strategy executes a single deploy and allows verifying the deployment.
+func (o StrategyResponseOutput) Standard() StandardResponseOutput {
+	return o.ApplyT(func(v StrategyResponse) StandardResponse { return v.Standard }).(StandardResponseOutput)
 }
 
 // A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
@@ -2827,6 +3327,25 @@ func (o TargetsPresentConditionResponseOutput) UpdateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v TargetsPresentConditionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// A verify Job.
+type VerifyJobResponse struct {
+}
+
+// A verify Job.
+type VerifyJobResponseOutput struct{ *pulumi.OutputState }
+
+func (VerifyJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerifyJobResponse)(nil)).Elem()
+}
+
+func (o VerifyJobResponseOutput) ToVerifyJobResponseOutput() VerifyJobResponseOutput {
+	return o
+}
+
+func (o VerifyJobResponseOutput) ToVerifyJobResponseOutputWithContext(ctx context.Context) VerifyJobResponseOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterInput)(nil)).Elem(), AnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnthosClusterPtrInput)(nil)).Elem(), AnthosClusterArgs{})
@@ -2854,6 +3373,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelinePtrInput)(nil)).Elem(), SerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageInput)(nil)).Elem(), StageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageArrayInput)(nil)).Elem(), StageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardInput)(nil)).Elem(), StandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StandardPtrInput)(nil)).Elem(), StandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StrategyInput)(nil)).Elem(), StrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StrategyPtrInput)(nil)).Elem(), StrategyArgs{})
 	pulumi.RegisterOutputType(AnthosClusterOutput{})
 	pulumi.RegisterOutputType(AnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(AnthosClusterResponseOutput{})
@@ -2881,6 +3404,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultPoolPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineResponseOutput{})
+	pulumi.RegisterOutputType(DeployJobResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentJobsResponseOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionConfigResponseOutput{})
@@ -2891,7 +3416,10 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
+	pulumi.RegisterOutputType(JobResponseOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
+	pulumi.RegisterOutputType(PhaseResponseOutput{})
+	pulumi.RegisterOutputType(PhaseResponseArrayOutput{})
 	pulumi.RegisterOutputType(PipelineConditionResponseOutput{})
 	pulumi.RegisterOutputType(PipelineReadyConditionResponseOutput{})
 	pulumi.RegisterOutputType(PrivatePoolOutput{})
@@ -2904,7 +3432,14 @@ func init() {
 	pulumi.RegisterOutputType(StageArrayOutput{})
 	pulumi.RegisterOutputType(StageResponseOutput{})
 	pulumi.RegisterOutputType(StageResponseArrayOutput{})
+	pulumi.RegisterOutputType(StandardOutput{})
+	pulumi.RegisterOutputType(StandardPtrOutput{})
+	pulumi.RegisterOutputType(StandardResponseOutput{})
+	pulumi.RegisterOutputType(StrategyOutput{})
+	pulumi.RegisterOutputType(StrategyPtrOutput{})
+	pulumi.RegisterOutputType(StrategyResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})
+	pulumi.RegisterOutputType(VerifyJobResponseOutput{})
 }

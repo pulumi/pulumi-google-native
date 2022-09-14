@@ -1142,7 +1142,9 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Defines a header message. A header can have a key and a value.
 type Header struct {
-	Key   *string `pulumi:"key"`
+	// The key of the header.
+	Key *string `pulumi:"key"`
+	// The value of the header.
 	Value *string `pulumi:"value"`
 }
 
@@ -1159,7 +1161,9 @@ type HeaderInput interface {
 
 // Defines a header message. A header can have a key and a value.
 type HeaderArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// The key of the header.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the header.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1241,10 +1245,12 @@ func (o HeaderOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPt
 	}).(HeaderPtrOutput)
 }
 
+// The key of the header.
 func (o HeaderOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Header) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The value of the header.
 func (o HeaderOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Header) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1273,6 +1279,7 @@ func (o HeaderPtrOutput) Elem() HeaderOutput {
 	}).(HeaderOutput)
 }
 
+// The key of the header.
 func (o HeaderPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Header) *string {
 		if v == nil {
@@ -1282,6 +1289,7 @@ func (o HeaderPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The value of the header.
 func (o HeaderPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Header) *string {
 		if v == nil {
@@ -1439,7 +1447,9 @@ func (o HeaderOverrideResponseArrayOutput) Index(i pulumi.IntInput) HeaderOverri
 
 // Defines a header message. A header can have a key and a value.
 type HeaderResponse struct {
-	Key   string `pulumi:"key"`
+	// The key of the header.
+	Key string `pulumi:"key"`
+	// The value of the header.
 	Value string `pulumi:"value"`
 }
 
@@ -1458,10 +1468,12 @@ func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The key of the header.
 func (o HeaderResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of the header.
 func (o HeaderResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderResponse) string { return v.Value }).(pulumi.StringOutput)
 }

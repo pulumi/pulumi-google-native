@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "google-native:spanner/v1:InstanceBackupIamPolicy":
 		r = &InstanceBackupIamPolicy{}
+	case "google-native:spanner/v1:InstanceConfig":
+		r = &InstanceConfig{}
 	case "google-native:spanner/v1:InstanceDatabaseIamPolicy":
 		r = &InstanceDatabaseIamPolicy{}
 	case "google-native:spanner/v1:InstanceIamPolicy":

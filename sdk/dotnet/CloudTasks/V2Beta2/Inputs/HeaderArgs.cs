@@ -15,9 +15,15 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// </summary>
     public sealed class HeaderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of the header.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// The value of the header.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

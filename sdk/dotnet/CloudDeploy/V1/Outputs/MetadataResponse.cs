@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 {
 
     /// <summary>
-    /// Metadata surfaces information associated with a `Rollout` to the user.
+    /// Metadata includes information associated with a `Rollout`.
     /// </summary>
     [OutputType]
     public sealed class MetadataResponse

@@ -95,6 +95,10 @@ export interface GetRolloutResult {
      */
     readonly name: string;
     /**
+     * The phases that represent the workflows of this `Rollout`.
+     */
+    readonly phases: outputs.clouddeploy.v1.PhaseResponse[];
+    /**
      * Current state of the `Rollout`.
      */
     readonly state: string;

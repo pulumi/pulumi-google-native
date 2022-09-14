@@ -190,6 +190,8 @@ const (
 	ExecutionConfigUsagesItemRender = ExecutionConfigUsagesItem("RENDER")
 	// Use for deploying and deployment hooks.
 	ExecutionConfigUsagesItemDeploy = ExecutionConfigUsagesItem("DEPLOY")
+	// Use for deployment verification.
+	ExecutionConfigUsagesItemVerify = ExecutionConfigUsagesItem("VERIFY")
 )
 
 func (ExecutionConfigUsagesItem) ElementType() reflect.Type {

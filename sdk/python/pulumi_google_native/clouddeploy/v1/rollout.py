@@ -325,6 +325,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["enqueue_time"] = None
             __props__.__dict__["failure_reason"] = None
             __props__.__dict__["metadata"] = None
+            __props__.__dict__["phases"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["delivery_pipeline_id", "location", "project", "release_id", "rollout_id"])
@@ -368,6 +369,7 @@ class Rollout(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["phases"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["release_id"] = None
         __props__.__dict__["request_id"] = None
@@ -507,6 +509,14 @@ class Rollout(pulumi.CustomResource):
         Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def phases(self) -> pulumi.Output[Sequence['outputs.PhaseResponse']]:
+        """
+        The phases that represent the workflows of this `Rollout`.
+        """
+        return pulumi.get(self, "phases")
 
     @property
     @pulumi.getter

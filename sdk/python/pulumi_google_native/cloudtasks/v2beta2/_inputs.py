@@ -356,6 +356,8 @@ class HeaderArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Defines a header message. A header can have a key and a value.
+        :param pulumi.Input[str] key: The key of the header.
+        :param pulumi.Input[str] value: The value of the header.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -365,6 +367,9 @@ class HeaderArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the header.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -374,6 +379,9 @@ class HeaderArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the header.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

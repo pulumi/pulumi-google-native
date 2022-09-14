@@ -424,6 +424,8 @@ class HeaderResponse(dict):
                  value: str):
         """
         Defines a header message. A header can have a key and a value.
+        :param str key: The key of the header.
+        :param str value: The value of the header.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -431,11 +433,17 @@ class HeaderResponse(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The key of the header.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the header.
+        """
         return pulumi.get(self, "value")
 
 

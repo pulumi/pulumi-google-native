@@ -8,6 +8,7 @@ __all__ = [
     'DatabaseDatabaseDialect',
     'FreeInstanceMetadataExpireBehavior',
     'InstanceInstanceType',
+    'ReplicaInfoType',
 ]
 
 
@@ -62,4 +63,26 @@ class InstanceInstanceType(str, Enum):
     FREE_INSTANCE = "FREE_INSTANCE"
     """
     Free instances provide no guarantee for dedicated resources, [node_count, processing_units] should be 0. They come with stricter usage limits and limited support.
+    """
+
+
+class ReplicaInfoType(str, Enum):
+    """
+    The type of replica.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Not specified.
+    """
+    READ_WRITE = "READ_WRITE"
+    """
+    Read-write replicas support both reads and writes. These replicas: * Maintain a full copy of your data. * Serve reads. * Can vote whether to commit a write. * Participate in leadership election. * Are eligible to become a leader.
+    """
+    READ_ONLY = "READ_ONLY"
+    """
+    Read-only replicas only support reads (not writes). Read-only replicas: * Maintain a full copy of your data. * Serve reads. * Do not participate in voting to commit writes. * Are not eligible to become a leader.
+    """
+    WITNESS = "WITNESS"
+    """
+    Witness replicas don't support reads but do participate in voting to commit writes. Witness replicas: * Do not maintain a full copy of data. * Do not serve reads. * Vote whether to commit writes. * Participate in leader election but are not eligible to become leader.
     """

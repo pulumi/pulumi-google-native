@@ -114,6 +114,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The phases that represent the workflows of this `Rollout`.
+        /// </summary>
+        [Output("phases")]
+        public Output<ImmutableArray<Outputs.PhaseResponse>> Phases { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

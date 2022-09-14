@@ -24,6 +24,8 @@ __all__ = [
     'PrivatePoolArgs',
     'SerialPipelineArgs',
     'StageArgs',
+    'StandardArgs',
+    'StrategyArgs',
 ]
 
 @pulumi.input_type
@@ -232,7 +234,7 @@ class CloudRunLocationArgs:
                  location: pulumi.Input[str]):
         """
         Information specifying where to deploy a Cloud Run Service.
-        :param pulumi.Input[str] location: The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        :param pulumi.Input[str] location: The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         """
         pulumi.set(__self__, "location", location)
 
@@ -240,7 +242,7 @@ class CloudRunLocationArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
         """
         return pulumi.get(self, "location")
 
@@ -603,14 +605,18 @@ class SerialPipelineArgs:
 class StageArgs:
     def __init__(__self__, *,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 strategy: Optional[pulumi.Input['StrategyArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
         Stage specifies a location to which to deploy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
+        :param pulumi.Input['StrategyArgs'] strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
 
@@ -627,6 +633,18 @@ class StageArgs:
         pulumi.set(self, "profiles", value)
 
     @property
+    @pulumi.getter
+    def strategy(self) -> Optional[pulumi.Input['StrategyArgs']]:
+        """
+        Optional. The strategy to use for a `Rollout` to this stage.
+        """
+        return pulumi.get(self, "strategy")
+
+    @strategy.setter
+    def strategy(self, value: Optional[pulumi.Input['StrategyArgs']]):
+        pulumi.set(self, "strategy", value)
+
+    @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -637,5 +655,53 @@ class StageArgs:
     @target_id.setter
     def target_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_id", value)
+
+
+@pulumi.input_type
+class StandardArgs:
+    def __init__(__self__, *,
+                 verify: Optional[pulumi.Input[bool]] = None):
+        """
+        Standard represents the standard deployment strategy.
+        :param pulumi.Input[bool] verify: Whether to verify a deployment.
+        """
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to verify a deployment.
+        """
+        return pulumi.get(self, "verify")
+
+    @verify.setter
+    def verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class StrategyArgs:
+    def __init__(__self__, *,
+                 standard: Optional[pulumi.Input['StandardArgs']] = None):
+        """
+        Strategy contains deployment strategy information.
+        :param pulumi.Input['StandardArgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        if standard is not None:
+            pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def standard(self) -> Optional[pulumi.Input['StandardArgs']]:
+        """
+        Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        """
+        return pulumi.get(self, "standard")
+
+    @standard.setter
+    def standard(self, value: Optional[pulumi.Input['StandardArgs']]):
+        pulumi.set(self, "standard", value)
 
 
