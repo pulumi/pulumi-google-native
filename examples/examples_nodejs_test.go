@@ -173,6 +173,18 @@ func TestProjectIamPolicyTs(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestBucketIamTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:         filepath.Join(getCwd(t), "bucket-iam-ts"),
+			SkipRefresh: true,
+			SkipUpdate:  true,
+			Quick:       true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestGetClientConfigTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
