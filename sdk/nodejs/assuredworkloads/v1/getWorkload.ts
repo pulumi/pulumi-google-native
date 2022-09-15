@@ -39,6 +39,10 @@ export interface GetWorkloadResult {
      */
     readonly complianceRegime: string;
     /**
+     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+     */
+    readonly compliantButDisallowedServices: string[];
+    /**
      * Immutable. The Workload creation timestamp.
      */
     readonly createTime: string;

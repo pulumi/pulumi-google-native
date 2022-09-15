@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// See Creating and managing labels.
+        /// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         /// </summary>
         public InputMap<string> Labels
         {

@@ -95,7 +95,7 @@ class EnvironmentEntry(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
+        Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,7 +109,7 @@ class EnvironmentEntry(pulumi.CustomResource):
                  args: EnvironmentEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
+        Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
 
         :param str resource_name: The name of the resource.
         :param EnvironmentEntryArgs args: The arguments to use to populate this resource's properties.

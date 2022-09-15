@@ -113,10 +113,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// International Traffic in Arms Regulations
         /// </summary>
         public static WorkloadComplianceRegime Itar { get; } = new WorkloadComplianceRegime("ITAR");
-        /// <summary>
-        /// Assured Workloads for Australia Regions and Support controls
-        /// </summary>
-        public static WorkloadComplianceRegime AuRegionsAndUsSupport { get; } = new WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);

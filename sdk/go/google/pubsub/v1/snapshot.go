@@ -78,7 +78,7 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// See Creating and managing labels.
+	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
 	Labels     map[string]string `pulumi:"labels"`
 	Project    *string           `pulumi:"project"`
 	SnapshotId string            `pulumi:"snapshotId"`
@@ -88,7 +88,7 @@ type snapshotArgs struct {
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// See Creating and managing labels.
+	// See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
 	Labels     pulumi.StringMapInput
 	Project    pulumi.StringPtrInput
 	SnapshotId pulumi.StringInput

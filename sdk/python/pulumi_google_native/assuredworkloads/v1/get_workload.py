@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
         if compliance_regime and not isinstance(compliance_regime, str):
             raise TypeError("Expected argument 'compliance_regime' to be a str")
         pulumi.set(__self__, "compliance_regime", compliance_regime)
+        if compliant_but_disallowed_services and not isinstance(compliant_but_disallowed_services, list):
+            raise TypeError("Expected argument 'compliant_but_disallowed_services' to be a list")
+        pulumi.set(__self__, "compliant_but_disallowed_services", compliant_but_disallowed_services)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -82,6 +85,14 @@ class GetWorkloadResult:
         Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
+
+    @property
+    @pulumi.getter(name="compliantButDisallowedServices")
+    def compliant_but_disallowed_services(self) -> Sequence[str]:
+        """
+        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        """
+        return pulumi.get(self, "compliant_but_disallowed_services")
 
     @property
     @pulumi.getter(name="createTime")
@@ -188,6 +199,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
         return GetWorkloadResult(
             billing_account=self.billing_account,
             compliance_regime=self.compliance_regime,
+            compliant_but_disallowed_services=self.compliant_but_disallowed_services,
             create_time=self.create_time,
             display_name=self.display_name,
             enable_sovereign_controls=self.enable_sovereign_controls,
@@ -219,6 +231,7 @@ def get_workload(location: Optional[str] = None,
     return AwaitableGetWorkloadResult(
         billing_account=__ret__.billing_account,
         compliance_regime=__ret__.compliance_regime,
+        compliant_but_disallowed_services=__ret__.compliant_but_disallowed_services,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         enable_sovereign_controls=__ret__.enable_sovereign_controls,

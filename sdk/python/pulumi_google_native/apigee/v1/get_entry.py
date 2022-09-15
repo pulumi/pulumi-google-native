@@ -59,7 +59,7 @@ def get_entry(api_id: Optional[str] = None,
               organization_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntryResult:
     """
-    Get the Key value entry value for org, env or apis scoped Key value map.
+    Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -81,6 +81,6 @@ def get_entry_output(api_id: Optional[pulumi.Input[str]] = None,
                      organization_id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryResult]:
     """
-    Get the Key value entry value for org, env or apis scoped Key value map.
+    Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
     """
     ...

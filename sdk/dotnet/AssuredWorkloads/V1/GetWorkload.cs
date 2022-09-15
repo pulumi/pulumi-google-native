@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string ComplianceRegime;
         /// <summary>
+        /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        /// </summary>
+        public readonly ImmutableArray<string> CompliantButDisallowedServices;
+        /// <summary>
         /// Immutable. The Workload creation timestamp.
         /// </summary>
         public readonly string CreateTime;
@@ -126,6 +130,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             string complianceRegime,
 
+            ImmutableArray<string> compliantButDisallowedServices,
+
             string createTime,
 
             string displayName,
@@ -152,6 +158,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         {
             BillingAccount = billingAccount;
             ComplianceRegime = complianceRegime;
+            CompliantButDisallowedServices = compliantButDisallowedServices;
             CreateTime = createTime;
             DisplayName = displayName;
             EnableSovereignControls = enableSovereignControls;

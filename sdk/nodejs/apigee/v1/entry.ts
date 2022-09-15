@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
+ * Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
  */
 export class Entry extends pulumi.CustomResource {
     /**

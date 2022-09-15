@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
-    /// Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
+    /// Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Entry")]
     public partial class Entry : global::Pulumi.CustomResource

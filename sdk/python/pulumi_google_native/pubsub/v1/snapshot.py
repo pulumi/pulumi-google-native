@@ -21,7 +21,7 @@ class SnapshotArgs:
         """
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] subscription: The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         """
         pulumi.set(__self__, "snapshot_id", snapshot_id)
         pulumi.set(__self__, "subscription", subscription)
@@ -55,7 +55,7 @@ class SnapshotArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        See Creating and managing labels.
+        See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         """
         return pulumi.get(self, "labels")
 
@@ -89,7 +89,7 @@ class Snapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input[str] subscription: The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
         ...

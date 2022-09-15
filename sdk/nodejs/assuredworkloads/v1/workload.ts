@@ -46,6 +46,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly complianceRegime!: pulumi.Output<string>;
     /**
+     * Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+     */
+    public /*out*/ readonly compliantButDisallowedServices!: pulumi.Output<string[]>;
+    /**
      * Immutable. The Workload creation timestamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
+            resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export class Workload extends pulumi.CustomResource {
         } else {
             resourceInputs["billingAccount"] = undefined /*out*/;
             resourceInputs["complianceRegime"] = undefined /*out*/;
+            resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableSovereignControls"] = undefined /*out*/;

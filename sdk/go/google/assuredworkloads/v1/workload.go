@@ -19,6 +19,8 @@ type Workload struct {
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime pulumi.StringOutput `pulumi:"complianceRegime"`
+	// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+	CompliantButDisallowedServices pulumi.StringArrayOutput `pulumi:"compliantButDisallowedServices"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
@@ -207,6 +209,11 @@ func (o WorkloadOutput) BillingAccount() pulumi.StringOutput {
 // Immutable. Compliance Regime associated with this workload.
 func (o WorkloadOutput) ComplianceRegime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.ComplianceRegime }).(pulumi.StringOutput)
+}
+
+// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+func (o WorkloadOutput) CompliantButDisallowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringArrayOutput { return v.CompliantButDisallowedServices }).(pulumi.StringArrayOutput)
 }
 
 // Immutable. The Workload creation timestamp.

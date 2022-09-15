@@ -98,7 +98,7 @@ export class Snapshot extends pulumi.CustomResource {
  */
 export interface SnapshotArgs {
     /**
-     * See Creating and managing labels.
+     * See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;

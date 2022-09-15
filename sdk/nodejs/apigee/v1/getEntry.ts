@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Get the Key value entry value for org, env or apis scoped Key value map.
+ * Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
  */
 export function getEntry(args: GetEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryResult> {
     if (!opts) {

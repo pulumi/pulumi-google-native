@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public static class GetEntry
     {
         /// <summary>
-        /// Get the Key value entry value for org, env or apis scoped Key value map.
+        /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
         /// </summary>
         public static Task<GetEntryResult> InvokeAsync(GetEntryArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEntryResult>("google-native:apigee/v1:getEntry", args ?? new GetEntryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get the Key value entry value for org, env or apis scoped Key value map.
+        /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
         /// </summary>
         public static Output<GetEntryResult> Invoke(GetEntryInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetEntryResult>("google-native:apigee/v1:getEntry", args ?? new GetEntryInvokeArgs(), options.WithDefaults());

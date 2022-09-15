@@ -326,6 +326,7 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
+            __props__.__dict__["compliant_but_disallowed_services"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kaj_enrollment_state"] = None
             __props__.__dict__["resources"] = None
@@ -356,6 +357,7 @@ class Workload(pulumi.CustomResource):
 
         __props__.__dict__["billing_account"] = None
         __props__.__dict__["compliance_regime"] = None
+        __props__.__dict__["compliant_but_disallowed_services"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_sovereign_controls"] = None
@@ -388,6 +390,14 @@ class Workload(pulumi.CustomResource):
         Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
+
+    @property
+    @pulumi.getter(name="compliantButDisallowedServices")
+    def compliant_but_disallowed_services(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
+        """
+        return pulumi.get(self, "compliant_but_disallowed_services")
 
     @property
     @pulumi.getter(name="createTime")
