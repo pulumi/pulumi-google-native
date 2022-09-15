@@ -329,6 +329,10 @@ jobs:
           env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
           env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
         service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
+    - name: Setup gcloud auth
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        install_components: gke-gcloud-auth-plugin
     - name: Install gotestfmt
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
