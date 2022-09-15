@@ -326,7 +326,8 @@ jobs:
         workload_identity_provider: projects/${{ env.GOOGLE_PROJECT_NUMBER
           }}/locations/global/workloadIdentityPools/${{
           env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
-          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
+          env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}/subject/repo:${{
+          env.GITHUB_REPOSITORY }}
         service_account: ${{ env.GOOGLE_CI_SERVICE_ACCOUNT_EMAIL }}
     - name: Setup gcloud auth
       uses: google-github-actions/setup-gcloud@v0
