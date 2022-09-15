@@ -203,6 +203,8 @@ type CloudAPIResource struct {
 	Update UpdateAPIOperation `json:"update,omitempty"`
 	Delete CloudAPIOperation  `json:"delete,omitempty"`
 
+	DCLManaged bool `json:"dclManaged,omitempty"`
+
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
 	RootURL        string         `json:"rootUrl"`
