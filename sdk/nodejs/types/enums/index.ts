@@ -101,6 +101,7 @@ import * as testing from "./testing";
 import * as toolresults from "./toolresults";
 import * as tpu from "./tpu";
 import * as transcoder from "./transcoder";
+import * as vertexai from "./vertexai";
 import * as vmmigration from "./vmmigration";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
@@ -205,6 +206,7 @@ export {
     toolresults,
     tpu,
     transcoder,
+    vertexai,
     vmmigration,
     websecurityscanner,
     workflowexecutions,

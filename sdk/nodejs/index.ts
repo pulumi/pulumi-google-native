@@ -131,6 +131,7 @@ import * as tpu from "./tpu";
 import * as transcoder from "./transcoder";
 import * as translate from "./translate";
 import * as types from "./types";
+import * as vertexai from "./vertexai";
 import * as vision from "./vision";
 import * as vmmigration from "./vmmigration";
 import * as vpcaccess from "./vpcaccess";
@@ -258,6 +259,7 @@ export {
     transcoder,
     translate,
     types,
+    vertexai,
     vision,
     vmmigration,
     vpcaccess,

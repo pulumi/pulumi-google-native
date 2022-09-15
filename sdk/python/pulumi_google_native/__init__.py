@@ -245,6 +245,8 @@ if typing.TYPE_CHECKING:
     transcoder = __transcoder
     import pulumi_google_native.translate as __translate
     translate = __translate
+    import pulumi_google_native.vertexai as __vertexai
+    vertexai = __vertexai
     import pulumi_google_native.vision as __vision
     vision = __vision
     import pulumi_google_native.vmmigration as __vmmigration
@@ -376,6 +378,7 @@ else:
     tpu = _utilities.lazy_import('pulumi_google_native.tpu')
     transcoder = _utilities.lazy_import('pulumi_google_native.transcoder')
     translate = _utilities.lazy_import('pulumi_google_native.translate')
+    vertexai = _utilities.lazy_import('pulumi_google_native.vertexai')
     vision = _utilities.lazy_import('pulumi_google_native.vision')
     vmmigration = _utilities.lazy_import('pulumi_google_native.vmmigration')
     vpcaccess = _utilities.lazy_import('pulumi_google_native.vpcaccess')
@@ -2942,6 +2945,19 @@ _utilities.register(
   "fqn": "pulumi_google_native.translate.v3beta1",
   "classes": {
    "google-native:translate/v3beta1:Glossary": "Glossary"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "vertexai/v1",
+  "fqn": "pulumi_google_native.vertexai.v1",
+  "classes": {
+   "google-native:vertexai/v1:Endpoint": "Endpoint",
+   "google-native:vertexai/v1:EndpointTrafficSplit": "EndpointTrafficSplit",
+   "google-native:vertexai/v1:MetadataSchema": "MetadataSchema",
+   "google-native:vertexai/v1:MetadataStore": "MetadataStore",
+   "google-native:vertexai/v1:Model": "Model",
+   "google-native:vertexai/v1:ModelDeployment": "ModelDeployment"
   }
  },
  {

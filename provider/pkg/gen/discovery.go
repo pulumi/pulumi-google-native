@@ -20,6 +20,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/pulumi/pulumi-google-native/provider/pkg/utils"
+
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -86,7 +88,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 
 	for _, resourceName := range codegen.SortedKeys(rest) {
 		res := rest[resourceName]
-		name := ToUpperCamel(inflector.Singularize(resourceName))
+		name := utils.ToUpperCamel(inflector.Singularize(resourceName))
 
 		var createMethod, getMethod, updateMethod, deleteMethod, listMethod *discovery.RestMethod
 		sortedMethods := codegen.SortedKeys(res.Methods)
@@ -355,7 +357,7 @@ func findAPIParams(dd discoveryDocumentResource) codegen.StringSet {
 	params := findParams(path)
 	result := codegen.NewStringSet()
 	for _, param := range params {
-		result.Add(apiParamNameToSdkName(param))
+		result.Add(utils.ApiParamNameToSdkName(param))
 	}
 	return result
 }

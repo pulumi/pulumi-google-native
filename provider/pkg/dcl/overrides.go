@@ -2,6 +2,12 @@ package dcl
 
 import (
 	"fmt"
+	"path/filepath"
+	"strings"
+
+	"google.golang.org/api/discovery/v1"
+
+	"github.com/pulumi/pulumi-google-native/provider/pkg/utils"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/vertexai"
@@ -12,11 +18,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
-func AddDCLResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIMetadata) error {
-	return addVertexAIResources(pkg, metadata)
+const goBasePath = "github.com/pulumi/pulumi-google-native/sdk/go/google"
+
+func AddDCLResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIMetadata,
+	pythonModuleNames, goImportAliases, csharpNamespaces, javaPackages map[string]string) error {
+	return addVertexAIResources(pkg, metadata, pythonModuleNames, goImportAliases, csharpNamespaces, javaPackages)
 }
 
-func addVertexAIResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIMetadata) error {
+func csharpVersionedNamespace(moduleName string) string {
+	split := strings.Split(moduleName, "/")
+	module, version := split[0], split[1]
+
+	version = versionReplacer.Replace(version)
+	return fmt.Sprintf("%s.%s", module, version)
+}
+
+var titleReplacer = strings.NewReplacer(" ", "", "-", "")
+var versionReplacer = strings.NewReplacer("alpha", "Alpha", "beta", "Beta", "v", "V")
+
+func csharpNamespace(document *discovery.RestDescription) string {
+	moduleName := strings.Title(document.Name)
+
+	title := titleReplacer.Replace(document.Title)
+	idx := strings.Index(strings.ToLower(title), document.Name)
+	if idx >= 0 {
+		moduleName = title[idx : idx+len(document.Name)]
+	}
+	return moduleName
+}
+
+func addVertexAIResources(
+	pkg *schema.PackageSpec,
+	metadata *resources.CloudAPIMetadata,
+	pythonModuleNames,
+	goImportAliases,
+	csharpNamespaces,
+	javaPackages map[string]string,
+) error {
 	schemas := map[string]*dcl.Schema{
 		"google-native:vertexai/v1:MetadataSchema":       vertexai.DCLMetadataSchemaSchema(),
 		"google-native:vertexai/v1:MetadataStore":        vertexai.DCLMetadataStoreSchema(),
@@ -31,6 +69,12 @@ func addVertexAIResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIM
 		}
 	}
 
+	const moduleName = "vertexai/v1"
+	csharpNamespaces[moduleName] = csharpVersionedNamespace(moduleName)
+	javaPackages[moduleName] = strings.Replace(moduleName, "/", ".", 1)
+	pythonModuleNames[moduleName] = moduleName
+	goImportAliases[filepath.Join(goBasePath, moduleName)] = "vertexai"
+
 	return nil
 }
 
@@ -43,8 +87,8 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 		case dcl.EnumType:
 			if len(prop.Enum) > 0 && !prop.ReadOnly {
 				contract.Assertf(prop.GoType != "",
-					"Property %q in %q doesn't have a GoType as expected for string enums",
-					prop.GoName, modName)
+					"Property %q in %q for tok: %q doesn't have a GoType as expected for string enums",
+					prop.GoName, modName, tok)
 				tok := fmt.Sprintf("google-native:%s:%s", modName, prop.GoType)
 				referencedTypeName := fmt.Sprintf("#/types/%s", tok)
 				if _, has := pkg.Types[tok]; has {
@@ -65,7 +109,7 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 					values.Add(val)
 					enumVal := schema.EnumValueSpec{
 						Value: val,
-						Name:  prop.GoType,
+						Name:  utils.ToUpperCamel(val),
 					}
 					enumSpec.Enum = append(enumSpec.Enum, enumVal)
 				}
@@ -84,7 +128,7 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 			return &schema.TypeSpec{Type: "number"}, nil
 		case dcl.MapType:
 			contract.Assertf(prop.AdditionalProperties != nil,
-				"Expect %q in %q to have additionalProperties for map type", prop.GoName, modName)
+				"Expect %q in %q for tok: %q to have additionalProperties for map type", prop.GoName, modName, tok)
 			ref, err := registerPropertyType(modName, prop.AdditionalProperties)
 			if err != nil {
 				return nil, err
@@ -94,9 +138,11 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 				AdditionalProperties: ref,
 			}, nil
 		case dcl.ObjectType:
-			contract.Assertf(prop.GoType != "", "Property %q in %q doesn't have a GoType as expected for objects",
-				prop.GoName, modName)
-			tok := fmt.Sprintf("google-native:%s:%s", modName, prop.GoType)
+			goType := prop.GoType
+			if goType == "" {
+				goType = prop.GoName
+			}
+			tok := fmt.Sprintf("google-native:%s:%s", modName, goType)
 			props := map[string]schema.PropertySpec{}
 			for n, p := range prop.Properties {
 				ref, err := registerPropertyType(modName, p)
@@ -123,7 +169,8 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 			}, nil
 		case dcl.ArrayType:
 			contract.Assertf(prop.Items != nil,
-				"Property %q in %q doesn't have an Item field as expected for arrays", prop.GoName, modName)
+				"Property %q in %q for tok: %q doesn't have an Item field as expected for arrays", prop.GoName,
+				modName, tok)
 			ref, err := registerPropertyType(modName, prop.Items)
 			if err != nil {
 				return nil, err
@@ -133,7 +180,7 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 				Items: ref,
 			}, nil
 		}
-		return nil, fmt.Errorf("unexpected type: %q", prop.Type)
+		return nil, fmt.Errorf("unexpected type: %q for tok: %q", prop.Type, tok)
 	}
 
 	processComponent := func(moduleName string, component *dcl.Component) error {

@@ -27,6 +27,8 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/provider/pkg/dcl"
 
+	"github.com/pulumi/pulumi-google-native/provider/pkg/utils"
+
 	"github.com/imdario/mergo"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
@@ -281,6 +283,10 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		}
 	}
 
+	if err := dcl.AddDCLResources(&pkg, &metadata, pythonModuleNames, golangImportAliases, csharpNamespaces, javaPackages); err != nil {
+		return nil, nil, err
+	}
+
 	pkg.Language["go"] = rawMessage(map[string]interface{}{
 		"importBasePath":               goBasePath,
 		"packageImportAliases":         golangImportAliases,
@@ -322,10 +328,6 @@ will be introduced in minor version releases.`,
 		"packages":                     javaPackages,
 		"liftSingleValueMethodReturns": true,
 	})
-
-	if err := dcl.AddDCLResources(&pkg, &metadata); err != nil {
-		return nil, nil, err
-	}
 
 	return &pkg, &metadata, nil
 }
@@ -544,7 +546,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			Name: name,
 			Kind: "query",
 		}
-		sdkName := ToLowerCamel(name)
+		sdkName := utils.ToLowerCamel(name)
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
@@ -574,7 +576,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 
 		name := names[1]
-		sdkName := apiParamNameToSdkName(name)
+		sdkName := utils.ApiParamNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec:         schema.TypeSpec{Type: "string"},
 			ReplaceOnChanges: true, // All path parameters should trigger replace-on-changes.
@@ -834,7 +836,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	// Apply auto-naming.
 	autoNameable := !strings.HasSuffix(typeName, "IamPolicy") && !autonameExcludes.Has(resourceTok)
 	if autoNameable {
-		namePattern, err := namePropertyPattern(inputProperties)
+		namePattern, err := utils.NamePropertyPattern(inputProperties)
 		if err == nil {
 			requiredInputProperties.Delete("name")
 			resourceMeta.Create.Autoname.FieldName = namePattern
@@ -931,7 +933,7 @@ func (g *packageGenerator) genFunction(typeName string, getMethod *discovery.Res
 			Name: name,
 			Kind: "query",
 		}
-		sdkName := ToLowerCamel(name)
+		sdkName := utils.ToLowerCamel(name)
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
@@ -955,7 +957,7 @@ func (g *packageGenerator) genFunction(typeName string, getMethod *discovery.Res
 		}
 
 		name := names[1]
-		sdkName := apiParamNameToSdkName(name)
+		sdkName := utils.ApiParamNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
@@ -1028,7 +1030,7 @@ func (g *packageGenerator) buildIdParams(
 		name := names[1]
 
 		// If the property is already defined in the input args, add its SDK name.
-		sdkName := apiParamNameToSdkName(name)
+		sdkName := utils.ApiParamNameToSdkName(name)
 		if _, has := inputProperties[sdkName]; has {
 			result[name] = sdkName
 			continue
@@ -1080,7 +1082,7 @@ func (g *packageGenerator) buildIdParams(
 		name := names[1]
 
 		// If the property is already defined in the input args, add its SDK name.
-		sdkName := apiParamNameToSdkName(name)
+		sdkName := utils.ApiParamNameToSdkName(name)
 		if _, has := inputProperties[sdkName]; has {
 			result[name] = sdkName
 			continue
@@ -1125,7 +1127,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 	}
 	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
 		value := typeSchema.Properties[name]
-		sdkName := apiPropNameToSdkName(typeName, name)
+		sdkName := utils.ApiPropNameToSdkName(typeName, name)
 
 		readOnly := value.ReadOnly || isReadOnly(value.Description)
 		if !isOutput && readOnly {
@@ -1187,7 +1189,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
 			CopyFromOutputs:      copyFromOutput,
-			Pattern:              propertyPattern(sdkName, prop.Description, patternParams),
+			Pattern:              utils.PropertyPattern(sdkName, prop.Description, patternParams),
 		}
 		if name != sdkName {
 			apiProp.SdkName = sdkName
@@ -1314,7 +1316,7 @@ func (g *packageGenerator) genEnumType(typeName, propName string, prop *discover
 		return nil, errors.Errorf("string-based enum expected but found %q", prop.Type)
 	}
 
-	enumName := typeName + ToUpperCamel(propName)
+	enumName := typeName + utils.ToUpperCamel(propName)
 	tok := fmt.Sprintf("%s:%s:%s", g.pkg.Name, g.mod, enumName)
 
 	enumSpec := &schema.ComplexTypeSpec{
@@ -1330,7 +1332,7 @@ func (g *packageGenerator) genEnumType(typeName, propName string, prop *discover
 		values.Add(val)
 		enumVal := schema.EnumValueSpec{
 			Value:       val,
-			Name:        ToUpperCamel(val),
+			Name:        utils.ToUpperCamel(val),
 			Description: prop.EnumDescriptions[idx],
 		}
 		enumSpec.Enum = append(enumSpec.Enum, enumVal)
