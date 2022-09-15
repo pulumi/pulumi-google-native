@@ -25,12 +25,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Endpoint{}
 	case "google-native:servicedirectory/v1beta1:Namespace":
 		r = &Namespace{}
+	case "google-native:servicedirectory/v1beta1:NamespaceIamBinding":
+		r = &NamespaceIamBinding{}
+	case "google-native:servicedirectory/v1beta1:NamespaceIamMember":
+		r = &NamespaceIamMember{}
 	case "google-native:servicedirectory/v1beta1:NamespaceIamPolicy":
 		r = &NamespaceIamPolicy{}
+	case "google-native:servicedirectory/v1beta1:NamespaceServiceIamBinding":
+		r = &NamespaceServiceIamBinding{}
+	case "google-native:servicedirectory/v1beta1:NamespaceServiceIamMember":
+		r = &NamespaceServiceIamMember{}
 	case "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
 		r = &NamespaceServiceIamPolicy{}
+	case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamBinding":
+		r = &NamespaceServiceWorkloadIamBinding{}
+	case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamMember":
+		r = &NamespaceServiceWorkloadIamMember{}
 	case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy":
 		r = &NamespaceServiceWorkloadIamPolicy{}
+	case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamBinding":
+		r = &RegistrationPolicyIamBinding{}
+	case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamMember":
+		r = &RegistrationPolicyIamMember{}
 	case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy":
 		r = &RegistrationPolicyIamPolicy{}
 	case "google-native:servicedirectory/v1beta1:Service":

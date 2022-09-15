@@ -9,6 +9,14 @@ export { ConnectionArgs } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 
+export { ConnectionIamBindingArgs } from "./connectionIamBinding";
+export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
+export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+
+export { ConnectionIamMemberArgs } from "./connectionIamMember";
+export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
+export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+
 export { ConnectionIamPolicyArgs } from "./connectionIamPolicy";
 export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
@@ -25,15 +33,27 @@ export { GetProviderIamPolicyArgs, GetProviderIamPolicyResult, GetProviderIamPol
 export const getProviderIamPolicy: typeof import("./getProviderIamPolicy").getProviderIamPolicy = null as any;
 export const getProviderIamPolicyOutput: typeof import("./getProviderIamPolicy").getProviderIamPolicyOutput = null as any;
 
+export { ProviderIamBindingArgs } from "./providerIamBinding";
+export type ProviderIamBinding = import("./providerIamBinding").ProviderIamBinding;
+export const ProviderIamBinding: typeof import("./providerIamBinding").ProviderIamBinding = null as any;
+
+export { ProviderIamMemberArgs } from "./providerIamMember";
+export type ProviderIamMember = import("./providerIamMember").ProviderIamMember;
+export const ProviderIamMember: typeof import("./providerIamMember").ProviderIamMember = null as any;
+
 export { ProviderIamPolicyArgs } from "./providerIamPolicy";
 export type ProviderIamPolicy = import("./providerIamPolicy").ProviderIamPolicy;
 export const ProviderIamPolicy: typeof import("./providerIamPolicy").ProviderIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
 utilities.lazyLoad(exports, ["getProviderIamPolicy","getProviderIamPolicyOutput"], () => require("./getProviderIamPolicy"));
+utilities.lazyLoad(exports, ["ProviderIamBinding"], () => require("./providerIamBinding"));
+utilities.lazyLoad(exports, ["ProviderIamMember"], () => require("./providerIamMember"));
 utilities.lazyLoad(exports, ["ProviderIamPolicy"], () => require("./providerIamPolicy"));
 
 // Export enums:
@@ -45,8 +65,16 @@ const _module = {
         switch (type) {
             case "google-native:connectors/v1:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:ConnectionIamBinding":
+                return new ConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:ConnectionIamMember":
+                return new ConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:connectors/v1:ConnectionIamPolicy":
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:ProviderIamBinding":
+                return new ProviderIamBinding(name, <any>undefined, { urn })
+            case "google-native:connectors/v1:ProviderIamMember":
+                return new ProviderIamMember(name, <any>undefined, { urn })
             case "google-native:connectors/v1:ProviderIamPolicy":
                 return new ProviderIamPolicy(name, <any>undefined, { urn })
             default:

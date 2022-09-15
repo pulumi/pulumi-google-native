@@ -12,7 +12,11 @@ from .get_namespace_iam_policy import *
 from .get_namespace_service_iam_policy import *
 from .get_service import *
 from .namespace import *
+from .namespace_iam_binding import *
+from .namespace_iam_member import *
 from .namespace_iam_policy import *
+from .namespace_service_iam_binding import *
+from .namespace_service_iam_member import *
 from .namespace_service_iam_policy import *
 from .service import *
 from ._inputs import *

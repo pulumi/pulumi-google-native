@@ -19,6 +19,8 @@ from .mute_config import *
 from .notification_config import *
 from .organization_big_query_export import *
 from .organization_mute_config import *
+from .organization_source_iam_binding import *
+from .organization_source_iam_member import *
 from .organization_source_iam_policy import *
 from .project_big_query_export import *
 from .source import *

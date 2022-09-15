@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudfunctions/v2beta:Function":
 		r = &Function{}
+	case "google-native:cloudfunctions/v2beta:FunctionIamBinding":
+		r = &FunctionIamBinding{}
+	case "google-native:cloudfunctions/v2beta:FunctionIamMember":
+		r = &FunctionIamMember{}
 	case "google-native:cloudfunctions/v2beta:FunctionIamPolicy":
 		r = &FunctionIamPolicy{}
 	default:

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudtasks/v2beta2:Queue":
 		r = &Queue{}
+	case "google-native:cloudtasks/v2beta2:QueueIamBinding":
+		r = &QueueIamBinding{}
+	case "google-native:cloudtasks/v2beta2:QueueIamMember":
+		r = &QueueIamMember{}
 	case "google-native:cloudtasks/v2beta2:QueueIamPolicy":
 		r = &QueueIamPolicy{}
 	case "google-native:cloudtasks/v2beta2:Task":

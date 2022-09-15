@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationBigQueryExport{}
 	case "google-native:securitycenter/v1:OrganizationMuteConfig":
 		r = &OrganizationMuteConfig{}
+	case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
+		r = &OrganizationSourceIamBinding{}
+	case "google-native:securitycenter/v1:OrganizationSourceIamMember":
+		r = &OrganizationSourceIamMember{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamPolicy":
 		r = &OrganizationSourceIamPolicy{}
 	case "google-native:securitycenter/v1:ProjectBigQueryExport":

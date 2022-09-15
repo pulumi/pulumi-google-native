@@ -33,6 +33,14 @@ export { IdentityAwareProxyClientArgs } from "./identityAwareProxyClient";
 export type IdentityAwareProxyClient = import("./identityAwareProxyClient").IdentityAwareProxyClient;
 export const IdentityAwareProxyClient: typeof import("./identityAwareProxyClient").IdentityAwareProxyClient = null as any;
 
+export { V1IamBindingArgs } from "./v1iamBinding";
+export type V1IamBinding = import("./v1iamBinding").V1IamBinding;
+export const V1IamBinding: typeof import("./v1iamBinding").V1IamBinding = null as any;
+
+export { V1IamMemberArgs } from "./v1iamMember";
+export type V1IamMember = import("./v1iamMember").V1IamMember;
+export const V1IamMember: typeof import("./v1iamMember").V1IamMember = null as any;
+
 export { V1IamPolicyArgs } from "./v1iamPolicy";
 export type V1IamPolicy = import("./v1iamPolicy").V1IamPolicy;
 export const V1IamPolicy: typeof import("./v1iamPolicy").V1IamPolicy = null as any;
@@ -44,6 +52,8 @@ utilities.lazyLoad(exports, ["getDestGroup","getDestGroupOutput"], () => require
 utilities.lazyLoad(exports, ["getIdentityAwareProxyClient","getIdentityAwareProxyClientOutput"], () => require("./getIdentityAwareProxyClient"));
 utilities.lazyLoad(exports, ["getV1IamPolicy","getV1IamPolicyOutput"], () => require("./getV1IamPolicy"));
 utilities.lazyLoad(exports, ["IdentityAwareProxyClient"], () => require("./identityAwareProxyClient"));
+utilities.lazyLoad(exports, ["V1IamBinding"], () => require("./v1iamBinding"));
+utilities.lazyLoad(exports, ["V1IamMember"], () => require("./v1iamMember"));
 utilities.lazyLoad(exports, ["V1IamPolicy"], () => require("./v1iamPolicy"));
 
 const _module = {
@@ -56,6 +66,10 @@ const _module = {
                 return new DestGroup(name, <any>undefined, { urn })
             case "google-native:iap/v1:IdentityAwareProxyClient":
                 return new IdentityAwareProxyClient(name, <any>undefined, { urn })
+            case "google-native:iap/v1:V1IamBinding":
+                return new V1IamBinding(name, <any>undefined, { urn })
+            case "google-native:iap/v1:V1IamMember":
+                return new V1IamMember(name, <any>undefined, { urn })
             case "google-native:iap/v1:V1IamPolicy":
                 return new V1IamPolicy(name, <any>undefined, { urn })
             default:

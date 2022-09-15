@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:deploymentmanager/v2:Deployment":
 		r = &Deployment{}
+	case "google-native:deploymentmanager/v2:DeploymentIamBinding":
+		r = &DeploymentIamBinding{}
+	case "google-native:deploymentmanager/v2:DeploymentIamMember":
+		r = &DeploymentIamMember{}
 	case "google-native:deploymentmanager/v2:DeploymentIamPolicy":
 		r = &DeploymentIamPolicy{}
 	default:

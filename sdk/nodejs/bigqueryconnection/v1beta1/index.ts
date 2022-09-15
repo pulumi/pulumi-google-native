@@ -9,6 +9,14 @@ export { ConnectionArgs } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 
+export { ConnectionIamBindingArgs } from "./connectionIamBinding";
+export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
+export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+
+export { ConnectionIamMemberArgs } from "./connectionIamMember";
+export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
+export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+
 export { ConnectionIamPolicyArgs } from "./connectionIamPolicy";
 export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
@@ -22,6 +30,8 @@ export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").g
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:bigqueryconnection/v1beta1:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "google-native:bigqueryconnection/v1beta1:ConnectionIamBinding":
+                return new ConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigqueryconnection/v1beta1:ConnectionIamMember":
+                return new ConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:bigqueryconnection/v1beta1:ConnectionIamPolicy":
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
             default:

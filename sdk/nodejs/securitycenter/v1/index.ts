@@ -57,6 +57,14 @@ export { OrganizationMuteConfigArgs } from "./organizationMuteConfig";
 export type OrganizationMuteConfig = import("./organizationMuteConfig").OrganizationMuteConfig;
 export const OrganizationMuteConfig: typeof import("./organizationMuteConfig").OrganizationMuteConfig = null as any;
 
+export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
+export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
+export const OrganizationSourceIamBinding: typeof import("./organizationSourceIamBinding").OrganizationSourceIamBinding = null as any;
+
+export { OrganizationSourceIamMemberArgs } from "./organizationSourceIamMember";
+export type OrganizationSourceIamMember = import("./organizationSourceIamMember").OrganizationSourceIamMember;
+export const OrganizationSourceIamMember: typeof import("./organizationSourceIamMember").OrganizationSourceIamMember = null as any;
+
 export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
 export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
 export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
@@ -82,6 +90,8 @@ utilities.lazyLoad(exports, ["MuteConfig"], () => require("./muteConfig"));
 utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 utilities.lazyLoad(exports, ["OrganizationBigQueryExport"], () => require("./organizationBigQueryExport"));
 utilities.lazyLoad(exports, ["OrganizationMuteConfig"], () => require("./organizationMuteConfig"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
 utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
 utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
@@ -103,6 +113,10 @@ const _module = {
                 return new OrganizationBigQueryExport(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationMuteConfig":
                 return new OrganizationMuteConfig(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
+                return new OrganizationSourceIamBinding(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:OrganizationSourceIamMember":
+                return new OrganizationSourceIamMember(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:ProjectBigQueryExport":

@@ -65,21 +65,21 @@ func calculateResourceID(
 
 // buildCreateURL composes the URL to invoke to create a resource with given inputs.
 func buildCreateURL(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
-	return buildURL(res.Create.Endpoint.Template, res.Create.Endpoint.Values, inputs)
+	return buildURL(res.Create.Endpoint, inputs, nil)
 }
 
 func buildFunctionURL(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
-	return buildURL(res.URL.Template, res.URL.Values, inputs)
+	return buildURL(res.URL, inputs, nil)
 }
 
 func buildURL(
-	uriTemplate string,
-	params []resources.CloudAPIResourceParam,
+	endpoint resources.CloudAPIEndpoint,
 	inputs resource.PropertyMap,
+	extraQueryArgs map[string]string,
 ) (string, error) {
 	queryMap := map[string]string{}
-	uriString := uriTemplate
-	for _, param := range params {
+	uriString := endpoint.Template
+	for _, param := range endpoint.Values {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -106,6 +106,9 @@ func buildURL(
 	uri.Scheme = "https"
 	query := uri.Query()
 	for key, value := range queryMap {
+		query.Set(key, value)
+	}
+	for key, value := range extraQueryArgs {
 		query.Set(key, value)
 	}
 	uri.RawQuery = query.Encode()

@@ -23,14 +23,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:apigateway/v1beta:Api":
 		r = &Api{}
+	case "google-native:apigateway/v1beta:ApiConfigIamBinding":
+		r = &ApiConfigIamBinding{}
+	case "google-native:apigateway/v1beta:ApiConfigIamMember":
+		r = &ApiConfigIamMember{}
 	case "google-native:apigateway/v1beta:ApiConfigIamPolicy":
 		r = &ApiConfigIamPolicy{}
+	case "google-native:apigateway/v1beta:ApiIamBinding":
+		r = &ApiIamBinding{}
+	case "google-native:apigateway/v1beta:ApiIamMember":
+		r = &ApiIamMember{}
 	case "google-native:apigateway/v1beta:ApiIamPolicy":
 		r = &ApiIamPolicy{}
 	case "google-native:apigateway/v1beta:Config":
 		r = &Config{}
 	case "google-native:apigateway/v1beta:Gateway":
 		r = &Gateway{}
+	case "google-native:apigateway/v1beta:GatewayIamBinding":
+		r = &GatewayIamBinding{}
+	case "google-native:apigateway/v1beta:GatewayIamMember":
+		r = &GatewayIamMember{}
 	case "google-native:apigateway/v1beta:GatewayIamPolicy":
 		r = &GatewayIamPolicy{}
 	default:

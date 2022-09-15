@@ -12,9 +12,15 @@ from .get_policy_based_route_iam_policy import *
 from .get_spoke import *
 from .get_spoke_iam_policy import *
 from .hub import *
+from .hub_iam_binding import *
+from .hub_iam_member import *
 from .hub_iam_policy import *
+from .policy_based_route_iam_binding import *
+from .policy_based_route_iam_member import *
 from .policy_based_route_iam_policy import *
 from .spoke import *
+from .spoke_iam_binding import *
+from .spoke_iam_member import *
 from .spoke_iam_policy import *
 from ._inputs import *
 from . import outputs

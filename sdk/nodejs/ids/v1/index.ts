@@ -9,6 +9,14 @@ export { EndpointArgs } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
 
+export { EndpointIamBindingArgs } from "./endpointIamBinding";
+export type EndpointIamBinding = import("./endpointIamBinding").EndpointIamBinding;
+export const EndpointIamBinding: typeof import("./endpointIamBinding").EndpointIamBinding = null as any;
+
+export { EndpointIamMemberArgs } from "./endpointIamMember";
+export type EndpointIamMember = import("./endpointIamMember").EndpointIamMember;
+export const EndpointIamMember: typeof import("./endpointIamMember").EndpointIamMember = null as any;
+
 export { EndpointIamPolicyArgs } from "./endpointIamPolicy";
 export type EndpointIamPolicy = import("./endpointIamPolicy").EndpointIamPolicy;
 export const EndpointIamPolicy: typeof import("./endpointIamPolicy").EndpointIamPolicy = null as any;
@@ -22,6 +30,8 @@ export const getEndpointIamPolicy: typeof import("./getEndpointIamPolicy").getEn
 export const getEndpointIamPolicyOutput: typeof import("./getEndpointIamPolicy").getEndpointIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
+utilities.lazyLoad(exports, ["EndpointIamBinding"], () => require("./endpointIamBinding"));
+utilities.lazyLoad(exports, ["EndpointIamMember"], () => require("./endpointIamMember"));
 utilities.lazyLoad(exports, ["EndpointIamPolicy"], () => require("./endpointIamPolicy"));
 utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
 utilities.lazyLoad(exports, ["getEndpointIamPolicy","getEndpointIamPolicyOutput"], () => require("./getEndpointIamPolicy"));
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:ids/v1:Endpoint":
                 return new Endpoint(name, <any>undefined, { urn })
+            case "google-native:ids/v1:EndpointIamBinding":
+                return new EndpointIamBinding(name, <any>undefined, { urn })
+            case "google-native:ids/v1:EndpointIamMember":
+                return new EndpointIamMember(name, <any>undefined, { urn })
             case "google-native:ids/v1:EndpointIamPolicy":
                 return new EndpointIamPolicy(name, <any>undefined, { urn })
             default:

@@ -13,6 +13,14 @@ export { AccessPolicyArgs } from "./accessPolicy";
 export type AccessPolicy = import("./accessPolicy").AccessPolicy;
 export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
 
+export { AccessPolicyIamBindingArgs } from "./accessPolicyIamBinding";
+export type AccessPolicyIamBinding = import("./accessPolicyIamBinding").AccessPolicyIamBinding;
+export const AccessPolicyIamBinding: typeof import("./accessPolicyIamBinding").AccessPolicyIamBinding = null as any;
+
+export { AccessPolicyIamMemberArgs } from "./accessPolicyIamMember";
+export type AccessPolicyIamMember = import("./accessPolicyIamMember").AccessPolicyIamMember;
+export const AccessPolicyIamMember: typeof import("./accessPolicyIamMember").AccessPolicyIamMember = null as any;
+
 export { AccessPolicyIamPolicyArgs } from "./accessPolicyIamPolicy";
 export type AccessPolicyIamPolicy = import("./accessPolicyIamPolicy").AccessPolicyIamPolicy;
 export const AccessPolicyIamPolicy: typeof import("./accessPolicyIamPolicy").AccessPolicyIamPolicy = null as any;
@@ -47,6 +55,8 @@ export const ServicePerimeter: typeof import("./servicePerimeter").ServicePerime
 
 utilities.lazyLoad(exports, ["AccessLevel"], () => require("./accessLevel"));
 utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
+utilities.lazyLoad(exports, ["AccessPolicyIamBinding"], () => require("./accessPolicyIamBinding"));
+utilities.lazyLoad(exports, ["AccessPolicyIamMember"], () => require("./accessPolicyIamMember"));
 utilities.lazyLoad(exports, ["AccessPolicyIamPolicy"], () => require("./accessPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["GcpUserAccessBinding"], () => require("./gcpUserAccessBinding"));
 utilities.lazyLoad(exports, ["getAccessLevel","getAccessLevelOutput"], () => require("./getAccessLevel"));
@@ -67,6 +77,10 @@ const _module = {
                 return new AccessLevel(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
+            case "google-native:accesscontextmanager/v1:AccessPolicyIamBinding":
+                return new AccessPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:accesscontextmanager/v1:AccessPolicyIamMember":
+                return new AccessPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy":
                 return new AccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:GcpUserAccessBinding":

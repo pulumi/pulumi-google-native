@@ -13,13 +13,37 @@ export { BackupPlanArgs } from "./backupPlan";
 export type BackupPlan = import("./backupPlan").BackupPlan;
 export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
 
+export { BackupPlanBackupIamBindingArgs } from "./backupPlanBackupIamBinding";
+export type BackupPlanBackupIamBinding = import("./backupPlanBackupIamBinding").BackupPlanBackupIamBinding;
+export const BackupPlanBackupIamBinding: typeof import("./backupPlanBackupIamBinding").BackupPlanBackupIamBinding = null as any;
+
+export { BackupPlanBackupIamMemberArgs } from "./backupPlanBackupIamMember";
+export type BackupPlanBackupIamMember = import("./backupPlanBackupIamMember").BackupPlanBackupIamMember;
+export const BackupPlanBackupIamMember: typeof import("./backupPlanBackupIamMember").BackupPlanBackupIamMember = null as any;
+
 export { BackupPlanBackupIamPolicyArgs } from "./backupPlanBackupIamPolicy";
 export type BackupPlanBackupIamPolicy = import("./backupPlanBackupIamPolicy").BackupPlanBackupIamPolicy;
 export const BackupPlanBackupIamPolicy: typeof import("./backupPlanBackupIamPolicy").BackupPlanBackupIamPolicy = null as any;
 
+export { BackupPlanBackupVolumeBackupIamBindingArgs } from "./backupPlanBackupVolumeBackupIamBinding";
+export type BackupPlanBackupVolumeBackupIamBinding = import("./backupPlanBackupVolumeBackupIamBinding").BackupPlanBackupVolumeBackupIamBinding;
+export const BackupPlanBackupVolumeBackupIamBinding: typeof import("./backupPlanBackupVolumeBackupIamBinding").BackupPlanBackupVolumeBackupIamBinding = null as any;
+
+export { BackupPlanBackupVolumeBackupIamMemberArgs } from "./backupPlanBackupVolumeBackupIamMember";
+export type BackupPlanBackupVolumeBackupIamMember = import("./backupPlanBackupVolumeBackupIamMember").BackupPlanBackupVolumeBackupIamMember;
+export const BackupPlanBackupVolumeBackupIamMember: typeof import("./backupPlanBackupVolumeBackupIamMember").BackupPlanBackupVolumeBackupIamMember = null as any;
+
 export { BackupPlanBackupVolumeBackupIamPolicyArgs } from "./backupPlanBackupVolumeBackupIamPolicy";
 export type BackupPlanBackupVolumeBackupIamPolicy = import("./backupPlanBackupVolumeBackupIamPolicy").BackupPlanBackupVolumeBackupIamPolicy;
 export const BackupPlanBackupVolumeBackupIamPolicy: typeof import("./backupPlanBackupVolumeBackupIamPolicy").BackupPlanBackupVolumeBackupIamPolicy = null as any;
+
+export { BackupPlanIamBindingArgs } from "./backupPlanIamBinding";
+export type BackupPlanIamBinding = import("./backupPlanIamBinding").BackupPlanIamBinding;
+export const BackupPlanIamBinding: typeof import("./backupPlanIamBinding").BackupPlanIamBinding = null as any;
+
+export { BackupPlanIamMemberArgs } from "./backupPlanIamMember";
+export type BackupPlanIamMember = import("./backupPlanIamMember").BackupPlanIamMember;
+export const BackupPlanIamMember: typeof import("./backupPlanIamMember").BackupPlanIamMember = null as any;
 
 export { BackupPlanIamPolicyArgs } from "./backupPlanIamPolicy";
 export type BackupPlanIamPolicy = import("./backupPlanIamPolicy").BackupPlanIamPolicy;
@@ -73,13 +97,37 @@ export { RestorePlanArgs } from "./restorePlan";
 export type RestorePlan = import("./restorePlan").RestorePlan;
 export const RestorePlan: typeof import("./restorePlan").RestorePlan = null as any;
 
+export { RestorePlanIamBindingArgs } from "./restorePlanIamBinding";
+export type RestorePlanIamBinding = import("./restorePlanIamBinding").RestorePlanIamBinding;
+export const RestorePlanIamBinding: typeof import("./restorePlanIamBinding").RestorePlanIamBinding = null as any;
+
+export { RestorePlanIamMemberArgs } from "./restorePlanIamMember";
+export type RestorePlanIamMember = import("./restorePlanIamMember").RestorePlanIamMember;
+export const RestorePlanIamMember: typeof import("./restorePlanIamMember").RestorePlanIamMember = null as any;
+
 export { RestorePlanIamPolicyArgs } from "./restorePlanIamPolicy";
 export type RestorePlanIamPolicy = import("./restorePlanIamPolicy").RestorePlanIamPolicy;
 export const RestorePlanIamPolicy: typeof import("./restorePlanIamPolicy").RestorePlanIamPolicy = null as any;
 
+export { RestorePlanRestoreIamBindingArgs } from "./restorePlanRestoreIamBinding";
+export type RestorePlanRestoreIamBinding = import("./restorePlanRestoreIamBinding").RestorePlanRestoreIamBinding;
+export const RestorePlanRestoreIamBinding: typeof import("./restorePlanRestoreIamBinding").RestorePlanRestoreIamBinding = null as any;
+
+export { RestorePlanRestoreIamMemberArgs } from "./restorePlanRestoreIamMember";
+export type RestorePlanRestoreIamMember = import("./restorePlanRestoreIamMember").RestorePlanRestoreIamMember;
+export const RestorePlanRestoreIamMember: typeof import("./restorePlanRestoreIamMember").RestorePlanRestoreIamMember = null as any;
+
 export { RestorePlanRestoreIamPolicyArgs } from "./restorePlanRestoreIamPolicy";
 export type RestorePlanRestoreIamPolicy = import("./restorePlanRestoreIamPolicy").RestorePlanRestoreIamPolicy;
 export const RestorePlanRestoreIamPolicy: typeof import("./restorePlanRestoreIamPolicy").RestorePlanRestoreIamPolicy = null as any;
+
+export { RestorePlanRestoreVolumeRestoreIamBindingArgs } from "./restorePlanRestoreVolumeRestoreIamBinding";
+export type RestorePlanRestoreVolumeRestoreIamBinding = import("./restorePlanRestoreVolumeRestoreIamBinding").RestorePlanRestoreVolumeRestoreIamBinding;
+export const RestorePlanRestoreVolumeRestoreIamBinding: typeof import("./restorePlanRestoreVolumeRestoreIamBinding").RestorePlanRestoreVolumeRestoreIamBinding = null as any;
+
+export { RestorePlanRestoreVolumeRestoreIamMemberArgs } from "./restorePlanRestoreVolumeRestoreIamMember";
+export type RestorePlanRestoreVolumeRestoreIamMember = import("./restorePlanRestoreVolumeRestoreIamMember").RestorePlanRestoreVolumeRestoreIamMember;
+export const RestorePlanRestoreVolumeRestoreIamMember: typeof import("./restorePlanRestoreVolumeRestoreIamMember").RestorePlanRestoreVolumeRestoreIamMember = null as any;
 
 export { RestorePlanRestoreVolumeRestoreIamPolicyArgs } from "./restorePlanRestoreVolumeRestoreIamPolicy";
 export type RestorePlanRestoreVolumeRestoreIamPolicy = import("./restorePlanRestoreVolumeRestoreIamPolicy").RestorePlanRestoreVolumeRestoreIamPolicy;
@@ -87,8 +135,14 @@ export const RestorePlanRestoreVolumeRestoreIamPolicy: typeof import("./restoreP
 
 utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 utilities.lazyLoad(exports, ["BackupPlan"], () => require("./backupPlan"));
+utilities.lazyLoad(exports, ["BackupPlanBackupIamBinding"], () => require("./backupPlanBackupIamBinding"));
+utilities.lazyLoad(exports, ["BackupPlanBackupIamMember"], () => require("./backupPlanBackupIamMember"));
 utilities.lazyLoad(exports, ["BackupPlanBackupIamPolicy"], () => require("./backupPlanBackupIamPolicy"));
+utilities.lazyLoad(exports, ["BackupPlanBackupVolumeBackupIamBinding"], () => require("./backupPlanBackupVolumeBackupIamBinding"));
+utilities.lazyLoad(exports, ["BackupPlanBackupVolumeBackupIamMember"], () => require("./backupPlanBackupVolumeBackupIamMember"));
 utilities.lazyLoad(exports, ["BackupPlanBackupVolumeBackupIamPolicy"], () => require("./backupPlanBackupVolumeBackupIamPolicy"));
+utilities.lazyLoad(exports, ["BackupPlanIamBinding"], () => require("./backupPlanIamBinding"));
+utilities.lazyLoad(exports, ["BackupPlanIamMember"], () => require("./backupPlanIamMember"));
 utilities.lazyLoad(exports, ["BackupPlanIamPolicy"], () => require("./backupPlanIamPolicy"));
 utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 utilities.lazyLoad(exports, ["getBackupPlan","getBackupPlanOutput"], () => require("./getBackupPlan"));
@@ -102,8 +156,14 @@ utilities.lazyLoad(exports, ["getRestorePlanRestoreIamPolicy","getRestorePlanRes
 utilities.lazyLoad(exports, ["getRestorePlanRestoreVolumeRestoreIamPolicy","getRestorePlanRestoreVolumeRestoreIamPolicyOutput"], () => require("./getRestorePlanRestoreVolumeRestoreIamPolicy"));
 utilities.lazyLoad(exports, ["Restore"], () => require("./restore"));
 utilities.lazyLoad(exports, ["RestorePlan"], () => require("./restorePlan"));
+utilities.lazyLoad(exports, ["RestorePlanIamBinding"], () => require("./restorePlanIamBinding"));
+utilities.lazyLoad(exports, ["RestorePlanIamMember"], () => require("./restorePlanIamMember"));
 utilities.lazyLoad(exports, ["RestorePlanIamPolicy"], () => require("./restorePlanIamPolicy"));
+utilities.lazyLoad(exports, ["RestorePlanRestoreIamBinding"], () => require("./restorePlanRestoreIamBinding"));
+utilities.lazyLoad(exports, ["RestorePlanRestoreIamMember"], () => require("./restorePlanRestoreIamMember"));
 utilities.lazyLoad(exports, ["RestorePlanRestoreIamPolicy"], () => require("./restorePlanRestoreIamPolicy"));
+utilities.lazyLoad(exports, ["RestorePlanRestoreVolumeRestoreIamBinding"], () => require("./restorePlanRestoreVolumeRestoreIamBinding"));
+utilities.lazyLoad(exports, ["RestorePlanRestoreVolumeRestoreIamMember"], () => require("./restorePlanRestoreVolumeRestoreIamMember"));
 utilities.lazyLoad(exports, ["RestorePlanRestoreVolumeRestoreIamPolicy"], () => require("./restorePlanRestoreVolumeRestoreIamPolicy"));
 
 // Export enums:
@@ -117,20 +177,44 @@ const _module = {
                 return new Backup(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:BackupPlan":
                 return new BackupPlan(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanBackupIamBinding":
+                return new BackupPlanBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanBackupIamMember":
+                return new BackupPlanBackupIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:BackupPlanBackupIamPolicy":
                 return new BackupPlanBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamBinding":
+                return new BackupPlanBackupVolumeBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamMember":
+                return new BackupPlanBackupVolumeBackupIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamPolicy":
                 return new BackupPlanBackupVolumeBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanIamBinding":
+                return new BackupPlanIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:BackupPlanIamMember":
+                return new BackupPlanIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:BackupPlanIamPolicy":
                 return new BackupPlanIamPolicy(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:Restore":
                 return new Restore(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:RestorePlan":
                 return new RestorePlan(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanIamBinding":
+                return new RestorePlanIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanIamMember":
+                return new RestorePlanIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:RestorePlanIamPolicy":
                 return new RestorePlanIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanRestoreIamBinding":
+                return new RestorePlanRestoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanRestoreIamMember":
+                return new RestorePlanRestoreIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:RestorePlanRestoreIamPolicy":
                 return new RestorePlanRestoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamBinding":
+                return new RestorePlanRestoreVolumeRestoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamMember":
+                return new RestorePlanRestoreVolumeRestoreIamMember(name, <any>undefined, { urn })
             case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamPolicy":
                 return new RestorePlanRestoreVolumeRestoreIamPolicy(name, <any>undefined, { urn })
             default:

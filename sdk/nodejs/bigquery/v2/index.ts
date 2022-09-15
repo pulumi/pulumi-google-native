@@ -41,6 +41,14 @@ export { RoutineArgs } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 
+export { RowAccessPolicyIamBindingArgs } from "./rowAccessPolicyIamBinding";
+export type RowAccessPolicyIamBinding = import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding;
+export const RowAccessPolicyIamBinding: typeof import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding = null as any;
+
+export { RowAccessPolicyIamMemberArgs } from "./rowAccessPolicyIamMember";
+export type RowAccessPolicyIamMember = import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember;
+export const RowAccessPolicyIamMember: typeof import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember = null as any;
+
 export { RowAccessPolicyIamPolicyArgs } from "./rowAccessPolicyIamPolicy";
 export type RowAccessPolicyIamPolicy = import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy;
 export const RowAccessPolicyIamPolicy: typeof import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy = null as any;
@@ -48,6 +56,14 @@ export const RowAccessPolicyIamPolicy: typeof import("./rowAccessPolicyIamPolicy
 export { TableArgs } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
+
+export { TableIamBindingArgs } from "./tableIamBinding";
+export type TableIamBinding = import("./tableIamBinding").TableIamBinding;
+export const TableIamBinding: typeof import("./tableIamBinding").TableIamBinding = null as any;
+
+export { TableIamMemberArgs } from "./tableIamMember";
+export type TableIamMember = import("./tableIamMember").TableIamMember;
+export const TableIamMember: typeof import("./tableIamMember").TableIamMember = null as any;
 
 export { TableIamPolicyArgs } from "./tableIamPolicy";
 export type TableIamPolicy = import("./tableIamPolicy").TableIamPolicy;
@@ -62,8 +78,12 @@ utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getT
 utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
+utilities.lazyLoad(exports, ["RowAccessPolicyIamBinding"], () => require("./rowAccessPolicyIamBinding"));
+utilities.lazyLoad(exports, ["RowAccessPolicyIamMember"], () => require("./rowAccessPolicyIamMember"));
 utilities.lazyLoad(exports, ["RowAccessPolicyIamPolicy"], () => require("./rowAccessPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Table"], () => require("./table"));
+utilities.lazyLoad(exports, ["TableIamBinding"], () => require("./tableIamBinding"));
+utilities.lazyLoad(exports, ["TableIamMember"], () => require("./tableIamMember"));
 utilities.lazyLoad(exports, ["TableIamPolicy"], () => require("./tableIamPolicy"));
 
 // Export enums:
@@ -79,10 +99,18 @@ const _module = {
                 return new Job(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:Routine":
                 return new Routine(name, <any>undefined, { urn })
+            case "google-native:bigquery/v2:RowAccessPolicyIamBinding":
+                return new RowAccessPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigquery/v2:RowAccessPolicyIamMember":
+                return new RowAccessPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:RowAccessPolicyIamPolicy":
                 return new RowAccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:Table":
                 return new Table(name, <any>undefined, { urn })
+            case "google-native:bigquery/v2:TableIamBinding":
+                return new TableIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigquery/v2:TableIamMember":
+                return new TableIamMember(name, <any>undefined, { urn })
             case "google-native:bigquery/v2:TableIamPolicy":
                 return new TableIamPolicy(name, <any>undefined, { urn })
             default:

@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Change{}
 	case "google-native:dns/v1:ManagedZone":
 		r = &ManagedZone{}
+	case "google-native:dns/v1:ManagedZoneIamBinding":
+		r = &ManagedZoneIamBinding{}
+	case "google-native:dns/v1:ManagedZoneIamMember":
+		r = &ManagedZoneIamMember{}
 	case "google-native:dns/v1:ManagedZoneIamPolicy":
 		r = &ManagedZoneIamPolicy{}
 	case "google-native:dns/v1:Policy":

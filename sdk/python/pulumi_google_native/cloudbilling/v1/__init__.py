@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .billing_account import *
+from .billing_account_iam_binding import *
+from .billing_account_iam_member import *
 from .billing_account_iam_policy import *
 from .get_billing_account import *
 from .get_billing_account_iam_policy import *

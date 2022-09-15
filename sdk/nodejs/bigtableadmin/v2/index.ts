@@ -53,13 +53,37 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceClusterBackupIamBindingArgs } from "./instanceClusterBackupIamBinding";
+export type InstanceClusterBackupIamBinding = import("./instanceClusterBackupIamBinding").InstanceClusterBackupIamBinding;
+export const InstanceClusterBackupIamBinding: typeof import("./instanceClusterBackupIamBinding").InstanceClusterBackupIamBinding = null as any;
+
+export { InstanceClusterBackupIamMemberArgs } from "./instanceClusterBackupIamMember";
+export type InstanceClusterBackupIamMember = import("./instanceClusterBackupIamMember").InstanceClusterBackupIamMember;
+export const InstanceClusterBackupIamMember: typeof import("./instanceClusterBackupIamMember").InstanceClusterBackupIamMember = null as any;
+
 export { InstanceClusterBackupIamPolicyArgs } from "./instanceClusterBackupIamPolicy";
 export type InstanceClusterBackupIamPolicy = import("./instanceClusterBackupIamPolicy").InstanceClusterBackupIamPolicy;
 export const InstanceClusterBackupIamPolicy: typeof import("./instanceClusterBackupIamPolicy").InstanceClusterBackupIamPolicy = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { InstanceTableIamBindingArgs } from "./instanceTableIamBinding";
+export type InstanceTableIamBinding = import("./instanceTableIamBinding").InstanceTableIamBinding;
+export const InstanceTableIamBinding: typeof import("./instanceTableIamBinding").InstanceTableIamBinding = null as any;
+
+export { InstanceTableIamMemberArgs } from "./instanceTableIamMember";
+export type InstanceTableIamMember = import("./instanceTableIamMember").InstanceTableIamMember;
+export const InstanceTableIamMember: typeof import("./instanceTableIamMember").InstanceTableIamMember = null as any;
 
 export { InstanceTableIamPolicyArgs } from "./instanceTableIamPolicy";
 export type InstanceTableIamPolicy = import("./instanceTableIamPolicy").InstanceTableIamPolicy;
@@ -81,8 +105,14 @@ utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"
 utilities.lazyLoad(exports, ["getInstanceTableIamPolicy","getInstanceTableIamPolicyOutput"], () => require("./getInstanceTableIamPolicy"));
 utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceClusterBackupIamBinding"], () => require("./instanceClusterBackupIamBinding"));
+utilities.lazyLoad(exports, ["InstanceClusterBackupIamMember"], () => require("./instanceClusterBackupIamMember"));
 utilities.lazyLoad(exports, ["InstanceClusterBackupIamPolicy"], () => require("./instanceClusterBackupIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceTableIamBinding"], () => require("./instanceTableIamBinding"));
+utilities.lazyLoad(exports, ["InstanceTableIamMember"], () => require("./instanceTableIamMember"));
 utilities.lazyLoad(exports, ["InstanceTableIamPolicy"], () => require("./instanceTableIamPolicy"));
 utilities.lazyLoad(exports, ["Table"], () => require("./table"));
 
@@ -101,10 +131,22 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceClusterBackupIamBinding":
+                return new InstanceClusterBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceClusterBackupIamMember":
+                return new InstanceClusterBackupIamMember(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
                 return new InstanceClusterBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceTableIamBinding":
+                return new InstanceTableIamBinding(name, <any>undefined, { urn })
+            case "google-native:bigtableadmin/v2:InstanceTableIamMember":
+                return new InstanceTableIamMember(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:InstanceTableIamPolicy":
                 return new InstanceTableIamPolicy(name, <any>undefined, { urn })
             case "google-native:bigtableadmin/v2:Table":

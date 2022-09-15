@@ -9,9 +9,25 @@ export { ApiArgs } from "./api";
 export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
 
+export { ApiConfigIamBindingArgs } from "./apiConfigIamBinding";
+export type ApiConfigIamBinding = import("./apiConfigIamBinding").ApiConfigIamBinding;
+export const ApiConfigIamBinding: typeof import("./apiConfigIamBinding").ApiConfigIamBinding = null as any;
+
+export { ApiConfigIamMemberArgs } from "./apiConfigIamMember";
+export type ApiConfigIamMember = import("./apiConfigIamMember").ApiConfigIamMember;
+export const ApiConfigIamMember: typeof import("./apiConfigIamMember").ApiConfigIamMember = null as any;
+
 export { ApiConfigIamPolicyArgs } from "./apiConfigIamPolicy";
 export type ApiConfigIamPolicy = import("./apiConfigIamPolicy").ApiConfigIamPolicy;
 export const ApiConfigIamPolicy: typeof import("./apiConfigIamPolicy").ApiConfigIamPolicy = null as any;
+
+export { ApiIamBindingArgs } from "./apiIamBinding";
+export type ApiIamBinding = import("./apiIamBinding").ApiIamBinding;
+export const ApiIamBinding: typeof import("./apiIamBinding").ApiIamBinding = null as any;
+
+export { ApiIamMemberArgs } from "./apiIamMember";
+export type ApiIamMember = import("./apiIamMember").ApiIamMember;
+export const ApiIamMember: typeof import("./apiIamMember").ApiIamMember = null as any;
 
 export { ApiIamPolicyArgs } from "./apiIamPolicy";
 export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
@@ -24,6 +40,14 @@ export const Config: typeof import("./config").Config = null as any;
 export { GatewayArgs } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
+
+export { GatewayIamBindingArgs } from "./gatewayIamBinding";
+export type GatewayIamBinding = import("./gatewayIamBinding").GatewayIamBinding;
+export const GatewayIamBinding: typeof import("./gatewayIamBinding").GatewayIamBinding = null as any;
+
+export { GatewayIamMemberArgs } from "./gatewayIamMember";
+export type GatewayIamMember = import("./gatewayIamMember").GatewayIamMember;
+export const GatewayIamMember: typeof import("./gatewayIamMember").GatewayIamMember = null as any;
 
 export { GatewayIamPolicyArgs } from "./gatewayIamPolicy";
 export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
@@ -54,10 +78,16 @@ export const getGatewayIamPolicy: typeof import("./getGatewayIamPolicy").getGate
 export const getGatewayIamPolicyOutput: typeof import("./getGatewayIamPolicy").getGatewayIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiConfigIamBinding"], () => require("./apiConfigIamBinding"));
+utilities.lazyLoad(exports, ["ApiConfigIamMember"], () => require("./apiConfigIamMember"));
 utilities.lazyLoad(exports, ["ApiConfigIamPolicy"], () => require("./apiConfigIamPolicy"));
+utilities.lazyLoad(exports, ["ApiIamBinding"], () => require("./apiIamBinding"));
+utilities.lazyLoad(exports, ["ApiIamMember"], () => require("./apiIamMember"));
 utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
 utilities.lazyLoad(exports, ["Config"], () => require("./config"));
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
+utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
 utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
 utilities.lazyLoad(exports, ["getApi","getApiOutput"], () => require("./getApi"));
 utilities.lazyLoad(exports, ["getApiConfigIamPolicy","getApiConfigIamPolicyOutput"], () => require("./getApiConfigIamPolicy"));
@@ -75,14 +105,26 @@ const _module = {
         switch (type) {
             case "google-native:apigateway/v1beta:Api":
                 return new Api(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:ApiConfigIamBinding":
+                return new ApiConfigIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:ApiConfigIamMember":
+                return new ApiConfigIamMember(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:ApiConfigIamPolicy":
                 return new ApiConfigIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:ApiIamBinding":
+                return new ApiIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:ApiIamMember":
+                return new ApiIamMember(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:ApiIamPolicy":
                 return new ApiIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:Config":
                 return new Config(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:GatewayIamBinding":
+                return new GatewayIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigateway/v1beta:GatewayIamMember":
+                return new GatewayIamMember(name, <any>undefined, { urn })
             case "google-native:apigateway/v1beta:GatewayIamPolicy":
                 return new GatewayIamPolicy(name, <any>undefined, { urn })
             default:

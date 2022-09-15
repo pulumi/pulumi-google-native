@@ -27,16 +27,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CryptoKeyVersion{}
 	case "google-native:cloudkms/v1:EkmConnection":
 		r = &EkmConnection{}
+	case "google-native:cloudkms/v1:EkmConnectionIamBinding":
+		r = &EkmConnectionIamBinding{}
+	case "google-native:cloudkms/v1:EkmConnectionIamMember":
+		r = &EkmConnectionIamMember{}
 	case "google-native:cloudkms/v1:EkmConnectionIamPolicy":
 		r = &EkmConnectionIamPolicy{}
 	case "google-native:cloudkms/v1:ImportJob":
 		r = &ImportJob{}
 	case "google-native:cloudkms/v1:KeyRing":
 		r = &KeyRing{}
+	case "google-native:cloudkms/v1:KeyRingCryptoKeyIamBinding":
+		r = &KeyRingCryptoKeyIamBinding{}
+	case "google-native:cloudkms/v1:KeyRingCryptoKeyIamMember":
+		r = &KeyRingCryptoKeyIamMember{}
 	case "google-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
 		r = &KeyRingCryptoKeyIamPolicy{}
+	case "google-native:cloudkms/v1:KeyRingIamBinding":
+		r = &KeyRingIamBinding{}
+	case "google-native:cloudkms/v1:KeyRingIamMember":
+		r = &KeyRingIamMember{}
 	case "google-native:cloudkms/v1:KeyRingIamPolicy":
 		r = &KeyRingIamPolicy{}
+	case "google-native:cloudkms/v1:KeyRingImportJobIamBinding":
+		r = &KeyRingImportJobIamBinding{}
+	case "google-native:cloudkms/v1:KeyRingImportJobIamMember":
+		r = &KeyRingImportJobIamMember{}
 	case "google-native:cloudkms/v1:KeyRingImportJobIamPolicy":
 		r = &KeyRingImportJobIamPolicy{}
 	default:

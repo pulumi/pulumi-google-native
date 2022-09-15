@@ -249,6 +249,14 @@ export { OrganizationArgs } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 
+export { OrganizationEnvironmentIamBindingArgs } from "./organizationEnvironmentIamBinding";
+export type OrganizationEnvironmentIamBinding = import("./organizationEnvironmentIamBinding").OrganizationEnvironmentIamBinding;
+export const OrganizationEnvironmentIamBinding: typeof import("./organizationEnvironmentIamBinding").OrganizationEnvironmentIamBinding = null as any;
+
+export { OrganizationEnvironmentIamMemberArgs } from "./organizationEnvironmentIamMember";
+export type OrganizationEnvironmentIamMember = import("./organizationEnvironmentIamMember").OrganizationEnvironmentIamMember;
+export const OrganizationEnvironmentIamMember: typeof import("./organizationEnvironmentIamMember").OrganizationEnvironmentIamMember = null as any;
+
 export { OrganizationEnvironmentIamPolicyArgs } from "./organizationEnvironmentIamPolicy";
 export type OrganizationEnvironmentIamPolicy = import("./organizationEnvironmentIamPolicy").OrganizationEnvironmentIamPolicy;
 export const OrganizationEnvironmentIamPolicy: typeof import("./organizationEnvironmentIamPolicy").OrganizationEnvironmentIamPolicy = null as any;
@@ -354,6 +362,8 @@ utilities.lazyLoad(exports, ["InstanceAttachment"], () => require("./instanceAtt
 utilities.lazyLoad(exports, ["Keystore"], () => require("./keystore"));
 utilities.lazyLoad(exports, ["NatAddress"], () => require("./natAddress"));
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+utilities.lazyLoad(exports, ["OrganizationEnvironmentIamBinding"], () => require("./organizationEnvironmentIamBinding"));
+utilities.lazyLoad(exports, ["OrganizationEnvironmentIamMember"], () => require("./organizationEnvironmentIamMember"));
 utilities.lazyLoad(exports, ["OrganizationEnvironmentIamPolicy"], () => require("./organizationEnvironmentIamPolicy"));
 utilities.lazyLoad(exports, ["Override"], () => require("./override"));
 utilities.lazyLoad(exports, ["Query"], () => require("./query"));
@@ -421,6 +431,10 @@ const _module = {
                 return new NatAddress(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:OrganizationEnvironmentIamBinding":
+                return new OrganizationEnvironmentIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:OrganizationEnvironmentIamMember":
+                return new OrganizationEnvironmentIamMember(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationEnvironmentIamPolicy":
                 return new OrganizationEnvironmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigee/v1:Override":

@@ -12,7 +12,11 @@ from .get_registry import *
 from .get_registry_group_iam_policy import *
 from .get_registry_iam_policy import *
 from .registry import *
+from .registry_group_iam_binding import *
+from .registry_group_iam_member import *
 from .registry_group_iam_policy import *
+from .registry_iam_binding import *
+from .registry_iam_member import *
 from .registry_iam_policy import *
 from ._inputs import *
 from . import outputs

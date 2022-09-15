@@ -35,16 +35,40 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConsentStore{}
 	case "google-native:healthcare/v1beta1:Dataset":
 		r = &Dataset{}
+	case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamBinding":
+		r = &DatasetAnnotationStoreIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamMember":
+		r = &DatasetAnnotationStoreIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
 		r = &DatasetAnnotationStoreIamPolicy{}
+	case "google-native:healthcare/v1beta1:DatasetConsentStoreIamBinding":
+		r = &DatasetConsentStoreIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetConsentStoreIamMember":
+		r = &DatasetConsentStoreIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
 		r = &DatasetConsentStoreIamPolicy{}
+	case "google-native:healthcare/v1beta1:DatasetDicomStoreIamBinding":
+		r = &DatasetDicomStoreIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetDicomStoreIamMember":
+		r = &DatasetDicomStoreIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
 		r = &DatasetDicomStoreIamPolicy{}
+	case "google-native:healthcare/v1beta1:DatasetFhirStoreIamBinding":
+		r = &DatasetFhirStoreIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetFhirStoreIamMember":
+		r = &DatasetFhirStoreIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
 		r = &DatasetFhirStoreIamPolicy{}
+	case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamBinding":
+		r = &DatasetHl7V2StoreIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamMember":
+		r = &DatasetHl7V2StoreIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
 		r = &DatasetHl7V2StoreIamPolicy{}
+	case "google-native:healthcare/v1beta1:DatasetIamBinding":
+		r = &DatasetIamBinding{}
+	case "google-native:healthcare/v1beta1:DatasetIamMember":
+		r = &DatasetIamMember{}
 	case "google-native:healthcare/v1beta1:DatasetIamPolicy":
 		r = &DatasetIamPolicy{}
 	case "google-native:healthcare/v1beta1:DicomStore":

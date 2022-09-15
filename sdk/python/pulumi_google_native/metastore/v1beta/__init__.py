@@ -8,6 +8,8 @@ import typing
 from ._enums import *
 from .backup import *
 from .federation import *
+from .federation_iam_binding import *
+from .federation_iam_member import *
 from .federation_iam_policy import *
 from .get_backup import *
 from .get_federation import *
@@ -20,9 +22,17 @@ from .get_service_database_table_iam_policy import *
 from .get_service_iam_policy import *
 from .metadata_import import *
 from .service import *
+from .service_backup_iam_binding import *
+from .service_backup_iam_member import *
 from .service_backup_iam_policy import *
+from .service_database_iam_binding import *
+from .service_database_iam_member import *
 from .service_database_iam_policy import *
+from .service_database_table_iam_binding import *
+from .service_database_table_iam_member import *
 from .service_database_table_iam_policy import *
+from .service_iam_binding import *
+from .service_iam_member import *
 from .service_iam_policy import *
 from ._inputs import *
 from . import outputs

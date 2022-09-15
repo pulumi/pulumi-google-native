@@ -25,12 +25,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Channel{}
 	case "google-native:eventarc/v1:ChannelConnection":
 		r = &ChannelConnection{}
+	case "google-native:eventarc/v1:ChannelConnectionIamBinding":
+		r = &ChannelConnectionIamBinding{}
+	case "google-native:eventarc/v1:ChannelConnectionIamMember":
+		r = &ChannelConnectionIamMember{}
 	case "google-native:eventarc/v1:ChannelConnectionIamPolicy":
 		r = &ChannelConnectionIamPolicy{}
+	case "google-native:eventarc/v1:ChannelIamBinding":
+		r = &ChannelIamBinding{}
+	case "google-native:eventarc/v1:ChannelIamMember":
+		r = &ChannelIamMember{}
 	case "google-native:eventarc/v1:ChannelIamPolicy":
 		r = &ChannelIamPolicy{}
 	case "google-native:eventarc/v1:Trigger":
 		r = &Trigger{}
+	case "google-native:eventarc/v1:TriggerIamBinding":
+		r = &TriggerIamBinding{}
+	case "google-native:eventarc/v1:TriggerIamMember":
+		r = &TriggerIamMember{}
 	case "google-native:eventarc/v1:TriggerIamPolicy":
 		r = &TriggerIamPolicy{}
 	default:

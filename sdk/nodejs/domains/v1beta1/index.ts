@@ -17,6 +17,14 @@ export { RegistrationArgs } from "./registration";
 export type Registration = import("./registration").Registration;
 export const Registration: typeof import("./registration").Registration = null as any;
 
+export { RegistrationIamBindingArgs } from "./registrationIamBinding";
+export type RegistrationIamBinding = import("./registrationIamBinding").RegistrationIamBinding;
+export const RegistrationIamBinding: typeof import("./registrationIamBinding").RegistrationIamBinding = null as any;
+
+export { RegistrationIamMemberArgs } from "./registrationIamMember";
+export type RegistrationIamMember = import("./registrationIamMember").RegistrationIamMember;
+export const RegistrationIamMember: typeof import("./registrationIamMember").RegistrationIamMember = null as any;
+
 export { RegistrationIamPolicyArgs } from "./registrationIamPolicy";
 export type RegistrationIamPolicy = import("./registrationIamPolicy").RegistrationIamPolicy;
 export const RegistrationIamPolicy: typeof import("./registrationIamPolicy").RegistrationIamPolicy = null as any;
@@ -24,6 +32,8 @@ export const RegistrationIamPolicy: typeof import("./registrationIamPolicy").Reg
 utilities.lazyLoad(exports, ["getRegistration","getRegistrationOutput"], () => require("./getRegistration"));
 utilities.lazyLoad(exports, ["getRegistrationIamPolicy","getRegistrationIamPolicyOutput"], () => require("./getRegistrationIamPolicy"));
 utilities.lazyLoad(exports, ["Registration"], () => require("./registration"));
+utilities.lazyLoad(exports, ["RegistrationIamBinding"], () => require("./registrationIamBinding"));
+utilities.lazyLoad(exports, ["RegistrationIamMember"], () => require("./registrationIamMember"));
 utilities.lazyLoad(exports, ["RegistrationIamPolicy"], () => require("./registrationIamPolicy"));
 
 // Export enums:
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:domains/v1beta1:Registration":
                 return new Registration(name, <any>undefined, { urn })
+            case "google-native:domains/v1beta1:RegistrationIamBinding":
+                return new RegistrationIamBinding(name, <any>undefined, { urn })
+            case "google-native:domains/v1beta1:RegistrationIamMember":
+                return new RegistrationIamMember(name, <any>undefined, { urn })
             case "google-native:domains/v1beta1:RegistrationIamPolicy":
                 return new RegistrationIamPolicy(name, <any>undefined, { urn })
             default:

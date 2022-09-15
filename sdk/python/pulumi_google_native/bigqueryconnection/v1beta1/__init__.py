@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .connection import *
+from .connection_iam_binding import *
+from .connection_iam_member import *
 from .connection_iam_policy import *
 from .get_connection import *
 from .get_connection_iam_policy import *

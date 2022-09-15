@@ -33,18 +33,46 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Environment{}
 	case "google-native:dataplex/v1:Lake":
 		r = &Lake{}
+	case "google-native:dataplex/v1:LakeAssetIamBinding":
+		r = &LakeAssetIamBinding{}
+	case "google-native:dataplex/v1:LakeAssetIamMember":
+		r = &LakeAssetIamMember{}
 	case "google-native:dataplex/v1:LakeAssetIamPolicy":
 		r = &LakeAssetIamPolicy{}
+	case "google-native:dataplex/v1:LakeContentIamBinding":
+		r = &LakeContentIamBinding{}
+	case "google-native:dataplex/v1:LakeContentIamMember":
+		r = &LakeContentIamMember{}
 	case "google-native:dataplex/v1:LakeContentIamPolicy":
 		r = &LakeContentIamPolicy{}
+	case "google-native:dataplex/v1:LakeContentitemIamBinding":
+		r = &LakeContentitemIamBinding{}
+	case "google-native:dataplex/v1:LakeContentitemIamMember":
+		r = &LakeContentitemIamMember{}
 	case "google-native:dataplex/v1:LakeContentitemIamPolicy":
 		r = &LakeContentitemIamPolicy{}
+	case "google-native:dataplex/v1:LakeEnvironmentIamBinding":
+		r = &LakeEnvironmentIamBinding{}
+	case "google-native:dataplex/v1:LakeEnvironmentIamMember":
+		r = &LakeEnvironmentIamMember{}
 	case "google-native:dataplex/v1:LakeEnvironmentIamPolicy":
 		r = &LakeEnvironmentIamPolicy{}
+	case "google-native:dataplex/v1:LakeIamBinding":
+		r = &LakeIamBinding{}
+	case "google-native:dataplex/v1:LakeIamMember":
+		r = &LakeIamMember{}
 	case "google-native:dataplex/v1:LakeIamPolicy":
 		r = &LakeIamPolicy{}
+	case "google-native:dataplex/v1:LakeTaskIamBinding":
+		r = &LakeTaskIamBinding{}
+	case "google-native:dataplex/v1:LakeTaskIamMember":
+		r = &LakeTaskIamMember{}
 	case "google-native:dataplex/v1:LakeTaskIamPolicy":
 		r = &LakeTaskIamPolicy{}
+	case "google-native:dataplex/v1:LakeZoneIamBinding":
+		r = &LakeZoneIamBinding{}
+	case "google-native:dataplex/v1:LakeZoneIamMember":
+		r = &LakeZoneIamMember{}
 	case "google-native:dataplex/v1:LakeZoneIamPolicy":
 		r = &LakeZoneIamPolicy{}
 	case "google-native:dataplex/v1:Partition":

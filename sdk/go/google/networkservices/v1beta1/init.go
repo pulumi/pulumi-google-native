@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:networkservices/v1beta1:EndpointPolicy":
 		r = &EndpointPolicy{}
+	case "google-native:networkservices/v1beta1:EndpointPolicyIamBinding":
+		r = &EndpointPolicyIamBinding{}
+	case "google-native:networkservices/v1beta1:EndpointPolicyIamMember":
+		r = &EndpointPolicyIamMember{}
 	case "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy":
 		r = &EndpointPolicyIamPolicy{}
 	case "google-native:networkservices/v1beta1:Gateway":
 		r = &Gateway{}
+	case "google-native:networkservices/v1beta1:GatewayIamBinding":
+		r = &GatewayIamBinding{}
+	case "google-native:networkservices/v1beta1:GatewayIamMember":
+		r = &GatewayIamMember{}
 	case "google-native:networkservices/v1beta1:GatewayIamPolicy":
 		r = &GatewayIamPolicy{}
 	case "google-native:networkservices/v1beta1:GrpcRoute":
@@ -35,10 +43,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HttpRoute{}
 	case "google-native:networkservices/v1beta1:Mesh":
 		r = &Mesh{}
+	case "google-native:networkservices/v1beta1:MeshIamBinding":
+		r = &MeshIamBinding{}
+	case "google-native:networkservices/v1beta1:MeshIamMember":
+		r = &MeshIamMember{}
 	case "google-native:networkservices/v1beta1:MeshIamPolicy":
 		r = &MeshIamPolicy{}
 	case "google-native:networkservices/v1beta1:ServiceBinding":
 		r = &ServiceBinding{}
+	case "google-native:networkservices/v1beta1:ServiceBindingIamBinding":
+		r = &ServiceBindingIamBinding{}
+	case "google-native:networkservices/v1beta1:ServiceBindingIamMember":
+		r = &ServiceBindingIamMember{}
 	case "google-native:networkservices/v1beta1:ServiceBindingIamPolicy":
 		r = &ServiceBindingIamPolicy{}
 	case "google-native:networkservices/v1beta1:TcpRoute":

@@ -41,17 +41,49 @@ export { NamespaceArgs } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 
+export { NamespaceIamBindingArgs } from "./namespaceIamBinding";
+export type NamespaceIamBinding = import("./namespaceIamBinding").NamespaceIamBinding;
+export const NamespaceIamBinding: typeof import("./namespaceIamBinding").NamespaceIamBinding = null as any;
+
+export { NamespaceIamMemberArgs } from "./namespaceIamMember";
+export type NamespaceIamMember = import("./namespaceIamMember").NamespaceIamMember;
+export const NamespaceIamMember: typeof import("./namespaceIamMember").NamespaceIamMember = null as any;
+
 export { NamespaceIamPolicyArgs } from "./namespaceIamPolicy";
 export type NamespaceIamPolicy = import("./namespaceIamPolicy").NamespaceIamPolicy;
 export const NamespaceIamPolicy: typeof import("./namespaceIamPolicy").NamespaceIamPolicy = null as any;
+
+export { NamespaceServiceIamBindingArgs } from "./namespaceServiceIamBinding";
+export type NamespaceServiceIamBinding = import("./namespaceServiceIamBinding").NamespaceServiceIamBinding;
+export const NamespaceServiceIamBinding: typeof import("./namespaceServiceIamBinding").NamespaceServiceIamBinding = null as any;
+
+export { NamespaceServiceIamMemberArgs } from "./namespaceServiceIamMember";
+export type NamespaceServiceIamMember = import("./namespaceServiceIamMember").NamespaceServiceIamMember;
+export const NamespaceServiceIamMember: typeof import("./namespaceServiceIamMember").NamespaceServiceIamMember = null as any;
 
 export { NamespaceServiceIamPolicyArgs } from "./namespaceServiceIamPolicy";
 export type NamespaceServiceIamPolicy = import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy;
 export const NamespaceServiceIamPolicy: typeof import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy = null as any;
 
+export { NamespaceServiceWorkloadIamBindingArgs } from "./namespaceServiceWorkloadIamBinding";
+export type NamespaceServiceWorkloadIamBinding = import("./namespaceServiceWorkloadIamBinding").NamespaceServiceWorkloadIamBinding;
+export const NamespaceServiceWorkloadIamBinding: typeof import("./namespaceServiceWorkloadIamBinding").NamespaceServiceWorkloadIamBinding = null as any;
+
+export { NamespaceServiceWorkloadIamMemberArgs } from "./namespaceServiceWorkloadIamMember";
+export type NamespaceServiceWorkloadIamMember = import("./namespaceServiceWorkloadIamMember").NamespaceServiceWorkloadIamMember;
+export const NamespaceServiceWorkloadIamMember: typeof import("./namespaceServiceWorkloadIamMember").NamespaceServiceWorkloadIamMember = null as any;
+
 export { NamespaceServiceWorkloadIamPolicyArgs } from "./namespaceServiceWorkloadIamPolicy";
 export type NamespaceServiceWorkloadIamPolicy = import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy;
 export const NamespaceServiceWorkloadIamPolicy: typeof import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy = null as any;
+
+export { RegistrationPolicyIamBindingArgs } from "./registrationPolicyIamBinding";
+export type RegistrationPolicyIamBinding = import("./registrationPolicyIamBinding").RegistrationPolicyIamBinding;
+export const RegistrationPolicyIamBinding: typeof import("./registrationPolicyIamBinding").RegistrationPolicyIamBinding = null as any;
+
+export { RegistrationPolicyIamMemberArgs } from "./registrationPolicyIamMember";
+export type RegistrationPolicyIamMember = import("./registrationPolicyIamMember").RegistrationPolicyIamMember;
+export const RegistrationPolicyIamMember: typeof import("./registrationPolicyIamMember").RegistrationPolicyIamMember = null as any;
 
 export { RegistrationPolicyIamPolicyArgs } from "./registrationPolicyIamPolicy";
 export type RegistrationPolicyIamPolicy = import("./registrationPolicyIamPolicy").RegistrationPolicyIamPolicy;
@@ -70,9 +102,17 @@ utilities.lazyLoad(exports, ["getNamespaceServiceWorkloadIamPolicy","getNamespac
 utilities.lazyLoad(exports, ["getRegistrationPolicyIamPolicy","getRegistrationPolicyIamPolicyOutput"], () => require("./getRegistrationPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+utilities.lazyLoad(exports, ["NamespaceIamBinding"], () => require("./namespaceIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceIamMember"], () => require("./namespaceIamMember"));
 utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
+utilities.lazyLoad(exports, ["NamespaceServiceIamBinding"], () => require("./namespaceServiceIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceServiceIamMember"], () => require("./namespaceServiceIamMember"));
 utilities.lazyLoad(exports, ["NamespaceServiceIamPolicy"], () => require("./namespaceServiceIamPolicy"));
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamBinding"], () => require("./namespaceServiceWorkloadIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamMember"], () => require("./namespaceServiceWorkloadIamMember"));
 utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamPolicy"], () => require("./namespaceServiceWorkloadIamPolicy"));
+utilities.lazyLoad(exports, ["RegistrationPolicyIamBinding"], () => require("./registrationPolicyIamBinding"));
+utilities.lazyLoad(exports, ["RegistrationPolicyIamMember"], () => require("./registrationPolicyIamMember"));
 utilities.lazyLoad(exports, ["RegistrationPolicyIamPolicy"], () => require("./registrationPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
@@ -84,12 +124,28 @@ const _module = {
                 return new Endpoint(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceIamBinding":
+                return new NamespaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceIamMember":
+                return new NamespaceIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:NamespaceIamPolicy":
                 return new NamespaceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceServiceIamBinding":
+                return new NamespaceServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceServiceIamMember":
+                return new NamespaceServiceIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamBinding":
+                return new NamespaceServiceWorkloadIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamMember":
+                return new NamespaceServiceWorkloadIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy":
                 return new NamespaceServiceWorkloadIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamBinding":
+                return new RegistrationPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamMember":
+                return new RegistrationPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy":
                 return new RegistrationPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:Service":

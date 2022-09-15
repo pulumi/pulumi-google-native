@@ -13,6 +13,14 @@ export { BucketAccessControlArgs } from "./bucketAccessControl";
 export type BucketAccessControl = import("./bucketAccessControl").BucketAccessControl;
 export const BucketAccessControl: typeof import("./bucketAccessControl").BucketAccessControl = null as any;
 
+export { BucketIamBindingArgs } from "./bucketIamBinding";
+export type BucketIamBinding = import("./bucketIamBinding").BucketIamBinding;
+export const BucketIamBinding: typeof import("./bucketIamBinding").BucketIamBinding = null as any;
+
+export { BucketIamMemberArgs } from "./bucketIamMember";
+export type BucketIamMember = import("./bucketIamMember").BucketIamMember;
+export const BucketIamMember: typeof import("./bucketIamMember").BucketIamMember = null as any;
+
 export { BucketIamPolicyArgs } from "./bucketIamPolicy";
 export type BucketIamPolicy = import("./bucketIamPolicy").BucketIamPolicy;
 export const BucketIamPolicy: typeof import("./bucketIamPolicy").BucketIamPolicy = null as any;
@@ -73,12 +81,22 @@ export { ObjectAccessControlArgs } from "./objectAccessControl";
 export type ObjectAccessControl = import("./objectAccessControl").ObjectAccessControl;
 export const ObjectAccessControl: typeof import("./objectAccessControl").ObjectAccessControl = null as any;
 
+export { ObjectIamBindingArgs } from "./objectIamBinding";
+export type ObjectIamBinding = import("./objectIamBinding").ObjectIamBinding;
+export const ObjectIamBinding: typeof import("./objectIamBinding").ObjectIamBinding = null as any;
+
+export { ObjectIamMemberArgs } from "./objectIamMember";
+export type ObjectIamMember = import("./objectIamMember").ObjectIamMember;
+export const ObjectIamMember: typeof import("./objectIamMember").ObjectIamMember = null as any;
+
 export { ObjectIamPolicyArgs } from "./objectIamPolicy";
 export type ObjectIamPolicy = import("./objectIamPolicy").ObjectIamPolicy;
 export const ObjectIamPolicy: typeof import("./objectIamPolicy").ObjectIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
 utilities.lazyLoad(exports, ["BucketAccessControl"], () => require("./bucketAccessControl"));
+utilities.lazyLoad(exports, ["BucketIamBinding"], () => require("./bucketIamBinding"));
+utilities.lazyLoad(exports, ["BucketIamMember"], () => require("./bucketIamMember"));
 utilities.lazyLoad(exports, ["BucketIamPolicy"], () => require("./bucketIamPolicy"));
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 utilities.lazyLoad(exports, ["DefaultObjectAccessControl"], () => require("./defaultObjectAccessControl"));
@@ -94,6 +112,8 @@ utilities.lazyLoad(exports, ["getObjectIamPolicy","getObjectIamPolicyOutput"], (
 utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
 utilities.lazyLoad(exports, ["Notification"], () => require("./notification"));
 utilities.lazyLoad(exports, ["ObjectAccessControl"], () => require("./objectAccessControl"));
+utilities.lazyLoad(exports, ["ObjectIamBinding"], () => require("./objectIamBinding"));
+utilities.lazyLoad(exports, ["ObjectIamMember"], () => require("./objectIamMember"));
 utilities.lazyLoad(exports, ["ObjectIamPolicy"], () => require("./objectIamPolicy"));
 
 const _module = {
@@ -104,6 +124,10 @@ const _module = {
                 return new Bucket(name, <any>undefined, { urn })
             case "google-native:storage/v1:BucketAccessControl":
                 return new BucketAccessControl(name, <any>undefined, { urn })
+            case "google-native:storage/v1:BucketIamBinding":
+                return new BucketIamBinding(name, <any>undefined, { urn })
+            case "google-native:storage/v1:BucketIamMember":
+                return new BucketIamMember(name, <any>undefined, { urn })
             case "google-native:storage/v1:BucketIamPolicy":
                 return new BucketIamPolicy(name, <any>undefined, { urn })
             case "google-native:storage/v1:BucketObject":
@@ -116,6 +140,10 @@ const _module = {
                 return new Notification(name, <any>undefined, { urn })
             case "google-native:storage/v1:ObjectAccessControl":
                 return new ObjectAccessControl(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ObjectIamBinding":
+                return new ObjectIamBinding(name, <any>undefined, { urn })
+            case "google-native:storage/v1:ObjectIamMember":
+                return new ObjectIamMember(name, <any>undefined, { urn })
             case "google-native:storage/v1:ObjectIamPolicy":
                 return new ObjectIamPolicy(name, <any>undefined, { urn })
             default:

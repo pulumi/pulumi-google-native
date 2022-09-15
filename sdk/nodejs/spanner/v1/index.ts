@@ -49,6 +49,14 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceBackupIamBindingArgs } from "./instanceBackupIamBinding";
+export type InstanceBackupIamBinding = import("./instanceBackupIamBinding").InstanceBackupIamBinding;
+export const InstanceBackupIamBinding: typeof import("./instanceBackupIamBinding").InstanceBackupIamBinding = null as any;
+
+export { InstanceBackupIamMemberArgs } from "./instanceBackupIamMember";
+export type InstanceBackupIamMember = import("./instanceBackupIamMember").InstanceBackupIamMember;
+export const InstanceBackupIamMember: typeof import("./instanceBackupIamMember").InstanceBackupIamMember = null as any;
+
 export { InstanceBackupIamPolicyArgs } from "./instanceBackupIamPolicy";
 export type InstanceBackupIamPolicy = import("./instanceBackupIamPolicy").InstanceBackupIamPolicy;
 export const InstanceBackupIamPolicy: typeof import("./instanceBackupIamPolicy").InstanceBackupIamPolicy = null as any;
@@ -57,9 +65,25 @@ export { InstanceConfigArgs } from "./instanceConfig";
 export type InstanceConfig = import("./instanceConfig").InstanceConfig;
 export const InstanceConfig: typeof import("./instanceConfig").InstanceConfig = null as any;
 
+export { InstanceDatabaseIamBindingArgs } from "./instanceDatabaseIamBinding";
+export type InstanceDatabaseIamBinding = import("./instanceDatabaseIamBinding").InstanceDatabaseIamBinding;
+export const InstanceDatabaseIamBinding: typeof import("./instanceDatabaseIamBinding").InstanceDatabaseIamBinding = null as any;
+
+export { InstanceDatabaseIamMemberArgs } from "./instanceDatabaseIamMember";
+export type InstanceDatabaseIamMember = import("./instanceDatabaseIamMember").InstanceDatabaseIamMember;
+export const InstanceDatabaseIamMember: typeof import("./instanceDatabaseIamMember").InstanceDatabaseIamMember = null as any;
+
 export { InstanceDatabaseIamPolicyArgs } from "./instanceDatabaseIamPolicy";
 export type InstanceDatabaseIamPolicy = import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy;
 export const InstanceDatabaseIamPolicy: typeof import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy = null as any;
+
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
 
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
@@ -80,9 +104,15 @@ utilities.lazyLoad(exports, ["getInstanceDatabaseIamPolicy","getInstanceDatabase
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 utilities.lazyLoad(exports, ["getSession","getSessionOutput"], () => require("./getSession"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceBackupIamBinding"], () => require("./instanceBackupIamBinding"));
+utilities.lazyLoad(exports, ["InstanceBackupIamMember"], () => require("./instanceBackupIamMember"));
 utilities.lazyLoad(exports, ["InstanceBackupIamPolicy"], () => require("./instanceBackupIamPolicy"));
 utilities.lazyLoad(exports, ["InstanceConfig"], () => require("./instanceConfig"));
+utilities.lazyLoad(exports, ["InstanceDatabaseIamBinding"], () => require("./instanceDatabaseIamBinding"));
+utilities.lazyLoad(exports, ["InstanceDatabaseIamMember"], () => require("./instanceDatabaseIamMember"));
 utilities.lazyLoad(exports, ["InstanceDatabaseIamPolicy"], () => require("./instanceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 utilities.lazyLoad(exports, ["Session"], () => require("./session"));
 
@@ -99,12 +129,24 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "google-native:spanner/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceBackupIamBinding":
+                return new InstanceBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceBackupIamMember":
+                return new InstanceBackupIamMember(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceBackupIamPolicy":
                 return new InstanceBackupIamPolicy(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceConfig":
                 return new InstanceConfig(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceDatabaseIamBinding":
+                return new InstanceDatabaseIamBinding(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceDatabaseIamMember":
+                return new InstanceDatabaseIamMember(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceDatabaseIamPolicy":
                 return new InstanceDatabaseIamPolicy(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:spanner/v1:Session":

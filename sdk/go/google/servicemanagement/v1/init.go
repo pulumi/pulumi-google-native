@@ -27,8 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Rollout{}
 	case "google-native:servicemanagement/v1:Service":
 		r = &Service{}
+	case "google-native:servicemanagement/v1:ServiceConsumerIamBinding":
+		r = &ServiceConsumerIamBinding{}
+	case "google-native:servicemanagement/v1:ServiceConsumerIamMember":
+		r = &ServiceConsumerIamMember{}
 	case "google-native:servicemanagement/v1:ServiceConsumerIamPolicy":
 		r = &ServiceConsumerIamPolicy{}
+	case "google-native:servicemanagement/v1:ServiceIamBinding":
+		r = &ServiceIamBinding{}
+	case "google-native:servicemanagement/v1:ServiceIamMember":
+		r = &ServiceIamMember{}
 	case "google-native:servicemanagement/v1:ServiceIamPolicy":
 		r = &ServiceIamPolicy{}
 	default:

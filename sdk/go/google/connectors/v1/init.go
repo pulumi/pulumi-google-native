@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:connectors/v1:Connection":
 		r = &Connection{}
+	case "google-native:connectors/v1:ConnectionIamBinding":
+		r = &ConnectionIamBinding{}
+	case "google-native:connectors/v1:ConnectionIamMember":
+		r = &ConnectionIamMember{}
 	case "google-native:connectors/v1:ConnectionIamPolicy":
 		r = &ConnectionIamPolicy{}
+	case "google-native:connectors/v1:ProviderIamBinding":
+		r = &ProviderIamBinding{}
+	case "google-native:connectors/v1:ProviderIamMember":
+		r = &ProviderIamMember{}
 	case "google-native:connectors/v1:ProviderIamPolicy":
 		r = &ProviderIamPolicy{}
 	default:

@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .autoscaling_policy import *
+from .autoscaling_policy_iam_binding import *
+from .autoscaling_policy_iam_member import *
 from .autoscaling_policy_iam_policy import *
 from .batch import *
 from .cluster import *
@@ -23,12 +25,24 @@ from .get_region_workflow_template_iam_policy import *
 from .get_workflow_template import *
 from .get_workflow_template_iam_policy import *
 from .job import *
+from .region_autoscaling_policy_iam_binding import *
+from .region_autoscaling_policy_iam_member import *
 from .region_autoscaling_policy_iam_policy import *
+from .region_cluster_iam_binding import *
+from .region_cluster_iam_member import *
 from .region_cluster_iam_policy import *
+from .region_job_iam_binding import *
+from .region_job_iam_member import *
 from .region_job_iam_policy import *
+from .region_operation_iam_binding import *
+from .region_operation_iam_member import *
 from .region_operation_iam_policy import *
+from .region_workflow_template_iam_binding import *
+from .region_workflow_template_iam_member import *
 from .region_workflow_template_iam_policy import *
 from .workflow_template import *
+from .workflow_template_iam_binding import *
+from .workflow_template_iam_member import *
 from .workflow_template_iam_policy import *
 from ._inputs import *
 from . import outputs

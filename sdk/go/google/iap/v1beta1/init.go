@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:iap/v1beta1:V1beta1IamBinding":
+		r = &V1beta1IamBinding{}
+	case "google-native:iap/v1beta1:V1beta1IamMember":
+		r = &V1beta1IamMember{}
 	case "google-native:iap/v1beta1:V1beta1IamPolicy":
 		r = &V1beta1IamPolicy{}
 	default:

@@ -11,8 +11,12 @@ from .get_organization_iam_policy import *
 from .get_project import *
 from .get_project_iam_policy import *
 from .lien import *
+from .organization_iam_binding import *
+from .organization_iam_member import *
 from .organization_iam_policy import *
 from .project import *
+from .project_iam_binding import *
+from .project_iam_member import *
 from .project_iam_policy import *
 from ._inputs import *
 from . import outputs

@@ -33,25 +33,73 @@ export { DatasetArgs } from "./dataset";
 export type Dataset = import("./dataset").Dataset;
 export const Dataset: typeof import("./dataset").Dataset = null as any;
 
+export { DatasetAnnotationStoreIamBindingArgs } from "./datasetAnnotationStoreIamBinding";
+export type DatasetAnnotationStoreIamBinding = import("./datasetAnnotationStoreIamBinding").DatasetAnnotationStoreIamBinding;
+export const DatasetAnnotationStoreIamBinding: typeof import("./datasetAnnotationStoreIamBinding").DatasetAnnotationStoreIamBinding = null as any;
+
+export { DatasetAnnotationStoreIamMemberArgs } from "./datasetAnnotationStoreIamMember";
+export type DatasetAnnotationStoreIamMember = import("./datasetAnnotationStoreIamMember").DatasetAnnotationStoreIamMember;
+export const DatasetAnnotationStoreIamMember: typeof import("./datasetAnnotationStoreIamMember").DatasetAnnotationStoreIamMember = null as any;
+
 export { DatasetAnnotationStoreIamPolicyArgs } from "./datasetAnnotationStoreIamPolicy";
 export type DatasetAnnotationStoreIamPolicy = import("./datasetAnnotationStoreIamPolicy").DatasetAnnotationStoreIamPolicy;
 export const DatasetAnnotationStoreIamPolicy: typeof import("./datasetAnnotationStoreIamPolicy").DatasetAnnotationStoreIamPolicy = null as any;
+
+export { DatasetConsentStoreIamBindingArgs } from "./datasetConsentStoreIamBinding";
+export type DatasetConsentStoreIamBinding = import("./datasetConsentStoreIamBinding").DatasetConsentStoreIamBinding;
+export const DatasetConsentStoreIamBinding: typeof import("./datasetConsentStoreIamBinding").DatasetConsentStoreIamBinding = null as any;
+
+export { DatasetConsentStoreIamMemberArgs } from "./datasetConsentStoreIamMember";
+export type DatasetConsentStoreIamMember = import("./datasetConsentStoreIamMember").DatasetConsentStoreIamMember;
+export const DatasetConsentStoreIamMember: typeof import("./datasetConsentStoreIamMember").DatasetConsentStoreIamMember = null as any;
 
 export { DatasetConsentStoreIamPolicyArgs } from "./datasetConsentStoreIamPolicy";
 export type DatasetConsentStoreIamPolicy = import("./datasetConsentStoreIamPolicy").DatasetConsentStoreIamPolicy;
 export const DatasetConsentStoreIamPolicy: typeof import("./datasetConsentStoreIamPolicy").DatasetConsentStoreIamPolicy = null as any;
 
+export { DatasetDicomStoreIamBindingArgs } from "./datasetDicomStoreIamBinding";
+export type DatasetDicomStoreIamBinding = import("./datasetDicomStoreIamBinding").DatasetDicomStoreIamBinding;
+export const DatasetDicomStoreIamBinding: typeof import("./datasetDicomStoreIamBinding").DatasetDicomStoreIamBinding = null as any;
+
+export { DatasetDicomStoreIamMemberArgs } from "./datasetDicomStoreIamMember";
+export type DatasetDicomStoreIamMember = import("./datasetDicomStoreIamMember").DatasetDicomStoreIamMember;
+export const DatasetDicomStoreIamMember: typeof import("./datasetDicomStoreIamMember").DatasetDicomStoreIamMember = null as any;
+
 export { DatasetDicomStoreIamPolicyArgs } from "./datasetDicomStoreIamPolicy";
 export type DatasetDicomStoreIamPolicy = import("./datasetDicomStoreIamPolicy").DatasetDicomStoreIamPolicy;
 export const DatasetDicomStoreIamPolicy: typeof import("./datasetDicomStoreIamPolicy").DatasetDicomStoreIamPolicy = null as any;
+
+export { DatasetFhirStoreIamBindingArgs } from "./datasetFhirStoreIamBinding";
+export type DatasetFhirStoreIamBinding = import("./datasetFhirStoreIamBinding").DatasetFhirStoreIamBinding;
+export const DatasetFhirStoreIamBinding: typeof import("./datasetFhirStoreIamBinding").DatasetFhirStoreIamBinding = null as any;
+
+export { DatasetFhirStoreIamMemberArgs } from "./datasetFhirStoreIamMember";
+export type DatasetFhirStoreIamMember = import("./datasetFhirStoreIamMember").DatasetFhirStoreIamMember;
+export const DatasetFhirStoreIamMember: typeof import("./datasetFhirStoreIamMember").DatasetFhirStoreIamMember = null as any;
 
 export { DatasetFhirStoreIamPolicyArgs } from "./datasetFhirStoreIamPolicy";
 export type DatasetFhirStoreIamPolicy = import("./datasetFhirStoreIamPolicy").DatasetFhirStoreIamPolicy;
 export const DatasetFhirStoreIamPolicy: typeof import("./datasetFhirStoreIamPolicy").DatasetFhirStoreIamPolicy = null as any;
 
+export { DatasetHl7V2StoreIamBindingArgs } from "./datasetHl7V2StoreIamBinding";
+export type DatasetHl7V2StoreIamBinding = import("./datasetHl7V2StoreIamBinding").DatasetHl7V2StoreIamBinding;
+export const DatasetHl7V2StoreIamBinding: typeof import("./datasetHl7V2StoreIamBinding").DatasetHl7V2StoreIamBinding = null as any;
+
+export { DatasetHl7V2StoreIamMemberArgs } from "./datasetHl7V2StoreIamMember";
+export type DatasetHl7V2StoreIamMember = import("./datasetHl7V2StoreIamMember").DatasetHl7V2StoreIamMember;
+export const DatasetHl7V2StoreIamMember: typeof import("./datasetHl7V2StoreIamMember").DatasetHl7V2StoreIamMember = null as any;
+
 export { DatasetHl7V2StoreIamPolicyArgs } from "./datasetHl7V2StoreIamPolicy";
 export type DatasetHl7V2StoreIamPolicy = import("./datasetHl7V2StoreIamPolicy").DatasetHl7V2StoreIamPolicy;
 export const DatasetHl7V2StoreIamPolicy: typeof import("./datasetHl7V2StoreIamPolicy").DatasetHl7V2StoreIamPolicy = null as any;
+
+export { DatasetIamBindingArgs } from "./datasetIamBinding";
+export type DatasetIamBinding = import("./datasetIamBinding").DatasetIamBinding;
+export const DatasetIamBinding: typeof import("./datasetIamBinding").DatasetIamBinding = null as any;
+
+export { DatasetIamMemberArgs } from "./datasetIamMember";
+export type DatasetIamMember = import("./datasetIamMember").DatasetIamMember;
+export const DatasetIamMember: typeof import("./datasetIamMember").DatasetIamMember = null as any;
 
 export { DatasetIamPolicyArgs } from "./datasetIamPolicy";
 export type DatasetIamPolicy = import("./datasetIamPolicy").DatasetIamPolicy;
@@ -160,11 +208,23 @@ utilities.lazyLoad(exports, ["Consent"], () => require("./consent"));
 utilities.lazyLoad(exports, ["ConsentArtifact"], () => require("./consentArtifact"));
 utilities.lazyLoad(exports, ["ConsentStore"], () => require("./consentStore"));
 utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
+utilities.lazyLoad(exports, ["DatasetAnnotationStoreIamBinding"], () => require("./datasetAnnotationStoreIamBinding"));
+utilities.lazyLoad(exports, ["DatasetAnnotationStoreIamMember"], () => require("./datasetAnnotationStoreIamMember"));
 utilities.lazyLoad(exports, ["DatasetAnnotationStoreIamPolicy"], () => require("./datasetAnnotationStoreIamPolicy"));
+utilities.lazyLoad(exports, ["DatasetConsentStoreIamBinding"], () => require("./datasetConsentStoreIamBinding"));
+utilities.lazyLoad(exports, ["DatasetConsentStoreIamMember"], () => require("./datasetConsentStoreIamMember"));
 utilities.lazyLoad(exports, ["DatasetConsentStoreIamPolicy"], () => require("./datasetConsentStoreIamPolicy"));
+utilities.lazyLoad(exports, ["DatasetDicomStoreIamBinding"], () => require("./datasetDicomStoreIamBinding"));
+utilities.lazyLoad(exports, ["DatasetDicomStoreIamMember"], () => require("./datasetDicomStoreIamMember"));
 utilities.lazyLoad(exports, ["DatasetDicomStoreIamPolicy"], () => require("./datasetDicomStoreIamPolicy"));
+utilities.lazyLoad(exports, ["DatasetFhirStoreIamBinding"], () => require("./datasetFhirStoreIamBinding"));
+utilities.lazyLoad(exports, ["DatasetFhirStoreIamMember"], () => require("./datasetFhirStoreIamMember"));
 utilities.lazyLoad(exports, ["DatasetFhirStoreIamPolicy"], () => require("./datasetFhirStoreIamPolicy"));
+utilities.lazyLoad(exports, ["DatasetHl7V2StoreIamBinding"], () => require("./datasetHl7V2StoreIamBinding"));
+utilities.lazyLoad(exports, ["DatasetHl7V2StoreIamMember"], () => require("./datasetHl7V2StoreIamMember"));
 utilities.lazyLoad(exports, ["DatasetHl7V2StoreIamPolicy"], () => require("./datasetHl7V2StoreIamPolicy"));
+utilities.lazyLoad(exports, ["DatasetIamBinding"], () => require("./datasetIamBinding"));
+utilities.lazyLoad(exports, ["DatasetIamMember"], () => require("./datasetIamMember"));
 utilities.lazyLoad(exports, ["DatasetIamPolicy"], () => require("./datasetIamPolicy"));
 utilities.lazyLoad(exports, ["DicomStore"], () => require("./dicomStore"));
 utilities.lazyLoad(exports, ["FhirStore"], () => require("./fhirStore"));
@@ -212,16 +272,40 @@ const _module = {
                 return new ConsentStore(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamBinding":
+                return new DatasetAnnotationStoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamMember":
+                return new DatasetAnnotationStoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
                 return new DatasetAnnotationStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreIamBinding":
+                return new DatasetConsentStoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreIamMember":
+                return new DatasetConsentStoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
                 return new DatasetConsentStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetDicomStoreIamBinding":
+                return new DatasetDicomStoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetDicomStoreIamMember":
+                return new DatasetDicomStoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
                 return new DatasetDicomStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetFhirStoreIamBinding":
+                return new DatasetFhirStoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetFhirStoreIamMember":
+                return new DatasetFhirStoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
                 return new DatasetFhirStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamBinding":
+                return new DatasetHl7V2StoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamMember":
+                return new DatasetHl7V2StoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
                 return new DatasetHl7V2StoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetIamBinding":
+                return new DatasetIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetIamMember":
+                return new DatasetIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetIamPolicy":
                 return new DatasetIamPolicy(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DicomStore":

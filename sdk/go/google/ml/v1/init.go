@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:ml/v1:Job":
 		r = &Job{}
+	case "google-native:ml/v1:JobIamBinding":
+		r = &JobIamBinding{}
+	case "google-native:ml/v1:JobIamMember":
+		r = &JobIamMember{}
 	case "google-native:ml/v1:JobIamPolicy":
 		r = &JobIamPolicy{}
 	case "google-native:ml/v1:Model":
 		r = &Model{}
+	case "google-native:ml/v1:ModelIamBinding":
+		r = &ModelIamBinding{}
+	case "google-native:ml/v1:ModelIamMember":
+		r = &ModelIamMember{}
 	case "google-native:ml/v1:ModelIamPolicy":
 		r = &ModelIamPolicy{}
 	case "google-native:ml/v1:Study":

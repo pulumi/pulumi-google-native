@@ -34,7 +34,8 @@ type discoveryCRUDMethods struct {
 // a fully capable Pulumi resource for the generation purpose.
 type discoveryDocumentResource struct {
 	discoveryCRUDMethods
-	resourceName string
+	resourceName   string
+	hasIAMOverlays bool
 }
 
 // operation encapsulates information to check for delayed operations' status
@@ -127,7 +128,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 							updateMethod: &restMethod,
 							listMethod:   listMethod,
 						},
-						resourceName: resourceName,
+						resourceName:   resourceName,
+						hasIAMOverlays: true,
 					}
 					err := addResource(typeName, dd)
 					if err != nil {

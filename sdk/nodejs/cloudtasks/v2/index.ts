@@ -21,6 +21,14 @@ export { QueueArgs } from "./queue";
 export type Queue = import("./queue").Queue;
 export const Queue: typeof import("./queue").Queue = null as any;
 
+export { QueueIamBindingArgs } from "./queueIamBinding";
+export type QueueIamBinding = import("./queueIamBinding").QueueIamBinding;
+export const QueueIamBinding: typeof import("./queueIamBinding").QueueIamBinding = null as any;
+
+export { QueueIamMemberArgs } from "./queueIamMember";
+export type QueueIamMember = import("./queueIamMember").QueueIamMember;
+export const QueueIamMember: typeof import("./queueIamMember").QueueIamMember = null as any;
+
 export { QueueIamPolicyArgs } from "./queueIamPolicy";
 export type QueueIamPolicy = import("./queueIamPolicy").QueueIamPolicy;
 export const QueueIamPolicy: typeof import("./queueIamPolicy").QueueIamPolicy = null as any;
@@ -33,6 +41,8 @@ utilities.lazyLoad(exports, ["getQueue","getQueueOutput"], () => require("./getQ
 utilities.lazyLoad(exports, ["getQueueIamPolicy","getQueueIamPolicyOutput"], () => require("./getQueueIamPolicy"));
 utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
 utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
+utilities.lazyLoad(exports, ["QueueIamBinding"], () => require("./queueIamBinding"));
+utilities.lazyLoad(exports, ["QueueIamMember"], () => require("./queueIamMember"));
 utilities.lazyLoad(exports, ["QueueIamPolicy"], () => require("./queueIamPolicy"));
 utilities.lazyLoad(exports, ["Task"], () => require("./task"));
 
@@ -45,6 +55,10 @@ const _module = {
         switch (type) {
             case "google-native:cloudtasks/v2:Queue":
                 return new Queue(name, <any>undefined, { urn })
+            case "google-native:cloudtasks/v2:QueueIamBinding":
+                return new QueueIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudtasks/v2:QueueIamMember":
+                return new QueueIamMember(name, <any>undefined, { urn })
             case "google-native:cloudtasks/v2:QueueIamPolicy":
                 return new QueueIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudtasks/v2:Task":

@@ -30,8 +30,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/pulumi/pulumi/pkg/v3/codegen"
-
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
@@ -43,10 +41,12 @@ import (
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/version"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/deepcopy"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil/rpcerror"
 	pulumiprov "github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
@@ -559,19 +559,29 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if err != nil {
 		return nil, err
 	}
-	inputsMap := inputs.Mappable()
-
+	unmodifiedInputs := deepcopy.Copy(inputs).(resource.PropertyMap)
 	resourceKey := string(urn.Type())
+
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 	logging.V(9).Infof("Looked up metadata for %q: %+v", resourceKey, res)
 
+	// Handle IamMember, IamBinding resources.
+	if isIAMOverlay(urn) {
+		inputs, err = inputsForIAMOverlayCreate(res, urn, inputs, p.client)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	uri, err := buildCreateURL(res, inputs)
 	if err != nil {
 		return nil, err
 	}
+	inputsMap := inputs.Mappable()
+
 	body := p.prepareAPIInputs(inputs, nil, res.Create.SDKProperties)
 
 	var op map[string]interface{}
@@ -602,7 +612,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout(res.Read.Verb, resources.AssembleURL(res.RootURL, id), "", nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
@@ -622,7 +632,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 	// There are several APIs where the response from the create/operation is non-standard or contains
 	// stale data. When it comes to checkpointing, we want to store information that strictly matches what we
-	// get from a subsequent read. As a result, we do an additional read call here and use that to checkppint state.
+	// get from a subsequent read. As a result, we do an additional read call here and use that to checkpoint state.
 	// This is likely superfluous/duplicative in many cases but erring on the side of correctness here instead.
 	id, err := calculateResourceID(res, inputsMap, resp)
 	if err != nil {
@@ -632,7 +642,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if !strings.HasPrefix(url, "http") {
 		url = resources.AssembleURL(res.RootURL, url)
 	}
-	resp, err = p.client.RequestWithTimeout("GET", url, "", nil, 0)
+	resp, err = p.client.RequestWithTimeout(res.Read.Verb, url, "", nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
 	}
@@ -641,8 +651,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, fmt.Errorf("failed to extract defaults from response: %w", err)
 	}
 	// Checkpoint defaults, outputs and inputs into the state.
+	if isIAMOverlay(urn) {
+		resp = unmodifiedInputs.Mappable()
+	}
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, defaults, resp),
+		checkpointObject(unmodifiedInputs, defaults, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -977,6 +990,14 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	// Extract old inputs from the `__inputs` field of the old state.
 	inputs := parseCheckpointObject(oldState)
 
+	// Handle IamMember, IamBinding resources.
+	if isIAMOverlay(urn) {
+		inputs, err = inputsForIAMOverlayUpdate(res, urn, inputs, oldState, p.client)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	uri, err := res.Read.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {
 		return nil, err
@@ -1045,6 +1066,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	if err != nil {
 		return nil, err
 	}
+	unmodifiedInputs := inputs.Copy()
 
 	// Deserialize the last known state.
 	oldState, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
@@ -1063,6 +1085,14 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
+	}
+
+	// Handle IamMember, IamBinding resources.
+	if isIAMOverlay(urn) {
+		inputs, err = inputsForIAMOverlayUpdate(res, urn, inputs, oldState, p.client)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	if res.Update.Undefined() {
@@ -1179,6 +1209,10 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
 	}
 
+	if isIAMOverlay(urn) {
+		resp = unmodifiedInputs.Mappable()
+	}
+
 	// Store both outputs and inputs into the state and return RPC checkpoint.
 	outputs, err := plugin.MarshalProperties(
 		checkpointObject(newInputs, defaults, resp),
@@ -1233,6 +1267,13 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
+	if isIAMOverlay(urn) {
+		inputs, err = inputsForIAMOverlayDelete(res, urn, inputs, p.client)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	uri, err := res.Delete.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {
 		return nil, err
@@ -1246,7 +1287,9 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := retryRequest(p.client, res.Delete.Verb, uri, "", nil)
+	body := p.prepareAPIInputs(inputs, nil, res.Delete.SDKProperties)
+
+	resp, err := retryRequest(p.client, res.Delete.Verb, uri, "", body)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}

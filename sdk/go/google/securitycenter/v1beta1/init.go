@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:securitycenter/v1beta1:OrganizationSourceIamBinding":
+		r = &OrganizationSourceIamBinding{}
+	case "google-native:securitycenter/v1beta1:OrganizationSourceIamMember":
+		r = &OrganizationSourceIamMember{}
 	case "google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
 		r = &OrganizationSourceIamPolicy{}
 	case "google-native:securitycenter/v1beta1:Source":

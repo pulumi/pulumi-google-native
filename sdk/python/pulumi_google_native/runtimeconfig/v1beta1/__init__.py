@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .config import *
+from .config_iam_binding import *
+from .config_iam_member import *
 from .config_iam_policy import *
 from .get_config import *
 from .get_config_iam_policy import *

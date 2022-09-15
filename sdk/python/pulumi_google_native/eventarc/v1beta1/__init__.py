@@ -9,6 +9,8 @@ from ._enums import *
 from .get_trigger import *
 from .get_trigger_iam_policy import *
 from .trigger import *
+from .trigger_iam_binding import *
+from .trigger_iam_member import *
 from .trigger_iam_policy import *
 from ._inputs import *
 from . import outputs

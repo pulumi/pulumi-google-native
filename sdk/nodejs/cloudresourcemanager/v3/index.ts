@@ -9,6 +9,14 @@ export { FolderArgs } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
 
+export { FolderIamBindingArgs } from "./folderIamBinding";
+export type FolderIamBinding = import("./folderIamBinding").FolderIamBinding;
+export const FolderIamBinding: typeof import("./folderIamBinding").FolderIamBinding = null as any;
+
+export { FolderIamMemberArgs } from "./folderIamMember";
+export type FolderIamMember = import("./folderIamMember").FolderIamMember;
+export const FolderIamMember: typeof import("./folderIamMember").FolderIamMember = null as any;
+
 export { FolderIamPolicyArgs } from "./folderIamPolicy";
 export type FolderIamPolicy = import("./folderIamPolicy").FolderIamPolicy;
 export const FolderIamPolicy: typeof import("./folderIamPolicy").FolderIamPolicy = null as any;
@@ -57,6 +65,14 @@ export { LienArgs } from "./lien";
 export type Lien = import("./lien").Lien;
 export const Lien: typeof import("./lien").Lien = null as any;
 
+export { OrganizationIamBindingArgs } from "./organizationIamBinding";
+export type OrganizationIamBinding = import("./organizationIamBinding").OrganizationIamBinding;
+export const OrganizationIamBinding: typeof import("./organizationIamBinding").OrganizationIamBinding = null as any;
+
+export { OrganizationIamMemberArgs } from "./organizationIamMember";
+export type OrganizationIamMember = import("./organizationIamMember").OrganizationIamMember;
+export const OrganizationIamMember: typeof import("./organizationIamMember").OrganizationIamMember = null as any;
+
 export { OrganizationIamPolicyArgs } from "./organizationIamPolicy";
 export type OrganizationIamPolicy = import("./organizationIamPolicy").OrganizationIamPolicy;
 export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").OrganizationIamPolicy = null as any;
@@ -64,6 +80,14 @@ export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").Org
 export { ProjectArgs } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
+
+export { ProjectIamBindingArgs } from "./projectIamBinding";
+export type ProjectIamBinding = import("./projectIamBinding").ProjectIamBinding;
+export const ProjectIamBinding: typeof import("./projectIamBinding").ProjectIamBinding = null as any;
+
+export { ProjectIamMemberArgs } from "./projectIamMember";
+export type ProjectIamMember = import("./projectIamMember").ProjectIamMember;
+export const ProjectIamMember: typeof import("./projectIamMember").ProjectIamMember = null as any;
 
 export { ProjectIamPolicyArgs } from "./projectIamPolicy";
 export type ProjectIamPolicy = import("./projectIamPolicy").ProjectIamPolicy;
@@ -73,6 +97,14 @@ export { TagKeyArgs } from "./tagKey";
 export type TagKey = import("./tagKey").TagKey;
 export const TagKey: typeof import("./tagKey").TagKey = null as any;
 
+export { TagKeyIamBindingArgs } from "./tagKeyIamBinding";
+export type TagKeyIamBinding = import("./tagKeyIamBinding").TagKeyIamBinding;
+export const TagKeyIamBinding: typeof import("./tagKeyIamBinding").TagKeyIamBinding = null as any;
+
+export { TagKeyIamMemberArgs } from "./tagKeyIamMember";
+export type TagKeyIamMember = import("./tagKeyIamMember").TagKeyIamMember;
+export const TagKeyIamMember: typeof import("./tagKeyIamMember").TagKeyIamMember = null as any;
+
 export { TagKeyIamPolicyArgs } from "./tagKeyIamPolicy";
 export type TagKeyIamPolicy = import("./tagKeyIamPolicy").TagKeyIamPolicy;
 export const TagKeyIamPolicy: typeof import("./tagKeyIamPolicy").TagKeyIamPolicy = null as any;
@@ -81,11 +113,21 @@ export { TagValueArgs } from "./tagValue";
 export type TagValue = import("./tagValue").TagValue;
 export const TagValue: typeof import("./tagValue").TagValue = null as any;
 
+export { TagValueIamBindingArgs } from "./tagValueIamBinding";
+export type TagValueIamBinding = import("./tagValueIamBinding").TagValueIamBinding;
+export const TagValueIamBinding: typeof import("./tagValueIamBinding").TagValueIamBinding = null as any;
+
+export { TagValueIamMemberArgs } from "./tagValueIamMember";
+export type TagValueIamMember = import("./tagValueIamMember").TagValueIamMember;
+export const TagValueIamMember: typeof import("./tagValueIamMember").TagValueIamMember = null as any;
+
 export { TagValueIamPolicyArgs } from "./tagValueIamPolicy";
 export type TagValueIamPolicy = import("./tagValueIamPolicy").TagValueIamPolicy;
 export const TagValueIamPolicy: typeof import("./tagValueIamPolicy").TagValueIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+utilities.lazyLoad(exports, ["FolderIamBinding"], () => require("./folderIamBinding"));
+utilities.lazyLoad(exports, ["FolderIamMember"], () => require("./folderIamMember"));
 utilities.lazyLoad(exports, ["FolderIamPolicy"], () => require("./folderIamPolicy"));
 utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
 utilities.lazyLoad(exports, ["getFolderIamPolicy","getFolderIamPolicyOutput"], () => require("./getFolderIamPolicy"));
@@ -98,12 +140,20 @@ utilities.lazyLoad(exports, ["getTagKeyIamPolicy","getTagKeyIamPolicyOutput"], (
 utilities.lazyLoad(exports, ["getTagValue","getTagValueOutput"], () => require("./getTagValue"));
 utilities.lazyLoad(exports, ["getTagValueIamPolicy","getTagValueIamPolicyOutput"], () => require("./getTagValueIamPolicy"));
 utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
+utilities.lazyLoad(exports, ["OrganizationIamBinding"], () => require("./organizationIamBinding"));
+utilities.lazyLoad(exports, ["OrganizationIamMember"], () => require("./organizationIamMember"));
 utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+utilities.lazyLoad(exports, ["ProjectIamBinding"], () => require("./projectIamBinding"));
+utilities.lazyLoad(exports, ["ProjectIamMember"], () => require("./projectIamMember"));
 utilities.lazyLoad(exports, ["ProjectIamPolicy"], () => require("./projectIamPolicy"));
 utilities.lazyLoad(exports, ["TagKey"], () => require("./tagKey"));
+utilities.lazyLoad(exports, ["TagKeyIamBinding"], () => require("./tagKeyIamBinding"));
+utilities.lazyLoad(exports, ["TagKeyIamMember"], () => require("./tagKeyIamMember"));
 utilities.lazyLoad(exports, ["TagKeyIamPolicy"], () => require("./tagKeyIamPolicy"));
 utilities.lazyLoad(exports, ["TagValue"], () => require("./tagValue"));
+utilities.lazyLoad(exports, ["TagValueIamBinding"], () => require("./tagValueIamBinding"));
+utilities.lazyLoad(exports, ["TagValueIamMember"], () => require("./tagValueIamMember"));
 utilities.lazyLoad(exports, ["TagValueIamPolicy"], () => require("./tagValueIamPolicy"));
 
 // Export enums:
@@ -115,22 +165,42 @@ const _module = {
         switch (type) {
             case "google-native:cloudresourcemanager/v3:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:FolderIamBinding":
+                return new FolderIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:FolderIamMember":
+                return new FolderIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:FolderIamPolicy":
                 return new FolderIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:Lien":
                 return new Lien(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:OrganizationIamBinding":
+                return new OrganizationIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:OrganizationIamMember":
+                return new OrganizationIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:OrganizationIamPolicy":
                 return new OrganizationIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:ProjectIamBinding":
+                return new ProjectIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:ProjectIamMember":
+                return new ProjectIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:ProjectIamPolicy":
                 return new ProjectIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:TagKeyIamBinding":
+                return new TagKeyIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:TagKeyIamMember":
+                return new TagKeyIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:TagKeyIamPolicy":
                 return new TagKeyIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:TagValue":
                 return new TagValue(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:TagValueIamBinding":
+                return new TagValueIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v3:TagValueIamMember":
+                return new TagValueIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v3:TagValueIamPolicy":
                 return new TagValueIamPolicy(name, <any>undefined, { urn })
             default:

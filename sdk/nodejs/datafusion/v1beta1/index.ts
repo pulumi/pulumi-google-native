@@ -21,9 +21,25 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { InstanceNamespaceIamBindingArgs } from "./instanceNamespaceIamBinding";
+export type InstanceNamespaceIamBinding = import("./instanceNamespaceIamBinding").InstanceNamespaceIamBinding;
+export const InstanceNamespaceIamBinding: typeof import("./instanceNamespaceIamBinding").InstanceNamespaceIamBinding = null as any;
+
+export { InstanceNamespaceIamMemberArgs } from "./instanceNamespaceIamMember";
+export type InstanceNamespaceIamMember = import("./instanceNamespaceIamMember").InstanceNamespaceIamMember;
+export const InstanceNamespaceIamMember: typeof import("./instanceNamespaceIamMember").InstanceNamespaceIamMember = null as any;
 
 export { InstanceNamespaceIamPolicyArgs } from "./instanceNamespaceIamPolicy";
 export type InstanceNamespaceIamPolicy = import("./instanceNamespaceIamPolicy").InstanceNamespaceIamPolicy;
@@ -33,7 +49,11 @@ utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 utilities.lazyLoad(exports, ["getInstanceNamespaceIamPolicy","getInstanceNamespaceIamPolicyOutput"], () => require("./getInstanceNamespaceIamPolicy"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceNamespaceIamBinding"], () => require("./instanceNamespaceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceNamespaceIamMember"], () => require("./instanceNamespaceIamMember"));
 utilities.lazyLoad(exports, ["InstanceNamespaceIamPolicy"], () => require("./instanceNamespaceIamPolicy"));
 
 // Export enums:
@@ -45,8 +65,16 @@ const _module = {
         switch (type) {
             case "google-native:datafusion/v1beta1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1beta1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1beta1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:datafusion/v1beta1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1beta1:InstanceNamespaceIamBinding":
+                return new InstanceNamespaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1beta1:InstanceNamespaceIamMember":
+                return new InstanceNamespaceIamMember(name, <any>undefined, { urn })
             case "google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy":
                 return new InstanceNamespaceIamPolicy(name, <any>undefined, { urn })
             default:

@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:datamigration/v1beta1:ConnectionProfile":
 		r = &ConnectionProfile{}
+	case "google-native:datamigration/v1beta1:ConnectionProfileIamBinding":
+		r = &ConnectionProfileIamBinding{}
+	case "google-native:datamigration/v1beta1:ConnectionProfileIamMember":
+		r = &ConnectionProfileIamMember{}
 	case "google-native:datamigration/v1beta1:ConnectionProfileIamPolicy":
 		r = &ConnectionProfileIamPolicy{}
 	case "google-native:datamigration/v1beta1:MigrationJob":
 		r = &MigrationJob{}
+	case "google-native:datamigration/v1beta1:MigrationJobIamBinding":
+		r = &MigrationJobIamBinding{}
+	case "google-native:datamigration/v1beta1:MigrationJobIamMember":
+		r = &MigrationJobIamMember{}
 	case "google-native:datamigration/v1beta1:MigrationJobIamPolicy":
 		r = &MigrationJobIamPolicy{}
 	default:

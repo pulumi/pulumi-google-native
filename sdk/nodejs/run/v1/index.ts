@@ -29,6 +29,14 @@ export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicy
 export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
 export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
 
+export { JobIamBindingArgs } from "./jobIamBinding";
+export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
+export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
+
+export { JobIamMemberArgs } from "./jobIamMember";
+export type JobIamMember = import("./jobIamMember").JobIamMember;
+export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
+
 export { JobIamPolicyArgs } from "./jobIamPolicy";
 export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
 export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
@@ -36,6 +44,14 @@ export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null a
 export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceIamBindingArgs } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+
+export { ServiceIamMemberArgs } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
 
 export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
 export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
@@ -47,8 +63,12 @@ utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob")
 utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
+utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
 utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
 utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 // Export enums:
@@ -60,10 +80,18 @@ const _module = {
         switch (type) {
             case "google-native:run/v1:DomainMapping":
                 return new DomainMapping(name, <any>undefined, { urn })
+            case "google-native:run/v1:JobIamBinding":
+                return new JobIamBinding(name, <any>undefined, { urn })
+            case "google-native:run/v1:JobIamMember":
+                return new JobIamMember(name, <any>undefined, { urn })
             case "google-native:run/v1:JobIamPolicy":
                 return new JobIamPolicy(name, <any>undefined, { urn })
             case "google-native:run/v1:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "google-native:run/v1:ServiceIamBinding":
+                return new ServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:run/v1:ServiceIamMember":
+                return new ServiceIamMember(name, <any>undefined, { urn })
             case "google-native:run/v1:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:

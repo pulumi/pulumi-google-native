@@ -33,9 +33,25 @@ export { NamespaceArgs } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 
+export { NamespaceIamBindingArgs } from "./namespaceIamBinding";
+export type NamespaceIamBinding = import("./namespaceIamBinding").NamespaceIamBinding;
+export const NamespaceIamBinding: typeof import("./namespaceIamBinding").NamespaceIamBinding = null as any;
+
+export { NamespaceIamMemberArgs } from "./namespaceIamMember";
+export type NamespaceIamMember = import("./namespaceIamMember").NamespaceIamMember;
+export const NamespaceIamMember: typeof import("./namespaceIamMember").NamespaceIamMember = null as any;
+
 export { NamespaceIamPolicyArgs } from "./namespaceIamPolicy";
 export type NamespaceIamPolicy = import("./namespaceIamPolicy").NamespaceIamPolicy;
 export const NamespaceIamPolicy: typeof import("./namespaceIamPolicy").NamespaceIamPolicy = null as any;
+
+export { NamespaceServiceIamBindingArgs } from "./namespaceServiceIamBinding";
+export type NamespaceServiceIamBinding = import("./namespaceServiceIamBinding").NamespaceServiceIamBinding;
+export const NamespaceServiceIamBinding: typeof import("./namespaceServiceIamBinding").NamespaceServiceIamBinding = null as any;
+
+export { NamespaceServiceIamMemberArgs } from "./namespaceServiceIamMember";
+export type NamespaceServiceIamMember = import("./namespaceServiceIamMember").NamespaceServiceIamMember;
+export const NamespaceServiceIamMember: typeof import("./namespaceServiceIamMember").NamespaceServiceIamMember = null as any;
 
 export { NamespaceServiceIamPolicyArgs } from "./namespaceServiceIamPolicy";
 export type NamespaceServiceIamPolicy = import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy;
@@ -52,7 +68,11 @@ utilities.lazyLoad(exports, ["getNamespaceIamPolicy","getNamespaceIamPolicyOutpu
 utilities.lazyLoad(exports, ["getNamespaceServiceIamPolicy","getNamespaceServiceIamPolicyOutput"], () => require("./getNamespaceServiceIamPolicy"));
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+utilities.lazyLoad(exports, ["NamespaceIamBinding"], () => require("./namespaceIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceIamMember"], () => require("./namespaceIamMember"));
 utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
+utilities.lazyLoad(exports, ["NamespaceServiceIamBinding"], () => require("./namespaceServiceIamBinding"));
+utilities.lazyLoad(exports, ["NamespaceServiceIamMember"], () => require("./namespaceServiceIamMember"));
 utilities.lazyLoad(exports, ["NamespaceServiceIamPolicy"], () => require("./namespaceServiceIamPolicy"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
@@ -64,8 +84,16 @@ const _module = {
                 return new Endpoint(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1:NamespaceIamBinding":
+                return new NamespaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1:NamespaceIamMember":
+                return new NamespaceIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:NamespaceIamPolicy":
                 return new NamespaceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1:NamespaceServiceIamBinding":
+                return new NamespaceServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1:NamespaceServiceIamMember":
+                return new NamespaceServiceIamMember(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:NamespaceServiceIamPolicy":
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1:Service":

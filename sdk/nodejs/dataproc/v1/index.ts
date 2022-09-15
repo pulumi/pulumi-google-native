@@ -9,6 +9,14 @@ export { AutoscalingPolicyArgs } from "./autoscalingPolicy";
 export type AutoscalingPolicy = import("./autoscalingPolicy").AutoscalingPolicy;
 export const AutoscalingPolicy: typeof import("./autoscalingPolicy").AutoscalingPolicy = null as any;
 
+export { AutoscalingPolicyIamBindingArgs } from "./autoscalingPolicyIamBinding";
+export type AutoscalingPolicyIamBinding = import("./autoscalingPolicyIamBinding").AutoscalingPolicyIamBinding;
+export const AutoscalingPolicyIamBinding: typeof import("./autoscalingPolicyIamBinding").AutoscalingPolicyIamBinding = null as any;
+
+export { AutoscalingPolicyIamMemberArgs } from "./autoscalingPolicyIamMember";
+export type AutoscalingPolicyIamMember = import("./autoscalingPolicyIamMember").AutoscalingPolicyIamMember;
+export const AutoscalingPolicyIamMember: typeof import("./autoscalingPolicyIamMember").AutoscalingPolicyIamMember = null as any;
+
 export { AutoscalingPolicyIamPolicyArgs } from "./autoscalingPolicyIamPolicy";
 export type AutoscalingPolicyIamPolicy = import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy;
 export const AutoscalingPolicyIamPolicy: typeof import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy = null as any;
@@ -73,21 +81,61 @@ export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 
+export { RegionAutoscalingPolicyIamBindingArgs } from "./regionAutoscalingPolicyIamBinding";
+export type RegionAutoscalingPolicyIamBinding = import("./regionAutoscalingPolicyIamBinding").RegionAutoscalingPolicyIamBinding;
+export const RegionAutoscalingPolicyIamBinding: typeof import("./regionAutoscalingPolicyIamBinding").RegionAutoscalingPolicyIamBinding = null as any;
+
+export { RegionAutoscalingPolicyIamMemberArgs } from "./regionAutoscalingPolicyIamMember";
+export type RegionAutoscalingPolicyIamMember = import("./regionAutoscalingPolicyIamMember").RegionAutoscalingPolicyIamMember;
+export const RegionAutoscalingPolicyIamMember: typeof import("./regionAutoscalingPolicyIamMember").RegionAutoscalingPolicyIamMember = null as any;
+
 export { RegionAutoscalingPolicyIamPolicyArgs } from "./regionAutoscalingPolicyIamPolicy";
 export type RegionAutoscalingPolicyIamPolicy = import("./regionAutoscalingPolicyIamPolicy").RegionAutoscalingPolicyIamPolicy;
 export const RegionAutoscalingPolicyIamPolicy: typeof import("./regionAutoscalingPolicyIamPolicy").RegionAutoscalingPolicyIamPolicy = null as any;
+
+export { RegionClusterIamBindingArgs } from "./regionClusterIamBinding";
+export type RegionClusterIamBinding = import("./regionClusterIamBinding").RegionClusterIamBinding;
+export const RegionClusterIamBinding: typeof import("./regionClusterIamBinding").RegionClusterIamBinding = null as any;
+
+export { RegionClusterIamMemberArgs } from "./regionClusterIamMember";
+export type RegionClusterIamMember = import("./regionClusterIamMember").RegionClusterIamMember;
+export const RegionClusterIamMember: typeof import("./regionClusterIamMember").RegionClusterIamMember = null as any;
 
 export { RegionClusterIamPolicyArgs } from "./regionClusterIamPolicy";
 export type RegionClusterIamPolicy = import("./regionClusterIamPolicy").RegionClusterIamPolicy;
 export const RegionClusterIamPolicy: typeof import("./regionClusterIamPolicy").RegionClusterIamPolicy = null as any;
 
+export { RegionJobIamBindingArgs } from "./regionJobIamBinding";
+export type RegionJobIamBinding = import("./regionJobIamBinding").RegionJobIamBinding;
+export const RegionJobIamBinding: typeof import("./regionJobIamBinding").RegionJobIamBinding = null as any;
+
+export { RegionJobIamMemberArgs } from "./regionJobIamMember";
+export type RegionJobIamMember = import("./regionJobIamMember").RegionJobIamMember;
+export const RegionJobIamMember: typeof import("./regionJobIamMember").RegionJobIamMember = null as any;
+
 export { RegionJobIamPolicyArgs } from "./regionJobIamPolicy";
 export type RegionJobIamPolicy = import("./regionJobIamPolicy").RegionJobIamPolicy;
 export const RegionJobIamPolicy: typeof import("./regionJobIamPolicy").RegionJobIamPolicy = null as any;
 
+export { RegionOperationIamBindingArgs } from "./regionOperationIamBinding";
+export type RegionOperationIamBinding = import("./regionOperationIamBinding").RegionOperationIamBinding;
+export const RegionOperationIamBinding: typeof import("./regionOperationIamBinding").RegionOperationIamBinding = null as any;
+
+export { RegionOperationIamMemberArgs } from "./regionOperationIamMember";
+export type RegionOperationIamMember = import("./regionOperationIamMember").RegionOperationIamMember;
+export const RegionOperationIamMember: typeof import("./regionOperationIamMember").RegionOperationIamMember = null as any;
+
 export { RegionOperationIamPolicyArgs } from "./regionOperationIamPolicy";
 export type RegionOperationIamPolicy = import("./regionOperationIamPolicy").RegionOperationIamPolicy;
 export const RegionOperationIamPolicy: typeof import("./regionOperationIamPolicy").RegionOperationIamPolicy = null as any;
+
+export { RegionWorkflowTemplateIamBindingArgs } from "./regionWorkflowTemplateIamBinding";
+export type RegionWorkflowTemplateIamBinding = import("./regionWorkflowTemplateIamBinding").RegionWorkflowTemplateIamBinding;
+export const RegionWorkflowTemplateIamBinding: typeof import("./regionWorkflowTemplateIamBinding").RegionWorkflowTemplateIamBinding = null as any;
+
+export { RegionWorkflowTemplateIamMemberArgs } from "./regionWorkflowTemplateIamMember";
+export type RegionWorkflowTemplateIamMember = import("./regionWorkflowTemplateIamMember").RegionWorkflowTemplateIamMember;
+export const RegionWorkflowTemplateIamMember: typeof import("./regionWorkflowTemplateIamMember").RegionWorkflowTemplateIamMember = null as any;
 
 export { RegionWorkflowTemplateIamPolicyArgs } from "./regionWorkflowTemplateIamPolicy";
 export type RegionWorkflowTemplateIamPolicy = import("./regionWorkflowTemplateIamPolicy").RegionWorkflowTemplateIamPolicy;
@@ -97,11 +145,21 @@ export { WorkflowTemplateArgs } from "./workflowTemplate";
 export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
 export const WorkflowTemplate: typeof import("./workflowTemplate").WorkflowTemplate = null as any;
 
+export { WorkflowTemplateIamBindingArgs } from "./workflowTemplateIamBinding";
+export type WorkflowTemplateIamBinding = import("./workflowTemplateIamBinding").WorkflowTemplateIamBinding;
+export const WorkflowTemplateIamBinding: typeof import("./workflowTemplateIamBinding").WorkflowTemplateIamBinding = null as any;
+
+export { WorkflowTemplateIamMemberArgs } from "./workflowTemplateIamMember";
+export type WorkflowTemplateIamMember = import("./workflowTemplateIamMember").WorkflowTemplateIamMember;
+export const WorkflowTemplateIamMember: typeof import("./workflowTemplateIamMember").WorkflowTemplateIamMember = null as any;
+
 export { WorkflowTemplateIamPolicyArgs } from "./workflowTemplateIamPolicy";
 export type WorkflowTemplateIamPolicy = import("./workflowTemplateIamPolicy").WorkflowTemplateIamPolicy;
 export const WorkflowTemplateIamPolicy: typeof import("./workflowTemplateIamPolicy").WorkflowTemplateIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["AutoscalingPolicy"], () => require("./autoscalingPolicy"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamBinding"], () => require("./autoscalingPolicyIamBinding"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamMember"], () => require("./autoscalingPolicyIamMember"));
 utilities.lazyLoad(exports, ["AutoscalingPolicyIamPolicy"], () => require("./autoscalingPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Batch"], () => require("./batch"));
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
@@ -118,12 +176,24 @@ utilities.lazyLoad(exports, ["getRegionWorkflowTemplateIamPolicy","getRegionWork
 utilities.lazyLoad(exports, ["getWorkflowTemplate","getWorkflowTemplateOutput"], () => require("./getWorkflowTemplate"));
 utilities.lazyLoad(exports, ["getWorkflowTemplateIamPolicy","getWorkflowTemplateIamPolicyOutput"], () => require("./getWorkflowTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["RegionAutoscalingPolicyIamBinding"], () => require("./regionAutoscalingPolicyIamBinding"));
+utilities.lazyLoad(exports, ["RegionAutoscalingPolicyIamMember"], () => require("./regionAutoscalingPolicyIamMember"));
 utilities.lazyLoad(exports, ["RegionAutoscalingPolicyIamPolicy"], () => require("./regionAutoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["RegionClusterIamBinding"], () => require("./regionClusterIamBinding"));
+utilities.lazyLoad(exports, ["RegionClusterIamMember"], () => require("./regionClusterIamMember"));
 utilities.lazyLoad(exports, ["RegionClusterIamPolicy"], () => require("./regionClusterIamPolicy"));
+utilities.lazyLoad(exports, ["RegionJobIamBinding"], () => require("./regionJobIamBinding"));
+utilities.lazyLoad(exports, ["RegionJobIamMember"], () => require("./regionJobIamMember"));
 utilities.lazyLoad(exports, ["RegionJobIamPolicy"], () => require("./regionJobIamPolicy"));
+utilities.lazyLoad(exports, ["RegionOperationIamBinding"], () => require("./regionOperationIamBinding"));
+utilities.lazyLoad(exports, ["RegionOperationIamMember"], () => require("./regionOperationIamMember"));
 utilities.lazyLoad(exports, ["RegionOperationIamPolicy"], () => require("./regionOperationIamPolicy"));
+utilities.lazyLoad(exports, ["RegionWorkflowTemplateIamBinding"], () => require("./regionWorkflowTemplateIamBinding"));
+utilities.lazyLoad(exports, ["RegionWorkflowTemplateIamMember"], () => require("./regionWorkflowTemplateIamMember"));
 utilities.lazyLoad(exports, ["RegionWorkflowTemplateIamPolicy"], () => require("./regionWorkflowTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["WorkflowTemplate"], () => require("./workflowTemplate"));
+utilities.lazyLoad(exports, ["WorkflowTemplateIamBinding"], () => require("./workflowTemplateIamBinding"));
+utilities.lazyLoad(exports, ["WorkflowTemplateIamMember"], () => require("./workflowTemplateIamMember"));
 utilities.lazyLoad(exports, ["WorkflowTemplateIamPolicy"], () => require("./workflowTemplateIamPolicy"));
 
 // Export enums:
@@ -135,6 +205,10 @@ const _module = {
         switch (type) {
             case "google-native:dataproc/v1:AutoscalingPolicy":
                 return new AutoscalingPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:AutoscalingPolicyIamBinding":
+                return new AutoscalingPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:AutoscalingPolicyIamMember":
+                return new AutoscalingPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Batch":
@@ -143,18 +217,42 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionAutoscalingPolicyIamBinding":
+                return new RegionAutoscalingPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionAutoscalingPolicyIamMember":
+                return new RegionAutoscalingPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return new RegionAutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionClusterIamBinding":
+                return new RegionClusterIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionClusterIamMember":
+                return new RegionClusterIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionClusterIamPolicy":
                 return new RegionClusterIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionJobIamBinding":
+                return new RegionJobIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionJobIamMember":
+                return new RegionJobIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionJobIamPolicy":
                 return new RegionJobIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionOperationIamBinding":
+                return new RegionOperationIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionOperationIamMember":
+                return new RegionOperationIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionOperationIamPolicy":
                 return new RegionOperationIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionWorkflowTemplateIamBinding":
+                return new RegionWorkflowTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:RegionWorkflowTemplateIamMember":
+                return new RegionWorkflowTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
                 return new RegionWorkflowTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:WorkflowTemplate":
                 return new WorkflowTemplate(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:WorkflowTemplateIamBinding":
+                return new WorkflowTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:WorkflowTemplateIamMember":
+                return new WorkflowTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:WorkflowTemplateIamPolicy":
                 return new WorkflowTemplateIamPolicy(name, <any>undefined, { urn })
             default:

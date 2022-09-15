@@ -9,9 +9,25 @@ export { CaPoolArgs } from "./caPool";
 export type CaPool = import("./caPool").CaPool;
 export const CaPool: typeof import("./caPool").CaPool = null as any;
 
+export { CaPoolCertificateAuthorityCertificateRevocationListIamBindingArgs } from "./caPoolCertificateAuthorityCertificateRevocationListIamBinding";
+export type CaPoolCertificateAuthorityCertificateRevocationListIamBinding = import("./caPoolCertificateAuthorityCertificateRevocationListIamBinding").CaPoolCertificateAuthorityCertificateRevocationListIamBinding;
+export const CaPoolCertificateAuthorityCertificateRevocationListIamBinding: typeof import("./caPoolCertificateAuthorityCertificateRevocationListIamBinding").CaPoolCertificateAuthorityCertificateRevocationListIamBinding = null as any;
+
+export { CaPoolCertificateAuthorityCertificateRevocationListIamMemberArgs } from "./caPoolCertificateAuthorityCertificateRevocationListIamMember";
+export type CaPoolCertificateAuthorityCertificateRevocationListIamMember = import("./caPoolCertificateAuthorityCertificateRevocationListIamMember").CaPoolCertificateAuthorityCertificateRevocationListIamMember;
+export const CaPoolCertificateAuthorityCertificateRevocationListIamMember: typeof import("./caPoolCertificateAuthorityCertificateRevocationListIamMember").CaPoolCertificateAuthorityCertificateRevocationListIamMember = null as any;
+
 export { CaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs } from "./caPoolCertificateAuthorityCertificateRevocationListIamPolicy";
 export type CaPoolCertificateAuthorityCertificateRevocationListIamPolicy = import("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy").CaPoolCertificateAuthorityCertificateRevocationListIamPolicy;
 export const CaPoolCertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy").CaPoolCertificateAuthorityCertificateRevocationListIamPolicy = null as any;
+
+export { CaPoolIamBindingArgs } from "./caPoolIamBinding";
+export type CaPoolIamBinding = import("./caPoolIamBinding").CaPoolIamBinding;
+export const CaPoolIamBinding: typeof import("./caPoolIamBinding").CaPoolIamBinding = null as any;
+
+export { CaPoolIamMemberArgs } from "./caPoolIamMember";
+export type CaPoolIamMember = import("./caPoolIamMember").CaPoolIamMember;
+export const CaPoolIamMember: typeof import("./caPoolIamMember").CaPoolIamMember = null as any;
 
 export { CaPoolIamPolicyArgs } from "./caPoolIamPolicy";
 export type CaPoolIamPolicy = import("./caPoolIamPolicy").CaPoolIamPolicy;
@@ -28,6 +44,14 @@ export const CertificateAuthority: typeof import("./certificateAuthority").Certi
 export { CertificateTemplateArgs } from "./certificateTemplate";
 export type CertificateTemplate = import("./certificateTemplate").CertificateTemplate;
 export const CertificateTemplate: typeof import("./certificateTemplate").CertificateTemplate = null as any;
+
+export { CertificateTemplateIamBindingArgs } from "./certificateTemplateIamBinding";
+export type CertificateTemplateIamBinding = import("./certificateTemplateIamBinding").CertificateTemplateIamBinding;
+export const CertificateTemplateIamBinding: typeof import("./certificateTemplateIamBinding").CertificateTemplateIamBinding = null as any;
+
+export { CertificateTemplateIamMemberArgs } from "./certificateTemplateIamMember";
+export type CertificateTemplateIamMember = import("./certificateTemplateIamMember").CertificateTemplateIamMember;
+export const CertificateTemplateIamMember: typeof import("./certificateTemplateIamMember").CertificateTemplateIamMember = null as any;
 
 export { CertificateTemplateIamPolicyArgs } from "./certificateTemplateIamPolicy";
 export type CertificateTemplateIamPolicy = import("./certificateTemplateIamPolicy").CertificateTemplateIamPolicy;
@@ -62,11 +86,17 @@ export const getCertificateTemplateIamPolicy: typeof import("./getCertificateTem
 export const getCertificateTemplateIamPolicyOutput: typeof import("./getCertificateTemplateIamPolicy").getCertificateTemplateIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["CaPool"], () => require("./caPool"));
+utilities.lazyLoad(exports, ["CaPoolCertificateAuthorityCertificateRevocationListIamBinding"], () => require("./caPoolCertificateAuthorityCertificateRevocationListIamBinding"));
+utilities.lazyLoad(exports, ["CaPoolCertificateAuthorityCertificateRevocationListIamMember"], () => require("./caPoolCertificateAuthorityCertificateRevocationListIamMember"));
 utilities.lazyLoad(exports, ["CaPoolCertificateAuthorityCertificateRevocationListIamPolicy"], () => require("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy"));
+utilities.lazyLoad(exports, ["CaPoolIamBinding"], () => require("./caPoolIamBinding"));
+utilities.lazyLoad(exports, ["CaPoolIamMember"], () => require("./caPoolIamMember"));
 utilities.lazyLoad(exports, ["CaPoolIamPolicy"], () => require("./caPoolIamPolicy"));
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
 utilities.lazyLoad(exports, ["CertificateTemplate"], () => require("./certificateTemplate"));
+utilities.lazyLoad(exports, ["CertificateTemplateIamBinding"], () => require("./certificateTemplateIamBinding"));
+utilities.lazyLoad(exports, ["CertificateTemplateIamMember"], () => require("./certificateTemplateIamMember"));
 utilities.lazyLoad(exports, ["CertificateTemplateIamPolicy"], () => require("./certificateTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["getCaPool","getCaPoolOutput"], () => require("./getCaPool"));
 utilities.lazyLoad(exports, ["getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy","getCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput"], () => require("./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy"));
@@ -85,8 +115,16 @@ const _module = {
         switch (type) {
             case "google-native:privateca/v1:CaPool":
                 return new CaPool(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamBinding":
+                return new CaPoolCertificateAuthorityCertificateRevocationListIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamMember":
+                return new CaPoolCertificateAuthorityCertificateRevocationListIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy":
                 return new CaPoolCertificateAuthorityCertificateRevocationListIamPolicy(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CaPoolIamBinding":
+                return new CaPoolIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CaPoolIamMember":
+                return new CaPoolIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1:CaPoolIamPolicy":
                 return new CaPoolIamPolicy(name, <any>undefined, { urn })
             case "google-native:privateca/v1:Certificate":
@@ -95,6 +133,10 @@ const _module = {
                 return new CertificateAuthority(name, <any>undefined, { urn })
             case "google-native:privateca/v1:CertificateTemplate":
                 return new CertificateTemplate(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CertificateTemplateIamBinding":
+                return new CertificateTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1:CertificateTemplateIamMember":
+                return new CertificateTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1:CertificateTemplateIamPolicy":
                 return new CertificateTemplateIamPolicy(name, <any>undefined, { urn })
             default:

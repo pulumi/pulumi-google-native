@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudresourcemanager/v2:Folder":
 		r = &Folder{}
+	case "google-native:cloudresourcemanager/v2:FolderIamBinding":
+		r = &FolderIamBinding{}
+	case "google-native:cloudresourcemanager/v2:FolderIamMember":
+		r = &FolderIamMember{}
 	case "google-native:cloudresourcemanager/v2:FolderIamPolicy":
 		r = &FolderIamPolicy{}
 	default:

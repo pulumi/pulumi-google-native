@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bucket{}
 	case "google-native:storage/v1:BucketAccessControl":
 		r = &BucketAccessControl{}
+	case "google-native:storage/v1:BucketIamBinding":
+		r = &BucketIamBinding{}
+	case "google-native:storage/v1:BucketIamMember":
+		r = &BucketIamMember{}
 	case "google-native:storage/v1:BucketIamPolicy":
 		r = &BucketIamPolicy{}
 	case "google-native:storage/v1:BucketObject":
@@ -37,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Notification{}
 	case "google-native:storage/v1:ObjectAccessControl":
 		r = &ObjectAccessControl{}
+	case "google-native:storage/v1:ObjectIamBinding":
+		r = &ObjectIamBinding{}
+	case "google-native:storage/v1:ObjectIamMember":
+		r = &ObjectIamMember{}
 	case "google-native:storage/v1:ObjectIamPolicy":
 		r = &ObjectIamPolicy{}
 	default:

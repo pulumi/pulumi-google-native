@@ -9,6 +9,8 @@ from ._enums import *
 from .get_membership import *
 from .get_membership_iam_policy import *
 from .membership import *
+from .membership_iam_binding import *
+from .membership_iam_member import *
 from .membership_iam_policy import *
 from ._inputs import *
 from . import outputs

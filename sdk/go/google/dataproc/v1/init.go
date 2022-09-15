@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dataproc/v1:AutoscalingPolicy":
 		r = &AutoscalingPolicy{}
+	case "google-native:dataproc/v1:AutoscalingPolicyIamBinding":
+		r = &AutoscalingPolicyIamBinding{}
+	case "google-native:dataproc/v1:AutoscalingPolicyIamMember":
+		r = &AutoscalingPolicyIamMember{}
 	case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
 		r = &AutoscalingPolicyIamPolicy{}
 	case "google-native:dataproc/v1:Batch":
@@ -31,18 +35,42 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "google-native:dataproc/v1:Job":
 		r = &Job{}
+	case "google-native:dataproc/v1:RegionAutoscalingPolicyIamBinding":
+		r = &RegionAutoscalingPolicyIamBinding{}
+	case "google-native:dataproc/v1:RegionAutoscalingPolicyIamMember":
+		r = &RegionAutoscalingPolicyIamMember{}
 	case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
 		r = &RegionAutoscalingPolicyIamPolicy{}
+	case "google-native:dataproc/v1:RegionClusterIamBinding":
+		r = &RegionClusterIamBinding{}
+	case "google-native:dataproc/v1:RegionClusterIamMember":
+		r = &RegionClusterIamMember{}
 	case "google-native:dataproc/v1:RegionClusterIamPolicy":
 		r = &RegionClusterIamPolicy{}
+	case "google-native:dataproc/v1:RegionJobIamBinding":
+		r = &RegionJobIamBinding{}
+	case "google-native:dataproc/v1:RegionJobIamMember":
+		r = &RegionJobIamMember{}
 	case "google-native:dataproc/v1:RegionJobIamPolicy":
 		r = &RegionJobIamPolicy{}
+	case "google-native:dataproc/v1:RegionOperationIamBinding":
+		r = &RegionOperationIamBinding{}
+	case "google-native:dataproc/v1:RegionOperationIamMember":
+		r = &RegionOperationIamMember{}
 	case "google-native:dataproc/v1:RegionOperationIamPolicy":
 		r = &RegionOperationIamPolicy{}
+	case "google-native:dataproc/v1:RegionWorkflowTemplateIamBinding":
+		r = &RegionWorkflowTemplateIamBinding{}
+	case "google-native:dataproc/v1:RegionWorkflowTemplateIamMember":
+		r = &RegionWorkflowTemplateIamMember{}
 	case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
 		r = &RegionWorkflowTemplateIamPolicy{}
 	case "google-native:dataproc/v1:WorkflowTemplate":
 		r = &WorkflowTemplate{}
+	case "google-native:dataproc/v1:WorkflowTemplateIamBinding":
+		r = &WorkflowTemplateIamBinding{}
+	case "google-native:dataproc/v1:WorkflowTemplateIamMember":
+		r = &WorkflowTemplateIamMember{}
 	case "google-native:dataproc/v1:WorkflowTemplateIamPolicy":
 		r = &WorkflowTemplateIamPolicy{}
 	default:

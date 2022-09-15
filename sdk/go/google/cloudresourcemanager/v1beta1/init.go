@@ -21,10 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:cloudresourcemanager/v1beta1:OrganizationIamBinding":
+		r = &OrganizationIamBinding{}
+	case "google-native:cloudresourcemanager/v1beta1:OrganizationIamMember":
+		r = &OrganizationIamMember{}
 	case "google-native:cloudresourcemanager/v1beta1:OrganizationIamPolicy":
 		r = &OrganizationIamPolicy{}
 	case "google-native:cloudresourcemanager/v1beta1:Project":
 		r = &Project{}
+	case "google-native:cloudresourcemanager/v1beta1:ProjectIamBinding":
+		r = &ProjectIamBinding{}
+	case "google-native:cloudresourcemanager/v1beta1:ProjectIamMember":
+		r = &ProjectIamMember{}
 	case "google-native:cloudresourcemanager/v1beta1:ProjectIamPolicy":
 		r = &ProjectIamPolicy{}
 	default:

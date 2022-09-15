@@ -9,6 +9,14 @@ export { ConnectivityTestArgs } from "./connectivityTest";
 export type ConnectivityTest = import("./connectivityTest").ConnectivityTest;
 export const ConnectivityTest: typeof import("./connectivityTest").ConnectivityTest = null as any;
 
+export { ConnectivityTestIamBindingArgs } from "./connectivityTestIamBinding";
+export type ConnectivityTestIamBinding = import("./connectivityTestIamBinding").ConnectivityTestIamBinding;
+export const ConnectivityTestIamBinding: typeof import("./connectivityTestIamBinding").ConnectivityTestIamBinding = null as any;
+
+export { ConnectivityTestIamMemberArgs } from "./connectivityTestIamMember";
+export type ConnectivityTestIamMember = import("./connectivityTestIamMember").ConnectivityTestIamMember;
+export const ConnectivityTestIamMember: typeof import("./connectivityTestIamMember").ConnectivityTestIamMember = null as any;
+
 export { ConnectivityTestIamPolicyArgs } from "./connectivityTestIamPolicy";
 export type ConnectivityTestIamPolicy = import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy;
 export const ConnectivityTestIamPolicy: typeof import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy = null as any;
@@ -22,6 +30,8 @@ export const getConnectivityTestIamPolicy: typeof import("./getConnectivityTestI
 export const getConnectivityTestIamPolicyOutput: typeof import("./getConnectivityTestIamPolicy").getConnectivityTestIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
+utilities.lazyLoad(exports, ["ConnectivityTestIamBinding"], () => require("./connectivityTestIamBinding"));
+utilities.lazyLoad(exports, ["ConnectivityTestIamMember"], () => require("./connectivityTestIamMember"));
 utilities.lazyLoad(exports, ["ConnectivityTestIamPolicy"], () => require("./connectivityTestIamPolicy"));
 utilities.lazyLoad(exports, ["getConnectivityTest","getConnectivityTestOutput"], () => require("./getConnectivityTest"));
 utilities.lazyLoad(exports, ["getConnectivityTestIamPolicy","getConnectivityTestIamPolicyOutput"], () => require("./getConnectivityTestIamPolicy"));
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:networkmanagement/v1:ConnectivityTest":
                 return new ConnectivityTest(name, <any>undefined, { urn })
+            case "google-native:networkmanagement/v1:ConnectivityTestIamBinding":
+                return new ConnectivityTestIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkmanagement/v1:ConnectivityTestIamMember":
+                return new ConnectivityTestIamMember(name, <any>undefined, { urn })
             case "google-native:networkmanagement/v1:ConnectivityTestIamPolicy":
                 return new ConnectivityTestIamPolicy(name, <any>undefined, { urn })
             default:

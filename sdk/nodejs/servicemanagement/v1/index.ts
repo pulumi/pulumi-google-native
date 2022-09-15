@@ -37,9 +37,25 @@ export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
 
+export { ServiceConsumerIamBindingArgs } from "./serviceConsumerIamBinding";
+export type ServiceConsumerIamBinding = import("./serviceConsumerIamBinding").ServiceConsumerIamBinding;
+export const ServiceConsumerIamBinding: typeof import("./serviceConsumerIamBinding").ServiceConsumerIamBinding = null as any;
+
+export { ServiceConsumerIamMemberArgs } from "./serviceConsumerIamMember";
+export type ServiceConsumerIamMember = import("./serviceConsumerIamMember").ServiceConsumerIamMember;
+export const ServiceConsumerIamMember: typeof import("./serviceConsumerIamMember").ServiceConsumerIamMember = null as any;
+
 export { ServiceConsumerIamPolicyArgs } from "./serviceConsumerIamPolicy";
 export type ServiceConsumerIamPolicy = import("./serviceConsumerIamPolicy").ServiceConsumerIamPolicy;
 export const ServiceConsumerIamPolicy: typeof import("./serviceConsumerIamPolicy").ServiceConsumerIamPolicy = null as any;
+
+export { ServiceIamBindingArgs } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+
+export { ServiceIamMemberArgs } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
 
 export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
 export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
@@ -53,7 +69,11 @@ utilities.lazyLoad(exports, ["getServiceConsumerIamPolicy","getServiceConsumerIa
 utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
 utilities.lazyLoad(exports, ["Rollout"], () => require("./rollout"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceConsumerIamBinding"], () => require("./serviceConsumerIamBinding"));
+utilities.lazyLoad(exports, ["ServiceConsumerIamMember"], () => require("./serviceConsumerIamMember"));
 utilities.lazyLoad(exports, ["ServiceConsumerIamPolicy"], () => require("./serviceConsumerIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
 utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 // Export enums:
@@ -69,8 +89,16 @@ const _module = {
                 return new Rollout(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "google-native:servicemanagement/v1:ServiceConsumerIamBinding":
+                return new ServiceConsumerIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicemanagement/v1:ServiceConsumerIamMember":
+                return new ServiceConsumerIamMember(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:ServiceConsumerIamPolicy":
                 return new ServiceConsumerIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicemanagement/v1:ServiceIamBinding":
+                return new ServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:servicemanagement/v1:ServiceIamMember":
+                return new ServiceIamMember(name, <any>undefined, { urn })
             case "google-native:servicemanagement/v1:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:

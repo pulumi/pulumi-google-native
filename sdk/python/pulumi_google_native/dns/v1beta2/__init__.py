@@ -15,6 +15,8 @@ from .get_resource_record_set import *
 from .get_response_policy import *
 from .get_response_policy_rule import *
 from .managed_zone import *
+from .managed_zone_iam_binding import *
+from .managed_zone_iam_member import *
 from .managed_zone_iam_policy import *
 from .policy import *
 from .resource_record_set import *

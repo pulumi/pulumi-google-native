@@ -9,6 +9,14 @@ export { ConfigArgs } from "./config";
 export type Config = import("./config").Config;
 export const Config: typeof import("./config").Config = null as any;
 
+export { ConfigIamBindingArgs } from "./configIamBinding";
+export type ConfigIamBinding = import("./configIamBinding").ConfigIamBinding;
+export const ConfigIamBinding: typeof import("./configIamBinding").ConfigIamBinding = null as any;
+
+export { ConfigIamMemberArgs } from "./configIamMember";
+export type ConfigIamMember = import("./configIamMember").ConfigIamMember;
+export const ConfigIamMember: typeof import("./configIamMember").ConfigIamMember = null as any;
+
 export { ConfigIamPolicyArgs } from "./configIamPolicy";
 export type ConfigIamPolicy = import("./configIamPolicy").ConfigIamPolicy;
 export const ConfigIamPolicy: typeof import("./configIamPolicy").ConfigIamPolicy = null as any;
@@ -38,6 +46,8 @@ export type Waiter = import("./waiter").Waiter;
 export const Waiter: typeof import("./waiter").Waiter = null as any;
 
 utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
+utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
 utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
 utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
 utilities.lazyLoad(exports, ["getConfigIamPolicy","getConfigIamPolicyOutput"], () => require("./getConfigIamPolicy"));
@@ -52,6 +62,10 @@ const _module = {
         switch (type) {
             case "google-native:runtimeconfig/v1beta1:Config":
                 return new Config(name, <any>undefined, { urn })
+            case "google-native:runtimeconfig/v1beta1:ConfigIamBinding":
+                return new ConfigIamBinding(name, <any>undefined, { urn })
+            case "google-native:runtimeconfig/v1beta1:ConfigIamMember":
+                return new ConfigIamMember(name, <any>undefined, { urn })
             case "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
                 return new ConfigIamPolicy(name, <any>undefined, { urn })
             case "google-native:runtimeconfig/v1beta1:Variable":

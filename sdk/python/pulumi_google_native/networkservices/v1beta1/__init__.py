@@ -7,8 +7,12 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .endpoint_policy import *
+from .endpoint_policy_iam_binding import *
+from .endpoint_policy_iam_member import *
 from .endpoint_policy_iam_policy import *
 from .gateway import *
+from .gateway_iam_binding import *
+from .gateway_iam_member import *
 from .gateway_iam_policy import *
 from .get_endpoint_policy import *
 from .get_endpoint_policy_iam_policy import *
@@ -25,8 +29,12 @@ from .get_tls_route import *
 from .grpc_route import *
 from .http_route import *
 from .mesh import *
+from .mesh_iam_binding import *
+from .mesh_iam_member import *
 from .mesh_iam_policy import *
 from .service_binding import *
+from .service_binding_iam_binding import *
+from .service_binding_iam_member import *
 from .service_binding_iam_policy import *
 from .tcp_route import *
 from .tls_route import *

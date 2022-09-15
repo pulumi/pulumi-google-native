@@ -25,12 +25,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Backup{}
 	case "google-native:managedidentities/v1alpha1:Domain":
 		r = &Domain{}
+	case "google-native:managedidentities/v1alpha1:DomainBackupIamBinding":
+		r = &DomainBackupIamBinding{}
+	case "google-native:managedidentities/v1alpha1:DomainBackupIamMember":
+		r = &DomainBackupIamMember{}
 	case "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy":
 		r = &DomainBackupIamPolicy{}
+	case "google-native:managedidentities/v1alpha1:DomainIamBinding":
+		r = &DomainIamBinding{}
+	case "google-native:managedidentities/v1alpha1:DomainIamMember":
+		r = &DomainIamMember{}
 	case "google-native:managedidentities/v1alpha1:DomainIamPolicy":
 		r = &DomainIamPolicy{}
 	case "google-native:managedidentities/v1alpha1:Peering":
 		r = &Peering{}
+	case "google-native:managedidentities/v1alpha1:PeeringIamBinding":
+		r = &PeeringIamBinding{}
+	case "google-native:managedidentities/v1alpha1:PeeringIamMember":
+		r = &PeeringIamMember{}
 	case "google-native:managedidentities/v1alpha1:PeeringIamPolicy":
 		r = &PeeringIamPolicy{}
 	default:

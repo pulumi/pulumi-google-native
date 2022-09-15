@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:runtimeconfig/v1beta1:Config":
 		r = &Config{}
+	case "google-native:runtimeconfig/v1beta1:ConfigIamBinding":
+		r = &ConfigIamBinding{}
+	case "google-native:runtimeconfig/v1beta1:ConfigIamMember":
+		r = &ConfigIamMember{}
 	case "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
 		r = &ConfigIamPolicy{}
 	case "google-native:runtimeconfig/v1beta1:Variable":

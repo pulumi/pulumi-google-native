@@ -21,20 +21,44 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamBinding":
+		r = &ConnectionPolicyIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamMember":
+		r = &ConnectionPolicyIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamPolicy":
 		r = &ConnectionPolicyIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:Hub":
 		r = &Hub{}
+	case "google-native:networkconnectivity/v1alpha1:HubIamBinding":
+		r = &HubIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:HubIamMember":
+		r = &HubIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:HubIamPolicy":
 		r = &HubIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:InternalRangeIamBinding":
+		r = &InternalRangeIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:InternalRangeIamMember":
+		r = &InternalRangeIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
 		r = &InternalRangeIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamBinding":
+		r = &ServiceIdentifierIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamMember":
+		r = &ServiceIdentifierIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamPolicy":
 		r = &ServiceIdentifierIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamBinding":
+		r = &ServiceInstanceIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamMember":
+		r = &ServiceInstanceIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy":
 		r = &ServiceInstanceIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:Spoke":
 		r = &Spoke{}
+	case "google-native:networkconnectivity/v1alpha1:SpokeIamBinding":
+		r = &SpokeIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:SpokeIamMember":
+		r = &SpokeIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy":
 		r = &SpokeIamPolicy{}
 	default:

@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .delivery_pipeline import *
+from .delivery_pipeline_iam_binding import *
+from .delivery_pipeline_iam_member import *
 from .delivery_pipeline_iam_policy import *
 from .get_delivery_pipeline import *
 from .get_delivery_pipeline_iam_policy import *
@@ -17,6 +19,8 @@ from .get_target_iam_policy import *
 from .release import *
 from .rollout import *
 from .target import *
+from .target_iam_binding import *
+from .target_iam_member import *
 from .target_iam_policy import *
 from ._inputs import *
 from . import outputs

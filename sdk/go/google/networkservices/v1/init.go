@@ -21,18 +21,38 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:networkservices/v1:EdgeCacheKeysetIamBinding":
+		r = &EdgeCacheKeysetIamBinding{}
+	case "google-native:networkservices/v1:EdgeCacheKeysetIamMember":
+		r = &EdgeCacheKeysetIamMember{}
 	case "google-native:networkservices/v1:EdgeCacheKeysetIamPolicy":
 		r = &EdgeCacheKeysetIamPolicy{}
+	case "google-native:networkservices/v1:EdgeCacheOriginIamBinding":
+		r = &EdgeCacheOriginIamBinding{}
+	case "google-native:networkservices/v1:EdgeCacheOriginIamMember":
+		r = &EdgeCacheOriginIamMember{}
 	case "google-native:networkservices/v1:EdgeCacheOriginIamPolicy":
 		r = &EdgeCacheOriginIamPolicy{}
+	case "google-native:networkservices/v1:EdgeCacheServiceIamBinding":
+		r = &EdgeCacheServiceIamBinding{}
+	case "google-native:networkservices/v1:EdgeCacheServiceIamMember":
+		r = &EdgeCacheServiceIamMember{}
 	case "google-native:networkservices/v1:EdgeCacheServiceIamPolicy":
 		r = &EdgeCacheServiceIamPolicy{}
 	case "google-native:networkservices/v1:EndpointPolicy":
 		r = &EndpointPolicy{}
+	case "google-native:networkservices/v1:EndpointPolicyIamBinding":
+		r = &EndpointPolicyIamBinding{}
+	case "google-native:networkservices/v1:EndpointPolicyIamMember":
+		r = &EndpointPolicyIamMember{}
 	case "google-native:networkservices/v1:EndpointPolicyIamPolicy":
 		r = &EndpointPolicyIamPolicy{}
 	case "google-native:networkservices/v1:Gateway":
 		r = &Gateway{}
+	case "google-native:networkservices/v1:GatewayIamBinding":
+		r = &GatewayIamBinding{}
+	case "google-native:networkservices/v1:GatewayIamMember":
+		r = &GatewayIamMember{}
 	case "google-native:networkservices/v1:GatewayIamPolicy":
 		r = &GatewayIamPolicy{}
 	case "google-native:networkservices/v1:GrpcRoute":
@@ -41,10 +61,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HttpRoute{}
 	case "google-native:networkservices/v1:Mesh":
 		r = &Mesh{}
+	case "google-native:networkservices/v1:MeshIamBinding":
+		r = &MeshIamBinding{}
+	case "google-native:networkservices/v1:MeshIamMember":
+		r = &MeshIamMember{}
 	case "google-native:networkservices/v1:MeshIamPolicy":
 		r = &MeshIamPolicy{}
 	case "google-native:networkservices/v1:ServiceBinding":
 		r = &ServiceBinding{}
+	case "google-native:networkservices/v1:ServiceBindingIamBinding":
+		r = &ServiceBindingIamBinding{}
+	case "google-native:networkservices/v1:ServiceBindingIamMember":
+		r = &ServiceBindingIamMember{}
 	case "google-native:networkservices/v1:ServiceBindingIamPolicy":
 		r = &ServiceBindingIamPolicy{}
 	case "google-native:networkservices/v1:TcpRoute":

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudbilling/v1:BillingAccount":
 		r = &BillingAccount{}
+	case "google-native:cloudbilling/v1:BillingAccountIamBinding":
+		r = &BillingAccountIamBinding{}
+	case "google-native:cloudbilling/v1:BillingAccountIamMember":
+		r = &BillingAccountIamMember{}
 	case "google-native:cloudbilling/v1:BillingAccountIamPolicy":
 		r = &BillingAccountIamPolicy{}
 	default:

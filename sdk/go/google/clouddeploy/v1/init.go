@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:clouddeploy/v1:DeliveryPipeline":
 		r = &DeliveryPipeline{}
+	case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":
+		r = &DeliveryPipelineIamBinding{}
+	case "google-native:clouddeploy/v1:DeliveryPipelineIamMember":
+		r = &DeliveryPipelineIamMember{}
 	case "google-native:clouddeploy/v1:DeliveryPipelineIamPolicy":
 		r = &DeliveryPipelineIamPolicy{}
 	case "google-native:clouddeploy/v1:Release":
@@ -31,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Rollout{}
 	case "google-native:clouddeploy/v1:Target":
 		r = &Target{}
+	case "google-native:clouddeploy/v1:TargetIamBinding":
+		r = &TargetIamBinding{}
+	case "google-native:clouddeploy/v1:TargetIamMember":
+		r = &TargetIamMember{}
 	case "google-native:clouddeploy/v1:TargetIamPolicy":
 		r = &TargetIamPolicy{}
 	default:

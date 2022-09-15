@@ -10,8 +10,12 @@ from .get_subscription_iam_policy import *
 from .get_topic import *
 from .get_topic_iam_policy import *
 from .subscription import *
+from .subscription_iam_binding import *
+from .subscription_iam_member import *
 from .subscription_iam_policy import *
 from .topic import *
+from .topic_iam_binding import *
+from .topic_iam_member import *
 from .topic_iam_policy import *
 from ._inputs import *
 from . import outputs

@@ -21,6 +21,14 @@ export { RepositoryArgs } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
 
+export { RepositoryIamBindingArgs } from "./repositoryIamBinding";
+export type RepositoryIamBinding = import("./repositoryIamBinding").RepositoryIamBinding;
+export const RepositoryIamBinding: typeof import("./repositoryIamBinding").RepositoryIamBinding = null as any;
+
+export { RepositoryIamMemberArgs } from "./repositoryIamMember";
+export type RepositoryIamMember = import("./repositoryIamMember").RepositoryIamMember;
+export const RepositoryIamMember: typeof import("./repositoryIamMember").RepositoryIamMember = null as any;
+
 export { RepositoryIamPolicyArgs } from "./repositoryIamPolicy";
 export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
 export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
@@ -33,6 +41,8 @@ utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => requi
 utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
 utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
 utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
+utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
 utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
 utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
 
@@ -45,6 +55,10 @@ const _module = {
         switch (type) {
             case "google-native:artifactregistry/v1beta1:Repository":
                 return new Repository(name, <any>undefined, { urn })
+            case "google-native:artifactregistry/v1beta1:RepositoryIamBinding":
+                return new RepositoryIamBinding(name, <any>undefined, { urn })
+            case "google-native:artifactregistry/v1beta1:RepositoryIamMember":
+                return new RepositoryIamMember(name, <any>undefined, { urn })
             case "google-native:artifactregistry/v1beta1:RepositoryIamPolicy":
                 return new RepositoryIamPolicy(name, <any>undefined, { urn })
             case "google-native:artifactregistry/v1beta1:Tag":

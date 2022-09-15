@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CompositeType{}
 	case "google-native:deploymentmanager/v2beta:Deployment":
 		r = &Deployment{}
+	case "google-native:deploymentmanager/v2beta:DeploymentIamBinding":
+		r = &DeploymentIamBinding{}
+	case "google-native:deploymentmanager/v2beta:DeploymentIamMember":
+		r = &DeploymentIamMember{}
 	case "google-native:deploymentmanager/v2beta:DeploymentIamPolicy":
 		r = &DeploymentIamPolicy{}
 	case "google-native:deploymentmanager/v2beta:TypeProvider":

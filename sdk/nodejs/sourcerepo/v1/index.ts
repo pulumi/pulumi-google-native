@@ -17,6 +17,14 @@ export { RepoArgs } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
 
+export { RepoIamBindingArgs } from "./repoIamBinding";
+export type RepoIamBinding = import("./repoIamBinding").RepoIamBinding;
+export const RepoIamBinding: typeof import("./repoIamBinding").RepoIamBinding = null as any;
+
+export { RepoIamMemberArgs } from "./repoIamMember";
+export type RepoIamMember = import("./repoIamMember").RepoIamMember;
+export const RepoIamMember: typeof import("./repoIamMember").RepoIamMember = null as any;
+
 export { RepoIamPolicyArgs } from "./repoIamPolicy";
 export type RepoIamPolicy = import("./repoIamPolicy").RepoIamPolicy;
 export const RepoIamPolicy: typeof import("./repoIamPolicy").RepoIamPolicy = null as any;
@@ -24,6 +32,8 @@ export const RepoIamPolicy: typeof import("./repoIamPolicy").RepoIamPolicy = nul
 utilities.lazyLoad(exports, ["getRepo","getRepoOutput"], () => require("./getRepo"));
 utilities.lazyLoad(exports, ["getRepoIamPolicy","getRepoIamPolicyOutput"], () => require("./getRepoIamPolicy"));
 utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
+utilities.lazyLoad(exports, ["RepoIamBinding"], () => require("./repoIamBinding"));
+utilities.lazyLoad(exports, ["RepoIamMember"], () => require("./repoIamMember"));
 utilities.lazyLoad(exports, ["RepoIamPolicy"], () => require("./repoIamPolicy"));
 
 // Export enums:
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:sourcerepo/v1:Repo":
                 return new Repo(name, <any>undefined, { urn })
+            case "google-native:sourcerepo/v1:RepoIamBinding":
+                return new RepoIamBinding(name, <any>undefined, { urn })
+            case "google-native:sourcerepo/v1:RepoIamMember":
+                return new RepoIamMember(name, <any>undefined, { urn })
             case "google-native:sourcerepo/v1:RepoIamPolicy":
                 return new RepoIamPolicy(name, <any>undefined, { urn })
             default:

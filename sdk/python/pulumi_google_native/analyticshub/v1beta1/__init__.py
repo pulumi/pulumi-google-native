@@ -7,7 +7,11 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .data_exchange import *
+from .data_exchange_iam_binding import *
+from .data_exchange_iam_member import *
 from .data_exchange_iam_policy import *
+from .data_exchange_listing_iam_binding import *
+from .data_exchange_listing_iam_member import *
 from .data_exchange_listing_iam_policy import *
 from .get_data_exchange import *
 from .get_data_exchange_iam_policy import *

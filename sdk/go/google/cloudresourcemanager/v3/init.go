@@ -23,22 +23,42 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudresourcemanager/v3:Folder":
 		r = &Folder{}
+	case "google-native:cloudresourcemanager/v3:FolderIamBinding":
+		r = &FolderIamBinding{}
+	case "google-native:cloudresourcemanager/v3:FolderIamMember":
+		r = &FolderIamMember{}
 	case "google-native:cloudresourcemanager/v3:FolderIamPolicy":
 		r = &FolderIamPolicy{}
 	case "google-native:cloudresourcemanager/v3:Lien":
 		r = &Lien{}
+	case "google-native:cloudresourcemanager/v3:OrganizationIamBinding":
+		r = &OrganizationIamBinding{}
+	case "google-native:cloudresourcemanager/v3:OrganizationIamMember":
+		r = &OrganizationIamMember{}
 	case "google-native:cloudresourcemanager/v3:OrganizationIamPolicy":
 		r = &OrganizationIamPolicy{}
 	case "google-native:cloudresourcemanager/v3:Project":
 		r = &Project{}
+	case "google-native:cloudresourcemanager/v3:ProjectIamBinding":
+		r = &ProjectIamBinding{}
+	case "google-native:cloudresourcemanager/v3:ProjectIamMember":
+		r = &ProjectIamMember{}
 	case "google-native:cloudresourcemanager/v3:ProjectIamPolicy":
 		r = &ProjectIamPolicy{}
 	case "google-native:cloudresourcemanager/v3:TagKey":
 		r = &TagKey{}
+	case "google-native:cloudresourcemanager/v3:TagKeyIamBinding":
+		r = &TagKeyIamBinding{}
+	case "google-native:cloudresourcemanager/v3:TagKeyIamMember":
+		r = &TagKeyIamMember{}
 	case "google-native:cloudresourcemanager/v3:TagKeyIamPolicy":
 		r = &TagKeyIamPolicy{}
 	case "google-native:cloudresourcemanager/v3:TagValue":
 		r = &TagValue{}
+	case "google-native:cloudresourcemanager/v3:TagValueIamBinding":
+		r = &TagValueIamBinding{}
+	case "google-native:cloudresourcemanager/v3:TagValueIamMember":
+		r = &TagValueIamMember{}
 	case "google-native:cloudresourcemanager/v3:TagValueIamPolicy":
 		r = &TagValueIamPolicy{}
 	default:

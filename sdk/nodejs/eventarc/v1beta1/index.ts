@@ -17,6 +17,14 @@ export { TriggerArgs } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
 
+export { TriggerIamBindingArgs } from "./triggerIamBinding";
+export type TriggerIamBinding = import("./triggerIamBinding").TriggerIamBinding;
+export const TriggerIamBinding: typeof import("./triggerIamBinding").TriggerIamBinding = null as any;
+
+export { TriggerIamMemberArgs } from "./triggerIamMember";
+export type TriggerIamMember = import("./triggerIamMember").TriggerIamMember;
+export const TriggerIamMember: typeof import("./triggerIamMember").TriggerIamMember = null as any;
+
 export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
 export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
 export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
@@ -24,6 +32,8 @@ export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPol
 utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
 utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
+utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
 
 // Export enums:
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:eventarc/v1beta1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1beta1:TriggerIamBinding":
+                return new TriggerIamBinding(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1beta1:TriggerIamMember":
+                return new TriggerIamMember(name, <any>undefined, { urn })
             case "google-native:eventarc/v1beta1:TriggerIamPolicy":
                 return new TriggerIamPolicy(name, <any>undefined, { urn })
             default:

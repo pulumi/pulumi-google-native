@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:artifactregistry/v1:Repository":
 		r = &Repository{}
+	case "google-native:artifactregistry/v1:RepositoryIamBinding":
+		r = &RepositoryIamBinding{}
+	case "google-native:artifactregistry/v1:RepositoryIamMember":
+		r = &RepositoryIamMember{}
 	case "google-native:artifactregistry/v1:RepositoryIamPolicy":
 		r = &RepositoryIamPolicy{}
 	case "google-native:artifactregistry/v1:Tag":

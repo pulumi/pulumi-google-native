@@ -23,22 +23,42 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:beyondcorp/v1:AppConnection":
 		r = &AppConnection{}
+	case "google-native:beyondcorp/v1:AppConnectionIamBinding":
+		r = &AppConnectionIamBinding{}
+	case "google-native:beyondcorp/v1:AppConnectionIamMember":
+		r = &AppConnectionIamMember{}
 	case "google-native:beyondcorp/v1:AppConnectionIamPolicy":
 		r = &AppConnectionIamPolicy{}
 	case "google-native:beyondcorp/v1:AppConnector":
 		r = &AppConnector{}
+	case "google-native:beyondcorp/v1:AppConnectorIamBinding":
+		r = &AppConnectorIamBinding{}
+	case "google-native:beyondcorp/v1:AppConnectorIamMember":
+		r = &AppConnectorIamMember{}
 	case "google-native:beyondcorp/v1:AppConnectorIamPolicy":
 		r = &AppConnectorIamPolicy{}
 	case "google-native:beyondcorp/v1:AppGateway":
 		r = &AppGateway{}
+	case "google-native:beyondcorp/v1:AppGatewayIamBinding":
+		r = &AppGatewayIamBinding{}
+	case "google-native:beyondcorp/v1:AppGatewayIamMember":
+		r = &AppGatewayIamMember{}
 	case "google-native:beyondcorp/v1:AppGatewayIamPolicy":
 		r = &AppGatewayIamPolicy{}
 	case "google-native:beyondcorp/v1:ClientConnectorService":
 		r = &ClientConnectorService{}
+	case "google-native:beyondcorp/v1:ClientConnectorServiceIamBinding":
+		r = &ClientConnectorServiceIamBinding{}
+	case "google-native:beyondcorp/v1:ClientConnectorServiceIamMember":
+		r = &ClientConnectorServiceIamMember{}
 	case "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy":
 		r = &ClientConnectorServiceIamPolicy{}
 	case "google-native:beyondcorp/v1:ClientGateway":
 		r = &ClientGateway{}
+	case "google-native:beyondcorp/v1:ClientGatewayIamBinding":
+		r = &ClientGatewayIamBinding{}
+	case "google-native:beyondcorp/v1:ClientGatewayIamMember":
+		r = &ClientGatewayIamMember{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamPolicy":
 		r = &ClientGatewayIamPolicy{}
 	default:

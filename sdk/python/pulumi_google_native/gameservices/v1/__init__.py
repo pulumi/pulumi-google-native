@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .game_server_deployment_iam_binding import *
+from .game_server_deployment_iam_member import *
 from .game_server_deployment_iam_policy import *
 from .get_game_server_deployment_iam_policy import *
 from ._inputs import *

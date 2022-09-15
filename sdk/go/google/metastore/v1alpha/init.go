@@ -25,18 +25,38 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Backup{}
 	case "google-native:metastore/v1alpha:Federation":
 		r = &Federation{}
+	case "google-native:metastore/v1alpha:FederationIamBinding":
+		r = &FederationIamBinding{}
+	case "google-native:metastore/v1alpha:FederationIamMember":
+		r = &FederationIamMember{}
 	case "google-native:metastore/v1alpha:FederationIamPolicy":
 		r = &FederationIamPolicy{}
 	case "google-native:metastore/v1alpha:MetadataImport":
 		r = &MetadataImport{}
 	case "google-native:metastore/v1alpha:Service":
 		r = &Service{}
+	case "google-native:metastore/v1alpha:ServiceBackupIamBinding":
+		r = &ServiceBackupIamBinding{}
+	case "google-native:metastore/v1alpha:ServiceBackupIamMember":
+		r = &ServiceBackupIamMember{}
 	case "google-native:metastore/v1alpha:ServiceBackupIamPolicy":
 		r = &ServiceBackupIamPolicy{}
+	case "google-native:metastore/v1alpha:ServiceDatabaseIamBinding":
+		r = &ServiceDatabaseIamBinding{}
+	case "google-native:metastore/v1alpha:ServiceDatabaseIamMember":
+		r = &ServiceDatabaseIamMember{}
 	case "google-native:metastore/v1alpha:ServiceDatabaseIamPolicy":
 		r = &ServiceDatabaseIamPolicy{}
+	case "google-native:metastore/v1alpha:ServiceDatabaseTableIamBinding":
+		r = &ServiceDatabaseTableIamBinding{}
+	case "google-native:metastore/v1alpha:ServiceDatabaseTableIamMember":
+		r = &ServiceDatabaseTableIamMember{}
 	case "google-native:metastore/v1alpha:ServiceDatabaseTableIamPolicy":
 		r = &ServiceDatabaseTableIamPolicy{}
+	case "google-native:metastore/v1alpha:ServiceIamBinding":
+		r = &ServiceIamBinding{}
+	case "google-native:metastore/v1alpha:ServiceIamMember":
+		r = &ServiceIamMember{}
 	case "google-native:metastore/v1alpha:ServiceIamPolicy":
 		r = &ServiceIamPolicy{}
 	default:

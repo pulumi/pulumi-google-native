@@ -23,14 +23,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:networksecurity/v1:AuthorizationPolicy":
 		r = &AuthorizationPolicy{}
+	case "google-native:networksecurity/v1:AuthorizationPolicyIamBinding":
+		r = &AuthorizationPolicyIamBinding{}
+	case "google-native:networksecurity/v1:AuthorizationPolicyIamMember":
+		r = &AuthorizationPolicyIamMember{}
 	case "google-native:networksecurity/v1:AuthorizationPolicyIamPolicy":
 		r = &AuthorizationPolicyIamPolicy{}
 	case "google-native:networksecurity/v1:ClientTlsPolicy":
 		r = &ClientTlsPolicy{}
+	case "google-native:networksecurity/v1:ClientTlsPolicyIamBinding":
+		r = &ClientTlsPolicyIamBinding{}
+	case "google-native:networksecurity/v1:ClientTlsPolicyIamMember":
+		r = &ClientTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy":
 		r = &ClientTlsPolicyIamPolicy{}
 	case "google-native:networksecurity/v1:ServerTlsPolicy":
 		r = &ServerTlsPolicy{}
+	case "google-native:networksecurity/v1:ServerTlsPolicyIamBinding":
+		r = &ServerTlsPolicyIamBinding{}
+	case "google-native:networksecurity/v1:ServerTlsPolicyIamMember":
+		r = &ServerTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy":
 		r = &ServerTlsPolicyIamPolicy{}
 	default:

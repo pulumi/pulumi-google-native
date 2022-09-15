@@ -23,18 +23,34 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:pubsub/v1:Schema":
 		r = &Schema{}
+	case "google-native:pubsub/v1:SchemaIamBinding":
+		r = &SchemaIamBinding{}
+	case "google-native:pubsub/v1:SchemaIamMember":
+		r = &SchemaIamMember{}
 	case "google-native:pubsub/v1:SchemaIamPolicy":
 		r = &SchemaIamPolicy{}
 	case "google-native:pubsub/v1:Snapshot":
 		r = &Snapshot{}
+	case "google-native:pubsub/v1:SnapshotIamBinding":
+		r = &SnapshotIamBinding{}
+	case "google-native:pubsub/v1:SnapshotIamMember":
+		r = &SnapshotIamMember{}
 	case "google-native:pubsub/v1:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
 	case "google-native:pubsub/v1:Subscription":
 		r = &Subscription{}
+	case "google-native:pubsub/v1:SubscriptionIamBinding":
+		r = &SubscriptionIamBinding{}
+	case "google-native:pubsub/v1:SubscriptionIamMember":
+		r = &SubscriptionIamMember{}
 	case "google-native:pubsub/v1:SubscriptionIamPolicy":
 		r = &SubscriptionIamPolicy{}
 	case "google-native:pubsub/v1:Topic":
 		r = &Topic{}
+	case "google-native:pubsub/v1:TopicIamBinding":
+		r = &TopicIamBinding{}
+	case "google-native:pubsub/v1:TopicIamMember":
+		r = &TopicIamMember{}
 	case "google-native:pubsub/v1:TopicIamPolicy":
 		r = &TopicIamPolicy{}
 	default:

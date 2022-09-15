@@ -27,12 +27,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "google-native:spanner/v1:Instance":
 		r = &Instance{}
+	case "google-native:spanner/v1:InstanceBackupIamBinding":
+		r = &InstanceBackupIamBinding{}
+	case "google-native:spanner/v1:InstanceBackupIamMember":
+		r = &InstanceBackupIamMember{}
 	case "google-native:spanner/v1:InstanceBackupIamPolicy":
 		r = &InstanceBackupIamPolicy{}
 	case "google-native:spanner/v1:InstanceConfig":
 		r = &InstanceConfig{}
+	case "google-native:spanner/v1:InstanceDatabaseIamBinding":
+		r = &InstanceDatabaseIamBinding{}
+	case "google-native:spanner/v1:InstanceDatabaseIamMember":
+		r = &InstanceDatabaseIamMember{}
 	case "google-native:spanner/v1:InstanceDatabaseIamPolicy":
 		r = &InstanceDatabaseIamPolicy{}
+	case "google-native:spanner/v1:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "google-native:spanner/v1:InstanceIamMember":
+		r = &InstanceIamMember{}
 	case "google-native:spanner/v1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
 	case "google-native:spanner/v1:Session":

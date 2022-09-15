@@ -45,6 +45,14 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
@@ -52,6 +60,14 @@ export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIam
 export { RuntimeArgs } from "./runtime";
 export type Runtime = import("./runtime").Runtime;
 export const Runtime: typeof import("./runtime").Runtime = null as any;
+
+export { RuntimeIamBindingArgs } from "./runtimeIamBinding";
+export type RuntimeIamBinding = import("./runtimeIamBinding").RuntimeIamBinding;
+export const RuntimeIamBinding: typeof import("./runtimeIamBinding").RuntimeIamBinding = null as any;
+
+export { RuntimeIamMemberArgs } from "./runtimeIamMember";
+export type RuntimeIamMember = import("./runtimeIamMember").RuntimeIamMember;
+export const RuntimeIamMember: typeof import("./runtimeIamMember").RuntimeIamMember = null as any;
 
 export { RuntimeIamPolicyArgs } from "./runtimeIamPolicy";
 export type RuntimeIamPolicy = import("./runtimeIamPolicy").RuntimeIamPolicy;
@@ -71,8 +87,12 @@ utilities.lazyLoad(exports, ["getRuntime","getRuntimeOutput"], () => require("./
 utilities.lazyLoad(exports, ["getRuntimeIamPolicy","getRuntimeIamPolicyOutput"], () => require("./getRuntimeIamPolicy"));
 utilities.lazyLoad(exports, ["getSchedule","getScheduleOutput"], () => require("./getSchedule"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 utilities.lazyLoad(exports, ["Runtime"], () => require("./runtime"));
+utilities.lazyLoad(exports, ["RuntimeIamBinding"], () => require("./runtimeIamBinding"));
+utilities.lazyLoad(exports, ["RuntimeIamMember"], () => require("./runtimeIamMember"));
 utilities.lazyLoad(exports, ["RuntimeIamPolicy"], () => require("./runtimeIamPolicy"));
 utilities.lazyLoad(exports, ["Schedule"], () => require("./schedule"));
 
@@ -89,10 +109,18 @@ const _module = {
                 return new Execution(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:notebooks/v1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:notebooks/v1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
+            case "google-native:notebooks/v1:RuntimeIamBinding":
+                return new RuntimeIamBinding(name, <any>undefined, { urn })
+            case "google-native:notebooks/v1:RuntimeIamMember":
+                return new RuntimeIamMember(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:RuntimeIamPolicy":
                 return new RuntimeIamPolicy(name, <any>undefined, { urn })
             case "google-native:notebooks/v1:Schedule":

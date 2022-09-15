@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:bigqueryconnection/v1beta1:Connection":
 		r = &Connection{}
+	case "google-native:bigqueryconnection/v1beta1:ConnectionIamBinding":
+		r = &ConnectionIamBinding{}
+	case "google-native:bigqueryconnection/v1beta1:ConnectionIamMember":
+		r = &ConnectionIamMember{}
 	case "google-native:bigqueryconnection/v1beta1:ConnectionIamPolicy":
 		r = &ConnectionIamPolicy{}
 	default:

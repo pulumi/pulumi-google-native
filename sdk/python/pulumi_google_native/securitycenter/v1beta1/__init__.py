@@ -8,6 +8,8 @@ import typing
 from ._enums import *
 from .get_organization_source_iam_policy import *
 from .get_source import *
+from .organization_source_iam_binding import *
+from .organization_source_iam_member import *
 from .organization_source_iam_policy import *
 from .source import *
 from ._inputs import *

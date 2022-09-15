@@ -41,6 +41,14 @@ export { TenantArgs } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
 
+export { TenantIamBindingArgs } from "./tenantIamBinding";
+export type TenantIamBinding = import("./tenantIamBinding").TenantIamBinding;
+export const TenantIamBinding: typeof import("./tenantIamBinding").TenantIamBinding = null as any;
+
+export { TenantIamMemberArgs } from "./tenantIamMember";
+export type TenantIamMember = import("./tenantIamMember").TenantIamMember;
+export const TenantIamMember: typeof import("./tenantIamMember").TenantIamMember = null as any;
+
 export { TenantIamPolicyArgs } from "./tenantIamPolicy";
 export type TenantIamPolicy = import("./tenantIamPolicy").TenantIamPolicy;
 export const TenantIamPolicy: typeof import("./tenantIamPolicy").TenantIamPolicy = null as any;
@@ -54,6 +62,8 @@ utilities.lazyLoad(exports, ["getTenantIamPolicy","getTenantIamPolicyOutput"], (
 utilities.lazyLoad(exports, ["InboundSamlConfig"], () => require("./inboundSamlConfig"));
 utilities.lazyLoad(exports, ["OauthIdpConfig"], () => require("./oauthIdpConfig"));
 utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+utilities.lazyLoad(exports, ["TenantIamBinding"], () => require("./tenantIamBinding"));
+utilities.lazyLoad(exports, ["TenantIamMember"], () => require("./tenantIamMember"));
 utilities.lazyLoad(exports, ["TenantIamPolicy"], () => require("./tenantIamPolicy"));
 
 // Export enums:
@@ -71,6 +81,10 @@ const _module = {
                 return new OauthIdpConfig(name, <any>undefined, { urn })
             case "google-native:identitytoolkit/v2:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
+            case "google-native:identitytoolkit/v2:TenantIamBinding":
+                return new TenantIamBinding(name, <any>undefined, { urn })
+            case "google-native:identitytoolkit/v2:TenantIamMember":
+                return new TenantIamMember(name, <any>undefined, { urn })
             case "google-native:identitytoolkit/v2:TenantIamPolicy":
                 return new TenantIamPolicy(name, <any>undefined, { urn })
             default:

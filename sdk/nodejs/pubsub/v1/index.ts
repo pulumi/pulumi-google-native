@@ -41,6 +41,14 @@ export { SchemaArgs } from "./schema";
 export type Schema = import("./schema").Schema;
 export const Schema: typeof import("./schema").Schema = null as any;
 
+export { SchemaIamBindingArgs } from "./schemaIamBinding";
+export type SchemaIamBinding = import("./schemaIamBinding").SchemaIamBinding;
+export const SchemaIamBinding: typeof import("./schemaIamBinding").SchemaIamBinding = null as any;
+
+export { SchemaIamMemberArgs } from "./schemaIamMember";
+export type SchemaIamMember = import("./schemaIamMember").SchemaIamMember;
+export const SchemaIamMember: typeof import("./schemaIamMember").SchemaIamMember = null as any;
+
 export { SchemaIamPolicyArgs } from "./schemaIamPolicy";
 export type SchemaIamPolicy = import("./schemaIamPolicy").SchemaIamPolicy;
 export const SchemaIamPolicy: typeof import("./schemaIamPolicy").SchemaIamPolicy = null as any;
@@ -48,6 +56,14 @@ export const SchemaIamPolicy: typeof import("./schemaIamPolicy").SchemaIamPolicy
 export { SnapshotArgs } from "./snapshot";
 export type Snapshot = import("./snapshot").Snapshot;
 export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+
+export { SnapshotIamBindingArgs } from "./snapshotIamBinding";
+export type SnapshotIamBinding = import("./snapshotIamBinding").SnapshotIamBinding;
+export const SnapshotIamBinding: typeof import("./snapshotIamBinding").SnapshotIamBinding = null as any;
+
+export { SnapshotIamMemberArgs } from "./snapshotIamMember";
+export type SnapshotIamMember = import("./snapshotIamMember").SnapshotIamMember;
+export const SnapshotIamMember: typeof import("./snapshotIamMember").SnapshotIamMember = null as any;
 
 export { SnapshotIamPolicyArgs } from "./snapshotIamPolicy";
 export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
@@ -57,6 +73,14 @@ export { SubscriptionArgs } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
 
+export { SubscriptionIamBindingArgs } from "./subscriptionIamBinding";
+export type SubscriptionIamBinding = import("./subscriptionIamBinding").SubscriptionIamBinding;
+export const SubscriptionIamBinding: typeof import("./subscriptionIamBinding").SubscriptionIamBinding = null as any;
+
+export { SubscriptionIamMemberArgs } from "./subscriptionIamMember";
+export type SubscriptionIamMember = import("./subscriptionIamMember").SubscriptionIamMember;
+export const SubscriptionIamMember: typeof import("./subscriptionIamMember").SubscriptionIamMember = null as any;
+
 export { SubscriptionIamPolicyArgs } from "./subscriptionIamPolicy";
 export type SubscriptionIamPolicy = import("./subscriptionIamPolicy").SubscriptionIamPolicy;
 export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").SubscriptionIamPolicy = null as any;
@@ -64,6 +88,14 @@ export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").Sub
 export { TopicArgs } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
+
+export { TopicIamBindingArgs } from "./topicIamBinding";
+export type TopicIamBinding = import("./topicIamBinding").TopicIamBinding;
+export const TopicIamBinding: typeof import("./topicIamBinding").TopicIamBinding = null as any;
+
+export { TopicIamMemberArgs } from "./topicIamMember";
+export type TopicIamMember = import("./topicIamMember").TopicIamMember;
+export const TopicIamMember: typeof import("./topicIamMember").TopicIamMember = null as any;
 
 export { TopicIamPolicyArgs } from "./topicIamPolicy";
 export type TopicIamPolicy = import("./topicIamPolicy").TopicIamPolicy;
@@ -78,12 +110,20 @@ utilities.lazyLoad(exports, ["getSubscriptionIamPolicy","getSubscriptionIamPolic
 utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
 utilities.lazyLoad(exports, ["getTopicIamPolicy","getTopicIamPolicyOutput"], () => require("./getTopicIamPolicy"));
 utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+utilities.lazyLoad(exports, ["SchemaIamBinding"], () => require("./schemaIamBinding"));
+utilities.lazyLoad(exports, ["SchemaIamMember"], () => require("./schemaIamMember"));
 utilities.lazyLoad(exports, ["SchemaIamPolicy"], () => require("./schemaIamPolicy"));
 utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+utilities.lazyLoad(exports, ["SnapshotIamBinding"], () => require("./snapshotIamBinding"));
+utilities.lazyLoad(exports, ["SnapshotIamMember"], () => require("./snapshotIamMember"));
 utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
 utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["SubscriptionIamBinding"], () => require("./subscriptionIamBinding"));
+utilities.lazyLoad(exports, ["SubscriptionIamMember"], () => require("./subscriptionIamMember"));
 utilities.lazyLoad(exports, ["SubscriptionIamPolicy"], () => require("./subscriptionIamPolicy"));
 utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+utilities.lazyLoad(exports, ["TopicIamBinding"], () => require("./topicIamBinding"));
+utilities.lazyLoad(exports, ["TopicIamMember"], () => require("./topicIamMember"));
 utilities.lazyLoad(exports, ["TopicIamPolicy"], () => require("./topicIamPolicy"));
 
 // Export enums:
@@ -95,18 +135,34 @@ const _module = {
         switch (type) {
             case "google-native:pubsub/v1:Schema":
                 return new Schema(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SchemaIamBinding":
+                return new SchemaIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SchemaIamMember":
+                return new SchemaIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:SchemaIamPolicy":
                 return new SchemaIamPolicy(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SnapshotIamBinding":
+                return new SnapshotIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SnapshotIamMember":
+                return new SnapshotIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SubscriptionIamBinding":
+                return new SubscriptionIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:SubscriptionIamMember":
+                return new SubscriptionIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:SubscriptionIamPolicy":
                 return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:Topic":
                 return new Topic(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:TopicIamBinding":
+                return new TopicIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1:TopicIamMember":
+                return new TopicIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1:TopicIamPolicy":
                 return new TopicIamPolicy(name, <any>undefined, { urn })
             default:

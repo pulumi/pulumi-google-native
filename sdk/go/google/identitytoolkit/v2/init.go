@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OauthIdpConfig{}
 	case "google-native:identitytoolkit/v2:Tenant":
 		r = &Tenant{}
+	case "google-native:identitytoolkit/v2:TenantIamBinding":
+		r = &TenantIamBinding{}
+	case "google-native:identitytoolkit/v2:TenantIamMember":
+		r = &TenantIamMember{}
 	case "google-native:identitytoolkit/v2:TenantIamPolicy":
 		r = &TenantIamPolicy{}
 	default:

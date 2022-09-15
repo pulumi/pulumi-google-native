@@ -25,8 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Device{}
 	case "google-native:cloudiot/v1:Registry":
 		r = &Registry{}
+	case "google-native:cloudiot/v1:RegistryGroupIamBinding":
+		r = &RegistryGroupIamBinding{}
+	case "google-native:cloudiot/v1:RegistryGroupIamMember":
+		r = &RegistryGroupIamMember{}
 	case "google-native:cloudiot/v1:RegistryGroupIamPolicy":
 		r = &RegistryGroupIamPolicy{}
+	case "google-native:cloudiot/v1:RegistryIamBinding":
+		r = &RegistryIamBinding{}
+	case "google-native:cloudiot/v1:RegistryIamMember":
+		r = &RegistryIamMember{}
 	case "google-native:cloudiot/v1:RegistryIamPolicy":
 		r = &RegistryIamPolicy{}
 	default:
