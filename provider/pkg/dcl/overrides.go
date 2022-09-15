@@ -17,9 +17,18 @@ func AddDCLResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIMetada
 }
 
 func addVertexAIResources(pkg *schema.PackageSpec, metadata *resources.CloudAPIMetadata) error {
-	dclSchema := vertexai.DCLMetadataSchemaSchema()
-	if err := processDCLSchema("google-native:vertexai/v1:MetadataSchema", dclSchema, pkg, metadata); err != nil {
-		return err
+	schemas := map[string]*dcl.Schema{
+		"google-native:vertexai/v1:MetadataSchema":       vertexai.DCLMetadataSchemaSchema(),
+		"google-native:vertexai/v1:MetadataStore":        vertexai.DCLMetadataStoreSchema(),
+		"google-native:vertexai/v1:Endpoint":             vertexai.DCLEndpointSchema(),
+		"google-native:vertexai/v1:ModelDeployment":      vertexai.DCLModelDeploymentSchema(),
+		"google-native:vertexai/v1:Model":                vertexai.DCLModelSchema(),
+		"google-native:vertexai/v1:EndpointTrafficSplit": vertexai.DCLEndpointTrafficSplitSchema(),
+	}
+	for tok, schema := range schemas {
+		if err := processDCLSchema(tok, schema, pkg, metadata); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -65,7 +74,7 @@ func processDCLSchema(tok string, dclSchema *dcl.Schema, pkg *schema.PackageSpec
 					Ref: referencedTypeName,
 				}, nil
 			}
-		case dcl.StringType:
+		case dcl.StringType, dcl.ReferenceType:
 			return &schema.TypeSpec{Type: "string"}, nil
 		case dcl.BooleanType:
 			return &schema.TypeSpec{Type: "boolean"}, nil

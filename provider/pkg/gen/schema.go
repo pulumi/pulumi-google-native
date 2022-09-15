@@ -25,6 +25,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/pulumi/pulumi-google-native/provider/pkg/dcl"
+
 	"github.com/imdario/mergo"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
@@ -320,6 +322,10 @@ will be introduced in minor version releases.`,
 		"packages":                     javaPackages,
 		"liftSingleValueMethodReturns": true,
 	})
+
+	if err := dcl.AddDCLResources(&pkg, &metadata); err != nil {
+		return nil, nil, err
+	}
 
 	return &pkg, &metadata, nil
 }
