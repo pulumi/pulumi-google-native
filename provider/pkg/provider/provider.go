@@ -601,7 +601,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op, nil)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -801,6 +801,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 	urn resource.URN,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
+	additionalState resource.PropertyMap,
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -928,7 +929,16 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				if err != nil {
 					return resp, err
 				}
-				pollURI, err = tmpl.Expand(resp)
+				params := map[string]interface{}{}
+				for _, name := range tmpl.Names() {
+					if val, ok := resp[name]; ok {
+						params[name] = val
+					} else if !ok && additionalState != nil && additionalState.HasValue(resource.
+						PropertyKey(name)) {
+						params[name] = additionalState.Mappable()[name]
+					}
+				}
+				pollURI, err = tmpl.Expand(params)
 				if err != nil {
 					return resp, err
 				}
@@ -1194,7 +1204,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
-		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, oldState)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
@@ -1294,7 +1304,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp)
+	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp, nil)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
