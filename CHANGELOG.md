@@ -2,13 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(none)
+
+## 0.26.0 (2022-09-16)
 
 ### BUG FIXES/ENHANCEMENTS
 - Add IamBinding and IamMember resources to make it easier to manage IAM policies [#653](https://github.com/pulumi/pulumi-google-native/pull/653)
 
 ## 0.25.0 (2022-09-01)
 ### BREAKING CHANGE
-- Remove DNS v2 API which is not actively advertised by Google (https://github.com/pulumi/pulumi-google-native/pull/662)
+- Remove DNS v2 API which is not actively advertised by Google [#662](https://github.com/pulumi/pulumi-google-native/pull/662)
 
 ### BUG FIXES/ENHANCEMENTS
 - Add resource method for retrieving kubeconfig from a GKE cluster [#655](https://github.com/pulumi/pulumi-google-native/pull/655)
