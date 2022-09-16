@@ -17,9 +17,17 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
     public sealed class ReplicationCycleResponse
     {
         /// <summary>
+        /// The cycle's ordinal number.
+        /// </summary>
+        public readonly int CycleNumber;
+        /// <summary>
         /// The time the replication cycle has ended.
         /// </summary>
         public readonly string EndTime;
+        /// <summary>
+        /// Provides details on the state of the cycle in case of an error.
+        /// </summary>
+        public readonly Outputs.StatusResponse Error;
         /// <summary>
         /// The identifier of the ReplicationCycle.
         /// </summary>
@@ -37,6 +45,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
+        /// State of the MigratingVm.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// The cycle's steps list representing its progress.
         /// </summary>
         public readonly ImmutableArray<Outputs.CycleStepResponse> Steps;
@@ -47,7 +59,11 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
         [OutputConstructor]
         private ReplicationCycleResponse(
+            int cycleNumber,
+
             string endTime,
+
+            Outputs.StatusResponse error,
 
             string name,
 
@@ -57,15 +73,20 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
             string startTime,
 
+            string state,
+
             ImmutableArray<Outputs.CycleStepResponse> steps,
 
             string totalPauseDuration)
         {
+            CycleNumber = cycleNumber;
             EndTime = endTime;
+            Error = error;
             Name = name;
             Progress = progress;
             ProgressPercent = progressPercent;
             StartTime = startTime;
+            State = state;
             Steps = steps;
             TotalPauseDuration = totalPauseDuration;
         }

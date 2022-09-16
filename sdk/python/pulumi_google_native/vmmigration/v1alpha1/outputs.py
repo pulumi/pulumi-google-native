@@ -1657,7 +1657,9 @@ class ReplicationCycleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "endTime":
+        if key == "cycleNumber":
+            suggest = "cycle_number"
+        elif key == "endTime":
             suggest = "end_time"
         elif key == "progressPercent":
             suggest = "progress_percent"
@@ -1678,30 +1680,47 @@ class ReplicationCycleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cycle_number: int,
                  end_time: str,
+                 error: 'outputs.StatusResponse',
                  name: str,
                  progress: int,
                  progress_percent: int,
                  start_time: str,
+                 state: str,
                  steps: Sequence['outputs.CycleStepResponse'],
                  total_pause_duration: str):
         """
         ReplicationCycle contains information about the current replication cycle status.
+        :param int cycle_number: The cycle's ordinal number.
         :param str end_time: The time the replication cycle has ended.
+        :param 'StatusResponse' error: Provides details on the state of the cycle in case of an error.
         :param str name: The identifier of the ReplicationCycle.
         :param int progress: The current progress in percentage of this cycle.
         :param int progress_percent: The current progress in percentage of this cycle.
         :param str start_time: The time the replication cycle has started.
+        :param str state: State of the MigratingVm.
         :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
+        pulumi.set(__self__, "cycle_number", cycle_number)
         pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "progress_percent", progress_percent)
         pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "total_pause_duration", total_pause_duration)
+
+    @property
+    @pulumi.getter(name="cycleNumber")
+    def cycle_number(self) -> int:
+        """
+        The cycle's ordinal number.
+        """
+        return pulumi.get(self, "cycle_number")
 
     @property
     @pulumi.getter(name="endTime")
@@ -1710,6 +1729,14 @@ class ReplicationCycleResponse(dict):
         The time the replication cycle has ended.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the cycle in case of an error.
+        """
+        return pulumi.get(self, "error")
 
     @property
     @pulumi.getter
@@ -1742,6 +1769,14 @@ class ReplicationCycleResponse(dict):
         The time the replication cycle has started.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the MigratingVm.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter

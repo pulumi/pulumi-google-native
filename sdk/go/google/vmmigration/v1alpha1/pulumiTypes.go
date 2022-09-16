@@ -1931,8 +1931,12 @@ func (o ReplicatingStepResponseOutput) TotalBytes() pulumi.StringOutput {
 
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponse struct {
+	// The cycle's ordinal number.
+	CycleNumber int `pulumi:"cycleNumber"`
 	// The time the replication cycle has ended.
 	EndTime string `pulumi:"endTime"`
+	// Provides details on the state of the cycle in case of an error.
+	Error StatusResponse `pulumi:"error"`
 	// The identifier of the ReplicationCycle.
 	Name string `pulumi:"name"`
 	// The current progress in percentage of this cycle.
@@ -1941,6 +1945,8 @@ type ReplicationCycleResponse struct {
 	ProgressPercent int `pulumi:"progressPercent"`
 	// The time the replication cycle has started.
 	StartTime string `pulumi:"startTime"`
+	// State of the MigratingVm.
+	State string `pulumi:"state"`
 	// The cycle's steps list representing its progress.
 	Steps []CycleStepResponse `pulumi:"steps"`
 	// The accumulated duration the replication cycle was paused.
@@ -1962,9 +1968,19 @@ func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutputWithCont
 	return o
 }
 
+// The cycle's ordinal number.
+func (o ReplicationCycleResponseOutput) CycleNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) int { return v.CycleNumber }).(pulumi.IntOutput)
+}
+
 // The time the replication cycle has ended.
 func (o ReplicationCycleResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the cycle in case of an error.
+func (o ReplicationCycleResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
 }
 
 // The identifier of the ReplicationCycle.
@@ -1985,6 +2001,11 @@ func (o ReplicationCycleResponseOutput) ProgressPercent() pulumi.IntOutput {
 // The time the replication cycle has started.
 func (o ReplicationCycleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// State of the MigratingVm.
+func (o ReplicationCycleResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
 // The cycle's steps list representing its progress.
