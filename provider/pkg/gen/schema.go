@@ -446,6 +446,34 @@ func (g *packageGenerator) genToken(typeName string) string {
 	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 }
 
+func (g *packageGenerator) fullPath(method *discovery.RestMethod, preferPath bool) string {
+	if method == nil {
+		return ""
+	}
+	var pathURL string
+	if !preferPath && len(method.FlatPath) > 0 {
+		pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
+	} else {
+		pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
+	}
+
+	queryParams := url.Values{}
+	for param, details := range method.Parameters {
+		if details.Location != "query" || !isRequired(details) {
+			continue
+		}
+		queryParams.Add(param, "{"+param+"}")
+	}
+	if len(queryParams) > 0 {
+		var err error
+		pathURL, err = url.QueryUnescape(pathURL + "?" + queryParams.Encode())
+		if err != nil {
+			return ""
+		}
+	}
+	return pathURL
+}
+
 func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource,
 	ops map[string]*operation) error {
 	resourceTok := g.genToken(typeName)
@@ -457,34 +485,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
-	fullPath := func(method *discovery.RestMethod) string {
-		if method == nil {
-			return ""
-		}
-		var pathURL string
-		if len(method.FlatPath) > 0 {
-			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
-		} else {
-			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
-		}
-
-		queryParams := url.Values{}
-		for param, details := range method.Parameters {
-			if details.Location != "query" || !isRequired(details) {
-				continue
-			}
-			queryParams.Add(param, "{"+param+"}")
-		}
-		if len(queryParams) > 0 {
-			var err error
-			pathURL, err = url.QueryUnescape(pathURL + "?" + queryParams.Encode())
-			if err != nil {
-				fmt.Printf("Failed to unescape query params for resource: %s: %v\n", resourceTok, err)
-				return ""
-			}
-		}
-		return pathURL
-	}
 	resourcePath := func(method *discovery.RestMethod) string {
 		if method == nil {
 			return ""
@@ -515,7 +515,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
 				Endpoint: resources.CloudAPIEndpoint{
-					Template: fullPath(dd.createMethod),
+					Template: g.fullPath(dd.createMethod, false),
 				},
 				Verb: dd.createMethod.HttpMethod,
 			},
@@ -640,12 +640,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		resourceMeta.Create.SDKProperties = bodyBag.properties
 
 		if op, ok := ops[dd.createMethod.Response.Ref]; ok {
-			setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, "", op)
+			g.setOperationsBaseURL(&resourceMeta.Create.CloudAPIOperation, "", op)
 		} else {
 			response := g.rest.Schemas[dd.createMethod.Response.Ref]
 			for propName, prop := range response.Properties {
 				if op, ok := ops[prop.Ref]; ok {
-					setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, propName, op)
+					g.setOperationsBaseURL(&resourceMeta.Create.CloudAPIOperation, propName, op)
 					break
 				}
 			}
@@ -758,15 +758,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				}
 				idVals = append(idVals, v)
 			}
-			if p := fullPath(dd.getMethod); len(p) > 0 {
+			if p := g.fullPath(dd.getMethod, false); len(p) > 0 {
 				resourceMeta.Read.Endpoint.Template = p
 				resourceMeta.Read.Endpoint.Values = idVals
 			}
-			if p := fullPath(dd.updateMethod); len(p) > 0 {
+			if p := g.fullPath(dd.updateMethod, false); len(p) > 0 {
 				resourceMeta.Update.Endpoint.Template = p
 				resourceMeta.Update.Endpoint.Values = idVals
 			}
-			if p := fullPath(dd.deleteMethod); len(p) > 0 {
+			if p := g.fullPath(dd.deleteMethod, false); len(p) > 0 {
 				resourceMeta.Delete.Endpoint.Template = p
 				resourceMeta.Delete.Endpoint.Values = idVals
 			}
@@ -789,7 +789,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		if dd.updateMethod.Response != nil && dd.updateMethod.Response.Ref != "" {
 			if op, ok := ops[dd.updateMethod.Response.Ref]; ok {
-				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Update.CloudAPIOperation, "", op)
+				g.setOperationsBaseURL(&resourceMeta.Update.CloudAPIOperation, "", op)
 			}
 		}
 	}
@@ -803,7 +803,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		if dd.deleteMethod.Response != nil && dd.deleteMethod.Response.Ref != "" {
 			if op, ok := ops[dd.deleteMethod.Response.Ref]; ok {
-				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Delete, "", op)
+				g.setOperationsBaseURL(&resourceMeta.Delete, "", op)
 			}
 		}
 	}
@@ -961,15 +961,41 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	return nil
 }
 
-func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation, embeddedOperationFieldName string,
+func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOperation,
+	embeddedOperationFieldName string,
 	op *operation) {
 	if cloudOp.Operations == nil {
 		cloudOp.Operations = &resources.Operations{}
 	}
 	if _, has := op.schema.Properties["selfLink"]; has {
-		cloudOp.Operations.HasSelfLink = true
+		cloudOp.Operations.SelfLinkProperty = "selfLink"
 	} else {
-		cloudOp.Operations.OperationsBaseURL = resources.AssembleURL(baseURL, op.restMethod.Path)
+		operationParamToSdkName := func(name string, param discovery.JsonSchema) string {
+			switch name {
+			case "operation":
+				if strings.Contains(param.Description, "(ID of the operation)") {
+					return "id"
+				}
+			case "projectId", "locationId":
+				return name[:len(name)-2]
+			case "managedZone":
+				return "name"
+			case "datum":
+				return "dataId"
+			}
+			return name
+		}
+		// Bunch of operations' rest methods have parameters that are not correctly
+		// referenced in flatPaths but are in paths.
+		cloudOp.Operations.Template = g.fullPath(op.restMethod, true)
+		for name, value := range op.restMethod.Parameters {
+			cloudOp.Operations.Values = append(cloudOp.Operations.Values,
+				resources.CloudAPIResourceParam{
+					Name:    name,
+					SdkName: operationParamToSdkName(name, value),
+					Kind:    value.Location,
+				})
+		}
 	}
 	cloudOp.Operations.EmbeddedOperationField = embeddedOperationFieldName
 }

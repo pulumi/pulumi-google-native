@@ -183,16 +183,6 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			},
 		},
 	},
-	"google-native:dns/v1:ManagedZone": {
-		Update: resources.UpdateAPIOperation{
-			CloudAPIOperation: resources.CloudAPIOperation{
-				Operations: &resources.Operations{
-					OperationsBaseURL: "https://dns.googleapis." +
-						"com/dns/v1/projects/{project}/managedZones/{managedZone}/operations/{id}",
-				},
-			},
-		},
-	},
 	"google-native:bigtableadmin/v2:Instance": {
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{

@@ -35,7 +35,6 @@ import (
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/iancoleman/strcase"
 	"github.com/jpillora/backoff"
-	"github.com/jtacoma/uritemplates"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
@@ -801,7 +800,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 	urn resource.URN,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
-	additionalState resource.PropertyMap,
+	inputState resource.PropertyMap,
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -924,21 +923,13 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 			selfLink, has := getSelfLink(op)
 			if has && hasStatus {
 				pollURI = selfLink
-			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
-				tmpl, err := uritemplates.Parse(operation.Operations.OperationsBaseURL)
-				if err != nil {
-					return resp, err
+			} else if operation.Operations != nil && operation.Operations.Template != "" {
+				var existing map[string]interface{}
+				if inputState != nil {
+					existing = inputState.Mappable()
 				}
-				params := map[string]interface{}{}
-				for _, name := range tmpl.Names() {
-					if val, ok := resp[name]; ok {
-						params[name] = val
-					} else if !ok && additionalState != nil && additionalState.HasValue(resource.
-						PropertyKey(name)) {
-						params[name] = additionalState.Mappable()[name]
-					}
-				}
-				pollURI, err = tmpl.Expand(params)
+				var err error
+				pollURI, err = operation.Operations.URI(resp, existing)
 				if err != nil {
 					return resp, err
 				}
@@ -1204,7 +1195,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
-		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, oldState)
+		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, inputs)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
