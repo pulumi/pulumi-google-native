@@ -988,7 +988,12 @@ func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOpera
 		// Bunch of operations' rest methods have parameters that are not correctly
 		// referenced in flatPaths but are in paths.
 		cloudOp.Operations.Template = g.fullPath(op.restMethod, true)
-		for name, value := range op.restMethod.Parameters {
+		paramNames := codegen.NewStringSet()
+		for name := range op.restMethod.Parameters {
+			paramNames.Add(name)
+		}
+		for _, name := range paramNames.SortedValues() {
+			value := op.restMethod.Parameters[name]
 			cloudOp.Operations.Values = append(cloudOp.Operations.Values,
 				resources.CloudAPIResourceParam{
 					Name:    name,
