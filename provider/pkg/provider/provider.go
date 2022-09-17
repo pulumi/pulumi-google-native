@@ -854,7 +854,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 
 			done, hasDone := op["done"].(bool)
 			status, hasStatus := op["status"].(string)
-			if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
+			if completed := (hasDone && done) || (hasStatus && strings.ToLower(status) == "done"); completed {
 				// Extract an error message from the response, if any.
 				var err error
 				if failure, has := resp["error"]; has {
@@ -916,6 +916,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 				// At this point, we assume either a complete failure or a clean response.
 				if !continuePollingForRestingState {
+					// Try and fetch state from
 					return resp, nil
 				}
 			}
@@ -1200,6 +1201,24 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
 	}
+
+	// There are several APIs where the response from the update/operation is non-standard or contains
+	// stale data. When it comes to checkpointing, we want to store information that strictly matches what we
+	// get from a subsequent read. As a result, we do an additional read call here and use that to checkpoint state.
+	// This is likely superfluous/duplicative in many cases but erring on the side of correctness here instead.
+	id, err := calculateResourceID(res, inputs.Mappable(), resp)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful update / calculate ID %w", err)
+	}
+	url := id
+	if !strings.HasPrefix(url, "http") {
+		url = resources.AssembleURL(res.RootURL, url)
+	}
+	resp, err = p.client.RequestWithTimeout(res.Read.Verb, url, "", nil, 0)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
+	}
+
 	// Read the inputs to persist them into state.
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
