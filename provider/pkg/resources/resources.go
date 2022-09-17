@@ -17,7 +17,10 @@ package resources
 import (
 	"fmt"
 	"net/url"
+	"regexp"
 	"strings"
+
+	"github.com/jtacoma/uritemplates"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
@@ -41,6 +44,8 @@ type CloudAPIEndpoint struct {
 	Values []CloudAPIResourceParam `json:"values,omitempty"`
 }
 
+var reservedExpansion = regexp.MustCompile(`{\+.*}`)
+
 // URI constructs a concrete URI value based on the properties of a created resource.
 func (e CloudAPIEndpoint) URI(
 	states ...map[string]interface{},
@@ -62,7 +67,14 @@ func (e CloudAPIEndpoint) URI(
 		return v, nil
 	}
 
-	id := e.Template
+	// This lets us process RFC 6570 URL templates.
+	tmpl, err := uritemplates.Parse(e.Template)
+	if err != nil {
+		return "", err
+	}
+	hasReservedExpansion := reservedExpansion.MatchString(e.Template)
+
+	pathParams := map[string]interface{}{}
 	queryMap := map[string]string{}
 	idParams := e.Values
 	for _, param := range idParams {
@@ -89,12 +101,18 @@ func (e CloudAPIEndpoint) URI(
 			return "", fmt.Errorf("property %q/%q not found", param.Name, param.SdkName)
 		}
 
-		// The name property can sometimes contain multiple segments. We only care about the last one
-		// because we flattened the path while building metadata.
-		parts := strings.Split(propValue, "/")
-		propValue = parts[len(parts)-1]
+		if !hasReservedExpansion {
+			// The name property can sometimes contain multiple segments. We only care about the last one
+			// because we flattened the path while building metadata.
+			parts := strings.Split(propValue, "/")
+			propValue = parts[len(parts)-1]
+		}
+		pathParams[param.Name] = propValue
+	}
 
-		id = strings.Replace(id, fmt.Sprintf("{%s}", param.Name), propValue, 1)
+	id, err := tmpl.Expand(pathParams)
+	if err != nil {
+		return "", err
 	}
 	uri, err := url.Parse(id)
 	if err != nil {
