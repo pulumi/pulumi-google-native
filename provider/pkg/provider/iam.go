@@ -108,15 +108,25 @@ func getIAMState(
 	inputs resource.PropertyMap,
 	client *googleclient.GoogleClient,
 ) (*iamPolicyArgs, error) {
-	//uri, err := buildURL(metadata.Read.Endpoint, inputs, iamPolicyVersionArg)
-	uri, err := buildURL(metadata.Read.Endpoint, inputs, nil)
+	uri, err := buildURL(metadata.Read.Endpoint, inputs, iamPolicyVersionArg)
 	if err != nil {
 		return nil, err
 	}
 
 	stateMap, err := retryRequest(client, metadata.Read.Verb, uri, "", nil)
 	if err != nil {
-		return nil, fmt.Errorf("error fetching existing IAM Policy: %w", err)
+		if strings.Contains(err.Error(), `Unknown name "optionsRequestedPolicyVersion"`) {
+			uri, err = buildURL(metadata.Read.Endpoint, inputs, nil)
+			if err != nil {
+				return nil, err
+			}
+			stateMap, err = retryRequest(client, metadata.Read.Verb, uri, "", nil)
+			if err != nil {
+				return nil, fmt.Errorf("error fetching existing IAM Policy: %w", err)
+			}
+		} else {
+			return nil, fmt.Errorf("error fetching existing IAM Policy: %w", err)
+		}
 	}
 	var stateStruct iamPolicyArgs
 	err = mapstructure.Decode(stateMap, &stateStruct)
@@ -190,6 +200,7 @@ func inputsForIAMOverlayUpdate(
 
 	statePM := resource.NewPropertyMap(stateStruct)
 	iamPolicyInputs[resource.PropertyKey("bindings")] = statePM["bindings"]
+	iamPolicyInputs[resource.PropertyKey("version")] = resource.NewNumberProperty(3)
 
 	return iamPolicyInputs, nil
 }
