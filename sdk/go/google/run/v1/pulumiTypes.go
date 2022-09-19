@@ -1261,7 +1261,7 @@ type Container struct {
 	Image string `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Not supported by Cloud Run.
 	LivenessProbe *Probe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name *string `pulumi:"name"`
@@ -1310,7 +1310,7 @@ type ContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Not supported by Cloud Run.
 	LivenessProbe ProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1416,7 +1416,7 @@ func (o ContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Not supported by Cloud Run.
 func (o ContainerOutput) LivenessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.LivenessProbe }).(ProbePtrOutput)
 }
@@ -1683,7 +1683,7 @@ type ContainerResponse struct {
 	Image string `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Not supported by Cloud Run.
 	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name string `pulumi:"name"`
@@ -1752,7 +1752,7 @@ func (o ContainerResponseOutput) ImagePullPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Not supported by Cloud Run.
 func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
 }

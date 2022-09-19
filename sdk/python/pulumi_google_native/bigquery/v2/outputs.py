@@ -30,6 +30,7 @@ __all__ = [
     'ClusteringResponse',
     'ConnectionPropertyResponse',
     'CsvOptionsResponse',
+    'DataMaskingStatisticsResponse',
     'DatasetAccessEntryResponse',
     'DatasetAccessItemResponse',
     'DatasetReferenceResponse',
@@ -1194,6 +1195,41 @@ class CsvOptionsResponse(dict):
         [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         return pulumi.get(self, "skip_leading_rows")
+
+
+@pulumi.output_type
+class DataMaskingStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataMaskingApplied":
+            suggest = "data_masking_applied"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataMaskingStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataMaskingStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataMaskingStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_masking_applied: bool):
+        """
+        :param bool data_masking_applied: [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
+        """
+        pulumi.set(__self__, "data_masking_applied", data_masking_applied)
+
+    @property
+    @pulumi.getter(name="dataMaskingApplied")
+    def data_masking_applied(self) -> bool:
+        """
+        [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
+        """
+        return pulumi.get(self, "data_masking_applied")
 
 
 @pulumi.output_type
@@ -4579,6 +4615,8 @@ class JobStatisticsResponse(dict):
             suggest = "completion_ratio"
         elif key == "creationTime":
             suggest = "creation_time"
+        elif key == "dataMaskingStatistics":
+            suggest = "data_masking_statistics"
         elif key == "endTime":
             suggest = "end_time"
         elif key == "numChildJobs":
@@ -4621,6 +4659,7 @@ class JobStatisticsResponse(dict):
                  completion_ratio: float,
                  copy: 'outputs.JobStatistics5Response',
                  creation_time: str,
+                 data_masking_statistics: 'outputs.DataMaskingStatisticsResponse',
                  end_time: str,
                  extract: 'outputs.JobStatistics4Response',
                  load: 'outputs.JobStatistics3Response',
@@ -4641,6 +4680,7 @@ class JobStatisticsResponse(dict):
         :param float completion_ratio: [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
         :param 'JobStatistics5Response' copy: Statistics for a copy job.
         :param str creation_time: Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
+        :param 'DataMaskingStatisticsResponse' data_masking_statistics: Statistics for data masking. Present only for query and extract jobs.
         :param str end_time: End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
         :param 'JobStatistics4Response' extract: Statistics for an extract job.
         :param 'JobStatistics3Response' load: Statistics for a load job.
@@ -4661,6 +4701,7 @@ class JobStatisticsResponse(dict):
         pulumi.set(__self__, "completion_ratio", completion_ratio)
         pulumi.set(__self__, "copy", copy)
         pulumi.set(__self__, "creation_time", creation_time)
+        pulumi.set(__self__, "data_masking_statistics", data_masking_statistics)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "extract", extract)
         pulumi.set(__self__, "load", load)
@@ -4701,6 +4742,14 @@ class JobStatisticsResponse(dict):
         Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="dataMaskingStatistics")
+    def data_masking_statistics(self) -> 'outputs.DataMaskingStatisticsResponse':
+        """
+        Statistics for data masking. Present only for query and extract jobs.
+        """
+        return pulumi.get(self, "data_masking_statistics")
 
     @property
     @pulumi.getter(name="endTime")

@@ -11,25 +11,25 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
     /// <summary>
-    /// For display only. Metadata associated with a Cloud function.
+    /// For display only. Metadata associated with a Cloud Function.
     /// </summary>
     [OutputType]
     public sealed class CloudFunctionInfoResponse
     {
         /// <summary>
-        /// Name of a Cloud function.
+        /// Name of a Cloud Function.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Location in which the Cloud function is deployed.
+        /// Location in which the Cloud Function is deployed.
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// URI of a Cloud function.
+        /// URI of a Cloud Function.
         /// </summary>
         public readonly string Uri;
         /// <summary>
-        /// Latest successfully deployed version id of the Cloud function.
+        /// Latest successfully deployed version id of the Cloud Function.
         /// </summary>
         public readonly string VersionId;
 

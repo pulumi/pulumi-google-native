@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Wrapper for cloud function attributes.
+    /// Wrapper for Cloud Function attributes.
     /// </summary>
     [OutputType]
     public sealed class CloudFunctionEndpointResponse
     {
         /// <summary>
-        /// A [Cloud function](https://cloud.google.com/functions) name.
+        /// A [Cloud Function](https://cloud.google.com/functions) name.
         /// </summary>
         public readonly string Uri;
 

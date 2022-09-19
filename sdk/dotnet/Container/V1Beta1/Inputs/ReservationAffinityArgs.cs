@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Pulumi.GoogleNative.Container.V1Beta1.ReservationAffinityConsumeReservationType>? ConsumeReservationType { get; set; }
 
         /// <summary>
-        /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

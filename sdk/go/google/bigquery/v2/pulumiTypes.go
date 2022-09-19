@@ -3020,6 +3020,30 @@ func (o CsvOptionsResponseOutput) SkipLeadingRows() pulumi.StringOutput {
 	return o.ApplyT(func(v CsvOptionsResponse) string { return v.SkipLeadingRows }).(pulumi.StringOutput)
 }
 
+type DataMaskingStatisticsResponse struct {
+	// [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
+	DataMaskingApplied bool `pulumi:"dataMaskingApplied"`
+}
+
+type DataMaskingStatisticsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataMaskingStatisticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataMaskingStatisticsResponse)(nil)).Elem()
+}
+
+func (o DataMaskingStatisticsResponseOutput) ToDataMaskingStatisticsResponseOutput() DataMaskingStatisticsResponseOutput {
+	return o
+}
+
+func (o DataMaskingStatisticsResponseOutput) ToDataMaskingStatisticsResponseOutputWithContext(ctx context.Context) DataMaskingStatisticsResponseOutput {
+	return o
+}
+
+// [Preview] Whether any accessed data was protected by data masking. The actual evaluation is done by accessStats.masked_field_count > 0. Since this is only used for the discovery_doc generation purpose, as long as the type (boolean) matches, client library can leverage this. The actual evaluation of the variable is done else-where.
+func (o DataMaskingStatisticsResponseOutput) DataMaskingApplied() pulumi.BoolOutput {
+	return o.ApplyT(func(v DataMaskingStatisticsResponse) bool { return v.DataMaskingApplied }).(pulumi.BoolOutput)
+}
+
 type DatasetAccessEntry struct {
 	// [Required] The dataset this entry applies to.
 	Dataset     *DatasetReference                   `pulumi:"dataset"`
@@ -9463,6 +9487,8 @@ type JobStatisticsResponse struct {
 	Copy JobStatistics5Response `pulumi:"copy"`
 	// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 	CreationTime string `pulumi:"creationTime"`
+	// Statistics for data masking. Present only for query and extract jobs.
+	DataMaskingStatistics DataMaskingStatisticsResponse `pulumi:"dataMaskingStatistics"`
 	// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
 	EndTime string `pulumi:"endTime"`
 	// Statistics for an extract job.
@@ -9526,6 +9552,11 @@ func (o JobStatisticsResponseOutput) Copy() JobStatistics5ResponseOutput {
 // Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 func (o JobStatisticsResponseOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Statistics for data masking. Present only for query and extract jobs.
+func (o JobStatisticsResponseOutput) DataMaskingStatistics() DataMaskingStatisticsResponseOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) DataMaskingStatisticsResponse { return v.DataMaskingStatistics }).(DataMaskingStatisticsResponseOutput)
 }
 
 // End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
@@ -16014,6 +16045,7 @@ func init() {
 	pulumi.RegisterOutputType(CsvOptionsOutput{})
 	pulumi.RegisterOutputType(CsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CsvOptionsResponseOutput{})
+	pulumi.RegisterOutputType(DataMaskingStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryResponseOutput{})

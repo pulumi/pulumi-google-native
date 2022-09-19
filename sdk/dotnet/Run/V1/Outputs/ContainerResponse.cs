@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string ImagePullPolicy;
         /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Not supported by Cloud Run.
         /// </summary>
         public readonly Outputs.ProbeResponse LivenessProbe;
         /// <summary>

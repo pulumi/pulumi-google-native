@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
 {
 
     /// <summary>
-    /// Wrapper for cloud function attributes.
+    /// Wrapper for Cloud Function attributes.
     /// </summary>
     public sealed class CloudFunctionEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A [Cloud function](https://cloud.google.com/functions) name.
+        /// A [Cloud Function](https://cloud.google.com/functions) name.
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }

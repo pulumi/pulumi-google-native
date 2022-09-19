@@ -465,7 +465,7 @@ class ContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EnvVarArgs']]] env: List of environment variables to set in the container.
         :param pulumi.Input[Sequence[pulumi.Input['EnvFromSourceArgs']]] env_from: Not supported by Cloud Run.
         :param pulumi.Input[str] image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-        :param pulumi.Input['ProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input['ProbeArgs'] liveness_probe: Not supported by Cloud Run.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         :param pulumi.Input[Sequence[pulumi.Input['ContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param pulumi.Input['ProbeArgs'] readiness_probe: Not supported by Cloud Run.
@@ -587,7 +587,7 @@ class ContainerArgs:
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional[pulumi.Input['ProbeArgs']]:
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "liveness_probe")
 

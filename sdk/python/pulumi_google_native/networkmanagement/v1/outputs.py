@@ -219,7 +219,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -238,7 +238,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -254,13 +254,13 @@ class BindingResponse(dict):
 @pulumi.output_type
 class CloudFunctionEndpointResponse(dict):
     """
-    Wrapper for cloud function attributes.
+    Wrapper for Cloud Function attributes.
     """
     def __init__(__self__, *,
                  uri: str):
         """
-        Wrapper for cloud function attributes.
-        :param str uri: A [Cloud function](https://cloud.google.com/functions) name.
+        Wrapper for Cloud Function attributes.
+        :param str uri: A [Cloud Function](https://cloud.google.com/functions) name.
         """
         pulumi.set(__self__, "uri", uri)
 
@@ -268,7 +268,7 @@ class CloudFunctionEndpointResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        A [Cloud function](https://cloud.google.com/functions) name.
+        A [Cloud Function](https://cloud.google.com/functions) name.
         """
         return pulumi.get(self, "uri")
 
@@ -276,7 +276,7 @@ class CloudFunctionEndpointResponse(dict):
 @pulumi.output_type
 class CloudFunctionInfoResponse(dict):
     """
-    For display only. Metadata associated with a Cloud function.
+    For display only. Metadata associated with a Cloud Function.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -303,11 +303,11 @@ class CloudFunctionInfoResponse(dict):
                  uri: str,
                  version_id: str):
         """
-        For display only. Metadata associated with a Cloud function.
-        :param str display_name: Name of a Cloud function.
-        :param str location: Location in which the Cloud function is deployed.
-        :param str uri: URI of a Cloud function.
-        :param str version_id: Latest successfully deployed version id of the Cloud function.
+        For display only. Metadata associated with a Cloud Function.
+        :param str display_name: Name of a Cloud Function.
+        :param str location: Location in which the Cloud Function is deployed.
+        :param str uri: URI of a Cloud Function.
+        :param str version_id: Latest successfully deployed version id of the Cloud Function.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -318,7 +318,7 @@ class CloudFunctionInfoResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Name of a Cloud function.
+        Name of a Cloud Function.
         """
         return pulumi.get(self, "display_name")
 
@@ -326,7 +326,7 @@ class CloudFunctionInfoResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Location in which the Cloud function is deployed.
+        Location in which the Cloud Function is deployed.
         """
         return pulumi.get(self, "location")
 
@@ -334,7 +334,7 @@ class CloudFunctionInfoResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        URI of a Cloud function.
+        URI of a Cloud Function.
         """
         return pulumi.get(self, "uri")
 
@@ -342,7 +342,7 @@ class CloudFunctionInfoResponse(dict):
     @pulumi.getter(name="versionId")
     def version_id(self) -> str:
         """
-        Latest successfully deployed version id of the Cloud function.
+        Latest successfully deployed version id of the Cloud Function.
         """
         return pulumi.get(self, "version_id")
 
@@ -704,7 +704,7 @@ class EndpointResponse(dict):
                  project: str):
         """
         Source or destination of the Connectivity Test.
-        :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud function](https://cloud.google.com/functions).
+        :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud Function](https://cloud.google.com/functions).
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
@@ -728,7 +728,7 @@ class EndpointResponse(dict):
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> 'outputs.CloudFunctionEndpointResponse':
         """
-        A [Cloud function](https://cloud.google.com/functions).
+        A [Cloud Function](https://cloud.google.com/functions).
         """
         return pulumi.get(self, "cloud_function")
 
@@ -1923,7 +1923,7 @@ class StepResponse(dict):
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display information of the final state "abort" and reason.
         :param bool causes_drop: This is a step that leads to the final state Drop.
-        :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud function.
+        :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud Function.
         :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display information of a Cloud SQL instance.
         :param 'DeliverInfoResponse' deliver: Display information of the final state "deliver" and reason.
         :param str description: A description of the step. Usually this is a summary of the state.
@@ -1985,7 +1985,7 @@ class StepResponse(dict):
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> 'outputs.CloudFunctionInfoResponse':
         """
-        Display information of a Cloud function.
+        Display information of a Cloud Function.
         """
         return pulumi.get(self, "cloud_function")
 

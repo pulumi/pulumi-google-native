@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly bool CausesDrop;
         /// <summary>
-        /// Display information of a Cloud function.
+        /// Display information of a Cloud Function.
         /// </summary>
         public readonly Outputs.CloudFunctionInfoResponse CloudFunction;
         /// <summary>

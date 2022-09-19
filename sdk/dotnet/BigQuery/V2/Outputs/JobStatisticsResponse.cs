@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
+        /// Statistics for data masking. Present only for query and extract jobs.
+        /// </summary>
+        public readonly Outputs.DataMaskingStatisticsResponse DataMaskingStatistics;
+        /// <summary>
         /// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
         /// </summary>
         public readonly string EndTime;
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string creationTime,
 
+            Outputs.DataMaskingStatisticsResponse dataMaskingStatistics,
+
             string endTime,
 
             Outputs.JobStatistics4Response extract,
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             CompletionRatio = completionRatio;
             Copy = copy;
             CreationTime = creationTime;
+            DataMaskingStatistics = dataMaskingStatistics;
             EndTime = endTime;
             Extract = extract;
             Load = load;

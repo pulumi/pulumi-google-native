@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class EndpointResponse
     {
         /// <summary>
-        /// A [Cloud function](https://cloud.google.com/functions).
+        /// A [Cloud Function](https://cloud.google.com/functions).
         /// </summary>
         public readonly Outputs.CloudFunctionEndpointResponse CloudFunction;
         /// <summary>
