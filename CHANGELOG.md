@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(none)
+
+### BUG FIXES/ENHANCEMENTS
+- Fix Conditions handling for IAM policy updates [#696](https://github.com/pulumi/pulumi-google-native/pull/696)
 
 ## 0.26.0 (2022-09-16)
 
