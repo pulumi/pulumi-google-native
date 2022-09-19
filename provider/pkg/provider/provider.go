@@ -864,9 +864,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 				// Extract the resource response, if any.
 				// A partial error could happen, so both response and error could be available.
-				// We choose to not trust the response here unless we hit an error during the invocation,
-				// in which case we use the partial response to checkpoint state.
-				if response, has := op["response"].(map[string]interface{}); has && err != nil {
+				if response, has := op["response"].(map[string]interface{}); has {
 					return response, err
 				}
 
