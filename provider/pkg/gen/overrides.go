@@ -152,6 +152,8 @@ var autonameExcludes = codegen.NewStringSet(
 	"google-native:bigtableadmin/v1:Cluster",
 	"google-native:bigtableadmin/v2:Cluster",
 	"google-native:bigtableadmin/v2:Instance",
+	"google-native:cloudresourcemanager/v3:TagKey",
+	"google-native:cloudresourcemanager/v3:TagValue",
 	"google-native:dialogflow/v3:Agent",
 	"google-native:dialogflow/v3beta1:Agent",
 	"google-native:monitoring/v3:NotificationChannel",
