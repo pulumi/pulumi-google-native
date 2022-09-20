@@ -51,71 +51,75 @@ var resourceNameByTypeOverrides = map[string]string{
 // that is present in the discovery document.
 var resourceNameByPathOverrides = map[string]string{
 	// Cloud Run: remove domain mapping on the KNative path.
-	"apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
-	"apis/serving.knative.dev/v1/namespaces/{namespacesId}/services":        "",
+	"discovery/run_v1.json:apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings": "",
+	"discovery/run_v1.json:apis/serving.knative.dev/v1/namespaces/{namespacesId}/services":        "",
 
 	// Apigee.
-	"v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments":                                 "EnvgroupAttachment",
-	"v1/organizations/{organizationsId}/instances/{instancesId}/attachments":                                 "InstanceAttachment",
-	"v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries": "EnvironmentEntry",
+	"discovery/apigee_v1.json:v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments":                                 "EnvgroupAttachment",
+	"discovery/apigee_v1.json:v1/organizations/{organizationsId}/instances/{instancesId}/attachments":                                 "InstanceAttachment",
+	"discovery/apigee_v1.json:v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries": "EnvironmentEntry",
+
+	// App Engine Alpha v1. Get rid of locations and operations nested under locations.
+	"discovery/appengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}":                           "",
+	"discovery/appengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}": "",
 
 	// ApigeeRegistry
-	"v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
-	"v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/artifacts":       "VersionArtifact",
+	"discovery/apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
+	"discovery/apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/artifacts":       "VersionArtifact",
 
 	// DLP.
-	"v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
-	"v2/organizations/{organizationsId}/inspectTemplates":                            "",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "",
-	"v2/organizations/{organizationsId}/storedInfoTypes":                             "",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/inspectTemplates":                            "",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "",
+	"discovery/dlp_v2.json:v2/organizations/{organizationsId}/storedInfoTypes":                             "",
 
-	// Essential Contracts.
-	"v1/folders/{foldersId}/contacts":             "FolderContact",
-	"v1/organizations/{organizationsId}/contacts": "OrganizationContact",
+	// Essential Contacts.
+	"discovery/essentialcontacts_v1.json:v1/folders/{foldersId}/contacts":             "FolderContact",
+	"discovery/essentialcontacts_v1.json:v1/organizations/{organizationsId}/contacts": "OrganizationContact",
 
 	// IAM.
-	"v1/organizations/{organizationsId}/roles": "OrganizationRole",
+	"discovery/iam_v1.json:v1/organizations/{organizationsId}/roles": "OrganizationRole",
 
 	// Logging.
-	"v2/billingAccounts/{billingAccountsId}/exclusions":                                        "BillingAccountExclusion",
-	"v2/folders/{foldersId}/exclusions":                                                        "FolderExclusion",
-	"v2/organizations/{organizationsId}/exclusions":                                            "OrganizationExclusion",
-	"v2/{v2Id}/{v2Id1}/exclusions":                                                             "",
-	"v2/billingAccounts/{billingAccountsId}/sinks":                                             "BillingAccountSink",
-	"v2/folders/{foldersId}/sinks":                                                             "FolderSink",
-	"v2/organizations/{organizationsId}/sinks":                                                 "OrganizationSink",
-	"v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets":                   "BillingAccountBucket",
-	"v2/folders/{foldersId}/locations/{locationsId}/buckets":                                   "FolderBucket",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/buckets":                       "OrganizationBucket",
-	"v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views": "BillingAccountBucketView",
-	"v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views":                 "FolderBucketView",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views":     "OrganizationBucketView",
-	"v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views":               "BucketView",
-	"v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets":                                        "",
-	"v2/{v2Id}/{v2Id1}/sinks":                                                                  "",
+	"discovery/logging_v2.json:v2/billingAccounts/{billingAccountsId}/exclusions":                                        "BillingAccountExclusion",
+	"discovery/logging_v2.json:v2/folders/{foldersId}/exclusions":                                                        "FolderExclusion",
+	"discovery/logging_v2.json:v2/organizations/{organizationsId}/exclusions":                                            "OrganizationExclusion",
+	"discovery/logging_v2.json:v2/{v2Id}/{v2Id1}/exclusions":                                                             "",
+	"discovery/logging_v2.json:v2/billingAccounts/{billingAccountsId}/sinks":                                             "BillingAccountSink",
+	"discovery/logging_v2.json:v2/folders/{foldersId}/sinks":                                                             "FolderSink",
+	"discovery/logging_v2.json:v2/organizations/{organizationsId}/sinks":                                                 "OrganizationSink",
+	"discovery/logging_v2.json:v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets":                   "BillingAccountBucket",
+	"discovery/logging_v2.json:v2/folders/{foldersId}/locations/{locationsId}/buckets":                                   "FolderBucket",
+	"discovery/logging_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/buckets":                       "OrganizationBucket",
+	"discovery/logging_v2.json:v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views": "BillingAccountBucketView",
+	"discovery/logging_v2.json:v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/views":                 "FolderBucketView",
+	"discovery/logging_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/views":     "OrganizationBucketView",
+	"discovery/logging_v2.json:v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views":               "BucketView",
+	"discovery/logging_v2.json:v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets":                                        "",
+	"discovery/logging_v2.json:v2/{v2Id}/{v2Id1}/sinks":                                                                  "",
 
 	// Org Policy.
-	"v2/folders/{foldersId}/policies":             "FolderPolicy",
-	"v2/organizations/{organizationsId}/policies": "OrganizationPolicy",
+	"discovery/orgpolicy_v2.json:v2/folders/{foldersId}/policies":             "FolderPolicy",
+	"discovery/orgpolicy_v2.json:v2/organizations/{organizationsId}/policies": "OrganizationPolicy",
 
 	// Policy Simulator.
-	"v1/folders/{foldersId}/locations/{locationsId}/replays":                  "FolderReplay",
-	"v1/organizations/{organizationsId}/locations/{locationsId}/replays":      "OrganizationReplay",
-	"v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
-	"v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
+	"discovery/policysimulator_v1.json:v1/folders/{foldersId}/locations/{locationsId}/replays":                       "FolderReplay",
+	"discovery/policysimulator_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/replays":           "OrganizationReplay",
+	"discovery/policysimulator_v1beta1.json:v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
+	"discovery/policysimulator_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
 
 	// Security Center.
-	"v1/folders/{foldersId}/muteConfigs":                 "",
-	"v1/folders/{foldersId}/bigQueryExports":             "FolderBigQueryExport",
-	"v1/organizations/{organizationsId}/bigQueryExports": "OrganizationBigQueryExport",
-	"v1/organizations/{organizationsId}/muteConfigs":     "OrganizationMuteConfig",
-	"v1/projects/{projectsId}/bigQueryExports":           "ProjectBigQueryExport",
+	"discovery/securitycenter_v1.json:v1/folders/{foldersId}/muteConfigs":                 "",
+	"discovery/securitycenter_v1.json:v1/folders/{foldersId}/bigQueryExports":             "FolderBigQueryExport",
+	"discovery/securitycenter_v1.json:v1/organizations/{organizationsId}/bigQueryExports": "OrganizationBigQueryExport",
+	"discovery/securitycenter_v1.json:v1/organizations/{organizationsId}/muteConfigs":     "OrganizationMuteConfig",
+	"discovery/securitycenter_v1.json:v1/projects/{projectsId}/bigQueryExports":           "ProjectBigQueryExport",
 
 	// Storage.
-	"b/{bucket}/o": "BucketObject",
+	"discovery/storage_v1.json:b/{bucket}/o": "BucketObject",
 }
 
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.

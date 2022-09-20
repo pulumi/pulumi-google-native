@@ -25,6 +25,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/gedex/inflector"
+
 	"github.com/imdario/mergo"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
@@ -982,6 +984,11 @@ func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOpera
 				return "name"
 			case "datum":
 				return "dataId"
+			default:
+				if strings.HasSuffix(name, "Id") {
+					name = name[:len(name)-2]
+					return inflector.Singularize(name)
+				}
 			}
 			return name
 		}

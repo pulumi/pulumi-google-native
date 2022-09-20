@@ -61,6 +61,18 @@ func findResources(
 		return nil
 	}
 	addOperation := func(typeName string, dd discoveryDocumentResource) error {
+		if strings.HasSuffix(docName, "appengine_v1.json") ||
+			strings.HasSuffix(docName, "appengine_v1alpha.json") ||
+			strings.HasSuffix(docName, "appengine_v1beta.json") {
+			dd.getMethod.Path = strings.ReplaceAll(dd.getMethod.Path, `{appsId}/operations/{operationsId}`, `{+name}`)
+			dd.getMethod.FlatPath = strings.ReplaceAll(dd.getMethod.FlatPath, `{appsId}/operations/{operationsId}`,
+				`{+name}`)
+			dd.getMethod.Parameters = map[string]discovery.JsonSchema{
+				"name": {Description: "`name` encapsulates both `appsId` and `operationsId`", Location: "path",
+					Required: true,
+					Type:     "string"},
+			}
+		}
 		return addFoundOperation(operations, typeName, dd, schemas)
 	}
 	err := findResourcesImpl(docName, "", rest, addResource, addOperation)
@@ -142,6 +154,18 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 		}
 
 		if strings.Contains(strings.ToLower(name), "operation") {
+			if getMethod != nil {
+				operationGetPath := getMethod.FlatPath
+				if operationGetPath == "" {
+					operationGetPath = getMethod.Path
+				}
+				if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", docName, operationGetPath)]; has {
+					if override == "" {
+						continue
+					}
+					name = override
+				}
+			}
 			if err := addOperation(name, discoveryDocumentResource{
 				discoveryCRUDMethods: discoveryCRUDMethods{
 					createMethod: createMethod,
@@ -187,7 +211,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			if path == "" {
 				path = methods.createMethod.Path
 			}
-			if override, has := resourceNameByPathOverrides[path]; has {
+			if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", docName, path)]; has {
 				if override == "" {
 					continue
 				}

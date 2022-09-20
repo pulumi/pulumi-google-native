@@ -1,0 +1,184 @@
+package gen
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+	"path"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"github.com/jtacoma/uritemplates"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/stretchr/testify/assert"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+
+	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+
+	"github.com/stretchr/testify/require"
+)
+
+// This is a validation test to make sure that the metadata generated at schema generation stands-up
+// to the assumptions made for operation URL resolution at runtime in the provider.
+// NOTE this will need to be kept up-to-date with the provider.go implementation but this framework gives
+// valuable confidence in correctness around metadata generation without destabalizing the provider at runtime.
+func TestMetadata_Operations(t *testing.T) {
+	root := path.Join(".", "discovery")
+	var fileNames []string
+	require.NoError(t, filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() {
+			fileNames = append(fileNames, path)
+		}
+		return nil
+	}))
+
+	metadata, err := loadMetadata()
+	require.NoError(t, err)
+
+	pkgSpec, err := loadSchema()
+	require.NoError(t, err)
+
+	for _, fileName := range fileNames {
+		document, err := readDiscoveryDocument(fileName)
+		require.NoError(t, err)
+
+		if document.Name == "" {
+			continue
+		}
+		module := fmt.Sprintf("%s/%s", document.Name, document.Version)
+		res, ops, err := findResources(fileName, document.Resources, document.Schemas)
+		require.NoError(t, err)
+
+		resourcesForModule := codegen.NewStringSet()
+		for tok := range metadata.Resources {
+			if strings.Contains(tok, module) {
+				resourcesForModule.Add(tok)
+			}
+		}
+
+		for _, tok := range resourcesForModule.SortedValues() {
+			mdResource := metadata.Resources[tok]
+			resource := pkgSpec.Resources[tok]
+			validateOpTemplate := func(resourceOperationType string, op *resources.Operations,
+				ddResource *discoveryDocumentResource) {
+				if op == nil || op.Template == "" {
+					return
+				}
+				tmpl, err := uritemplates.Parse(op.Template)
+				require.NoError(t, err)
+				paramNames := codegen.NewStringSet(tmpl.Names()...)
+
+				var referencedOp *operation
+				switch resourceOperationType {
+				case "CREATE":
+					if ddResource.createMethod.Response.Ref != "" {
+						if createOp, ok := ops[ddResource.createMethod.Response.Ref]; ok {
+							referencedOp = createOp
+						}
+					}
+				case "UPDATE":
+					if ddResource.updateMethod.Response.Ref != "" {
+						if updateOp, ok := ops[ddResource.updateMethod.Response.Ref]; ok {
+							referencedOp = updateOp
+						}
+					}
+				case "DELETE":
+					if ddResource.deleteMethod.Response.Ref != "" {
+						if deleteOp, ok := ops[ddResource.deleteMethod.Response.Ref]; ok {
+							referencedOp = deleteOp
+						}
+					}
+				default:
+					assert.Failf(t, "unexpected resourceOperationType: %q", resourceOperationType)
+				}
+
+				for _, v := range op.Values {
+					if v.Kind == "query" {
+						continue
+					}
+					assert.Containsf(t, paramNames, v.Name, "[%s] [%s] %s.%s not found", resourceOperationType,
+						op.Template, tok, v.Name)
+					expectedName := v.Name
+					if v.SdkName != "" {
+						expectedName = v.SdkName
+					}
+
+					found := false
+					if referencedOp != nil {
+						for name := range referencedOp.schema.Properties {
+							if name == expectedName {
+								found = true
+								break
+							}
+						}
+					}
+
+					for name := range resource.InputProperties {
+						if name == expectedName {
+							found = true
+							break
+						}
+					}
+
+					if found {
+						continue
+					}
+
+					for name := range resource.Properties {
+						if name == expectedName {
+							found = true
+							break
+						}
+					}
+
+					assert.Truef(t, found, "[%s] [%s] %s (sdkname: %s) not found in %s", resourceOperationType, op.Template,
+						v.Name,
+						expectedName,
+						tok)
+				}
+			}
+			resourceName := strings.Split(tok, ":")[2]
+			if ddResource, ok := res[resourceName]; ok {
+				validateOpTemplate("CREATE", mdResource.Create.Operations, &ddResource)
+				validateOpTemplate("UPDATE", mdResource.Update.Operations, &ddResource)
+				validateOpTemplate("DELETE", mdResource.Delete.Operations, &ddResource)
+			}
+		}
+
+	}
+}
+
+// loadMetadata deserializes the provided compressed json byte array into a CloudAPIMetadata struct.
+func loadMetadata() (*resources.CloudAPIMetadata, error) {
+	var resourceMap resources.CloudAPIMetadata
+
+	bytes, err := os.Open(path.Join(".", "provider", "cmd", "pulumi-resource-google-native",
+		"metadata.json"))
+	if err != nil {
+		return nil, err
+	}
+	if err = json.NewDecoder(bytes).Decode(&resourceMap); err != nil {
+		return nil, errors.Wrap(err, "unmarshalling resource map")
+	}
+	return &resourceMap, nil
+}
+
+func loadSchema() (*schema.PackageSpec, error) {
+	var pkg schema.PackageSpec
+
+	bytes, err := os.Open(path.Join(".", "provider", "cmd", "pulumi-resource-google-native",
+		"schema.json"))
+	if err != nil {
+		return nil, err
+	}
+	if err = json.NewDecoder(bytes).Decode(&pkg); err != nil {
+		return nil, errors.Wrap(err, "unmarshalling pkgspec")
+	}
+	return &pkg, nil
+}
