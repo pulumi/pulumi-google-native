@@ -21,14 +21,19 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+var root = path.Join("..", "..", "..")
+
 // This is a validation test to make sure that the metadata generated at schema generation stands-up
 // to the assumptions made for operation URL resolution at runtime in the provider.
 // NOTE this will need to be kept up-to-date with the provider.go implementation but this framework gives
 // valuable confidence in correctness around metadata generation without destabalizing the provider at runtime.
 func TestMetadata_Operations(t *testing.T) {
-	root := path.Join(".", "discovery")
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	t.Logf("Current directory: %s", cwd)
 	var fileNames []string
-	require.NoError(t, filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	require.NoError(t, filepath.Walk(filepath.Join(root, "discovery"), func(path string, info os.FileInfo,
+		err error) error {
 		if err != nil {
 			return err
 		}
@@ -158,7 +163,7 @@ func TestMetadata_Operations(t *testing.T) {
 func loadMetadata() (*resources.CloudAPIMetadata, error) {
 	var resourceMap resources.CloudAPIMetadata
 
-	bytes, err := os.Open(path.Join(".", "provider", "cmd", "pulumi-resource-google-native",
+	bytes, err := os.Open(path.Join(root, "provider", "cmd", "pulumi-resource-google-native",
 		"metadata.json"))
 	if err != nil {
 		return nil, err
@@ -172,7 +177,7 @@ func loadMetadata() (*resources.CloudAPIMetadata, error) {
 func loadSchema() (*schema.PackageSpec, error) {
 	var pkg schema.PackageSpec
 
-	bytes, err := os.Open(path.Join(".", "provider", "cmd", "pulumi-resource-google-native",
+	bytes, err := os.Open(path.Join(root, "provider", "cmd", "pulumi-resource-google-native",
 		"schema.json"))
 	if err != nil {
 		return nil, err

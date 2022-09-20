@@ -17,6 +17,7 @@ package gen
 import (
 	"fmt"
 	"log"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -159,7 +160,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				if operationGetPath == "" {
 					operationGetPath = getMethod.Path
 				}
-				if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", docName, operationGetPath)]; has {
+				if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", filepath.Base(docName),
+					operationGetPath)]; has {
 					if override == "" {
 						continue
 					}
@@ -211,7 +213,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			if path == "" {
 				path = methods.createMethod.Path
 			}
-			if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", docName, path)]; has {
+			if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", filepath.Base(docName), path)]; has {
 				if override == "" {
 					continue
 				}
