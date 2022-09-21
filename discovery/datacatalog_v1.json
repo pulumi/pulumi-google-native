@@ -1953,7 +1953,7 @@
       }
     }
   },
-  "revision": "20220829",
+  "revision": "20220912",
   "rootUrl": "https://datacatalog.googleapis.com/",
   "schemas": {
     "Binding": {
