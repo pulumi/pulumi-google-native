@@ -978,12 +978,8 @@ func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOpera
 				if strings.Contains(param.Description, "(ID of the operation)") {
 					return "id"
 				}
-			case "projectId", "locationId":
-				return name[:len(name)-2]
 			case "managedZone":
 				return "name"
-			case "datum":
-				return "dataId"
 			default:
 				if strings.HasSuffix(name, "Id") {
 					name = name[:len(name)-2]
