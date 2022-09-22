@@ -916,7 +916,6 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 				// At this point, we assume either a complete failure or a clean response.
 				if !continuePollingForRestingState {
-					// Try and fetch state from
 					return resp, nil
 				}
 			}

@@ -1,10 +1,23 @@
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package gen
 
 import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"path"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -21,7 +34,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var root = path.Join("..", "..", "..")
+var root = filepath.Join("..", "..", "..")
 
 // This is a validation test to make sure that the metadata generated at schema generation stands-up
 // to the assumptions made for operation URL resolution at runtime in the provider.
@@ -79,6 +92,8 @@ func TestMetadata_Operations(t *testing.T) {
 				require.NoError(t, err)
 				paramNames := codegen.NewStringSet(tmpl.Names()...)
 
+				// For each operation type/verb, find the corresponding operation body as referenced in
+				// the discovery docs.
 				var referencedOp *operation
 				switch resourceOperationType {
 				case "CREATE":
@@ -109,12 +124,14 @@ func TestMetadata_Operations(t *testing.T) {
 					}
 					assert.Containsf(t, paramNames, v.Name, "[%s] [%s] %s.%s not found", resourceOperationType,
 						op.Template, tok, v.Name)
+					paramNames.Delete(v.Name)
 					expectedName := v.Name
 					if v.SdkName != "" {
 						expectedName = v.SdkName
 					}
 
 					found := false
+					// First check if the param is in the operation response body.
 					if referencedOp != nil {
 						for name := range referencedOp.schema.Properties {
 							if name == expectedName {
@@ -122,8 +139,13 @@ func TestMetadata_Operations(t *testing.T) {
 								break
 							}
 						}
+
+						if found {
+							continue
+						}
 					}
 
+					// Next look in the resource input properties.
 					for name := range resource.InputProperties {
 						if name == expectedName {
 							found = true
@@ -135,6 +157,7 @@ func TestMetadata_Operations(t *testing.T) {
 						continue
 					}
 
+					// Finally check in the resource properties.
 					for name := range resource.Properties {
 						if name == expectedName {
 							found = true
@@ -147,6 +170,9 @@ func TestMetadata_Operations(t *testing.T) {
 						expectedName,
 						tok)
 				}
+
+				assert.Emptyf(t, paramNames, "[%s] [%s] superfluous parameters in template: %+v for %q",
+					resourceOperationType, op.Template, paramNames, tok)
 			}
 			resourceName := strings.Split(tok, ":")[2]
 			if ddResource, ok := res[resourceName]; ok {
@@ -163,7 +189,7 @@ func TestMetadata_Operations(t *testing.T) {
 func loadMetadata() (*resources.CloudAPIMetadata, error) {
 	var resourceMap resources.CloudAPIMetadata
 
-	bytes, err := os.Open(path.Join(root, "provider", "cmd", "pulumi-resource-google-native",
+	bytes, err := os.Open(filepath.Join(root, "provider", "cmd", "pulumi-resource-google-native",
 		"metadata.json"))
 	if err != nil {
 		return nil, err
@@ -177,7 +203,7 @@ func loadMetadata() (*resources.CloudAPIMetadata, error) {
 func loadSchema() (*schema.PackageSpec, error) {
 	var pkg schema.PackageSpec
 
-	bytes, err := os.Open(path.Join(root, "provider", "cmd", "pulumi-resource-google-native",
+	bytes, err := os.Open(filepath.Join(root, "provider", "cmd", "pulumi-resource-google-native",
 		"schema.json"))
 	if err != nil {
 		return nil, err

@@ -65,8 +65,9 @@ func findResources(
 		if strings.HasSuffix(docName, "appengine_v1.json") ||
 			strings.HasSuffix(docName, "appengine_v1alpha.json") ||
 			strings.HasSuffix(docName, "appengine_v1beta.json") {
-			dd.getMethod.Path = strings.ReplaceAll(dd.getMethod.Path, `{appsId}/operations/{operationsId}`, `{+name}`)
-			dd.getMethod.FlatPath = strings.ReplaceAll(dd.getMethod.FlatPath, `{appsId}/operations/{operationsId}`,
+			dd.getMethod.Path = strings.ReplaceAll(dd.getMethod.Path, `apps/{appsId}/operations/{operationsId}`,
+				`{+name}`)
+			dd.getMethod.FlatPath = strings.ReplaceAll(dd.getMethod.FlatPath, `apps/{appsId}/operations/{operationsId}`,
 				`{+name}`)
 			dd.getMethod.Parameters = map[string]discovery.JsonSchema{
 				"name": {Description: "`name` encapsulates both `appsId` and `operationsId`", Location: "path",
@@ -162,6 +163,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				}
 				if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", filepath.Base(docName),
 					operationGetPath)]; has {
+					// If the override is set to an empty string, the intent is to skip the operation.
 					if override == "" {
 						continue
 					}
@@ -214,6 +216,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				path = methods.createMethod.Path
 			}
 			if override, has := resourceNameByPathOverrides[fmt.Sprintf("%s:%s", filepath.Base(docName), path)]; has {
+				// If the override is set to an empty string, the intent is to skip the resource.
 				if override == "" {
 					continue
 				}
