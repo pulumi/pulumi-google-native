@@ -500,7 +500,7 @@
       }
     }
   },
-  "revision": "20220914",
+  "revision": "20220920",
   "rootUrl": "https://serviceconsumermanagement.googleapis.com/",
   "schemas": {
     "Api": {

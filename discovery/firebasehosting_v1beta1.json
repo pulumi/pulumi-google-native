@@ -1939,7 +1939,7 @@
       }
     }
   },
-  "revision": "20220914",
+  "revision": "20220920",
   "rootUrl": "https://firebasehosting.googleapis.com/",
   "schemas": {
     "ActingUser": {
