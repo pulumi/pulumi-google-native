@@ -3,6 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+### BREAKING CHANGE
+- Rename `id` fields in inputs and outputs which were quietly being dropped otherwise [#701](https://github.com/pulumi/pulumi-google-native/pull/701)
+
 ### BUG FIXES/ENHANCEMENTS
 - Fix Conditions handling for IAM policy updates [#696](https://github.com/pulumi/pulumi-google-native/pull/696)
 - Improve error handling for getClientToken method [#705](https://github.com/pulumi/pulumi-google-native/pull/705)
