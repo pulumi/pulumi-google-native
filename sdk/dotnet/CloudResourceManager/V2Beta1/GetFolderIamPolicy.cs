@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
         /// </summary>
         public static Task<GetFolderIamPolicyResult> InvokeAsync(GetFolderIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v2beta1:getFolderIamPolicy", args ?? new GetFolderIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v2beta1:getFolderIamPolicy", args ?? new GetFolderIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
         /// </summary>
         public static Output<GetFolderIamPolicyResult> Invoke(GetFolderIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v2beta1:getFolderIamPolicy", args ?? new GetFolderIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderIamPolicyResult>("google-native:cloudresourcemanager/v2beta1:getFolderIamPolicy", args ?? new GetFolderIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the specified DICOM store.
         /// </summary>
         public static Task<GetDicomStoreResult> InvokeAsync(GetDicomStoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDicomStoreResult>("google-native:healthcare/v1:getDicomStore", args ?? new GetDicomStoreArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDicomStoreResult>("google-native:healthcare/v1:getDicomStore", args ?? new GetDicomStoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified DICOM store.
         /// </summary>
         public static Output<GetDicomStoreResult> Invoke(GetDicomStoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDicomStoreResult>("google-native:healthcare/v1:getDicomStore", args ?? new GetDicomStoreInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDicomStoreResult>("google-native:healthcare/v1:getDicomStore", args ?? new GetDicomStoreInvokeArgs(), options.WithDefaults());
     }
 
 

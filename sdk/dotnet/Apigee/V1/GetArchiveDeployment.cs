@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the specified ArchiveDeployment.
         /// </summary>
         public static Task<GetArchiveDeploymentResult> InvokeAsync(GetArchiveDeploymentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified ArchiveDeployment.
         /// </summary>
         public static Output<GetArchiveDeploymentResult> Invoke(GetArchiveDeploymentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetArchiveDeploymentResult>("google-native:apigee/v1:getArchiveDeployment", args ?? new GetArchiveDeploymentInvokeArgs(), options.WithDefaults());
     }
 
 

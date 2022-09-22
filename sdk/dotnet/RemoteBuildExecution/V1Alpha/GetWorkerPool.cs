@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// Returns the specified worker pool.
         /// </summary>
         public static Task<GetWorkerPoolResult> InvokeAsync(GetWorkerPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified worker pool.
         /// </summary>
         public static Output<GetWorkerPoolResult> Invoke(GetWorkerPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:remotebuildexecution/v1alpha:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDomainBackupIamPolicyResult> InvokeAsync(GetDomainBackupIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDomainBackupIamPolicyResult> Invoke(GetDomainBackupIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainBackupIamPolicyResult>("google-native:managedidentities/v1beta1:getDomainBackupIamPolicy", args ?? new GetDomainBackupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

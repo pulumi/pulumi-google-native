@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// Retrieve an Oidc Idp configuration for an Identity Toolkit project.
         /// </summary>
         public static Task<GetOauthIdpConfigResult> InvokeAsync(GetOauthIdpConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOauthIdpConfigResult>("google-native:identitytoolkit/v2:getOauthIdpConfig", args ?? new GetOauthIdpConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOauthIdpConfigResult>("google-native:identitytoolkit/v2:getOauthIdpConfig", args ?? new GetOauthIdpConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve an Oidc Idp configuration for an Identity Toolkit project.
         /// </summary>
         public static Output<GetOauthIdpConfigResult> Invoke(GetOauthIdpConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOauthIdpConfigResult>("google-native:identitytoolkit/v2:getOauthIdpConfig", args ?? new GetOauthIdpConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOauthIdpConfigResult>("google-native:identitytoolkit/v2:getOauthIdpConfig", args ?? new GetOauthIdpConfigInvokeArgs(), options.WithDefaults());
     }
 
 

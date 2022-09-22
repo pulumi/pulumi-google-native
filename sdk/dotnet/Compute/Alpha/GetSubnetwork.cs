@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified subnetwork. Gets a list of available subnetworks list() request.
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("google-native:compute/alpha:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkResult>("google-native:compute/alpha:getSubnetwork", args ?? new GetSubnetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified subnetwork. Gets a list of available subnetworks list() request.
         /// </summary>
         public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("google-native:compute/alpha:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("google-native:compute/alpha:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
     }
 
 

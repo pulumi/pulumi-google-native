@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified NotificationEndpoint resource in the given region.
         /// </summary>
         public static Task<GetRegionNotificationEndpointResult> InvokeAsync(GetRegionNotificationEndpointArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNotificationEndpointResult>("google-native:compute/v1:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionNotificationEndpointResult>("google-native:compute/v1:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified NotificationEndpoint resource in the given region.
         /// </summary>
         public static Output<GetRegionNotificationEndpointResult> Invoke(GetRegionNotificationEndpointInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionNotificationEndpointResult>("google-native:compute/v1:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionNotificationEndpointResult>("google-native:compute/v1:getRegionNotificationEndpoint", args ?? new GetRegionNotificationEndpointInvokeArgs(), options.WithDefaults());
     }
 
 

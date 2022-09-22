@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetServiceIdentifierIamPolicyResult> InvokeAsync(GetServiceIdentifierIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceIdentifierIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getServiceIdentifierIamPolicy", args ?? new GetServiceIdentifierIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIdentifierIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getServiceIdentifierIamPolicy", args ?? new GetServiceIdentifierIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetServiceIdentifierIamPolicyResult> Invoke(GetServiceIdentifierIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceIdentifierIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getServiceIdentifierIamPolicy", args ?? new GetServiceIdentifierIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIdentifierIamPolicyResult>("google-native:networkconnectivity/v1alpha1:getServiceIdentifierIamPolicy", args ?? new GetServiceIdentifierIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// Gets the specified WebApp.
         /// </summary>
         public static Task<GetWebAppResult> InvokeAsync(GetWebAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified WebApp.
         /// </summary>
         public static Output<GetWebAppResult> Invoke(GetWebAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("google-native:firebase/v1beta1:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithDefaults());
     }
 
 

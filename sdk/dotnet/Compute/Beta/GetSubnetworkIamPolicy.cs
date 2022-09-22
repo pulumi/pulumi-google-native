@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetSubnetworkIamPolicyResult> InvokeAsync(GetSubnetworkIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkIamPolicyResult>("google-native:compute/beta:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetworkIamPolicyResult>("google-native:compute/beta:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetSubnetworkIamPolicyResult> Invoke(GetSubnetworkIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("google-native:compute/beta:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("google-native:compute/beta:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

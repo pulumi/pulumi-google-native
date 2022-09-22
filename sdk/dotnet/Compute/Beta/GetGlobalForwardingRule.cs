@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
         /// </summary>
         public static Task<GetGlobalForwardingRuleResult> InvokeAsync(GetGlobalForwardingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
         /// </summary>
         public static Output<GetGlobalForwardingRuleResult> Invoke(GetGlobalForwardingRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalForwardingRuleResult>("google-native:compute/beta:getGlobalForwardingRule", args ?? new GetGlobalForwardingRuleInvokeArgs(), options.WithDefaults());
     }
 
 

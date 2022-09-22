@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         /// Gets information about a single waiter.
         /// </summary>
         public static Task<GetWaiterResult> InvokeAsync(GetWaiterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a single waiter.
         /// </summary>
         public static Output<GetWaiterResult> Invoke(GetWaiterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWaiterResult>("google-native:runtimeconfig/v1beta1:getWaiter", args ?? new GetWaiterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// Get an OS Config patch deployment.
         /// </summary>
         public static Task<GetPatchDeploymentResult> InvokeAsync(GetPatchDeploymentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get an OS Config patch deployment.
         /// </summary>
         public static Output<GetPatchDeploymentResult> Invoke(GetPatchDeploymentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPatchDeploymentResult>("google-native:osconfig/v1beta:getPatchDeployment", args ?? new GetPatchDeploymentInvokeArgs(), options.WithDefaults());
     }
 
 

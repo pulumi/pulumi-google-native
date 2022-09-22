@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// Gets the details of a listing.
         /// </summary>
         public static Task<GetListingResult> InvokeAsync(GetListingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetListingResult>("google-native:analyticshub/v1beta1:getListing", args ?? new GetListingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetListingResult>("google-native:analyticshub/v1beta1:getListing", args ?? new GetListingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a listing.
         /// </summary>
         public static Output<GetListingResult> Invoke(GetListingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetListingResult>("google-native:analyticshub/v1beta1:getListing", args ?? new GetListingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetListingResult>("google-native:analyticshub/v1beta1:getListing", args ?? new GetListingInvokeArgs(), options.WithDefaults());
     }
 
 

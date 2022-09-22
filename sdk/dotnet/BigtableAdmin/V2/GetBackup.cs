@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Gets metadata on a pending or completed Cloud Bigtable Backup.
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:bigtableadmin/v2:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:bigtableadmin/v2:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets metadata on a pending or completed Cloud Bigtable Backup.
         /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:bigtableadmin/v2:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:bigtableadmin/v2:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 

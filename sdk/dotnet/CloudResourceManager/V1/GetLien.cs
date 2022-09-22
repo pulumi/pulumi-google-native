@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         public static Task<GetLienResult> InvokeAsync(GetLienArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLienResult>("google-native:cloudresourcemanager/v1:getLien", args ?? new GetLienArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLienResult>("google-native:cloudresourcemanager/v1:getLien", args ?? new GetLienArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         public static Output<GetLienResult> Invoke(GetLienInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLienResult>("google-native:cloudresourcemanager/v1:getLien", args ?? new GetLienInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLienResult>("google-native:cloudresourcemanager/v1:getLien", args ?? new GetLienInvokeArgs(), options.WithDefaults());
     }
 
 

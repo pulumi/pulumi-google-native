@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Use this method to get details about a private connectivity configuration.
         /// </summary>
         public static Task<GetPrivateConnectionResult> InvokeAsync(GetPrivateConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPrivateConnectionResult>("google-native:datastream/v1alpha1:getPrivateConnection", args ?? new GetPrivateConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateConnectionResult>("google-native:datastream/v1alpha1:getPrivateConnection", args ?? new GetPrivateConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this method to get details about a private connectivity configuration.
         /// </summary>
         public static Output<GetPrivateConnectionResult> Invoke(GetPrivateConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPrivateConnectionResult>("google-native:datastream/v1alpha1:getPrivateConnection", args ?? new GetPrivateConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateConnectionResult>("google-native:datastream/v1alpha1:getPrivateConnection", args ?? new GetPrivateConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

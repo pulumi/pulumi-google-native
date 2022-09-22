@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Returns an IAM policy for the specified object.
         /// </summary>
         public static Task<GetObjectIamPolicyResult> InvokeAsync(GetObjectIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns an IAM policy for the specified object.
         /// </summary>
         public static Output<GetObjectIamPolicyResult> Invoke(GetObjectIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetObjectIamPolicyResult>("google-native:storage/v1:getObjectIamPolicy", args ?? new GetObjectIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

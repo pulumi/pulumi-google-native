@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetInterconnectAttachmentIamPolicyResult> InvokeAsync(GetInterconnectAttachmentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetInterconnectAttachmentIamPolicyResult> Invoke(GetInterconnectAttachmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentIamPolicyResult>("google-native:compute/alpha:getInterconnectAttachmentIamPolicy", args ?? new GetInterconnectAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

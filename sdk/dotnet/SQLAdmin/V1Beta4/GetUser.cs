@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// Retrieves a resource containing information about a user.
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("google-native:sqladmin/v1beta4:getUser", args ?? new GetUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("google-native:sqladmin/v1beta4:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a resource containing information about a user.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("google-native:sqladmin/v1beta4:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("google-native:sqladmin/v1beta4:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a sink.
         /// </summary>
         public static Task<GetFolderSinkResult> InvokeAsync(GetFolderSinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderSinkResult>("google-native:logging/v2:getFolderSink", args ?? new GetFolderSinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderSinkResult>("google-native:logging/v2:getFolderSink", args ?? new GetFolderSinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a sink.
         /// </summary>
         public static Output<GetFolderSinkResult> Invoke(GetFolderSinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderSinkResult>("google-native:logging/v2:getFolderSink", args ?? new GetFolderSinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderSinkResult>("google-native:logging/v2:getFolderSink", args ?? new GetFolderSinkInvokeArgs(), options.WithDefaults());
     }
 
 

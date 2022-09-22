@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         /// Gets details of a single ClientConnectorService.
         /// </summary>
         public static Task<GetClientConnectorServiceResult> InvokeAsync(GetClientConnectorServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConnectorServiceResult>("google-native:beyondcorp/v1:getClientConnectorService", args ?? new GetClientConnectorServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConnectorServiceResult>("google-native:beyondcorp/v1:getClientConnectorService", args ?? new GetClientConnectorServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single ClientConnectorService.
         /// </summary>
         public static Output<GetClientConnectorServiceResult> Invoke(GetClientConnectorServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientConnectorServiceResult>("google-native:beyondcorp/v1:getClientConnectorService", args ?? new GetClientConnectorServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientConnectorServiceResult>("google-native:beyondcorp/v1:getClientConnectorService", args ?? new GetClientConnectorServiceInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
         /// </summary>
         public static Task<GetServingConfigResult> InvokeAsync(GetServingConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServingConfigResult>("google-native:retail/v2beta:getServingConfig", args ?? new GetServingConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServingConfigResult>("google-native:retail/v2beta:getServingConfig", args ?? new GetServingConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
         /// </summary>
         public static Output<GetServingConfigResult> Invoke(GetServingConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServingConfigResult>("google-native:retail/v2beta:getServingConfig", args ?? new GetServingConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServingConfigResult>("google-native:retail/v2beta:getServingConfig", args ?? new GetServingConfigInvokeArgs(), options.WithDefaults());
     }
 
 

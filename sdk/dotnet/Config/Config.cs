@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("google-native");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("google-native");
 
         private static readonly __Value<string?> _appendUserAgent = new __Value<string?>(() => __config.Get("appendUserAgent"));
         /// <summary>

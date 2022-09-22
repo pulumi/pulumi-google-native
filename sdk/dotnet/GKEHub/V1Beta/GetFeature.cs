@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// Gets details of a single Feature.
         /// </summary>
         public static Task<GetFeatureResult> InvokeAsync(GetFeatureArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Feature.
         /// </summary>
         public static Output<GetFeatureResult> Invoke(GetFeatureInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeatureResult>("google-native:gkehub/v1beta:getFeature", args ?? new GetFeatureInvokeArgs(), options.WithDefaults());
     }
 
 

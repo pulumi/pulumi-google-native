@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetNetworkAttachmentIamPolicyResult> InvokeAsync(GetNetworkAttachmentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAttachmentIamPolicyResult>("google-native:compute/alpha:getNetworkAttachmentIamPolicy", args ?? new GetNetworkAttachmentIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAttachmentIamPolicyResult>("google-native:compute/alpha:getNetworkAttachmentIamPolicy", args ?? new GetNetworkAttachmentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetNetworkAttachmentIamPolicyResult> Invoke(GetNetworkAttachmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkAttachmentIamPolicyResult>("google-native:compute/alpha:getNetworkAttachmentIamPolicy", args ?? new GetNetworkAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAttachmentIamPolicyResult>("google-native:compute/alpha:getNetworkAttachmentIamPolicy", args ?? new GetNetworkAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

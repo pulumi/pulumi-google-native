@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
         /// </summary>
         public static Task<GetRuntimeResult> InvokeAsync(GetRuntimeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
         /// </summary>
         public static Output<GetRuntimeResult> Invoke(GetRuntimeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuntimeResult>("google-native:notebooks/v1:getRuntime", args ?? new GetRuntimeInvokeArgs(), options.WithDefaults());
     }
 
 

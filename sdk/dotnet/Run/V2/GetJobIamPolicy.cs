@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Get the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
         /// </summary>
         public static Task<GetJobIamPolicyResult> InvokeAsync(GetJobIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("google-native:run/v2:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobIamPolicyResult>("google-native:run/v2:getJobIamPolicy", args ?? new GetJobIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
         /// </summary>
         public static Output<GetJobIamPolicyResult> Invoke(GetJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("google-native:run/v2:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobIamPolicyResult>("google-native:run/v2:getJobIamPolicy", args ?? new GetJobIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

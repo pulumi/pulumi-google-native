@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets details of a single EndpointPolicy.
         /// </summary>
         public static Task<GetEndpointPolicyResult> InvokeAsync(GetEndpointPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointPolicyResult>("google-native:networkservices/v1:getEndpointPolicy", args ?? new GetEndpointPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointPolicyResult>("google-native:networkservices/v1:getEndpointPolicy", args ?? new GetEndpointPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single EndpointPolicy.
         /// </summary>
         public static Output<GetEndpointPolicyResult> Invoke(GetEndpointPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointPolicyResult>("google-native:networkservices/v1:getEndpointPolicy", args ?? new GetEndpointPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointPolicyResult>("google-native:networkservices/v1:getEndpointPolicy", args ?? new GetEndpointPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

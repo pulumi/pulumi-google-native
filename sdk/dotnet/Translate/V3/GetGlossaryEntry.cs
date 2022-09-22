@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Translate.V3
         /// Gets a single glossary entry by the given id.
         /// </summary>
         public static Task<GetGlossaryEntryResult> InvokeAsync(GetGlossaryEntryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlossaryEntryResult>("google-native:translate/v3:getGlossaryEntry", args ?? new GetGlossaryEntryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlossaryEntryResult>("google-native:translate/v3:getGlossaryEntry", args ?? new GetGlossaryEntryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single glossary entry by the given id.
         /// </summary>
         public static Output<GetGlossaryEntryResult> Invoke(GetGlossaryEntryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlossaryEntryResult>("google-native:translate/v3:getGlossaryEntry", args ?? new GetGlossaryEntryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlossaryEntryResult>("google-native:translate/v3:getGlossaryEntry", args ?? new GetGlossaryEntryInvokeArgs(), options.WithDefaults());
     }
 
 

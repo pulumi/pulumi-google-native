@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
         /// </summary>
         public static Task<GetInterconnectResult> InvokeAsync(GetInterconnectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectResult>("google-native:compute/beta:getInterconnect", args ?? new GetInterconnectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectResult>("google-native:compute/beta:getInterconnect", args ?? new GetInterconnectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
         /// </summary>
         public static Output<GetInterconnectResult> Invoke(GetInterconnectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInterconnectResult>("google-native:compute/beta:getInterconnect", args ?? new GetInterconnectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectResult>("google-native:compute/beta:getInterconnect", args ?? new GetInterconnectInvokeArgs(), options.WithDefaults());
     }
 
 

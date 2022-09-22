@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         /// </summary>
         public static Task<GetOrganizationJobTriggerResult> InvokeAsync(GetOrganizationJobTriggerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationJobTriggerResult>("google-native:dlp/v2:getOrganizationJobTrigger", args ?? new GetOrganizationJobTriggerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationJobTriggerResult>("google-native:dlp/v2:getOrganizationJobTrigger", args ?? new GetOrganizationJobTriggerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         /// </summary>
         public static Output<GetOrganizationJobTriggerResult> Invoke(GetOrganizationJobTriggerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationJobTriggerResult>("google-native:dlp/v2:getOrganizationJobTrigger", args ?? new GetOrganizationJobTriggerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationJobTriggerResult>("google-native:dlp/v2:getOrganizationJobTrigger", args ?? new GetOrganizationJobTriggerInvokeArgs(), options.WithDefaults());
     }
 
 

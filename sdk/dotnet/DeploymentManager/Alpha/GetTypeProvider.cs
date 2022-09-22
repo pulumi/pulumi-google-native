@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// Gets information about a specific type provider.
         /// </summary>
         public static Task<GetTypeProviderResult> InvokeAsync(GetTypeProviderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a specific type provider.
         /// </summary>
         public static Output<GetTypeProviderResult> Invoke(GetTypeProviderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTypeProviderResult>("google-native:deploymentmanager/alpha:getTypeProvider", args ?? new GetTypeProviderInvokeArgs(), options.WithDefaults());
     }
 
 

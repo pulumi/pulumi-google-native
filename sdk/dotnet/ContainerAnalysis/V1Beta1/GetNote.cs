@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// Gets the specified note.
         /// </summary>
         public static Task<GetNoteResult> InvokeAsync(GetNoteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified note.
         /// </summary>
         public static Output<GetNoteResult> Invoke(GetNoteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNoteResult>("google-native:containeranalysis/v1beta1:getNote", args ?? new GetNoteInvokeArgs(), options.WithDefaults());
     }
 
 

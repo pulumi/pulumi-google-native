@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
         /// </summary>
         public static Task<GetOsPolicyAssignmentResult> InvokeAsync(GetOsPolicyAssignmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOsPolicyAssignmentResult>("google-native:osconfig/v1alpha:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOsPolicyAssignmentResult>("google-native:osconfig/v1alpha:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
         /// </summary>
         public static Output<GetOsPolicyAssignmentResult> Invoke(GetOsPolicyAssignmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOsPolicyAssignmentResult>("google-native:osconfig/v1alpha:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOsPolicyAssignmentResult>("google-native:osconfig/v1alpha:getOsPolicyAssignment", args ?? new GetOsPolicyAssignmentInvokeArgs(), options.WithDefaults());
     }
 
 

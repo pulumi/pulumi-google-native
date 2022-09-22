@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Returns metadata for the specified bucket.
         /// </summary>
         public static Task<GetBucketResult> InvokeAsync(GetBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns metadata for the specified bucket.
         /// </summary>
         public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketResult>("google-native:storage/v1:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());
     }
 
 

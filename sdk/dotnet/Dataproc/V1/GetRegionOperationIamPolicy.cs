@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRegionOperationIamPolicyResult> InvokeAsync(GetRegionOperationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRegionOperationIamPolicyResult> Invoke(GetRegionOperationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionOperationIamPolicyResult>("google-native:dataproc/v1:getRegionOperationIamPolicy", args ?? new GetRegionOperationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

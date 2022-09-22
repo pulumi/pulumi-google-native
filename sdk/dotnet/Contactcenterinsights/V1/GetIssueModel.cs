@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// Gets an issue model.
         /// </summary>
         public static Task<GetIssueModelResult> InvokeAsync(GetIssueModelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIssueModelResult>("google-native:contactcenterinsights/v1:getIssueModel", args ?? new GetIssueModelArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIssueModelResult>("google-native:contactcenterinsights/v1:getIssueModel", args ?? new GetIssueModelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an issue model.
         /// </summary>
         public static Output<GetIssueModelResult> Invoke(GetIssueModelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIssueModelResult>("google-native:contactcenterinsights/v1:getIssueModel", args ?? new GetIssueModelInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIssueModelResult>("google-native:contactcenterinsights/v1:getIssueModel", args ?? new GetIssueModelInvokeArgs(), options.WithDefaults());
     }
 
 

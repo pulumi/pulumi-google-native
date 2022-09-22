@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         /// Gets details of a single ClientGateway.
         /// </summary>
         public static Task<GetClientGatewayResult> InvokeAsync(GetClientGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientGatewayResult>("google-native:beyondcorp/v1:getClientGateway", args ?? new GetClientGatewayArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientGatewayResult>("google-native:beyondcorp/v1:getClientGateway", args ?? new GetClientGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single ClientGateway.
         /// </summary>
         public static Output<GetClientGatewayResult> Invoke(GetClientGatewayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientGatewayResult>("google-native:beyondcorp/v1:getClientGateway", args ?? new GetClientGatewayInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientGatewayResult>("google-native:beyondcorp/v1:getClientGateway", args ?? new GetClientGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

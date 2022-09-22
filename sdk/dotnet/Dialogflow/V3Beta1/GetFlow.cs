@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified flow.
         /// </summary>
         public static Task<GetFlowResult> InvokeAsync(GetFlowArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowResult>("google-native:dialogflow/v3beta1:getFlow", args ?? new GetFlowArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlowResult>("google-native:dialogflow/v3beta1:getFlow", args ?? new GetFlowArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified flow.
         /// </summary>
         public static Output<GetFlowResult> Invoke(GetFlowInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFlowResult>("google-native:dialogflow/v3beta1:getFlow", args ?? new GetFlowInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlowResult>("google-native:dialogflow/v3beta1:getFlow", args ?? new GetFlowInvokeArgs(), options.WithDefaults());
     }
 
 

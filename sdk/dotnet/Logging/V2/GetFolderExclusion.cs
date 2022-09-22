@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Task<GetFolderExclusionResult> InvokeAsync(GetFolderExclusionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderExclusionResult>("google-native:logging/v2:getFolderExclusion", args ?? new GetFolderExclusionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderExclusionResult>("google-native:logging/v2:getFolderExclusion", args ?? new GetFolderExclusionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Output<GetFolderExclusionResult> Invoke(GetFolderExclusionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderExclusionResult>("google-native:logging/v2:getFolderExclusion", args ?? new GetFolderExclusionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderExclusionResult>("google-native:logging/v2:getFolderExclusion", args ?? new GetFolderExclusionInvokeArgs(), options.WithDefaults());
     }
 
 

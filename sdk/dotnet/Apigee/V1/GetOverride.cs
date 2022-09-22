@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a trace configuration override.
         /// </summary>
         public static Task<GetOverrideResult> InvokeAsync(GetOverrideArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOverrideResult>("google-native:apigee/v1:getOverride", args ?? new GetOverrideArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOverrideResult>("google-native:apigee/v1:getOverride", args ?? new GetOverrideArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a trace configuration override.
         /// </summary>
         public static Output<GetOverrideResult> Invoke(GetOverrideInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOverrideResult>("google-native:apigee/v1:getOverride", args ?? new GetOverrideInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOverrideResult>("google-native:apigee/v1:getOverride", args ?? new GetOverrideInvokeArgs(), options.WithDefaults());
     }
 
 

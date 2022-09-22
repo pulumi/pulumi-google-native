@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetImageIamPolicyResult> InvokeAsync(GetImageIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageIamPolicyResult>("google-native:compute/v1:getImageIamPolicy", args ?? new GetImageIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIamPolicyResult>("google-native:compute/v1:getImageIamPolicy", args ?? new GetImageIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetImageIamPolicyResult> Invoke(GetImageIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageIamPolicyResult>("google-native:compute/v1:getImageIamPolicy", args ?? new GetImageIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageIamPolicyResult>("google-native:compute/v1:getImageIamPolicy", args ?? new GetImageIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

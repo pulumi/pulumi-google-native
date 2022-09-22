@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Returns metadata for a given EkmConnection.
         /// </summary>
         public static Task<GetEkmConnectionResult> InvokeAsync(GetEkmConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEkmConnectionResult>("google-native:cloudkms/v1:getEkmConnection", args ?? new GetEkmConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEkmConnectionResult>("google-native:cloudkms/v1:getEkmConnection", args ?? new GetEkmConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns metadata for a given EkmConnection.
         /// </summary>
         public static Output<GetEkmConnectionResult> Invoke(GetEkmConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEkmConnectionResult>("google-native:cloudkms/v1:getEkmConnection", args ?? new GetEkmConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEkmConnectionResult>("google-native:cloudkms/v1:getEkmConnection", args ?? new GetEkmConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

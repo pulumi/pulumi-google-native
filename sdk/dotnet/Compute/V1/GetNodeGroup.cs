@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
         /// </summary>
         public static Task<GetNodeGroupResult> InvokeAsync(GetNodeGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("google-native:compute/v1:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("google-native:compute/v1:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
         /// </summary>
         public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("google-native:compute/v1:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("google-native:compute/v1:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRestorePlanRestoreIamPolicyResult> InvokeAsync(GetRestorePlanRestoreIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRestorePlanRestoreIamPolicyResult>("google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy", args ?? new GetRestorePlanRestoreIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestorePlanRestoreIamPolicyResult>("google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy", args ?? new GetRestorePlanRestoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRestorePlanRestoreIamPolicyResult> Invoke(GetRestorePlanRestoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRestorePlanRestoreIamPolicyResult>("google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy", args ?? new GetRestorePlanRestoreIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRestorePlanRestoreIamPolicyResult>("google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy", args ?? new GetRestorePlanRestoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// Gets metadata on a pending or completed Backup.
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:spanner/v1:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:spanner/v1:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets metadata on a pending or completed Backup.
         /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:spanner/v1:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:spanner/v1:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 

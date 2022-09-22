@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetMeshIamPolicyResult> InvokeAsync(GetMeshIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMeshIamPolicyResult>("google-native:networkservices/v1:getMeshIamPolicy", args ?? new GetMeshIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMeshIamPolicyResult>("google-native:networkservices/v1:getMeshIamPolicy", args ?? new GetMeshIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetMeshIamPolicyResult> Invoke(GetMeshIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMeshIamPolicyResult>("google-native:networkservices/v1:getMeshIamPolicy", args ?? new GetMeshIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMeshIamPolicyResult>("google-native:networkservices/v1:getMeshIamPolicy", args ?? new GetMeshIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
         /// </summary>
         public static Task<GetSessionEntityTypeResult> InvokeAsync(GetSessionEntityTypeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSessionEntityTypeResult>("google-native:dialogflow/v2beta1:getSessionEntityType", args ?? new GetSessionEntityTypeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSessionEntityTypeResult>("google-native:dialogflow/v2beta1:getSessionEntityType", args ?? new GetSessionEntityTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
         /// </summary>
         public static Output<GetSessionEntityTypeResult> Invoke(GetSessionEntityTypeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSessionEntityTypeResult>("google-native:dialogflow/v2beta1:getSessionEntityType", args ?? new GetSessionEntityTypeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSessionEntityTypeResult>("google-native:dialogflow/v2beta1:getSessionEntityType", args ?? new GetSessionEntityTypeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified global PublicDelegatedPrefix resource.
         /// </summary>
         public static Task<GetGlobalPublicDelegatedPrefixResult> InvokeAsync(GetGlobalPublicDelegatedPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalPublicDelegatedPrefixResult>("google-native:compute/v1:getGlobalPublicDelegatedPrefix", args ?? new GetGlobalPublicDelegatedPrefixArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalPublicDelegatedPrefixResult>("google-native:compute/v1:getGlobalPublicDelegatedPrefix", args ?? new GetGlobalPublicDelegatedPrefixArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified global PublicDelegatedPrefix resource.
         /// </summary>
         public static Output<GetGlobalPublicDelegatedPrefixResult> Invoke(GetGlobalPublicDelegatedPrefixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalPublicDelegatedPrefixResult>("google-native:compute/v1:getGlobalPublicDelegatedPrefix", args ?? new GetGlobalPublicDelegatedPrefixInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalPublicDelegatedPrefixResult>("google-native:compute/v1:getGlobalPublicDelegatedPrefix", args ?? new GetGlobalPublicDelegatedPrefixInvokeArgs(), options.WithDefaults());
     }
 
 

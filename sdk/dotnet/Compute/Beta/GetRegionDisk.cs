@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns a specified regional persistent disk.
         /// </summary>
         public static Task<GetRegionDiskResult> InvokeAsync(GetRegionDiskArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskResult>("google-native:compute/beta:getRegionDisk", args ?? new GetRegionDiskArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskResult>("google-native:compute/beta:getRegionDisk", args ?? new GetRegionDiskArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a specified regional persistent disk.
         /// </summary>
         public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("google-native:compute/beta:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("google-native:compute/beta:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());
     }
 
 

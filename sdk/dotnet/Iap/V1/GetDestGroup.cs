@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Iap.V1
         /// Retrieves an existing TunnelDestGroup.
         /// </summary>
         public static Task<GetDestGroupResult> InvokeAsync(GetDestGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDestGroupResult>("google-native:iap/v1:getDestGroup", args ?? new GetDestGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDestGroupResult>("google-native:iap/v1:getDestGroup", args ?? new GetDestGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an existing TunnelDestGroup.
         /// </summary>
         public static Output<GetDestGroupResult> Invoke(GetDestGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDestGroupResult>("google-native:iap/v1:getDestGroup", args ?? new GetDestGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDestGroupResult>("google-native:iap/v1:getDestGroup", args ?? new GetDestGroupInvokeArgs(), options.WithDefaults());
     }
 
 

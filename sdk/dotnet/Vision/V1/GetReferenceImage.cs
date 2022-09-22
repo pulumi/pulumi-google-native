@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
         /// </summary>
         public static Task<GetReferenceImageResult> InvokeAsync(GetReferenceImageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReferenceImageResult>("google-native:vision/v1:getReferenceImage", args ?? new GetReferenceImageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReferenceImageResult>("google-native:vision/v1:getReferenceImage", args ?? new GetReferenceImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
         /// </summary>
         public static Output<GetReferenceImageResult> Invoke(GetReferenceImageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReferenceImageResult>("google-native:vision/v1:getReferenceImage", args ?? new GetReferenceImageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReferenceImageResult>("google-native:vision/v1:getReferenceImage", args ?? new GetReferenceImageInvokeArgs(), options.WithDefaults());
     }
 
 

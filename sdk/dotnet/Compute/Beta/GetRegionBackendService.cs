@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified regional BackendService resource.
         /// </summary>
         public static Task<GetRegionBackendServiceResult> InvokeAsync(GetRegionBackendServiceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified regional BackendService resource.
         /// </summary>
         public static Output<GetRegionBackendServiceResult> Invoke(GetRegionBackendServiceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceResult>("google-native:compute/beta:getRegionBackendService", args ?? new GetRegionBackendServiceInvokeArgs(), options.WithDefaults());
     }
 
 

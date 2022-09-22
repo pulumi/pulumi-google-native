@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetInstanceTemplateIamPolicyResult> InvokeAsync(GetInstanceTemplateIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetInstanceTemplateIamPolicyResult> Invoke(GetInstanceTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateIamPolicyResult>("google-native:compute/beta:getInstanceTemplateIamPolicy", args ?? new GetInstanceTemplateIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

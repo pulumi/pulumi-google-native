@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// Get details of a single NFS share.
         /// </summary>
         public static Task<GetNfsShareResult> InvokeAsync(GetNfsShareArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNfsShareResult>("google-native:baremetalsolution/v2:getNfsShare", args ?? new GetNfsShareArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNfsShareResult>("google-native:baremetalsolution/v2:getNfsShare", args ?? new GetNfsShareArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get details of a single NFS share.
         /// </summary>
         public static Output<GetNfsShareResult> Invoke(GetNfsShareInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNfsShareResult>("google-native:baremetalsolution/v2:getNfsShare", args ?? new GetNfsShareInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNfsShareResult>("google-native:baremetalsolution/v2:getNfsShare", args ?? new GetNfsShareInvokeArgs(), options.WithDefaults());
     }
 
 

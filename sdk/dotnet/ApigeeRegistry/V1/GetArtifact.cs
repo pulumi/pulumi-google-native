@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// Returns a specified artifact.
         /// </summary>
         public static Task<GetArtifactResult> InvokeAsync(GetArtifactArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetArtifactResult>("google-native:apigeeregistry/v1:getArtifact", args ?? new GetArtifactArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetArtifactResult>("google-native:apigeeregistry/v1:getArtifact", args ?? new GetArtifactArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a specified artifact.
         /// </summary>
         public static Output<GetArtifactResult> Invoke(GetArtifactInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetArtifactResult>("google-native:apigeeregistry/v1:getArtifact", args ?? new GetArtifactInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetArtifactResult>("google-native:apigeeregistry/v1:getArtifact", args ?? new GetArtifactInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
         /// </summary>
         public static Task<GetRegionTargetHttpsProxyResult> InvokeAsync(GetRegionTargetHttpsProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetHttpsProxyResult>("google-native:compute/beta:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetHttpsProxyResult>("google-native:compute/beta:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
         /// </summary>
         public static Output<GetRegionTargetHttpsProxyResult> Invoke(GetRegionTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionTargetHttpsProxyResult>("google-native:compute/beta:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionTargetHttpsProxyResult>("google-native:compute/beta:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyInvokeArgs(), options.WithDefaults());
     }
 
 

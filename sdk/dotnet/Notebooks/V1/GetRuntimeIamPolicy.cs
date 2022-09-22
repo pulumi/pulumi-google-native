@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRuntimeIamPolicyResult> InvokeAsync(GetRuntimeIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeIamPolicyResult>("google-native:notebooks/v1:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuntimeIamPolicyResult>("google-native:notebooks/v1:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRuntimeIamPolicyResult> Invoke(GetRuntimeIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRuntimeIamPolicyResult>("google-native:notebooks/v1:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuntimeIamPolicyResult>("google-native:notebooks/v1:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

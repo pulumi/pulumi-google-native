@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:appengine/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:appengine/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:appengine/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:appengine/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
     }
 
 

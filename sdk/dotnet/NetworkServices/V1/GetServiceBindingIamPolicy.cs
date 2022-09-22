@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetServiceBindingIamPolicyResult> InvokeAsync(GetServiceBindingIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceBindingIamPolicyResult>("google-native:networkservices/v1:getServiceBindingIamPolicy", args ?? new GetServiceBindingIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceBindingIamPolicyResult>("google-native:networkservices/v1:getServiceBindingIamPolicy", args ?? new GetServiceBindingIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetServiceBindingIamPolicyResult> Invoke(GetServiceBindingIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceBindingIamPolicyResult>("google-native:networkservices/v1:getServiceBindingIamPolicy", args ?? new GetServiceBindingIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceBindingIamPolicyResult>("google-native:networkservices/v1:getServiceBindingIamPolicy", args ?? new GetServiceBindingIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

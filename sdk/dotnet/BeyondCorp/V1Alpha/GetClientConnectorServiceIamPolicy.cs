@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetClientConnectorServiceIamPolicyResult> InvokeAsync(GetClientConnectorServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConnectorServiceIamPolicyResult>("google-native:beyondcorp/v1alpha:getClientConnectorServiceIamPolicy", args ?? new GetClientConnectorServiceIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConnectorServiceIamPolicyResult>("google-native:beyondcorp/v1alpha:getClientConnectorServiceIamPolicy", args ?? new GetClientConnectorServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetClientConnectorServiceIamPolicyResult> Invoke(GetClientConnectorServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientConnectorServiceIamPolicyResult>("google-native:beyondcorp/v1alpha:getClientConnectorServiceIamPolicy", args ?? new GetClientConnectorServiceIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientConnectorServiceIamPolicyResult>("google-native:beyondcorp/v1alpha:getClientConnectorServiceIamPolicy", args ?? new GetClientConnectorServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

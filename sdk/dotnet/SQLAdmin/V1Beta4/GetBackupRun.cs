@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// Retrieves a resource containing information about a backup run.
         /// </summary>
         public static Task<GetBackupRunResult> InvokeAsync(GetBackupRunArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a resource containing information about a backup run.
         /// </summary>
         public static Output<GetBackupRunResult> Invoke(GetBackupRunInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupRunResult>("google-native:sqladmin/v1beta4:getBackupRun", args ?? new GetBackupRunInvokeArgs(), options.WithDefaults());
     }
 
 

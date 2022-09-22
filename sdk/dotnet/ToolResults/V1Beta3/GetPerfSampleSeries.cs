@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
         /// </summary>
         public static Task<GetPerfSampleSeriesResult> InvokeAsync(GetPerfSampleSeriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPerfSampleSeriesResult>("google-native:toolresults/v1beta3:getPerfSampleSeries", args ?? new GetPerfSampleSeriesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPerfSampleSeriesResult>("google-native:toolresults/v1beta3:getPerfSampleSeries", args ?? new GetPerfSampleSeriesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
         /// </summary>
         public static Output<GetPerfSampleSeriesResult> Invoke(GetPerfSampleSeriesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPerfSampleSeriesResult>("google-native:toolresults/v1beta3:getPerfSampleSeries", args ?? new GetPerfSampleSeriesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPerfSampleSeriesResult>("google-native:toolresults/v1beta3:getPerfSampleSeries", args ?? new GetPerfSampleSeriesInvokeArgs(), options.WithDefaults());
     }
 
 

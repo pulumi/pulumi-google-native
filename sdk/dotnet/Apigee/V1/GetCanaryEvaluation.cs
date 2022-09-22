@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets a CanaryEvaluation for an organization.
         /// </summary>
         public static Task<GetCanaryEvaluationResult> InvokeAsync(GetCanaryEvaluationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a CanaryEvaluation for an organization.
         /// </summary>
         public static Output<GetCanaryEvaluationResult> Invoke(GetCanaryEvaluationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCanaryEvaluationResult>("google-native:apigee/v1:getCanaryEvaluation", args ?? new GetCanaryEvaluationInvokeArgs(), options.WithDefaults());
     }
 
 

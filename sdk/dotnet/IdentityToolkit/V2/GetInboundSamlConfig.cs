@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// Retrieve an inbound SAML configuration for an Identity Toolkit project.
         /// </summary>
         public static Task<GetInboundSamlConfigResult> InvokeAsync(GetInboundSamlConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInboundSamlConfigResult>("google-native:identitytoolkit/v2:getInboundSamlConfig", args ?? new GetInboundSamlConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInboundSamlConfigResult>("google-native:identitytoolkit/v2:getInboundSamlConfig", args ?? new GetInboundSamlConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve an inbound SAML configuration for an Identity Toolkit project.
         /// </summary>
         public static Output<GetInboundSamlConfigResult> Invoke(GetInboundSamlConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInboundSamlConfigResult>("google-native:identitytoolkit/v2:getInboundSamlConfig", args ?? new GetInboundSamlConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInboundSamlConfigResult>("google-native:identitytoolkit/v2:getInboundSamlConfig", args ?? new GetInboundSamlConfigInvokeArgs(), options.WithDefaults());
     }
 
 

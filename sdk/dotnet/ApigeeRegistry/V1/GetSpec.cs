@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// Returns a specified spec.
         /// </summary>
         public static Task<GetSpecResult> InvokeAsync(GetSpecArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpecResult>("google-native:apigeeregistry/v1:getSpec", args ?? new GetSpecArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpecResult>("google-native:apigeeregistry/v1:getSpec", args ?? new GetSpecArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a specified spec.
         /// </summary>
         public static Output<GetSpecResult> Invoke(GetSpecInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpecResult>("google-native:apigeeregistry/v1:getSpec", args ?? new GetSpecInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpecResult>("google-native:apigeeregistry/v1:getSpec", args ?? new GetSpecInvokeArgs(), options.WithDefaults());
     }
 
 

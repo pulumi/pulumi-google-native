@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// Gets a phrase matcher.
         /// </summary>
         public static Task<GetPhraseMatcherResult> InvokeAsync(GetPhraseMatcherArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a phrase matcher.
         /// </summary>
         public static Output<GetPhraseMatcherResult> Invoke(GetPhraseMatcherInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPhraseMatcherResult>("google-native:contactcenterinsights/v1:getPhraseMatcher", args ?? new GetPhraseMatcherInvokeArgs(), options.WithDefaults());
     }
 
 

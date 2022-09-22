@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
         /// </summary>
         public static Task<GetFolderPolicyResult> InvokeAsync(GetFolderPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
         /// </summary>
         public static Output<GetFolderPolicyResult> Invoke(GetFolderPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderPolicyResult>("google-native:orgpolicy/v2:getFolderPolicy", args ?? new GetFolderPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

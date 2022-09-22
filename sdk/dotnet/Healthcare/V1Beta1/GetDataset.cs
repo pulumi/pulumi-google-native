@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets any metadata associated with a dataset.
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets any metadata associated with a dataset.
         /// </summary>
         public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:healthcare/v1beta1:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
     }
 
 

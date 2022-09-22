@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// Gets the IAM policy.
         /// </summary>
         public static Task<GetDataExchangeIamPolicyResult> InvokeAsync(GetDataExchangeIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy.
         /// </summary>
         public static Output<GetDataExchangeIamPolicyResult> Invoke(GetDataExchangeIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataExchangeIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataExchangeIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeIamPolicy", args ?? new GetDataExchangeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// Get a Service Perimeter by resource name.
         /// </summary>
         public static Task<GetServicePerimeterResult> InvokeAsync(GetServicePerimeterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a Service Perimeter by resource name.
         /// </summary>
         public static Output<GetServicePerimeterResult> Invoke(GetServicePerimeterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicePerimeterResult>("google-native:accesscontextmanager/v1beta:getServicePerimeter", args ?? new GetServicePerimeterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:jobs/v4:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

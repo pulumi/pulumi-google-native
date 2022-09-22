@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// Gets a mute config.
         /// </summary>
         public static Task<GetMuteConfigResult> InvokeAsync(GetMuteConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMuteConfigResult>("google-native:securitycenter/v1:getMuteConfig", args ?? new GetMuteConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMuteConfigResult>("google-native:securitycenter/v1:getMuteConfig", args ?? new GetMuteConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a mute config.
         /// </summary>
         public static Output<GetMuteConfigResult> Invoke(GetMuteConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMuteConfigResult>("google-native:securitycenter/v1:getMuteConfig", args ?? new GetMuteConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMuteConfigResult>("google-native:securitycenter/v1:getMuteConfig", args ?? new GetMuteConfigInvokeArgs(), options.WithDefaults());
     }
 
 

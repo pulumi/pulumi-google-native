@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// Retrieves the specified page.
         /// </summary>
         public static Task<GetPageResult> InvokeAsync(GetPageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPageResult>("google-native:dialogflow/v3:getPage", args ?? new GetPageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPageResult>("google-native:dialogflow/v3:getPage", args ?? new GetPageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified page.
         /// </summary>
         public static Output<GetPageResult> Invoke(GetPageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPageResult>("google-native:dialogflow/v3:getPage", args ?? new GetPageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPageResult>("google-native:dialogflow/v3:getPage", args ?? new GetPageInvokeArgs(), options.WithDefaults());
     }
 
 

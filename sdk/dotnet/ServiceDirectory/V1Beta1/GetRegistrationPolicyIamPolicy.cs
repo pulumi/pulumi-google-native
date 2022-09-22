@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// Gets the IAM Policy for a resource
         /// </summary>
         public static Task<GetRegistrationPolicyIamPolicyResult> InvokeAsync(GetRegistrationPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationPolicyIamPolicyResult>("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", args ?? new GetRegistrationPolicyIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationPolicyIamPolicyResult>("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", args ?? new GetRegistrationPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM Policy for a resource
         /// </summary>
         public static Output<GetRegistrationPolicyIamPolicyResult> Invoke(GetRegistrationPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistrationPolicyIamPolicyResult>("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", args ?? new GetRegistrationPolicyIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistrationPolicyIamPolicyResult>("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", args ?? new GetRegistrationPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

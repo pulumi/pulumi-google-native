@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
         /// </summary>
         public static Task<GetTenantIamPolicyResult> InvokeAsync(GetTenantIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantIamPolicyResult>("google-native:identitytoolkit/v2:getTenantIamPolicy", args ?? new GetTenantIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTenantIamPolicyResult>("google-native:identitytoolkit/v2:getTenantIamPolicy", args ?? new GetTenantIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
         /// </summary>
         public static Output<GetTenantIamPolicyResult> Invoke(GetTenantIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTenantIamPolicyResult>("google-native:identitytoolkit/v2:getTenantIamPolicy", args ?? new GetTenantIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTenantIamPolicyResult>("google-native:identitytoolkit/v2:getTenantIamPolicy", args ?? new GetTenantIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

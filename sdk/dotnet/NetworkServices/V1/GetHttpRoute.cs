@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets details of a single HttpRoute.
         /// </summary>
         public static Task<GetHttpRouteResult> InvokeAsync(GetHttpRouteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHttpRouteResult>("google-native:networkservices/v1:getHttpRoute", args ?? new GetHttpRouteArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHttpRouteResult>("google-native:networkservices/v1:getHttpRoute", args ?? new GetHttpRouteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single HttpRoute.
         /// </summary>
         public static Output<GetHttpRouteResult> Invoke(GetHttpRouteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHttpRouteResult>("google-native:networkservices/v1:getHttpRoute", args ?? new GetHttpRouteInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHttpRouteResult>("google-native:networkservices/v1:getHttpRoute", args ?? new GetHttpRouteInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Container.V1
         /// Returns configuration info about the Google Kubernetes Engine service.
         /// </summary>
         public static Task<GetServerConfigResult> InvokeAsync(GetServerConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerConfigResult>("google-native:container/v1:getServerConfig", args ?? new GetServerConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerConfigResult>("google-native:container/v1:getServerConfig", args ?? new GetServerConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns configuration info about the Google Kubernetes Engine service.
         /// </summary>
         public static Output<GetServerConfigResult> Invoke(GetServerConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServerConfigResult>("google-native:container/v1:getServerConfig", args ?? new GetServerConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerConfigResult>("google-native:container/v1:getServerConfig", args ?? new GetServerConfigInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Get a metadata entity.
         /// </summary>
         public static Task<GetEntityResult> InvokeAsync(GetEntityArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEntityResult>("google-native:dataplex/v1:getEntity", args ?? new GetEntityArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityResult>("google-native:dataplex/v1:getEntity", args ?? new GetEntityArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a metadata entity.
         /// </summary>
         public static Output<GetEntityResult> Invoke(GetEntityInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEntityResult>("google-native:dataplex/v1:getEntity", args ?? new GetEntityInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntityResult>("google-native:dataplex/v1:getEntity", args ?? new GetEntityInvokeArgs(), options.WithDefaults());
     }
 
 

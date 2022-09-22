@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
         /// </summary>
         public static Task<GetInstanceTableIamPolicyResult> InvokeAsync(GetInstanceTableIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTableIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", args ?? new GetInstanceTableIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTableIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", args ?? new GetInstanceTableIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
         /// </summary>
         public static Output<GetInstanceTableIamPolicyResult> Invoke(GetInstanceTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTableIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", args ?? new GetInstanceTableIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTableIamPolicyResult>("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", args ?? new GetInstanceTableIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

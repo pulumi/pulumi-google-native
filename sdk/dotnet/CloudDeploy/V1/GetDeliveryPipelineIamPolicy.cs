@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDeliveryPipelineIamPolicyResult> InvokeAsync(GetDeliveryPipelineIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryPipelineIamPolicyResult>("google-native:clouddeploy/v1:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryPipelineIamPolicyResult>("google-native:clouddeploy/v1:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDeliveryPipelineIamPolicyResult> Invoke(GetDeliveryPipelineIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineIamPolicyResult>("google-native:clouddeploy/v1:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineIamPolicyResult>("google-native:clouddeploy/v1:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

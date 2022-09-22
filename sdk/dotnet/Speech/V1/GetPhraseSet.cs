@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Speech.V1
         /// Get a phrase set.
         /// </summary>
         public static Task<GetPhraseSetResult> InvokeAsync(GetPhraseSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPhraseSetResult>("google-native:speech/v1:getPhraseSet", args ?? new GetPhraseSetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhraseSetResult>("google-native:speech/v1:getPhraseSet", args ?? new GetPhraseSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a phrase set.
         /// </summary>
         public static Output<GetPhraseSetResult> Invoke(GetPhraseSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPhraseSetResult>("google-native:speech/v1:getPhraseSet", args ?? new GetPhraseSetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPhraseSetResult>("google-native:speech/v1:getPhraseSet", args ?? new GetPhraseSetInvokeArgs(), options.WithDefaults());
     }
 
 

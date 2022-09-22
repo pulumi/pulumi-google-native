@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         /// Get a trace sink by name under the parent resource (GCP project).
         /// </summary>
         public static Task<GetTraceSinkResult> InvokeAsync(GetTraceSinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a trace sink by name under the parent resource (GCP project).
         /// </summary>
         public static Output<GetTraceSinkResult> Invoke(GetTraceSinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTraceSinkResult>("google-native:cloudtrace/v2beta1:getTraceSink", args ?? new GetTraceSinkInvokeArgs(), options.WithDefaults());
     }
 
 

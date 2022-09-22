@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified document.
         /// </summary>
         public static Task<GetDocumentResult> InvokeAsync(GetDocumentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("google-native:dialogflow/v2:getDocument", args ?? new GetDocumentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDocumentResult>("google-native:dialogflow/v2:getDocument", args ?? new GetDocumentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified document.
         /// </summary>
         public static Output<GetDocumentResult> Invoke(GetDocumentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDocumentResult>("google-native:dialogflow/v2:getDocument", args ?? new GetDocumentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDocumentResult>("google-native:dialogflow/v2:getDocument", args ?? new GetDocumentInvokeArgs(), options.WithDefaults());
     }
 
 

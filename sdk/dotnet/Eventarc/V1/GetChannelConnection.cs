@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// Get a single ChannelConnection.
         /// </summary>
         public static Task<GetChannelConnectionResult> InvokeAsync(GetChannelConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelConnectionResult>("google-native:eventarc/v1:getChannelConnection", args ?? new GetChannelConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChannelConnectionResult>("google-native:eventarc/v1:getChannelConnection", args ?? new GetChannelConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a single ChannelConnection.
         /// </summary>
         public static Output<GetChannelConnectionResult> Invoke(GetChannelConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChannelConnectionResult>("google-native:eventarc/v1:getChannelConnection", args ?? new GetChannelConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChannelConnectionResult>("google-native:eventarc/v1:getChannelConnection", args ?? new GetChannelConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// Retrieves a resource containing information about a Cloud SQL instance.
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("google-native:sqladmin/v1beta4:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("google-native:sqladmin/v1beta4:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a resource containing information about a Cloud SQL instance.
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("google-native:sqladmin/v1beta4:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("google-native:sqladmin/v1beta4:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

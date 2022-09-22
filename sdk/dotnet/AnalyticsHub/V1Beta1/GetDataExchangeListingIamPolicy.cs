@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// Gets the IAM policy.
         /// </summary>
         public static Task<GetDataExchangeListingIamPolicyResult> InvokeAsync(GetDataExchangeListingIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeListingIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeListingIamPolicy", args ?? new GetDataExchangeListingIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeListingIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeListingIamPolicy", args ?? new GetDataExchangeListingIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the IAM policy.
         /// </summary>
         public static Output<GetDataExchangeListingIamPolicyResult> Invoke(GetDataExchangeListingIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataExchangeListingIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeListingIamPolicy", args ?? new GetDataExchangeListingIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataExchangeListingIamPolicyResult>("google-native:analyticshub/v1beta1:getDataExchangeListingIamPolicy", args ?? new GetDataExchangeListingIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

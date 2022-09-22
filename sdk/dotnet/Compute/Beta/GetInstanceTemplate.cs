@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("google-native:compute/beta:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("google-native:compute/beta:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
         /// </summary>
         public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("google-native:compute/beta:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("google-native:compute/beta:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Retrieves information about the specified future reservation.
         /// </summary>
         public static Task<GetFutureReservationResult> InvokeAsync(GetFutureReservationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFutureReservationResult>("google-native:compute/alpha:getFutureReservation", args ?? new GetFutureReservationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFutureReservationResult>("google-native:compute/alpha:getFutureReservation", args ?? new GetFutureReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about the specified future reservation.
         /// </summary>
         public static Output<GetFutureReservationResult> Invoke(GetFutureReservationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFutureReservationResult>("google-native:compute/alpha:getFutureReservation", args ?? new GetFutureReservationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFutureReservationResult>("google-native:compute/alpha:getFutureReservation", args ?? new GetFutureReservationInvokeArgs(), options.WithDefaults());
     }
 
 

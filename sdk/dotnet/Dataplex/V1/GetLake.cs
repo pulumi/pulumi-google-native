@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Retrieves a lake resource.
         /// </summary>
         public static Task<GetLakeResult> InvokeAsync(GetLakeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLakeResult>("google-native:dataplex/v1:getLake", args ?? new GetLakeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLakeResult>("google-native:dataplex/v1:getLake", args ?? new GetLakeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a lake resource.
         /// </summary>
         public static Output<GetLakeResult> Invoke(GetLakeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLakeResult>("google-native:dataplex/v1:getLake", args ?? new GetLakeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLakeResult>("google-native:dataplex/v1:getLake", args ?? new GetLakeInvokeArgs(), options.WithDefaults());
     }
 
 

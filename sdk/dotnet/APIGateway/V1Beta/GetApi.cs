@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         /// Gets details of a single Api.
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Api.
         /// </summary>
         public static Output<GetApiResult> Invoke(GetApiInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigateway/v1beta:getApi", args ?? new GetApiInvokeArgs(), options.WithDefaults());
     }
 
 

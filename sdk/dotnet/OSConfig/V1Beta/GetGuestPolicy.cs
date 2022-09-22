@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// Get an OS Config guest policy.
         /// </summary>
         public static Task<GetGuestPolicyResult> InvokeAsync(GetGuestPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get an OS Config guest policy.
         /// </summary>
         public static Output<GetGuestPolicyResult> Invoke(GetGuestPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGuestPolicyResult>("google-native:osconfig/v1beta:getGuestPolicy", args ?? new GetGuestPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Gets an individual WorkloadIdentityPool.
         /// </summary>
         public static Task<GetWorkloadIdentityPoolResult> InvokeAsync(GetWorkloadIdentityPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("google-native:iam/v1:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("google-native:iam/v1:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an individual WorkloadIdentityPool.
         /// </summary>
         public static Output<GetWorkloadIdentityPoolResult> Invoke(GetWorkloadIdentityPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("google-native:iam/v1:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("google-native:iam/v1:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithDefaults());
     }
 
 

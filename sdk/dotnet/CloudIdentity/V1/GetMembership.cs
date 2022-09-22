@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// Retrieves a `Membership`.
         /// </summary>
         public static Task<GetMembershipResult> InvokeAsync(GetMembershipArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:cloudidentity/v1:getMembership", args ?? new GetMembershipArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMembershipResult>("google-native:cloudidentity/v1:getMembership", args ?? new GetMembershipArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a `Membership`.
         /// </summary>
         public static Output<GetMembershipResult> Invoke(GetMembershipInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:cloudidentity/v1:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMembershipResult>("google-native:cloudidentity/v1:getMembership", args ?? new GetMembershipInvokeArgs(), options.WithDefaults());
     }
 
 

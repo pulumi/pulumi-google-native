@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetDeploymentIamPolicyResult> InvokeAsync(GetDeploymentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/alpha:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/alpha:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetDeploymentIamPolicyResult> Invoke(GetDeploymentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/alpha:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeploymentIamPolicyResult>("google-native:deploymentmanager/alpha:getDeploymentIamPolicy", args ?? new GetDeploymentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

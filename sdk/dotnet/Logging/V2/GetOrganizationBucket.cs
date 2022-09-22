@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a log bucket.
         /// </summary>
         public static Task<GetOrganizationBucketResult> InvokeAsync(GetOrganizationBucketArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBucketResult>("google-native:logging/v2:getOrganizationBucket", args ?? new GetOrganizationBucketArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBucketResult>("google-native:logging/v2:getOrganizationBucket", args ?? new GetOrganizationBucketArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a log bucket.
         /// </summary>
         public static Output<GetOrganizationBucketResult> Invoke(GetOrganizationBucketInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationBucketResult>("google-native:logging/v2:getOrganizationBucket", args ?? new GetOrganizationBucketInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBucketResult>("google-native:logging/v2:getOrganizationBucket", args ?? new GetOrganizationBucketInvokeArgs(), options.WithDefaults());
     }
 
 

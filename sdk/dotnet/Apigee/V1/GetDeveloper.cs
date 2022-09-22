@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
         /// </summary>
         public static Task<GetDeveloperResult> InvokeAsync(GetDeveloperArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
         /// </summary>
         public static Output<GetDeveloperResult> Invoke(GetDeveloperInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeveloperResult>("google-native:apigee/v1:getDeveloper", args ?? new GetDeveloperInvokeArgs(), options.WithDefaults());
     }
 
 

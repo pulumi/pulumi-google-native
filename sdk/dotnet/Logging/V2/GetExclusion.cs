@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Task<GetExclusionResult> InvokeAsync(GetExclusionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExclusionResult>("google-native:logging/v2:getExclusion", args ?? new GetExclusionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExclusionResult>("google-native:logging/v2:getExclusion", args ?? new GetExclusionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the description of an exclusion in the _Default sink.
         /// </summary>
         public static Output<GetExclusionResult> Invoke(GetExclusionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExclusionResult>("google-native:logging/v2:getExclusion", args ?? new GetExclusionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExclusionResult>("google-native:logging/v2:getExclusion", args ?? new GetExclusionInvokeArgs(), options.WithDefaults());
     }
 
 

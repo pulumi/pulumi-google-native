@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified TargetTcpProxy resource.
         /// </summary>
         public static Task<GetRegionTargetTcpProxyResult> InvokeAsync(GetRegionTargetTcpProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetTcpProxyResult>("google-native:compute/alpha:getRegionTargetTcpProxy", args ?? new GetRegionTargetTcpProxyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetTcpProxyResult>("google-native:compute/alpha:getRegionTargetTcpProxy", args ?? new GetRegionTargetTcpProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetTcpProxy resource.
         /// </summary>
         public static Output<GetRegionTargetTcpProxyResult> Invoke(GetRegionTargetTcpProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionTargetTcpProxyResult>("google-native:compute/alpha:getRegionTargetTcpProxy", args ?? new GetRegionTargetTcpProxyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionTargetTcpProxyResult>("google-native:compute/alpha:getRegionTargetTcpProxy", args ?? new GetRegionTargetTcpProxyInvokeArgs(), options.WithDefaults());
     }
 
 

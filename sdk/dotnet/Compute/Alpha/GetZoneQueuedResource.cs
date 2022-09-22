@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified QueuedResource resource.
         /// </summary>
         public static Task<GetZoneQueuedResourceResult> InvokeAsync(GetZoneQueuedResourceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneQueuedResourceResult>("google-native:compute/alpha:getZoneQueuedResource", args ?? new GetZoneQueuedResourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneQueuedResourceResult>("google-native:compute/alpha:getZoneQueuedResource", args ?? new GetZoneQueuedResourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified QueuedResource resource.
         /// </summary>
         public static Output<GetZoneQueuedResourceResult> Invoke(GetZoneQueuedResourceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneQueuedResourceResult>("google-native:compute/alpha:getZoneQueuedResource", args ?? new GetZoneQueuedResourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneQueuedResourceResult>("google-native:compute/alpha:getZoneQueuedResource", args ?? new GetZoneQueuedResourceInvokeArgs(), options.WithDefaults());
     }
 
 

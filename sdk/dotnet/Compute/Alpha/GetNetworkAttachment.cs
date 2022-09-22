@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified NetworkAttachment resource in the given scope.
         /// </summary>
         public static Task<GetNetworkAttachmentResult> InvokeAsync(GetNetworkAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAttachmentResult>("google-native:compute/alpha:getNetworkAttachment", args ?? new GetNetworkAttachmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAttachmentResult>("google-native:compute/alpha:getNetworkAttachment", args ?? new GetNetworkAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified NetworkAttachment resource in the given scope.
         /// </summary>
         public static Output<GetNetworkAttachmentResult> Invoke(GetNetworkAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkAttachmentResult>("google-native:compute/alpha:getNetworkAttachment", args ?? new GetNetworkAttachmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAttachmentResult>("google-native:compute/alpha:getNetworkAttachment", args ?? new GetNetworkAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// Gets a schema.
         /// </summary>
         public static Task<GetSchemaResult> InvokeAsync(GetSchemaArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSchemaResult>("google-native:pubsub/v1:getSchema", args ?? new GetSchemaArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchemaResult>("google-native:pubsub/v1:getSchema", args ?? new GetSchemaArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a schema.
         /// </summary>
         public static Output<GetSchemaResult> Invoke(GetSchemaInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSchemaResult>("google-native:pubsub/v1:getSchema", args ?? new GetSchemaInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSchemaResult>("google-native:pubsub/v1:getSchema", args ?? new GetSchemaInvokeArgs(), options.WithDefaults());
     }
 
 

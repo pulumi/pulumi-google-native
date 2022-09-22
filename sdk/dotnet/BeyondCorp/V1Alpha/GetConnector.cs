@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// Gets details of a single Connector.
         /// </summary>
         public static Task<GetConnectorResult> InvokeAsync(GetConnectorArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("google-native:beyondcorp/v1alpha:getConnector", args ?? new GetConnectorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorResult>("google-native:beyondcorp/v1alpha:getConnector", args ?? new GetConnectorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Connector.
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("google-native:beyondcorp/v1alpha:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("google-native:beyondcorp/v1alpha:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

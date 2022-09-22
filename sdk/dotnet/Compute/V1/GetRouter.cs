@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified Router resource. Gets a list of available routers by making a list() request.
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("google-native:compute/v1:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("google-native:compute/v1:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified Router resource. Gets a list of available routers by making a list() request.
         /// </summary>
         public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("google-native:compute/v1:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterResult>("google-native:compute/v1:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
     }
 
 

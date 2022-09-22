@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetInstanceNamespaceIamPolicyResult> InvokeAsync(GetInstanceNamespaceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetInstanceNamespaceIamPolicyResult> Invoke(GetInstanceNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceNamespaceIamPolicyResult>("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", args ?? new GetInstanceNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

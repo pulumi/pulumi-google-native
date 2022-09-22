@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified Experiment.
         /// </summary>
         public static Task<GetExperimentResult> InvokeAsync(GetExperimentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified Experiment.
         /// </summary>
         public static Output<GetExperimentResult> Invoke(GetExperimentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExperimentResult>("google-native:dialogflow/v3beta1:getExperiment", args ?? new GetExperimentInvokeArgs(), options.WithDefaults());
     }
 
 

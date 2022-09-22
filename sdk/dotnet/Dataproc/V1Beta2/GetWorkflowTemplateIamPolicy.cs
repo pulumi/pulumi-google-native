@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetWorkflowTemplateIamPolicyResult> InvokeAsync(GetWorkflowTemplateIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetWorkflowTemplateIamPolicyResult> Invoke(GetWorkflowTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateIamPolicyResult>("google-native:dataproc/v1beta2:getWorkflowTemplateIamPolicy", args ?? new GetWorkflowTemplateIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

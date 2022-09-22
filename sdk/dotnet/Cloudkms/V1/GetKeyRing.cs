@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// Returns metadata for a given KeyRing.
         /// </summary>
         public static Task<GetKeyRingResult> InvokeAsync(GetKeyRingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns metadata for a given KeyRing.
         /// </summary>
         public static Output<GetKeyRingResult> Invoke(GetKeyRingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingResult>("google-native:cloudkms/v1:getKeyRing", args ?? new GetKeyRingInvokeArgs(), options.WithDefaults());
     }
 
 

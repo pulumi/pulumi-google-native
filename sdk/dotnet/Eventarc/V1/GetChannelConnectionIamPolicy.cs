@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetChannelConnectionIamPolicyResult> InvokeAsync(GetChannelConnectionIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelConnectionIamPolicyResult>("google-native:eventarc/v1:getChannelConnectionIamPolicy", args ?? new GetChannelConnectionIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChannelConnectionIamPolicyResult>("google-native:eventarc/v1:getChannelConnectionIamPolicy", args ?? new GetChannelConnectionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetChannelConnectionIamPolicyResult> Invoke(GetChannelConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChannelConnectionIamPolicyResult>("google-native:eventarc/v1:getChannelConnectionIamPolicy", args ?? new GetChannelConnectionIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChannelConnectionIamPolicyResult>("google-native:eventarc/v1:getChannelConnectionIamPolicy", args ?? new GetChannelConnectionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

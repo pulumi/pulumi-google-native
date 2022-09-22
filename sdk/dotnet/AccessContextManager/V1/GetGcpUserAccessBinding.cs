@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// Gets the GcpUserAccessBinding with the given name.
         /// </summary>
         public static Task<GetGcpUserAccessBindingResult> InvokeAsync(GetGcpUserAccessBindingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the GcpUserAccessBinding with the given name.
         /// </summary>
         public static Output<GetGcpUserAccessBindingResult> Invoke(GetGcpUserAccessBindingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpUserAccessBindingResult>("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args ?? new GetGcpUserAccessBindingInvokeArgs(), options.WithDefaults());
     }
 
 

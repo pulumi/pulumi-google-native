@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// Get ProvisioningConfig by name.
         /// </summary>
         public static Task<GetProvisioningConfigResult> InvokeAsync(GetProvisioningConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProvisioningConfigResult>("google-native:baremetalsolution/v2:getProvisioningConfig", args ?? new GetProvisioningConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProvisioningConfigResult>("google-native:baremetalsolution/v2:getProvisioningConfig", args ?? new GetProvisioningConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get ProvisioningConfig by name.
         /// </summary>
         public static Output<GetProvisioningConfigResult> Invoke(GetProvisioningConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProvisioningConfigResult>("google-native:baremetalsolution/v2:getProvisioningConfig", args ?? new GetProvisioningConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProvisioningConfigResult>("google-native:baremetalsolution/v2:getProvisioningConfig", args ?? new GetProvisioningConfigInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// Returns the reservation configuration.
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:pubsublite/v1:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:pubsublite/v1:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the reservation configuration.
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:pubsublite/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:pubsublite/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
     }
 
 

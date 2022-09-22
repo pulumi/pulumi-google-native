@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified conversation dataset.
         /// </summary>
         public static Task<GetConversationDatasetResult> InvokeAsync(GetConversationDatasetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConversationDatasetResult>("google-native:dialogflow/v2:getConversationDataset", args ?? new GetConversationDatasetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConversationDatasetResult>("google-native:dialogflow/v2:getConversationDataset", args ?? new GetConversationDatasetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified conversation dataset.
         /// </summary>
         public static Output<GetConversationDatasetResult> Invoke(GetConversationDatasetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConversationDatasetResult>("google-native:dialogflow/v2:getConversationDataset", args ?? new GetConversationDatasetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConversationDatasetResult>("google-native:dialogflow/v2:getConversationDataset", args ?? new GetConversationDatasetInvokeArgs(), options.WithDefaults());
     }
 
 

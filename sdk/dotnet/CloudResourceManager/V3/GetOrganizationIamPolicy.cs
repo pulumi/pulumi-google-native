@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization.
         /// </summary>
         public static Task<GetOrganizationIamPolicyResult> InvokeAsync(GetOrganizationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v3:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v3:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization.
         /// </summary>
         public static Output<GetOrganizationIamPolicyResult> Invoke(GetOrganizationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v3:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationIamPolicyResult>("google-native:cloudresourcemanager/v3:getOrganizationIamPolicy", args ?? new GetOrganizationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

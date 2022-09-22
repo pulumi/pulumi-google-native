@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetApplicationIamPolicyResult> InvokeAsync(GetApplicationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationIamPolicyResult>("google-native:beyondcorp/v1alpha:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationIamPolicyResult>("google-native:beyondcorp/v1alpha:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetApplicationIamPolicyResult> Invoke(GetApplicationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationIamPolicyResult>("google-native:beyondcorp/v1alpha:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationIamPolicyResult>("google-native:beyondcorp/v1alpha:getApplicationIamPolicy", args ?? new GetApplicationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         /// Returns details of a `WorkerPool`.
         /// </summary>
         public static Task<GetWorkerPoolResult> InvokeAsync(GetWorkerPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:cloudbuild/v1beta1:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolResult>("google-native:cloudbuild/v1beta1:getWorkerPool", args ?? new GetWorkerPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns details of a `WorkerPool`.
         /// </summary>
         public static Output<GetWorkerPoolResult> Invoke(GetWorkerPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:cloudbuild/v1beta1:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkerPoolResult>("google-native:cloudbuild/v1beta1:getWorkerPool", args ?? new GetWorkerPoolInvokeArgs(), options.WithDefaults());
     }
 
 

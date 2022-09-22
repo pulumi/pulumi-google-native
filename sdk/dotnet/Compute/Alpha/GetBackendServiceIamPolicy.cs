@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetBackendServiceIamPolicyResult> InvokeAsync(GetBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceIamPolicyResult>("google-native:compute/alpha:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceIamPolicyResult>("google-native:compute/alpha:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetBackendServiceIamPolicyResult> Invoke(GetBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackendServiceIamPolicyResult>("google-native:compute/alpha:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceIamPolicyResult>("google-native:compute/alpha:getBackendServiceIamPolicy", args ?? new GetBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

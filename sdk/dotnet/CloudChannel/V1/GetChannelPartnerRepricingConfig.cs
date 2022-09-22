@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
         /// </summary>
         public static Task<GetChannelPartnerRepricingConfigResult> InvokeAsync(GetChannelPartnerRepricingConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelPartnerRepricingConfigResult>("google-native:cloudchannel/v1:getChannelPartnerRepricingConfig", args ?? new GetChannelPartnerRepricingConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChannelPartnerRepricingConfigResult>("google-native:cloudchannel/v1:getChannelPartnerRepricingConfig", args ?? new GetChannelPartnerRepricingConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
         /// </summary>
         public static Output<GetChannelPartnerRepricingConfigResult> Invoke(GetChannelPartnerRepricingConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChannelPartnerRepricingConfigResult>("google-native:cloudchannel/v1:getChannelPartnerRepricingConfig", args ?? new GetChannelPartnerRepricingConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChannelPartnerRepricingConfigResult>("google-native:cloudchannel/v1:getChannelPartnerRepricingConfig", args ?? new GetChannelPartnerRepricingConfigInvokeArgs(), options.WithDefaults());
     }
 
 

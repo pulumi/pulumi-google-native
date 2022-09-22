@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// Gets a big query export.
         /// </summary>
         public static Task<GetProjectBigQueryExportResult> InvokeAsync(GetProjectBigQueryExportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a big query export.
         /// </summary>
         public static Output<GetProjectBigQueryExportResult> Invoke(GetProjectBigQueryExportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportInvokeArgs(), options.WithDefaults());
     }
 
 

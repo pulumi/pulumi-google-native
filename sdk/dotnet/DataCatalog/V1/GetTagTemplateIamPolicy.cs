@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
         /// </summary>
         public static Task<GetTagTemplateIamPolicyResult> InvokeAsync(GetTagTemplateIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
         /// </summary>
         public static Output<GetTagTemplateIamPolicyResult> Invoke(GetTagTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagTemplateIamPolicyResult>("google-native:datacatalog/v1:getTagTemplateIamPolicy", args ?? new GetTagTemplateIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

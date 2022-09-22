@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Task<GetHostSecurityReportResult> InvokeAsync(GetHostSecurityReportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostSecurityReportResult>("google-native:apigee/v1:getHostSecurityReport", args ?? new GetHostSecurityReportArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostSecurityReportResult>("google-native:apigee/v1:getHostSecurityReport", args ?? new GetHostSecurityReportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Output<GetHostSecurityReportResult> Invoke(GetHostSecurityReportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostSecurityReportResult>("google-native:apigee/v1:getHostSecurityReport", args ?? new GetHostSecurityReportInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostSecurityReportResult>("google-native:apigee/v1:getHostSecurityReport", args ?? new GetHostSecurityReportInvokeArgs(), options.WithDefaults());
     }
 
 

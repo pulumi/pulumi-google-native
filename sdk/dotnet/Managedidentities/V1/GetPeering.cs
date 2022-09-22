@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         /// Gets details of a single Peering.
         /// </summary>
         public static Task<GetPeeringResult> InvokeAsync(GetPeeringArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Peering.
         /// </summary>
         public static Output<GetPeeringResult> Invoke(GetPeeringInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeringResult>("google-native:managedidentities/v1:getPeering", args ?? new GetPeeringInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Authorization
         /// Use this function to access the current configuration of the native Google provider.
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("google-native:authorization:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("google-native:authorization:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

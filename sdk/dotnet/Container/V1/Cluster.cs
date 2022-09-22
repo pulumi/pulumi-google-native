@@ -431,8 +431,8 @@ namespace Pulumi.GoogleNative.Container.V1
         /// See for more details:
         /// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
         /// </summary>
-        public Pulumi.Output<string> GetKubeconfig()
-            => Pulumi.Deployment.Instance.Call<ClusterGetKubeconfigResult>("google-native:container/v1:Cluster/getKubeconfig", CallArgs.Empty, this).Apply(v => v.Kubeconfig);
+        public global::Pulumi.Output<string> GetKubeconfig()
+            => global::Pulumi.Deployment.Instance.Call<ClusterGetKubeconfigResult>("google-native:container/v1:Cluster/getKubeconfig", CallArgs.Empty, this).Apply(v => v.Kubeconfig);
     }
 
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// Gets details of a single backup.
         /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single backup.
         /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("google-native:metastore/v1alpha:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 

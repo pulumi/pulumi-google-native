@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Retrieves an HMAC key's metadata
         /// </summary>
         public static Task<GetHmacKeyResult> InvokeAsync(GetHmacKeyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an HMAC key's metadata
         /// </summary>
         public static Output<GetHmacKeyResult> Invoke(GetHmacKeyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHmacKeyResult>("google-native:storage/v1:getHmacKey", args ?? new GetHmacKeyInvokeArgs(), options.WithDefaults());
     }
 
 

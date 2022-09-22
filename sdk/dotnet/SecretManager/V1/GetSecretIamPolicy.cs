@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
         /// </summary>
         public static Task<GetSecretIamPolicyResult> InvokeAsync(GetSecretIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
         /// </summary>
         public static Output<GetSecretIamPolicyResult> Invoke(GetSecretIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("google-native:secretmanager/v1:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

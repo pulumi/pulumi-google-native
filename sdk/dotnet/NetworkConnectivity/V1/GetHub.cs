@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// Gets details about a Network Connectivity Center hub.
         /// </summary>
         public static Task<GetHubResult> InvokeAsync(GetHubArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details about a Network Connectivity Center hub.
         /// </summary>
         public static Output<GetHubResult> Invoke(GetHubInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHubResult>("google-native:networkconnectivity/v1:getHub", args ?? new GetHubInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetReservationIamPolicyResult> InvokeAsync(GetReservationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationIamPolicyResult>("google-native:compute/alpha:getReservationIamPolicy", args ?? new GetReservationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservationIamPolicyResult>("google-native:compute/alpha:getReservationIamPolicy", args ?? new GetReservationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetReservationIamPolicyResult> Invoke(GetReservationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservationIamPolicyResult>("google-native:compute/alpha:getReservationIamPolicy", args ?? new GetReservationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservationIamPolicyResult>("google-native:compute/alpha:getReservationIamPolicy", args ?? new GetReservationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

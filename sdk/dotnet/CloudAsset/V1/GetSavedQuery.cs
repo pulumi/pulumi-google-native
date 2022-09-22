@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// Gets details about a saved query.
         /// </summary>
         public static Task<GetSavedQueryResult> InvokeAsync(GetSavedQueryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSavedQueryResult>("google-native:cloudasset/v1:getSavedQuery", args ?? new GetSavedQueryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSavedQueryResult>("google-native:cloudasset/v1:getSavedQuery", args ?? new GetSavedQueryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details about a saved query.
         /// </summary>
         public static Output<GetSavedQueryResult> Invoke(GetSavedQueryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSavedQueryResult>("google-native:cloudasset/v1:getSavedQuery", args ?? new GetSavedQueryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSavedQueryResult>("google-native:cloudasset/v1:getSavedQuery", args ?? new GetSavedQueryInvokeArgs(), options.WithDefaults());
     }
 
 

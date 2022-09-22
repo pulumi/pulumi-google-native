@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// Gets an analysis.
         /// </summary>
         public static Task<GetAnalysisResult> InvokeAsync(GetAnalysisArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an analysis.
         /// </summary>
         public static Output<GetAnalysisResult> Invoke(GetAnalysisInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAnalysisResult>("google-native:contactcenterinsights/v1:getAnalysis", args ?? new GetAnalysisInvokeArgs(), options.WithDefaults());
     }
 
 

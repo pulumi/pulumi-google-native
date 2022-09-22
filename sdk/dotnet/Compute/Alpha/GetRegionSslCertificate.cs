@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("google-native:compute/alpha:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("google-native:compute/alpha:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Output<GetRegionSslCertificateResult> Invoke(GetRegionSslCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("google-native:compute/alpha:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionSslCertificateResult>("google-native:compute/alpha:getRegionSslCertificate", args ?? new GetRegionSslCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

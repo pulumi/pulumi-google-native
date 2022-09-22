@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Retrieves information about the specified reservation.
         /// </summary>
         public static Task<GetReservationResult> InvokeAsync(GetReservationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:compute/v1:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservationResult>("google-native:compute/v1:getReservation", args ?? new GetReservationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about the specified reservation.
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:compute/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservationResult>("google-native:compute/v1:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
     }
 
 

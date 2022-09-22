@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         /// Gets the details of a specific Connectivity Test.
         /// </summary>
         public static Task<GetConnectivityTestResult> InvokeAsync(GetConnectivityTestArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a specific Connectivity Test.
         /// </summary>
         public static Output<GetConnectivityTestResult> Invoke(GetConnectivityTestInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectivityTestResult>("google-native:networkmanagement/v1:getConnectivityTest", args ?? new GetConnectivityTestInvokeArgs(), options.WithDefaults());
     }
 
 

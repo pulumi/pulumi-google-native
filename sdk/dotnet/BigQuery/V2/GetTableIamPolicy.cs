@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetTableIamPolicyResult> InvokeAsync(GetTableIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTableIamPolicyResult>("google-native:bigquery/v2:getTableIamPolicy", args ?? new GetTableIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTableIamPolicyResult>("google-native:bigquery/v2:getTableIamPolicy", args ?? new GetTableIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetTableIamPolicyResult> Invoke(GetTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("google-native:bigquery/v2:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("google-native:bigquery/v2:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

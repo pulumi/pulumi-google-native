@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Retrieves a zone resource.
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("google-native:dataplex/v1:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("google-native:dataplex/v1:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a zone resource.
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneResult>("google-native:dataplex/v1:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("google-native:dataplex/v1:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
 
 

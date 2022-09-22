@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Authorization
         /// Use this function to get an Google authentication token for the current login context.
         /// </summary>
         public static Task<GetClientTokenResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientTokenResult>("google-native:authorization:getClientToken", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientTokenResult>("google-native:authorization:getClientToken", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

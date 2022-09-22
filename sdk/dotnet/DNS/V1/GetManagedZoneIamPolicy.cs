@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetManagedZoneIamPolicyResult> InvokeAsync(GetManagedZoneIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneIamPolicyResult>("google-native:dns/v1:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneIamPolicyResult>("google-native:dns/v1:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetManagedZoneIamPolicyResult> Invoke(GetManagedZoneIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetManagedZoneIamPolicyResult>("google-native:dns/v1:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagedZoneIamPolicyResult>("google-native:dns/v1:getManagedZoneIamPolicy", args ?? new GetManagedZoneIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

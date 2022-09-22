@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Retrieves an asset resource.
         /// </summary>
         public static Task<GetAssetResult> InvokeAsync(GetAssetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAssetResult>("google-native:dataplex/v1:getAsset", args ?? new GetAssetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssetResult>("google-native:dataplex/v1:getAsset", args ?? new GetAssetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an asset resource.
         /// </summary>
         public static Output<GetAssetResult> Invoke(GetAssetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAssetResult>("google-native:dataplex/v1:getAsset", args ?? new GetAssetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAssetResult>("google-native:dataplex/v1:getAsset", args ?? new GetAssetInvokeArgs(), options.WithDefaults());
     }
 
 

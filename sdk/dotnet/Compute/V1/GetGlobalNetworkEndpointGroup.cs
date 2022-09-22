@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
         /// </summary>
         public static Task<GetGlobalNetworkEndpointGroupResult> InvokeAsync(GetGlobalNetworkEndpointGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalNetworkEndpointGroupResult>("google-native:compute/v1:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalNetworkEndpointGroupResult>("google-native:compute/v1:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
         /// </summary>
         public static Output<GetGlobalNetworkEndpointGroupResult> Invoke(GetGlobalNetworkEndpointGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalNetworkEndpointGroupResult>("google-native:compute/v1:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalNetworkEndpointGroupResult>("google-native:compute/v1:getGlobalNetworkEndpointGroup", args ?? new GetGlobalNetworkEndpointGroupInvokeArgs(), options.WithDefaults());
     }
 
 

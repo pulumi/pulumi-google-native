@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Task<GetSecurityReportResult> InvokeAsync(GetSecurityReportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityReportResult>("google-native:apigee/v1:getSecurityReport", args ?? new GetSecurityReportArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityReportResult>("google-native:apigee/v1:getSecurityReport", args ?? new GetSecurityReportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
         /// </summary>
         public static Output<GetSecurityReportResult> Invoke(GetSecurityReportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecurityReportResult>("google-native:apigee/v1:getSecurityReport", args ?? new GetSecurityReportInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityReportResult>("google-native:apigee/v1:getSecurityReport", args ?? new GetSecurityReportInvokeArgs(), options.WithDefaults());
     }
 
 

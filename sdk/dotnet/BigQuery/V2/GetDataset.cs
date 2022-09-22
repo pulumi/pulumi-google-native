@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Returns the dataset specified by datasetID.
         /// </summary>
         public static Task<GetDatasetResult> InvokeAsync(GetDatasetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the dataset specified by datasetID.
         /// </summary>
         public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("google-native:bigquery/v2:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
     }
 
 

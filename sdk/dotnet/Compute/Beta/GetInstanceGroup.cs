@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("google-native:compute/beta:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("google-native:compute/beta:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
         /// </summary>
         public static Output<GetInstanceGroupResult> Invoke(GetInstanceGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("google-native:compute/beta:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGroupResult>("google-native:compute/beta:getInstanceGroup", args ?? new GetInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 
