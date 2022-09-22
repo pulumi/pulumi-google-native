@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
         /// </summary>
         public static Task<GetAutoscalerResult> InvokeAsync(GetAutoscalerArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalerResult>("google-native:compute/beta:getAutoscaler", args ?? new GetAutoscalerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalerResult>("google-native:compute/beta:getAutoscaler", args ?? new GetAutoscalerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
         /// </summary>
         public static Output<GetAutoscalerResult> Invoke(GetAutoscalerInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutoscalerResult>("google-native:compute/beta:getAutoscaler", args ?? new GetAutoscalerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutoscalerResult>("google-native:compute/beta:getAutoscaler", args ?? new GetAutoscalerInvokeArgs(), options.WithDefaults());
     }
 
 

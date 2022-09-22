@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetMigrationJobIamPolicyResult> InvokeAsync(GetMigrationJobIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1beta1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1beta1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetMigrationJobIamPolicyResult> Invoke(GetMigrationJobIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1beta1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMigrationJobIamPolicyResult>("google-native:datamigration/v1beta1:getMigrationJobIamPolicy", args ?? new GetMigrationJobIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

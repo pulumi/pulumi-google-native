@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetGatewayIamPolicyResult> InvokeAsync(GetGatewayIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetGatewayIamPolicyResult> Invoke(GetGatewayIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGatewayIamPolicyResult>("google-native:apigateway/v1:getGatewayIamPolicy", args ?? new GetGatewayIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         /// Gets a task.
         /// </summary>
         public static Task<GetTaskResult> InvokeAsync(GetTaskArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTaskResult>("google-native:cloudtasks/v2beta3:getTask", args ?? new GetTaskArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTaskResult>("google-native:cloudtasks/v2beta3:getTask", args ?? new GetTaskArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a task.
         /// </summary>
         public static Output<GetTaskResult> Invoke(GetTaskInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTaskResult>("google-native:cloudtasks/v2beta3:getTask", args ?? new GetTaskInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTaskResult>("google-native:cloudtasks/v2beta3:getTask", args ?? new GetTaskInvokeArgs(), options.WithDefaults());
     }
 
 

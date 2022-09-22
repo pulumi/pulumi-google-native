@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified intent.
         /// </summary>
         public static Task<GetIntentResult> InvokeAsync(GetIntentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified intent.
         /// </summary>
         public static Output<GetIntentResult> Invoke(GetIntentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIntentResult>("google-native:dialogflow/v2:getIntent", args ?? new GetIntentInvokeArgs(), options.WithDefaults());
     }
 
 

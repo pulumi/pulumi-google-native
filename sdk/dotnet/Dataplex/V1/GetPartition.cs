@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Get a metadata partition of an entity.
         /// </summary>
         public static Task<GetPartitionResult> InvokeAsync(GetPartitionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPartitionResult>("google-native:dataplex/v1:getPartition", args ?? new GetPartitionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPartitionResult>("google-native:dataplex/v1:getPartition", args ?? new GetPartitionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a metadata partition of an entity.
         /// </summary>
         public static Output<GetPartitionResult> Invoke(GetPartitionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPartitionResult>("google-native:dataplex/v1:getPartition", args ?? new GetPartitionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPartitionResult>("google-native:dataplex/v1:getPartition", args ?? new GetPartitionInvokeArgs(), options.WithDefaults());
     }
 
 

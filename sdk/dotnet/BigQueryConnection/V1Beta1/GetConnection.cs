@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         /// Returns specified connection.
         /// </summary>
         public static Task<GetConnectionResult> InvokeAsync(GetConnectionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("google-native:bigqueryconnection/v1beta1:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("google-native:bigqueryconnection/v1beta1:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns specified connection.
         /// </summary>
         public static Output<GetConnectionResult> Invoke(GetConnectionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("google-native:bigqueryconnection/v1beta1:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("google-native:bigqueryconnection/v1beta1:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

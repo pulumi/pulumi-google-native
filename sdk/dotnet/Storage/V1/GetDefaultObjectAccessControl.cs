@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Returns the default object ACL entry for the specified entity on the specified bucket.
         /// </summary>
         public static Task<GetDefaultObjectAccessControlResult> InvokeAsync(GetDefaultObjectAccessControlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultObjectAccessControlResult>("google-native:storage/v1:getDefaultObjectAccessControl", args ?? new GetDefaultObjectAccessControlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDefaultObjectAccessControlResult>("google-native:storage/v1:getDefaultObjectAccessControl", args ?? new GetDefaultObjectAccessControlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the default object ACL entry for the specified entity on the specified bucket.
         /// </summary>
         public static Output<GetDefaultObjectAccessControlResult> Invoke(GetDefaultObjectAccessControlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDefaultObjectAccessControlResult>("google-native:storage/v1:getDefaultObjectAccessControl", args ?? new GetDefaultObjectAccessControlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDefaultObjectAccessControlResult>("google-native:storage/v1:getDefaultObjectAccessControl", args ?? new GetDefaultObjectAccessControlInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// Gets details of a single DnsAuthorization.
         /// </summary>
         public static Task<GetDnsAuthorizationResult> InvokeAsync(GetDnsAuthorizationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsAuthorizationResult>("google-native:certificatemanager/v1:getDnsAuthorization", args ?? new GetDnsAuthorizationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsAuthorizationResult>("google-native:certificatemanager/v1:getDnsAuthorization", args ?? new GetDnsAuthorizationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single DnsAuthorization.
         /// </summary>
         public static Output<GetDnsAuthorizationResult> Invoke(GetDnsAuthorizationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDnsAuthorizationResult>("google-native:certificatemanager/v1:getDnsAuthorization", args ?? new GetDnsAuthorizationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDnsAuthorizationResult>("google-native:certificatemanager/v1:getDnsAuthorization", args ?? new GetDnsAuthorizationInvokeArgs(), options.WithDefaults());
     }
 
 

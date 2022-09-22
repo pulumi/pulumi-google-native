@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// Gets a single Utilization Report.
         /// </summary>
         public static Task<GetUtilizationReportResult> InvokeAsync(GetUtilizationReportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUtilizationReportResult>("google-native:vmmigration/v1alpha1:getUtilizationReport", args ?? new GetUtilizationReportArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUtilizationReportResult>("google-native:vmmigration/v1alpha1:getUtilizationReport", args ?? new GetUtilizationReportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single Utilization Report.
         /// </summary>
         public static Output<GetUtilizationReportResult> Invoke(GetUtilizationReportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUtilizationReportResult>("google-native:vmmigration/v1alpha1:getUtilizationReport", args ?? new GetUtilizationReportInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUtilizationReportResult>("google-native:vmmigration/v1alpha1:getUtilizationReport", args ?? new GetUtilizationReportInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// Gets the specified Consent artifact.
         /// </summary>
         public static Task<GetConsentArtifactResult> InvokeAsync(GetConsentArtifactArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified Consent artifact.
         /// </summary>
         public static Output<GetConsentArtifactResult> Invoke(GetConsentArtifactInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConsentArtifactResult>("google-native:healthcare/v1:getConsentArtifact", args ?? new GetConsentArtifactInvokeArgs(), options.WithDefaults());
     }
 
 

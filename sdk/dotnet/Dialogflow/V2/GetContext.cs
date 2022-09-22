@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified context.
         /// </summary>
         public static Task<GetContextResult> InvokeAsync(GetContextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified context.
         /// </summary>
         public static Output<GetContextResult> Invoke(GetContextInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContextResult>("google-native:dialogflow/v2:getContext", args ?? new GetContextInvokeArgs(), options.WithDefaults());
     }
 
 

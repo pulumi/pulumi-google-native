@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// Returns a specified version.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a specified version.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
     }
 
 

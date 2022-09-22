@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// Gets a Control.
         /// </summary>
         public static Task<GetControlResult> InvokeAsync(GetControlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetControlResult>("google-native:retail/v2beta:getControl", args ?? new GetControlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlResult>("google-native:retail/v2beta:getControl", args ?? new GetControlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a Control.
         /// </summary>
         public static Output<GetControlResult> Invoke(GetControlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetControlResult>("google-native:retail/v2beta:getControl", args ?? new GetControlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetControlResult>("google-native:retail/v2beta:getControl", args ?? new GetControlInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// Gets the resource representation for a job in a project.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:dataproc/v1beta2:getJob", args ?? new GetJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:dataproc/v1beta2:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the resource representation for a job in a project.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:dataproc/v1beta2:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:dataproc/v1beta2:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

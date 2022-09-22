@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// Retrieves the details of a single Restore.
         /// </summary>
         public static Task<GetRestoreResult> InvokeAsync(GetRestoreArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRestoreResult>("google-native:gkebackup/v1:getRestore", args ?? new GetRestoreArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRestoreResult>("google-native:gkebackup/v1:getRestore", args ?? new GetRestoreArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the details of a single Restore.
         /// </summary>
         public static Output<GetRestoreResult> Invoke(GetRestoreInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRestoreResult>("google-native:gkebackup/v1:getRestore", args ?? new GetRestoreInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRestoreResult>("google-native:gkebackup/v1:getRestore", args ?? new GetRestoreInvokeArgs(), options.WithDefaults());
     }
 
 

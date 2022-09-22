@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets an HL7v2 message.
         /// </summary>
         public static Task<GetMessageResult> InvokeAsync(GetMessageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an HL7v2 message.
         /// </summary>
         public static Output<GetMessageResult> Invoke(GetMessageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMessageResult>("google-native:healthcare/v1beta1:getMessage", args ?? new GetMessageInvokeArgs(), options.WithDefaults());
     }
 
 

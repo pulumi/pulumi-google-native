@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
         /// </summary>
         public static Task<GetVpnTunnelResult> InvokeAsync(GetVpnTunnelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVpnTunnelResult>("google-native:compute/alpha:getVpnTunnel", args ?? new GetVpnTunnelArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpnTunnelResult>("google-native:compute/alpha:getVpnTunnel", args ?? new GetVpnTunnelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
         /// </summary>
         public static Output<GetVpnTunnelResult> Invoke(GetVpnTunnelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVpnTunnelResult>("google-native:compute/alpha:getVpnTunnel", args ?? new GetVpnTunnelInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpnTunnelResult>("google-native:compute/alpha:getVpnTunnel", args ?? new GetVpnTunnelInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets details of a single Rollout.
         /// </summary>
         public static Task<GetRolloutResult> InvokeAsync(GetRolloutArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolloutResult>("google-native:clouddeploy/v1:getRollout", args ?? new GetRolloutArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolloutResult>("google-native:clouddeploy/v1:getRollout", args ?? new GetRolloutArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Rollout.
         /// </summary>
         public static Output<GetRolloutResult> Invoke(GetRolloutInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRolloutResult>("google-native:clouddeploy/v1:getRollout", args ?? new GetRolloutInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolloutResult>("google-native:clouddeploy/v1:getRollout", args ?? new GetRolloutInvokeArgs(), options.WithDefaults());
     }
 
 

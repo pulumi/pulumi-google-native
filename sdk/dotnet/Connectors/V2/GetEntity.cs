@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Connectors.V2
         /// Gets a single entity row matching the entity type and entity id specified in the request.
         /// </summary>
         public static Task<GetEntityResult> InvokeAsync(GetEntityArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEntityResult>("google-native:connectors/v2:getEntity", args ?? new GetEntityArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityResult>("google-native:connectors/v2:getEntity", args ?? new GetEntityArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single entity row matching the entity type and entity id specified in the request.
         /// </summary>
         public static Output<GetEntityResult> Invoke(GetEntityInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEntityResult>("google-native:connectors/v2:getEntity", args ?? new GetEntityInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntityResult>("google-native:connectors/v2:getEntity", args ?? new GetEntityInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// Gets a taxonomy.
         /// </summary>
         public static Task<GetTaxonomyResult> InvokeAsync(GetTaxonomyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyResult>("google-native:datacatalog/v1beta1:getTaxonomy", args ?? new GetTaxonomyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTaxonomyResult>("google-native:datacatalog/v1beta1:getTaxonomy", args ?? new GetTaxonomyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a taxonomy.
         /// </summary>
         public static Output<GetTaxonomyResult> Invoke(GetTaxonomyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTaxonomyResult>("google-native:datacatalog/v1beta1:getTaxonomy", args ?? new GetTaxonomyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTaxonomyResult>("google-native:datacatalog/v1beta1:getTaxonomy", args ?? new GetTaxonomyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// Gets the specified IosApp.
         /// </summary>
         public static Task<GetIosAppResult> InvokeAsync(GetIosAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified IosApp.
         /// </summary>
         public static Output<GetIosAppResult> Invoke(GetIosAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIosAppResult>("google-native:firebase/v1beta1:getIosApp", args ?? new GetIosAppInvokeArgs(), options.WithDefaults());
     }
 
 

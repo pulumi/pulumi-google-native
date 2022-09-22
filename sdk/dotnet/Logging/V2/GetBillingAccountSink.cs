@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a sink.
         /// </summary>
         public static Task<GetBillingAccountSinkResult> InvokeAsync(GetBillingAccountSinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a sink.
         /// </summary>
         public static Output<GetBillingAccountSinkResult> Invoke(GetBillingAccountSinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBillingAccountSinkResult>("google-native:logging/v2:getBillingAccountSink", args ?? new GetBillingAccountSinkInvokeArgs(), options.WithDefaults());
     }
 
 

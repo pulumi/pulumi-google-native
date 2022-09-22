@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetFederationIamPolicyResult> InvokeAsync(GetFederationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFederationIamPolicyResult>("google-native:metastore/v1beta:getFederationIamPolicy", args ?? new GetFederationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFederationIamPolicyResult>("google-native:metastore/v1beta:getFederationIamPolicy", args ?? new GetFederationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetFederationIamPolicyResult> Invoke(GetFederationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFederationIamPolicyResult>("google-native:metastore/v1beta:getFederationIamPolicy", args ?? new GetFederationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFederationIamPolicyResult>("google-native:metastore/v1beta:getFederationIamPolicy", args ?? new GetFederationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

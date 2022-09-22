@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// Gets the details of a single federation.
         /// </summary>
         public static Task<GetFederationResult> InvokeAsync(GetFederationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFederationResult>("google-native:metastore/v1beta:getFederation", args ?? new GetFederationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFederationResult>("google-native:metastore/v1beta:getFederation", args ?? new GetFederationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a single federation.
         /// </summary>
         public static Output<GetFederationResult> Invoke(GetFederationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFederationResult>("google-native:metastore/v1beta:getFederation", args ?? new GetFederationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFederationResult>("google-native:metastore/v1beta:getFederation", args ?? new GetFederationInvokeArgs(), options.WithDefaults());
     }
 
 

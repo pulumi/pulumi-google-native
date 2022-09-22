@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Gets a ServiceAccount.
         /// </summary>
         public static Task<GetServiceAccountResult> InvokeAsync(GetServiceAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a ServiceAccount.
         /// </summary>
         public static Output<GetServiceAccountResult> Invoke(GetServiceAccountInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceAccountResult>("google-native:iam/v1:getServiceAccount", args ?? new GetServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetHubIamPolicyResult> InvokeAsync(GetHubIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHubIamPolicyResult>("google-native:networkconnectivity/v1:getHubIamPolicy", args ?? new GetHubIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHubIamPolicyResult>("google-native:networkconnectivity/v1:getHubIamPolicy", args ?? new GetHubIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetHubIamPolicyResult> Invoke(GetHubIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHubIamPolicyResult>("google-native:networkconnectivity/v1:getHubIamPolicy", args ?? new GetHubIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHubIamPolicyResult>("google-native:networkconnectivity/v1:getHubIamPolicy", args ?? new GetHubIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

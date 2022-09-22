@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// Gets an agent pool.
         /// </summary>
         public static Task<GetAgentPoolResult> InvokeAsync(GetAgentPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAgentPoolResult>("google-native:storagetransfer/v1:getAgentPool", args ?? new GetAgentPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAgentPoolResult>("google-native:storagetransfer/v1:getAgentPool", args ?? new GetAgentPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an agent pool.
         /// </summary>
         public static Output<GetAgentPoolResult> Invoke(GetAgentPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAgentPoolResult>("google-native:storagetransfer/v1:getAgentPool", args ?? new GetAgentPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAgentPoolResult>("google-native:storagetransfer/v1:getAgentPool", args ?? new GetAgentPoolInvokeArgs(), options.WithDefaults());
     }
 
 

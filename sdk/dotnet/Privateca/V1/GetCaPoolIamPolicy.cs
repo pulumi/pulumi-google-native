@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetCaPoolIamPolicyResult> InvokeAsync(GetCaPoolIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetCaPoolIamPolicyResult> Invoke(GetCaPoolIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("google-native:privateca/v1:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

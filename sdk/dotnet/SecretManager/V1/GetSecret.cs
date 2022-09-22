@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// Gets metadata for a given Secret.
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("google-native:secretmanager/v1:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("google-native:secretmanager/v1:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets metadata for a given Secret.
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretResult>("google-native:secretmanager/v1:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("google-native:secretmanager/v1:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
     }
 
 

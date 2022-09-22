@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> InvokeAsync(GetCertificateAuthorityCertificateRevocationListIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetCertificateAuthorityCertificateRevocationListIamPolicyResult> Invoke(GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateAuthorityCertificateRevocationListIamPolicyResult>("google-native:privateca/v1beta1:getCertificateAuthorityCertificateRevocationListIamPolicy", args ?? new GetCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

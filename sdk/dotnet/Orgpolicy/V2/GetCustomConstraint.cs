@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
         /// </summary>
         public static Task<GetCustomConstraintResult> InvokeAsync(GetCustomConstraintArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
         /// </summary>
         public static Output<GetCustomConstraintResult> Invoke(GetCustomConstraintInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintInvokeArgs(), options.WithDefaults());
     }
 
 

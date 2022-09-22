@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// Gets a transfer job.
         /// </summary>
         public static Task<GetTransferJobResult> InvokeAsync(GetTransferJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a transfer job.
         /// </summary>
         public static Output<GetTransferJobResult> Invoke(GetTransferJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTransferJobResult>("google-native:storagetransfer/v1:getTransferJob", args ?? new GetTransferJobInvokeArgs(), options.WithDefaults());
     }
 
 

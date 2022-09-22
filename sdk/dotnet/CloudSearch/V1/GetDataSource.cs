@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// Gets a datasource. **Note:** This API requires an admin account to execute.
         /// </summary>
         public static Task<GetDataSourceResult> InvokeAsync(GetDataSourceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a datasource. **Note:** This API requires an admin account to execute.
         /// </summary>
         public static Output<GetDataSourceResult> Invoke(GetDataSourceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("google-native:cloudsearch/v1:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithDefaults());
     }
 
 

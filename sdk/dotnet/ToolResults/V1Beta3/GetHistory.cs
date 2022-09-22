@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
         /// </summary>
         public static Task<GetHistoryResult> InvokeAsync(GetHistoryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
         /// </summary>
         public static Output<GetHistoryResult> Invoke(GetHistoryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHistoryResult>("google-native:toolresults/v1beta3:getHistory", args ?? new GetHistoryInvokeArgs(), options.WithDefaults());
     }
 
 

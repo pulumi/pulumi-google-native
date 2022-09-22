@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// Gets details of a single AppGateway.
         /// </summary>
         public static Task<GetAppGatewayResult> InvokeAsync(GetAppGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppGatewayResult>("google-native:beyondcorp/v1alpha:getAppGateway", args ?? new GetAppGatewayArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppGatewayResult>("google-native:beyondcorp/v1alpha:getAppGateway", args ?? new GetAppGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single AppGateway.
         /// </summary>
         public static Output<GetAppGatewayResult> Invoke(GetAppGatewayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppGatewayResult>("google-native:beyondcorp/v1alpha:getAppGateway", args ?? new GetAppGatewayInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppGatewayResult>("google-native:beyondcorp/v1alpha:getAppGateway", args ?? new GetAppGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

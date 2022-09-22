@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
         /// </summary>
         public static Task<GetInstanceAttachmentResult> InvokeAsync(GetInstanceAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
         /// </summary>
         public static Output<GetInstanceAttachmentResult> Invoke(GetInstanceAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentResult>("google-native:apigee/v1:getInstanceAttachment", args ?? new GetInstanceAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

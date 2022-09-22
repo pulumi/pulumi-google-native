@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetReusableConfigIamPolicyResult> InvokeAsync(GetReusableConfigIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetReusableConfigIamPolicyResult> Invoke(GetReusableConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReusableConfigIamPolicyResult>("google-native:privateca/v1beta1:getReusableConfigIamPolicy", args ?? new GetReusableConfigIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

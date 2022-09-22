@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// Retrieve a GitHubEnterpriseConfig.
         /// </summary>
         public static Task<GetGithubEnterpriseConfigResult> InvokeAsync(GetGithubEnterpriseConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a GitHubEnterpriseConfig.
         /// </summary>
         public static Output<GetGithubEnterpriseConfigResult> Invoke(GetGithubEnterpriseConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGithubEnterpriseConfigResult>("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args ?? new GetGithubEnterpriseConfigInvokeArgs(), options.WithDefaults());
     }
 
 

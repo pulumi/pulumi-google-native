@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetConnectionIamPolicyResult> InvokeAsync(GetConnectionIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("google-native:bigqueryconnection/v1beta1:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names).
         /// </summary>
         public static Task<GetProjectIamPolicyResult> InvokeAsync(GetProjectIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", args ?? new GetProjectIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names).
         /// </summary>
         public static Output<GetProjectIamPolicyResult> Invoke(GetProjectIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", args ?? new GetProjectIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectIamPolicyResult>("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", args ?? new GetProjectIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

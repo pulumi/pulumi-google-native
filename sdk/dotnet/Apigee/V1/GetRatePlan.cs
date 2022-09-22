@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the details of a rate plan.
         /// </summary>
         public static Task<GetRatePlanResult> InvokeAsync(GetRatePlanArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a rate plan.
         /// </summary>
         public static Output<GetRatePlanResult> Invoke(GetRatePlanInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRatePlanResult>("google-native:apigee/v1:getRatePlan", args ?? new GetRatePlanInvokeArgs(), options.WithDefaults());
     }
 
 

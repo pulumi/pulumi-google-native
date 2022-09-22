@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified target pool. Gets a list of available target pools by making a list() request.
         /// </summary>
         public static Task<GetTargetPoolResult> InvokeAsync(GetTargetPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetPoolResult>("google-native:compute/v1:getTargetPool", args ?? new GetTargetPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetPoolResult>("google-native:compute/v1:getTargetPool", args ?? new GetTargetPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified target pool. Gets a list of available target pools by making a list() request.
         /// </summary>
         public static Output<GetTargetPoolResult> Invoke(GetTargetPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetPoolResult>("google-native:compute/v1:getTargetPool", args ?? new GetTargetPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTargetPoolResult>("google-native:compute/v1:getTargetPool", args ?? new GetTargetPoolInvokeArgs(), options.WithDefaults());
     }
 
 

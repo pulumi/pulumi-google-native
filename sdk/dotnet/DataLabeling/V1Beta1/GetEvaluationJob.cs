@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Gets an evaluation job by resource name.
         /// </summary>
         public static Task<GetEvaluationJobResult> InvokeAsync(GetEvaluationJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an evaluation job by resource name.
         /// </summary>
         public static Output<GetEvaluationJobResult> Invoke(GetEvaluationJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEvaluationJobResult>("google-native:datalabeling/v1beta1:getEvaluationJob", args ?? new GetEvaluationJobInvokeArgs(), options.WithDefaults());
     }
 
 

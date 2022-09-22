@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetResourcePolicyIamPolicyResult> InvokeAsync(GetResourcePolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyIamPolicyResult>("google-native:compute/alpha:getResourcePolicyIamPolicy", args ?? new GetResourcePolicyIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcePolicyIamPolicyResult>("google-native:compute/alpha:getResourcePolicyIamPolicy", args ?? new GetResourcePolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetResourcePolicyIamPolicyResult> Invoke(GetResourcePolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourcePolicyIamPolicyResult>("google-native:compute/alpha:getResourcePolicyIamPolicy", args ?? new GetResourcePolicyIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourcePolicyIamPolicyResult>("google-native:compute/alpha:getResourcePolicyIamPolicy", args ?? new GetResourcePolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// Gets the details of a data exchange.
         /// </summary>
         public static Task<GetDataExchangeResult> InvokeAsync(GetDataExchangeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeResult>("google-native:analyticshub/v1beta1:getDataExchange", args ?? new GetDataExchangeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataExchangeResult>("google-native:analyticshub/v1beta1:getDataExchange", args ?? new GetDataExchangeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a data exchange.
         /// </summary>
         public static Output<GetDataExchangeResult> Invoke(GetDataExchangeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDataExchangeResult>("google-native:analyticshub/v1beta1:getDataExchange", args ?? new GetDataExchangeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDataExchangeResult>("google-native:analyticshub/v1beta1:getDataExchange", args ?? new GetDataExchangeInvokeArgs(), options.WithDefaults());
     }
 
 

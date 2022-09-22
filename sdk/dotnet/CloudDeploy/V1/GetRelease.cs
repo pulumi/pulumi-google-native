@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Gets details of a single Release.
         /// </summary>
         public static Task<GetReleaseResult> InvokeAsync(GetReleaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("google-native:clouddeploy/v1:getRelease", args ?? new GetReleaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("google-native:clouddeploy/v1:getRelease", args ?? new GetReleaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Release.
         /// </summary>
         public static Output<GetReleaseResult> Invoke(GetReleaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("google-native:clouddeploy/v1:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("google-native:clouddeploy/v1:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
     }
 
 

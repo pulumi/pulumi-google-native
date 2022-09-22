@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Translate.V3
         /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
         /// </summary>
         public static Task<GetGlossaryResult> InvokeAsync(GetGlossaryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
         /// </summary>
         public static Output<GetGlossaryResult> Invoke(GetGlossaryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlossaryResult>("google-native:translate/v3:getGlossary", args ?? new GetGlossaryInvokeArgs(), options.WithDefaults());
     }
 
 

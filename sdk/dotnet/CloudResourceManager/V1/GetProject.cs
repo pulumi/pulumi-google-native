@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("google-native:cloudresourcemanager/v1:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("google-native:cloudresourcemanager/v1:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("google-native:cloudresourcemanager/v1:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("google-native:cloudresourcemanager/v1:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// Returns the job data.
         /// </summary>
         public static Task<GetJobResult> InvokeAsync(GetJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:transcoder/v1:getJob", args ?? new GetJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobResult>("google-native:transcoder/v1:getJob", args ?? new GetJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the job data.
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:transcoder/v1:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("google-native:transcoder/v1:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

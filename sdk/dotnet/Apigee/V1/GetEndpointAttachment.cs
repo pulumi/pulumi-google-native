@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets the endpoint attachment.
         /// </summary>
         public static Task<GetEndpointAttachmentResult> InvokeAsync(GetEndpointAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the endpoint attachment.
         /// </summary>
         public static Output<GetEndpointAttachmentResult> Invoke(GetEndpointAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

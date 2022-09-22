@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetSnapshotIamPolicyResult> InvokeAsync(GetSnapshotIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotIamPolicyResult>("google-native:compute/v1:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotIamPolicyResult>("google-native:compute/v1:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetSnapshotIamPolicyResult> Invoke(GetSnapshotIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotIamPolicyResult>("google-native:compute/v1:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotIamPolicyResult>("google-native:compute/v1:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

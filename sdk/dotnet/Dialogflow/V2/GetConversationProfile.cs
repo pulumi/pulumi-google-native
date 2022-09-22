@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Retrieves the specified conversation profile.
         /// </summary>
         public static Task<GetConversationProfileResult> InvokeAsync(GetConversationProfileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConversationProfileResult>("google-native:dialogflow/v2:getConversationProfile", args ?? new GetConversationProfileArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConversationProfileResult>("google-native:dialogflow/v2:getConversationProfile", args ?? new GetConversationProfileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified conversation profile.
         /// </summary>
         public static Output<GetConversationProfileResult> Invoke(GetConversationProfileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConversationProfileResult>("google-native:dialogflow/v2:getConversationProfile", args ?? new GetConversationProfileInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConversationProfileResult>("google-native:dialogflow/v2:getConversationProfile", args ?? new GetConversationProfileInvokeArgs(), options.WithDefaults());
     }
 
 

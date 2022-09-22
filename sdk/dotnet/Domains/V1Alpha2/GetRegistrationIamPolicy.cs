@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetRegistrationIamPolicyResult> InvokeAsync(GetRegistrationIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationIamPolicyResult>("google-native:domains/v1alpha2:getRegistrationIamPolicy", args ?? new GetRegistrationIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationIamPolicyResult>("google-native:domains/v1alpha2:getRegistrationIamPolicy", args ?? new GetRegistrationIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetRegistrationIamPolicyResult> Invoke(GetRegistrationIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistrationIamPolicyResult>("google-native:domains/v1alpha2:getRegistrationIamPolicy", args ?? new GetRegistrationIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistrationIamPolicyResult>("google-native:domains/v1alpha2:getRegistrationIamPolicy", args ?? new GetRegistrationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

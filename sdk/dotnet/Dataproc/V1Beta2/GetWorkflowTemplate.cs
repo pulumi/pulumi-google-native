@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
         /// </summary>
         public static Task<GetWorkflowTemplateResult> InvokeAsync(GetWorkflowTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
         /// </summary>
         public static Output<GetWorkflowTemplateResult> Invoke(GetWorkflowTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowTemplateResult>("google-native:dataproc/v1beta2:getWorkflowTemplate", args ?? new GetWorkflowTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

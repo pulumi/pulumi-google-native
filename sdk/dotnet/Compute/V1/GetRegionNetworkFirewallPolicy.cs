@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified network firewall policy.
         /// </summary>
         public static Task<GetRegionNetworkFirewallPolicyResult> InvokeAsync(GetRegionNetworkFirewallPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkFirewallPolicyResult>("google-native:compute/v1:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionNetworkFirewallPolicyResult>("google-native:compute/v1:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified network firewall policy.
         /// </summary>
         public static Output<GetRegionNetworkFirewallPolicyResult> Invoke(GetRegionNetworkFirewallPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionNetworkFirewallPolicyResult>("google-native:compute/v1:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionNetworkFirewallPolicyResult>("google-native:compute/v1:getRegionNetworkFirewallPolicy", args ?? new GetRegionNetworkFirewallPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

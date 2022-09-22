@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// Returns information about a repo.
         /// </summary>
         public static Task<GetRepoResult> InvokeAsync(GetRepoArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns information about a repo.
         /// </summary>
         public static Output<GetRepoResult> Invoke(GetRepoInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepoResult>("google-native:sourcerepo/v1:getRepo", args ?? new GetRepoInvokeArgs(), options.WithDefaults());
     }
 
 

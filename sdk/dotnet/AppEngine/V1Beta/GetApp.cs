@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// Gets information about an application.
         /// </summary>
         public static Task<GetAppResult> InvokeAsync(GetAppArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an application.
         /// </summary>
         public static Output<GetAppResult> Invoke(GetAppInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppResult>("google-native:appengine/v1beta:getApp", args ?? new GetAppInvokeArgs(), options.WithDefaults());
     }
 
 

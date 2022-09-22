@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// Gets details of a single GrpcRoute.
         /// </summary>
         public static Task<GetGrpcRouteResult> InvokeAsync(GetGrpcRouteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGrpcRouteResult>("google-native:networkservices/v1beta1:getGrpcRoute", args ?? new GetGrpcRouteArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGrpcRouteResult>("google-native:networkservices/v1beta1:getGrpcRoute", args ?? new GetGrpcRouteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single GrpcRoute.
         /// </summary>
         public static Output<GetGrpcRouteResult> Invoke(GetGrpcRouteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGrpcRouteResult>("google-native:networkservices/v1beta1:getGrpcRoute", args ?? new GetGrpcRouteInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGrpcRouteResult>("google-native:networkservices/v1beta1:getGrpcRoute", args ?? new GetGrpcRouteInvokeArgs(), options.WithDefaults());
     }
 
 

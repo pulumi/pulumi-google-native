@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a view on a log bucket..
         /// </summary>
         public static Task<GetFolderBucketViewResult> InvokeAsync(GetFolderBucketViewArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderBucketViewResult>("google-native:logging/v2:getFolderBucketView", args ?? new GetFolderBucketViewArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderBucketViewResult>("google-native:logging/v2:getFolderBucketView", args ?? new GetFolderBucketViewArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a view on a log bucket..
         /// </summary>
         public static Output<GetFolderBucketViewResult> Invoke(GetFolderBucketViewInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderBucketViewResult>("google-native:logging/v2:getFolderBucketView", args ?? new GetFolderBucketViewInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderBucketViewResult>("google-native:logging/v2:getFolderBucketView", args ?? new GetFolderBucketViewInvokeArgs(), options.WithDefaults());
     }
 
 

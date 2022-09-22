@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Retrieves the specified entity type.
         /// </summary>
         public static Task<GetEntityTypeResult> InvokeAsync(GetEntityTypeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEntityTypeResult>("google-native:dialogflow/v2beta1:getEntityType", args ?? new GetEntityTypeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityTypeResult>("google-native:dialogflow/v2beta1:getEntityType", args ?? new GetEntityTypeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified entity type.
         /// </summary>
         public static Output<GetEntityTypeResult> Invoke(GetEntityTypeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEntityTypeResult>("google-native:dialogflow/v2beta1:getEntityType", args ?? new GetEntityTypeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntityTypeResult>("google-native:dialogflow/v2beta1:getEntityType", args ?? new GetEntityTypeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("google-native:cloudresourcemanager/v3:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("google-native:cloudresourcemanager/v3:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFolderResult>("google-native:cloudresourcemanager/v3:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("google-native:cloudresourcemanager/v3:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 

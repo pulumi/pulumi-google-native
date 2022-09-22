@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns all of the details about the specified resize request.
         /// </summary>
         public static Task<GetInstanceGroupManagerResizeRequestResult> InvokeAsync(GetInstanceGroupManagerResizeRequestArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResizeRequestResult>("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", args ?? new GetInstanceGroupManagerResizeRequestArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupManagerResizeRequestResult>("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", args ?? new GetInstanceGroupManagerResizeRequestArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns all of the details about the specified resize request.
         /// </summary>
         public static Output<GetInstanceGroupManagerResizeRequestResult> Invoke(GetInstanceGroupManagerResizeRequestInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResizeRequestResult>("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", args ?? new GetInstanceGroupManagerResizeRequestInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGroupManagerResizeRequestResult>("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", args ?? new GetInstanceGroupManagerResizeRequestInvokeArgs(), options.WithDefaults());
     }
 
 

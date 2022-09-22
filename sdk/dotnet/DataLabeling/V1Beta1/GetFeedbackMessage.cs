@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// Get a FeedbackMessage object.
         /// </summary>
         public static Task<GetFeedbackMessageResult> InvokeAsync(GetFeedbackMessageArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a FeedbackMessage object.
         /// </summary>
         public static Output<GetFeedbackMessageResult> Invoke(GetFeedbackMessageInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeedbackMessageResult>("google-native:datalabeling/v1beta1:getFeedbackMessage", args ?? new GetFeedbackMessageInvokeArgs(), options.WithDefaults());
     }
 
 

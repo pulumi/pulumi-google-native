@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
         /// </summary>
         public static Task<GetExternalVpnGatewayResult> InvokeAsync(GetExternalVpnGatewayArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExternalVpnGatewayResult>("google-native:compute/v1:getExternalVpnGateway", args ?? new GetExternalVpnGatewayArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalVpnGatewayResult>("google-native:compute/v1:getExternalVpnGateway", args ?? new GetExternalVpnGatewayArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
         /// </summary>
         public static Output<GetExternalVpnGatewayResult> Invoke(GetExternalVpnGatewayInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExternalVpnGatewayResult>("google-native:compute/v1:getExternalVpnGateway", args ?? new GetExternalVpnGatewayInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalVpnGatewayResult>("google-native:compute/v1:getExternalVpnGateway", args ?? new GetExternalVpnGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

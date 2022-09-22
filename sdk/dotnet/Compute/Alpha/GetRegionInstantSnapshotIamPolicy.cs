@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetRegionInstantSnapshotIamPolicyResult> InvokeAsync(GetRegionInstantSnapshotIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getRegionInstantSnapshotIamPolicy", args ?? new GetRegionInstantSnapshotIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getRegionInstantSnapshotIamPolicy", args ?? new GetRegionInstantSnapshotIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetRegionInstantSnapshotIamPolicyResult> Invoke(GetRegionInstantSnapshotIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getRegionInstantSnapshotIamPolicy", args ?? new GetRegionInstantSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstantSnapshotIamPolicyResult>("google-native:compute/alpha:getRegionInstantSnapshotIamPolicy", args ?? new GetRegionInstantSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetServiceDatabaseIamPolicyResult> InvokeAsync(GetServiceDatabaseIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1beta:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1beta:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetServiceDatabaseIamPolicyResult> Invoke(GetServiceDatabaseIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1beta:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceDatabaseIamPolicyResult>("google-native:metastore/v1beta:getServiceDatabaseIamPolicy", args ?? new GetServiceDatabaseIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

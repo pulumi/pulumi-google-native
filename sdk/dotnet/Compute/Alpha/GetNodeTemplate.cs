@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified node template. Gets a list of available node templates by making a list() request.
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("google-native:compute/alpha:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("google-native:compute/alpha:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified node template. Gets a list of available node templates by making a list() request.
         /// </summary>
         public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("google-native:compute/alpha:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("google-native:compute/alpha:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

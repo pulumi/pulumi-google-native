@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// Gets details of a single migration job.
         /// </summary>
         public static Task<GetMigrationJobResult> InvokeAsync(GetMigrationJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single migration job.
         /// </summary>
         public static Output<GetMigrationJobResult> Invoke(GetMigrationJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMigrationJobResult>("google-native:datamigration/v1:getMigrationJob", args ?? new GetMigrationJobInvokeArgs(), options.WithDefaults());
     }
 
 

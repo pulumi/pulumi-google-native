@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Get a content resource.
         /// </summary>
         public static Task<GetContentitemResult> InvokeAsync(GetContentitemArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContentitemResult>("google-native:dataplex/v1:getContentitem", args ?? new GetContentitemArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContentitemResult>("google-native:dataplex/v1:getContentitem", args ?? new GetContentitemArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a content resource.
         /// </summary>
         public static Output<GetContentitemResult> Invoke(GetContentitemInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContentitemResult>("google-native:dataplex/v1:getContentitem", args ?? new GetContentitemInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContentitemResult>("google-native:dataplex/v1:getContentitem", args ?? new GetContentitemInvokeArgs(), options.WithDefaults());
     }
 
 

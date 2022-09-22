@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Gets an API proxy including a list of existing revisions.
         /// </summary>
         public static Task<GetApiResult> InvokeAsync(GetApiArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an API proxy including a list of existing revisions.
         /// </summary>
         public static Output<GetApiResult> Invoke(GetApiInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApiResult>("google-native:apigee/v1:getApi", args ?? new GetApiInvokeArgs(), options.WithDefaults());
     }
 
 

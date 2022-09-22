@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
         /// </summary>
         public static Task<GetDiskResult> InvokeAsync(GetDiskArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskResult>("google-native:compute/beta:getDisk", args ?? new GetDiskArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskResult>("google-native:compute/beta:getDisk", args ?? new GetDiskArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
         /// </summary>
         public static Output<GetDiskResult> Invoke(GetDiskInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDiskResult>("google-native:compute/beta:getDisk", args ?? new GetDiskInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskResult>("google-native:compute/beta:getDisk", args ?? new GetDiskInvokeArgs(), options.WithDefaults());
     }
 
 

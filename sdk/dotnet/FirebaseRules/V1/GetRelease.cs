@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         /// Get a `Release` by name.
         /// </summary>
         public static Task<GetReleaseResult> InvokeAsync(GetReleaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a `Release` by name.
         /// </summary>
         public static Output<GetReleaseResult> Invoke(GetReleaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReleaseResult>("google-native:firebaserules/v1:getRelease", args ?? new GetReleaseInvokeArgs(), options.WithDefaults());
     }
 
 

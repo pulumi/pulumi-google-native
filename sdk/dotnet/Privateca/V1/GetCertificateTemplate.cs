@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Returns a CertificateTemplate.
         /// </summary>
         public static Task<GetCertificateTemplateResult> InvokeAsync(GetCertificateTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a CertificateTemplate.
         /// </summary>
         public static Output<GetCertificateTemplateResult> Invoke(GetCertificateTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateResult>("google-native:privateca/v1:getCertificateTemplate", args ?? new GetCertificateTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// Gets information about a particular instance configuration.
         /// </summary>
         public static Task<GetInstanceConfigResult> InvokeAsync(GetInstanceConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceConfigResult>("google-native:spanner/v1:getInstanceConfig", args ?? new GetInstanceConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceConfigResult>("google-native:spanner/v1:getInstanceConfig", args ?? new GetInstanceConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a particular instance configuration.
         /// </summary>
         public static Output<GetInstanceConfigResult> Invoke(GetInstanceConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceConfigResult>("google-native:spanner/v1:getInstanceConfig", args ?? new GetInstanceConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceConfigResult>("google-native:spanner/v1:getInstanceConfig", args ?? new GetInstanceConfigInvokeArgs(), options.WithDefaults());
     }
 
 

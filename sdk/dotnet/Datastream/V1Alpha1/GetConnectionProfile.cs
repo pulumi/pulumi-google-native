@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Use this method to get details about a connection profile.
         /// </summary>
         public static Task<GetConnectionProfileResult> InvokeAsync(GetConnectionProfileArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileResult>("google-native:datastream/v1alpha1:getConnectionProfile", args ?? new GetConnectionProfileArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionProfileResult>("google-native:datastream/v1alpha1:getConnectionProfile", args ?? new GetConnectionProfileArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this method to get details about a connection profile.
         /// </summary>
         public static Output<GetConnectionProfileResult> Invoke(GetConnectionProfileInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetConnectionProfileResult>("google-native:datastream/v1alpha1:getConnectionProfile", args ?? new GetConnectionProfileInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionProfileResult>("google-native:datastream/v1alpha1:getConnectionProfile", args ?? new GetConnectionProfileInvokeArgs(), options.WithDefaults());
     }
 
 

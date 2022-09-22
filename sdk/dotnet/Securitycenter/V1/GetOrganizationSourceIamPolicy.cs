@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// Gets the access control policy on the specified Source.
         /// </summary>
         public static Task<GetOrganizationSourceIamPolicyResult> InvokeAsync(GetOrganizationSourceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy on the specified Source.
         /// </summary>
         public static Output<GetOrganizationSourceIamPolicyResult> Invoke(GetOrganizationSourceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationSourceIamPolicyResult>("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args ?? new GetOrganizationSourceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

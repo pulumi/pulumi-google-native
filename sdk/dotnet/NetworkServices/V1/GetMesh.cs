@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// Gets details of a single Mesh.
         /// </summary>
         public static Task<GetMeshResult> InvokeAsync(GetMeshArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMeshResult>("google-native:networkservices/v1:getMesh", args ?? new GetMeshArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMeshResult>("google-native:networkservices/v1:getMesh", args ?? new GetMeshArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single Mesh.
         /// </summary>
         public static Output<GetMeshResult> Invoke(GetMeshInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMeshResult>("google-native:networkservices/v1:getMesh", args ?? new GetMeshInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMeshResult>("google-native:networkservices/v1:getMesh", args ?? new GetMeshInvokeArgs(), options.WithDefaults());
     }
 
 

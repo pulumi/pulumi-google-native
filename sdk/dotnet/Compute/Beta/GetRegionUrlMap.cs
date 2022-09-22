@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
         /// </summary>
         public static Task<GetRegionUrlMapResult> InvokeAsync(GetRegionUrlMapArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionUrlMapResult>("google-native:compute/beta:getRegionUrlMap", args ?? new GetRegionUrlMapArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionUrlMapResult>("google-native:compute/beta:getRegionUrlMap", args ?? new GetRegionUrlMapArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
         /// </summary>
         public static Output<GetRegionUrlMapResult> Invoke(GetRegionUrlMapInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionUrlMapResult>("google-native:compute/beta:getRegionUrlMap", args ?? new GetRegionUrlMapInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionUrlMapResult>("google-native:compute/beta:getRegionUrlMap", args ?? new GetRegionUrlMapInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
         /// </summary>
         public static Task<GetCustomerRepricingConfigResult> InvokeAsync(GetCustomerRepricingConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerRepricingConfigResult>("google-native:cloudchannel/v1:getCustomerRepricingConfig", args ?? new GetCustomerRepricingConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomerRepricingConfigResult>("google-native:cloudchannel/v1:getCustomerRepricingConfig", args ?? new GetCustomerRepricingConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
         /// </summary>
         public static Output<GetCustomerRepricingConfigResult> Invoke(GetCustomerRepricingConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomerRepricingConfigResult>("google-native:cloudchannel/v1:getCustomerRepricingConfig", args ?? new GetCustomerRepricingConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomerRepricingConfigResult>("google-native:cloudchannel/v1:getCustomerRepricingConfig", args ?? new GetCustomerRepricingConfigInvokeArgs(), options.WithDefaults());
     }
 
 

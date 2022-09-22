@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// Fetches the representation of an existing ResourceRecordSet.
         /// </summary>
         public static Task<GetResourceRecordSetResult> InvokeAsync(GetResourceRecordSetArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceRecordSetResult>("google-native:dns/v1beta2:getResourceRecordSet", args ?? new GetResourceRecordSetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceRecordSetResult>("google-native:dns/v1beta2:getResourceRecordSet", args ?? new GetResourceRecordSetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Fetches the representation of an existing ResourceRecordSet.
         /// </summary>
         public static Output<GetResourceRecordSetResult> Invoke(GetResourceRecordSetInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceRecordSetResult>("google-native:dns/v1beta2:getResourceRecordSet", args ?? new GetResourceRecordSetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceRecordSetResult>("google-native:dns/v1beta2:getResourceRecordSet", args ?? new GetResourceRecordSetInvokeArgs(), options.WithDefaults());
     }
 
 

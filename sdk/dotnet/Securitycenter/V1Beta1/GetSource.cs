@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         /// Gets a source.
         /// </summary>
         public static Task<GetSourceResult> InvokeAsync(GetSourceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a source.
         /// </summary>
         public static Output<GetSourceResult> Invoke(GetSourceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSourceResult>("google-native:securitycenter/v1beta1:getSource", args ?? new GetSourceInvokeArgs(), options.WithDefaults());
     }
 
 

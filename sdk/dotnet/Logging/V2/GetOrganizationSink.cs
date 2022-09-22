@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a sink.
         /// </summary>
         public static Task<GetOrganizationSinkResult> InvokeAsync(GetOrganizationSinkArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSinkResult>("google-native:logging/v2:getOrganizationSink", args ?? new GetOrganizationSinkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationSinkResult>("google-native:logging/v2:getOrganizationSink", args ?? new GetOrganizationSinkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a sink.
         /// </summary>
         public static Output<GetOrganizationSinkResult> Invoke(GetOrganizationSinkInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationSinkResult>("google-native:logging/v2:getOrganizationSink", args ?? new GetOrganizationSinkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationSinkResult>("google-native:logging/v2:getOrganizationSink", args ?? new GetOrganizationSinkInvokeArgs(), options.WithDefaults());
     }
 
 

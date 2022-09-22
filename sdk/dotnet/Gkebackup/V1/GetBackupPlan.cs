@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// Retrieve the details of a single BackupPlan.
         /// </summary>
         public static Task<GetBackupPlanResult> InvokeAsync(GetBackupPlanArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlanResult>("google-native:gkebackup/v1:getBackupPlan", args ?? new GetBackupPlanArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupPlanResult>("google-native:gkebackup/v1:getBackupPlan", args ?? new GetBackupPlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve the details of a single BackupPlan.
         /// </summary>
         public static Output<GetBackupPlanResult> Invoke(GetBackupPlanInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBackupPlanResult>("google-native:gkebackup/v1:getBackupPlan", args ?? new GetBackupPlanInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanResult>("google-native:gkebackup/v1:getBackupPlan", args ?? new GetBackupPlanInvokeArgs(), options.WithDefaults());
     }
 
 

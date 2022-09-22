@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Gets details of executions
         /// </summary>
         public static Task<GetExecutionResult> InvokeAsync(GetExecutionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of executions
         /// </summary>
         public static Output<GetExecutionResult> Invoke(GetExecutionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetExecutionResult>("google-native:notebooks/v1:getExecution", args ?? new GetExecutionInvokeArgs(), options.WithDefaults());
     }
 
 

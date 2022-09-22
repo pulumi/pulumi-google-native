@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified address resource. Gets a list of available addresses by making a list() request.
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("google-native:compute/v1:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("google-native:compute/v1:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified address resource. Gets a list of available addresses by making a list() request.
         /// </summary>
         public static Output<GetGlobalAddressResult> Invoke(GetGlobalAddressInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("google-native:compute/v1:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("google-native:compute/v1:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());
     }
 
 

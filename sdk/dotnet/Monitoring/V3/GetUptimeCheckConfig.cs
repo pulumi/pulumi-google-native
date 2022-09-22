@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Gets a single Uptime check configuration.
         /// </summary>
         public static Task<GetUptimeCheckConfigResult> InvokeAsync(GetUptimeCheckConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a single Uptime check configuration.
         /// </summary>
         public static Output<GetUptimeCheckConfigResult> Invoke(GetUptimeCheckConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUptimeCheckConfigResult>("google-native:monitoring/v3:getUptimeCheckConfig", args ?? new GetUptimeCheckConfigInvokeArgs(), options.WithDefaults());
     }
 
 

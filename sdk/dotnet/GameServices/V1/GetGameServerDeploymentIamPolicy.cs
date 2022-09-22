@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetGameServerDeploymentIamPolicyResult> InvokeAsync(GetGameServerDeploymentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetGameServerDeploymentIamPolicyResult> Invoke(GetGameServerDeploymentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGameServerDeploymentIamPolicyResult>("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", args ?? new GetGameServerDeploymentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Returns the ACL entry for the specified entity on the specified object.
         /// </summary>
         public static Task<GetObjectAccessControlResult> InvokeAsync(GetObjectAccessControlArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the ACL entry for the specified entity on the specified object.
         /// </summary>
         public static Output<GetObjectAccessControlResult> Invoke(GetObjectAccessControlInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetObjectAccessControlResult>("google-native:storage/v1:getObjectAccessControl", args ?? new GetObjectAccessControlInvokeArgs(), options.WithDefaults());
     }
 
 

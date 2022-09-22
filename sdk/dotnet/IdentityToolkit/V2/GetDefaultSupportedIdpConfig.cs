@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// Retrieve a default supported Idp configuration for an Identity Toolkit project.
         /// </summary>
         public static Task<GetDefaultSupportedIdpConfigResult> InvokeAsync(GetDefaultSupportedIdpConfigArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultSupportedIdpConfigResult>("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", args ?? new GetDefaultSupportedIdpConfigArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDefaultSupportedIdpConfigResult>("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", args ?? new GetDefaultSupportedIdpConfigArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a default supported Idp configuration for an Identity Toolkit project.
         /// </summary>
         public static Output<GetDefaultSupportedIdpConfigResult> Invoke(GetDefaultSupportedIdpConfigInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDefaultSupportedIdpConfigResult>("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", args ?? new GetDefaultSupportedIdpConfigInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDefaultSupportedIdpConfigResult>("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", args ?? new GetDefaultSupportedIdpConfigInvokeArgs(), options.WithDefaults());
     }
 
 

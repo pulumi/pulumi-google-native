@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Task<GetSslCertificateResult> InvokeAsync(GetSslCertificateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
         /// </summary>
         public static Output<GetSslCertificateResult> Invoke(GetSslCertificateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSslCertificateResult>("google-native:compute/beta:getSslCertificate", args ?? new GetSslCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

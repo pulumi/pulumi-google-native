@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
         /// </summary>
         public static Task<GetTargetTcpProxyResult> InvokeAsync(GetTargetTcpProxyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/v1:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/v1:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
         /// </summary>
         public static Output<GetTargetTcpProxyResult> Invoke(GetTargetTcpProxyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/v1:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/v1:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithDefaults());
     }
 
 

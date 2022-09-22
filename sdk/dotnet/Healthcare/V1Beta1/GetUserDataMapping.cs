@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the specified User data mapping.
         /// </summary>
         public static Task<GetUserDataMappingResult> InvokeAsync(GetUserDataMappingArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the specified User data mapping.
         /// </summary>
         public static Output<GetUserDataMappingResult> Invoke(GetUserDataMappingInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserDataMappingResult>("google-native:healthcare/v1beta1:getUserDataMapping", args ?? new GetUserDataMappingInvokeArgs(), options.WithDefaults());
     }
 
 

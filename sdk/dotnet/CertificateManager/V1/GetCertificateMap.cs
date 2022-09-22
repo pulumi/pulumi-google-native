@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// Gets details of a single CertificateMap.
         /// </summary>
         public static Task<GetCertificateMapResult> InvokeAsync(GetCertificateMapArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificateMapResult>("google-native:certificatemanager/v1:getCertificateMap", args ?? new GetCertificateMapArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateMapResult>("google-native:certificatemanager/v1:getCertificateMap", args ?? new GetCertificateMapArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single CertificateMap.
         /// </summary>
         public static Output<GetCertificateMapResult> Invoke(GetCertificateMapInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCertificateMapResult>("google-native:certificatemanager/v1:getCertificateMap", args ?? new GetCertificateMapInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateMapResult>("google-native:certificatemanager/v1:getCertificateMap", args ?? new GetCertificateMapInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// Returns the requested `Occurrence`.
         /// </summary>
         public static Task<GetOccurrenceResult> InvokeAsync(GetOccurrenceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the requested `Occurrence`.
         /// </summary>
         public static Output<GetOccurrenceResult> Invoke(GetOccurrenceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOccurrenceResult>("google-native:containeranalysis/v1alpha1:getOccurrence", args ?? new GetOccurrenceInvokeArgs(), options.WithDefaults());
     }
 
 

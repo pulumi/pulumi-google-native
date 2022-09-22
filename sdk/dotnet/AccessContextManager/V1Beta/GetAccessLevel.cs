@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// Get an Access Level by resource name.
         /// </summary>
         public static Task<GetAccessLevelResult> InvokeAsync(GetAccessLevelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessLevelResult>("google-native:accesscontextmanager/v1beta:getAccessLevel", args ?? new GetAccessLevelArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessLevelResult>("google-native:accesscontextmanager/v1beta:getAccessLevel", args ?? new GetAccessLevelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get an Access Level by resource name.
         /// </summary>
         public static Output<GetAccessLevelResult> Invoke(GetAccessLevelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccessLevelResult>("google-native:accesscontextmanager/v1beta:getAccessLevel", args ?? new GetAccessLevelInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessLevelResult>("google-native:accesscontextmanager/v1beta:getAccessLevel", args ?? new GetAccessLevelInvokeArgs(), options.WithDefaults());
     }
 
 

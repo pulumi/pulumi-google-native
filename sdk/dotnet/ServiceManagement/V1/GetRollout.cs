@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Gets a service configuration rollout.
         /// </summary>
         public static Task<GetRolloutResult> InvokeAsync(GetRolloutArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a service configuration rollout.
         /// </summary>
         public static Output<GetRolloutResult> Invoke(GetRolloutInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolloutResult>("google-native:servicemanagement/v1:getRollout", args ?? new GetRolloutInvokeArgs(), options.WithDefaults());
     }
 
 

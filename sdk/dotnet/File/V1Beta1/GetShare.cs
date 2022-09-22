@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// Gets the details of a specific share.
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("google-native:file/v1beta1:getShare", args ?? new GetShareArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("google-native:file/v1beta1:getShare", args ?? new GetShareArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a specific share.
         /// </summary>
         public static Output<GetShareResult> Invoke(GetShareInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShareResult>("google-native:file/v1beta1:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetShareResult>("google-native:file/v1beta1:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
     }
 
 

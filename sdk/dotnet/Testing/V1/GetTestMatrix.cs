@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
         /// </summary>
         public static Task<GetTestMatrixResult> InvokeAsync(GetTestMatrixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixArgs(), options.WithDefaults());
 
         /// <summary>
         /// Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
         /// </summary>
         public static Output<GetTestMatrixResult> Invoke(GetTestMatrixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTestMatrixResult>("google-native:testing/v1:getTestMatrix", args ?? new GetTestMatrixInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// Retrieves the requested node pool.
         /// </summary>
         public static Task<GetNodePoolResult> InvokeAsync(GetNodePoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("google-native:container/v1beta1:getNodePool", args ?? new GetNodePoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodePoolResult>("google-native:container/v1beta1:getNodePool", args ?? new GetNodePoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the requested node pool.
         /// </summary>
         public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("google-native:container/v1beta1:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("google-native:container/v1beta1:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetClientTlsPolicyIamPolicyResult> InvokeAsync(GetClientTlsPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClientTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getClientTlsPolicyIamPolicy", args ?? new GetClientTlsPolicyIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getClientTlsPolicyIamPolicy", args ?? new GetClientTlsPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetClientTlsPolicyIamPolicyResult> Invoke(GetClientTlsPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClientTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getClientTlsPolicyIamPolicy", args ?? new GetClientTlsPolicyIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientTlsPolicyIamPolicyResult>("google-native:networksecurity/v1:getClientTlsPolicyIamPolicy", args ?? new GetClientTlsPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// Gets an evaluation of conversation model.
         /// </summary>
         public static Task<GetEvaluationResult> InvokeAsync(GetEvaluationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEvaluationResult>("google-native:dialogflow/v2:getEvaluation", args ?? new GetEvaluationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEvaluationResult>("google-native:dialogflow/v2:getEvaluation", args ?? new GetEvaluationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an evaluation of conversation model.
         /// </summary>
         public static Output<GetEvaluationResult> Invoke(GetEvaluationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEvaluationResult>("google-native:dialogflow/v2:getEvaluation", args ?? new GetEvaluationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEvaluationResult>("google-native:dialogflow/v2:getEvaluation", args ?? new GetEvaluationInvokeArgs(), options.WithDefaults());
     }
 
 

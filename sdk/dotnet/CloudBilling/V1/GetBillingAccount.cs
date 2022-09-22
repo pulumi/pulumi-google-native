@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         /// Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
         /// </summary>
         public static Output<GetBillingAccountResult> Invoke(GetBillingAccountInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetBillingAccountResult>("google-native:cloudbilling/v1:getBillingAccount", args ?? new GetBillingAccountInvokeArgs(), options.WithDefaults());
     }
 
 

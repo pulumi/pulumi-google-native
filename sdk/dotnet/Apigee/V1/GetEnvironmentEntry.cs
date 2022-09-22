@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
         /// </summary>
         public static Task<GetEnvironmentEntryResult> InvokeAsync(GetEnvironmentEntryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentEntryResult>("google-native:apigee/v1:getEnvironmentEntry", args ?? new GetEnvironmentEntryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentEntryResult>("google-native:apigee/v1:getEnvironmentEntry", args ?? new GetEnvironmentEntryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
         /// </summary>
         public static Output<GetEnvironmentEntryResult> Invoke(GetEnvironmentEntryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentEntryResult>("google-native:apigee/v1:getEnvironmentEntry", args ?? new GetEnvironmentEntryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentEntryResult>("google-native:apigee/v1:getEnvironmentEntry", args ?? new GetEnvironmentEntryInvokeArgs(), options.WithDefaults());
     }
 
 

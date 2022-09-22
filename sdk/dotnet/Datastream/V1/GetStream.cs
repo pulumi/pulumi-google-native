@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// Use this method to get details about a stream.
         /// </summary>
         public static Task<GetStreamResult> InvokeAsync(GetStreamArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetStreamResult>("google-native:datastream/v1:getStream", args ?? new GetStreamArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetStreamResult>("google-native:datastream/v1:getStream", args ?? new GetStreamArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this method to get details about a stream.
         /// </summary>
         public static Output<GetStreamResult> Invoke(GetStreamInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetStreamResult>("google-native:datastream/v1:getStream", args ?? new GetStreamInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetStreamResult>("google-native:datastream/v1:getStream", args ?? new GetStreamInvokeArgs(), options.WithDefaults());
     }
 
 

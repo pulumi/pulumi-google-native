@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Retrieves the specified knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
         /// </summary>
         public static Task<GetKnowledgeBaseResult> InvokeAsync(GetKnowledgeBaseArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeBaseResult>("google-native:dialogflow/v2beta1:getKnowledgeBase", args ?? new GetKnowledgeBaseArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeBaseResult>("google-native:dialogflow/v2beta1:getKnowledgeBase", args ?? new GetKnowledgeBaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
         /// </summary>
         public static Output<GetKnowledgeBaseResult> Invoke(GetKnowledgeBaseInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKnowledgeBaseResult>("google-native:dialogflow/v2beta1:getKnowledgeBase", args ?? new GetKnowledgeBaseInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeBaseResult>("google-native:dialogflow/v2beta1:getKnowledgeBase", args ?? new GetKnowledgeBaseInvokeArgs(), options.WithDefaults());
     }
 
 

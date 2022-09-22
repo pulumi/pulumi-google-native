@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// List all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Task<GetRegionSecurityPolicyResult> InvokeAsync(GetRegionSecurityPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// List all of the ordered rules present in a single specified policy.
         /// </summary>
         public static Output<GetRegionSecurityPolicyResult> Invoke(GetRegionSecurityPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionSecurityPolicyResult>("google-native:compute/alpha:getRegionSecurityPolicy", args ?? new GetRegionSecurityPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

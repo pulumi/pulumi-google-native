@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// Get a tenant. Requires read permission on the Tenant resource.
         /// </summary>
         public static Task<GetTenantResult> InvokeAsync(GetTenantArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("google-native:identitytoolkit/v2:getTenant", args ?? new GetTenantArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTenantResult>("google-native:identitytoolkit/v2:getTenant", args ?? new GetTenantArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a tenant. Requires read permission on the Tenant resource.
         /// </summary>
         public static Output<GetTenantResult> Invoke(GetTenantInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTenantResult>("google-native:identitytoolkit/v2:getTenant", args ?? new GetTenantInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTenantResult>("google-native:identitytoolkit/v2:getTenant", args ?? new GetTenantInvokeArgs(), options.WithDefaults());
     }
 
 

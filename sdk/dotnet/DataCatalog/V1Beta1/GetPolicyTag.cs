@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// Gets a policy tag.
         /// </summary>
         public static Task<GetPolicyTagResult> InvokeAsync(GetPolicyTagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a policy tag.
         /// </summary>
         public static Output<GetPolicyTagResult> Invoke(GetPolicyTagInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyTagResult>("google-native:datacatalog/v1beta1:getPolicyTag", args ?? new GetPolicyTagInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// Gets the definition of a Role.
         /// </summary>
         public static Task<GetOrganizationRoleResult> InvokeAsync(GetOrganizationRoleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the definition of a Role.
         /// </summary>
         public static Output<GetOrganizationRoleResult> Invoke(GetOrganizationRoleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationRoleResult>("google-native:iam/v1:getOrganizationRole", args ?? new GetOrganizationRoleInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         /// </summary>
         public static Task<GetOrganizationInspectTemplateResult> InvokeAsync(GetOrganizationInspectTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationInspectTemplateResult>("google-native:dlp/v2:getOrganizationInspectTemplate", args ?? new GetOrganizationInspectTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationInspectTemplateResult>("google-native:dlp/v2:getOrganizationInspectTemplate", args ?? new GetOrganizationInspectTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         /// </summary>
         public static Output<GetOrganizationInspectTemplateResult> Invoke(GetOrganizationInspectTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOrganizationInspectTemplateResult>("google-native:dlp/v2:getOrganizationInspectTemplate", args ?? new GetOrganizationInspectTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationInspectTemplateResult>("google-native:dlp/v2:getOrganizationInspectTemplate", args ?? new GetOrganizationInspectTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

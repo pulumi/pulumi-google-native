@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetApiVersionArtifactIamPolicyResult> InvokeAsync(GetApiVersionArtifactIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApiVersionArtifactIamPolicyResult>("google-native:apigeeregistry/v1:getApiVersionArtifactIamPolicy", args ?? new GetApiVersionArtifactIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiVersionArtifactIamPolicyResult>("google-native:apigeeregistry/v1:getApiVersionArtifactIamPolicy", args ?? new GetApiVersionArtifactIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetApiVersionArtifactIamPolicyResult> Invoke(GetApiVersionArtifactIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApiVersionArtifactIamPolicyResult>("google-native:apigeeregistry/v1:getApiVersionArtifactIamPolicy", args ?? new GetApiVersionArtifactIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApiVersionArtifactIamPolicyResult>("google-native:apigeeregistry/v1:getApiVersionArtifactIamPolicy", args ?? new GetApiVersionArtifactIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

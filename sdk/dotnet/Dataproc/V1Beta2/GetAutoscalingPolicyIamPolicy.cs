@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetAutoscalingPolicyIamPolicyResult> InvokeAsync(GetAutoscalingPolicyIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetAutoscalingPolicyIamPolicyResult> Invoke(GetAutoscalingPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutoscalingPolicyIamPolicyResult>("google-native:dataproc/v1beta2:getAutoscalingPolicyIamPolicy", args ?? new GetAutoscalingPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

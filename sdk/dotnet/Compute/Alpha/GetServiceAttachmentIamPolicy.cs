@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetServiceAttachmentIamPolicyResult> InvokeAsync(GetServiceAttachmentIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServiceAttachmentIamPolicyResult>("google-native:compute/alpha:getServiceAttachmentIamPolicy", args ?? new GetServiceAttachmentIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAttachmentIamPolicyResult>("google-native:compute/alpha:getServiceAttachmentIamPolicy", args ?? new GetServiceAttachmentIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetServiceAttachmentIamPolicyResult> Invoke(GetServiceAttachmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServiceAttachmentIamPolicyResult>("google-native:compute/alpha:getServiceAttachmentIamPolicy", args ?? new GetServiceAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceAttachmentIamPolicyResult>("google-native:compute/alpha:getServiceAttachmentIamPolicy", args ?? new GetServiceAttachmentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

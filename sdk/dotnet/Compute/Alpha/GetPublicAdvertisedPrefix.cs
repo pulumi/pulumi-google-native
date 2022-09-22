@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Returns the specified PublicAdvertisedPrefix resource.
         /// </summary>
         public static Task<GetPublicAdvertisedPrefixResult> InvokeAsync(GetPublicAdvertisedPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified PublicAdvertisedPrefix resource.
         /// </summary>
         public static Output<GetPublicAdvertisedPrefixResult> Invoke(GetPublicAdvertisedPrefixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPublicAdvertisedPrefixResult>("google-native:compute/alpha:getPublicAdvertisedPrefix", args ?? new GetPublicAdvertisedPrefixInvokeArgs(), options.WithDefaults());
     }
 
 

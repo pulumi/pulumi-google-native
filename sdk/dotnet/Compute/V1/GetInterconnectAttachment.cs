@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Returns the specified interconnect attachment.
         /// </summary>
         public static Task<GetInterconnectAttachmentResult> InvokeAsync(GetInterconnectAttachmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentResult>("google-native:compute/v1:getInterconnectAttachment", args ?? new GetInterconnectAttachmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectAttachmentResult>("google-native:compute/v1:getInterconnectAttachment", args ?? new GetInterconnectAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns the specified interconnect attachment.
         /// </summary>
         public static Output<GetInterconnectAttachmentResult> Invoke(GetInterconnectAttachmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentResult>("google-native:compute/v1:getInterconnectAttachment", args ?? new GetInterconnectAttachmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectAttachmentResult>("google-native:compute/v1:getInterconnectAttachment", args ?? new GetInterconnectAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

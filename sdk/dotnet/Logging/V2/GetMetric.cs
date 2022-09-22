@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Gets a logs-based metric.
         /// </summary>
         public static Task<GetMetricResult> InvokeAsync(GetMetricArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMetricResult>("google-native:logging/v2:getMetric", args ?? new GetMetricArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetricResult>("google-native:logging/v2:getMetric", args ?? new GetMetricArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a logs-based metric.
         /// </summary>
         public static Output<GetMetricResult> Invoke(GetMetricInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMetricResult>("google-native:logging/v2:getMetric", args ?? new GetMetricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetricResult>("google-native:logging/v2:getMetric", args ?? new GetMetricInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// Retrieves specified company.
         /// </summary>
         public static Task<GetCompanyResult> InvokeAsync(GetCompanyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCompanyResult>("google-native:jobs/v3:getCompany", args ?? new GetCompanyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCompanyResult>("google-native:jobs/v3:getCompany", args ?? new GetCompanyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves specified company.
         /// </summary>
         public static Output<GetCompanyResult> Invoke(GetCompanyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCompanyResult>("google-native:jobs/v3:getCompany", args ?? new GetCompanyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCompanyResult>("google-native:jobs/v3:getCompany", args ?? new GetCompanyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// Gets a tag template.
         /// </summary>
         public static Task<GetTagTemplateResult> InvokeAsync(GetTagTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateResult>("google-native:datacatalog/v1beta1:getTagTemplate", args ?? new GetTagTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagTemplateResult>("google-native:datacatalog/v1beta1:getTagTemplate", args ?? new GetTagTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a tag template.
         /// </summary>
         public static Output<GetTagTemplateResult> Invoke(GetTagTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagTemplateResult>("google-native:datacatalog/v1beta1:getTagTemplate", args ?? new GetTagTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagTemplateResult>("google-native:datacatalog/v1beta1:getTagTemplate", args ?? new GetTagTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

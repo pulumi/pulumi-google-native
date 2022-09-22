@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetSubscriptionIamPolicyResult> InvokeAsync(GetSubscriptionIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionIamPolicyResult>("google-native:pubsub/v1beta2:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubscriptionIamPolicyResult>("google-native:pubsub/v1beta2:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetSubscriptionIamPolicyResult> Invoke(GetSubscriptionIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubscriptionIamPolicyResult>("google-native:pubsub/v1beta2:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubscriptionIamPolicyResult>("google-native:pubsub/v1beta2:getSubscriptionIamPolicy", args ?? new GetSubscriptionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

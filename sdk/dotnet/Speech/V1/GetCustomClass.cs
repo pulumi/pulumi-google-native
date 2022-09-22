@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Speech.V1
         /// Get a custom class.
         /// </summary>
         public static Task<GetCustomClassResult> InvokeAsync(GetCustomClassArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomClassResult>("google-native:speech/v1:getCustomClass", args ?? new GetCustomClassArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomClassResult>("google-native:speech/v1:getCustomClass", args ?? new GetCustomClassArgs(), options.WithDefaults());
 
         /// <summary>
         /// Get a custom class.
         /// </summary>
         public static Output<GetCustomClassResult> Invoke(GetCustomClassInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCustomClassResult>("google-native:speech/v1:getCustomClass", args ?? new GetCustomClassInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomClassResult>("google-native:speech/v1:getCustomClass", args ?? new GetCustomClassInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetInterconnectIamPolicyResult> InvokeAsync(GetInterconnectIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectIamPolicyResult>("google-native:compute/alpha:getInterconnectIamPolicy", args ?? new GetInterconnectIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectIamPolicyResult>("google-native:compute/alpha:getInterconnectIamPolicy", args ?? new GetInterconnectIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetInterconnectIamPolicyResult> Invoke(GetInterconnectIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInterconnectIamPolicyResult>("google-native:compute/alpha:getInterconnectIamPolicy", args ?? new GetInterconnectIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectIamPolicyResult>("google-native:compute/alpha:getInterconnectIamPolicy", args ?? new GetInterconnectIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

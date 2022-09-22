@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetRegionBackendServiceIamPolicyResult> InvokeAsync(GetRegionBackendServiceIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceIamPolicyResult>("google-native:compute/v1:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionBackendServiceIamPolicyResult>("google-native:compute/v1:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetRegionBackendServiceIamPolicyResult> Invoke(GetRegionBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("google-native:compute/v1:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("google-native:compute/v1:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         /// Gets details of a single AuthorizationPolicy.
         /// </summary>
         public static Task<GetAuthorizationPolicyResult> InvokeAsync(GetAuthorizationPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single AuthorizationPolicy.
         /// </summary>
         public static Output<GetAuthorizationPolicyResult> Invoke(GetAuthorizationPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthorizationPolicyResult>("google-native:networksecurity/v1:getAuthorizationPolicy", args ?? new GetAuthorizationPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

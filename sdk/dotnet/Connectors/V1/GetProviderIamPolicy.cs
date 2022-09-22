@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetProviderIamPolicyResult> InvokeAsync(GetProviderIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetProviderIamPolicyResult> Invoke(GetProviderIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProviderIamPolicyResult>("google-native:connectors/v1:getProviderIamPolicy", args ?? new GetProviderIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

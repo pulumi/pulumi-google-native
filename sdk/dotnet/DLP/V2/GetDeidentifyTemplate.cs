@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
         /// </summary>
         public static Task<GetDeidentifyTemplateResult> InvokeAsync(GetDeidentifyTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
         /// </summary>
         public static Output<GetDeidentifyTemplateResult> Invoke(GetDeidentifyTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeidentifyTemplateResult>("google-native:dlp/v2:getDeidentifyTemplate", args ?? new GetDeidentifyTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

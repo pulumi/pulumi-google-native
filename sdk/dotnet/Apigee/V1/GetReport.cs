@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Retrieve a custom report definition.
         /// </summary>
         public static Task<GetReportResult> InvokeAsync(GetReportArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve a custom report definition.
         /// </summary>
         public static Output<GetReportResult> Invoke(GetReportInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetReportResult>("google-native:apigee/v1:getReport", args ?? new GetReportInvokeArgs(), options.WithDefaults());
     }
 
 

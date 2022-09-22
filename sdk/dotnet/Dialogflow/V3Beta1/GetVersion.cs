@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// Retrieves the specified Version.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:dialogflow/v3beta1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:dialogflow/v3beta1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves the specified Version.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:dialogflow/v3beta1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:dialogflow/v3beta1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
     }
 
 

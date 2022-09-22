@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
         /// </summary>
         public static Task<GetModelResult> InvokeAsync(GetModelArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
         /// </summary>
         public static Output<GetModelResult> Invoke(GetModelInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetModelResult>("google-native:ml/v1:getModel", args ?? new GetModelInvokeArgs(), options.WithDefaults());
     }
 
 

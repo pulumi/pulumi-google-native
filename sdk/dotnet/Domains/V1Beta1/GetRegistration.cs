@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         /// Gets the details of a `Registration` resource.
         /// </summary>
         public static Task<GetRegistrationResult> InvokeAsync(GetRegistrationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationResult>("google-native:domains/v1beta1:getRegistration", args ?? new GetRegistrationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistrationResult>("google-native:domains/v1beta1:getRegistration", args ?? new GetRegistrationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the details of a `Registration` resource.
         /// </summary>
         public static Output<GetRegistrationResult> Invoke(GetRegistrationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRegistrationResult>("google-native:domains/v1beta1:getRegistration", args ?? new GetRegistrationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistrationResult>("google-native:domains/v1beta1:getRegistration", args ?? new GetRegistrationInvokeArgs(), options.WithDefaults());
     }
 
 

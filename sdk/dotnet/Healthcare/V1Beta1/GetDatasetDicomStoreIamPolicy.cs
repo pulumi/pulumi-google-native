@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Task<GetDatasetDicomStoreIamPolicyResult> InvokeAsync(GetDatasetDicomStoreIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
         /// </summary>
         public static Output<GetDatasetDicomStoreIamPolicyResult> Invoke(GetDatasetDicomStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatasetDicomStoreIamPolicyResult>("google-native:healthcare/v1beta1:getDatasetDicomStoreIamPolicy", args ?? new GetDatasetDicomStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// Gets details of a single TcpRoute.
         /// </summary>
         public static Task<GetTcpRouteResult> InvokeAsync(GetTcpRouteArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTcpRouteResult>("google-native:networkservices/v1beta1:getTcpRoute", args ?? new GetTcpRouteArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTcpRouteResult>("google-native:networkservices/v1beta1:getTcpRoute", args ?? new GetTcpRouteArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single TcpRoute.
         /// </summary>
         public static Output<GetTcpRouteResult> Invoke(GetTcpRouteInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTcpRouteResult>("google-native:networkservices/v1beta1:getTcpRoute", args ?? new GetTcpRouteInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTcpRouteResult>("google-native:networkservices/v1beta1:getTcpRoute", args ?? new GetTcpRouteInvokeArgs(), options.WithDefaults());
     }
 
 

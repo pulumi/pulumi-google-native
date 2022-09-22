@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// Gets details of a single CloneJob.
         /// </summary>
         public static Task<GetCloneJobResult> InvokeAsync(GetCloneJobArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCloneJobResult>("google-native:vmmigration/v1alpha1:getCloneJob", args ?? new GetCloneJobArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloneJobResult>("google-native:vmmigration/v1alpha1:getCloneJob", args ?? new GetCloneJobArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets details of a single CloneJob.
         /// </summary>
         public static Output<GetCloneJobResult> Invoke(GetCloneJobInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCloneJobResult>("google-native:vmmigration/v1alpha1:getCloneJob", args ?? new GetCloneJobInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloneJobResult>("google-native:vmmigration/v1alpha1:getCloneJob", args ?? new GetCloneJobInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Returns a CaPool.
         /// </summary>
         public static Task<GetCaPoolResult> InvokeAsync(GetCaPoolArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Returns a CaPool.
         /// </summary>
         public static Output<GetCaPoolResult> Invoke(GetCaPoolInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCaPoolResult>("google-native:privateca/v1:getCaPool", args ?? new GetCaPoolInvokeArgs(), options.WithDefaults());
     }
 
 

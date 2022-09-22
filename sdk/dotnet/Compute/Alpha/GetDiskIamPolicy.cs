@@ -15,13 +15,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Task<GetDiskIamPolicyResult> InvokeAsync(GetDiskIamPolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskIamPolicyResult>("google-native:compute/alpha:getDiskIamPolicy", args ?? new GetDiskIamPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskIamPolicyResult>("google-native:compute/alpha:getDiskIamPolicy", args ?? new GetDiskIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
         /// </summary>
         public static Output<GetDiskIamPolicyResult> Invoke(GetDiskIamPolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDiskIamPolicyResult>("google-native:compute/alpha:getDiskIamPolicy", args ?? new GetDiskIamPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskIamPolicyResult>("google-native:compute/alpha:getDiskIamPolicy", args ?? new GetDiskIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
