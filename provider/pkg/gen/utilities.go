@@ -31,7 +31,9 @@ func apiParamNameToSdkName(name string) string {
 	if strings.HasSuffix(name, "Id") {
 		name = inflector.Singularize(name[:len(name)-2])
 		switch name {
-		case "project", "location", "managedZone", "zone":
+		case "project", "location":
+			return name
+		case "managedZone" /* DNS */, "zone":
 			return name
 		case "datum":
 			return "dataId"

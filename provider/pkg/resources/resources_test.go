@@ -37,7 +37,7 @@ func TestCalculateResourceId_IdProperty(t *testing.T) {
 	assert.Equal(t, expected, actual)
 }
 
-func TestCalculateResourceId_IdPath(t *testing.T) {
+func TestEndpoint_URI(t *testing.T) {
 	endpoint := CloudAPIEndpoint{
 		Template: "/v1/myparent/{parentsId}/myresource/{myresourcesId}",
 		Values: []CloudAPIResourceParam{
@@ -58,6 +58,27 @@ func TestCalculateResourceId_IdPath(t *testing.T) {
 		"reference": map[string]interface{}{
 			"name": "myparent/foo/myresource/bar",
 		},
+	}
+	actual, err := endpoint.URI(inputs, outputs)
+	assert.NoError(t, err)
+	assert.Equal(t, "/v1/myparent/foo/myresource/bar", actual)
+}
+
+func TestEndpoint_URI_RFC_6570(t *testing.T) {
+	endpoint := CloudAPIEndpoint{
+		Template: "/v1/myparent/{+name}",
+		Values: []CloudAPIResourceParam{
+			{
+				Name:    "name",
+				SdkName: "name",
+			},
+		},
+	}
+	inputs := map[string]interface{}{
+		"parentId": "foo",
+	}
+	outputs := map[string]interface{}{
+		"name": "foo/myresource/bar",
 	}
 	actual, err := endpoint.URI(inputs, outputs)
 	assert.NoError(t, err)

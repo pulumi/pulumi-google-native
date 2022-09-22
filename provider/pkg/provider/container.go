@@ -190,7 +190,7 @@ func updateClusterMapping(
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, nil)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}
@@ -251,7 +251,7 @@ func updateClusterNestedField(diffPropPath, targetPropPath resource.PropertyPath
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, nil)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}
@@ -635,7 +635,7 @@ func updateNodePoolMapping(
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, nil)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}
@@ -695,7 +695,7 @@ func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
 
-		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		_, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, nil)
 		if err != nil {
 			return errors.Wrapf(err, "waiting for completion")
 		}

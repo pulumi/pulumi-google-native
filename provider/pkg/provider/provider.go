@@ -35,7 +35,6 @@ import (
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/iancoleman/strcase"
 	"github.com/jpillora/backoff"
-	"github.com/jtacoma/uritemplates"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
@@ -601,7 +600,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op, nil)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -801,6 +800,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 	urn resource.URN,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
+	inputState resource.PropertyMap,
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -854,7 +854,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 
 			done, hasDone := op["done"].(bool)
 			status, hasStatus := op["status"].(string)
-			if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
+			if completed := (hasDone && done) || (hasStatus && strings.ToLower(status) == "done"); completed {
 				// Extract an error message from the response, if any.
 				var err error
 				if failure, has := resp["error"]; has {
@@ -921,12 +921,13 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 			selfLink, has := getSelfLink(op)
 			if has && hasStatus {
 				pollURI = selfLink
-			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
-				tmpl, err := uritemplates.Parse(operation.Operations.OperationsBaseURL)
-				if err != nil {
-					return resp, err
+			} else if operation.Operations != nil && operation.Operations.Template != "" {
+				var existing map[string]interface{}
+				if inputState != nil {
+					existing = inputState.Mappable()
 				}
-				pollURI, err = tmpl.Expand(resp)
+				var err error
+				pollURI, err = operation.Operations.URI(resp, existing)
 				if err != nil {
 					return resp, err
 				}
@@ -1192,11 +1193,29 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
-		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op, inputs)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
 	}
+
+	// There are several APIs where the response from the update/operation is non-standard or contains
+	// stale data. When it comes to checkpointing, we want to store information that strictly matches what we
+	// get from a subsequent read. As a result, we do an additional read call here and use that to checkpoint state.
+	// This is likely superfluous/duplicative in many cases but erring on the side of correctness here instead.
+	id, err := calculateResourceID(res, inputs.Mappable(), resp)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful update / calculate ID %w", err)
+	}
+	url := id
+	if !strings.HasPrefix(url, "http") {
+		url = resources.AssembleURL(res.RootURL, url)
+	}
+	resp, err = p.client.RequestWithTimeout(res.Read.Verb, url, "", nil, 0)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
+	}
+
 	// Read the inputs to persist them into state.
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
@@ -1292,7 +1311,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp)
+	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp, nil)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
