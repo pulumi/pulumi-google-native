@@ -53,6 +53,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        [Output("responsePolicyId")]
+        public Output<string> ResponsePolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// User assigned name for this Response Policy.
         /// </summary>
         [Output("responsePolicyName")]

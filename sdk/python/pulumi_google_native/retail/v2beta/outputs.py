@@ -761,6 +761,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
                  expire_time: str,
                  fulfillment_info: Sequence['outputs.GoogleCloudRetailV2betaFulfillmentInfoResponse'],
                  gtin: str,
+                 id: str,
                  images: Sequence['outputs.GoogleCloudRetailV2betaImageResponse'],
                  language_code: str,
                  local_inventories: Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse'],
@@ -796,6 +797,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param str expire_time: The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         :param Sequence['GoogleCloudRetailV2betaFulfillmentInfoResponse'] fulfillment_info: Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
         :param str gtin: The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
+        :param str id: Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
         :param Sequence['GoogleCloudRetailV2betaImageResponse'] images: Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param str language_code: Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
         :param Sequence['GoogleCloudRetailV2betaLocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
@@ -830,6 +832,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "fulfillment_info", fulfillment_info)
         pulumi.set(__self__, "gtin", gtin)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "language_code", language_code)
         pulumi.set(__self__, "local_inventories", local_inventories)
@@ -961,6 +964,14 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         """
         return pulumi.get(self, "gtin")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

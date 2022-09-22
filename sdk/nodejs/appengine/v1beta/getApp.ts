@@ -64,6 +64,10 @@ export interface GetAppResult {
     readonly gcrDomain: string;
     readonly iap: outputs.appengine.v1beta.IdentityAwareProxyResponse;
     /**
+     * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+     */
+    readonly id: string;
+    /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
     readonly location: string;

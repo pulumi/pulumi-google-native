@@ -563,6 +563,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["source_type"] = source_type
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["image_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["satisfies_pzs"] = None
@@ -605,6 +606,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["force_create"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["image_encryption_key"] = None
+        __props__.__dict__["image_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -710,6 +712,14 @@ class Image(pulumi.CustomResource):
         Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         """
         return pulumi.get(self, "image_encryption_key")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter

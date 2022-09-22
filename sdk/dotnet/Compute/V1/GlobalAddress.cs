@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("globalAddressId")]
+        public Output<string> GlobalAddressId { get; private set; } = null!;
+
+        /// <summary>
         /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
         /// </summary>
         [Output("ipVersion")]

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.CustomerEncryptionKeyResponse> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("diskId")]
+        public Output<string> DiskId { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         /// </summary>
         [Output("eraseWindowsVssSignature")]

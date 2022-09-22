@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("globalNetworkEndpointGroupId")]
+        public Output<string> GlobalNetworkEndpointGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         /// </summary>
         [Output("kind")]

@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public readonly string DagTimeout;
         /// <summary>
+        /// The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         public readonly ImmutableArray<Outputs.OrderedJobResponse> Jobs;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 
             string dagTimeout,
 
+            string id,
+
             ImmutableArray<Outputs.OrderedJobResponse> jobs,
 
             ImmutableDictionary<string, string> labels,
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         {
             CreateTime = createTime;
             DagTimeout = dagTimeout;
+            Id = id;
             Jobs = jobs;
             Labels = labels;
             Name = name;

@@ -34,6 +34,8 @@ type NetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkEndpointGroupId pulumi.StringOutput `pulumi:"networkEndpointGroupId"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
 	Project             pulumi.StringOutput `pulumi:"project"`
@@ -239,6 +241,11 @@ func (o NetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 // The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 func (o NetworkEndpointGroupOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NetworkEndpointGroupOutput) NetworkEndpointGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.NetworkEndpointGroupId }).(pulumi.StringOutput)
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.

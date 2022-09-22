@@ -18,6 +18,8 @@ type BucketObject struct {
 	// Access controls on the object.
 	Acl    ObjectAccessControlResponseArrayOutput `pulumi:"acl"`
 	Bucket pulumi.StringOutput                    `pulumi:"bucket"`
+	// The ID of the object, including the bucket name, object name, and generation number.
+	BucketObjectId pulumi.StringOutput `pulumi:"bucketObjectId"`
 	// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
 	CacheControl pulumi.StringOutput `pulumi:"cacheControl"`
 	// Number of underlying components that make up this object. Components are accumulated by compose operations.
@@ -142,6 +144,8 @@ type bucketObjectArgs struct {
 	Acl []ObjectAccessControlType `pulumi:"acl"`
 	// The name of the bucket containing this object.
 	Bucket string `pulumi:"bucket"`
+	// The ID of the object, including the bucket name, object name, and generation number.
+	BucketObjectId *string `pulumi:"bucketObjectId"`
 	// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
 	CacheControl *string `pulumi:"cacheControl"`
 	// Number of underlying components that make up this object. Components are accumulated by compose operations.
@@ -166,8 +170,6 @@ type bucketObjectArgs struct {
 	EventBasedHold *bool `pulumi:"eventBasedHold"`
 	// The content generation of this object. Used for object versioning.
 	Generation *string `pulumi:"generation"`
-	// The ID of the object, including the bucket name, object name, and generation number.
-	Id *string `pulumi:"id"`
 	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
 	IfGenerationMatch *string `pulumi:"ifGenerationMatch"`
 	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
@@ -225,6 +227,8 @@ type BucketObjectArgs struct {
 	Acl ObjectAccessControlTypeArrayInput
 	// The name of the bucket containing this object.
 	Bucket pulumi.StringInput
+	// The ID of the object, including the bucket name, object name, and generation number.
+	BucketObjectId pulumi.StringPtrInput
 	// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
 	CacheControl pulumi.StringPtrInput
 	// Number of underlying components that make up this object. Components are accumulated by compose operations.
@@ -249,8 +253,6 @@ type BucketObjectArgs struct {
 	EventBasedHold pulumi.BoolPtrInput
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringPtrInput
-	// The ID of the object, including the bucket name, object name, and generation number.
-	Id pulumi.StringPtrInput
 	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
 	IfGenerationMatch pulumi.StringPtrInput
 	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
@@ -346,6 +348,11 @@ func (o BucketObjectOutput) Acl() ObjectAccessControlResponseArrayOutput {
 
 func (o BucketObjectOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The ID of the object, including the bucket name, object name, and generation number.
+func (o BucketObjectOutput) BucketObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.BucketObjectId }).(pulumi.StringOutput)
 }
 
 // Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.

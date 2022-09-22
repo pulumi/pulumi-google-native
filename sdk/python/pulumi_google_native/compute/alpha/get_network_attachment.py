@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkAttachmentResult:
-    def __init__(__self__, connection_endpoints=None, connection_preference=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, network=None, producer_accept_lists=None, producer_reject_lists=None, region=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, connection_endpoints=None, connection_preference=None, creation_timestamp=None, description=None, fingerprint=None, id=None, kind=None, name=None, network=None, producer_accept_lists=None, producer_reject_lists=None, region=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if connection_endpoints and not isinstance(connection_endpoints, list):
             raise TypeError("Expected argument 'connection_endpoints' to be a list")
         pulumi.set(__self__, "connection_endpoints", connection_endpoints)
@@ -35,6 +35,9 @@ class GetNetworkAttachmentResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -99,6 +102,14 @@ class GetNetworkAttachmentResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. An up-to-date fingerprint must be provided in order to patch.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -184,6 +195,7 @@ class AwaitableGetNetworkAttachmentResult(GetNetworkAttachmentResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             network=self.network,
@@ -215,6 +227,7 @@ def get_network_attachment(network_attachment: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         network=__ret__.network,

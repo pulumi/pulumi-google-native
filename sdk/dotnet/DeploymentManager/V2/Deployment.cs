@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         [Output("createPolicy")]
         public Output<string?> CreatePolicy { get; private set; } = null!;
 
+        [Output("deploymentId")]
+        public Output<string> DeploymentId { get; private set; } = null!;
+
         /// <summary>
         /// An optional user-provided description of the deployment.
         /// </summary>
@@ -151,14 +154,14 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
 
+        [Input("deploymentId")]
+        public Input<string>? DeploymentId { get; set; }
+
         /// <summary>
         /// An optional user-provided description of the deployment.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("labels")]
         private InputList<Inputs.DeploymentLabelEntryArgs>? _labels;

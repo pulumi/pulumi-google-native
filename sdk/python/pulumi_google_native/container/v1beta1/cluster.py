@@ -1290,6 +1290,7 @@ class Cluster(pulumi.CustomResource):
                 warnings.warn("""Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""zone is deprecated: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["cluster_id"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_master_version"] = None
             __props__.__dict__["current_node_count"] = None
@@ -1332,6 +1333,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["autopilot"] = None
         __props__.__dict__["autoscaling"] = None
         __props__.__dict__["binary_authorization"] = None
+        __props__.__dict__["cluster_id"] = None
         __props__.__dict__["cluster_ipv4_cidr"] = None
         __props__.__dict__["cluster_telemetry"] = None
         __props__.__dict__["conditions"] = None
@@ -1439,6 +1441,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for Binary Authorization.
         """
         return pulumi.get(self, "binary_authorization")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[str]:
+        """
+        Unique id for the cluster.
+        """
+        return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterIpv4Cidr")

@@ -239,6 +239,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_health_check_service_id"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -275,6 +276,7 @@ class RegionHealthCheckService(pulumi.CustomResource):
         __props__.__dict__["notification_endpoints"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_health_check_service_id"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         return RegionHealthCheckService(resource_name, opts=opts, __props__=__props__)
@@ -360,6 +362,14 @@ class RegionHealthCheckService(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionHealthCheckServiceId")
+    def region_health_check_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_health_check_service_id")
 
     @property
     @pulumi.getter(name="requestId")

@@ -39,6 +39,8 @@ type LookupRegionDiskResult struct {
 	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -184,6 +186,11 @@ func (o LookupRegionDiskResultOutput) EraseWindowsVssSignature() pulumi.BoolOutp
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 func (o LookupRegionDiskResultOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionDiskResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.

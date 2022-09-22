@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class VpnGatewayVpnGatewayInterfaceResponse
     {
         /// <summary>
+        /// Numeric identifier for this VPN interface associated with the VPN gateway.
+        /// </summary>
+        public readonly int Id;
+        /// <summary>
         /// URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
         /// </summary>
         public readonly string InterconnectAttachment;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
         [OutputConstructor]
         private VpnGatewayVpnGatewayInterfaceResponse(
+            int id,
+
             string interconnectAttachment,
 
             string ipAddress)
         {
+            Id = id;
             InterconnectAttachment = interconnectAttachment;
             IpAddress = ipAddress;
         }

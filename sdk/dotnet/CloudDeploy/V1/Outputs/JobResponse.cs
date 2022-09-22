@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.DeployJobResponse DeployJob;
         /// <summary>
+        /// The ID of the Job.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The name of the `JobRun` responsible for the most recent invocation of this Job.
         /// </summary>
         public readonly string JobRun;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private JobResponse(
             Outputs.DeployJobResponse deployJob,
 
+            string id,
+
             string jobRun,
 
             string state,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
             Outputs.VerifyJobResponse verifyJob)
         {
             DeployJob = deployJob;
+            Id = id;
             JobRun = jobRun;
             State = state;
             VerifyJob = verifyJob;

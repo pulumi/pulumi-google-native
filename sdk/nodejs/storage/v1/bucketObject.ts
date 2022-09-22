@@ -43,6 +43,10 @@ export class BucketObject extends pulumi.CustomResource {
     public readonly acl!: pulumi.Output<outputs.storage.v1.ObjectAccessControlResponse[]>;
     public readonly bucket!: pulumi.Output<string>;
     /**
+     * The ID of the object, including the bucket name, object name, and generation number.
+     */
+    public readonly bucketObjectId!: pulumi.Output<string>;
+    /**
      * Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
      */
     public readonly cacheControl!: pulumi.Output<string>;
@@ -203,6 +207,7 @@ export class BucketObject extends pulumi.CustomResource {
             }
             resourceInputs["acl"] = args ? args.acl : undefined;
             resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["bucketObjectId"] = args ? args.bucketObjectId : undefined;
             resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
             resourceInputs["componentCount"] = args ? args.componentCount : undefined;
             resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
@@ -215,7 +220,6 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             resourceInputs["generation"] = args ? args.generation : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["ifGenerationMatch"] = args ? args.ifGenerationMatch : undefined;
             resourceInputs["ifGenerationNotMatch"] = args ? args.ifGenerationNotMatch : undefined;
             resourceInputs["ifMetagenerationMatch"] = args ? args.ifMetagenerationMatch : undefined;
@@ -244,6 +248,7 @@ export class BucketObject extends pulumi.CustomResource {
         } else {
             resourceInputs["acl"] = undefined /*out*/;
             resourceInputs["bucket"] = undefined /*out*/;
+            resourceInputs["bucketObjectId"] = undefined /*out*/;
             resourceInputs["cacheControl"] = undefined /*out*/;
             resourceInputs["componentCount"] = undefined /*out*/;
             resourceInputs["contentDisposition"] = undefined /*out*/;
@@ -301,6 +306,10 @@ export interface BucketObjectArgs {
      */
     bucket: pulumi.Input<string>;
     /**
+     * The ID of the object, including the bucket name, object name, and generation number.
+     */
+    bucketObjectId?: pulumi.Input<string>;
+    /**
      * Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
      */
     cacheControl?: pulumi.Input<string>;
@@ -348,10 +357,6 @@ export interface BucketObjectArgs {
      * The content generation of this object. Used for object versioning.
      */
     generation?: pulumi.Input<string>;
-    /**
-     * The ID of the object, including the bucket name, object name, and generation number.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      */

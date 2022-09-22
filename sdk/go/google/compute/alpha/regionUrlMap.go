@@ -41,6 +41,8 @@ type RegionUrlMap struct {
 	PathMatchers PathMatcherResponseArrayOutput `pulumi:"pathMatchers"`
 	Project      pulumi.StringOutput            `pulumi:"project"`
 	Region       pulumi.StringOutput            `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionUrlMapId pulumi.StringOutput `pulumi:"regionUrlMapId"`
 	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
@@ -255,6 +257,11 @@ func (o RegionUrlMapOutput) Project() pulumi.StringOutput {
 
 func (o RegionUrlMapOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionUrlMapOutput) RegionUrlMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.RegionUrlMapId }).(pulumi.StringOutput)
 }
 
 // begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.

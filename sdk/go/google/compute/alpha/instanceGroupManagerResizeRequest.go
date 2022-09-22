@@ -22,6 +22,8 @@ type InstanceGroupManagerResizeRequest struct {
 	// An optional description of this resource.
 	Description          pulumi.StringOutput `pulumi:"description"`
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	InstanceGroupManagerResizeRequestId pulumi.StringOutput `pulumi:"instanceGroupManagerResizeRequestId"`
 	// The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
@@ -176,6 +178,13 @@ func (o InstanceGroupManagerResizeRequestOutput) Description() pulumi.StringOutp
 
 func (o InstanceGroupManagerResizeRequestOutput) InstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringOutput { return v.InstanceGroupManager }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o InstanceGroupManagerResizeRequestOutput) InstanceGroupManagerResizeRequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.StringOutput {
+		return v.InstanceGroupManagerResizeRequestId
+	}).(pulumi.StringOutput)
 }
 
 // The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.

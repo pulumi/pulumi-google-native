@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetVpnGatewayResult:
-    def __init__(__self__, creation_timestamp=None, description=None, forwarding_rules=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, status=None, tunnels=None):
+    def __init__(__self__, creation_timestamp=None, description=None, forwarding_rules=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, status=None, tunnels=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -28,6 +28,9 @@ class GetTargetVpnGatewayResult:
         if forwarding_rules and not isinstance(forwarding_rules, list):
             raise TypeError("Expected argument 'forwarding_rules' to be a list")
         pulumi.set(__self__, "forwarding_rules", forwarding_rules)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -79,6 +82,14 @@ class GetTargetVpnGatewayResult:
         A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
         """
         return pulumi.get(self, "forwarding_rules")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -162,6 +173,7 @@ class AwaitableGetTargetVpnGatewayResult(GetTargetVpnGatewayResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             forwarding_rules=self.forwarding_rules,
+            id=self.id,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -191,6 +203,7 @@ def get_target_vpn_gateway(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         forwarding_rules=__ret__.forwarding_rules,
+        id=__ret__.id,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,

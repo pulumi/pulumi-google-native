@@ -51,6 +51,10 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public readonly instanceGroupManager!: pulumi.Output<string>;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly instanceGroupManagerResizeRequestId!: pulumi.Output<string>;
+    /**
      * The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerResizeRequestId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -118,6 +123,7 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["instanceGroupManager"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerResizeRequestId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

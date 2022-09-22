@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+        /// </summary>
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
+        /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         /// </summary>
         [Output("authDomain")]
@@ -145,6 +151,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+        /// </summary>
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
         /// </summary>
         [Input("authDomain")]
@@ -188,12 +200,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
         [Input("iap")]
         public Input<Inputs.IdentityAwareProxyArgs>? Iap { get; set; }
-
-        /// <summary>
-        /// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).

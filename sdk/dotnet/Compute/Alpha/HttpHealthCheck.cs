@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("httpHealthCheckId")]
+        public Output<string> HttpHealthCheckId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
         /// </summary>
         [Output("kind")]

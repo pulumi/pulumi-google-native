@@ -63,6 +63,10 @@ export interface GetBuildResult {
      */
     readonly finishTime: string;
     /**
+     * Unique identifier of the build.
+     */
+    readonly id: string;
+    /**
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
      */
     readonly images: string[];

@@ -37,6 +37,8 @@ type TypeProvider struct {
 	Project pulumi.StringOutput   `pulumi:"project"`
 	// Self link for the type provider.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Unique identifier for the resource defined by the server.
+	TypeProviderId pulumi.StringOutput `pulumi:"typeProviderId"`
 }
 
 // NewTypeProvider registers a new resource with the given unique name, arguments, and options.
@@ -216,6 +218,11 @@ func (o TypeProviderOutput) Project() pulumi.StringOutput {
 // Self link for the type provider.
 func (o TypeProviderOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the resource defined by the server.
+func (o TypeProviderOutput) TypeProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.TypeProviderId }).(pulumi.StringOutput)
 }
 
 func init() {

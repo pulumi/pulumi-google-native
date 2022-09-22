@@ -290,6 +290,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["server_binding"] = server_binding
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["node_template_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["status"] = None
@@ -326,6 +327,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["node_affinity_labels"] = None
+        __props__.__dict__["node_template_id"] = None
         __props__.__dict__["node_type"] = None
         __props__.__dict__["node_type_flexibility"] = None
         __props__.__dict__["project"] = None
@@ -395,6 +397,14 @@ class NodeTemplate(pulumi.CustomResource):
         Labels to use for node affinity, which will be used in instance scheduling.
         """
         return pulumi.get(self, "node_affinity_labels")
+
+    @property
+    @pulumi.getter(name="nodeTemplateId")
+    def node_template_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "node_template_id")
 
     @property
     @pulumi.getter(name="nodeType")

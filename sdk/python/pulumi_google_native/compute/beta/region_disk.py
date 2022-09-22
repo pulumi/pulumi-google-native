@@ -696,6 +696,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
             __props__.__dict__["locked"] = None
+            __props__.__dict__["region_disk_id"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
@@ -752,6 +753,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["provisioned_iops"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_disk_id"] = None
         __props__.__dict__["replica_zones"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_policies"] = None
@@ -960,6 +962,14 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionDiskId")
+    def region_disk_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_disk_id")
 
     @property
     @pulumi.getter(name="replicaZones")

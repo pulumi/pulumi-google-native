@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouterResult:
-    def __init__(__self__, bgp=None, bgp_peers=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, interfaces=None, kind=None, name=None, nats=None, network=None, region=None, self_link=None):
+    def __init__(__self__, bgp=None, bgp_peers=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, interfaces=None, kind=None, name=None, nats=None, network=None, region=None, self_link=None):
         if bgp and not isinstance(bgp, dict):
             raise TypeError("Expected argument 'bgp' to be a dict")
         pulumi.set(__self__, "bgp", bgp)
@@ -35,6 +35,9 @@ class GetRouterResult:
         if encrypted_interconnect_router and not isinstance(encrypted_interconnect_router, bool):
             raise TypeError("Expected argument 'encrypted_interconnect_router' to be a bool")
         pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if interfaces and not isinstance(interfaces, list):
             raise TypeError("Expected argument 'interfaces' to be a list")
         pulumi.set(__self__, "interfaces", interfaces)
@@ -96,6 +99,14 @@ class GetRouterResult:
         Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
         """
         return pulumi.get(self, "encrypted_interconnect_router")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -165,6 +176,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             encrypted_interconnect_router=self.encrypted_interconnect_router,
+            id=self.id,
             interfaces=self.interfaces,
             kind=self.kind,
             name=self.name,
@@ -194,6 +206,7 @@ def get_router(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         encrypted_interconnect_router=__ret__.encrypted_interconnect_router,
+        id=__ret__.id,
         interfaces=__ret__.interfaces,
         kind=__ret__.kind,
         name=__ret__.name,

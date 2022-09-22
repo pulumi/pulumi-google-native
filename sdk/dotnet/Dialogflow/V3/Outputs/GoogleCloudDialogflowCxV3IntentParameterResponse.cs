@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly string EntityType;
         /// <summary>
+        /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Indicates whether the parameter represents a list of values.
         /// </summary>
         public readonly bool IsList;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3IntentParameterResponse(
             string entityType,
 
+            string id,
+
             bool isList,
 
             bool redact)
         {
             EntityType = entityType;
+            Id = id;
             IsList = isList;
             Redact = redact;
         }

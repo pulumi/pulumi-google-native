@@ -75,6 +75,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.compute.v1.SecurityPolicyRuleResponse[]>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly securityPolicyId!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -113,6 +117,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["securityPolicyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["adaptiveProtectionConfig"] = undefined /*out*/;
@@ -128,6 +133,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
+            resourceInputs["securityPolicyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["validateOnly"] = undefined /*out*/;

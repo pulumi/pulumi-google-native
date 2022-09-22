@@ -2668,6 +2668,8 @@ type ExecutionStageSummaryResponse struct {
 	ComponentSource []ComponentSourceResponse `pulumi:"componentSource"`
 	// Transforms that comprise this execution stage.
 	ComponentTransform []ComponentTransformResponse `pulumi:"componentTransform"`
+	// Dataflow service generated id for this stage.
+	Id string `pulumi:"id"`
 	// Input sources for this stage.
 	InputSource []StageSourceResponse `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
@@ -2703,6 +2705,11 @@ func (o ExecutionStageSummaryResponseOutput) ComponentSource() ComponentSourceRe
 // Transforms that comprise this execution stage.
 func (o ExecutionStageSummaryResponseOutput) ComponentTransform() ComponentTransformResponseArrayOutput {
 	return o.ApplyT(func(v ExecutionStageSummaryResponse) []ComponentTransformResponse { return v.ComponentTransform }).(ComponentTransformResponseArrayOutput)
+}
+
+// Dataflow service generated id for this stage.
+func (o ExecutionStageSummaryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionStageSummaryResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Input sources for this stage.
@@ -6356,6 +6363,8 @@ func (o TransformSummaryArrayOutput) Index(i pulumi.IntInput) TransformSummaryOu
 type TransformSummaryResponse struct {
 	// Transform-specific display data.
 	DisplayData []DisplayDataResponse `pulumi:"displayData"`
+	// SDK generated id of this transform instance.
+	Id string `pulumi:"id"`
 	// User names for all collection inputs to this transform.
 	InputCollectionName []string `pulumi:"inputCollectionName"`
 	// Type of transform.
@@ -6384,6 +6393,11 @@ func (o TransformSummaryResponseOutput) ToTransformSummaryResponseOutputWithCont
 // Transform-specific display data.
 func (o TransformSummaryResponseOutput) DisplayData() DisplayDataResponseArrayOutput {
 	return o.ApplyT(func(v TransformSummaryResponse) []DisplayDataResponse { return v.DisplayData }).(DisplayDataResponseArrayOutput)
+}
+
+// SDK generated id of this transform instance.
+func (o TransformSummaryResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformSummaryResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // User names for all collection inputs to this transform.

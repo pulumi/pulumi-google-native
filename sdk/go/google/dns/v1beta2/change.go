@@ -20,6 +20,8 @@ type Change struct {
 
 	// Which ResourceRecordSets to add?
 	Additions ResourceRecordSetResponseArrayOutput `pulumi:"additions"`
+	// Unique identifier for the resource; defined by the server (output only).
+	ChangeId pulumi.StringOutput `pulumi:"changeId"`
 	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId pulumi.StringPtrOutput `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
@@ -150,6 +152,11 @@ func (o ChangeOutput) ToChangeOutputWithContext(ctx context.Context) ChangeOutpu
 // Which ResourceRecordSets to add?
 func (o ChangeOutput) Additions() ResourceRecordSetResponseArrayOutput {
 	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Additions }).(ResourceRecordSetResponseArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o ChangeOutput) ChangeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.ChangeId }).(pulumi.StringOutput)
 }
 
 // For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.

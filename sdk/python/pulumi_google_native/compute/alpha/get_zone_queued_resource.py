@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetZoneQueuedResourceResult:
-    def __init__(__self__, bulk_insert_instance_resource=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, region=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
+    def __init__(__self__, bulk_insert_instance_resource=None, creation_timestamp=None, description=None, id=None, kind=None, name=None, queuing_policy=None, region=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
         if bulk_insert_instance_resource and not isinstance(bulk_insert_instance_resource, dict):
             raise TypeError("Expected argument 'bulk_insert_instance_resource' to be a dict")
         pulumi.set(__self__, "bulk_insert_instance_resource", bulk_insert_instance_resource)
@@ -29,6 +29,9 @@ class GetZoneQueuedResourceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -80,6 +83,14 @@ class GetZoneQueuedResourceResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -163,6 +174,7 @@ class AwaitableGetZoneQueuedResourceResult(GetZoneQueuedResourceResult):
             bulk_insert_instance_resource=self.bulk_insert_instance_resource,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             queuing_policy=self.queuing_policy,
@@ -192,6 +204,7 @@ def get_zone_queued_resource(project: Optional[str] = None,
         bulk_insert_instance_resource=__ret__.bulk_insert_instance_resource,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         queuing_policy=__ret__.queuing_policy,

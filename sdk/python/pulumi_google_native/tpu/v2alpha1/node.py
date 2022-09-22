@@ -568,7 +568,7 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> pulumi.Output[Optional[str]]:
+    def node_id(self) -> pulumi.Output[str]:
         """
         The unqualified resource name.
         """

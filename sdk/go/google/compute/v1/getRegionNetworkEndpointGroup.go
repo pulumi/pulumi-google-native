@@ -41,6 +41,8 @@ type LookupRegionNetworkEndpointGroupResult struct {
 	DefaultPort int `pulumi:"defaultPort"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind string `pulumi:"kind"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -137,6 +139,11 @@ func (o LookupRegionNetworkEndpointGroupResultOutput) DefaultPort() pulumi.IntOu
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupRegionNetworkEndpointGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionNetworkEndpointGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#networkEndpointGroup for network endpoint group.

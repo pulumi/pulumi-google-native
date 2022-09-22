@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkEndpointGroupId")]
+        public Output<string> NetworkEndpointGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         [Output("networkEndpointType")]

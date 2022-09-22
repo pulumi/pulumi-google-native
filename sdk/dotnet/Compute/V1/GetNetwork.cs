@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string GatewayIPv4;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
         /// </summary>
         public readonly string InternalIpv6Range;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string gatewayIPv4,
 
+            string id,
+
             string internalIpv6Range,
 
             string ipv4Range,
@@ -168,6 +174,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             EnableUlaInternalIpv6 = enableUlaInternalIpv6;
             FirewallPolicy = firewallPolicy;
             GatewayIPv4 = gatewayIPv4;
+            Id = id;
             InternalIpv6Range = internalIpv6Range;
             Ipv4Range = ipv4Range;
             Kind = kind;

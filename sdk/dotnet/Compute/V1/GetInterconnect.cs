@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string GoogleReferenceId;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         /// </summary>
         public readonly ImmutableArray<string> InterconnectAttachments;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string googleReferenceId,
 
+            string id,
+
             ImmutableArray<string> interconnectAttachments,
 
             string interconnectType,
@@ -200,6 +206,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             ExpectedOutages = expectedOutages;
             GoogleIpAddress = googleIpAddress;
             GoogleReferenceId = googleReferenceId;
+            Id = id;
             InterconnectAttachments = interconnectAttachments;
             InterconnectType = interconnectType;
             Kind = kind;

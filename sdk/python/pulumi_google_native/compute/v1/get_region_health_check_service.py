@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionHealthCheckServiceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, id=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -34,6 +34,9 @@ class GetRegionHealthCheckServiceResult:
         if health_status_aggregation_policy and not isinstance(health_status_aggregation_policy, str):
             raise TypeError("Expected argument 'health_status_aggregation_policy' to be a str")
         pulumi.set(__self__, "health_status_aggregation_policy", health_status_aggregation_policy)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -95,6 +98,14 @@ class GetRegionHealthCheckServiceResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
@@ -153,6 +164,7 @@ class AwaitableGetRegionHealthCheckServiceResult(GetRegionHealthCheckServiceResu
             fingerprint=self.fingerprint,
             health_checks=self.health_checks,
             health_status_aggregation_policy=self.health_status_aggregation_policy,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             network_endpoint_groups=self.network_endpoint_groups,
@@ -181,6 +193,7 @@ def get_region_health_check_service(health_check_service: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         health_checks=__ret__.health_checks,
         health_status_aggregation_policy=__ret__.health_status_aggregation_policy,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         network_endpoint_groups=__ret__.network_endpoint_groups,

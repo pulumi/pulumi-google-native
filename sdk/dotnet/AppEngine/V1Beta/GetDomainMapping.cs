@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     public sealed class GetDomainMappingResult
     {
         /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         /// </summary>
         public readonly string Name;
@@ -72,12 +76,15 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
         [OutputConstructor]
         private GetDomainMappingResult(
+            string id,
+
             string name,
 
             ImmutableArray<Outputs.ResourceRecordResponse> resourceRecords,
 
             Outputs.SslSettingsResponse sslSettings)
         {
+            Id = id;
             Name = name;
             ResourceRecords = resourceRecords;
             SslSettings = sslSettings;

@@ -203,6 +203,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["source_instance"] = source_instance
             __props__.__dict__["source_instance_params"] = source_instance_params
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["instance_template_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -231,6 +232,7 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["instance_template_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -256,6 +258,14 @@ class InstanceTemplate(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="instanceTemplateId")
+    def instance_template_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this instance template. The server defines this identifier.
+        """
+        return pulumi.get(self, "instance_template_id")
 
     @property
     @pulumi.getter

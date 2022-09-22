@@ -17,6 +17,8 @@ type DomainMapping struct {
 	pulumi.CustomResourceState
 
 	AppId pulumi.StringOutput `pulumi:"appId"`
+	// Relative name of the domain serving the application. Example: example.com.
+	DomainMappingId pulumi.StringOutput `pulumi:"domainMappingId"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
@@ -77,7 +79,7 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	AppId string `pulumi:"appId"`
 	// Relative name of the domain serving the application. Example: example.com.
-	Id *string `pulumi:"id"`
+	DomainMappingId *string `pulumi:"domainMappingId"`
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
 	NoManagedCertificate *bool `pulumi:"noManagedCertificate"`
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
@@ -90,7 +92,7 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	AppId pulumi.StringInput
 	// Relative name of the domain serving the application. Example: example.com.
-	Id pulumi.StringPtrInput
+	DomainMappingId pulumi.StringPtrInput
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
 	NoManagedCertificate pulumi.BoolPtrInput
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
@@ -138,6 +140,11 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 
 func (o DomainMappingOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Relative name of the domain serving the application. Example: example.com.
+func (o DomainMappingOutput) DomainMappingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DomainMappingId }).(pulumi.StringOutput)
 }
 
 // Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.

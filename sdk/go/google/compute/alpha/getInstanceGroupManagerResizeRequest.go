@@ -34,6 +34,8 @@ type LookupInstanceGroupManagerResizeRequestResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description string `pulumi:"description"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
 	Kind string `pulumi:"kind"`
 	// The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
@@ -103,6 +105,11 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) CreationTimestamp()
 // An optional description of this resource.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o LookupInstanceGroupManagerResizeRequestResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.

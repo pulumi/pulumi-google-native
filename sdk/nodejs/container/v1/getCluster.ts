@@ -113,6 +113,10 @@ export interface GetClusterResult {
      */
     readonly expireTime: string;
     /**
+     * Unique id for the cluster.
+     */
+    readonly id: string;
+    /**
      * Configuration for Identity Service component.
      */
     readonly identityServiceConfig: outputs.container.v1.IdentityServiceConfigResponse;

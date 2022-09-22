@@ -486,6 +486,7 @@ _utilities.register(
    "google-native:apigee/v1:Alias": "Alias",
    "google-native:apigee/v1:Api": "Api",
    "google-native:apigee/v1:ApiProduct": "ApiProduct",
+   "google-native:apigee/v1:Apicategory": "Apicategory",
    "google-native:apigee/v1:App": "App",
    "google-native:apigee/v1:ArchiveDeployment": "ArchiveDeployment",
    "google-native:apigee/v1:CanaryEvaluation": "CanaryEvaluation",

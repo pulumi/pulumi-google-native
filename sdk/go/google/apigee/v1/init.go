@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "google-native:apigee/v1:ApiProduct":
 		r = &ApiProduct{}
+	case "google-native:apigee/v1:Apicategory":
+		r = &Apicategory{}
 	case "google-native:apigee/v1:App":
 		r = &App{}
 	case "google-native:apigee/v1:ArchiveDeployment":

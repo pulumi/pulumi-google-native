@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly string FinishTime;
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Google Cloud Storage bucket where logs were written.
         /// </summary>
         public readonly string LogsBucket;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string finishTime,
 
+            string id,
+
             string logsBucket,
 
             string project,
@@ -98,6 +104,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             CreateTime = createTime;
             Creator = creator;
             FinishTime = finishTime;
+            Id = id;
             LogsBucket = logsBucket;
             Project = project;
             SourceProvenance = sourceProvenance;

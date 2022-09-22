@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetDomainMappingResult:
-    def __init__(__self__, name=None, resource_records=None, ssl_settings=None):
+    def __init__(__self__, id=None, name=None, resource_records=None, ssl_settings=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -29,6 +32,14 @@ class GetDomainMappingResult:
         if ssl_settings and not isinstance(ssl_settings, dict):
             raise TypeError("Expected argument 'ssl_settings' to be a dict")
         pulumi.set(__self__, "ssl_settings", ssl_settings)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Relative name of the domain serving the application. Example: example.com.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -61,6 +72,7 @@ class AwaitableGetDomainMappingResult(GetDomainMappingResult):
         if False:
             yield self
         return GetDomainMappingResult(
+            id=self.id,
             name=self.name,
             resource_records=self.resource_records,
             ssl_settings=self.ssl_settings)
@@ -79,6 +91,7 @@ def get_domain_mapping(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1:getDomainMapping', __args__, opts=opts, typ=GetDomainMappingResult).value
 
     return AwaitableGetDomainMappingResult(
+        id=__ret__.id,
         name=__ret__.name,
         resource_records=__ret__.resource_records,
         ssl_settings=__ret__.ssl_settings)

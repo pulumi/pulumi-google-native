@@ -34,7 +34,6 @@ class VersionArgs:
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]] = None,
                  health_check: Optional[pulumi.Input['HealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]]] = None,
@@ -51,6 +50,7 @@ class VersionArgs:
                  service_account: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input['VpcAccessConnectorArgs']] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -71,7 +71,6 @@ class VersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input['LibraryArgs']]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
@@ -88,6 +87,7 @@ class VersionArgs:
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
+        :param pulumi.Input[str] version_id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input['VpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
@@ -124,8 +124,6 @@ class VersionArgs:
             pulumi.set(__self__, "handlers", handlers)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if inbound_services is not None:
             pulumi.set(__self__, "inbound_services", inbound_services)
         if instance_class is not None:
@@ -158,6 +156,8 @@ class VersionArgs:
             pulumi.set(__self__, "serving_status", serving_status)
         if threadsafe is not None:
             pulumi.set(__self__, "threadsafe", threadsafe)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
         if vm is not None:
             pulumi.set(__self__, "vm", vm)
         if vpc_access_connector is not None:
@@ -367,18 +367,6 @@ class VersionArgs:
         pulumi.set(self, "health_check", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="inboundServices")
     def inbound_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]]:
         """
@@ -571,6 +559,18 @@ class VersionArgs:
         pulumi.set(self, "threadsafe", value)
 
     @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+    @property
     @pulumi.getter
     def vm(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -628,7 +628,6 @@ class Version(pulumi.CustomResource):
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
@@ -646,6 +645,7 @@ class Version(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -671,7 +671,6 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
@@ -688,6 +687,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
+        :param pulumi.Input[str] version_id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
@@ -733,7 +733,6 @@ class Version(pulumi.CustomResource):
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
@@ -751,6 +750,7 @@ class Version(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -781,7 +781,6 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["error_handlers"] = error_handlers
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["health_check"] = health_check
-            __props__.__dict__["id"] = id
             __props__.__dict__["inbound_services"] = inbound_services
             __props__.__dict__["instance_class"] = instance_class
             __props__.__dict__["libraries"] = libraries
@@ -801,6 +800,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["threadsafe"] = threadsafe
+            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["vm"] = vm
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
             if zones is not None and not opts.urn:
@@ -873,6 +873,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["service_id"] = None
         __props__.__dict__["serving_status"] = None
         __props__.__dict__["threadsafe"] = None
+        __props__.__dict__["version_id"] = None
         __props__.__dict__["version_url"] = None
         __props__.__dict__["vm"] = None
         __props__.__dict__["vpc_access_connector"] = None
@@ -1168,6 +1169,14 @@ class Version(pulumi.CustomResource):
         Whether multiple requests can be dispatched to this version at once.
         """
         return pulumi.get(self, "threadsafe")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[str]:
+        """
+        Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        """
+        return pulumi.get(self, "version_id")
 
     @property
     @pulumi.getter(name="versionUrl")

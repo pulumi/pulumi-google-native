@@ -32,6 +32,8 @@ type LookupCatalogItemResult struct {
 	CategoryHierarchies []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
 	Description string `pulumi:"description"`
+	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+	Id string `pulumi:"id"`
 	// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapResponse `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
@@ -96,6 +98,11 @@ func (o LookupCatalogItemResultOutput) CategoryHierarchies() GoogleCloudRecommen
 // Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
 func (o LookupCatalogItemResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogItemResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+func (o LookupCatalogItemResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.

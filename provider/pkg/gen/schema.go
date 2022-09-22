@@ -622,6 +622,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			return err
 		}
 
+		// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+		g.dedupeId(typeName, bodyBag)
+
 		isOutput := func(desc string) bool {
 			lowerDesc := strings.ToLower(desc)
 			return isReadOnly(lowerDesc) ||
@@ -699,6 +702,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err != nil {
 			return err
 		}
+
+		// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+		g.dedupeId(typeName, responseBag)
 
 		if err = mergo.Merge(&properties, responseBag.specs); err != nil {
 			return err
@@ -1008,6 +1014,43 @@ func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOpera
 	cloudOp.Operations.EmbeddedOperationField = embeddedOperationFieldName
 }
 
+func (g *packageGenerator) dedupeId(typeName string, resourcePropBag *propertyBag) {
+	newId := apiPropNameToSdkName(typeName, typeName+"Id")
+
+	// First check if an existing property with the name id exists in the resource properties (at the top level).
+	// Replace with the newId if so.
+	props, exists := resourcePropBag.specs["id"]
+	if !exists {
+		return
+	}
+
+	tok := g.genToken(typeName)
+	ignoreCollision := false
+	if _, exists = resourcePropBag.specs[newId]; exists {
+		if tok == "google-native:baremetalsolution/v2:NfsShare" {
+			ignoreCollision = true
+		} else {
+			contract.Failf("Conflicting existing ID field: %q in %q", newId, g.genToken(typeName))
+		}
+	}
+
+	delete(resourcePropBag.specs, "id")
+	resourcePropBag.specs[newId] = props
+	if resourcePropBag.requiredSpecs.Has("id") {
+		resourcePropBag.requiredSpecs.Delete("id")
+		resourcePropBag.requiredSpecs.Add(newId)
+	}
+
+	// Next update the metadata to map the id field to newId as the SDK name.
+	metadata := resourcePropBag.properties
+	propMetadata, exists := metadata[newId]
+	if exists && !ignoreCollision {
+		contract.Failf("Conflicting existing ID field: %q in %q", newId, g.genToken(typeName))
+	}
+	propMetadata.SdkName = newId
+	metadata["id"] = propMetadata
+}
+
 func (g *packageGenerator) genFunction(typeName string, getMethod *discovery.RestMethod) error {
 	resourceTok := g.genToken("get" + typeName)
 
@@ -1238,9 +1281,6 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		readOnly := value.ReadOnly || isReadOnly(value.Description)
 		if !isOutput && readOnly {
-			continue
-		}
-		if isOutput && name == "id" {
 			continue
 		}
 

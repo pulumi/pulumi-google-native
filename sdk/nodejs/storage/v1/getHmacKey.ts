@@ -36,6 +36,10 @@ export interface GetHmacKeyResult {
      */
     readonly etag: string;
     /**
+     * The ID of the HMAC key, including the Project ID and the Access ID.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
      */
     readonly kind: string;

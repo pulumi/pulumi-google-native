@@ -204,6 +204,7 @@ class ZoneQueuedResource(pulumi.CustomResource):
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["zone_queued_resource_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "zone"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ZoneQueuedResource, __self__).__init__(
@@ -242,6 +243,7 @@ class ZoneQueuedResource(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["zone"] = None
+        __props__.__dict__["zone_queued_resource_id"] = None
         return ZoneQueuedResource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -349,4 +351,12 @@ class ZoneQueuedResource(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         return pulumi.get(self, "zone")
+
+    @property
+    @pulumi.getter(name="zoneQueuedResourceId")
+    def zone_queued_resource_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "zone_queued_resource_id")
 

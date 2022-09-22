@@ -450,6 +450,8 @@ type BucketAccessControlResponse struct {
 	EntityId string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag string `pulumi:"etag"`
+	// The ID of the access-control entry.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -514,6 +516,11 @@ func (o BucketAccessControlResponseOutput) EntityId() pulumi.StringOutput {
 // HTTP 1.1 Entity tag for the access-control entry.
 func (o BucketAccessControlResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o BucketAccessControlResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
@@ -5518,6 +5525,8 @@ type ObjectAccessControlResponse struct {
 	Etag string `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation string `pulumi:"generation"`
+	// The ID of the access-control entry.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
@@ -5589,6 +5598,11 @@ func (o ObjectAccessControlResponseOutput) Etag() pulumi.StringOutput {
 // The content generation of the object, if applied to an object.
 func (o ObjectAccessControlResponseOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o ObjectAccessControlResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For object access control entries, this is always storage#objectAccessControl.

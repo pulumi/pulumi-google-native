@@ -40,6 +40,10 @@ export interface GetVpnTunnelResult {
      */
     readonly detailedStatus: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
      */
     readonly ikeVersion: number;

@@ -61,6 +61,8 @@ type LookupRegionBackendServiceResult struct {
 	HealthChecks []string `pulumi:"healthChecks"`
 	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 	Iap BackendServiceIAPResponse `pulumi:"iap"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of resource. Always compute#backendService for backend services.
 	Kind string `pulumi:"kind"`
 	// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -237,6 +239,11 @@ func (o LookupRegionBackendServiceResultOutput) HealthChecks() pulumi.StringArra
 // The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
 func (o LookupRegionBackendServiceResultOutput) Iap() BackendServiceIAPResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) BackendServiceIAPResponse { return v.Iap }).(BackendServiceIAPResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionBackendServiceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of resource. Always compute#backendService for backend services.

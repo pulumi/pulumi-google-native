@@ -104,6 +104,7 @@
         "apigee/v1/alias.ts",
         "apigee/v1/api.ts",
         "apigee/v1/apiProduct.ts",
+        "apigee/v1/apicategory.ts",
         "apigee/v1/app.ts",
         "apigee/v1/archiveDeployment.ts",
         "apigee/v1/canaryEvaluation.ts",

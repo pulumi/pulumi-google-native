@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupRunResult:
-    def __init__(__self__, backup_kind=None, description=None, disk_encryption_configuration=None, disk_encryption_status=None, end_time=None, enqueued_time=None, error=None, instance=None, kind=None, location=None, self_link=None, start_time=None, status=None, time_zone=None, type=None, window_start_time=None):
+    def __init__(__self__, backup_kind=None, description=None, disk_encryption_configuration=None, disk_encryption_status=None, end_time=None, enqueued_time=None, error=None, id=None, instance=None, kind=None, location=None, self_link=None, start_time=None, status=None, time_zone=None, type=None, window_start_time=None):
         if backup_kind and not isinstance(backup_kind, str):
             raise TypeError("Expected argument 'backup_kind' to be a str")
         pulumi.set(__self__, "backup_kind", backup_kind)
@@ -41,6 +41,9 @@ class GetBackupRunResult:
         if error and not isinstance(error, dict):
             raise TypeError("Expected argument 'error' to be a dict")
         pulumi.set(__self__, "error", error)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instance and not isinstance(instance, str):
             raise TypeError("Expected argument 'instance' to be a str")
         pulumi.set(__self__, "instance", instance)
@@ -124,6 +127,14 @@ class GetBackupRunResult:
         Information about why the backup operation failed. This is only present if the run has the FAILED status.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -211,6 +222,7 @@ class AwaitableGetBackupRunResult(GetBackupRunResult):
             end_time=self.end_time,
             enqueued_time=self.enqueued_time,
             error=self.error,
+            id=self.id,
             instance=self.instance,
             kind=self.kind,
             location=self.location,
@@ -244,6 +256,7 @@ def get_backup_run(id: Optional[str] = None,
         end_time=__ret__.end_time,
         enqueued_time=__ret__.enqueued_time,
         error=__ret__.error,
+        id=__ret__.id,
         instance=__ret__.instance,
         kind=__ret__.kind,
         location=__ret__.location,

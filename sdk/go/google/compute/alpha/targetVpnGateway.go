@@ -39,6 +39,8 @@ type TargetVpnGateway struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetVpnGatewayId pulumi.StringOutput `pulumi:"targetVpnGatewayId"`
 	// A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
 	Tunnels pulumi.StringArrayOutput `pulumi:"tunnels"`
 }
@@ -218,6 +220,11 @@ func (o TargetVpnGatewayOutput) SelfLink() pulumi.StringOutput {
 // The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
 func (o TargetVpnGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetVpnGatewayOutput) TargetVpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.TargetVpnGatewayId }).(pulumi.StringOutput)
 }
 
 // A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.

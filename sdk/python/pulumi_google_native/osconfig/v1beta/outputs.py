@@ -1380,15 +1380,18 @@ class SoftwareRecipeArtifactResponse(dict):
     def __init__(__self__, *,
                  allow_insecure: bool,
                  gcs: 'outputs.SoftwareRecipeArtifactGcsResponse',
+                 id: str,
                  remote: 'outputs.SoftwareRecipeArtifactRemoteResponse'):
         """
         Specifies a resource to be used in the recipe.
         :param bool allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
         :param 'SoftwareRecipeArtifactGcsResponse' gcs: A Google Cloud Storage artifact.
+        :param str id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         :param 'SoftwareRecipeArtifactRemoteResponse' remote: A generic remote artifact.
         """
         pulumi.set(__self__, "allow_insecure", allow_insecure)
         pulumi.set(__self__, "gcs", gcs)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "remote", remote)
 
     @property
@@ -1406,6 +1409,14 @@ class SoftwareRecipeArtifactResponse(dict):
         A Google Cloud Storage artifact.
         """
         return pulumi.get(self, "gcs")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2103,12 +2114,23 @@ class TimeZoneResponse(dict):
     Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
     """
     def __init__(__self__, *,
+                 id: str,
                  version: str):
         """
         Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
+        :param str id: IANA Time Zone Database time zone, e.g. "America/New_York".
         :param str version: Optional. IANA Time Zone Database version number, e.g. "2019a".
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        IANA Time Zone Database time zone, e.g. "America/New_York".
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2313,16 +2335,19 @@ class YumRepositoryResponse(dict):
     def __init__(__self__, *,
                  base_url: str,
                  display_name: str,
-                 gpg_keys: Sequence[str]):
+                 gpg_keys: Sequence[str],
+                 id: str):
         """
         Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
         :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
+        :param str id: A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "gpg_keys", gpg_keys)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -2347,6 +2372,14 @@ class YumRepositoryResponse(dict):
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -2450,16 +2483,19 @@ class ZypperRepositoryResponse(dict):
     def __init__(__self__, *,
                  base_url: str,
                  display_name: str,
-                 gpg_keys: Sequence[str]):
+                 gpg_keys: Sequence[str],
+                 id: str):
         """
         Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
         :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
+        :param str id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "gpg_keys", gpg_keys)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -2484,6 +2520,14 @@ class ZypperRepositoryResponse(dict):
         URIs of GPG keys.
         """
         return pulumi.get(self, "gpg_keys")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

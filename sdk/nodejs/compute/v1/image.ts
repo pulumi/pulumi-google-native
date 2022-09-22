@@ -78,6 +78,10 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly imageEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly imageId!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#image for images.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -208,6 +212,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceType"] = args ? args.sourceType : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["imageId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
@@ -227,6 +232,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["forceCreate"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["imageEncryptionKey"] = undefined /*out*/;
+            resourceInputs["imageId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;

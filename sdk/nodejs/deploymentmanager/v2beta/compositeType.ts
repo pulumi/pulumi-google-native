@@ -37,6 +37,7 @@ export class CompositeType extends pulumi.CustomResource {
         return obj['__pulumiType'] === CompositeType.__pulumiType;
     }
 
+    public readonly compositeTypeId!: pulumi.Output<string>;
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
@@ -79,8 +80,8 @@ export class CompositeType extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["compositeTypeId"] = args ? args.compositeTypeId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -90,6 +91,7 @@ export class CompositeType extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["compositeTypeId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["insertTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -111,11 +113,11 @@ export class CompositeType extends pulumi.CustomResource {
  * The set of arguments for constructing a CompositeType resource.
  */
 export interface CompositeTypeArgs {
+    compositeTypeId?: pulumi.Input<string>;
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
     description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
     /**
      * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */

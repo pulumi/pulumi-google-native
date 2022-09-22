@@ -31,6 +31,8 @@ type LookupRegionTargetTcpProxyResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -92,6 +94,11 @@ func (o LookupRegionTargetTcpProxyResultOutput) CreationTimestamp() pulumi.Strin
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupRegionTargetTcpProxyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionTargetTcpProxyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRegionTargetTcpProxyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetTcpProxyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#targetTcpProxy for target TCP proxies.

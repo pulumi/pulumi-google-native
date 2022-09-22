@@ -20,6 +20,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        [Output("defaultObjectAccessControlId")]
+        public Output<string> DefaultObjectAccessControlId { get; private set; } = null!;
+
+        /// <summary>
         /// The domain associated with the entity, if any.
         /// </summary>
         [Output("domain")]
@@ -158,6 +164,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        [Input("defaultObjectAccessControlId")]
+        public Input<string>? DefaultObjectAccessControlId { get; set; }
+
+        /// <summary>
         /// The domain associated with the entity, if any.
         /// </summary>
         [Input("domain")]
@@ -203,12 +215,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
-
-        /// <summary>
-        /// The ID of the access-control entry.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.

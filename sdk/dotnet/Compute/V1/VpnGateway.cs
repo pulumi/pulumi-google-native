@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> StackType { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("vpnGatewayId")]
+        public Output<string> VpnGatewayId { get; private set; } = null!;
+
+        /// <summary>
         /// The list of VPN interfaces associated with this VPN gateway.
         /// </summary>
         [Output("vpnInterfaces")]

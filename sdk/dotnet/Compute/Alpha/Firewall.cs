@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> EnableLogging { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<string> FirewallId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#firewall for firewall rules.
         /// </summary>
         [Output("kind")]

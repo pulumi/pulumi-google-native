@@ -29,6 +29,8 @@ type RegionAutoscaler struct {
 	// Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 	RecommendedSize pulumi.IntOutput    `pulumi:"recommendedSize"`
 	Region          pulumi.StringOutput `pulumi:"region"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	RegionAutoscalerId pulumi.StringOutput `pulumi:"regionAutoscalerId"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Status information of existing scaling schedules.
@@ -197,6 +199,11 @@ func (o RegionAutoscalerOutput) RecommendedSize() pulumi.IntOutput {
 
 func (o RegionAutoscalerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o RegionAutoscalerOutput) RegionAutoscalerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringOutput { return v.RegionAutoscalerId }).(pulumi.StringOutput)
 }
 
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

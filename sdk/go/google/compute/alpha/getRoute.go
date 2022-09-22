@@ -36,6 +36,8 @@ type LookupRouteResult struct {
 	Description string `pulumi:"description"`
 	// The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
 	DestRange string `pulumi:"destRange"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
 	IlbRouteBehaviorOnUnhealthy string `pulumi:"ilbRouteBehaviorOnUnhealthy"`
 	// Type of this resource. Always compute#routes for Route resources.
@@ -135,6 +137,11 @@ func (o LookupRouteResultOutput) Description() pulumi.StringOutput {
 // The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
 func (o LookupRouteResultOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.DestRange }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupRouteResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.

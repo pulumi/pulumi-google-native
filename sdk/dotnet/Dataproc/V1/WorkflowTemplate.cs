@@ -76,6 +76,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
+        [Output("workflowTemplateId")]
+        public Output<string> WorkflowTemplateId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a WorkflowTemplate resource with the given unique name, arguments, and options.
@@ -132,9 +135,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("jobs", required: true)]
         private InputList<Inputs.OrderedJobArgs>? _jobs;
 
@@ -188,6 +188,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        [Input("workflowTemplateId")]
+        public Input<string>? WorkflowTemplateId { get; set; }
 
         public WorkflowTemplateArgs()
         {

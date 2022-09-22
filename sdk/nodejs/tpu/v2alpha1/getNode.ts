@@ -63,6 +63,10 @@ export interface GetNodeResult {
      */
     readonly healthDescription: string;
     /**
+     * The unique identifier for the TPU Node.
+     */
+    readonly id: string;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     readonly labels: {[key: string]: string};

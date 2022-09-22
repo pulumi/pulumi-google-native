@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("organizationSecurityPolicyId")]
+        public Output<string> OrganizationSecurityPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The parent of the security policy.
         /// </summary>
         [Output("parent")]

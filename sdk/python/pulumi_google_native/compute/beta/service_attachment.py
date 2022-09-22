@@ -324,6 +324,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["psc_service_attachment_id"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["service_attachment_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServiceAttachment, __self__).__init__(
@@ -366,6 +367,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["service_attachment_id"] = None
         __props__.__dict__["target_service"] = None
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -506,6 +508,14 @@ class ServiceAttachment(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentId")
+    def service_attachment_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "service_attachment_id")
 
     @property
     @pulumi.getter(name="targetService")

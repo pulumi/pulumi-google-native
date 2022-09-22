@@ -33,6 +33,8 @@ type LookupRegionNotificationEndpointResult struct {
 	Description string `pulumi:"description"`
 	// Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
 	GrpcSettings NotificationEndpointGrpcSettingsResponse `pulumi:"grpcSettings"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#notificationEndpoint for notification endpoints.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -95,6 +97,11 @@ func (o LookupRegionNotificationEndpointResultOutput) GrpcSettings() Notificatio
 	return o.ApplyT(func(v LookupRegionNotificationEndpointResult) NotificationEndpointGrpcSettingsResponse {
 		return v.GrpcSettings
 	}).(NotificationEndpointGrpcSettingsResponseOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o LookupRegionNotificationEndpointResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionNotificationEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#notificationEndpoint for notification endpoints.

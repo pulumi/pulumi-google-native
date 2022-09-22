@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         /// </summary>
         public readonly string IpCidrRange;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string fingerprint,
 
+            string id,
+
             string ipCidrRange,
 
             string kind,
@@ -130,6 +136,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             DnsVerificationIp = dnsVerificationIp;
             Fingerprint = fingerprint;
+            Id = id;
             IpCidrRange = ipCidrRange;
             Kind = kind;
             Name = name;

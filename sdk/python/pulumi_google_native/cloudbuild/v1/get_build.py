@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBuildResult:
-    def __init__(__self__, approval=None, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, failure_info=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
+    def __init__(__self__, approval=None, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, failure_info=None, finish_time=None, id=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
         if approval and not isinstance(approval, dict):
             raise TypeError("Expected argument 'approval' to be a dict")
         pulumi.set(__self__, "approval", approval)
@@ -41,6 +41,9 @@ class GetBuildResult:
         if finish_time and not isinstance(finish_time, str):
             raise TypeError("Expected argument 'finish_time' to be a str")
         pulumi.set(__self__, "finish_time", finish_time)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
         pulumi.set(__self__, "images", images)
@@ -160,6 +163,14 @@ class GetBuildResult:
         Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         """
         return pulumi.get(self, "finish_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -343,6 +354,7 @@ class AwaitableGetBuildResult(GetBuildResult):
             create_time=self.create_time,
             failure_info=self.failure_info,
             finish_time=self.finish_time,
+            id=self.id,
             images=self.images,
             log_url=self.log_url,
             logs_bucket=self.logs_bucket,
@@ -392,6 +404,7 @@ def get_build(build_id: Optional[str] = None,
         create_time=__ret__.create_time,
         failure_info=__ret__.failure_info,
         finish_time=__ret__.finish_time,
+        id=__ret__.id,
         images=__ret__.images,
         log_url=__ret__.log_url,
         logs_bucket=__ret__.logs_bucket,

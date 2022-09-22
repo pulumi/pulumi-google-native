@@ -198,6 +198,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["network_edge_security_service_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
@@ -229,6 +230,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_edge_security_service_id"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
@@ -277,6 +279,14 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkEdgeSecurityServiceId")
+    def network_edge_security_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_edge_security_service_id")
 
     @property
     @pulumi.getter

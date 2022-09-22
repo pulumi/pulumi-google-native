@@ -27,6 +27,8 @@ type MachineImage struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"machineImageEncryptionKey"`
+	// A unique identifier for this machine image. The server defines this identifier.
+	MachineImageId pulumi.StringOutput `pulumi:"machineImageId"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -208,6 +210,11 @@ func (o MachineImageOutput) Kind() pulumi.StringOutput {
 // Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 func (o MachineImageOutput) MachineImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *MachineImage) CustomerEncryptionKeyResponseOutput { return v.MachineImageEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// A unique identifier for this machine image. The server defines this identifier.
+func (o MachineImageOutput) MachineImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.MachineImageId }).(pulumi.StringOutput)
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

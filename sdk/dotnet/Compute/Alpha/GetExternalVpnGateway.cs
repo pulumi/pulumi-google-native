@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
         /// </summary>
         public readonly ImmutableArray<Outputs.ExternalVpnGatewayInterfaceResponse> Interfaces;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             ImmutableArray<Outputs.ExternalVpnGatewayInterfaceResponse> interfaces,
 
             string kind,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Interfaces = interfaces;
             Kind = kind;
             LabelFingerprint = labelFingerprint;

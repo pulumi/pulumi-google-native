@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
     [GoogleNativeResourceType("google-native:deploymentmanager/v2beta:CompositeType")]
     public partial class CompositeType : global::Pulumi.CustomResource
     {
+        [Output("compositeTypeId")]
+        public Output<string> CompositeTypeId { get; private set; } = null!;
+
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
@@ -112,14 +115,14 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 
     public sealed class CompositeTypeArgs : global::Pulumi.ResourceArgs
     {
+        [Input("compositeTypeId")]
+        public Input<string>? CompositeTypeId { get; set; }
+
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("labels")]
         private InputList<Inputs.CompositeTypeLabelEntryArgs>? _labels;

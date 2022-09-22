@@ -72,6 +72,10 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly enableLogging!: pulumi.Output<boolean>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly firewallId!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#firewall for firewall rules.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -155,6 +159,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
             resourceInputs["targetTags"] = args ? args.targetTags : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -167,6 +172,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["direction"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["enableLogging"] = undefined /*out*/;
+            resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["logConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

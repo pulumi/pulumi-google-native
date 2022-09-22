@@ -179,6 +179,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_notification_endpoint_id"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -211,6 +212,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_notification_endpoint_id"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         return RegionNotificationEndpoint(resource_name, opts=opts, __props__=__props__)
@@ -264,6 +266,14 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionNotificationEndpointId")
+    def region_notification_endpoint_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "region_notification_endpoint_id")
 
     @property
     @pulumi.getter(name="requestId")

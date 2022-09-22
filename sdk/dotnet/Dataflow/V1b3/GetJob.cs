@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public readonly Outputs.JobExecutionInfoResponse ExecutionInfo;
         /// <summary>
+        /// The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         /// </summary>
         public readonly Outputs.JobMetadataResponse JobMetadata;
@@ -182,6 +186,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
 
             Outputs.JobExecutionInfoResponse executionInfo,
 
+            string id,
+
             Outputs.JobMetadataResponse jobMetadata,
 
             ImmutableDictionary<string, string> labels,
@@ -223,6 +229,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
             CurrentStateTime = currentStateTime;
             Environment = environment;
             ExecutionInfo = executionInfo;
+            Id = id;
             JobMetadata = jobMetadata;
             Labels = labels;
             Location = location;

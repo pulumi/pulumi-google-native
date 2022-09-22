@@ -160,6 +160,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier of the trigger.
+        /// </summary>
+        [Output("triggerId")]
+        public Output<string> TriggerId { get; private set; } = null!;
+
+        /// <summary>
         /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
         /// </summary>
         [Output("triggerTemplate")]

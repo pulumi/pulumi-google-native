@@ -53,6 +53,10 @@ export class Build extends pulumi.CustomResource {
      */
     public readonly availableSecrets!: pulumi.Output<outputs.cloudbuild.v1.SecretsResponse>;
     /**
+     * Unique identifier of the build.
+     */
+    public /*out*/ readonly buildId!: pulumi.Output<string>;
+    /**
      * The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
      */
     public /*out*/ readonly buildTriggerId!: pulumi.Output<string>;
@@ -189,6 +193,7 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["approval"] = undefined /*out*/;
+            resourceInputs["buildId"] = undefined /*out*/;
             resourceInputs["buildTriggerId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["failureInfo"] = undefined /*out*/;
@@ -206,6 +211,7 @@ export class Build extends pulumi.CustomResource {
             resourceInputs["approval"] = undefined /*out*/;
             resourceInputs["artifacts"] = undefined /*out*/;
             resourceInputs["availableSecrets"] = undefined /*out*/;
+            resourceInputs["buildId"] = undefined /*out*/;
             resourceInputs["buildTriggerId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["failureInfo"] = undefined /*out*/;

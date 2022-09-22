@@ -197,6 +197,7 @@ class Autoscaler(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["target"] = target
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["autoscaler_id"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["recommended_size"] = None
@@ -229,6 +230,7 @@ class Autoscaler(pulumi.CustomResource):
 
         __props__ = AutoscalerArgs.__new__(AutoscalerArgs)
 
+        __props__.__dict__["autoscaler_id"] = None
         __props__.__dict__["autoscaling_policy"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
@@ -245,6 +247,14 @@ class Autoscaler(pulumi.CustomResource):
         __props__.__dict__["target"] = None
         __props__.__dict__["zone"] = None
         return Autoscaler(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalerId")
+    def autoscaler_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "autoscaler_id")
 
     @property
     @pulumi.getter(name="autoscalingPolicy")

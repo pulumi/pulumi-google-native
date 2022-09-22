@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<Outputs.BucketBillingResponse> Billing { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the bucket. For buckets, the id and name properties are the same.
+        /// </summary>
+        [Output("bucketId")]
+        public Output<string> BucketId { get; private set; } = null!;
+
+        /// <summary>
         /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         /// </summary>
         [Output("cors")]
@@ -292,6 +298,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("billing")]
         public Input<Inputs.BucketBillingArgs>? Billing { get; set; }
 
+        /// <summary>
+        /// The ID of the bucket. For buckets, the id and name properties are the same.
+        /// </summary>
+        [Input("bucketId")]
+        public Input<string>? BucketId { get; set; }
+
         [Input("cors")]
         private InputList<Inputs.BucketCorsItemArgs>? _cors;
 
@@ -345,12 +357,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("iamConfiguration")]
         public Input<Inputs.BucketIamConfigurationArgs>? IamConfiguration { get; set; }
-
-        /// <summary>
-        /// The ID of the bucket. For buckets, the id and name properties are the same.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The kind of item this is. For buckets, this is always storage#bucket.

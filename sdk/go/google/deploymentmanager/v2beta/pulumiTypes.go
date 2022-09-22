@@ -2664,6 +2664,8 @@ type OperationResponse struct {
 	HttpErrorMessage string `pulumi:"httpErrorMessage"`
 	// If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 	HttpErrorStatusCode int `pulumi:"httpErrorStatusCode"`
+	// The unique identifier for the operation. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// The time that this operation was requested. This value is in RFC3339 text format.
 	InsertTime string `pulumi:"insertTime"`
 	// Type of the resource. Always `compute#operation` for Operation resources.
@@ -2748,6 +2750,11 @@ func (o OperationResponseOutput) HttpErrorMessage() pulumi.StringOutput {
 // If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
 func (o OperationResponseOutput) HttpErrorStatusCode() pulumi.IntOutput {
 	return o.ApplyT(func(v OperationResponse) int { return v.HttpErrorStatusCode }).(pulumi.IntOutput)
+}
+
+// The unique identifier for the operation. This identifier is defined by the server.
+func (o OperationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The time that this operation was requested. This value is in RFC3339 text format.

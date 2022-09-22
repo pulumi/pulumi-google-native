@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetPoolResult:
-    def __init__(__self__, backup_pool=None, creation_timestamp=None, description=None, failover_ratio=None, health_checks=None, instances=None, kind=None, name=None, region=None, self_link=None, session_affinity=None):
+    def __init__(__self__, backup_pool=None, creation_timestamp=None, description=None, failover_ratio=None, health_checks=None, id=None, instances=None, kind=None, name=None, region=None, self_link=None, session_affinity=None):
         if backup_pool and not isinstance(backup_pool, str):
             raise TypeError("Expected argument 'backup_pool' to be a str")
         pulumi.set(__self__, "backup_pool", backup_pool)
@@ -34,6 +34,9 @@ class GetTargetPoolResult:
         if health_checks and not isinstance(health_checks, list):
             raise TypeError("Expected argument 'health_checks' to be a list")
         pulumi.set(__self__, "health_checks", health_checks)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
@@ -95,6 +98,14 @@ class GetTargetPoolResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def instances(self) -> Sequence[str]:
         """
         A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
@@ -153,6 +164,7 @@ class AwaitableGetTargetPoolResult(GetTargetPoolResult):
             description=self.description,
             failover_ratio=self.failover_ratio,
             health_checks=self.health_checks,
+            id=self.id,
             instances=self.instances,
             kind=self.kind,
             name=self.name,
@@ -181,6 +193,7 @@ def get_target_pool(project: Optional[str] = None,
         description=__ret__.description,
         failover_ratio=__ret__.failover_ratio,
         health_checks=__ret__.health_checks,
+        id=__ret__.id,
         instances=__ret__.instances,
         kind=__ret__.kind,
         name=__ret__.name,

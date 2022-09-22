@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResizeRequestResult:
-    def __init__(__self__, count=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
+    def __init__(__self__, count=None, creation_timestamp=None, description=None, id=None, kind=None, name=None, queuing_policy=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
         if count and not isinstance(count, int):
             raise TypeError("Expected argument 'count' to be a int")
         pulumi.set(__self__, "count", count)
@@ -29,6 +29,9 @@ class GetInstanceGroupManagerResizeRequestResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -77,6 +80,14 @@ class GetInstanceGroupManagerResizeRequestResult:
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -152,6 +163,7 @@ class AwaitableGetInstanceGroupManagerResizeRequestResult(GetInstanceGroupManage
             count=self.count,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             queuing_policy=self.queuing_policy,
@@ -182,6 +194,7 @@ def get_instance_group_manager_resize_request(instance_group_manager: Optional[s
         count=__ret__.count,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         queuing_policy=__ret__.queuing_policy,

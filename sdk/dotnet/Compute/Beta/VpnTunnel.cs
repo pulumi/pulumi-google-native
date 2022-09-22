@@ -159,6 +159,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("vpnGatewayInterface")]
         public Output<int> VpnGatewayInterface { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("vpnTunnelId")]
+        public Output<string> VpnTunnelId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a VpnTunnel resource with the given unique name, arguments, and options.

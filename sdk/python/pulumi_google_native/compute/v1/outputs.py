@@ -4010,12 +4010,23 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 id: int,
                  ip_address: str):
         """
         The interface for the external VPN gateway.
+        :param int id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         :param str ip_address: IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -10087,6 +10098,7 @@ class ReservationResponse(dict):
                  commitment: str,
                  creation_timestamp: str,
                  description: str,
+                 id: str,
                  kind: str,
                  name: str,
                  satisfies_pzs: bool,
@@ -10101,6 +10113,7 @@ class ReservationResponse(dict):
         :param str commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
+        :param str id: The unique identifier for the resource. This identifier is defined by the server.
         :param str kind: Type of the resource. Always compute#reservations for reservations.
         :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param bool satisfies_pzs: Reserved for future use.
@@ -10114,6 +10127,7 @@ class ReservationResponse(dict):
         pulumi.set(__self__, "commitment", commitment)
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -10147,6 +10161,14 @@ class ReservationResponse(dict):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -14965,15 +14987,26 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 id: int,
                  interconnect_attachment: str,
                  ip_address: str):
         """
         A VPN gateway interface.
+        :param int id: Numeric identifier for this VPN interface associated with the VPN gateway.
         :param str interconnect_attachment: URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
         :param str ip_address: IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         pulumi.set(__self__, "ip_address", ip_address)
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        Numeric identifier for this VPN interface associated with the VPN gateway.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="interconnectAttachment")

@@ -300,6 +300,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["https_health_check_id"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -330,6 +331,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["healthy_threshold"] = None
         __props__.__dict__["host"] = None
+        __props__.__dict__["https_health_check_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["port"] = None
@@ -380,6 +382,14 @@ class HttpsHealthCheck(pulumi.CustomResource):
         The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="httpsHealthCheckId")
+    def https_health_check_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "https_health_check_id")
 
     @property
     @pulumi.getter

@@ -243,6 +243,7 @@ class TargetSslProxy(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_ssl_proxy_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetSslProxy, __self__).__init__(
@@ -279,6 +280,7 @@ class TargetSslProxy(pulumi.CustomResource):
         __props__.__dict__["service"] = None
         __props__.__dict__["ssl_certificates"] = None
         __props__.__dict__["ssl_policy"] = None
+        __props__.__dict__["target_ssl_proxy_id"] = None
         return TargetSslProxy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -373,4 +375,12 @@ class TargetSslProxy(pulumi.CustomResource):
         URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
+
+    @property
+    @pulumi.getter(name="targetSslProxyId")
+    def target_ssl_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_ssl_proxy_id")
 

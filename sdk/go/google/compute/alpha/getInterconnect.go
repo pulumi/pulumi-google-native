@@ -42,6 +42,8 @@ type LookupInterconnectResult struct {
 	GoogleIpAddress string `pulumi:"googleIpAddress"`
 	// Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId string `pulumi:"googleReferenceId"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments []string `pulumi:"interconnectAttachments"`
 	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
@@ -158,6 +160,11 @@ func (o LookupInterconnectResultOutput) GoogleIpAddress() pulumi.StringOutput {
 // Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
 func (o LookupInterconnectResultOutput) GoogleReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.GoogleReferenceId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupInterconnectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of the URLs of all InterconnectAttachments configured to use this Interconnect.

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.DeploymentJobsResponse DeploymentJobs;
         /// <summary>
+        /// The ID of the Phase.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Current state of the Phase.
         /// </summary>
         public readonly string State;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private PhaseResponse(
             Outputs.DeploymentJobsResponse deploymentJobs,
 
+            string id,
+
             string state)
         {
             DeploymentJobs = deploymentJobs;
+            Id = id;
             State = state;
         }
     }

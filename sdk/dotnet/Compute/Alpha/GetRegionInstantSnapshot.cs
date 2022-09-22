@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
         /// </summary>
         public readonly string Kind;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool guestFlush,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -179,6 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             DiskSizeGb = diskSizeGb;
             GuestFlush = guestFlush;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

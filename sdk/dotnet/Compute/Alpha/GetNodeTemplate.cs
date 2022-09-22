@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string Description;
         public readonly ImmutableArray<Outputs.LocalDiskResponse> Disks;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The type of the resource. Always compute#nodeTemplate for node templates.
         /// </summary>
         public readonly string Kind;
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<Outputs.LocalDiskResponse> disks,
 
+            string id,
+
             string kind,
 
             string name,
@@ -161,6 +167,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             Disks = disks;
+            Id = id;
             Kind = kind;
             Name = name;
             NodeAffinityLabels = nodeAffinityLabels;

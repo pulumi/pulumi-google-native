@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// [Output only] Type of the resource. Always compute#securityPolicyfor security policies
         /// </summary>
         public readonly string Kind;
@@ -147,6 +151,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string fingerprint,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -180,6 +186,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             DisplayName = displayName;
             Fingerprint = fingerprint;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

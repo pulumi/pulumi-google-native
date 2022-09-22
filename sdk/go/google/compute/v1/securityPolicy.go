@@ -35,6 +35,8 @@ type SecurityPolicy struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleResponseArrayOutput `pulumi:"rules"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -229,6 +231,11 @@ func (o SecurityPolicyOutput) RequestId() pulumi.StringPtrOutput {
 // A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 func (o SecurityPolicyOutput) Rules() SecurityPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyRuleResponseArrayOutput { return v.Rules }).(SecurityPolicyRuleResponseArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SecurityPolicyOutput) SecurityPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

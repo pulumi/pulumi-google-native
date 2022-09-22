@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool EncryptedInterconnectRouter;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
         /// </summary>
         public readonly ImmutableArray<Outputs.RouterInterfaceResponse> Interfaces;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             bool encryptedInterconnectRouter,
 
+            string id,
+
             ImmutableArray<Outputs.RouterInterfaceResponse> interfaces,
 
             string kind,
@@ -149,6 +155,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             EncryptedInterconnectRouter = encryptedInterconnectRouter;
+            Id = id;
             Interfaces = interfaces;
             Kind = kind;
             Md5AuthenticationKeys = md5AuthenticationKeys;

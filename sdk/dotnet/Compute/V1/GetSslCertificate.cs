@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#sslCertificate for SSL certificates.
         /// </summary>
         public readonly string Kind;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string expireTime,
 
+            string id,
+
             string kind,
 
             Outputs.SslCertificateManagedSslCertificateResponse managed,
@@ -142,6 +148,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             ExpireTime = expireTime;
+            Id = id;
             Kind = kind;
             Managed = managed;
             Name = name;

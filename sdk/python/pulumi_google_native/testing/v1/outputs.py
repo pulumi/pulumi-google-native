@@ -2177,6 +2177,7 @@ class TestExecutionResponse(dict):
 
     def __init__(__self__, *,
                  environment: 'outputs.EnvironmentResponse',
+                 id: str,
                  matrix_id: str,
                  project: str,
                  shard: 'outputs.ShardResponse',
@@ -2188,6 +2189,7 @@ class TestExecutionResponse(dict):
         """
         A single test executed in a single environment.
         :param 'EnvironmentResponse' environment: How the host machine(s) are configured.
+        :param str id: Unique id set by the service.
         :param str matrix_id: Id of the containing TestMatrix.
         :param str project: The cloud project that owns the test execution.
         :param 'ShardResponse' shard: Details about the shard.
@@ -2198,6 +2200,7 @@ class TestExecutionResponse(dict):
         :param 'ToolResultsStepResponse' tool_results_step: Where the results for this execution are written.
         """
         pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "matrix_id", matrix_id)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "shard", shard)
@@ -2214,6 +2217,14 @@ class TestExecutionResponse(dict):
         How the host machine(s) are configured.
         """
         return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique id set by the service.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="matrixId")

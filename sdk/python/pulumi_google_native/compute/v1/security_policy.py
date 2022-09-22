@@ -266,6 +266,7 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
+            __props__.__dict__["security_policy_id"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -304,6 +305,7 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["rules"] = None
+        __props__.__dict__["security_policy_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["validate_only"] = None
@@ -397,6 +399,14 @@ class SecurityPolicy(pulumi.CustomResource):
         A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="securityPolicyId")
+    def security_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "security_policy_id")
 
     @property
     @pulumi.getter(name="selfLink")

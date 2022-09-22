@@ -33,6 +33,8 @@ type LookupNotificationResult struct {
 	Etag string `pulumi:"etag"`
 	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
 	EventTypes []string `pulumi:"eventTypes"`
+	// The ID of the notification.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For notifications, this is always storage#notification.
 	Kind string `pulumi:"kind"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
@@ -95,6 +97,11 @@ func (o LookupNotificationResultOutput) Etag() pulumi.StringOutput {
 // If present, only send notifications about listed event types. If empty, sent notifications for all event types.
 func (o LookupNotificationResultOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNotificationResult) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the notification.
+func (o LookupNotificationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For notifications, this is always storage#notification.

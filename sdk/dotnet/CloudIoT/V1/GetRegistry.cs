@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         /// </summary>
         public readonly Outputs.HttpConfigResponse HttpConfig;
         /// <summary>
+        /// The identifier of this device registry. For example, `myRegistry`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
         /// </summary>
         public readonly string LogLevel;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
 
             Outputs.HttpConfigResponse httpConfig,
 
+            string id,
+
             string logLevel,
 
             Outputs.MqttConfigResponse mqttConfig,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
             Credentials = credentials;
             EventNotificationConfigs = eventNotificationConfigs;
             HttpConfig = httpConfig;
+            Id = id;
             LogLevel = logLevel;
             MqttConfig = mqttConfig;
             Name = name;

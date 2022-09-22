@@ -17,6 +17,8 @@ type DefaultObjectAccessControl struct {
 	pulumi.CustomResourceState
 
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	DefaultObjectAccessControlId pulumi.StringOutput `pulumi:"defaultObjectAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -102,6 +104,8 @@ func (DefaultObjectAccessControlState) ElementType() reflect.Type {
 type defaultObjectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	DefaultObjectAccessControlId *string `pulumi:"defaultObjectAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain *string `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -125,8 +129,6 @@ type defaultObjectAccessControlArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation *string `pulumi:"generation"`
-	// The ID of the access-control entry.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
@@ -145,6 +147,8 @@ type defaultObjectAccessControlArgs struct {
 type DefaultObjectAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket pulumi.StringInput
+	// The ID of the access-control entry.
+	DefaultObjectAccessControlId pulumi.StringPtrInput
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringPtrInput
 	// The email address associated with the entity, if any.
@@ -168,8 +172,6 @@ type DefaultObjectAccessControlArgs struct {
 	Etag pulumi.StringPtrInput
 	// The content generation of the object, if applied to an object.
 	Generation pulumi.StringPtrInput
-	// The ID of the access-control entry.
-	Id pulumi.StringPtrInput
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind pulumi.StringPtrInput
 	// The name of the object, if applied to an object.
@@ -223,6 +225,11 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutputWith
 
 func (o DefaultObjectAccessControlOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o DefaultObjectAccessControlOutput) DefaultObjectAccessControlId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.DefaultObjectAccessControlId }).(pulumi.StringOutput)
 }
 
 // The domain associated with the entity, if any.

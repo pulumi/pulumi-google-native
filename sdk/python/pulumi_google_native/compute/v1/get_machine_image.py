@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMachineImageResult:
-    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, instance_properties=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzs=None, saved_disks=None, self_link=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
+    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, id=None, instance_properties=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzs=None, saved_disks=None, self_link=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -29,6 +29,9 @@ class GetMachineImageResult:
         if guest_flush and not isinstance(guest_flush, bool):
             raise TypeError("Expected argument 'guest_flush' to be a bool")
         pulumi.set(__self__, "guest_flush", guest_flush)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instance_properties and not isinstance(instance_properties, dict):
             raise TypeError("Expected argument 'instance_properties' to be a dict")
         pulumi.set(__self__, "instance_properties", instance_properties)
@@ -92,6 +95,14 @@ class GetMachineImageResult:
         [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this machine image. The server defines this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceProperties")
@@ -207,6 +218,7 @@ class AwaitableGetMachineImageResult(GetMachineImageResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             guest_flush=self.guest_flush,
+            id=self.id,
             instance_properties=self.instance_properties,
             kind=self.kind,
             machine_image_encryption_key=self.machine_image_encryption_key,
@@ -238,6 +250,7 @@ def get_machine_image(machine_image: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         guest_flush=__ret__.guest_flush,
+        id=__ret__.id,
         instance_properties=__ret__.instance_properties,
         kind=__ret__.kind,
         machine_image_encryption_key=__ret__.machine_image_encryption_key,

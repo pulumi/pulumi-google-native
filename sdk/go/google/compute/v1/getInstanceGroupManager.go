@@ -41,6 +41,8 @@ type LookupInstanceGroupManagerResult struct {
 	DistributionPolicy DistributionPolicyResponse `pulumi:"distributionPolicy"`
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint string `pulumi:"fingerprint"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
@@ -145,6 +147,11 @@ func (o LookupInstanceGroupManagerResultOutput) DistributionPolicy() Distributio
 // Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 func (o LookupInstanceGroupManagerResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o LookupInstanceGroupManagerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The URL of the Instance Group resource.

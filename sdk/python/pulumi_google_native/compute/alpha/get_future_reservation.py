@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetFutureReservationResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, id=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -75,6 +78,14 @@ class GetFutureReservationResult:
         An optional description of this resource. Provide this property when you create the future reservation.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this future reservation. The server defines this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -173,6 +184,7 @@ class AwaitableGetFutureReservationResult(GetFutureReservationResult):
         return GetFutureReservationResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             name_prefix=self.name_prefix,
@@ -203,6 +215,7 @@ def get_future_reservation(future_reservation: Optional[str] = None,
     return AwaitableGetFutureReservationResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         name_prefix=__ret__.name_prefix,

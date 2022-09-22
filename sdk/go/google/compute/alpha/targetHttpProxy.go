@@ -37,6 +37,8 @@ type TargetHttpProxy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetHttpProxyId pulumi.StringOutput `pulumi:"targetHttpProxyId"`
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService.
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 }
@@ -210,6 +212,11 @@ func (o TargetHttpProxyOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o TargetHttpProxyOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetHttpProxy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetHttpProxyOutput) TargetHttpProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetHttpProxy) pulumi.StringOutput { return v.TargetHttpProxyId }).(pulumi.StringOutput)
 }
 
 // URL to the UrlMap resource that defines the mapping from URL to the BackendService.

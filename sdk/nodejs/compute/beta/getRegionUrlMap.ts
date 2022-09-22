@@ -63,6 +63,10 @@ export interface GetRegionUrlMapResult {
      */
     readonly hostRules: outputs.compute.beta.HostRuleResponse[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#urlMaps for url maps.
      */
     readonly kind: string;

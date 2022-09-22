@@ -34,6 +34,8 @@ type LookupPublicAdvertisedPrefixResult struct {
 	DnsVerificationIp string `pulumi:"dnsVerificationIp"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 	Fingerprint string `pulumi:"fingerprint"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
@@ -104,6 +106,11 @@ func (o LookupPublicAdvertisedPrefixResultOutput) DnsVerificationIp() pulumi.Str
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
 func (o LookupPublicAdvertisedPrefixResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o LookupPublicAdvertisedPrefixResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicAdvertisedPrefixResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The IPv4 address range, in CIDR format, represented by this public advertised prefix.

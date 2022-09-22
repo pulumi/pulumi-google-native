@@ -78,6 +78,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetInstanceId")]
+        public Output<string> TargetInstanceId { get; private set; } = null!;
+
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 

@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkId")]
+        public Output<string> NetworkId { get; private set; } = null!;
+
+        /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
         [Output("peerings")]

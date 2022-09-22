@@ -220,6 +220,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["source_instance_params"] = source_instance_params
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_instance_template_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
@@ -253,6 +254,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_instance_template_id"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -309,6 +311,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionInstanceTemplateId")
+    def region_instance_template_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this instance template. The server defines this identifier.
+        """
+        return pulumi.get(self, "region_instance_template_id")
 
     @property
     @pulumi.getter(name="requestId")

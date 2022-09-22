@@ -77,6 +77,10 @@ export interface GetEntityResult {
      */
     readonly format: outputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatResponse;
     /**
+     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+     */
+    readonly id: string;
+    /**
      * The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
      */
     readonly name: string;

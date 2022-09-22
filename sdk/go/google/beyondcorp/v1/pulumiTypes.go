@@ -1336,6 +1336,8 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) Index(i pul
 
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse struct {
+	// Unique Id for the resource.
+	Id string `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1359,6 +1361,11 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogle
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput {
 	return o
+}
+
+// Unique Id for the resource.
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.

@@ -44,6 +44,10 @@ export class HmacKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * The ID of the HMAC key, including the Project ID and the Access ID.
+     */
+    public /*out*/ readonly hmacKeyId!: pulumi.Output<string>;
+    /**
      * The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class HmacKey extends pulumi.CustomResource {
             resourceInputs["userProject"] = args ? args.userProject : undefined;
             resourceInputs["accessId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hmacKeyId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class HmacKey extends pulumi.CustomResource {
         } else {
             resourceInputs["accessId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hmacKeyId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

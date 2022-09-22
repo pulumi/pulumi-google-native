@@ -34,6 +34,8 @@ type LookupNodeGroupResult struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	Fingerprint string `pulumi:"fingerprint"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -110,6 +112,11 @@ func (o LookupNodeGroupResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupNodeGroupResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeGroupResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupNodeGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The type of the resource. Always compute#nodeGroup for node group.

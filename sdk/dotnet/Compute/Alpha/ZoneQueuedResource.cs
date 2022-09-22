@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("zoneQueuedResourceId")]
+        public Output<string> ZoneQueuedResourceId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ZoneQueuedResource resource with the given unique name, arguments, and options.

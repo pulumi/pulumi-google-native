@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.GRPCHealthCheckResponse> GrpcHealthCheck { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("healthCheckId")]
+        public Output<string> HealthCheckId { get; private set; } = null!;
+
+        /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
         [Output("healthyThreshold")]

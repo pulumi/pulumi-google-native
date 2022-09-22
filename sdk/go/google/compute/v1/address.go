@@ -17,6 +17,8 @@ type Address struct {
 
 	// The static IP address represented by this resource.
 	Address pulumi.StringOutput `pulumi:"address"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	AddressId pulumi.StringOutput `pulumi:"addressId"`
 	// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
@@ -192,6 +194,11 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 // The static IP address represented by this resource.
 func (o AddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o AddressOutput) AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.AddressId }).(pulumi.StringOutput)
 }
 
 // The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.

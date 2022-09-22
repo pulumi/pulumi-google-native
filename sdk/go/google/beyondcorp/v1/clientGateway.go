@@ -17,7 +17,7 @@ type ClientGateway struct {
 	// The client connector service name that the client gateway is associated to. Client Connector Services, named as follows: `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.
 	ClientConnectorService pulumi.StringOutput `pulumi:"clientConnectorService"`
 	// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
-	ClientGatewayId pulumi.StringPtrOutput `pulumi:"clientGatewayId"`
+	ClientGatewayId pulumi.StringOutput `pulumi:"clientGatewayId"`
 	// [Output only] Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	Location   pulumi.StringOutput `pulumi:"location"`
@@ -147,8 +147,8 @@ func (o ClientGatewayOutput) ClientConnectorService() pulumi.StringOutput {
 }
 
 // Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
-func (o ClientGatewayOutput) ClientGatewayId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientGateway) pulumi.StringPtrOutput { return v.ClientGatewayId }).(pulumi.StringPtrOutput)
+func (o ClientGatewayOutput) ClientGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientGateway) pulumi.StringOutput { return v.ClientGatewayId }).(pulumi.StringOutput)
 }
 
 // [Output only] Create time stamp.

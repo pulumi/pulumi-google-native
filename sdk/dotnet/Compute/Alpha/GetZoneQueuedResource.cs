@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#queuedResource for QueuedResources.
         /// </summary>
         public readonly string Kind;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             BulkInsertInstanceResource = bulkInsertInstanceResource;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             QueuingPolicy = queuingPolicy;

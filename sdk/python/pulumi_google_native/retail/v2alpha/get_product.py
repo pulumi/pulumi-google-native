@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProductResult:
-    def __init__(__self__, attributes=None, audience=None, availability=None, available_quantity=None, available_time=None, brands=None, categories=None, collection_member_ids=None, color_info=None, conditions=None, description=None, expire_time=None, fulfillment_info=None, gtin=None, images=None, language_code=None, local_inventories=None, materials=None, name=None, patterns=None, price_info=None, primary_product_id=None, promotions=None, publish_time=None, rating=None, retrievable_fields=None, sizes=None, tags=None, title=None, ttl=None, type=None, uri=None, variants=None):
+    def __init__(__self__, attributes=None, audience=None, availability=None, available_quantity=None, available_time=None, brands=None, categories=None, collection_member_ids=None, color_info=None, conditions=None, description=None, expire_time=None, fulfillment_info=None, gtin=None, id=None, images=None, language_code=None, local_inventories=None, materials=None, name=None, patterns=None, price_info=None, primary_product_id=None, promotions=None, publish_time=None, rating=None, retrievable_fields=None, sizes=None, tags=None, title=None, ttl=None, type=None, uri=None, variants=None):
         if attributes and not isinstance(attributes, dict):
             raise TypeError("Expected argument 'attributes' to be a dict")
         pulumi.set(__self__, "attributes", attributes)
@@ -62,6 +62,9 @@ class GetProductResult:
         if gtin and not isinstance(gtin, str):
             raise TypeError("Expected argument 'gtin' to be a str")
         pulumi.set(__self__, "gtin", gtin)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if images and not isinstance(images, list):
             raise TypeError("Expected argument 'images' to be a list")
         pulumi.set(__self__, "images", images)
@@ -231,6 +234,14 @@ class GetProductResult:
         The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         """
         return pulumi.get(self, "gtin")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -405,6 +416,7 @@ class AwaitableGetProductResult(GetProductResult):
             expire_time=self.expire_time,
             fulfillment_info=self.fulfillment_info,
             gtin=self.gtin,
+            id=self.id,
             images=self.images,
             language_code=self.language_code,
             local_inventories=self.local_inventories,
@@ -459,6 +471,7 @@ def get_product(branch_id: Optional[str] = None,
         expire_time=__ret__.expire_time,
         fulfillment_info=__ret__.fulfillment_info,
         gtin=__ret__.gtin,
+        id=__ret__.id,
         images=__ret__.images,
         language_code=__ret__.language_code,
         local_inventories=__ret__.local_inventories,

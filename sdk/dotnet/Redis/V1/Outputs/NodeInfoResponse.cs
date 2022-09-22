@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Redis.V1.Outputs
     public sealed class NodeInfoResponse
     {
         /// <summary>
+        /// Node identifying string. e.g. 'node-0', 'node-1'
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Location of the node.
         /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]
-        private NodeInfoResponse(string zone)
+        private NodeInfoResponse(
+            string id,
+
+            string zone)
         {
+            Id = id;
             Zone = zone;
         }
     }

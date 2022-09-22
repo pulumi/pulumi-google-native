@@ -38,6 +38,10 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AutoscalingPolicy.__pulumiType;
     }
 
+    /**
+     * The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+     */
+    public readonly autoscalingPolicyId!: pulumi.Output<string>;
     public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.v1.BasicAutoscalingAlgorithmResponse>;
     /**
      * Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
@@ -69,14 +73,14 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.id === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'id'");
+            if ((!args || args.autoscalingPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'autoscalingPolicyId'");
             }
             if ((!args || args.workerConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerConfig'");
             }
+            resourceInputs["autoscalingPolicyId"] = args ? args.autoscalingPolicyId : undefined;
             resourceInputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -84,6 +88,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["autoscalingPolicyId"] = undefined /*out*/;
             resourceInputs["basicAlgorithm"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -103,11 +108,11 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AutoscalingPolicy resource.
  */
 export interface AutoscalingPolicyArgs {
-    basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
-    id: pulumi.Input<string>;
+    autoscalingPolicyId: pulumi.Input<string>;
+    basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
      */

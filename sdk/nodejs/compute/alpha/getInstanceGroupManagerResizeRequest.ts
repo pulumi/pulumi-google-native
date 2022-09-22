@@ -45,6 +45,10 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly description: string;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
      */
     readonly kind: string;

@@ -80,6 +80,10 @@ export interface GetInstanceResult {
      */
     readonly hostname: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     readonly keyRevocationActionType: string;

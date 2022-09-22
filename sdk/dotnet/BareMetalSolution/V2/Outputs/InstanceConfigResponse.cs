@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly bool Hyperthreading;
         /// <summary>
+        /// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         /// </summary>
         public readonly string InstanceType;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             bool hyperthreading,
 
+            string id,
+
             string instanceType,
 
             ImmutableArray<Outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse> logicalInterfaces,
@@ -88,6 +94,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             AccountNetworksEnabled = accountNetworksEnabled;
             ClientNetwork = clientNetwork;
             Hyperthreading = hyperthreading;
+            Id = id;
             InstanceType = instanceType;
             LogicalInterfaces = logicalInterfaces;
             Name = name;

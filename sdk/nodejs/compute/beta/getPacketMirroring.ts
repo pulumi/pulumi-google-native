@@ -51,6 +51,10 @@ export interface GetPacketMirroringResult {
      */
     readonly filter: outputs.compute.beta.PacketMirroringFilterResponse;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#packetMirroring for packet mirrorings.
      */
     readonly kind: string;

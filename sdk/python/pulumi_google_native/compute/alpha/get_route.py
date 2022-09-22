@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
+    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, id=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
         if allow_conflicting_subnetworks and not isinstance(allow_conflicting_subnetworks, bool):
             raise TypeError("Expected argument 'allow_conflicting_subnetworks' to be a bool")
         pulumi.set(__self__, "allow_conflicting_subnetworks", allow_conflicting_subnetworks)
@@ -35,6 +35,9 @@ class GetRouteResult:
         if dest_range and not isinstance(dest_range, str):
             raise TypeError("Expected argument 'dest_range' to be a str")
         pulumi.set(__self__, "dest_range", dest_range)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if ilb_route_behavior_on_unhealthy and not isinstance(ilb_route_behavior_on_unhealthy, str):
             raise TypeError("Expected argument 'ilb_route_behavior_on_unhealthy' to be a str")
         pulumi.set(__self__, "ilb_route_behavior_on_unhealthy", ilb_route_behavior_on_unhealthy)
@@ -132,6 +135,14 @@ class GetRouteResult:
         The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
         """
         return pulumi.get(self, "dest_range")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ilbRouteBehaviorOnUnhealthy")
@@ -297,6 +308,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             dest_range=self.dest_range,
+            id=self.id,
             ilb_route_behavior_on_unhealthy=self.ilb_route_behavior_on_unhealthy,
             kind=self.kind,
             name=self.name,
@@ -336,6 +348,7 @@ def get_route(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         dest_range=__ret__.dest_range,
+        id=__ret__.id,
         ilb_route_behavior_on_unhealthy=__ret__.ilb_route_behavior_on_unhealthy,
         kind=__ret__.kind,
         name=__ret__.name,

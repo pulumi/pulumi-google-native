@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// A unique identifier for this future reservation. The server defines this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#futureReservation for future reservations.
         /// </summary>
         public readonly string Kind;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -146,6 +152,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             NamePrefix = namePrefix;

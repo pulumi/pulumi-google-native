@@ -14,6 +14,7 @@ import (
 type CompositeType struct {
 	pulumi.CustomResourceState
 
+	CompositeTypeId pulumi.StringOutput `pulumi:"compositeTypeId"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Creation timestamp in RFC3339 text format.
@@ -75,9 +76,9 @@ func (CompositeTypeState) ElementType() reflect.Type {
 }
 
 type compositeTypeArgs struct {
+	CompositeTypeId *string `pulumi:"compositeTypeId"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
-	Id          *string `pulumi:"id"`
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
 	Labels []CompositeTypeLabelEntry `pulumi:"labels"`
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
@@ -89,9 +90,9 @@ type compositeTypeArgs struct {
 
 // The set of arguments for constructing a CompositeType resource.
 type CompositeTypeArgs struct {
+	CompositeTypeId pulumi.StringPtrInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
-	Id          pulumi.StringPtrInput
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
 	Labels CompositeTypeLabelEntryArrayInput
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
@@ -136,6 +137,10 @@ func (o CompositeTypeOutput) ToCompositeTypeOutput() CompositeTypeOutput {
 
 func (o CompositeTypeOutput) ToCompositeTypeOutputWithContext(ctx context.Context) CompositeTypeOutput {
 	return o
+}
+
+func (o CompositeTypeOutput) CompositeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.CompositeTypeId }).(pulumi.StringOutput)
 }
 
 // An optional textual description of the resource; provided by the client when the resource is created.

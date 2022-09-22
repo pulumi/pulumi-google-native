@@ -124,6 +124,7 @@ class HmacKey(pulumi.CustomResource):
             __props__.__dict__["user_project"] = user_project
             __props__.__dict__["access_id"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["hmac_key_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
@@ -155,6 +156,7 @@ class HmacKey(pulumi.CustomResource):
 
         __props__.__dict__["access_id"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["hmac_key_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
@@ -180,6 +182,14 @@ class HmacKey(pulumi.CustomResource):
         HTTP 1.1 Entity tag for the HMAC key.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="hmacKeyId")
+    def hmac_key_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the HMAC key, including the Project ID and the Access ID.
+        """
+        return pulumi.get(self, "hmac_key_id")
 
     @property
     @pulumi.getter

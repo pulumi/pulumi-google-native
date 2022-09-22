@@ -258,6 +258,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["time_window"] = time_window
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["future_reservation_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -288,6 +289,7 @@ class FutureReservation(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["future_reservation_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["name_prefix"] = None
@@ -318,6 +320,14 @@ class FutureReservation(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the future reservation.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="futureReservationId")
+    def future_reservation_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this future reservation. The server defines this identifier.
+        """
+        return pulumi.get(self, "future_reservation_id")
 
     @property
     @pulumi.getter

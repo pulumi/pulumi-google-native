@@ -404,6 +404,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["global_network_endpoint_group_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
@@ -441,6 +442,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["default_port"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["global_network_endpoint_group_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["load_balancer"] = None
         __props__.__dict__["name"] = None
@@ -515,6 +517,14 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="globalNetworkEndpointGroupId")
+    def global_network_endpoint_group_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "global_network_endpoint_group_id")
 
     @property
     @pulumi.getter

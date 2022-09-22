@@ -61,6 +61,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("networkAttachmentId")]
+        public Output<string> NetworkAttachmentId { get; private set; } = null!;
+
+        /// <summary>
         /// Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
         /// </summary>
         [Output("producerAcceptLists")]

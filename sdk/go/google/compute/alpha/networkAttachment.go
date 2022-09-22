@@ -30,6 +30,8 @@ type NetworkAttachment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network which the Network Attachment belongs to.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	NetworkAttachmentId pulumi.StringOutput `pulumi:"networkAttachmentId"`
 	// Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
 	ProducerAcceptLists pulumi.StringArrayOutput `pulumi:"producerAcceptLists"`
 	// Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number.
@@ -205,6 +207,11 @@ func (o NetworkAttachmentOutput) Name() pulumi.StringOutput {
 // The URL of the network which the Network Attachment belongs to.
 func (o NetworkAttachmentOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAttachment) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o NetworkAttachmentOutput) NetworkAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAttachment) pulumi.StringOutput { return v.NetworkAttachmentId }).(pulumi.StringOutput)
 }
 
 // Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.

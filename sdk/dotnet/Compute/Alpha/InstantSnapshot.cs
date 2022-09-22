@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> GuestFlush { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("instantSnapshotId")]
+        public Output<string> InstantSnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
         /// </summary>
         [Output("kind")]

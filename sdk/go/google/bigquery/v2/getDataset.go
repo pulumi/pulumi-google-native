@@ -45,6 +45,8 @@ type LookupDatasetResult struct {
 	Etag string `pulumi:"etag"`
 	// [Optional] A descriptive name for the dataset.
 	FriendlyName string `pulumi:"friendlyName"`
+	// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+	Id string `pulumi:"id"`
 	// [Optional] Indicates if table names are case insensitive in the dataset.
 	IsCaseInsensitive bool `pulumi:"isCaseInsensitive"`
 	// The resource type.
@@ -148,6 +150,11 @@ func (o LookupDatasetResultOutput) Etag() pulumi.StringOutput {
 // [Optional] A descriptive name for the dataset.
 func (o LookupDatasetResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+func (o LookupDatasetResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // [Optional] Indicates if table names are case insensitive in the dataset.

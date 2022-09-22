@@ -213,6 +213,7 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["instance_group_manager_resize_request_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -246,6 +247,7 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["instance_group_manager"] = None
+        __props__.__dict__["instance_group_manager_resize_request_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -286,6 +288,14 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
     @pulumi.getter(name="instanceGroupManager")
     def instance_group_manager(self) -> pulumi.Output[str]:
         return pulumi.get(self, "instance_group_manager")
+
+    @property
+    @pulumi.getter(name="instanceGroupManagerResizeRequestId")
+    def instance_group_manager_resize_request_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "instance_group_manager_resize_request_id")
 
     @property
     @pulumi.getter

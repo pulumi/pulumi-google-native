@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string GatewayAddress;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The internal IPv6 address range that is assigned to this subnetwork.
         /// </summary>
         public readonly string InternalIpv6Prefix;
@@ -170,6 +174,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string gatewayAddress,
 
+            string id,
+
             string internalIpv6Prefix,
 
             string ipCidrRange,
@@ -210,6 +216,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             ExternalIpv6Prefix = externalIpv6Prefix;
             Fingerprint = fingerprint;
             GatewayAddress = gatewayAddress;
+            Id = id;
             InternalIpv6Prefix = internalIpv6Prefix;
             IpCidrRange = ipCidrRange;
             Ipv6AccessType = ipv6AccessType;

@@ -48,6 +48,10 @@ export interface GetRegionTargetHttpsProxyResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
     readonly kind: string;

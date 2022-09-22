@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionUrlMapResult:
-    def __init__(__self__, creation_timestamp=None, default_route_action=None, default_service=None, default_url_redirect=None, description=None, fingerprint=None, header_action=None, host_rules=None, kind=None, name=None, path_matchers=None, region=None, self_link=None, tests=None):
+    def __init__(__self__, creation_timestamp=None, default_route_action=None, default_service=None, default_url_redirect=None, description=None, fingerprint=None, header_action=None, host_rules=None, id=None, kind=None, name=None, path_matchers=None, region=None, self_link=None, tests=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -44,6 +44,9 @@ class GetRegionUrlMapResult:
         if host_rules and not isinstance(host_rules, list):
             raise TypeError("Expected argument 'host_rules' to be a list")
         pulumi.set(__self__, "host_rules", host_rules)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -129,6 +132,14 @@ class GetRegionUrlMapResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         Type of the resource. Always compute#urlMaps for url maps.
@@ -190,6 +201,7 @@ class AwaitableGetRegionUrlMapResult(GetRegionUrlMapResult):
             fingerprint=self.fingerprint,
             header_action=self.header_action,
             host_rules=self.host_rules,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             path_matchers=self.path_matchers,
@@ -221,6 +233,7 @@ def get_region_url_map(project: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         header_action=__ret__.header_action,
         host_rules=__ret__.host_rules,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         path_matchers=__ret__.path_matchers,

@@ -1619,6 +1619,8 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput) Index(
 
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse struct {
+	// Unique Id for the resource.
+	Id string `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1642,6 +1644,11 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) ToG
 
 func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) ToGoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput {
 	return o
+}
+
+// Unique Id for the resource.
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.
@@ -3025,6 +3032,8 @@ func (o ResourceInfoArrayOutput) Index(i pulumi.IntInput) ResourceInfoOutput {
 
 // ResourceInfo represents the information/status of the associated resource.
 type ResourceInfoResponse struct {
+	// Unique Id for the resource.
+	Id string `pulumi:"id"`
 	// Specific details for the resource.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -3048,6 +3057,11 @@ func (o ResourceInfoResponseOutput) ToResourceInfoResponseOutput() ResourceInfoR
 
 func (o ResourceInfoResponseOutput) ToResourceInfoResponseOutputWithContext(ctx context.Context) ResourceInfoResponseOutput {
 	return o
+}
+
+// Unique Id for the resource.
+func (o ResourceInfoResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Specific details for the resource.

@@ -119,6 +119,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly sslPolicy!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetHttpsProxyId!: pulumi.Output<string>;
+    /**
      * A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
      */
     public readonly urlMap!: pulumi.Output<string>;
@@ -155,6 +159,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetHttpsProxyId"] = undefined /*out*/;
         } else {
             resourceInputs["authentication"] = undefined /*out*/;
             resourceInputs["authorization"] = undefined /*out*/;
@@ -176,6 +181,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["serverTlsPolicy"] = undefined /*out*/;
             resourceInputs["sslCertificates"] = undefined /*out*/;
             resourceInputs["sslPolicy"] = undefined /*out*/;
+            resourceInputs["targetHttpsProxyId"] = undefined /*out*/;
             resourceInputs["urlMap"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

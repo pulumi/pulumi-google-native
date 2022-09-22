@@ -27,6 +27,8 @@ type ResponsePolicy struct {
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
 	Project  pulumi.StringOutput                      `pulumi:"project"`
+	// Unique identifier for the resource; defined by the server (output only).
+	ResponsePolicyId pulumi.StringOutput `pulumi:"responsePolicyId"`
 	// User assigned name for this Response Policy.
 	ResponsePolicyName pulumi.StringOutput `pulumi:"responsePolicyName"`
 }
@@ -176,6 +178,11 @@ func (o ResponsePolicyOutput) Networks() ResponsePolicyNetworkResponseArrayOutpu
 
 func (o ResponsePolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the resource; defined by the server (output only).
+func (o ResponsePolicyOutput) ResponsePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.ResponsePolicyId }).(pulumi.StringOutput)
 }
 
 // User assigned name for this Response Policy.

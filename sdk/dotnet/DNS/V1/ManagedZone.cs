@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.DNS.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only)
+        /// </summary>
+        [Output("managedZoneId")]
+        public Output<string> ManagedZoneId { get; private set; } = null!;
+
+        /// <summary>
         /// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         /// </summary>
         [Output("name")]

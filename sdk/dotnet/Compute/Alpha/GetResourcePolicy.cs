@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.ResourcePolicyGroupPlacementPolicyResponse GroupPlacementPolicy;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Resource policy for scheduling instance operations.
         /// </summary>
         public readonly Outputs.ResourcePolicyInstanceSchedulePolicyResponse InstanceSchedulePolicy;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.ResourcePolicyGroupPlacementPolicyResponse groupPlacementPolicy,
 
+            string id,
+
             Outputs.ResourcePolicyInstanceSchedulePolicyResponse instanceSchedulePolicy,
 
             string kind,
@@ -148,6 +154,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             DiskConsistencyGroupPolicy = diskConsistencyGroupPolicy;
             GroupPlacementPolicy = groupPlacementPolicy;
+            Id = id;
             InstanceSchedulePolicy = instanceSchedulePolicy;
             Kind = kind;
             Name = name;

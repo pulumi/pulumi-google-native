@@ -46,6 +46,10 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * A unique identifier for this future reservation. The server defines this identifier.
+     */
+    public /*out*/ readonly futureReservationId!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#futureReservation for future reservations.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["futureReservationId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -121,6 +126,7 @@ export class FutureReservation extends pulumi.CustomResource {
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["futureReservationId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namePrefix"] = undefined /*out*/;

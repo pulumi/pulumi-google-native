@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public readonly Outputs.HTTPHealthCheckResponse HttpHealthCheck;
         public readonly Outputs.HTTPSHealthCheckResponse HttpsHealthCheck;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         public readonly string Kind;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.HTTPSHealthCheckResponse httpsHealthCheck,
 
+            string id,
+
             string kind,
 
             Outputs.HealthCheckLogConfigResponse logConfig,
@@ -158,6 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Http2HealthCheck = http2HealthCheck;
             HttpHealthCheck = httpHealthCheck;
             HttpsHealthCheck = httpsHealthCheck;
+            Id = id;
             Kind = kind;
             LogConfig = logConfig;
             Name = name;

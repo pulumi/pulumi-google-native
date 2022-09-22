@@ -66,6 +66,10 @@ export interface GetBucketAccessControlResult {
      */
     readonly etag: string;
     /**
+     * The ID of the access-control entry.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
      */
     readonly kind: string;

@@ -68,6 +68,10 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkFirewallPolicyId!: pulumi.Output<string>;
+    /**
      * The parent of the firewall policy. This field is not applicable to network firewall policies.
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["networkFirewallPolicyId"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
@@ -136,6 +141,7 @@ export class NetworkFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkFirewallPolicyId"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;

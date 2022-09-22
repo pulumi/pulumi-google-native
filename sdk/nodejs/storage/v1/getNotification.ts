@@ -40,6 +40,10 @@ export interface GetNotificationResult {
      */
     readonly eventTypes: string[];
     /**
+     * The ID of the notification.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For notifications, this is always storage#notification.
      */
     readonly kind: string;

@@ -49,6 +49,10 @@ export interface GetRouteResult {
      */
     readonly destRange: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
      */
     readonly ilbRouteBehaviorOnUnhealthy: string;

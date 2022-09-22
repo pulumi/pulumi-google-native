@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly string HealthDescription;
         /// <summary>
+        /// The unique identifier for the TPU Node.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             string healthDescription,
 
+            string id,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableDictionary<string, string> metadata,
@@ -194,6 +200,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
             Description = description;
             Health = health;
             HealthDescription = healthDescription;
+            Id = id;
             Labels = labels;
             Metadata = metadata;
             Name = name;

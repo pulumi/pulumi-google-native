@@ -307,6 +307,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["google_ip_address"] = None
             __props__.__dict__["google_reference_id"] = None
             __props__.__dict__["interconnect_attachments"] = None
+            __props__.__dict__["interconnect_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
@@ -348,6 +349,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["google_ip_address"] = None
         __props__.__dict__["google_reference_id"] = None
         __props__.__dict__["interconnect_attachments"] = None
+        __props__.__dict__["interconnect_id"] = None
         __props__.__dict__["interconnect_type"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
@@ -438,6 +440,14 @@ class Interconnect(pulumi.CustomResource):
         A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         """
         return pulumi.get(self, "interconnect_attachments")
+
+    @property
+    @pulumi.getter(name="interconnectId")
+    def interconnect_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "interconnect_id")
 
     @property
     @pulumi.getter(name="interconnectType")

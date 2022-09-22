@@ -33,7 +33,9 @@ type TargetInstance struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	Zone     pulumi.StringOutput `pulumi:"zone"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	TargetInstanceId pulumi.StringOutput `pulumi:"targetInstanceId"`
+	Zone             pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewTargetInstance registers a new resource with the given unique name, arguments, and options.
@@ -198,6 +200,11 @@ func (o TargetInstanceOutput) RequestId() pulumi.StringPtrOutput {
 // Server-defined URL for the resource.
 func (o TargetInstanceOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o TargetInstanceOutput) TargetInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.TargetInstanceId }).(pulumi.StringOutput)
 }
 
 func (o TargetInstanceOutput) Zone() pulumi.StringOutput {

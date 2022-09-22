@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly Outputs.HttpResponse Http;
         /// <summary>
+        /// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Logging configuration.
         /// </summary>
         public readonly Outputs.LoggingResponse Logging;
@@ -194,6 +198,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
 
             Outputs.HttpResponse http,
 
+            string id,
+
             Outputs.LoggingResponse logging,
 
             ImmutableArray<Outputs.LogDescriptorResponse> logs,
@@ -234,6 +240,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
             Endpoints = endpoints;
             Enums = enums;
             Http = http;
+            Id = id;
             Logging = logging;
             Logs = logs;
             Metrics = metrics;

@@ -63,6 +63,8 @@ type Trigger struct {
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
 	// Tags for annotation of a `BuildTrigger`
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Unique identifier of the trigger.
+	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
 	TriggerTemplate RepoSourceResponseOutput `pulumi:"triggerTemplate"`
 	// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
@@ -381,6 +383,11 @@ func (o TriggerOutput) Substitutions() pulumi.StringMapOutput {
 // Tags for annotation of a `BuildTrigger`
 func (o TriggerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Unique identifier of the trigger.
+func (o TriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }
 
 // Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.

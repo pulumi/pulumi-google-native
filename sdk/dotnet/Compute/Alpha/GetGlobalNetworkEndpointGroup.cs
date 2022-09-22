@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         /// </summary>
         public readonly string Kind;
@@ -159,6 +163,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string kind,
 
             Outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse loadBalancer,
@@ -196,6 +202,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             DefaultPort = defaultPort;
             Description = description;
+            Id = id;
             Kind = kind;
             LoadBalancer = loadBalancer;
             Name = name;

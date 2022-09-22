@@ -37,6 +37,10 @@ export interface GetInstanceTemplateResult {
      */
     readonly description: string;
     /**
+     * A unique identifier for this instance template. The server defines this identifier.
+     */
+    readonly id: string;
+    /**
      * The resource type, which is always compute#instanceTemplate for instance templates.
      */
     readonly kind: string;

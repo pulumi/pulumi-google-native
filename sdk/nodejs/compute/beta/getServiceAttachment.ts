@@ -67,6 +67,10 @@ export interface GetServiceAttachmentResult {
      */
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#serviceAttachment for service attachments.
      */
     readonly kind: string;

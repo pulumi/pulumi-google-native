@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_data=None, psc_target_service=None, region=None, self_link=None, self_link_with_id=None, serverless_deployment=None, size=None, subnetwork=None, type=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, id=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_data=None, psc_target_service=None, region=None, self_link=None, self_link_with_id=None, serverless_deployment=None, size=None, subnetwork=None, type=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -41,6 +41,9 @@ class GetNetworkEndpointGroupResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -146,6 +149,14 @@ class GetNetworkEndpointGroupResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -278,6 +289,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             creation_timestamp=self.creation_timestamp,
             default_port=self.default_port,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             load_balancer=self.load_balancer,
             name=self.name,
@@ -317,6 +329,7 @@ def get_network_endpoint_group(network_endpoint_group: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         default_port=__ret__.default_port,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         load_balancer=__ret__.load_balancer,
         name=__ret__.name,

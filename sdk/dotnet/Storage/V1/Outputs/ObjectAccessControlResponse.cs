@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly string Generation;
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         /// </summary>
         public readonly string Kind;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 
             string generation,
 
+            string id,
+
             string kind,
 
             string @object,
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
             EntityId = entityId;
             Etag = etag;
             Generation = generation;
+            Id = id;
             Kind = kind;
             Object = @object;
             ProjectTeam = projectTeam;

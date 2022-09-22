@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetAutoscalingPolicyResult:
-    def __init__(__self__, basic_algorithm=None, name=None, secondary_worker_config=None, worker_config=None):
+    def __init__(__self__, basic_algorithm=None, id=None, name=None, secondary_worker_config=None, worker_config=None):
         if basic_algorithm and not isinstance(basic_algorithm, dict):
             raise TypeError("Expected argument 'basic_algorithm' to be a dict")
         pulumi.set(__self__, "basic_algorithm", basic_algorithm)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -37,6 +40,14 @@ class GetAutoscalingPolicyResult:
     @pulumi.getter(name="basicAlgorithm")
     def basic_algorithm(self) -> 'outputs.BasicAutoscalingAlgorithmResponse':
         return pulumi.get(self, "basic_algorithm")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -70,6 +81,7 @@ class AwaitableGetAutoscalingPolicyResult(GetAutoscalingPolicyResult):
             yield self
         return GetAutoscalingPolicyResult(
             basic_algorithm=self.basic_algorithm,
+            id=self.id,
             name=self.name,
             secondary_worker_config=self.secondary_worker_config,
             worker_config=self.worker_config)
@@ -91,6 +103,7 @@ def get_autoscaling_policy(autoscaling_policy_id: Optional[str] = None,
 
     return AwaitableGetAutoscalingPolicyResult(
         basic_algorithm=__ret__.basic_algorithm,
+        id=__ret__.id,
         name=__ret__.name,
         secondary_worker_config=__ret__.secondary_worker_config,
         worker_config=__ret__.worker_config)

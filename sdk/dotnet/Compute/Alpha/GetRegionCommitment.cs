@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string EndTimestamp;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#commitment for commitments.
         /// </summary>
         public readonly string Kind;
@@ -156,6 +160,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string endTimestamp,
 
+            string id,
+
             string kind,
 
             Outputs.LicenseResourceCommitmentResponse licenseResource,
@@ -191,6 +197,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             EndTimestamp = endTimestamp;
+            Id = id;
             Kind = kind;
             LicenseResource = licenseResource;
             MergeSourceCommitments = mergeSourceCommitments;

@@ -251,6 +251,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["network_firewall_policy_id"] = None
             __props__.__dict__["parent"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["rule_tuple_count"] = None
@@ -287,6 +288,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_firewall_policy_id"] = None
         __props__.__dict__["parent"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
@@ -354,6 +356,14 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by GCP which uniquely identifies the Organization Firewall Policy.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkFirewallPolicyId")
+    def network_firewall_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_firewall_policy_id")
 
     @property
     @pulumi.getter

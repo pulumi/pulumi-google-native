@@ -71,6 +71,10 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse> GkeClusters;
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server (output only).
+        /// </summary>
+        public readonly string Id;
         public readonly string Kind;
         /// <summary>
         /// User labels.
@@ -91,6 +95,8 @@ namespace Pulumi.GoogleNative.DNS.V1
 
             ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse> gkeClusters,
 
+            string id,
+
             string kind,
 
             ImmutableDictionary<string, string> labels,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.DNS.V1
         {
             Description = description;
             GkeClusters = gkeClusters;
+            Id = id;
             Kind = kind;
             Labels = labels;
             Networks = networks;

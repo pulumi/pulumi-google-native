@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     {
         public readonly Outputs.BasicAutoscalingAlgorithmResponse BasicAlgorithm;
         /// <summary>
+        /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
         /// </summary>
         public readonly string Name;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         private GetAutoscalingPolicyResult(
             Outputs.BasicAutoscalingAlgorithmResponse basicAlgorithm,
 
+            string id,
+
             string name,
 
             Outputs.InstanceGroupAutoscalingPolicyConfigResponse secondaryWorkerConfig,
@@ -88,6 +94,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
             Outputs.InstanceGroupAutoscalingPolicyConfigResponse workerConfig)
         {
             BasicAlgorithm = basicAlgorithm;
+            Id = id;
             Name = name;
             SecondaryWorkerConfig = secondaryWorkerConfig;
             WorkerConfig = workerConfig;

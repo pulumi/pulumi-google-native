@@ -248,6 +248,7 @@ class SslCertificate(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["ssl_certificate_id"] = None
             __props__.__dict__["subject_alternative_names"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -287,6 +288,7 @@ class SslCertificate(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["self_managed"] = None
+        __props__.__dict__["ssl_certificate_id"] = None
         __props__.__dict__["subject_alternative_names"] = None
         __props__.__dict__["type"] = None
         return SslCertificate(resource_name, opts=opts, __props__=__props__)
@@ -399,6 +401,14 @@ class SslCertificate(pulumi.CustomResource):
         Configuration and status of a self-managed SSL certificate.
         """
         return pulumi.get(self, "self_managed")
+
+    @property
+    @pulumi.getter(name="sslCertificateId")
+    def ssl_certificate_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "ssl_certificate_id")
 
     @property
     @pulumi.getter(name="subjectAlternativeNames")

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAutoscalerResult:
-    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, kind=None, name=None, recommended_size=None, region=None, scaling_schedule_status=None, self_link=None, status=None, status_details=None, target=None, zone=None):
+    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, id=None, kind=None, name=None, recommended_size=None, region=None, scaling_schedule_status=None, self_link=None, status=None, status_details=None, target=None, zone=None):
         if autoscaling_policy and not isinstance(autoscaling_policy, dict):
             raise TypeError("Expected argument 'autoscaling_policy' to be a dict")
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -29,6 +29,9 @@ class GetAutoscalerResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -83,6 +86,14 @@ class GetAutoscalerResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -174,6 +185,7 @@ class AwaitableGetAutoscalerResult(GetAutoscalerResult):
             autoscaling_policy=self.autoscaling_policy,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             recommended_size=self.recommended_size,
@@ -204,6 +216,7 @@ def get_autoscaler(autoscaler: Optional[str] = None,
         autoscaling_policy=__ret__.autoscaling_policy,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         recommended_size=__ret__.recommended_size,

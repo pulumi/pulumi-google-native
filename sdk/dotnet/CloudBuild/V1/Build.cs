@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<Outputs.SecretsResponse> AvailableSecrets { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        [Output("buildId")]
+        public Output<string> BuildId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// </summary>
         [Output("buildTriggerId")]

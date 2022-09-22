@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("reservationId")]
+        public Output<string> ReservationId { get; private set; } = null!;
+
+        /// <summary>
         /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
         /// </summary>
         [Output("resourcePolicies")]

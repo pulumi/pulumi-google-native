@@ -17,6 +17,10 @@ export { ApiProductArgs } from "./apiProduct";
 export type ApiProduct = import("./apiProduct").ApiProduct;
 export const ApiProduct: typeof import("./apiProduct").ApiProduct = null as any;
 
+export { ApicategoryArgs } from "./apicategory";
+export type Apicategory = import("./apicategory").Apicategory;
+export const Apicategory: typeof import("./apicategory").Apicategory = null as any;
+
 export { AppArgs } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
@@ -304,6 +308,7 @@ export const TargetServer: typeof import("./targetServer").TargetServer = null a
 utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
 utilities.lazyLoad(exports, ["Api"], () => require("./api"));
 utilities.lazyLoad(exports, ["ApiProduct"], () => require("./apiProduct"));
+utilities.lazyLoad(exports, ["Apicategory"], () => require("./apicategory"));
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 utilities.lazyLoad(exports, ["ArchiveDeployment"], () => require("./archiveDeployment"));
 utilities.lazyLoad(exports, ["CanaryEvaluation"], () => require("./canaryEvaluation"));
@@ -389,6 +394,8 @@ const _module = {
                 return new Api(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ApiProduct":
                 return new ApiProduct(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:Apicategory":
+                return new Apicategory(name, <any>undefined, { urn })
             case "google-native:apigee/v1:App":
                 return new App(name, <any>undefined, { urn })
             case "google-native:apigee/v1:ArchiveDeployment":

@@ -218,6 +218,7 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["response_policy_name"] = response_policy_name
+            __props__.__dict__["response_policy_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ResponsePolicy, __self__).__init__(
@@ -249,6 +250,7 @@ class ResponsePolicy(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["response_policy_id"] = None
         __props__.__dict__["response_policy_name"] = None
         return ResponsePolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -301,6 +303,14 @@ class ResponsePolicy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="responsePolicyId")
+    def response_policy_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "response_policy_id")
 
     @property
     @pulumi.getter(name="responsePolicyName")

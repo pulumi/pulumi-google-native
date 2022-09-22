@@ -51,6 +51,10 @@ export interface GetDeviceResult {
      */
     readonly gatewayConfig: outputs.cloudiot.v1.GatewayConfigResponse;
     /**
+     * The user-defined device identifier. The device ID must be unique within a device registry.
+     */
+    readonly id: string;
+    /**
      * [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
      */
     readonly lastConfigAckTime: string;

@@ -233,6 +233,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public Output<bool> Threadsafe { get; private set; } = null!;
 
         /// <summary>
+        /// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        /// </summary>
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
+
+        /// <summary>
         /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
         /// </summary>
         [Output("versionUrl")]
@@ -429,12 +435,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("healthCheck")]
         public Input<Inputs.HealthCheckArgs>? HealthCheck { get; set; }
 
-        /// <summary>
-        /// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("inboundServices")]
         private InputList<Pulumi.GoogleNative.AppEngine.V1Beta.VersionInboundServicesItem>? _inboundServices;
 
@@ -545,6 +545,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Input("threadsafe")]
         public Input<bool>? Threadsafe { get; set; }
+
+        /// <summary>
+        /// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// Whether to deploy this version in a container on a virtual machine.

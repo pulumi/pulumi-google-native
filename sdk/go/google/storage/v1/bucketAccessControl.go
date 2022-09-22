@@ -17,6 +17,8 @@ type BucketAccessControl struct {
 	pulumi.CustomResourceState
 
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	BucketAccessControlId pulumi.StringOutput `pulumi:"bucketAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -98,6 +100,8 @@ func (BucketAccessControlState) ElementType() reflect.Type {
 type bucketAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	BucketAccessControlId *string `pulumi:"bucketAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain *string `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -119,8 +123,6 @@ type bucketAccessControlArgs struct {
 	EntityId *string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag *string `pulumi:"etag"`
-	// The ID of the access-control entry.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -137,6 +139,8 @@ type bucketAccessControlArgs struct {
 type BucketAccessControlArgs struct {
 	// The name of the bucket.
 	Bucket pulumi.StringInput
+	// The ID of the access-control entry.
+	BucketAccessControlId pulumi.StringPtrInput
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringPtrInput
 	// The email address associated with the entity, if any.
@@ -158,8 +162,6 @@ type BucketAccessControlArgs struct {
 	EntityId pulumi.StringPtrInput
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag pulumi.StringPtrInput
-	// The ID of the access-control entry.
-	Id pulumi.StringPtrInput
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
@@ -211,6 +213,11 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 
 func (o BucketAccessControlOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o BucketAccessControlOutput) BucketAccessControlId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.BucketAccessControlId }).(pulumi.StringOutput)
 }
 
 // The domain associated with the entity, if any.

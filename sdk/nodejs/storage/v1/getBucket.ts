@@ -75,6 +75,10 @@ export interface GetBucketResult {
      */
     readonly iamConfiguration: outputs.storage.v1.BucketIamConfigurationResponse;
     /**
+     * The ID of the bucket. For buckets, the id and name properties are the same.
+     */
+    readonly id: string;
+    /**
      * The kind of item this is. For buckets, this is always storage#bucket.
      */
     readonly kind: string;

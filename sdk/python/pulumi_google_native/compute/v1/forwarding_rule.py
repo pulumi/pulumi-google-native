@@ -550,6 +550,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["target"] = target
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["forwarding_rule_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
@@ -585,6 +586,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["forwarding_rule_id"] = None
         __props__.__dict__["ip_address"] = None
         __props__.__dict__["ip_protocol"] = None
         __props__.__dict__["ip_version"] = None
@@ -660,6 +662,14 @@ class ForwardingRule(pulumi.CustomResource):
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="forwardingRuleId")
+    def forwarding_rule_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "forwarding_rule_id")
 
     @property
     @pulumi.getter(name="ipAddress")

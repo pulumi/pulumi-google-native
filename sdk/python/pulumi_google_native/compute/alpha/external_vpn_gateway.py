@@ -203,6 +203,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             __props__.__dict__["redundancy_type"] = redundancy_type
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["external_vpn_gateway_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
@@ -232,6 +233,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["external_vpn_gateway_id"] = None
         __props__.__dict__["interfaces"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
@@ -258,6 +260,14 @@ class ExternalVpnGateway(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="externalVpnGatewayId")
+    def external_vpn_gateway_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "external_vpn_gateway_id")
 
     @property
     @pulumi.getter

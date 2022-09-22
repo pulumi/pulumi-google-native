@@ -61,6 +61,10 @@ export interface GetInterconnectResult {
      */
     readonly googleReferenceId: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
     readonly interconnectAttachments: string[];

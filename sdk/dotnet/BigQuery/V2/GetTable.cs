@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
+        /// An opaque ID uniquely identifying the table.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The type of the resource.
         /// </summary>
         public readonly string Kind;
@@ -254,6 +258,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string friendlyName,
 
+            string id,
+
             string kind,
 
             ImmutableDictionary<string, string> labels,
@@ -322,6 +328,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             ExpirationTime = expirationTime;
             ExternalDataConfiguration = externalDataConfiguration;
             FriendlyName = friendlyName;
+            Id = id;
             Kind = kind;
             Labels = labels;
             LastModifiedTime = lastModifiedTime;

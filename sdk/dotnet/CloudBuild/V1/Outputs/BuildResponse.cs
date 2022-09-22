@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string FinishTime;
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         /// </summary>
         public readonly ImmutableArray<string> Images;
@@ -145,6 +149,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string finishTime,
 
+            string id,
+
             ImmutableArray<string> images,
 
             string logUrl,
@@ -194,6 +200,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             CreateTime = createTime;
             FailureInfo = failureInfo;
             FinishTime = finishTime;
+            Id = id;
             Images = images;
             LogUrl = logUrl;
             LogsBucket = logsBucket;

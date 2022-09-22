@@ -229,6 +229,7 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
+            __props__.__dict__["ssl_policy_id"] = None
             __props__.__dict__["warnings"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -268,6 +269,7 @@ class SslPolicy(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
+        __props__.__dict__["ssl_policy_id"] = None
         __props__.__dict__["tls_settings"] = None
         __props__.__dict__["warnings"] = None
         return SslPolicy(resource_name, opts=opts, __props__=__props__)
@@ -380,6 +382,14 @@ class SslPolicy(pulumi.CustomResource):
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="sslPolicyId")
+    def ssl_policy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "ssl_policy_id")
 
     @property
     @pulumi.getter(name="tlsSettings")

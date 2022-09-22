@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Policy mode
         /// </summary>
         public readonly string Mode;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 
             string description,
 
+            string id,
+
             string mode,
 
             ImmutableArray<Outputs.OSPolicyResourceGroupResponse> resourceGroups)
         {
             AllowNoResourceGroupMatch = allowNoResourceGroupMatch;
             Description = description;
+            Id = id;
             Mode = mode;
             ResourceGroups = resourceGroups;
         }

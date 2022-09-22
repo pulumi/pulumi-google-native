@@ -403,6 +403,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["target_service_accounts"] = target_service_accounts
             __props__.__dict__["target_tags"] = target_tags
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["firewall_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -436,6 +437,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["destination_ranges"] = None
         __props__.__dict__["direction"] = None
         __props__.__dict__["disabled"] = None
+        __props__.__dict__["firewall_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["log_config"] = None
         __props__.__dict__["name"] = None
@@ -506,6 +508,14 @@ class Firewall(pulumi.CustomResource):
         Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @property
     @pulumi.getter

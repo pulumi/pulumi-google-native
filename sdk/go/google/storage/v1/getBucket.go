@@ -49,6 +49,8 @@ type LookupBucketResult struct {
 	Etag string `pulumi:"etag"`
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationResponse `pulumi:"iamConfiguration"`
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	Id string `pulumi:"id"`
 	// The kind of item this is. For buckets, this is always storage#bucket.
 	Kind string `pulumi:"kind"`
 	// User-provided labels, in key/value pairs.
@@ -176,6 +178,11 @@ func (o LookupBucketResultOutput) Etag() pulumi.StringOutput {
 // The bucket's IAM configuration.
 func (o LookupBucketResultOutput) IamConfiguration() BucketIamConfigurationResponseOutput {
 	return o.ApplyT(func(v LookupBucketResult) BucketIamConfigurationResponse { return v.IamConfiguration }).(BucketIamConfigurationResponseOutput)
+}
+
+// The ID of the bucket. For buckets, the id and name properties are the same.
+func (o LookupBucketResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For buckets, this is always storage#bucket.

@@ -18,8 +18,8 @@ class DeploymentArgs:
     def __init__(__self__, *,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
@@ -39,10 +39,10 @@ class DeploymentArgs:
             pulumi.set(__self__, "create_policy", create_policy)
         if credential is not None:
             pulumi.set(__self__, "credential", credential)
+        if deployment_id is not None:
+            pulumi.set(__self__, "deployment_id", deployment_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -79,6 +79,15 @@ class DeploymentArgs:
         pulumi.set(self, "credential", value)
 
     @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_id", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -89,15 +98,6 @@ class DeploymentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -164,8 +164,8 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
@@ -211,8 +211,8 @@ class Deployment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
@@ -229,8 +229,8 @@ class Deployment(pulumi.CustomResource):
 
             __props__.__dict__["create_policy"] = create_policy
             __props__.__dict__["credential"] = credential
+            __props__.__dict__["deployment_id"] = deployment_id
             __props__.__dict__["description"] = description
-            __props__.__dict__["id"] = id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["preview"] = preview
@@ -270,6 +270,7 @@ class Deployment(pulumi.CustomResource):
 
         __props__.__dict__["create_policy"] = None
         __props__.__dict__["credential"] = None
+        __props__.__dict__["deployment_id"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["insert_time"] = None
@@ -301,6 +302,11 @@ class Deployment(pulumi.CustomResource):
         User provided default credential for the deployment.
         """
         return pulumi.get(self, "credential")
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "deployment_id")
 
     @property
     @pulumi.getter

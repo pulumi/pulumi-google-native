@@ -733,6 +733,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region_backend_service_id"] = None
             __props__.__dict__["security_policy"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
@@ -791,6 +792,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["region_backend_service_id"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["security_policy"] = None
         __props__.__dict__["security_settings"] = None
@@ -1044,6 +1046,14 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="regionBackendServiceId")
+    def region_backend_service_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "region_backend_service_id")
 
     @property
     @pulumi.getter(name="requestId")

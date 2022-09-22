@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
+        /// <summary>
+        /// The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        /// </summary>
+        [Output("workflowTemplateId")]
+        public Output<string> WorkflowTemplateId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a WorkflowTemplate resource with the given unique name, arguments, and options.
@@ -132,12 +138,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         [Input("dagTimeout")]
         public Input<string>? DagTimeout { get; set; }
 
-        /// <summary>
-        /// The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
         [Input("jobs", required: true)]
         private InputList<Inputs.OrderedJobArgs>? _jobs;
 
@@ -191,6 +191,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        /// <summary>
+        /// The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        /// </summary>
+        [Input("workflowTemplateId", required: true)]
+        public Input<string> WorkflowTemplateId { get; set; } = null!;
 
         public WorkflowTemplateArgs()
         {

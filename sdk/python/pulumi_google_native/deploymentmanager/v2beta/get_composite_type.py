@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetCompositeTypeResult:
-    def __init__(__self__, description=None, insert_time=None, labels=None, name=None, operation=None, self_link=None, status=None, template_contents=None):
+    def __init__(__self__, description=None, id=None, insert_time=None, labels=None, name=None, operation=None, self_link=None, status=None, template_contents=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if insert_time and not isinstance(insert_time, str):
             raise TypeError("Expected argument 'insert_time' to be a str")
         pulumi.set(__self__, "insert_time", insert_time)
@@ -52,6 +55,11 @@ class GetCompositeTypeResult:
         An optional textual description of the resource; provided by the client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="insertTime")
@@ -114,6 +122,7 @@ class AwaitableGetCompositeTypeResult(GetCompositeTypeResult):
             yield self
         return GetCompositeTypeResult(
             description=self.description,
+            id=self.id,
             insert_time=self.insert_time,
             labels=self.labels,
             name=self.name,
@@ -137,6 +146,7 @@ def get_composite_type(composite_type: Optional[str] = None,
 
     return AwaitableGetCompositeTypeResult(
         description=__ret__.description,
+        id=__ret__.id,
         insert_time=__ret__.insert_time,
         labels=__ret__.labels,
         name=__ret__.name,

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public Output<ImmutableArray<Outputs.DeviceCredentialResponse>> Credentials { get; private set; } = null!;
 
         /// <summary>
+        /// The user-defined device identifier. The device ID must be unique within a device registry.
+        /// </summary>
+        [Output("deviceId")]
+        public Output<string> DeviceId { get; private set; } = null!;
+
+        /// <summary>
         /// Gateway-related configuration and state.
         /// </summary>
         [Output("gatewayConfig")]
@@ -196,16 +202,16 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         }
 
         /// <summary>
+        /// The user-defined device identifier. The device ID must be unique within a device registry.
+        /// </summary>
+        [Input("deviceId")]
+        public Input<string>? DeviceId { get; set; }
+
+        /// <summary>
         /// Gateway-related configuration and state.
         /// </summary>
         [Input("gatewayConfig")]
         public Input<Inputs.GatewayConfigArgs>? GatewayConfig { get; set; }
-
-        /// <summary>
-        /// The user-defined device identifier. The device ID must be unique within a device registry.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

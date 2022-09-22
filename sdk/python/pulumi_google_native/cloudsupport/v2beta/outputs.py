@@ -101,12 +101,15 @@ class CaseClassificationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 display_name: str):
+                 display_name: str,
+                 id: str):
         """
         A classification object with a product type and value.
         :param str display_name: The display name of the classification.
+        :param str id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         """
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -115,5 +118,13 @@ class CaseClassificationResponse(dict):
         The display name of the classification.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        """
+        return pulumi.get(self, "id")
 
 

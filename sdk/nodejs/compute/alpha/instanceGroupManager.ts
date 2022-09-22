@@ -78,6 +78,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly instanceGroupManagerId!: pulumi.Output<string>;
+    /**
      * The repair policy for this managed instance group.
      */
     public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicyResponse>;
@@ -198,6 +202,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["currentActions"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -214,6 +219,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["failoverAction"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["instanceLifecyclePolicy"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

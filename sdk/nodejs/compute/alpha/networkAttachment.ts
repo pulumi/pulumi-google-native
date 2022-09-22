@@ -67,6 +67,10 @@ export class NetworkAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly network!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly networkAttachmentId!: pulumi.Output<string>;
+    /**
      * Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
      */
     public readonly producerAcceptLists!: pulumi.Output<string[]>;
@@ -121,6 +125,7 @@ export class NetworkAttachment extends pulumi.CustomResource {
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkAttachmentId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
@@ -132,6 +137,7 @@ export class NetworkAttachment extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
+            resourceInputs["networkAttachmentId"] = undefined /*out*/;
             resourceInputs["producerAcceptLists"] = undefined /*out*/;
             resourceInputs["producerRejectLists"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

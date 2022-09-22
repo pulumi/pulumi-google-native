@@ -123,6 +123,7 @@ class BucketAccessControlResponse(dict):
                  entity: str,
                  entity_id: str,
                  etag: str,
+                 id: str,
                  kind: str,
                  project_team: 'outputs.BucketAccessControlProjectTeamResponse',
                  role: str,
@@ -146,6 +147,7 @@ class BucketAccessControlResponse(dict):
                - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         :param str entity_id: The ID for the entity, if any.
         :param str etag: HTTP 1.1 Entity tag for the access-control entry.
+        :param str id: The ID of the access-control entry.
         :param str kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         :param 'BucketAccessControlProjectTeamResponse' project_team: The project team associated with the entity, if any.
         :param str role: The access permission for the entity.
@@ -157,6 +159,7 @@ class BucketAccessControlResponse(dict):
         pulumi.set(__self__, "entity", entity)
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "project_team", project_team)
         pulumi.set(__self__, "role", role)
@@ -220,6 +223,14 @@ class BucketAccessControlResponse(dict):
         HTTP 1.1 Entity tag for the access-control entry.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -1547,6 +1558,7 @@ class ObjectAccessControlResponse(dict):
                  entity_id: str,
                  etag: str,
                  generation: str,
+                 id: str,
                  kind: str,
                  object: str,
                  project_team: 'outputs.ObjectAccessControlProjectTeamResponse',
@@ -1572,6 +1584,7 @@ class ObjectAccessControlResponse(dict):
         :param str entity_id: The ID for the entity, if any.
         :param str etag: HTTP 1.1 Entity tag for the access-control entry.
         :param str generation: The content generation of the object, if applied to an object.
+        :param str id: The ID of the access-control entry.
         :param str kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param str object: The name of the object, if applied to an object.
         :param 'ObjectAccessControlProjectTeamResponse' project_team: The project team associated with the entity, if any.
@@ -1585,6 +1598,7 @@ class ObjectAccessControlResponse(dict):
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "etag", etag)
         pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "object", object)
         pulumi.set(__self__, "project_team", project_team)
@@ -1657,6 +1671,14 @@ class ObjectAccessControlResponse(dict):
         The content generation of the object, if applied to an object.
         """
         return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

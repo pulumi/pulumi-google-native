@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
         /// </summary>
         public readonly string Kind;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Count = count;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             QueuingPolicy = queuingPolicy;

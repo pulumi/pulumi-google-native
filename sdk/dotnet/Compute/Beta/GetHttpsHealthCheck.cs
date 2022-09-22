@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         public readonly string Kind;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string host,
 
+            string id,
+
             string kind,
 
             string name,
@@ -137,6 +143,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             HealthyThreshold = healthyThreshold;
             Host = host;
+            Id = id;
             Kind = kind;
             Name = name;
             Port = port;

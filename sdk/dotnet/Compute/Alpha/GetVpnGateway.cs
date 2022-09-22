@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of resource. Always compute#vpnGateway for VPN gateways.
         /// </summary>
         public readonly string Kind;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

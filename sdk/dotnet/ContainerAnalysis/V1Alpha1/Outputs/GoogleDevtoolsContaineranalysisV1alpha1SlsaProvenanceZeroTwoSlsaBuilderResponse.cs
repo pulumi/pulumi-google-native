@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     [OutputType]
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse
     {
+        /// <summary>
+        /// URI indicating the builder’s identity.
+        /// </summary>
+        public readonly string Id;
+
         [OutputConstructor]
-        private GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse()
+        private GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse(string id)
         {
+            Id = id;
         }
     }
 }

@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("httpsHealthCheckId")]
+        public Output<string> HttpsHealthCheckId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource.
         /// </summary>
         [Output("kind")]

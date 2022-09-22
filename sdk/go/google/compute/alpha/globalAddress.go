@@ -22,6 +22,8 @@ type GlobalAddress struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	GlobalAddressId pulumi.StringOutput `pulumi:"globalAddressId"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
@@ -217,6 +219,11 @@ func (o GlobalAddressOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource. Provide this field when you create the resource.
 func (o GlobalAddressOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o GlobalAddressOutput) GlobalAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.GlobalAddressId }).(pulumi.StringOutput)
 }
 
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.

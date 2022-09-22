@@ -40,6 +40,8 @@ type ZoneQueuedResource struct {
 	// [Output only] Result of queuing and provisioning based on deferred capacity.
 	Status QueuedResourceStatusResponseOutput `pulumi:"status"`
 	Zone   pulumi.StringOutput                `pulumi:"zone"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	ZoneQueuedResourceId pulumi.StringOutput `pulumi:"zoneQueuedResourceId"`
 }
 
 // NewZoneQueuedResource registers a new resource with the given unique name, arguments, and options.
@@ -221,6 +223,11 @@ func (o ZoneQueuedResourceOutput) Status() QueuedResourceStatusResponseOutput {
 
 func (o ZoneQueuedResourceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneQueuedResource) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o ZoneQueuedResourceOutput) ZoneQueuedResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneQueuedResource) pulumi.StringOutput { return v.ZoneQueuedResourceId }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -68,6 +68,10 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly targetGrpcProxyId!: pulumi.Output<string>;
+    /**
      * URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
      */
     public readonly urlMap!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetGrpcProxyId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -108,6 +113,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetGrpcProxyId"] = undefined /*out*/;
             resourceInputs["urlMap"] = undefined /*out*/;
             resourceInputs["validateForProxyless"] = undefined /*out*/;
         }

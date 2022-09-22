@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#reservations for reservations.
         /// </summary>
         public readonly string Kind;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string description,
 
+            string id,
+
             string kind,
 
             string name,
@@ -100,6 +106,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             Kind = kind;
             Name = name;
             ResourcePolicies = resourcePolicies;

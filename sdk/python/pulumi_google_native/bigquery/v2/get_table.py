@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, id=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
         if clone_definition and not isinstance(clone_definition, dict):
             raise TypeError("Expected argument 'clone_definition' to be a dict")
         pulumi.set(__self__, "clone_definition", clone_definition)
@@ -50,6 +50,9 @@ class GetTableResult:
         if friendly_name and not isinstance(friendly_name, str):
             raise TypeError("Expected argument 'friendly_name' to be a str")
         pulumi.set(__self__, "friendly_name", friendly_name)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -217,6 +220,14 @@ class GetTableResult:
         [Optional] A descriptive name for this table.
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        An opaque ID uniquely identifying the table.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -467,6 +478,7 @@ class AwaitableGetTableResult(GetTableResult):
             expiration_time=self.expiration_time,
             external_data_configuration=self.external_data_configuration,
             friendly_name=self.friendly_name,
+            id=self.id,
             kind=self.kind,
             labels=self.labels,
             last_modified_time=self.last_modified_time,
@@ -527,6 +539,7 @@ def get_table(dataset_id: Optional[str] = None,
         expiration_time=__ret__.expiration_time,
         external_data_configuration=__ret__.external_data_configuration,
         friendly_name=__ret__.friendly_name,
+        id=__ret__.id,
         kind=__ret__.kind,
         labels=__ret__.labels,
         last_modified_time=__ret__.last_modified_time,

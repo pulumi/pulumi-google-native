@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.HostRuleResponse> HostRules;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#urlMaps for url maps.
         /// </summary>
         public readonly string Kind;
@@ -132,6 +136,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<Outputs.HostRuleResponse> hostRules,
 
+            string id,
+
             string kind,
 
             string name,
@@ -152,6 +158,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Fingerprint = fingerprint;
             HeaderAction = headerAction;
             HostRules = hostRules;
+            Id = id;
             Kind = kind;
             Name = name;
             PathMatchers = pathMatchers;

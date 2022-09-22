@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// </summary>
         public readonly string Checksum;
         /// <summary>
+        /// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         /// </summary>
         public readonly ImmutableArray<string> Names;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         private ArtifactResponse(
             string checksum,
 
+            string id,
+
             ImmutableArray<string> names)
         {
             Checksum = checksum;
+            Id = id;
             Names = names;
         }
     }

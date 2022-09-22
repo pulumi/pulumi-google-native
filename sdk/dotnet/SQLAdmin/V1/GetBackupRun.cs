@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public readonly Outputs.OperationErrorResponse Error;
         /// <summary>
+        /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Name of the database instance.
         /// </summary>
         public readonly string Instance;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
             Outputs.OperationErrorResponse error,
 
+            string id,
+
             string instance,
 
             string kind,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             EndTime = endTime;
             EnqueuedTime = enqueuedTime;
             Error = error;
+            Id = id;
             Instance = instance;
             Kind = kind;
             Location = location;

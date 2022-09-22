@@ -43,6 +43,8 @@ type LookupNodeResult struct {
 	Health string `pulumi:"health"`
 	// If this field is populated, it contains a description of why the TPU Node is unhealthy.
 	HealthDescription string `pulumi:"healthDescription"`
+	// The unique identifier for the TPU Node.
+	Id string `pulumi:"id"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
@@ -144,6 +146,11 @@ func (o LookupNodeResultOutput) Health() pulumi.StringOutput {
 // If this field is populated, it contains a description of why the TPU Node is unhealthy.
 func (o LookupNodeResultOutput) HealthDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.HealthDescription }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the TPU Node.
+func (o LookupNodeResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Resource labels to represent user-provided metadata.

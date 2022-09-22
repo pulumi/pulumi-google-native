@@ -38,6 +38,10 @@ export interface GetResponsePolicyResult {
      * The list of Google Kubernetes Engine clusters to which this response policy is applied.
      */
     readonly gkeClusters: outputs.dns.v1beta2.ResponsePolicyGKEClusterResponse[];
+    /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    readonly id: string;
     readonly kind: string;
     /**
      * User labels.

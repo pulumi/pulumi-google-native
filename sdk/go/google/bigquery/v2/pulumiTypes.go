@@ -4354,6 +4354,8 @@ type ExplainQueryStageResponse struct {
 	ComputeRatioMax float64 `pulumi:"computeRatioMax"`
 	// Stage end time represented as milliseconds since epoch.
 	EndMs string `pulumi:"endMs"`
+	// Unique ID for stage within plan.
+	Id string `pulumi:"id"`
 	// IDs for stages that are inputs to this stage.
 	InputStages []string `pulumi:"inputStages"`
 	// Human-readable name for stage.
@@ -4444,6 +4446,11 @@ func (o ExplainQueryStageResponseOutput) ComputeRatioMax() pulumi.Float64Output 
 // Stage end time represented as milliseconds since epoch.
 func (o ExplainQueryStageResponseOutput) EndMs() pulumi.StringOutput {
 	return o.ApplyT(func(v ExplainQueryStageResponse) string { return v.EndMs }).(pulumi.StringOutput)
+}
+
+// Unique ID for stage within plan.
+func (o ExplainQueryStageResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ExplainQueryStageResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IDs for stages that are inputs to this stage.

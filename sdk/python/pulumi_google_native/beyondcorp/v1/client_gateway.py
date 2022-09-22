@@ -224,7 +224,7 @@ class ClientGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientGatewayId")
-    def client_gateway_id(self) -> pulumi.Output[Optional[str]]:
+    def client_gateway_id(self) -> pulumi.Output[str]:
         """
         Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         """

@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetChangeResult:
-    def __init__(__self__, additions=None, deletions=None, is_serving=None, kind=None, start_time=None, status=None):
+    def __init__(__self__, additions=None, deletions=None, id=None, is_serving=None, kind=None, start_time=None, status=None):
         if additions and not isinstance(additions, list):
             raise TypeError("Expected argument 'additions' to be a list")
         pulumi.set(__self__, "additions", additions)
         if deletions and not isinstance(deletions, list):
             raise TypeError("Expected argument 'deletions' to be a list")
         pulumi.set(__self__, "deletions", deletions)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if is_serving and not isinstance(is_serving, bool):
             raise TypeError("Expected argument 'is_serving' to be a bool")
         pulumi.set(__self__, "is_serving", is_serving)
@@ -54,6 +57,14 @@ class GetChangeResult:
         Which ResourceRecordSets to remove? Must match existing data exactly.
         """
         return pulumi.get(self, "deletions")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Unique identifier for the resource; defined by the server (output only).
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isServing")
@@ -93,6 +104,7 @@ class AwaitableGetChangeResult(GetChangeResult):
         return GetChangeResult(
             additions=self.additions,
             deletions=self.deletions,
+            id=self.id,
             is_serving=self.is_serving,
             kind=self.kind,
             start_time=self.start_time,
@@ -118,6 +130,7 @@ def get_change(change_id: Optional[str] = None,
     return AwaitableGetChangeResult(
         additions=__ret__.additions,
         deletions=__ret__.deletions,
+        id=__ret__.id,
         is_serving=__ret__.is_serving,
         kind=__ret__.kind,
         start_time=__ret__.start_time,

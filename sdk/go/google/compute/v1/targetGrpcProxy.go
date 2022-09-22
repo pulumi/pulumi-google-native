@@ -31,6 +31,8 @@ type TargetGrpcProxy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL with id for the resource.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	TargetGrpcProxyId pulumi.StringOutput `pulumi:"targetGrpcProxyId"`
 	// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 	// If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to
@@ -187,6 +189,11 @@ func (o TargetGrpcProxyOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL with id for the resource.
 func (o TargetGrpcProxyOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o TargetGrpcProxyOutput) TargetGrpcProxyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.TargetGrpcProxyId }).(pulumi.StringOutput)
 }
 
 // URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.

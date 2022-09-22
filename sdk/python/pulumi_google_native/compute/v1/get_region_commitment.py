@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionCommitmentResult:
-    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, kind=None, license_resource=None, merge_source_commitments=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, split_source_commitment=None, start_timestamp=None, status=None, status_message=None, type=None):
+    def __init__(__self__, auto_renew=None, category=None, creation_timestamp=None, description=None, end_timestamp=None, id=None, kind=None, license_resource=None, merge_source_commitments=None, name=None, plan=None, region=None, reservations=None, resources=None, self_link=None, split_source_commitment=None, start_timestamp=None, status=None, status_message=None, type=None):
         if auto_renew and not isinstance(auto_renew, bool):
             raise TypeError("Expected argument 'auto_renew' to be a bool")
         pulumi.set(__self__, "auto_renew", auto_renew)
@@ -35,6 +35,9 @@ class GetRegionCommitmentResult:
         if end_timestamp and not isinstance(end_timestamp, str):
             raise TypeError("Expected argument 'end_timestamp' to be a str")
         pulumi.set(__self__, "end_timestamp", end_timestamp)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -117,6 +120,14 @@ class GetRegionCommitmentResult:
         Commitment end time in RFC3339 text format.
         """
         return pulumi.get(self, "end_timestamp")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -242,6 +253,7 @@ class AwaitableGetRegionCommitmentResult(GetRegionCommitmentResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             end_timestamp=self.end_timestamp,
+            id=self.id,
             kind=self.kind,
             license_resource=self.license_resource,
             merge_source_commitments=self.merge_source_commitments,
@@ -278,6 +290,7 @@ def get_region_commitment(commitment: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         end_timestamp=__ret__.end_timestamp,
+        id=__ret__.id,
         kind=__ret__.kind,
         license_resource=__ret__.license_resource,
         merge_source_commitments=__ret__.merge_source_commitments,

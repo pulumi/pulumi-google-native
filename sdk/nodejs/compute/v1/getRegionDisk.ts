@@ -51,6 +51,10 @@ export interface GetRegionDiskResult {
      */
     readonly guestOsFeatures: outputs.compute.v1.GuestOsFeatureResponse[];
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#disk for disks.
      */
     readonly kind: string;

@@ -40,6 +40,8 @@ type LookupFirewallResult struct {
 	Direction string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled bool `pulumi:"disabled"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#firewall for firewall rules.
 	Kind string `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -133,6 +135,11 @@ func (o LookupFirewallResultOutput) Direction() pulumi.StringOutput {
 // Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 func (o LookupFirewallResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFirewallResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#firewall for firewall rules.

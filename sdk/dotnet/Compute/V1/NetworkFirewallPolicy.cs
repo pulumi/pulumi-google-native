@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkFirewallPolicyId")]
+        public Output<string> NetworkFirewallPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The parent of the firewall policy. This field is not applicable to network firewall policies.
         /// </summary>
         [Output("parent")]

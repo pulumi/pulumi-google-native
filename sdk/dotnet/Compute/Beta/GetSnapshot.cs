@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of the resource. Always compute#snapshot for Snapshot resources.
         /// </summary>
         public readonly string Kind;
@@ -198,6 +202,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             bool guestFlush,
 
+            string id,
+
             string kind,
 
             string labelFingerprint,
@@ -249,6 +255,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             DiskSizeGb = diskSizeGb;
             DownloadBytes = downloadBytes;
             GuestFlush = guestFlush;
+            Id = id;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

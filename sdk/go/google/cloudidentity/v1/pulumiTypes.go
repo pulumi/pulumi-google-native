@@ -444,6 +444,8 @@ func (o EntityKeyOutput) Namespace() pulumi.StringPtrOutput {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponse struct {
+	// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+	Id string `pulumi:"id"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.
 	Namespace string `pulumi:"namespace"`
 }
@@ -461,6 +463,11 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponseOutput() EntityKeyResponseOu
 
 func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx context.Context) EntityKeyResponseOutput {
 	return o
+}
+
+// The ID of the entity. For Google-managed entities, the `id` should be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+func (o EntityKeyResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityKeyResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source}`.

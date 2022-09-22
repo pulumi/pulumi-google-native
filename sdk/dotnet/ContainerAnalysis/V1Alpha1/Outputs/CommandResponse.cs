@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Env;
         /// <summary>
+        /// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         /// </summary>
         public readonly string Name;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             ImmutableArray<string> env,
 
+            string id,
+
             string name,
 
             ImmutableArray<string> waitFor)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Args = args;
             Dir = dir;
             Env = env;
+            Id = id;
             Name = name;
             WaitFor = waitFor;
         }

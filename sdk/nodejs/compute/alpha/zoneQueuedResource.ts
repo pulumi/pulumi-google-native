@@ -87,6 +87,10 @@ export class ZoneQueuedResource extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.compute.alpha.QueuedResourceStatusResponse>;
     public readonly zone!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly zoneQueuedResourceId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneQueuedResource resource with the given unique name, arguments, and options.
@@ -113,6 +117,7 @@ export class ZoneQueuedResource extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["zoneQueuedResourceId"] = undefined /*out*/;
         } else {
             resourceInputs["bulkInsertInstanceResource"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -128,6 +133,7 @@ export class ZoneQueuedResource extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
+            resourceInputs["zoneQueuedResourceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project", "zone"] };

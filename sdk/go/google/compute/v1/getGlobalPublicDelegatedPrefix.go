@@ -32,6 +32,8 @@ type LookupGlobalPublicDelegatedPrefixResult struct {
 	Description string `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 	Fingerprint string `pulumi:"fingerprint"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// If true, the prefix will be live migrated.
@@ -101,6 +103,11 @@ func (o LookupGlobalPublicDelegatedPrefixResultOutput) Description() pulumi.Stri
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
 func (o LookupGlobalPublicDelegatedPrefixResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o LookupGlobalPublicDelegatedPrefixResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalPublicDelegatedPrefixResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The IPv4 address range, in CIDR format, represented by this public delegated prefix.

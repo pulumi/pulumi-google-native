@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool GuestFlush;
         /// <summary>
+        /// A unique identifier for this machine image. The server defines this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Properties of source instance
         /// </summary>
         public readonly Outputs.InstancePropertiesResponse InstanceProperties;
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool guestFlush,
 
+            string id,
+
             Outputs.InstancePropertiesResponse instanceProperties,
 
             string kind,
@@ -165,6 +171,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             GuestFlush = guestFlush;
+            Id = id;
             InstanceProperties = instanceProperties;
             Kind = kind;
             MachineImageEncryptionKey = machineImageEncryptionKey;

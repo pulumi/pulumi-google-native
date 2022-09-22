@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// The unqualified resource name.
         /// </summary>
         [Output("nodeId")]
-        public Output<string?> NodeId { get; private set; } = null!;
+        public Output<string> NodeId { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;

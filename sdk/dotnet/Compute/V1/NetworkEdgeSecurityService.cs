@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkEdgeSecurityServiceId")]
+        public Output<string> NetworkEdgeSecurityServiceId { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

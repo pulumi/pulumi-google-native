@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> BackupKind { get; private set; } = null!;
 
         /// <summary>
+        /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        /// </summary>
+        [Output("backupRunId")]
+        public Output<string> BackupRunId { get; private set; } = null!;
+
+        /// <summary>
         /// The description of this run, only applicable to on-demand backups.
         /// </summary>
         [Output("description")]
@@ -169,6 +175,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.BackupRunBackupKind>? BackupKind { get; set; }
 
         /// <summary>
+        /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
+        /// </summary>
+        [Input("backupRunId")]
+        public Input<string>? BackupRunId { get; set; }
+
+        /// <summary>
         /// The description of this run, only applicable to on-demand backups.
         /// </summary>
         [Input("description")]
@@ -203,12 +215,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         [Input("error")]
         public Input<Inputs.OperationErrorArgs>? Error { get; set; }
-
-        /// <summary>
-        /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Name of the database instance.

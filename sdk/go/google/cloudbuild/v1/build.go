@@ -24,6 +24,8 @@ type Build struct {
 	Artifacts ArtifactsResponseOutput `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets SecretsResponseOutput `pulumi:"availableSecrets"`
+	// Unique identifier of the build.
+	BuildId pulumi.StringOutput `pulumi:"buildId"`
 	// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId pulumi.StringOutput `pulumi:"buildTriggerId"`
 	// Time at which the request to create the build was received.
@@ -245,6 +247,11 @@ func (o BuildOutput) Artifacts() ArtifactsResponseOutput {
 // Secrets and secret environment variables.
 func (o BuildOutput) AvailableSecrets() SecretsResponseOutput {
 	return o.ApplyT(func(v *Build) SecretsResponseOutput { return v.AvailableSecrets }).(SecretsResponseOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildOutput) BuildId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.BuildId }).(pulumi.StringOutput)
 }
 
 // The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.

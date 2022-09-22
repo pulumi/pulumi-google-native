@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         public readonly string InstanceGroup;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string fingerprint,
 
+            string id,
+
             string instanceGroup,
 
             string instanceTemplate,
@@ -199,6 +205,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Description = description;
             DistributionPolicy = distributionPolicy;
             Fingerprint = fingerprint;
+            Id = id;
             InstanceGroup = instanceGroup;
             InstanceTemplate = instanceTemplate;
             Kind = kind;

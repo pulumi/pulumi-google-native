@@ -74,6 +74,10 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly interconnectAttachments!: pulumi.Output<string[]>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly interconnectId!: pulumi.Output<string>;
+    /**
      * Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      */
     public readonly interconnectType!: pulumi.Output<string>;
@@ -168,6 +172,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["googleIpAddress"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["interconnectAttachments"] = undefined /*out*/;
+            resourceInputs["interconnectId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -186,6 +191,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["googleIpAddress"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["interconnectAttachments"] = undefined /*out*/;
+            resourceInputs["interconnectId"] = undefined /*out*/;
             resourceInputs["interconnectType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;

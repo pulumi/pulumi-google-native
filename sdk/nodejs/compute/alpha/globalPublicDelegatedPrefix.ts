@@ -50,6 +50,10 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly globalPublicDelegatedPrefixId!: pulumi.Output<string>;
+    /**
      * The IPv4 address range, in CIDR format, represented by this public delegated prefix.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["globalPublicDelegatedPrefixId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -125,6 +130,7 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["globalPublicDelegatedPrefixId"] = undefined /*out*/;
             resourceInputs["ipCidrRange"] = undefined /*out*/;
             resourceInputs["isLiveMigration"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

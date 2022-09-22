@@ -1710,15 +1710,18 @@ class GoogleCloudDialogflowCxV3IntentParameterResponse(dict):
 
     def __init__(__self__, *,
                  entity_type: str,
+                 id: str,
                  is_list: bool,
                  redact: bool):
         """
         Represents an intent parameter.
         :param str entity_type: The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+        :param str id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         :param bool is_list: Indicates whether the parameter represents a list of values.
         :param bool redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
         pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_list", is_list)
         pulumi.set(__self__, "redact", redact)
 
@@ -1729,6 +1732,14 @@ class GoogleCloudDialogflowCxV3IntentParameterResponse(dict):
         The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
         """
         return pulumi.get(self, "entity_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="isList")
@@ -1940,15 +1951,26 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 id: str,
                  parts: Sequence['outputs.GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse'],
                  repeat_count: int):
         """
         Represents an example that the agent is trained on to identify the intent.
+        :param str id: The unique identifier of the training phrase.
         :param Sequence['GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param int repeat_count: Indicates how many times this example was added to the intent.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "parts", parts)
         pulumi.set(__self__, "repeat_count", repeat_count)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the training phrase.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

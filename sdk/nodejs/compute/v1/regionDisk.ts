@@ -112,6 +112,10 @@ export class RegionDisk extends pulumi.CustomResource {
     public readonly provisionedIops!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionDiskId!: pulumi.Output<string>;
+    /**
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
     public readonly replicaZones!: pulumi.Output<string[]>;
@@ -233,6 +237,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
+            resourceInputs["regionDiskId"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
@@ -262,6 +267,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionDiskId"] = undefined /*out*/;
             resourceInputs["replicaZones"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;

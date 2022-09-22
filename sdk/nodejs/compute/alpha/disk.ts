@@ -62,6 +62,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly diskId!: pulumi.Output<string>;
+    /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
     public readonly eraseWindowsVssSignature!: pulumi.Output<boolean>;
@@ -299,6 +303,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
@@ -324,6 +329,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["eraseWindowsVssSignature"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["interface"] = undefined /*out*/;

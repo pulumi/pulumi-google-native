@@ -78,6 +78,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * A unique identifier for this resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly instanceGroupManagerId!: pulumi.Output<string>;
+    /**
      * The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
      */
     public readonly instanceTemplate!: pulumi.Output<string>;
@@ -174,6 +178,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["currentActions"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -189,6 +194,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["failoverAction"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["listManagedInstancesResults"] = undefined /*out*/;

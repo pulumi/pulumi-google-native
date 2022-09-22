@@ -44,6 +44,10 @@ export interface GetResourcePolicyResult {
      */
     readonly groupPlacementPolicy: outputs.compute.alpha.ResourcePolicyGroupPlacementPolicyResponse;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Resource policy for scheduling instance operations.
      */
     readonly instanceSchedulePolicy: outputs.compute.alpha.ResourcePolicyInstanceSchedulePolicyResponse;

@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> InstanceGroupManager { get; private set; } = null!;
 
         /// <summary>
+        /// A unique identifier for this resource type. The server generates this identifier.
+        /// </summary>
+        [Output("instanceGroupManagerResizeRequestId")]
+        public Output<string> InstanceGroupManagerResizeRequestId { get; private set; } = null!;
+
+        /// <summary>
         /// The resource type, which is always compute#instanceGroupManagerResizeRequest for resize requests.
         /// </summary>
         [Output("kind")]

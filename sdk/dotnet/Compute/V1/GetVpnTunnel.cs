@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DetailedStatus;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// IKE protocol version to use when establishing the VPN tunnel with the peer VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
         /// </summary>
         public readonly int IkeVersion;
@@ -156,6 +160,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string detailedStatus,
 
+            string id,
+
             int ikeVersion,
 
             string kind,
@@ -195,6 +201,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             DetailedStatus = detailedStatus;
+            Id = id;
             IkeVersion = ikeVersion;
             Kind = kind;
             LocalTrafficSelector = localTrafficSelector;

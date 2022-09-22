@@ -32,6 +32,8 @@ type Interconnect struct {
 	GoogleReferenceId pulumi.StringOutput `pulumi:"googleReferenceId"`
 	// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments pulumi.StringArrayOutput `pulumi:"interconnectAttachments"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	InterconnectId pulumi.StringOutput `pulumi:"interconnectId"`
 	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType pulumi.StringOutput `pulumi:"interconnectType"`
 	// Type of the resource. Always compute#interconnect for interconnects.
@@ -242,6 +244,11 @@ func (o InterconnectOutput) GoogleReferenceId() pulumi.StringOutput {
 // A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 func (o InterconnectOutput) InterconnectAttachments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.InterconnectAttachments }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o InterconnectOutput) InterconnectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.InterconnectId }).(pulumi.StringOutput)
 }
 
 // Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.

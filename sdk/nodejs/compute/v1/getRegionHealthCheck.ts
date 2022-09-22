@@ -51,6 +51,10 @@ export interface GetRegionHealthCheckResult {
     readonly httpHealthCheck: outputs.compute.v1.HTTPHealthCheckResponse;
     readonly httpsHealthCheck: outputs.compute.v1.HTTPSHealthCheckResponse;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource.
      */
     readonly kind: string;

@@ -39,6 +39,10 @@ export interface GetFutureReservationResult {
      */
     readonly description: string;
     /**
+     * A unique identifier for this future reservation. The server defines this identifier.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#futureReservation for future reservations.
      */
     readonly kind: string;

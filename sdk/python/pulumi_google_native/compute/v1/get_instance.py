@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, id=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -56,6 +56,9 @@ class GetInstanceResult:
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if key_revocation_action_type and not isinstance(key_revocation_action_type, str):
             raise TypeError("Expected argument 'key_revocation_action_type' to be a str")
         pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
@@ -239,6 +242,14 @@ class GetInstanceResult:
         Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         """
         return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="keyRevocationActionType")
@@ -490,6 +501,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             fingerprint=self.fingerprint,
             guest_accelerators=self.guest_accelerators,
             hostname=self.hostname,
+            id=self.id,
             key_revocation_action_type=self.key_revocation_action_type,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -549,6 +561,7 @@ def get_instance(instance: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         guest_accelerators=__ret__.guest_accelerators,
         hostname=__ret__.hostname,
+        id=__ret__.id,
         key_revocation_action_type=__ret__.key_revocation_action_type,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,

@@ -42,6 +42,10 @@ export interface GetGlobalAddressResult {
      */
     readonly description: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
     readonly ipVersion: string;

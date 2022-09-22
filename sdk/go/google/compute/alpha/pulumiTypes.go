@@ -14593,6 +14593,8 @@ func (o ExternalVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) Externa
 
 // The interface for the external VPN gateway.
 type ExternalVpnGatewayInterfaceResponse struct {
+	// The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
+	Id int `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress string `pulumi:"ipAddress"`
 }
@@ -14610,6 +14612,11 @@ func (o ExternalVpnGatewayInterfaceResponseOutput) ToExternalVpnGatewayInterface
 
 func (o ExternalVpnGatewayInterfaceResponseOutput) ToExternalVpnGatewayInterfaceResponseOutputWithContext(ctx context.Context) ExternalVpnGatewayInterfaceResponseOutput {
 	return o
+}
+
+// The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
+func (o ExternalVpnGatewayInterfaceResponseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
@@ -26950,6 +26957,8 @@ type InstanceResponse struct {
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname string `pulumi:"hostname"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
 	InstanceEncryptionKey CustomerEncryptionKeyResponse `pulumi:"instanceEncryptionKey"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
@@ -27104,6 +27113,11 @@ func (o InstanceResponseOutput) GuestAccelerators() AcceleratorConfigResponseArr
 // Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 func (o InstanceResponseOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o InstanceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
@@ -39528,6 +39542,8 @@ type ReservationResponse struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#reservations for reservations.
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -39582,6 +39598,11 @@ func (o ReservationResponseOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource. Provide this property when you create the resource.
 func (o ReservationResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o ReservationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#reservations for reservations.

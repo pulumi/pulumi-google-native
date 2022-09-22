@@ -105,6 +105,10 @@ export interface GetVersionResult {
      */
     readonly healthCheck: outputs.appengine.v1.HealthCheckResponse;
     /**
+     * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+     */
+    readonly id: string;
+    /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */
     readonly inboundServices: string[];

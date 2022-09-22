@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse ImageEncryptionKey;
@@ -200,6 +204,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
+            string id,
+
             Outputs.CustomerEncryptionKeyResponse imageEncryptionKey,
 
             string kind,
@@ -254,6 +260,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             DiskSizeGb = diskSizeGb;
             Family = family;
             GuestOsFeatures = guestOsFeatures;
+            Id = id;
             ImageEncryptionKey = imageEncryptionKey;
             Kind = kind;
             LabelFingerprint = labelFingerprint;

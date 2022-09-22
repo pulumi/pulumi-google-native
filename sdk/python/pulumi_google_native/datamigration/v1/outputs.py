@@ -1063,17 +1063,20 @@ class PrimaryInstanceSettingsResponse(dict):
 
     def __init__(__self__, *,
                  database_flags: Mapping[str, str],
+                 id: str,
                  labels: Mapping[str, str],
                  machine_config: 'outputs.MachineConfigResponse',
                  private_ip: str):
         """
         Settings for the cluster's primary instance
         :param Mapping[str, str] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        :param str id: The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
         :param Mapping[str, str] labels: Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
         :param 'MachineConfigResponse' machine_config: Configuration for the machines that host the underlying database engine.
         :param str private_ip: The private IP address for the Instance. This is the connection endpoint for an end-user application.
         """
         pulumi.set(__self__, "database_flags", database_flags)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_config", machine_config)
         pulumi.set(__self__, "private_ip", private_ip)
@@ -1085,6 +1088,14 @@ class PrimaryInstanceSettingsResponse(dict):
         Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
         """
         return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

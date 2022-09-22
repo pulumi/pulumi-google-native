@@ -61,6 +61,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("publicAdvertisedPrefixId")]
+        public Output<string> PublicAdvertisedPrefixId { get; private set; } = null!;
+
+        /// <summary>
         /// The list of public delegated prefixes that exist for this public advertised prefix.
         /// </summary>
         [Output("publicDelegatedPrefixs")]

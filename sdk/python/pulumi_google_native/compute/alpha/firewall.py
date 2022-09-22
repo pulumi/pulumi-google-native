@@ -429,6 +429,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["target_service_accounts"] = target_service_accounts
             __props__.__dict__["target_tags"] = target_tags
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["firewall_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -464,6 +465,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["direction"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["enable_logging"] = None
+        __props__.__dict__["firewall_id"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["log_config"] = None
         __props__.__dict__["name"] = None
@@ -543,6 +545,14 @@ class Firewall(pulumi.CustomResource):
         Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         """
         return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @property
     @pulumi.getter

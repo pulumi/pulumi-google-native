@@ -20,6 +20,8 @@ type Bucket struct {
 	Autoclass BucketAutoclassResponseOutput `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing BucketBillingResponseOutput `pulumi:"billing"`
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemResponseArrayOutput `pulumi:"cors"`
 	// The bucket's custom placement configuration for Custom Dual Regions.
@@ -133,6 +135,8 @@ type bucketArgs struct {
 	Autoclass *BucketAutoclass `pulumi:"autoclass"`
 	// The bucket's billing configuration.
 	Billing *BucketBilling `pulumi:"billing"`
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId *string `pulumi:"bucketId"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []BucketCorsItem `pulumi:"cors"`
 	// The bucket's custom placement configuration for Custom Dual Regions.
@@ -147,8 +151,6 @@ type bucketArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The bucket's IAM configuration.
 	IamConfiguration *BucketIamConfiguration `pulumi:"iamConfiguration"`
-	// The ID of the bucket. For buckets, the id and name properties are the same.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For buckets, this is always storage#bucket.
 	Kind *string `pulumi:"kind"`
 	// User-provided labels, in key/value pairs.
@@ -207,6 +209,8 @@ type BucketArgs struct {
 	Autoclass BucketAutoclassPtrInput
 	// The bucket's billing configuration.
 	Billing BucketBillingPtrInput
+	// The ID of the bucket. For buckets, the id and name properties are the same.
+	BucketId pulumi.StringPtrInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemArrayInput
 	// The bucket's custom placement configuration for Custom Dual Regions.
@@ -221,8 +225,6 @@ type BucketArgs struct {
 	Etag pulumi.StringPtrInput
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationPtrInput
-	// The ID of the bucket. For buckets, the id and name properties are the same.
-	Id pulumi.StringPtrInput
 	// The kind of item this is. For buckets, this is always storage#bucket.
 	Kind pulumi.StringPtrInput
 	// User-provided labels, in key/value pairs.
@@ -323,6 +325,11 @@ func (o BucketOutput) Autoclass() BucketAutoclassResponseOutput {
 // The bucket's billing configuration.
 func (o BucketOutput) Billing() BucketBillingResponseOutput {
 	return o.ApplyT(func(v *Bucket) BucketBillingResponseOutput { return v.Billing }).(BucketBillingResponseOutput)
+}
+
+// The ID of the bucket. For buckets, the id and name properties are the same.
+func (o BucketOutput) BucketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
 // The bucket's Cross-Origin Resource Sharing (CORS) configuration.

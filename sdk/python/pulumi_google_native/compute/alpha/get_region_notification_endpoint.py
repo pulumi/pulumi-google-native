@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionNotificationEndpointResult:
-    def __init__(__self__, creation_timestamp=None, description=None, grpc_settings=None, kind=None, name=None, region=None, self_link=None):
+    def __init__(__self__, creation_timestamp=None, description=None, grpc_settings=None, id=None, kind=None, name=None, region=None, self_link=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -29,6 +29,9 @@ class GetRegionNotificationEndpointResult:
         if grpc_settings and not isinstance(grpc_settings, dict):
             raise TypeError("Expected argument 'grpc_settings' to be a dict")
         pulumi.set(__self__, "grpc_settings", grpc_settings)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -65,6 +68,14 @@ class GetRegionNotificationEndpointResult:
         Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
         """
         return pulumi.get(self, "grpc_settings")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        A unique identifier for this resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -108,6 +119,7 @@ class AwaitableGetRegionNotificationEndpointResult(GetRegionNotificationEndpoint
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             grpc_settings=self.grpc_settings,
+            id=self.id,
             kind=self.kind,
             name=self.name,
             region=self.region,
@@ -132,6 +144,7 @@ def get_region_notification_endpoint(notification_endpoint: Optional[str] = None
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         grpc_settings=__ret__.grpc_settings,
+        id=__ret__.id,
         kind=__ret__.kind,
         name=__ret__.name,
         region=__ret__.region,

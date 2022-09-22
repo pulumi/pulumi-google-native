@@ -42,6 +42,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<Outputs.BillingResponse> Billing { get; private set; } = null!;
 
         /// <summary>
+        /// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        /// </summary>
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         /// </summary>
         [Output("configVersion")]
@@ -256,6 +262,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Input<Inputs.BillingArgs>? Billing { get; set; }
 
         /// <summary>
+        /// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+        /// </summary>
+        [Input("configId")]
+        public Input<string>? ConfigId { get; set; }
+
+        /// <summary>
         /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
         /// </summary>
         [Input("configVersion")]
@@ -314,12 +326,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         [Input("http")]
         public Input<Inputs.HttpArgs>? Http { get; set; }
-
-        /// <summary>
-        /// A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Logging configuration.

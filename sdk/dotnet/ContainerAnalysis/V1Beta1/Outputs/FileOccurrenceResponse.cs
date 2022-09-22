@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FilesLicenseInfo;
         /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         /// </summary>
         public readonly Outputs.LicenseResponse LicenseConcluded;
@@ -57,6 +61,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             ImmutableArray<string> filesLicenseInfo,
 
+            string id,
+
             Outputs.LicenseResponse licenseConcluded,
 
             string notice)
@@ -66,6 +72,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
             Contributors = contributors;
             Copyright = copyright;
             FilesLicenseInfo = filesLicenseInfo;
+            Id = id;
             LicenseConcluded = licenseConcluded;
             Notice = notice;
         }

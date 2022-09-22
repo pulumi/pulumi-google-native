@@ -66,6 +66,10 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly globalNetworkEndpointGroupId!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -159,6 +163,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["globalNetworkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -173,6 +178,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["defaultPort"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["globalNetworkEndpointGroupId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["loadBalancer"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

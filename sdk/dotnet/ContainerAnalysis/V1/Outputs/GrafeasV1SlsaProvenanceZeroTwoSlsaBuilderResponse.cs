@@ -16,9 +16,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     [OutputType]
     public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse
     {
+        public readonly string Id;
+
         [OutputConstructor]
-        private GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse()
+        private GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse(string id)
         {
+            Id = id;
         }
     }
 }

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -38,6 +38,9 @@ class GetRegionDiskResult:
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if interface and not isinstance(interface, str):
             raise TypeError("Expected argument 'interface' to be a str")
         if interface is not None:
@@ -205,6 +208,14 @@ class GetRegionDiskResult:
         A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -515,6 +526,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             disk_encryption_key=self.disk_encryption_key,
             erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
+            id=self.id,
             interface=self.interface,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -575,6 +587,7 @@ def get_region_disk(disk: Optional[str] = None,
         disk_encryption_key=__ret__.disk_encryption_key,
         erase_windows_vss_signature=__ret__.erase_windows_vss_signature,
         guest_os_features=__ret__.guest_os_features,
+        id=__ret__.id,
         interface=__ret__.interface,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,

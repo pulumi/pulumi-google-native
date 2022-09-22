@@ -45,6 +45,10 @@ export class Change extends pulumi.CustomResource {
      */
     public readonly additions!: pulumi.Output<outputs.dns.v1.ResourceRecordSetResponse[]>;
     /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    public /*out*/ readonly changeId!: pulumi.Output<string>;
+    /**
      * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
      */
     public readonly clientOperationId!: pulumi.Output<string | undefined>;
@@ -89,10 +93,12 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["changeId"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["additions"] = undefined /*out*/;
+            resourceInputs["changeId"] = undefined /*out*/;
             resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["deletions"] = undefined /*out*/;
             resourceInputs["isServing"] = undefined /*out*/;

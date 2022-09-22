@@ -51,6 +51,10 @@ export interface GetInstantSnapshotResult {
      */
     readonly guestFlush: boolean;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
      */
     readonly kind: string;

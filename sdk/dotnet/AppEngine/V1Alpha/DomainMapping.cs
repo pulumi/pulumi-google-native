@@ -20,6 +20,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
+        /// Relative name of the domain serving the application. Example: example.com.
+        /// </summary>
+        [Output("domainMappingId")]
+        public Output<string> DomainMappingId { get; private set; } = null!;
+
+        /// <summary>
         /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
         /// </summary>
         [Output("name")]
@@ -104,8 +110,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("domainMappingId")]
+        public Input<string>? DomainMappingId { get; set; }
 
         /// <summary>
         /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.

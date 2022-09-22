@@ -115,6 +115,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<Outputs.SecurityPolicyRuleResponse>> Rules { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("securityPolicyId")]
+        public Output<string> SecurityPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

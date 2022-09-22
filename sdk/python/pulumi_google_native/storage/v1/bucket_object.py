@@ -18,6 +18,7 @@ class BucketObjectArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
+                 bucket_object_id: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
                  component_count: Optional[pulumi.Input[int]] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
@@ -30,7 +31,6 @@ class BucketObjectArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
                  if_metageneration_match: Optional[pulumi.Input[str]] = None,
@@ -60,6 +60,7 @@ class BucketObjectArgs:
         The set of arguments for constructing a BucketObject resource.
         :param pulumi.Input[str] bucket: The name of the bucket containing this object.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]] acl: Access controls on the object.
+        :param pulumi.Input[str] bucket_object_id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] cache_control: Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
         :param pulumi.Input[int] component_count: Number of underlying components that make up this object. Components are accumulated by compose operations.
         :param pulumi.Input[str] content_disposition: Content-Disposition of the object data.
@@ -72,7 +73,6 @@ class BucketObjectArgs:
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
-        :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
         :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
         :param pulumi.Input[str] if_metageneration_match: Makes the operation conditional on whether the object's current metageneration matches the given value.
@@ -101,6 +101,8 @@ class BucketObjectArgs:
         pulumi.set(__self__, "bucket", bucket)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if bucket_object_id is not None:
+            pulumi.set(__self__, "bucket_object_id", bucket_object_id)
         if cache_control is not None:
             pulumi.set(__self__, "cache_control", cache_control)
         if component_count is not None:
@@ -125,8 +127,6 @@ class BucketObjectArgs:
             pulumi.set(__self__, "event_based_hold", event_based_hold)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if if_generation_match is not None:
             pulumi.set(__self__, "if_generation_match", if_generation_match)
         if if_generation_not_match is not None:
@@ -201,6 +201,18 @@ class BucketObjectArgs:
     @acl.setter
     def acl(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]]):
         pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter(name="bucketObjectId")
+    def bucket_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the object, including the bucket name, object name, and generation number.
+        """
+        return pulumi.get(self, "bucket_object_id")
+
+    @bucket_object_id.setter
+    def bucket_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_object_id", value)
 
     @property
     @pulumi.getter(name="cacheControl")
@@ -345,18 +357,6 @@ class BucketObjectArgs:
     @generation.setter
     def generation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "generation", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the object, including the bucket name, object name, and generation number.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="ifGenerationMatch")
@@ -663,6 +663,7 @@ class BucketObject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 bucket_object_id: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
                  component_count: Optional[pulumi.Input[int]] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
@@ -675,7 +676,6 @@ class BucketObject(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
                  if_metageneration_match: Optional[pulumi.Input[str]] = None,
@@ -709,6 +709,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] acl: Access controls on the object.
         :param pulumi.Input[str] bucket: The name of the bucket containing this object.
+        :param pulumi.Input[str] bucket_object_id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] cache_control: Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
         :param pulumi.Input[int] component_count: Number of underlying components that make up this object. Components are accumulated by compose operations.
         :param pulumi.Input[str] content_disposition: Content-Disposition of the object data.
@@ -721,7 +722,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
-        :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
         :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
         :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
         :param pulumi.Input[str] if_metageneration_match: Makes the operation conditional on whether the object's current metageneration matches the given value.
@@ -773,6 +773,7 @@ class BucketObject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 bucket_object_id: Optional[pulumi.Input[str]] = None,
                  cache_control: Optional[pulumi.Input[str]] = None,
                  component_count: Optional[pulumi.Input[int]] = None,
                  content_disposition: Optional[pulumi.Input[str]] = None,
@@ -785,7 +786,6 @@ class BucketObject(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  if_generation_match: Optional[pulumi.Input[str]] = None,
                  if_generation_not_match: Optional[pulumi.Input[str]] = None,
                  if_metageneration_match: Optional[pulumi.Input[str]] = None,
@@ -824,6 +824,7 @@ class BucketObject(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["bucket_object_id"] = bucket_object_id
             __props__.__dict__["cache_control"] = cache_control
             __props__.__dict__["component_count"] = component_count
             __props__.__dict__["content_disposition"] = content_disposition
@@ -836,7 +837,6 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["generation"] = generation
-            __props__.__dict__["id"] = id
             __props__.__dict__["if_generation_match"] = if_generation_match
             __props__.__dict__["if_generation_not_match"] = if_generation_not_match
             __props__.__dict__["if_metageneration_match"] = if_metageneration_match
@@ -888,6 +888,7 @@ class BucketObject(pulumi.CustomResource):
 
         __props__.__dict__["acl"] = None
         __props__.__dict__["bucket"] = None
+        __props__.__dict__["bucket_object_id"] = None
         __props__.__dict__["cache_control"] = None
         __props__.__dict__["component_count"] = None
         __props__.__dict__["content_disposition"] = None
@@ -938,6 +939,14 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter
     def bucket(self) -> pulumi.Output[str]:
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="bucketObjectId")
+    def bucket_object_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the object, including the bucket name, object name, and generation number.
+        """
+        return pulumi.get(self, "bucket_object_id")
 
     @property
     @pulumi.getter(name="cacheControl")

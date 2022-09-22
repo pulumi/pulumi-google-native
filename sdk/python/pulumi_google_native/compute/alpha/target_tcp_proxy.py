@@ -204,6 +204,7 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_tcp_proxy_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetTcpProxy, __self__).__init__(
@@ -239,6 +240,7 @@ class TargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service"] = None
+        __props__.__dict__["target_tcp_proxy_id"] = None
         return TargetTcpProxy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -325,4 +327,12 @@ class TargetTcpProxy(pulumi.CustomResource):
         URL to the BackendService resource.
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="targetTcpProxyId")
+    def target_tcp_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_tcp_proxy_id")
 

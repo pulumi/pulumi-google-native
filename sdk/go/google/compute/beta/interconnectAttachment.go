@@ -51,6 +51,8 @@ type InterconnectAttachment struct {
 	GoogleReferenceId pulumi.StringOutput `pulumi:"googleReferenceId"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 	Interconnect pulumi.StringOutput `pulumi:"interconnect"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	InterconnectAttachmentId pulumi.StringOutput `pulumi:"interconnectAttachmentId"`
 	// A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly.
 	IpsecInternalAddresses pulumi.StringArrayOutput `pulumi:"ipsecInternalAddresses"`
 	// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
@@ -366,6 +368,11 @@ func (o InterconnectAttachmentOutput) GoogleReferenceId() pulumi.StringOutput {
 // URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 func (o InterconnectAttachmentOutput) Interconnect() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Interconnect }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o InterconnectAttachmentOutput) InterconnectAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.InterconnectAttachmentId }).(pulumi.StringOutput)
 }
 
 // A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly.

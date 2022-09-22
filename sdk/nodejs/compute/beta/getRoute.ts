@@ -45,6 +45,10 @@ export interface GetRouteResult {
      */
     readonly destRange: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * Type of this resource. Always compute#routes for Route resources.
      */
     readonly kind: string;

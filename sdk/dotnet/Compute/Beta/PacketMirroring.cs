@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.PacketMirroringNetworkInfoResponse> Network { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("packetMirroringId")]
+        public Output<string> PacketMirroringId { get; private set; } = null!;
+
+        /// <summary>
         /// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Output("priority")]

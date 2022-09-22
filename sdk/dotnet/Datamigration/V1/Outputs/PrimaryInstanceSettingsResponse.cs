@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> DatabaseFlags;
         /// <summary>
+        /// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         private PrimaryInstanceSettingsResponse(
             ImmutableDictionary<string, string> databaseFlags,
 
+            string id,
+
             ImmutableDictionary<string, string> labels,
 
             Outputs.MachineConfigResponse machineConfig,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
             string privateIp)
         {
             DatabaseFlags = databaseFlags;
+            Id = id;
             Labels = labels;
             MachineConfig = machineConfig;
             PrivateIp = privateIp;

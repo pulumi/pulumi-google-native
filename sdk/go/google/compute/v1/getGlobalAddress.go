@@ -34,6 +34,8 @@ type LookupGlobalAddressResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description string `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion string `pulumi:"ipVersion"`
 	// Type of the resource. Always compute#address for addresses.
@@ -114,6 +116,11 @@ func (o LookupGlobalAddressResultOutput) CreationTimestamp() pulumi.StringOutput
 // An optional description of this resource. Provide this field when you create the resource.
 func (o LookupGlobalAddressResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupGlobalAddressResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.

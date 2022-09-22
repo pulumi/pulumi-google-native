@@ -88,6 +88,10 @@ export class RegionUrlMap extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionUrlMapId!: pulumi.Output<string>;
+    /**
      * begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
@@ -130,6 +134,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionUrlMapId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -146,6 +151,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["pathMatchers"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionUrlMapId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tests"] = undefined /*out*/;

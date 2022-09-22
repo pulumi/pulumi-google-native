@@ -84,6 +84,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("sslPolicy")]
         public Output<string> SslPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetSslProxyId")]
+        public Output<string> TargetSslProxyId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TargetSslProxy resource with the given unique name, arguments, and options.

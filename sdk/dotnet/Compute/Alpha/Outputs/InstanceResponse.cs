@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse InstanceEncryptionKey;
@@ -241,6 +245,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string hostname,
 
+            string id,
+
             Outputs.CustomerEncryptionKeyResponse instanceEncryptionKey,
 
             string keyRevocationActionType,
@@ -332,6 +338,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Fingerprint = fingerprint;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
+            Id = id;
             InstanceEncryptionKey = instanceEncryptionKey;
             KeyRevocationActionType = keyRevocationActionType;
             Kind = kind;

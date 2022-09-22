@@ -28,6 +28,8 @@ type Registry struct {
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The identifier of this device registry. For example, `myRegistry`.
+	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig StateNotificationConfigResponseOutput `pulumi:"stateNotificationConfig"`
 }
@@ -82,9 +84,7 @@ type registryArgs struct {
 	EventNotificationConfigs []EventNotificationConfig `pulumi:"eventNotificationConfigs"`
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig *HttpConfig `pulumi:"httpConfig"`
-	// The identifier of this device registry. For example, `myRegistry`.
-	Id       *string `pulumi:"id"`
-	Location *string `pulumi:"location"`
+	Location   *string     `pulumi:"location"`
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel *RegistryLogLevel `pulumi:"logLevel"`
 	// The MQTT configuration for this device registry.
@@ -92,6 +92,8 @@ type registryArgs struct {
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// The identifier of this device registry. For example, `myRegistry`.
+	RegistryId *string `pulumi:"registryId"`
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig *StateNotificationConfig `pulumi:"stateNotificationConfig"`
 }
@@ -104,9 +106,7 @@ type RegistryArgs struct {
 	EventNotificationConfigs EventNotificationConfigArrayInput
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig HttpConfigPtrInput
-	// The identifier of this device registry. For example, `myRegistry`.
-	Id       pulumi.StringPtrInput
-	Location pulumi.StringPtrInput
+	Location   pulumi.StringPtrInput
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel RegistryLogLevelPtrInput
 	// The MQTT configuration for this device registry.
@@ -114,6 +114,8 @@ type RegistryArgs struct {
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// The identifier of this device registry. For example, `myRegistry`.
+	RegistryId pulumi.StringPtrInput
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig StateNotificationConfigPtrInput
 }
@@ -191,6 +193,11 @@ func (o RegistryOutput) Name() pulumi.StringOutput {
 
 func (o RegistryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The identifier of this device registry. For example, `myRegistry`.
+func (o RegistryOutput) RegistryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.RegistryId }).(pulumi.StringOutput)
 }
 
 // The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.

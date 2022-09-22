@@ -32,6 +32,8 @@ type PublicDelegatedPrefix struct {
 	// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
 	ParentPrefix pulumi.StringOutput `pulumi:"parentPrefix"`
 	Project      pulumi.StringOutput `pulumi:"project"`
+	// The unique identifier for the resource type. The server generates this identifier.
+	PublicDelegatedPrefixId pulumi.StringOutput `pulumi:"publicDelegatedPrefixId"`
 	// The list of sub public delegated prefixes that exist for this public delegated prefix.
 	PublicDelegatedSubPrefixs PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput `pulumi:"publicDelegatedSubPrefixs"`
 	Region                    pulumi.StringOutput                                              `pulumi:"region"`
@@ -207,6 +209,11 @@ func (o PublicDelegatedPrefixOutput) ParentPrefix() pulumi.StringOutput {
 
 func (o PublicDelegatedPrefixOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource type. The server generates this identifier.
+func (o PublicDelegatedPrefixOutput) PublicDelegatedPrefixId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringOutput { return v.PublicDelegatedPrefixId }).(pulumi.StringOutput)
 }
 
 // The list of sub public delegated prefixes that exist for this public delegated prefix.

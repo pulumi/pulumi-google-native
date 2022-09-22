@@ -39,6 +39,10 @@ export interface GetJobResult {
      */
     readonly etag: string;
     /**
+     * Opaque ID field of the job
+     */
+    readonly id: string;
+    /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
     readonly jobReference: outputs.bigquery.v2.JobReferenceResponse;

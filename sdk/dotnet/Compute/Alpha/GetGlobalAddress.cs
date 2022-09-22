@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
         /// </summary>
         public readonly string IpVersion;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string description,
 
+            string id,
+
             string ipVersion,
 
             string ipv6EndpointType,
@@ -184,6 +190,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             AddressType = addressType;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            Id = id;
             IpVersion = ipVersion;
             Ipv6EndpointType = ipv6EndpointType;
             Kind = kind;

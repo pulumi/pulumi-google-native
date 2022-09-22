@@ -21,6 +21,8 @@ type HealthCheck struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description     pulumi.StringOutput           `pulumi:"description"`
 	GrpcHealthCheck GRPCHealthCheckResponseOutput `pulumi:"grpcHealthCheck"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	HealthCheckId pulumi.StringOutput `pulumi:"healthCheckId"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntOutput               `pulumi:"healthyThreshold"`
 	Http2HealthCheck HTTP2HealthCheckResponseOutput `pulumi:"http2HealthCheck"`
@@ -206,6 +208,11 @@ func (o HealthCheckOutput) Description() pulumi.StringOutput {
 
 func (o HealthCheckOutput) GrpcHealthCheck() GRPCHealthCheckResponseOutput {
 	return o.ApplyT(func(v *HealthCheck) GRPCHealthCheckResponseOutput { return v.GrpcHealthCheck }).(GRPCHealthCheckResponseOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o HealthCheckOutput) HealthCheckId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.HealthCheckId }).(pulumi.StringOutput)
 }
 
 // A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.

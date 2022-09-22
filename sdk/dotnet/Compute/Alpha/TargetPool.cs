@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetPoolId")]
+        public Output<string> TargetPoolId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TargetPool resource with the given unique name, arguments, and options.

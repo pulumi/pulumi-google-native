@@ -223,6 +223,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["global_public_delegated_prefix_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
@@ -255,6 +256,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["global_public_delegated_prefix_id"] = None
         __props__.__dict__["ip_cidr_range"] = None
         __props__.__dict__["is_live_migration"] = None
         __props__.__dict__["kind"] = None
@@ -292,6 +294,14 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="globalPublicDelegatedPrefixId")
+    def global_public_delegated_prefix_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "global_public_delegated_prefix_id")
 
     @property
     @pulumi.getter(name="ipCidrRange")

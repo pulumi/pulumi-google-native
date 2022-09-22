@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPublicAdvertisedPrefixResult:
-    def __init__(__self__, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, ip_cidr_range=None, kind=None, name=None, public_delegated_prefixs=None, self_link=None, shared_secret=None, status=None):
+    def __init__(__self__, creation_timestamp=None, description=None, dns_verification_ip=None, fingerprint=None, id=None, ip_cidr_range=None, kind=None, name=None, public_delegated_prefixs=None, self_link=None, shared_secret=None, status=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -32,6 +32,9 @@ class GetPublicAdvertisedPrefixResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
@@ -85,6 +88,14 @@ class GetPublicAdvertisedPrefixResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -153,6 +164,7 @@ class AwaitableGetPublicAdvertisedPrefixResult(GetPublicAdvertisedPrefixResult):
             description=self.description,
             dns_verification_ip=self.dns_verification_ip,
             fingerprint=self.fingerprint,
+            id=self.id,
             ip_cidr_range=self.ip_cidr_range,
             kind=self.kind,
             name=self.name,
@@ -179,6 +191,7 @@ def get_public_advertised_prefix(project: Optional[str] = None,
         description=__ret__.description,
         dns_verification_ip=__ret__.dns_verification_ip,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         ip_cidr_range=__ret__.ip_cidr_range,
         kind=__ret__.kind,
         name=__ret__.name,

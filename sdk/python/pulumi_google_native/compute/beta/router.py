@@ -300,6 +300,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["router_id"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -339,6 +340,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["router_id"] = None
         __props__.__dict__["self_link"] = None
         return Router(resource_name, opts=opts, __props__=__props__)
 
@@ -447,6 +449,14 @@ class Router(pulumi.CustomResource):
         An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="routerId")
+    def router_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "router_id")
 
     @property
     @pulumi.getter(name="selfLink")

@@ -109,6 +109,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         public readonly string KeyRevocationActionType;
@@ -246,6 +250,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string hostname,
 
+            string id,
+
             string keyRevocationActionType,
 
             string kind,
@@ -318,6 +324,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Fingerprint = fingerprint;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
+            Id = id;
             KeyRevocationActionType = keyRevocationActionType;
             Kind = kind;
             LabelFingerprint = labelFingerprint;

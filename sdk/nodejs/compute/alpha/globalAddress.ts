@@ -54,6 +54,10 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly globalAddressId!: pulumi.Output<string>;
+    /**
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
     public readonly ipVersion!: pulumi.Output<string>;
@@ -149,6 +153,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["globalAddressId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -161,6 +166,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             resourceInputs["addressType"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["globalAddressId"] = undefined /*out*/;
             resourceInputs["ipVersion"] = undefined /*out*/;
             resourceInputs["ipv6EndpointType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

@@ -64,6 +64,10 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly nodeTemplateId!: pulumi.Output<string>;
+    /**
      * The node type to use for nodes group that are created from this template.
      */
     public readonly nodeType!: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["serverBinding"] = args ? args.serverBinding : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["nodeTemplateId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -134,6 +139,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeAffinityLabels"] = undefined /*out*/;
+            resourceInputs["nodeTemplateId"] = undefined /*out*/;
             resourceInputs["nodeType"] = undefined /*out*/;
             resourceInputs["nodeTypeFlexibility"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

@@ -72,6 +72,10 @@ export class TargetHttpProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetHttpProxyId!: pulumi.Output<string>;
+    /**
      * URL to the UrlMap resource that defines the mapping from URL to the BackendService.
      */
     public readonly urlMap!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["targetHttpProxyId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["targetHttpProxyId"] = undefined /*out*/;
             resourceInputs["urlMap"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegistryResult:
-    def __init__(__self__, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, state_notification_config=None):
+    def __init__(__self__, credentials=None, event_notification_configs=None, http_config=None, id=None, log_level=None, mqtt_config=None, name=None, state_notification_config=None):
         if credentials and not isinstance(credentials, list):
             raise TypeError("Expected argument 'credentials' to be a list")
         pulumi.set(__self__, "credentials", credentials)
@@ -29,6 +29,9 @@ class GetRegistryResult:
         if http_config and not isinstance(http_config, dict):
             raise TypeError("Expected argument 'http_config' to be a dict")
         pulumi.set(__self__, "http_config", http_config)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if log_level and not isinstance(log_level, str):
             raise TypeError("Expected argument 'log_level' to be a str")
         pulumi.set(__self__, "log_level", log_level)
@@ -65,6 +68,14 @@ class GetRegistryResult:
         The DeviceService (HTTP) configuration for this device registry.
         """
         return pulumi.get(self, "http_config")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier of this device registry. For example, `myRegistry`.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="logLevel")
@@ -108,6 +119,7 @@ class AwaitableGetRegistryResult(GetRegistryResult):
             credentials=self.credentials,
             event_notification_configs=self.event_notification_configs,
             http_config=self.http_config,
+            id=self.id,
             log_level=self.log_level,
             mqtt_config=self.mqtt_config,
             name=self.name,
@@ -132,6 +144,7 @@ def get_registry(location: Optional[str] = None,
         credentials=__ret__.credentials,
         event_notification_configs=__ret__.event_notification_configs,
         http_config=__ret__.http_config,
+        id=__ret__.id,
         log_level=__ret__.log_level,
         mqtt_config=__ret__.mqtt_config,
         name=__ret__.name,

@@ -104,6 +104,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly serviceAttachmentId!: pulumi.Output<string>;
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     public readonly targetService!: pulumi.Output<string>;
@@ -141,6 +145,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["pscServiceAttachmentId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceAttachmentId"] = undefined /*out*/;
         } else {
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
             resourceInputs["connectionPreference"] = undefined /*out*/;
@@ -160,6 +165,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["serviceAttachmentId"] = undefined /*out*/;
             resourceInputs["targetService"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

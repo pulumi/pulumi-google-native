@@ -75,6 +75,10 @@ export interface GetTableResult {
      */
     readonly friendlyName: string;
     /**
+     * An opaque ID uniquely identifying the table.
+     */
+    readonly id: string;
+    /**
      * The type of the resource.
      */
     readonly kind: string;

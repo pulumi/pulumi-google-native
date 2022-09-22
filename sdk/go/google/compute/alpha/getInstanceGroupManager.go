@@ -45,6 +45,8 @@ type LookupInstanceGroupManagerResult struct {
 	FailoverAction string `pulumi:"failoverAction"`
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint string `pulumi:"fingerprint"`
+	// A unique identifier for this resource type. The server generates this identifier.
+	Id string `pulumi:"id"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
 	// The repair policy for this managed instance group.
@@ -175,6 +177,11 @@ func (o LookupInstanceGroupManagerResultOutput) FailoverAction() pulumi.StringOu
 // Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 func (o LookupInstanceGroupManagerResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// A unique identifier for this resource type. The server generates this identifier.
+func (o LookupInstanceGroupManagerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The URL of the Instance Group resource.

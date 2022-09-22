@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntityResult:
-    def __init__(__self__, asset=None, catalog_entry=None, compatibility=None, create_time=None, data_path=None, data_path_pattern=None, description=None, display_name=None, etag=None, format=None, name=None, schema=None, system=None, type=None, update_time=None):
+    def __init__(__self__, asset=None, catalog_entry=None, compatibility=None, create_time=None, data_path=None, data_path_pattern=None, description=None, display_name=None, etag=None, format=None, id=None, name=None, schema=None, system=None, type=None, update_time=None):
         if asset and not isinstance(asset, str):
             raise TypeError("Expected argument 'asset' to be a str")
         pulumi.set(__self__, "asset", asset)
@@ -50,6 +50,9 @@ class GetEntityResult:
         if format and not isinstance(format, dict):
             raise TypeError("Expected argument 'format' to be a dict")
         pulumi.set(__self__, "format", format)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -148,6 +151,14 @@ class GetEntityResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
@@ -203,6 +214,7 @@ class AwaitableGetEntityResult(GetEntityResult):
             display_name=self.display_name,
             etag=self.etag,
             format=self.format,
+            id=self.id,
             name=self.name,
             schema=self.schema,
             system=self.system,
@@ -241,6 +253,7 @@ def get_entity(entity_id: Optional[str] = None,
         display_name=__ret__.display_name,
         etag=__ret__.etag,
         format=__ret__.format,
+        id=__ret__.id,
         name=__ret__.name,
         schema=__ret__.schema,
         system=__ret__.system,

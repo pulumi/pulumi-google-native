@@ -166,6 +166,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly subnetworkId!: pulumi.Output<string>;
+    /**
      * A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
      */
     public readonly vlans!: pulumi.Output<number[]>;
@@ -218,6 +222,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subnetworkId"] = undefined /*out*/;
         } else {
             resourceInputs["aggregationInterval"] = undefined /*out*/;
             resourceInputs["allowSubnetCidrRoutesOverlap"] = undefined /*out*/;
@@ -252,6 +257,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["stackType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subnetworkId"] = undefined /*out*/;
             resourceInputs["vlans"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

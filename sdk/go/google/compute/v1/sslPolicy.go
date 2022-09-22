@@ -39,6 +39,8 @@ type SslPolicy struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	SslPolicyId pulumi.StringOutput `pulumi:"sslPolicyId"`
 	// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
 	Warnings SslPolicyWarningsItemResponseArrayOutput `pulumi:"warnings"`
 }
@@ -217,6 +219,11 @@ func (o SslPolicyOutput) RequestId() pulumi.StringPtrOutput {
 // Server-defined URL for the resource.
 func (o SslPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o SslPolicyOutput) SslPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslPolicy) pulumi.StringOutput { return v.SslPolicyId }).(pulumi.StringOutput)
 }
 
 // If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.

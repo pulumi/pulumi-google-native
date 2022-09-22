@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DestRange;
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Type of this resource. Always compute#routes for Route resources.
         /// </summary>
         public readonly string Kind;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string destRange,
 
+            string id,
+
             string kind,
 
             string name,
@@ -184,6 +190,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             DestRange = destRange;
+            Id = id;
             Kind = kind;
             Name = name;
             Network = network;

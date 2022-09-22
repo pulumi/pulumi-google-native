@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("regionUrlMapId")]
+        public Output<string> RegionUrlMapId { get; private set; } = null!;
+
+        /// <summary>
         /// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
         /// </summary>
         [Output("requestId")]

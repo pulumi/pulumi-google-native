@@ -85,6 +85,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("targetHttpProxyId")]
+        public Output<string> TargetHttpProxyId { get; private set; } = null!;
+
+        /// <summary>
         /// URL to the UrlMap resource that defines the mapping from URL to the BackendService.
         /// </summary>
         [Output("urlMap")]

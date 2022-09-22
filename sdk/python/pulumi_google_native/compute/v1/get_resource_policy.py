@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetResourcePolicyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, group_placement_policy=None, instance_schedule_policy=None, kind=None, name=None, region=None, resource_status=None, self_link=None, snapshot_schedule_policy=None, status=None):
+    def __init__(__self__, creation_timestamp=None, description=None, group_placement_policy=None, id=None, instance_schedule_policy=None, kind=None, name=None, region=None, resource_status=None, self_link=None, snapshot_schedule_policy=None, status=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -29,6 +29,9 @@ class GetResourcePolicyResult:
         if group_placement_policy and not isinstance(group_placement_policy, dict):
             raise TypeError("Expected argument 'group_placement_policy' to be a dict")
         pulumi.set(__self__, "group_placement_policy", group_placement_policy)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if instance_schedule_policy and not isinstance(instance_schedule_policy, dict):
             raise TypeError("Expected argument 'instance_schedule_policy' to be a dict")
         pulumi.set(__self__, "instance_schedule_policy", instance_schedule_policy)
@@ -74,6 +77,14 @@ class GetResourcePolicyResult:
         Resource policy for instances for placement configuration.
         """
         return pulumi.get(self, "group_placement_policy")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="instanceSchedulePolicy")
@@ -146,6 +157,7 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             group_placement_policy=self.group_placement_policy,
+            id=self.id,
             instance_schedule_policy=self.instance_schedule_policy,
             kind=self.kind,
             name=self.name,
@@ -174,6 +186,7 @@ def get_resource_policy(project: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         group_placement_policy=__ret__.group_placement_policy,
+        id=__ret__.id,
         instance_schedule_policy=__ret__.instance_schedule_policy,
         kind=__ret__.kind,
         name=__ret__.name,

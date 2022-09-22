@@ -71,6 +71,10 @@ export class Entity extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+     */
+    public readonly entityId!: pulumi.Output<string>;
+    /**
      * Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -124,11 +128,11 @@ export class Entity extends pulumi.CustomResource {
             if ((!args || args.dataPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataPath'");
             }
+            if ((!args || args.entityId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entityId'");
+            }
             if ((!args || args.format === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'format'");
-            }
-            if ((!args || args.id === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'id'");
             }
             if ((!args || args.lakeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lakeId'");
@@ -147,9 +151,9 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["dataPathPattern"] = args ? args.dataPathPattern : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["entityId"] = args ? args.entityId : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["lakeId"] = args ? args.lakeId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -172,6 +176,7 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["dataPathPattern"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["entityId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
             resourceInputs["lakeId"] = undefined /*out*/;
@@ -217,6 +222,10 @@ export interface EntityArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+     */
+    entityId: pulumi.Input<string>;
+    /**
      * Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
      */
     etag?: pulumi.Input<string>;
@@ -224,10 +233,6 @@ export interface EntityArgs {
      * Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
      */
     format: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatArgs>;
-    /**
-     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
-     */
-    id: pulumi.Input<string>;
     lakeId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

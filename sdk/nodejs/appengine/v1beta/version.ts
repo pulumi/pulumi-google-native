@@ -181,6 +181,10 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly threadsafe!: pulumi.Output<boolean>;
     /**
+     * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+     */
+    public readonly versionId!: pulumi.Output<string>;
+    /**
      * Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
      */
     public /*out*/ readonly versionUrl!: pulumi.Output<string>;
@@ -232,7 +236,6 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["errorHandlers"] = args ? args.errorHandlers : undefined;
             resourceInputs["handlers"] = args ? args.handlers : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["inboundServices"] = args ? args.inboundServices : undefined;
             resourceInputs["instanceClass"] = args ? args.instanceClass : undefined;
             resourceInputs["libraries"] = args ? args.libraries : undefined;
@@ -250,6 +253,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
             resourceInputs["threadsafe"] = args ? args.threadsafe : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["vm"] = args ? args.vm : undefined;
             resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
@@ -296,6 +300,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["serviceId"] = undefined /*out*/;
             resourceInputs["servingStatus"] = undefined /*out*/;
             resourceInputs["threadsafe"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
             resourceInputs["versionUrl"] = undefined /*out*/;
             resourceInputs["vm"] = undefined /*out*/;
             resourceInputs["vpcAccessConnector"] = undefined /*out*/;
@@ -374,10 +379,6 @@ export interface VersionArgs {
      */
     healthCheck?: pulumi.Input<inputs.appengine.v1beta.HealthCheckArgs>;
     /**
-     * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
-     */
-    id?: pulumi.Input<string>;
-    /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */
     inboundServices?: pulumi.Input<pulumi.Input<enums.appengine.v1beta.VersionInboundServicesItem>[]>;
@@ -442,6 +443,10 @@ export interface VersionArgs {
      * Whether multiple requests can be dispatched to this version at once.
      */
     threadsafe?: pulumi.Input<boolean>;
+    /**
+     * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+     */
+    versionId?: pulumi.Input<string>;
     /**
      * Whether to deploy this version in a container on a virtual machine.
      */

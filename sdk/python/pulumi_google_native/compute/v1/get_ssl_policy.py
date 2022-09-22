@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSslPolicyResult:
-    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, kind=None, min_tls_version=None, name=None, profile=None, region=None, self_link=None, warnings=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, id=None, kind=None, min_tls_version=None, name=None, profile=None, region=None, self_link=None, warnings=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -35,6 +35,9 @@ class GetSslPolicyResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -96,6 +99,14 @@ class GetSslPolicyResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -165,6 +176,7 @@ class AwaitableGetSslPolicyResult(GetSslPolicyResult):
             description=self.description,
             enabled_features=self.enabled_features,
             fingerprint=self.fingerprint,
+            id=self.id,
             kind=self.kind,
             min_tls_version=self.min_tls_version,
             name=self.name,
@@ -192,6 +204,7 @@ def get_ssl_policy(project: Optional[str] = None,
         description=__ret__.description,
         enabled_features=__ret__.enabled_features,
         fingerprint=__ret__.fingerprint,
+        id=__ret__.id,
         kind=__ret__.kind,
         min_tls_version=__ret__.min_tls_version,
         name=__ret__.name,

@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource type. The server generates this identifier.
+        /// </summary>
+        [Output("globalPublicDelegatedPrefixId")]
+        public Output<string> GlobalPublicDelegatedPrefixId { get; private set; } = null!;
+
+        /// <summary>
         /// The IPv4 address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Output("ipCidrRange")]

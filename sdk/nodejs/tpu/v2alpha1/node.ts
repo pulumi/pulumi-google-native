@@ -94,7 +94,7 @@ export class Node extends pulumi.CustomResource {
     /**
      * The unqualified resource name.
      */
-    public readonly nodeId!: pulumi.Output<string | undefined>;
+    public readonly nodeId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Idempotent request UUID.

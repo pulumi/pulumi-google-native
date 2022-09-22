@@ -88,6 +88,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkId!: pulumi.Output<string>;
+    /**
      * A list of network peerings for the resource.
      */
     public /*out*/ readonly peerings!: pulumi.Output<outputs.compute.alpha.NetworkPeeringResponse[]>;
@@ -143,6 +147,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["firewallPolicy"] = undefined /*out*/;
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["networkId"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -161,6 +166,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
+            resourceInputs["networkId"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;

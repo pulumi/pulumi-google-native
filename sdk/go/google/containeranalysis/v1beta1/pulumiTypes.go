@@ -644,6 +644,8 @@ func (o ArtifactHashesResponseOutput) Sha256() pulumi.StringOutput {
 type ArtifactResponse struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	Id string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -666,6 +668,11 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -2099,6 +2106,8 @@ type BuildProvenanceResponse struct {
 	Creator string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime string `pulumi:"endTime"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri string `pulumi:"logsUri"`
 	// ID of the project.
@@ -2159,6 +2168,11 @@ func (o BuildProvenanceResponseOutput) Creator() pulumi.StringOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildProvenanceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -3806,6 +3820,8 @@ type CommandResponse struct {
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	Id string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3840,6 +3856,11 @@ func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 // Environment variables set before running this command.
 func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -6387,6 +6408,8 @@ type DocumentOccurrenceResponse struct {
 	DocumentComment string `pulumi:"documentComment"`
 	// Identify any external SPDX documents referenced within this SPDX document
 	ExternalDocumentRefs []string `pulumi:"externalDocumentRefs"`
+	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+	Id string `pulumi:"id"`
 	// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
 	LicenseListVersion string `pulumi:"licenseListVersion"`
 	// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
@@ -6433,6 +6456,11 @@ func (o DocumentOccurrenceResponseOutput) DocumentComment() pulumi.StringOutput 
 // Identify any external SPDX documents referenced within this SPDX document
 func (o DocumentOccurrenceResponseOutput) ExternalDocumentRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DocumentOccurrenceResponse) []string { return v.ExternalDocumentRefs }).(pulumi.StringArrayOutput)
+}
+
+// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+func (o DocumentOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
@@ -7898,6 +7926,8 @@ type FileOccurrenceResponse struct {
 	Copyright string `pulumi:"copyright"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id string `pulumi:"id"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -7942,6 +7972,11 @@ func (o FileOccurrenceResponseOutput) Copyright() pulumi.StringOutput {
 // This field contains the license information actually found in the file, if any
 func (o FileOccurrenceResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileOccurrenceResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o FileOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
@@ -13389,6 +13424,8 @@ type PackageInfoOccurrenceResponse struct {
 	Filename string `pulumi:"filename"`
 	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
 	HomePage string `pulumi:"homePage"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	Id string `pulumi:"id"`
 	// package or alternative values, if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
@@ -13431,6 +13468,11 @@ func (o PackageInfoOccurrenceResponseOutput) Filename() pulumi.StringOutput {
 // Provide a place for the SPDX file creator to record a web site that serves as the package's home page
 func (o PackageInfoOccurrenceResponseOutput) HomePage() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.HomePage }).(pulumi.StringOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // package or alternative values, if the governing license cannot be determined

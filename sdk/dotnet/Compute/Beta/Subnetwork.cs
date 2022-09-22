@@ -165,6 +165,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("subnetworkId")]
+        public Output<string> SubnetworkId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Subnetwork resource with the given unique name, arguments, and options.

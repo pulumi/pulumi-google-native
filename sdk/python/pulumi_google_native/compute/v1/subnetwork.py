@@ -392,6 +392,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["subnetwork_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Subnetwork, __self__).__init__(
@@ -441,6 +442,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["stack_type"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["subnetwork_id"] = None
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -636,4 +638,12 @@ class Subnetwork(pulumi.CustomResource):
         The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subnetworkId")
+    def subnetwork_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "subnetwork_id")
 

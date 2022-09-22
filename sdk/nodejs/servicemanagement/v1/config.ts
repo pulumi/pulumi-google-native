@@ -56,6 +56,10 @@ export class Config extends pulumi.CustomResource {
      */
     public readonly billing!: pulumi.Output<outputs.servicemanagement.v1.BillingResponse>;
     /**
+     * A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+     */
+    public readonly configId!: pulumi.Output<string>;
+    /**
      * Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
      */
     public readonly configVersion!: pulumi.Output<number>;
@@ -163,6 +167,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["authentication"] = args ? args.authentication : undefined;
             resourceInputs["backend"] = args ? args.backend : undefined;
             resourceInputs["billing"] = args ? args.billing : undefined;
+            resourceInputs["configId"] = args ? args.configId : undefined;
             resourceInputs["configVersion"] = args ? args.configVersion : undefined;
             resourceInputs["context"] = args ? args.context : undefined;
             resourceInputs["control"] = args ? args.control : undefined;
@@ -171,7 +176,6 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["endpoints"] = args ? args.endpoints : undefined;
             resourceInputs["enums"] = args ? args.enums : undefined;
             resourceInputs["http"] = args ? args.http : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["logs"] = args ? args.logs : undefined;
             resourceInputs["metrics"] = args ? args.metrics : undefined;
@@ -192,6 +196,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["authentication"] = undefined /*out*/;
             resourceInputs["backend"] = undefined /*out*/;
             resourceInputs["billing"] = undefined /*out*/;
+            resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["configVersion"] = undefined /*out*/;
             resourceInputs["context"] = undefined /*out*/;
             resourceInputs["control"] = undefined /*out*/;
@@ -244,6 +249,10 @@ export interface ConfigArgs {
      */
     billing?: pulumi.Input<inputs.servicemanagement.v1.BillingArgs>;
     /**
+     * A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
+     */
+    configId?: pulumi.Input<string>;
+    /**
      * Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
      */
     configVersion?: pulumi.Input<number>;
@@ -275,10 +284,6 @@ export interface ConfigArgs {
      * HTTP configuration.
      */
     http?: pulumi.Input<inputs.servicemanagement.v1.HttpArgs>;
-    /**
-     * A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Logging configuration.
      */

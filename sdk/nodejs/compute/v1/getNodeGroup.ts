@@ -44,6 +44,10 @@ export interface GetNodeGroupResult {
     readonly description: string;
     readonly fingerprint: string;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    readonly id: string;
+    /**
      * The type of the resource. Always compute#nodeGroup for node group.
      */
     readonly kind: string;

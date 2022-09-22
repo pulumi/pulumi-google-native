@@ -204,6 +204,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["target_http_proxy_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TargetHttpProxy, __self__).__init__(
@@ -239,6 +240,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["target_http_proxy_id"] = None
         __props__.__dict__["url_map"] = None
         return TargetHttpProxy(resource_name, opts=opts, __props__=__props__)
 
@@ -326,6 +328,14 @@ class TargetHttpProxy(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="targetHttpProxyId")
+    def target_http_proxy_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "target_http_proxy_id")
 
     @property
     @pulumi.getter(name="urlMap")

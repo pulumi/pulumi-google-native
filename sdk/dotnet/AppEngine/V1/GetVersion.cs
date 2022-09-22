@@ -142,6 +142,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         public readonly Outputs.HealthCheckResponse HealthCheck;
         /// <summary>
+        /// Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
         public readonly ImmutableArray<string> InboundServices;
@@ -264,6 +268,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
             Outputs.HealthCheckResponse healthCheck,
 
+            string id,
+
             ImmutableArray<string> inboundServices,
 
             string instanceClass,
@@ -324,6 +330,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
             ErrorHandlers = errorHandlers;
             Handlers = handlers;
             HealthCheck = healthCheck;
+            Id = id;
             InboundServices = inboundServices;
             InstanceClass = instanceClass;
             Libraries = libraries;

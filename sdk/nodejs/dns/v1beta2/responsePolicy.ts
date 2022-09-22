@@ -61,6 +61,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyNetworkResponse[]>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    public /*out*/ readonly responsePolicyId!: pulumi.Output<string>;
+    /**
      * User assigned name for this Response Policy.
      */
     public readonly responsePolicyName!: pulumi.Output<string>;
@@ -84,6 +88,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
+            resourceInputs["responsePolicyId"] = undefined /*out*/;
         } else {
             resourceInputs["clientOperationId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -92,6 +97,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["responsePolicyId"] = undefined /*out*/;
             resourceInputs["responsePolicyName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -37,6 +37,8 @@ type LookupTargetPoolResult struct {
 	FailoverRatio float64 `pulumi:"failoverRatio"`
 	// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
 	HealthChecks []string `pulumi:"healthChecks"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	Id string `pulumi:"id"`
 	// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
 	Instances []string `pulumi:"instances"`
 	// Type of the resource. Always compute#targetPool for target pools.
@@ -113,6 +115,11 @@ func (o LookupTargetPoolResultOutput) FailoverRatio() pulumi.Float64Output {
 // The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
 func (o LookupTargetPoolResultOutput) HealthChecks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTargetPoolResult) []string { return v.HealthChecks }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o LookupTargetPoolResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.

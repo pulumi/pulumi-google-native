@@ -18,6 +18,8 @@ type ExternalVpnGateway struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	ExternalVpnGatewayId pulumi.StringOutput `pulumi:"externalVpnGatewayId"`
 	// A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.
 	Interfaces ExternalVpnGatewayInterfaceResponseArrayOutput `pulumi:"interfaces"`
 	// Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
@@ -157,6 +159,11 @@ func (o ExternalVpnGatewayOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource. Provide this property when you create the resource.
 func (o ExternalVpnGatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o ExternalVpnGatewayOutput) ExternalVpnGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.ExternalVpnGatewayId }).(pulumi.StringOutput)
 }
 
 // A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway.

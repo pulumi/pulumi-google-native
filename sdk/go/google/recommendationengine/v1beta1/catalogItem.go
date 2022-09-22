@@ -17,6 +17,8 @@ type CatalogItem struct {
 	pulumi.CustomResourceState
 
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
+	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+	CatalogItemId pulumi.StringOutput `pulumi:"catalogItemId"`
 	// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
@@ -49,11 +51,11 @@ func NewCatalogItem(ctx *pulumi.Context,
 	if args.CatalogId == nil {
 		return nil, errors.New("invalid value for required argument 'CatalogId'")
 	}
+	if args.CatalogItemId == nil {
+		return nil, errors.New("invalid value for required argument 'CatalogItemId'")
+	}
 	if args.CategoryHierarchies == nil {
 		return nil, errors.New("invalid value for required argument 'CategoryHierarchies'")
-	}
-	if args.Id == nil {
-		return nil, errors.New("invalid value for required argument 'Id'")
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
@@ -97,12 +99,12 @@ func (CatalogItemState) ElementType() reflect.Type {
 
 type catalogItemArgs struct {
 	CatalogId string `pulumi:"catalogId"`
+	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+	CatalogItemId string `pulumi:"catalogItemId"`
 	// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
 	Description *string `pulumi:"description"`
-	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
-	Id string `pulumi:"id"`
 	// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
 	ItemAttributes *GoogleCloudRecommendationengineV1beta1FeatureMap `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
@@ -124,12 +126,12 @@ type catalogItemArgs struct {
 // The set of arguments for constructing a CatalogItem resource.
 type CatalogItemArgs struct {
 	CatalogId pulumi.StringInput
+	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+	CatalogItemId pulumi.StringInput
 	// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
 	Description pulumi.StringPtrInput
-	// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
-	Id pulumi.StringInput
 	// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
@@ -187,6 +189,11 @@ func (o CatalogItemOutput) ToCatalogItemOutputWithContext(ctx context.Context) C
 
 func (o CatalogItemOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+func (o CatalogItemOutput) CatalogItemId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.CatalogItemId }).(pulumi.StringOutput)
 }
 
 // Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]

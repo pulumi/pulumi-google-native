@@ -67,6 +67,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("resourcePolicyId")]
+        public Output<string> ResourcePolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The system status of the resource policy.
         /// </summary>
         [Output("resourceStatus")]

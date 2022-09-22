@@ -3410,6 +3410,8 @@ func (o PrimaryInstanceSettingsPtrOutput) MachineConfig() MachineConfigPtrOutput
 type PrimaryInstanceSettingsResponse struct {
 	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	Id string `pulumi:"id"`
 	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Configuration for the machines that host the underlying database engine.
@@ -3436,6 +3438,11 @@ func (o PrimaryInstanceSettingsResponseOutput) ToPrimaryInstanceSettingsResponse
 // Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
 func (o PrimaryInstanceSettingsResponseOutput) DatabaseFlags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.

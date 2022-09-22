@@ -25,6 +25,8 @@ type Notification struct {
 	EventTypes pulumi.StringArrayOutput `pulumi:"eventTypes"`
 	// The kind of item this is. For notifications, this is always storage#notification.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The ID of the notification.
+	NotificationId pulumi.StringOutput `pulumi:"notificationId"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	ObjectNamePrefix pulumi.StringOutput `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload.
@@ -90,10 +92,10 @@ type notificationArgs struct {
 	Etag *string `pulumi:"etag"`
 	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
 	EventTypes []string `pulumi:"eventTypes"`
-	// The ID of the notification.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For notifications, this is always storage#notification.
 	Kind *string `pulumi:"kind"`
+	// The ID of the notification.
+	NotificationId *string `pulumi:"notificationId"`
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload.
@@ -115,10 +117,10 @@ type NotificationArgs struct {
 	Etag pulumi.StringPtrInput
 	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
 	EventTypes pulumi.StringArrayInput
-	// The ID of the notification.
-	Id pulumi.StringPtrInput
 	// The kind of item this is. For notifications, this is always storage#notification.
 	Kind pulumi.StringPtrInput
+	// The ID of the notification.
+	NotificationId pulumi.StringPtrInput
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	ObjectNamePrefix pulumi.StringPtrInput
 	// The desired content of the Payload.
@@ -190,6 +192,11 @@ func (o NotificationOutput) EventTypes() pulumi.StringArrayOutput {
 // The kind of item this is. For notifications, this is always storage#notification.
 func (o NotificationOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The ID of the notification.
+func (o NotificationOutput) NotificationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.NotificationId }).(pulumi.StringOutput)
 }
 
 // If present, only apply this notification configuration to object names that begin with this prefix.

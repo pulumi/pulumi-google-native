@@ -80,6 +80,10 @@ export class VpnGateway extends pulumi.CustomResource {
      */
     public readonly stackType!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly vpnGatewayId!: pulumi.Output<string>;
+    /**
      * The list of VPN interfaces associated with this VPN gateway.
      */
     public readonly vpnInterfaces!: pulumi.Output<outputs.compute.beta.VpnGatewayVpnGatewayInterfaceResponse[]>;
@@ -111,6 +115,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["vpnGatewayId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["stackType"] = undefined /*out*/;
+            resourceInputs["vpnGatewayId"] = undefined /*out*/;
             resourceInputs["vpnInterfaces"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

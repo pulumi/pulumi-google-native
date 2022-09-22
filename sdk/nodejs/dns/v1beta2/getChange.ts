@@ -41,6 +41,10 @@ export interface GetChangeResult {
      */
     readonly deletions: outputs.dns.v1beta2.ResourceRecordSetResponse[];
     /**
+     * Unique identifier for the resource; defined by the server (output only).
+     */
+    readonly id: string;
+    /**
      * If the DNS queries for the zone will be served.
      */
     readonly isServing: boolean;

@@ -17,9 +17,9 @@ __all__ = ['WorkflowTemplateArgs', 'WorkflowTemplate']
 @pulumi.input_type
 class WorkflowTemplateArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
                  jobs: pulumi.Input[Sequence[pulumi.Input['OrderedJobArgs']]],
                  placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
+                 workflow_template_id: pulumi.Input[str],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -28,17 +28,17 @@ class WorkflowTemplateArgs:
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
-        :param pulumi.Input[str] id: The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
         :param pulumi.Input[Sequence[pulumi.Input['OrderedJobArgs']]] jobs: The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: WorkflowTemplate scheduling information.
+        :param pulumi.Input[str] workflow_template_id: The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
         :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
         :param pulumi.Input[Sequence[pulumi.Input['TemplateParameterArgs']]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input[int] version: Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
         """
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "jobs", jobs)
         pulumi.set(__self__, "placement", placement)
+        pulumi.set(__self__, "workflow_template_id", workflow_template_id)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
         if labels is not None:
@@ -51,18 +51,6 @@ class WorkflowTemplateArgs:
             pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -87,6 +75,18 @@ class WorkflowTemplateArgs:
     @placement.setter
     def placement(self, value: pulumi.Input['WorkflowTemplatePlacementArgs']):
         pulumi.set(self, "placement", value)
+
+    @property
+    @pulumi.getter(name="workflowTemplateId")
+    def workflow_template_id(self) -> pulumi.Input[str]:
+        """
+        The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        """
+        return pulumi.get(self, "workflow_template_id")
+
+    @workflow_template_id.setter
+    def workflow_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workflow_template_id", value)
 
     @property
     @pulumi.getter(name="dagTimeout")
@@ -161,7 +161,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -169,6 +168,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
+                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates new workflow template.
@@ -177,12 +177,12 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
-        :param pulumi.Input[str] id: The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]] jobs: The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: WorkflowTemplate scheduling information.
         :param pulumi.Input[int] version: Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
+        :param pulumi.Input[str] workflow_template_id: The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
         """
         ...
     @overload
@@ -210,7 +210,6 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -218,6 +217,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
+                 workflow_template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -228,9 +228,6 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__ = WorkflowTemplateArgs.__new__(WorkflowTemplateArgs)
 
             __props__.__dict__["dag_timeout"] = dag_timeout
-            if id is None and not opts.urn:
-                raise TypeError("Missing required property 'id'")
-            __props__.__dict__["id"] = id
             if jobs is None and not opts.urn:
                 raise TypeError("Missing required property 'jobs'")
             __props__.__dict__["jobs"] = jobs
@@ -242,6 +239,9 @@ class WorkflowTemplate(pulumi.CustomResource):
             __props__.__dict__["placement"] = placement
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
+            if workflow_template_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflow_template_id'")
+            __props__.__dict__["workflow_template_id"] = workflow_template_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -280,6 +280,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["version"] = None
+        __props__.__dict__["workflow_template_id"] = None
         return WorkflowTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -363,4 +364,12 @@ class WorkflowTemplate(pulumi.CustomResource):
         Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="workflowTemplateId")
+    def workflow_template_id(self) -> pulumi.Output[str]:
+        """
+        The template id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters..
+        """
+        return pulumi.get(self, "workflow_template_id")
 

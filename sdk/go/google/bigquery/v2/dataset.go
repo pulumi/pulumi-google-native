@@ -19,6 +19,8 @@ type Dataset struct {
 	Access DatasetAccessItemResponseArrayOutput `pulumi:"access"`
 	// The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// [Required] A reference that identifies the dataset.
 	DatasetReference DatasetReferenceResponseOutput `pulumi:"datasetReference"`
 	// The default collation of the dataset.
@@ -197,6 +199,11 @@ func (o DatasetOutput) Access() DatasetAccessItemResponseArrayOutput {
 // The time when this dataset was created, in milliseconds since the epoch.
 func (o DatasetOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+func (o DatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
 // [Required] A reference that identifies the dataset.

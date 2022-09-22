@@ -41,6 +41,10 @@ export class App extends pulumi.CustomResource {
     }
 
     /**
+     * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+     */
+    public readonly appId!: pulumi.Output<string>;
+    /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */
     public readonly authDomain!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class App extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["authDomain"] = args ? args.authDomain : undefined;
             resourceInputs["databaseType"] = args ? args.databaseType : undefined;
             resourceInputs["defaultCookieExpiration"] = args ? args.defaultCookieExpiration : undefined;
@@ -112,7 +117,6 @@ export class App extends pulumi.CustomResource {
             resourceInputs["featureSettings"] = args ? args.featureSettings : undefined;
             resourceInputs["gcrDomain"] = args ? args.gcrDomain : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["servingStatus"] = args ? args.servingStatus : undefined;
@@ -121,6 +125,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultHostname"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["authDomain"] = undefined /*out*/;
             resourceInputs["codeBucket"] = undefined /*out*/;
             resourceInputs["databaseType"] = undefined /*out*/;
@@ -146,6 +151,10 @@ export class App extends pulumi.CustomResource {
  */
 export interface AppArgs {
     /**
+     * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+     */
+    appId?: pulumi.Input<string>;
+    /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */
     authDomain?: pulumi.Input<string>;
@@ -170,10 +179,6 @@ export interface AppArgs {
      */
     gcrDomain?: pulumi.Input<string>;
     iap?: pulumi.Input<inputs.appengine.v1.IdentityAwareProxyArgs>;
-    /**
-     * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
-     */
-    id?: pulumi.Input<string>;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */

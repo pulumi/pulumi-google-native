@@ -44,8 +44,8 @@ type Node struct {
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointResponseArrayOutput `pulumi:"networkEndpoints"`
 	// The unqualified resource name.
-	NodeId  pulumi.StringPtrOutput `pulumi:"nodeId"`
-	Project pulumi.StringOutput    `pulumi:"project"`
+	NodeId  pulumi.StringOutput `pulumi:"nodeId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The runtime version running in the Node.
@@ -288,8 +288,8 @@ func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 }
 
 // The unqualified resource name.
-func (o NodeOutput) NodeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.NodeId }).(pulumi.StringPtrOutput)
+func (o NodeOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
 }
 
 func (o NodeOutput) Project() pulumi.StringOutput {

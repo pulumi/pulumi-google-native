@@ -26,7 +26,7 @@ local_generate:: bin/pulumi-java-gen
 generate_schema:: bin/pulumi-java-gen
 	echo "Generating Pulumi schema..."
 	$(WORKING_DIR)/bin/$(CODEGEN) schema ${VERSION}
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema $(WORKING_DIR)/provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
+	#$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema $(WORKING_DIR)/provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 	echo "Finished generating schema."
 
 codegen::
@@ -125,8 +125,8 @@ test::
 	cd examples && go test -v -tags=all -timeout 2h
 
 build:: init_submodules clean codegen local_generate provider build_sdks install_sdks
-build_sdks: build_nodejs build_dotnet build_python build_go build_java
-install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_java_sdk
+build_sdks: build_nodejs build_dotnet build_python build_go #build_java
+install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk #install_java_sdk
 
 # Required for the codegen action that runs in pulumi/pulumi
 only_build:: build

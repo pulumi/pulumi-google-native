@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<int> AffinityCookieTtlSec { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("backendServiceId")]
+        public Output<string> BackendServiceId { get; private set; } = null!;
+
+        /// <summary>
         /// The list of backends that serve this BackendService.
         /// </summary>
         [Output("backends")]

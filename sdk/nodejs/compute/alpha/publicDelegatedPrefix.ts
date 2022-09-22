@@ -71,6 +71,10 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
     public readonly parentPrefix!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource type. The server generates this identifier.
+     */
+    public /*out*/ readonly publicDelegatedPrefixId!: pulumi.Output<string>;
+    /**
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */
     public readonly publicDelegatedSubPrefixs!: pulumi.Output<outputs.compute.alpha.PublicDelegatedPrefixPublicDelegatedSubPrefixResponse[]>;
@@ -118,6 +122,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["publicDelegatedPrefixId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -131,6 +136,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parentPrefix"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["publicDelegatedPrefixId"] = undefined /*out*/;
             resourceInputs["publicDelegatedSubPrefixs"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;

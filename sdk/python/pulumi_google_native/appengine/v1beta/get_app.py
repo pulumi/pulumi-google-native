@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAppResult:
-    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, iap=None, location=None, name=None, service_account=None, serving_status=None):
+    def __init__(__self__, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_cookie_expiration=None, default_hostname=None, dispatch_rules=None, feature_settings=None, gcr_domain=None, iap=None, id=None, location=None, name=None, service_account=None, serving_status=None):
         if auth_domain and not isinstance(auth_domain, str):
             raise TypeError("Expected argument 'auth_domain' to be a str")
         pulumi.set(__self__, "auth_domain", auth_domain)
@@ -50,6 +50,9 @@ class GetAppResult:
         if iap and not isinstance(iap, dict):
             raise TypeError("Expected argument 'iap' to be a dict")
         pulumi.set(__self__, "iap", iap)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -142,6 +145,14 @@ class GetAppResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def location(self) -> str:
         """
         Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -189,6 +200,7 @@ class AwaitableGetAppResult(GetAppResult):
             feature_settings=self.feature_settings,
             gcr_domain=self.gcr_domain,
             iap=self.iap,
+            id=self.id,
             location=self.location,
             name=self.name,
             service_account=self.service_account,
@@ -216,6 +228,7 @@ def get_app(app_id: Optional[str] = None,
         feature_settings=__ret__.feature_settings,
         gcr_domain=__ret__.gcr_domain,
         iap=__ret__.iap,
+        id=__ret__.id,
         location=__ret__.location,
         name=__ret__.name,
         service_account=__ret__.service_account,

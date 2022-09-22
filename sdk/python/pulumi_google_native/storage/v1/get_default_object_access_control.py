@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDefaultObjectAccessControlResult:
-    def __init__(__self__, bucket=None, domain=None, email=None, entity=None, entity_id=None, etag=None, generation=None, kind=None, object=None, project_team=None, role=None, self_link=None):
+    def __init__(__self__, bucket=None, domain=None, email=None, entity=None, entity_id=None, etag=None, generation=None, id=None, kind=None, object=None, project_team=None, role=None, self_link=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -41,6 +41,9 @@ class GetDefaultObjectAccessControlResult:
         if generation and not isinstance(generation, str):
             raise TypeError("Expected argument 'generation' to be a str")
         pulumi.set(__self__, "generation", generation)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -126,6 +129,14 @@ class GetDefaultObjectAccessControlResult:
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def kind(self) -> str:
         """
         The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
@@ -178,6 +189,7 @@ class AwaitableGetDefaultObjectAccessControlResult(GetDefaultObjectAccessControl
             entity_id=self.entity_id,
             etag=self.etag,
             generation=self.generation,
+            id=self.id,
             kind=self.kind,
             object=self.object,
             project_team=self.project_team,
@@ -207,6 +219,7 @@ def get_default_object_access_control(bucket: Optional[str] = None,
         entity_id=__ret__.entity_id,
         etag=__ret__.etag,
         generation=__ret__.generation,
+        id=__ret__.id,
         kind=__ret__.kind,
         object=__ret__.object,
         project_team=__ret__.project_team,

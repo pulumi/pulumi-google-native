@@ -265,6 +265,7 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["instance_properties"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["machine_image_id"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -301,6 +302,7 @@ class MachineImage(pulumi.CustomResource):
         __props__.__dict__["instance_properties"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["machine_image_encryption_key"] = None
+        __props__.__dict__["machine_image_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -363,6 +365,14 @@ class MachineImage(pulumi.CustomResource):
         Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         """
         return pulumi.get(self, "machine_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="machineImageId")
+    def machine_image_id(self) -> pulumi.Output[str]:
+        """
+        A unique identifier for this machine image. The server defines this identifier.
+        """
+        return pulumi.get(self, "machine_image_id")
 
     @property
     @pulumi.getter

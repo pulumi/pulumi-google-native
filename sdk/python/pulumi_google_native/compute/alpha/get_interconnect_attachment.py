@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectAttachmentResult:
-    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, configuration_constraints=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, google_reference_id=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, remote_service=None, router=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, subnet_length=None, type=None, vlan_tag8021q=None):
+    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, configuration_constraints=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, google_reference_id=None, id=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, remote_service=None, router=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, subnet_length=None, type=None, vlan_tag8021q=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -75,6 +75,9 @@ class GetInterconnectAttachmentResult:
             pulumi.log.warn("""google_reference_id is deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
 
         pulumi.set(__self__, "google_reference_id", google_reference_id)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if interconnect and not isinstance(interconnect, str):
             raise TypeError("Expected argument 'interconnect' to be a str")
         pulumi.set(__self__, "interconnect", interconnect)
@@ -280,6 +283,14 @@ class GetInterconnectAttachmentResult:
         Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
         """
         return pulumi.get(self, "google_reference_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -489,6 +500,7 @@ class AwaitableGetInterconnectAttachmentResult(GetInterconnectAttachmentResult):
             edge_availability_domain=self.edge_availability_domain,
             encryption=self.encryption,
             google_reference_id=self.google_reference_id,
+            id=self.id,
             interconnect=self.interconnect,
             ipsec_internal_addresses=self.ipsec_internal_addresses,
             kind=self.kind,
@@ -546,6 +558,7 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
         edge_availability_domain=__ret__.edge_availability_domain,
         encryption=__ret__.encryption,
         google_reference_id=__ret__.google_reference_id,
+        id=__ret__.id,
         interconnect=__ret__.interconnect,
         ipsec_internal_addresses=__ret__.ipsec_internal_addresses,
         kind=__ret__.kind,

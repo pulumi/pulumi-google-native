@@ -237,6 +237,7 @@ class NetworkAttachment(pulumi.CustomResource):
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["network"] = None
+            __props__.__dict__["network_attachment_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "region"])
@@ -271,6 +272,7 @@ class NetworkAttachment(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["network_attachment_id"] = None
         __props__.__dict__["producer_accept_lists"] = None
         __props__.__dict__["producer_reject_lists"] = None
         __props__.__dict__["project"] = None
@@ -341,6 +343,14 @@ class NetworkAttachment(pulumi.CustomResource):
         The URL of the network which the Network Attachment belongs to.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkAttachmentId")
+    def network_attachment_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource type. The server generates this identifier.
+        """
+        return pulumi.get(self, "network_attachment_id")
 
     @property
     @pulumi.getter(name="producerAcceptLists")

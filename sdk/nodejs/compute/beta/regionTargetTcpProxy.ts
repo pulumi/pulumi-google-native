@@ -64,6 +64,10 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
     public readonly proxyHeader!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly regionTargetTcpProxyId!: pulumi.Output<string>;
+    /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
@@ -100,6 +104,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["regionTargetTcpProxyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -110,6 +115,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
             resourceInputs["proxyBind"] = undefined /*out*/;
             resourceInputs["proxyHeader"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["regionTargetTcpProxyId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;

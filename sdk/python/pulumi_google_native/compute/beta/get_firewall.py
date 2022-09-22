@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallResult:
-    def __init__(__self__, allowed=None, creation_timestamp=None, denied=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, kind=None, log_config=None, name=None, network=None, priority=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
+    def __init__(__self__, allowed=None, creation_timestamp=None, denied=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, id=None, kind=None, log_config=None, name=None, network=None, priority=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         if allowed and not isinstance(allowed, list):
             raise TypeError("Expected argument 'allowed' to be a list")
         pulumi.set(__self__, "allowed", allowed)
@@ -48,6 +48,9 @@ class GetFirewallResult:
             pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
 
         pulumi.set(__self__, "enable_logging", enable_logging)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -145,6 +148,14 @@ class GetFirewallResult:
         Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         """
         return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -249,6 +260,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             direction=self.direction,
             disabled=self.disabled,
             enable_logging=self.enable_logging,
+            id=self.id,
             kind=self.kind,
             log_config=self.log_config,
             name=self.name,
@@ -283,6 +295,7 @@ def get_firewall(firewall: Optional[str] = None,
         direction=__ret__.direction,
         disabled=__ret__.disabled,
         enable_logging=__ret__.enable_logging,
+        id=__ret__.id,
         kind=__ret__.kind,
         log_config=__ret__.log_config,
         name=__ret__.name,

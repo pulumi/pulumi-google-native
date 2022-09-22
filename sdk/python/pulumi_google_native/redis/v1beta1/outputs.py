@@ -181,12 +181,23 @@ class NodeInfoResponse(dict):
     Node specific properties.
     """
     def __init__(__self__, *,
+                 id: str,
                  zone: str):
         """
         Node specific properties.
+        :param str id: Node identifying string. e.g. 'node-0', 'node-1'
         :param str zone: Location of the node.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        Node identifying string. e.g. 'node-0', 'node-1'
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

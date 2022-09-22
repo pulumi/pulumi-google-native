@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.CustomerEncryptionKeyResponse> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("diskId")]
+        public Output<string> DiskId { get; private set; } = null!;
+
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         [Output("guestOsFeatures")]

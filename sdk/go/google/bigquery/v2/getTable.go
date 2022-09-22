@@ -49,6 +49,8 @@ type LookupTableResult struct {
 	ExternalDataConfiguration ExternalDataConfigurationResponse `pulumi:"externalDataConfiguration"`
 	// [Optional] A descriptive name for this table.
 	FriendlyName string `pulumi:"friendlyName"`
+	// An opaque ID uniquely identifying the table.
+	Id string `pulumi:"id"`
 	// The type of the resource.
 	Kind string `pulumi:"kind"`
 	// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
@@ -196,6 +198,11 @@ func (o LookupTableResultOutput) ExternalDataConfiguration() ExternalDataConfigu
 // [Optional] A descriptive name for this table.
 func (o LookupTableResultOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// An opaque ID uniquely identifying the table.
+func (o LookupTableResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The type of the resource.

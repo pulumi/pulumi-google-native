@@ -344,6 +344,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["next_hop_peering"] = None
+            __props__.__dict__["route_id"] = None
             __props__.__dict__["route_status"] = None
             __props__.__dict__["route_type"] = None
             __props__.__dict__["self_link"] = None
@@ -389,6 +390,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["priority"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["route_id"] = None
         __props__.__dict__["route_status"] = None
         __props__.__dict__["route_type"] = None
         __props__.__dict__["self_link"] = None
@@ -528,6 +530,14 @@ class Route(pulumi.CustomResource):
         An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "route_id")
 
     @property
     @pulumi.getter(name="routeStatus")

@@ -78,6 +78,10 @@ export class TargetInstance extends pulumi.CustomResource {
      * Server-defined URL for this resource with the resource id.
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly targetInstanceId!: pulumi.Output<string>;
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -103,6 +107,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetInstanceId"] = undefined /*out*/;
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["targetInstanceId"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

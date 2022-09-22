@@ -842,17 +842,20 @@ class JobResponse(dict):
 
     def __init__(__self__, *,
                  deploy_job: 'outputs.DeployJobResponse',
+                 id: str,
                  job_run: str,
                  state: str,
                  verify_job: 'outputs.VerifyJobResponse'):
         """
         Job represents an operation for a `Rollout`.
         :param 'DeployJobResponse' deploy_job: A deploy Job.
+        :param str id: The ID of the Job.
         :param str job_run: The name of the `JobRun` responsible for the most recent invocation of this Job.
         :param str state: The current state of the Job.
         :param 'VerifyJobResponse' verify_job: A verify Job.
         """
         pulumi.set(__self__, "deploy_job", deploy_job)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "job_run", job_run)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "verify_job", verify_job)
@@ -864,6 +867,14 @@ class JobResponse(dict):
         A deploy Job.
         """
         return pulumi.get(self, "deploy_job")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Job.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="jobRun")
@@ -953,13 +964,16 @@ class PhaseResponse(dict):
 
     def __init__(__self__, *,
                  deployment_jobs: 'outputs.DeploymentJobsResponse',
+                 id: str,
                  state: str):
         """
         Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
         :param 'DeploymentJobsResponse' deployment_jobs: Deployment job composition.
+        :param str id: The ID of the Phase.
         :param str state: Current state of the Phase.
         """
         pulumi.set(__self__, "deployment_jobs", deployment_jobs)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "state", state)
 
     @property
@@ -969,6 +983,14 @@ class PhaseResponse(dict):
         Deployment job composition.
         """
         return pulumi.get(self, "deployment_jobs")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Phase.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
