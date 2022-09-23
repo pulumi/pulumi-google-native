@@ -88,7 +88,20 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 func (c *GoogleClient) HTTPClient() *http.Client { return c.http }
 
 // OAuth2Token returns the active OAuth2 token used by the provider to communicate with Google Cloud.
-func (c *GoogleClient) OAuth2Token() *oauth2.Token { return c.token }
+func (c *GoogleClient) OAuth2Token() (*oauth2.Token, error) {
+	if c.token == nil {
+		err := c.refreshClientCredentials(context.Background())
+		if err != nil {
+			return nil, err
+		}
+		// Check again for nil token. We already check for error on the credential refresh, but check the token as
+		// well just to be on the safe side.
+		if c.token == nil {
+			return nil, fmt.Errorf("failed to refresh client credentials")
+		}
+	}
+	return c.token, nil
+}
 
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
