@@ -216,7 +216,10 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 			"zone":    p.config["zone"],
 		}
 	case "google-native:authorization:getClientToken":
-		t := p.client.OAuth2Token()
+		t, err := p.client.OAuth2Token()
+		if err != nil || t == nil {
+			return nil, fmt.Errorf("failed to retrieve a client token: %w", err)
+		}
 		resp = map[string]interface{}{
 			"accessToken":  t.AccessToken,
 			"expiry":       t.Expiry.String(),
