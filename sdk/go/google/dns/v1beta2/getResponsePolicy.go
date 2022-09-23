@@ -32,6 +32,8 @@ type LookupResponsePolicyResult struct {
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters []ResponsePolicyGKEClusterResponse `pulumi:"gkeClusters"`
 	Kind        string                             `pulumi:"kind"`
+	// User labels.
+	Labels map[string]string `pulumi:"labels"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
 	// User assigned name for this Response Policy.
@@ -87,6 +89,11 @@ func (o LookupResponsePolicyResultOutput) GkeClusters() ResponsePolicyGKECluster
 
 func (o LookupResponsePolicyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResponsePolicyResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User labels.
+func (o LookupResponsePolicyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResponsePolicyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // List of network names specifying networks to which this policy is applied.

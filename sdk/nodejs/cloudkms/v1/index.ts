@@ -13,6 +13,18 @@ export { CryptoKeyVersionArgs } from "./cryptoKeyVersion";
 export type CryptoKeyVersion = import("./cryptoKeyVersion").CryptoKeyVersion;
 export const CryptoKeyVersion: typeof import("./cryptoKeyVersion").CryptoKeyVersion = null as any;
 
+export { EkmConfigIamBindingArgs } from "./ekmConfigIamBinding";
+export type EkmConfigIamBinding = import("./ekmConfigIamBinding").EkmConfigIamBinding;
+export const EkmConfigIamBinding: typeof import("./ekmConfigIamBinding").EkmConfigIamBinding = null as any;
+
+export { EkmConfigIamMemberArgs } from "./ekmConfigIamMember";
+export type EkmConfigIamMember = import("./ekmConfigIamMember").EkmConfigIamMember;
+export const EkmConfigIamMember: typeof import("./ekmConfigIamMember").EkmConfigIamMember = null as any;
+
+export { EkmConfigIamPolicyArgs } from "./ekmConfigIamPolicy";
+export type EkmConfigIamPolicy = import("./ekmConfigIamPolicy").EkmConfigIamPolicy;
+export const EkmConfigIamPolicy: typeof import("./ekmConfigIamPolicy").EkmConfigIamPolicy = null as any;
+
 export { EkmConnectionArgs } from "./ekmConnection";
 export type EkmConnection = import("./ekmConnection").EkmConnection;
 export const EkmConnection: typeof import("./ekmConnection").EkmConnection = null as any;
@@ -36,6 +48,10 @@ export const getCryptoKeyOutput: typeof import("./getCryptoKey").getCryptoKeyOut
 export { GetCryptoKeyVersionArgs, GetCryptoKeyVersionResult, GetCryptoKeyVersionOutputArgs } from "./getCryptoKeyVersion";
 export const getCryptoKeyVersion: typeof import("./getCryptoKeyVersion").getCryptoKeyVersion = null as any;
 export const getCryptoKeyVersionOutput: typeof import("./getCryptoKeyVersion").getCryptoKeyVersionOutput = null as any;
+
+export { GetEkmConfigIamPolicyArgs, GetEkmConfigIamPolicyResult, GetEkmConfigIamPolicyOutputArgs } from "./getEkmConfigIamPolicy";
+export const getEkmConfigIamPolicy: typeof import("./getEkmConfigIamPolicy").getEkmConfigIamPolicy = null as any;
+export const getEkmConfigIamPolicyOutput: typeof import("./getEkmConfigIamPolicy").getEkmConfigIamPolicyOutput = null as any;
 
 export { GetEkmConnectionArgs, GetEkmConnectionResult, GetEkmConnectionOutputArgs } from "./getEkmConnection";
 export const getEkmConnection: typeof import("./getEkmConnection").getEkmConnection = null as any;
@@ -111,12 +127,16 @@ export const KeyRingImportJobIamPolicy: typeof import("./keyRingImportJobIamPoli
 
 utilities.lazyLoad(exports, ["CryptoKey"], () => require("./cryptoKey"));
 utilities.lazyLoad(exports, ["CryptoKeyVersion"], () => require("./cryptoKeyVersion"));
+utilities.lazyLoad(exports, ["EkmConfigIamBinding"], () => require("./ekmConfigIamBinding"));
+utilities.lazyLoad(exports, ["EkmConfigIamMember"], () => require("./ekmConfigIamMember"));
+utilities.lazyLoad(exports, ["EkmConfigIamPolicy"], () => require("./ekmConfigIamPolicy"));
 utilities.lazyLoad(exports, ["EkmConnection"], () => require("./ekmConnection"));
 utilities.lazyLoad(exports, ["EkmConnectionIamBinding"], () => require("./ekmConnectionIamBinding"));
 utilities.lazyLoad(exports, ["EkmConnectionIamMember"], () => require("./ekmConnectionIamMember"));
 utilities.lazyLoad(exports, ["EkmConnectionIamPolicy"], () => require("./ekmConnectionIamPolicy"));
 utilities.lazyLoad(exports, ["getCryptoKey","getCryptoKeyOutput"], () => require("./getCryptoKey"));
 utilities.lazyLoad(exports, ["getCryptoKeyVersion","getCryptoKeyVersionOutput"], () => require("./getCryptoKeyVersion"));
+utilities.lazyLoad(exports, ["getEkmConfigIamPolicy","getEkmConfigIamPolicyOutput"], () => require("./getEkmConfigIamPolicy"));
 utilities.lazyLoad(exports, ["getEkmConnection","getEkmConnectionOutput"], () => require("./getEkmConnection"));
 utilities.lazyLoad(exports, ["getEkmConnectionIamPolicy","getEkmConnectionIamPolicyOutput"], () => require("./getEkmConnectionIamPolicy"));
 utilities.lazyLoad(exports, ["getImportJob","getImportJobOutput"], () => require("./getImportJob"));
@@ -147,6 +167,12 @@ const _module = {
                 return new CryptoKey(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:CryptoKeyVersion":
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:EkmConfigIamBinding":
+                return new EkmConfigIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:EkmConfigIamMember":
+                return new EkmConfigIamMember(name, <any>undefined, { urn })
+            case "google-native:cloudkms/v1:EkmConfigIamPolicy":
+                return new EkmConfigIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:EkmConnection":
                 return new EkmConnection(name, <any>undefined, { urn })
             case "google-native:cloudkms/v1:EkmConnectionIamBinding":

@@ -38,6 +38,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
+        /// User labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// List of network names specifying networks to which this policy is applied.
         /// </summary>
         [Output("networks")]
@@ -127,6 +133,18 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("networks")]
         private InputList<Inputs.ResponsePolicyNetworkArgs>? _networks;

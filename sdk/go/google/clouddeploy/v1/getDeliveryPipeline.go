@@ -27,7 +27,7 @@ type LookupDeliveryPipelineArgs struct {
 }
 
 type LookupDeliveryPipelineResult struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponse `pulumi:"condition"`
@@ -88,7 +88,7 @@ func (o LookupDeliveryPipelineResultOutput) ToLookupDeliveryPipelineResultOutput
 	return o
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 func (o LookupDeliveryPipelineResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeliveryPipelineResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }

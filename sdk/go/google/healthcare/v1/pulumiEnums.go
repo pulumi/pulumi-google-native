@@ -525,6 +525,179 @@ func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConsentStateEnumPtrOutput)
 }
 
+// Tag filtering profile that determines which tags to keep/remove.
+type DicomConfigFilterProfile string
+
+const (
+	// No tag filtration profile provided. Same as KEEP_ALL_PROFILE.
+	DicomConfigFilterProfileTagFilterProfileUnspecified = DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED")
+	// Keep only tags required to produce valid DICOM.
+	DicomConfigFilterProfileMinimalKeepListProfile = DicomConfigFilterProfile("MINIMAL_KEEP_LIST_PROFILE")
+	// Remove tags based on DICOM Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e) http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
+	DicomConfigFilterProfileAttributeConfidentialityBasicProfile = DicomConfigFilterProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE")
+	// Keep all tags.
+	DicomConfigFilterProfileKeepAllProfile = DicomConfigFilterProfile("KEEP_ALL_PROFILE")
+	// Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+	DicomConfigFilterProfileDeidentifyTagContents = DicomConfigFilterProfile("DEIDENTIFY_TAG_CONTENTS")
+)
+
+func (DicomConfigFilterProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomConfigFilterProfile)(nil)).Elem()
+}
+
+func (e DicomConfigFilterProfile) ToDicomConfigFilterProfileOutput() DicomConfigFilterProfileOutput {
+	return pulumi.ToOutput(e).(DicomConfigFilterProfileOutput)
+}
+
+func (e DicomConfigFilterProfile) ToDicomConfigFilterProfileOutputWithContext(ctx context.Context) DicomConfigFilterProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DicomConfigFilterProfileOutput)
+}
+
+func (e DicomConfigFilterProfile) ToDicomConfigFilterProfilePtrOutput() DicomConfigFilterProfilePtrOutput {
+	return e.ToDicomConfigFilterProfilePtrOutputWithContext(context.Background())
+}
+
+func (e DicomConfigFilterProfile) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
+	return DicomConfigFilterProfile(e).ToDicomConfigFilterProfileOutputWithContext(ctx).ToDicomConfigFilterProfilePtrOutputWithContext(ctx)
+}
+
+func (e DicomConfigFilterProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DicomConfigFilterProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DicomConfigFilterProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DicomConfigFilterProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DicomConfigFilterProfileOutput struct{ *pulumi.OutputState }
+
+func (DicomConfigFilterProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomConfigFilterProfile)(nil)).Elem()
+}
+
+func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfileOutput() DicomConfigFilterProfileOutput {
+	return o
+}
+
+func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfileOutputWithContext(ctx context.Context) DicomConfigFilterProfileOutput {
+	return o
+}
+
+func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfilePtrOutput() DicomConfigFilterProfilePtrOutput {
+	return o.ToDicomConfigFilterProfilePtrOutputWithContext(context.Background())
+}
+
+func (o DicomConfigFilterProfileOutput) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomConfigFilterProfile) *DicomConfigFilterProfile {
+		return &v
+	}).(DicomConfigFilterProfilePtrOutput)
+}
+
+func (o DicomConfigFilterProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DicomConfigFilterProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DicomConfigFilterProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DicomConfigFilterProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DicomConfigFilterProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DicomConfigFilterProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DicomConfigFilterProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (DicomConfigFilterProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomConfigFilterProfile)(nil)).Elem()
+}
+
+func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutput() DicomConfigFilterProfilePtrOutput {
+	return o
+}
+
+func (o DicomConfigFilterProfilePtrOutput) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
+	return o
+}
+
+func (o DicomConfigFilterProfilePtrOutput) Elem() DicomConfigFilterProfileOutput {
+	return o.ApplyT(func(v *DicomConfigFilterProfile) DicomConfigFilterProfile {
+		if v != nil {
+			return *v
+		}
+		var ret DicomConfigFilterProfile
+		return ret
+	}).(DicomConfigFilterProfileOutput)
+}
+
+func (o DicomConfigFilterProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DicomConfigFilterProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DicomConfigFilterProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DicomConfigFilterProfileInput is an input type that accepts DicomConfigFilterProfileArgs and DicomConfigFilterProfileOutput values.
+// You can construct a concrete instance of `DicomConfigFilterProfileInput` via:
+//
+//	DicomConfigFilterProfileArgs{...}
+type DicomConfigFilterProfileInput interface {
+	pulumi.Input
+
+	ToDicomConfigFilterProfileOutput() DicomConfigFilterProfileOutput
+	ToDicomConfigFilterProfileOutputWithContext(context.Context) DicomConfigFilterProfileOutput
+}
+
+var dicomConfigFilterProfilePtrType = reflect.TypeOf((**DicomConfigFilterProfile)(nil)).Elem()
+
+type DicomConfigFilterProfilePtrInput interface {
+	pulumi.Input
+
+	ToDicomConfigFilterProfilePtrOutput() DicomConfigFilterProfilePtrOutput
+	ToDicomConfigFilterProfilePtrOutputWithContext(context.Context) DicomConfigFilterProfilePtrOutput
+}
+
+type dicomConfigFilterProfilePtr string
+
+func DicomConfigFilterProfilePtr(v string) DicomConfigFilterProfilePtrInput {
+	return (*dicomConfigFilterProfilePtr)(&v)
+}
+
+func (*dicomConfigFilterProfilePtr) ElementType() reflect.Type {
+	return dicomConfigFilterProfilePtrType
+}
+
+func (in *dicomConfigFilterProfilePtr) ToDicomConfigFilterProfilePtrOutput() DicomConfigFilterProfilePtrOutput {
+	return pulumi.ToOutput(in).(DicomConfigFilterProfilePtrOutput)
+}
+
+func (in *dicomConfigFilterProfilePtr) ToDicomConfigFilterProfilePtrOutputWithContext(ctx context.Context) DicomConfigFilterProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DicomConfigFilterProfilePtrOutput)
+}
+
 // Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 type FhirStoreComplexDataTypeReferenceParsing string
 
@@ -865,6 +1038,177 @@ func (in *fhirStoreVersionPtr) ToFhirStoreVersionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(FhirStoreVersionPtrOutput)
 }
 
+// Deidentify action for one field.
+type FieldMetadataAction string
+
+const (
+	// No action specified.
+	FieldMetadataActionActionUnspecified = FieldMetadataAction("ACTION_UNSPECIFIED")
+	// Transform the entire field.
+	FieldMetadataActionTransform = FieldMetadataAction("TRANSFORM")
+	// Inspect and transform any found PHI.
+	FieldMetadataActionInspectAndTransform = FieldMetadataAction("INSPECT_AND_TRANSFORM")
+	// Do not transform.
+	FieldMetadataActionDoNotTransform = FieldMetadataAction("DO_NOT_TRANSFORM")
+)
+
+func (FieldMetadataAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMetadataAction)(nil)).Elem()
+}
+
+func (e FieldMetadataAction) ToFieldMetadataActionOutput() FieldMetadataActionOutput {
+	return pulumi.ToOutput(e).(FieldMetadataActionOutput)
+}
+
+func (e FieldMetadataAction) ToFieldMetadataActionOutputWithContext(ctx context.Context) FieldMetadataActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FieldMetadataActionOutput)
+}
+
+func (e FieldMetadataAction) ToFieldMetadataActionPtrOutput() FieldMetadataActionPtrOutput {
+	return e.ToFieldMetadataActionPtrOutputWithContext(context.Background())
+}
+
+func (e FieldMetadataAction) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
+	return FieldMetadataAction(e).ToFieldMetadataActionOutputWithContext(ctx).ToFieldMetadataActionPtrOutputWithContext(ctx)
+}
+
+func (e FieldMetadataAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FieldMetadataAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FieldMetadataAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FieldMetadataAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FieldMetadataActionOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMetadataAction)(nil)).Elem()
+}
+
+func (o FieldMetadataActionOutput) ToFieldMetadataActionOutput() FieldMetadataActionOutput {
+	return o
+}
+
+func (o FieldMetadataActionOutput) ToFieldMetadataActionOutputWithContext(ctx context.Context) FieldMetadataActionOutput {
+	return o
+}
+
+func (o FieldMetadataActionOutput) ToFieldMetadataActionPtrOutput() FieldMetadataActionPtrOutput {
+	return o.ToFieldMetadataActionPtrOutputWithContext(context.Background())
+}
+
+func (o FieldMetadataActionOutput) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FieldMetadataAction) *FieldMetadataAction {
+		return &v
+	}).(FieldMetadataActionPtrOutput)
+}
+
+func (o FieldMetadataActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FieldMetadataActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FieldMetadataAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FieldMetadataActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FieldMetadataActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FieldMetadataAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FieldMetadataActionPtrOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FieldMetadataAction)(nil)).Elem()
+}
+
+func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutput() FieldMetadataActionPtrOutput {
+	return o
+}
+
+func (o FieldMetadataActionPtrOutput) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
+	return o
+}
+
+func (o FieldMetadataActionPtrOutput) Elem() FieldMetadataActionOutput {
+	return o.ApplyT(func(v *FieldMetadataAction) FieldMetadataAction {
+		if v != nil {
+			return *v
+		}
+		var ret FieldMetadataAction
+		return ret
+	}).(FieldMetadataActionOutput)
+}
+
+func (o FieldMetadataActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FieldMetadataActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FieldMetadataAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FieldMetadataActionInput is an input type that accepts FieldMetadataActionArgs and FieldMetadataActionOutput values.
+// You can construct a concrete instance of `FieldMetadataActionInput` via:
+//
+//	FieldMetadataActionArgs{...}
+type FieldMetadataActionInput interface {
+	pulumi.Input
+
+	ToFieldMetadataActionOutput() FieldMetadataActionOutput
+	ToFieldMetadataActionOutputWithContext(context.Context) FieldMetadataActionOutput
+}
+
+var fieldMetadataActionPtrType = reflect.TypeOf((**FieldMetadataAction)(nil)).Elem()
+
+type FieldMetadataActionPtrInput interface {
+	pulumi.Input
+
+	ToFieldMetadataActionPtrOutput() FieldMetadataActionPtrOutput
+	ToFieldMetadataActionPtrOutputWithContext(context.Context) FieldMetadataActionPtrOutput
+}
+
+type fieldMetadataActionPtr string
+
+func FieldMetadataActionPtr(v string) FieldMetadataActionPtrInput {
+	return (*fieldMetadataActionPtr)(&v)
+}
+
+func (*fieldMetadataActionPtr) ElementType() reflect.Type {
+	return fieldMetadataActionPtrType
+}
+
+func (in *fieldMetadataActionPtr) ToFieldMetadataActionPtrOutput() FieldMetadataActionPtrOutput {
+	return pulumi.ToOutput(in).(FieldMetadataActionPtrOutput)
+}
+
+func (in *fieldMetadataActionPtr) ToFieldMetadataActionPtrOutputWithContext(ctx context.Context) FieldMetadataActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FieldMetadataActionPtrOutput)
+}
+
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition string
 
@@ -1034,6 +1378,177 @@ func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToG
 
 func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+// Determines how to redact text from image.
+type ImageConfigTextRedactionMode string
+
+const (
+	// No text redaction specified. Same as REDACT_NO_TEXT.
+	ImageConfigTextRedactionModeTextRedactionModeUnspecified = ImageConfigTextRedactionMode("TEXT_REDACTION_MODE_UNSPECIFIED")
+	// Redact all text.
+	ImageConfigTextRedactionModeRedactAllText = ImageConfigTextRedactionMode("REDACT_ALL_TEXT")
+	// Redact sensitive text. Uses the set of [Default DICOM InfoTypes](https://cloud.google.com/healthcare-api/docs/how-tos/dicom-deidentify#default_dicom_infotypes).
+	ImageConfigTextRedactionModeRedactSensitiveText = ImageConfigTextRedactionMode("REDACT_SENSITIVE_TEXT")
+	// Do not redact text.
+	ImageConfigTextRedactionModeRedactNoText = ImageConfigTextRedactionMode("REDACT_NO_TEXT")
+)
+
+func (ImageConfigTextRedactionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageConfigTextRedactionMode)(nil)).Elem()
+}
+
+func (e ImageConfigTextRedactionMode) ToImageConfigTextRedactionModeOutput() ImageConfigTextRedactionModeOutput {
+	return pulumi.ToOutput(e).(ImageConfigTextRedactionModeOutput)
+}
+
+func (e ImageConfigTextRedactionMode) ToImageConfigTextRedactionModeOutputWithContext(ctx context.Context) ImageConfigTextRedactionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImageConfigTextRedactionModeOutput)
+}
+
+func (e ImageConfigTextRedactionMode) ToImageConfigTextRedactionModePtrOutput() ImageConfigTextRedactionModePtrOutput {
+	return e.ToImageConfigTextRedactionModePtrOutputWithContext(context.Background())
+}
+
+func (e ImageConfigTextRedactionMode) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
+	return ImageConfigTextRedactionMode(e).ToImageConfigTextRedactionModeOutputWithContext(ctx).ToImageConfigTextRedactionModePtrOutputWithContext(ctx)
+}
+
+func (e ImageConfigTextRedactionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageConfigTextRedactionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageConfigTextRedactionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImageConfigTextRedactionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImageConfigTextRedactionModeOutput struct{ *pulumi.OutputState }
+
+func (ImageConfigTextRedactionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageConfigTextRedactionMode)(nil)).Elem()
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModeOutput() ImageConfigTextRedactionModeOutput {
+	return o
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModeOutputWithContext(ctx context.Context) ImageConfigTextRedactionModeOutput {
+	return o
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModePtrOutput() ImageConfigTextRedactionModePtrOutput {
+	return o.ToImageConfigTextRedactionModePtrOutputWithContext(context.Background())
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageConfigTextRedactionMode) *ImageConfigTextRedactionMode {
+		return &v
+	}).(ImageConfigTextRedactionModePtrOutput)
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageConfigTextRedactionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageConfigTextRedactionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageConfigTextRedactionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageConfigTextRedactionModePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageConfigTextRedactionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageConfigTextRedactionMode)(nil)).Elem()
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtrOutput() ImageConfigTextRedactionModePtrOutput {
+	return o
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
+	return o
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) Elem() ImageConfigTextRedactionModeOutput {
+	return o.ApplyT(func(v *ImageConfigTextRedactionMode) ImageConfigTextRedactionMode {
+		if v != nil {
+			return *v
+		}
+		var ret ImageConfigTextRedactionMode
+		return ret
+	}).(ImageConfigTextRedactionModeOutput)
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageConfigTextRedactionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImageConfigTextRedactionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImageConfigTextRedactionModeInput is an input type that accepts ImageConfigTextRedactionModeArgs and ImageConfigTextRedactionModeOutput values.
+// You can construct a concrete instance of `ImageConfigTextRedactionModeInput` via:
+//
+//	ImageConfigTextRedactionModeArgs{...}
+type ImageConfigTextRedactionModeInput interface {
+	pulumi.Input
+
+	ToImageConfigTextRedactionModeOutput() ImageConfigTextRedactionModeOutput
+	ToImageConfigTextRedactionModeOutputWithContext(context.Context) ImageConfigTextRedactionModeOutput
+}
+
+var imageConfigTextRedactionModePtrType = reflect.TypeOf((**ImageConfigTextRedactionMode)(nil)).Elem()
+
+type ImageConfigTextRedactionModePtrInput interface {
+	pulumi.Input
+
+	ToImageConfigTextRedactionModePtrOutput() ImageConfigTextRedactionModePtrOutput
+	ToImageConfigTextRedactionModePtrOutputWithContext(context.Context) ImageConfigTextRedactionModePtrOutput
+}
+
+type imageConfigTextRedactionModePtr string
+
+func ImageConfigTextRedactionModePtr(v string) ImageConfigTextRedactionModePtrInput {
+	return (*imageConfigTextRedactionModePtr)(&v)
+}
+
+func (*imageConfigTextRedactionModePtr) ElementType() reflect.Type {
+	return imageConfigTextRedactionModePtrType
+}
+
+func (in *imageConfigTextRedactionModePtr) ToImageConfigTextRedactionModePtrOutput() ImageConfigTextRedactionModePtrOutput {
+	return pulumi.ToOutput(in).(ImageConfigTextRedactionModePtrOutput)
+}
+
+func (in *imageConfigTextRedactionModePtr) ToImageConfigTextRedactionModePtrOutputWithContext(ctx context.Context) ImageConfigTextRedactionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImageConfigTextRedactionModePtrOutput)
 }
 
 // Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
@@ -1892,12 +2407,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStateEnumPtrInput)(nil)).Elem(), ConsentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigFilterProfileInput)(nil)).Elem(), DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigFilterProfilePtrInput)(nil)).Elem(), DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsingInput)(nil)).Elem(), FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreComplexDataTypeReferenceParsingPtrInput)(nil)).Elem(), FhirStoreComplexDataTypeReferenceParsing("COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreVersionInput)(nil)).Elem(), FhirStoreVersion("VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreVersionPtrInput)(nil)).Elem(), FhirStoreVersion("VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataActionInput)(nil)).Elem(), FieldMetadataAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataActionPtrInput)(nil)).Elem(), FieldMetadataAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigTextRedactionModeInput)(nil)).Elem(), ImageConfigTextRedactionMode("TEXT_REDACTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigTextRedactionModePtrInput)(nil)).Elem(), ImageConfigTextRedactionMode("TEXT_REDACTION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigVersionInput)(nil)).Elem(), ParserConfigVersion("PARSER_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigVersionPtrInput)(nil)).Elem(), ParserConfigVersion("PARSER_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTypeInput)(nil)).Elem(), SchemaConfigSchemaType("SCHEMA_TYPE_UNSPECIFIED"))
@@ -1914,12 +2435,18 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumOutput{})
 	pulumi.RegisterOutputType(ConsentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(DicomConfigFilterProfileOutput{})
+	pulumi.RegisterOutputType(DicomConfigFilterProfilePtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreComplexDataTypeReferenceParsingOutput{})
 	pulumi.RegisterOutputType(FhirStoreComplexDataTypeReferenceParsingPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreVersionOutput{})
 	pulumi.RegisterOutputType(FhirStoreVersionPtrOutput{})
+	pulumi.RegisterOutputType(FieldMetadataActionOutput{})
+	pulumi.RegisterOutputType(FieldMetadataActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput{})
+	pulumi.RegisterOutputType(ImageConfigTextRedactionModeOutput{})
+	pulumi.RegisterOutputType(ImageConfigTextRedactionModePtrOutput{})
 	pulumi.RegisterOutputType(ParserConfigVersionOutput{})
 	pulumi.RegisterOutputType(ParserConfigVersionPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigSchemaTypeOutput{})

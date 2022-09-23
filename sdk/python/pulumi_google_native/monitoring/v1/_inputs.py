@@ -1001,26 +1001,11 @@ class TableDataSetArgs:
 
 @pulumi.input_type
 class TableDisplayOptionsArgs:
-    def __init__(__self__, *,
-                 shown_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+    def __init__(__self__):
         """
         Table display options that can be reused.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] shown_columns: Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
         """
-        if shown_columns is not None:
-            pulumi.set(__self__, "shown_columns", shown_columns)
-
-    @property
-    @pulumi.getter(name="shownColumns")
-    def shown_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-        """
-        return pulumi.get(self, "shown_columns")
-
-    @shown_columns.setter
-    def shown_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "shown_columns", value)
+        pass
 
 
 @pulumi.input_type

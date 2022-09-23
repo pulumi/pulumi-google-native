@@ -1240,7 +1240,7 @@ func (o DefaultPoolResponseOutput) ServiceAccount() pulumi.StringOutput {
 
 // A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
 type DeliveryPipelineResponse struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponse `pulumi:"condition"`
@@ -1279,7 +1279,7 @@ func (o DeliveryPipelineResponseOutput) ToDeliveryPipelineResponseOutputWithCont
 	return o
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 func (o DeliveryPipelineResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DeliveryPipelineResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }

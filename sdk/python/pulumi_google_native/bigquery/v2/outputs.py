@@ -2842,6 +2842,8 @@ class JobConfigurationLoadResponse(dict):
             suggest = "connection_properties"
         elif key == "createDisposition":
             suggest = "create_disposition"
+        elif key == "createSession":
+            suggest = "create_session"
         elif key == "decimalTargetTypes":
             suggest = "decimal_target_types"
         elif key == "destinationEncryptionConfiguration":
@@ -2909,6 +2911,7 @@ class JobConfigurationLoadResponse(dict):
                  clustering: 'outputs.ClusteringResponse',
                  connection_properties: Sequence['outputs.ConnectionPropertyResponse'],
                  create_disposition: str,
+                 create_session: bool,
                  decimal_target_types: Sequence[str],
                  destination_encryption_configuration: 'outputs.EncryptionConfigurationResponse',
                  destination_table: 'outputs.TableReferenceResponse',
@@ -2943,6 +2946,7 @@ class JobConfigurationLoadResponse(dict):
         :param 'ClusteringResponse' clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param Sequence['ConnectionPropertyResponse'] connection_properties: Connection properties.
         :param str create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param bool create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
         :param Sequence[str] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param 'EncryptionConfigurationResponse' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param 'TableReferenceResponse' destination_table: [Required] The destination table to load the data into.
@@ -2977,6 +2981,7 @@ class JobConfigurationLoadResponse(dict):
         pulumi.set(__self__, "clustering", clustering)
         pulumi.set(__self__, "connection_properties", connection_properties)
         pulumi.set(__self__, "create_disposition", create_disposition)
+        pulumi.set(__self__, "create_session", create_session)
         pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         pulumi.set(__self__, "destination_encryption_configuration", destination_encryption_configuration)
         pulumi.set(__self__, "destination_table", destination_table)
@@ -3052,6 +3057,14 @@ class JobConfigurationLoadResponse(dict):
         [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "create_disposition")
+
+    @property
+    @pulumi.getter(name="createSession")
+    def create_session(self) -> bool:
+        """
+        If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        """
+        return pulumi.get(self, "create_session")
 
     @property
     @pulumi.getter(name="decimalTargetTypes")
@@ -3920,8 +3933,8 @@ class JobStatistics2ReservationUsageItemResponse(dict):
                  name: str,
                  slot_ms: str):
         """
-        :param str name: Reservation name or "unreserved" for on-demand resources usage.
-        :param str slot_ms: Slot-milliseconds the job spent in the given reservation.
+        :param str name: [Output only] Reservation name or "unreserved" for on-demand resources usage.
+        :param str slot_ms: [Output only] Slot-milliseconds the job spent in the given reservation.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "slot_ms", slot_ms)
@@ -3930,7 +3943,7 @@ class JobStatistics2ReservationUsageItemResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Reservation name or "unreserved" for on-demand resources usage.
+        [Output only] Reservation name or "unreserved" for on-demand resources usage.
         """
         return pulumi.get(self, "name")
 
@@ -3938,7 +3951,7 @@ class JobStatistics2ReservationUsageItemResponse(dict):
     @pulumi.getter(name="slotMs")
     def slot_ms(self) -> str:
         """
-        Slot-milliseconds the job spent in the given reservation.
+        [Output only] Slot-milliseconds the job spent in the given reservation.
         """
         return pulumi.get(self, "slot_ms")
 
@@ -4054,37 +4067,37 @@ class JobStatistics2Response(dict):
                  total_slot_ms: str,
                  undeclared_query_parameters: Sequence['outputs.QueryParameterResponse']):
         """
-        :param 'BiEngineStatisticsResponse' bi_engine_statistics: BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
-        :param int billing_tier: Billing tier for the job.
-        :param bool cache_hit: Whether the query result was fetched from the query cache.
-        :param str ddl_affected_row_access_policy_count: [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
-        :param 'TableReferenceResponse' ddl_destination_table: The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        :param 'BiEngineStatisticsResponse' bi_engine_statistics: BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
+        :param int billing_tier: [Output only] Billing tier for the job.
+        :param bool cache_hit: [Output only] Whether the query result was fetched from the query cache.
+        :param str ddl_affected_row_access_policy_count: [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        :param 'TableReferenceResponse' ddl_destination_table: [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
         :param str ddl_operation_performed: The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
-        :param 'DatasetReferenceResponse' ddl_target_dataset: The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        :param 'DatasetReferenceResponse' ddl_target_dataset: [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         :param 'RoutineReferenceResponse' ddl_target_routine: The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-        :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
-        :param 'TableReferenceResponse' ddl_target_table: The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
-        :param 'DmlStatisticsResponse' dml_stats: Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
-        :param str estimated_bytes_processed: The original estimate of bytes processed for the job.
-        :param 'MlStatisticsResponse' ml_statistics: Statistics of a BigQuery ML training job.
-        :param 'BigQueryModelTrainingResponse' model_training: [Output-only, Beta] Information about create model query job progress.
-        :param int model_training_current_iteration: [Output-only, Beta] Deprecated; do not use.
-        :param str model_training_expected_total_iteration: [Output-only, Beta] Deprecated; do not use.
-        :param str num_dml_affected_rows: The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
-        :param Sequence['ExplainQueryStageResponse'] query_plan: Describes execution plan for the query.
-        :param Sequence['RoutineReferenceResponse'] referenced_routines: Referenced routines (persistent user-defined functions and stored procedures) for the job.
-        :param Sequence['TableReferenceResponse'] referenced_tables: Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-        :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
-        :param 'TableSchemaResponse' schema: The schema of the results. Present only for successful dry run of non-legacy SQL queries.
-        :param 'SearchStatisticsResponse' search_statistics: Search query specific statistics.
-        :param 'SparkStatisticsResponse' spark_statistics: Statistics of a Spark procedure job.
+        :param 'RowAccessPolicyReferenceResponse' ddl_target_row_access_policy: [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        :param 'TableReferenceResponse' ddl_target_table: [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        :param 'DmlStatisticsResponse' dml_stats: [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        :param str estimated_bytes_processed: [Output only] The original estimate of bytes processed for the job.
+        :param 'MlStatisticsResponse' ml_statistics: [Output only] Statistics of a BigQuery ML training job.
+        :param 'BigQueryModelTrainingResponse' model_training: [Output only, Beta] Information about create model query job progress.
+        :param int model_training_current_iteration: [Output only, Beta] Deprecated; do not use.
+        :param str model_training_expected_total_iteration: [Output only, Beta] Deprecated; do not use.
+        :param str num_dml_affected_rows: [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        :param Sequence['ExplainQueryStageResponse'] query_plan: [Output only] Describes execution plan for the query.
+        :param Sequence['RoutineReferenceResponse'] referenced_routines: [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        :param Sequence['TableReferenceResponse'] referenced_tables: [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: [Output only] Job resource usage breakdown by reservation.
+        :param 'TableSchemaResponse' schema: [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        :param 'SearchStatisticsResponse' search_statistics: [Output only] Search query specific statistics.
+        :param 'SparkStatisticsResponse' spark_statistics: [Output only] Statistics of a Spark procedure job.
         :param str statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
-        :param Sequence['QueryTimelineSampleResponse'] timeline: [Beta] Describes a timeline of job execution.
-        :param str total_bytes_billed: Total bytes billed for the job.
-        :param str total_bytes_processed: Total bytes processed for the job.
-        :param str total_bytes_processed_accuracy: For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
-        :param str total_partitions_processed: Total number of partitions processed from all partitioned tables referenced in the job.
-        :param str total_slot_ms: Slot-milliseconds for the job.
+        :param Sequence['QueryTimelineSampleResponse'] timeline: [Output only] [Beta] Describes a timeline of job execution.
+        :param str total_bytes_billed: [Output only] Total bytes billed for the job.
+        :param str total_bytes_processed: [Output only] Total bytes processed for the job.
+        :param str total_bytes_processed_accuracy: [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        :param str total_partitions_processed: [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
+        :param str total_slot_ms: [Output only] Slot-milliseconds for the job.
         :param Sequence['QueryParameterResponse'] undeclared_query_parameters: Standard SQL only: list of undeclared query parameters detected during a dry run validation.
         """
         pulumi.set(__self__, "bi_engine_statistics", bi_engine_statistics)
@@ -4124,7 +4137,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="biEngineStatistics")
     def bi_engine_statistics(self) -> 'outputs.BiEngineStatisticsResponse':
         """
-        BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+        BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
         """
         return pulumi.get(self, "bi_engine_statistics")
 
@@ -4132,7 +4145,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="billingTier")
     def billing_tier(self) -> int:
         """
-        Billing tier for the job.
+        [Output only] Billing tier for the job.
         """
         return pulumi.get(self, "billing_tier")
 
@@ -4140,7 +4153,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="cacheHit")
     def cache_hit(self) -> bool:
         """
-        Whether the query result was fetched from the query cache.
+        [Output only] Whether the query result was fetched from the query cache.
         """
         return pulumi.get(self, "cache_hit")
 
@@ -4148,7 +4161,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlAffectedRowAccessPolicyCount")
     def ddl_affected_row_access_policy_count(self) -> str:
         """
-        [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         """
         return pulumi.get(self, "ddl_affected_row_access_policy_count")
 
@@ -4156,7 +4169,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlDestinationTable")
     def ddl_destination_table(self) -> 'outputs.TableReferenceResponse':
         """
-        The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
         """
         return pulumi.get(self, "ddl_destination_table")
 
@@ -4172,7 +4185,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetDataset")
     def ddl_target_dataset(self) -> 'outputs.DatasetReferenceResponse':
         """
-        The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+        [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
         """
         return pulumi.get(self, "ddl_target_dataset")
 
@@ -4188,7 +4201,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetRowAccessPolicy")
     def ddl_target_row_access_policy(self) -> 'outputs.RowAccessPolicyReferenceResponse':
         """
-        [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         """
         return pulumi.get(self, "ddl_target_row_access_policy")
 
@@ -4196,7 +4209,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="ddlTargetTable")
     def ddl_target_table(self) -> 'outputs.TableReferenceResponse':
         """
-        The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         """
         return pulumi.get(self, "ddl_target_table")
 
@@ -4204,7 +4217,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="dmlStats")
     def dml_stats(self) -> 'outputs.DmlStatisticsResponse':
         """
-        Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
         """
         return pulumi.get(self, "dml_stats")
 
@@ -4212,7 +4225,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="estimatedBytesProcessed")
     def estimated_bytes_processed(self) -> str:
         """
-        The original estimate of bytes processed for the job.
+        [Output only] The original estimate of bytes processed for the job.
         """
         return pulumi.get(self, "estimated_bytes_processed")
 
@@ -4220,7 +4233,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="mlStatistics")
     def ml_statistics(self) -> 'outputs.MlStatisticsResponse':
         """
-        Statistics of a BigQuery ML training job.
+        [Output only] Statistics of a BigQuery ML training job.
         """
         return pulumi.get(self, "ml_statistics")
 
@@ -4228,7 +4241,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="modelTraining")
     def model_training(self) -> 'outputs.BigQueryModelTrainingResponse':
         """
-        [Output-only, Beta] Information about create model query job progress.
+        [Output only, Beta] Information about create model query job progress.
         """
         return pulumi.get(self, "model_training")
 
@@ -4236,7 +4249,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="modelTrainingCurrentIteration")
     def model_training_current_iteration(self) -> int:
         """
-        [Output-only, Beta] Deprecated; do not use.
+        [Output only, Beta] Deprecated; do not use.
         """
         return pulumi.get(self, "model_training_current_iteration")
 
@@ -4244,7 +4257,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="modelTrainingExpectedTotalIteration")
     def model_training_expected_total_iteration(self) -> str:
         """
-        [Output-only, Beta] Deprecated; do not use.
+        [Output only, Beta] Deprecated; do not use.
         """
         return pulumi.get(self, "model_training_expected_total_iteration")
 
@@ -4252,7 +4265,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="numDmlAffectedRows")
     def num_dml_affected_rows(self) -> str:
         """
-        The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         """
         return pulumi.get(self, "num_dml_affected_rows")
 
@@ -4260,7 +4273,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="queryPlan")
     def query_plan(self) -> Sequence['outputs.ExplainQueryStageResponse']:
         """
-        Describes execution plan for the query.
+        [Output only] Describes execution plan for the query.
         """
         return pulumi.get(self, "query_plan")
 
@@ -4268,7 +4281,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="referencedRoutines")
     def referenced_routines(self) -> Sequence['outputs.RoutineReferenceResponse']:
         """
-        Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
         """
         return pulumi.get(self, "referenced_routines")
 
@@ -4276,7 +4289,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="referencedTables")
     def referenced_tables(self) -> Sequence['outputs.TableReferenceResponse']:
         """
-        Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
         """
         return pulumi.get(self, "referenced_tables")
 
@@ -4284,7 +4297,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="reservationUsage")
     def reservation_usage(self) -> Sequence['outputs.JobStatistics2ReservationUsageItemResponse']:
         """
-        Job resource usage breakdown by reservation.
+        [Output only] Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
 
@@ -4292,7 +4305,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter
     def schema(self) -> 'outputs.TableSchemaResponse':
         """
-        The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         """
         return pulumi.get(self, "schema")
 
@@ -4300,7 +4313,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="searchStatistics")
     def search_statistics(self) -> 'outputs.SearchStatisticsResponse':
         """
-        Search query specific statistics.
+        [Output only] Search query specific statistics.
         """
         return pulumi.get(self, "search_statistics")
 
@@ -4308,7 +4321,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="sparkStatistics")
     def spark_statistics(self) -> 'outputs.SparkStatisticsResponse':
         """
-        Statistics of a Spark procedure job.
+        [Output only] Statistics of a Spark procedure job.
         """
         return pulumi.get(self, "spark_statistics")
 
@@ -4324,7 +4337,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter
     def timeline(self) -> Sequence['outputs.QueryTimelineSampleResponse']:
         """
-        [Beta] Describes a timeline of job execution.
+        [Output only] [Beta] Describes a timeline of job execution.
         """
         return pulumi.get(self, "timeline")
 
@@ -4332,7 +4345,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesBilled")
     def total_bytes_billed(self) -> str:
         """
-        Total bytes billed for the job.
+        [Output only] Total bytes billed for the job.
         """
         return pulumi.get(self, "total_bytes_billed")
 
@@ -4340,7 +4353,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesProcessed")
     def total_bytes_processed(self) -> str:
         """
-        Total bytes processed for the job.
+        [Output only] Total bytes processed for the job.
         """
         return pulumi.get(self, "total_bytes_processed")
 
@@ -4348,7 +4361,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalBytesProcessedAccuracy")
     def total_bytes_processed_accuracy(self) -> str:
         """
-        For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
         """
         return pulumi.get(self, "total_bytes_processed_accuracy")
 
@@ -4356,7 +4369,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalPartitionsProcessed")
     def total_partitions_processed(self) -> str:
         """
-        Total number of partitions processed from all partitioned tables referenced in the job.
+        [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
         """
         return pulumi.get(self, "total_partitions_processed")
 
@@ -4364,7 +4377,7 @@ class JobStatistics2Response(dict):
     @pulumi.getter(name="totalSlotMs")
     def total_slot_ms(self) -> str:
         """
-        Slot-milliseconds for the job.
+        [Output only] Slot-milliseconds for the job.
         """
         return pulumi.get(self, "total_slot_ms")
 

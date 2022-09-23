@@ -4146,8 +4146,6 @@ func (o TableDataSetResponseArrayOutput) Index(i pulumi.IntInput) TableDataSetRe
 
 // Table display options that can be reused.
 type TableDisplayOptions struct {
-	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-	ShownColumns []string `pulumi:"shownColumns"`
 }
 
 // TableDisplayOptionsInput is an input type that accepts TableDisplayOptionsArgs and TableDisplayOptionsOutput values.
@@ -4163,8 +4161,6 @@ type TableDisplayOptionsInput interface {
 
 // Table display options that can be reused.
 type TableDisplayOptionsArgs struct {
-	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-	ShownColumns pulumi.StringArrayInput `pulumi:"shownColumns"`
 }
 
 func (TableDisplayOptionsArgs) ElementType() reflect.Type {
@@ -4245,11 +4241,6 @@ func (o TableDisplayOptionsOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx
 	}).(TableDisplayOptionsPtrOutput)
 }
 
-// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-func (o TableDisplayOptionsOutput) ShownColumns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableDisplayOptions) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
-}
-
 type TableDisplayOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableDisplayOptionsPtrOutput) ElementType() reflect.Type {
@@ -4274,20 +4265,8 @@ func (o TableDisplayOptionsPtrOutput) Elem() TableDisplayOptionsOutput {
 	}).(TableDisplayOptionsOutput)
 }
 
-// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-func (o TableDisplayOptionsPtrOutput) ShownColumns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableDisplayOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ShownColumns
-	}).(pulumi.StringArrayOutput)
-}
-
 // Table display options that can be reused.
 type TableDisplayOptionsResponse struct {
-	// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-	ShownColumns []string `pulumi:"shownColumns"`
 }
 
 // Table display options that can be reused.
@@ -4303,11 +4282,6 @@ func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutput()
 
 func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutputWithContext(ctx context.Context) TableDisplayOptionsResponseOutput {
 	return o
-}
-
-// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-func (o TableDisplayOptionsResponseOutput) ShownColumns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableDisplayOptionsResponse) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
 }
 
 // A widget that displays textual content.

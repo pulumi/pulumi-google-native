@@ -52,6 +52,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
     public readonly gkeClusters!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyGKEClusterResponse[]>;
     public readonly kind!: pulumi.Output<string>;
     /**
+     * User labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * List of network names specifying networks to which this policy is applied.
      */
     public readonly networks!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyNetworkResponse[]>;
@@ -76,6 +80,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["gkeClusters"] = args ? args.gkeClusters : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
@@ -84,6 +89,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["gkeClusters"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["responsePolicyName"] = undefined /*out*/;
@@ -112,6 +118,10 @@ export interface ResponsePolicyArgs {
      */
     gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyGKEClusterArgs>[]>;
     kind?: pulumi.Input<string>;
+    /**
+     * User labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * List of network names specifying networks to which this policy is applied.
      */

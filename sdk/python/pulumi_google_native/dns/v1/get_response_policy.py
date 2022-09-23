@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetResponsePolicyResult:
-    def __init__(__self__, description=None, gke_clusters=None, kind=None, networks=None, response_policy_name=None):
+    def __init__(__self__, description=None, gke_clusters=None, kind=None, labels=None, networks=None, response_policy_name=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -29,6 +29,9 @@ class GetResponsePolicyResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if networks and not isinstance(networks, list):
             raise TypeError("Expected argument 'networks' to be a list")
         pulumi.set(__self__, "networks", networks)
@@ -59,6 +62,14 @@ class GetResponsePolicyResult:
 
     @property
     @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def networks(self) -> Sequence['outputs.ResponsePolicyNetworkResponse']:
         """
         List of network names specifying networks to which this policy is applied.
@@ -83,6 +94,7 @@ class AwaitableGetResponsePolicyResult(GetResponsePolicyResult):
             description=self.description,
             gke_clusters=self.gke_clusters,
             kind=self.kind,
+            labels=self.labels,
             networks=self.networks,
             response_policy_name=self.response_policy_name)
 
@@ -105,6 +117,7 @@ def get_response_policy(client_operation_id: Optional[str] = None,
         description=__ret__.description,
         gke_clusters=__ret__.gke_clusters,
         kind=__ret__.kind,
+        labels=__ret__.labels,
         networks=__ret__.networks,
         response_policy_name=__ret__.response_policy_name)
 

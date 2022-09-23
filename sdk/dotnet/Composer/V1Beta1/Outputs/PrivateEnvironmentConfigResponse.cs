@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly bool EnablePrivatelyUsedPublicIps;
         /// <summary>
+        /// Optional. Configuration for the network connections configuration in the environment.
+        /// </summary>
+        public readonly Outputs.NetworkingConfigResponse NetworkingConfig;
+        /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
@@ -67,6 +71,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             bool enablePrivatelyUsedPublicIps,
 
+            Outputs.NetworkingConfigResponse networkingConfig,
+
             Outputs.PrivateClusterConfigResponse privateClusterConfig,
 
             string webServerIpv4CidrBlock,
@@ -79,6 +85,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEnvironment = enablePrivateEnvironment;
             EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
+            NetworkingConfig = networkingConfig;
             PrivateClusterConfig = privateClusterConfig;
             WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
             WebServerIpv4ReservedRange = webServerIpv4ReservedRange;

@@ -40,6 +40,10 @@ export interface GetResponsePolicyResult {
     readonly gkeClusters: outputs.dns.v1.ResponsePolicyGKEClusterResponse[];
     readonly kind: string;
     /**
+     * User labels.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * List of network names specifying networks to which this policy is applied.
      */
     readonly networks: outputs.dns.v1.ResponsePolicyNetworkResponse[];

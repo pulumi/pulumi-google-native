@@ -19,6 +19,7 @@ __all__ = [
     'IPAllocationPolicyArgs',
     'MaintenanceWindowArgs',
     'MasterAuthorizedNetworksConfigArgs',
+    'NetworkingConfigArgs',
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
@@ -541,6 +542,30 @@ class MasterAuthorizedNetworksConfigArgs:
 
 
 @pulumi.input_type
+class NetworkingConfigArgs:
+    def __init__(__self__, *,
+                 connection_type: Optional[pulumi.Input['NetworkingConfigConnectionType']] = None):
+        """
+        Configuration options for networking connections in the Composer 2 environment.
+        :param pulumi.Input['NetworkingConfigConnectionType'] connection_type: Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input['NetworkingConfigConnectionType']]:
+        """
+        Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input['NetworkingConfigConnectionType']]):
+        pulumi.set(self, "connection_type", value)
+
+
+@pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -772,6 +797,7 @@ class PrivateEnvironmentConfigArgs:
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
                  enable_privately_used_public_ips: Optional[pulumi.Input[bool]] = None,
+                 networking_config: Optional[pulumi.Input['NetworkingConfigArgs']] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
@@ -781,6 +807,7 @@ class PrivateEnvironmentConfigArgs:
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[bool] enable_privately_used_public_ips: Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        :param pulumi.Input['NetworkingConfigArgs'] networking_config: Optional. Configuration for the network connections configuration in the environment.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param pulumi.Input[str] web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
@@ -794,6 +821,8 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "enable_private_environment", enable_private_environment)
         if enable_privately_used_public_ips is not None:
             pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
+        if networking_config is not None:
+            pulumi.set(__self__, "networking_config", networking_config)
         if private_cluster_config is not None:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if web_server_ipv4_cidr_block is not None:
@@ -858,6 +887,18 @@ class PrivateEnvironmentConfigArgs:
     @enable_privately_used_public_ips.setter
     def enable_privately_used_public_ips(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_privately_used_public_ips", value)
+
+    @property
+    @pulumi.getter(name="networkingConfig")
+    def networking_config(self) -> Optional[pulumi.Input['NetworkingConfigArgs']]:
+        """
+        Optional. Configuration for the network connections configuration in the environment.
+        """
+        return pulumi.get(self, "networking_config")
+
+    @networking_config.setter
+    def networking_config(self, value: Optional[pulumi.Input['NetworkingConfigArgs']]):
+        pulumi.set(self, "networking_config", value)
 
     @property
     @pulumi.getter(name="privateClusterConfig")

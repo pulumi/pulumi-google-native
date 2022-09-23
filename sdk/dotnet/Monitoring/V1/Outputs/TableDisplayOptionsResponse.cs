@@ -16,15 +16,9 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     [OutputType]
     public sealed class TableDisplayOptionsResponse
     {
-        /// <summary>
-        /// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-        /// </summary>
-        public readonly ImmutableArray<string> ShownColumns;
-
         [OutputConstructor]
-        private TableDisplayOptionsResponse(ImmutableArray<string> shownColumns)
+        private TableDisplayOptionsResponse()
         {
-            ShownColumns = shownColumns;
         }
     }
 }

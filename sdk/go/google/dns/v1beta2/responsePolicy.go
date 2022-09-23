@@ -22,6 +22,8 @@ type ResponsePolicy struct {
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters ResponsePolicyGKEClusterResponseArrayOutput `pulumi:"gkeClusters"`
 	Kind        pulumi.StringOutput                         `pulumi:"kind"`
+	// User labels.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
 	Project  pulumi.StringOutput                      `pulumi:"project"`
@@ -79,6 +81,8 @@ type responsePolicyArgs struct {
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters []ResponsePolicyGKECluster `pulumi:"gkeClusters"`
 	Kind        *string                    `pulumi:"kind"`
+	// User labels.
+	Labels map[string]string `pulumi:"labels"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetwork `pulumi:"networks"`
 	Project  *string                 `pulumi:"project"`
@@ -95,6 +99,8 @@ type ResponsePolicyArgs struct {
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters ResponsePolicyGKEClusterArrayInput
 	Kind        pulumi.StringPtrInput
+	// User labels.
+	Labels pulumi.StringMapInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkArrayInput
 	Project  pulumi.StringPtrInput
@@ -156,6 +162,11 @@ func (o ResponsePolicyOutput) GkeClusters() ResponsePolicyGKEClusterResponseArra
 
 func (o ResponsePolicyOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User labels.
+func (o ResponsePolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // List of network names specifying networks to which this policy is applied.

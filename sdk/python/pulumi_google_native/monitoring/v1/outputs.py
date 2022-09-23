@@ -1041,38 +1041,11 @@ class TableDisplayOptionsResponse(dict):
     """
     Table display options that can be reused.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "shownColumns":
-            suggest = "shown_columns"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in TableDisplayOptionsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        TableDisplayOptionsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        TableDisplayOptionsResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 shown_columns: Sequence[str]):
+    def __init__(__self__):
         """
         Table display options that can be reused.
-        :param Sequence[str] shown_columns: Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
         """
-        pulumi.set(__self__, "shown_columns", shown_columns)
-
-    @property
-    @pulumi.getter(name="shownColumns")
-    def shown_columns(self) -> Sequence[str]:
-        """
-        Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-        """
-        return pulumi.get(self, "shown_columns")
+        pass
 
 
 @pulumi.output_type

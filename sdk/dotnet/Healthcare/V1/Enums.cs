@@ -147,6 +147,55 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
+    /// Tag filtering profile that determines which tags to keep/remove.
+    /// </summary>
+    [EnumType]
+    public readonly struct DicomConfigFilterProfile : IEquatable<DicomConfigFilterProfile>
+    {
+        private readonly string _value;
+
+        private DicomConfigFilterProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No tag filtration profile provided. Same as KEEP_ALL_PROFILE.
+        /// </summary>
+        public static DicomConfigFilterProfile TagFilterProfileUnspecified { get; } = new DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Keep only tags required to produce valid DICOM.
+        /// </summary>
+        public static DicomConfigFilterProfile MinimalKeepListProfile { get; } = new DicomConfigFilterProfile("MINIMAL_KEEP_LIST_PROFILE");
+        /// <summary>
+        /// Remove tags based on DICOM Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e) http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
+        /// </summary>
+        public static DicomConfigFilterProfile AttributeConfidentialityBasicProfile { get; } = new DicomConfigFilterProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE");
+        /// <summary>
+        /// Keep all tags.
+        /// </summary>
+        public static DicomConfigFilterProfile KeepAllProfile { get; } = new DicomConfigFilterProfile("KEEP_ALL_PROFILE");
+        /// <summary>
+        /// Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        /// </summary>
+        public static DicomConfigFilterProfile DeidentifyTagContents { get; } = new DicomConfigFilterProfile("DEIDENTIFY_TAG_CONTENTS");
+
+        public static bool operator ==(DicomConfigFilterProfile left, DicomConfigFilterProfile right) => left.Equals(right);
+        public static bool operator !=(DicomConfigFilterProfile left, DicomConfigFilterProfile right) => !left.Equals(right);
+
+        public static explicit operator string(DicomConfigFilterProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DicomConfigFilterProfile other && Equals(other);
+        public bool Equals(DicomConfigFilterProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
     /// </summary>
     [EnumType]
@@ -233,6 +282,51 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
+    /// Deidentify action for one field.
+    /// </summary>
+    [EnumType]
+    public readonly struct FieldMetadataAction : IEquatable<FieldMetadataAction>
+    {
+        private readonly string _value;
+
+        private FieldMetadataAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No action specified.
+        /// </summary>
+        public static FieldMetadataAction ActionUnspecified { get; } = new FieldMetadataAction("ACTION_UNSPECIFIED");
+        /// <summary>
+        /// Transform the entire field.
+        /// </summary>
+        public static FieldMetadataAction Transform { get; } = new FieldMetadataAction("TRANSFORM");
+        /// <summary>
+        /// Inspect and transform any found PHI.
+        /// </summary>
+        public static FieldMetadataAction InspectAndTransform { get; } = new FieldMetadataAction("INSPECT_AND_TRANSFORM");
+        /// <summary>
+        /// Do not transform.
+        /// </summary>
+        public static FieldMetadataAction DoNotTransform { get; } = new FieldMetadataAction("DO_NOT_TRANSFORM");
+
+        public static bool operator ==(FieldMetadataAction left, FieldMetadataAction right) => left.Equals(right);
+        public static bool operator !=(FieldMetadataAction left, FieldMetadataAction right) => !left.Equals(right);
+
+        public static explicit operator string(FieldMetadataAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FieldMetadataAction other && Equals(other);
+        public bool Equals(FieldMetadataAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
     /// </summary>
     [EnumType]
@@ -270,6 +364,51 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition other && Equals(other);
         public bool Equals(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Determines how to redact text from image.
+    /// </summary>
+    [EnumType]
+    public readonly struct ImageConfigTextRedactionMode : IEquatable<ImageConfigTextRedactionMode>
+    {
+        private readonly string _value;
+
+        private ImageConfigTextRedactionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No text redaction specified. Same as REDACT_NO_TEXT.
+        /// </summary>
+        public static ImageConfigTextRedactionMode TextRedactionModeUnspecified { get; } = new ImageConfigTextRedactionMode("TEXT_REDACTION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Redact all text.
+        /// </summary>
+        public static ImageConfigTextRedactionMode RedactAllText { get; } = new ImageConfigTextRedactionMode("REDACT_ALL_TEXT");
+        /// <summary>
+        /// Redact sensitive text. Uses the set of [Default DICOM InfoTypes](https://cloud.google.com/healthcare-api/docs/how-tos/dicom-deidentify#default_dicom_infotypes).
+        /// </summary>
+        public static ImageConfigTextRedactionMode RedactSensitiveText { get; } = new ImageConfigTextRedactionMode("REDACT_SENSITIVE_TEXT");
+        /// <summary>
+        /// Do not redact text.
+        /// </summary>
+        public static ImageConfigTextRedactionMode RedactNoText { get; } = new ImageConfigTextRedactionMode("REDACT_NO_TEXT");
+
+        public static bool operator ==(ImageConfigTextRedactionMode left, ImageConfigTextRedactionMode right) => left.Equals(right);
+        public static bool operator !=(ImageConfigTextRedactionMode left, ImageConfigTextRedactionMode right) => !left.Equals(right);
+
+        public static explicit operator string(ImageConfigTextRedactionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ImageConfigTextRedactionMode other && Equals(other);
+        public bool Equals(ImageConfigTextRedactionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

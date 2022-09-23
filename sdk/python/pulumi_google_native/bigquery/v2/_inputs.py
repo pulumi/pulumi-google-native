@@ -1959,6 +1959,7 @@ class JobConfigurationLoadArgs:
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  connection_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
+                 create_session: Optional[pulumi.Input[bool]] = None,
                  decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  destination_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
                  destination_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
@@ -1993,6 +1994,7 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Connection properties.
         :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[bool] create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table to load the data into.
@@ -2033,6 +2035,8 @@ class JobConfigurationLoadArgs:
             pulumi.set(__self__, "connection_properties", connection_properties)
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
+        if create_session is not None:
+            pulumi.set(__self__, "create_session", create_session)
         if decimal_target_types is not None:
             pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         if destination_encryption_configuration is not None:
@@ -2165,6 +2169,18 @@ class JobConfigurationLoadArgs:
     @create_disposition.setter
     def create_disposition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_disposition", value)
+
+    @property
+    @pulumi.getter(name="createSession")
+    def create_session(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        """
+        return pulumi.get(self, "create_session")
+
+    @create_session.setter
+    def create_session(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_session", value)
 
     @property
     @pulumi.getter(name="decimalTargetTypes")

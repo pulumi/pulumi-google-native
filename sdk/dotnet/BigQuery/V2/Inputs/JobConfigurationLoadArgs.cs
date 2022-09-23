@@ -54,6 +54,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("createDisposition")]
         public Input<string>? CreateDisposition { get; set; }
 
+        /// <summary>
+        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        /// </summary>
+        [Input("createSession")]
+        public Input<bool>? CreateSession { get; set; }
+
         [Input("decimalTargetTypes")]
         private InputList<string>? _decimalTargetTypes;
 

@@ -15,18 +15,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// </summary>
     public sealed class TableDisplayOptionsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("shownColumns")]
-        private InputList<string>? _shownColumns;
-
-        /// <summary>
-        /// Optional. Columns to display in the table. Leave empty to display all available columns. Note: This field is for future features and is not currently used.
-        /// </summary>
-        public InputList<string> ShownColumns
-        {
-            get => _shownColumns ?? (_shownColumns = new InputList<string>());
-            set => _shownColumns = value;
-        }
-
         public TableDisplayOptionsArgs()
         {
         }

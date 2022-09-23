@@ -412,6 +412,21 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "analyticshub/v1",
+  "fqn": "pulumi_google_native.analyticshub.v1",
+  "classes": {
+   "google-native:analyticshub/v1:DataExchange": "DataExchange",
+   "google-native:analyticshub/v1:DataExchangeIamBinding": "DataExchangeIamBinding",
+   "google-native:analyticshub/v1:DataExchangeIamMember": "DataExchangeIamMember",
+   "google-native:analyticshub/v1:DataExchangeIamPolicy": "DataExchangeIamPolicy",
+   "google-native:analyticshub/v1:DataExchangeListingIamBinding": "DataExchangeListingIamBinding",
+   "google-native:analyticshub/v1:DataExchangeListingIamMember": "DataExchangeListingIamMember",
+   "google-native:analyticshub/v1:DataExchangeListingIamPolicy": "DataExchangeListingIamPolicy",
+   "google-native:analyticshub/v1:Listing": "Listing"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "analyticshub/v1beta1",
   "fqn": "pulumi_google_native.analyticshub.v1beta1",
   "classes": {
@@ -635,6 +650,14 @@ _utilities.register(
   "fqn": "pulumi_google_native.assuredworkloads.v1",
   "classes": {
    "google-native:assuredworkloads/v1:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "assuredworkloads/v1beta1",
+  "fqn": "pulumi_google_native.assuredworkloads.v1beta1",
+  "classes": {
+   "google-native:assuredworkloads/v1beta1:Workload": "Workload"
   }
  },
  {
@@ -1013,6 +1036,9 @@ _utilities.register(
   "classes": {
    "google-native:cloudkms/v1:CryptoKey": "CryptoKey",
    "google-native:cloudkms/v1:CryptoKeyVersion": "CryptoKeyVersion",
+   "google-native:cloudkms/v1:EkmConfigIamBinding": "EkmConfigIamBinding",
+   "google-native:cloudkms/v1:EkmConfigIamMember": "EkmConfigIamMember",
+   "google-native:cloudkms/v1:EkmConfigIamPolicy": "EkmConfigIamPolicy",
    "google-native:cloudkms/v1:EkmConnection": "EkmConnection",
    "google-native:cloudkms/v1:EkmConnectionIamBinding": "EkmConnectionIamBinding",
    "google-native:cloudkms/v1:EkmConnectionIamMember": "EkmConnectionIamMember",

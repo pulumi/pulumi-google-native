@@ -16,7 +16,7 @@ import (
 type DeliveryPipeline struct {
 	pulumi.CustomResourceState
 
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Information around the state of the Delivery Pipeline.
 	Condition PipelineConditionResponseOutput `pulumi:"condition"`
@@ -96,7 +96,7 @@ func (DeliveryPipelineState) ElementType() reflect.Type {
 }
 
 type deliveryPipelineArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Required. ID of the `DeliveryPipeline`.
 	DeliveryPipelineId string `pulumi:"deliveryPipelineId"`
@@ -122,7 +122,7 @@ type deliveryPipelineArgs struct {
 
 // The set of arguments for constructing a DeliveryPipeline resource.
 type DeliveryPipelineArgs struct {
-	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 	Annotations pulumi.StringMapInput
 	// Required. ID of the `DeliveryPipeline`.
 	DeliveryPipelineId pulumi.StringInput
@@ -183,7 +183,7 @@ func (o DeliveryPipelineOutput) ToDeliveryPipelineOutputWithContext(ctx context.
 	return o
 }
 
-// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
 func (o DeliveryPipelineOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }

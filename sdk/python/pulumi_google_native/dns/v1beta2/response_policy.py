@@ -20,6 +20,7 @@ class ResponsePolicyArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None):
@@ -28,6 +29,7 @@ class ResponsePolicyArgs:
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
         """
@@ -39,6 +41,8 @@ class ResponsePolicyArgs:
             pulumi.set(__self__, "gke_clusters", gke_clusters)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
@@ -93,6 +97,18 @@ class ResponsePolicyArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]]:
         """
         List of network names specifying networks to which this policy is applied.
@@ -134,6 +150,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
@@ -147,6 +164,7 @@ class ResponsePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
         """
@@ -179,6 +197,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
@@ -195,6 +214,7 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["gke_clusters"] = gke_clusters
             __props__.__dict__["kind"] = kind
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["response_policy_name"] = response_policy_name
@@ -226,6 +246,7 @@ class ResponsePolicy(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["gke_clusters"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["response_policy_name"] = None
@@ -259,6 +280,14 @@ class ResponsePolicy(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User labels.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

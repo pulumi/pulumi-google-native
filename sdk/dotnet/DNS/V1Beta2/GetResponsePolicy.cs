@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public readonly ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse> GkeClusters;
         public readonly string Kind;
         /// <summary>
+        /// User labels.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// List of network names specifying networks to which this policy is applied.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResponsePolicyNetworkResponse> Networks;
@@ -89,6 +93,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
             string kind,
 
+            ImmutableDictionary<string, string> labels,
+
             ImmutableArray<Outputs.ResponsePolicyNetworkResponse> networks,
 
             string responsePolicyName)
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
             Description = description;
             GkeClusters = gkeClusters;
             Kind = kind;
+            Labels = labels;
             Networks = networks;
             ResponsePolicyName = responsePolicyName;
         }

@@ -6599,6 +6599,8 @@ type JobConfigurationLoad struct {
 	ConnectionProperties []ConnectionProperty `pulumi:"connectionProperties"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition *string `pulumi:"createDisposition"`
+	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+	CreateSession *bool `pulumi:"createSession"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6683,6 +6685,8 @@ type JobConfigurationLoadArgs struct {
 	ConnectionProperties ConnectionPropertyArrayInput `pulumi:"connectionProperties"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
+	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+	CreateSession pulumi.BoolPtrInput `pulumi:"createSession"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes pulumi.StringArrayInput `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6848,6 +6852,11 @@ func (o JobConfigurationLoadOutput) ConnectionProperties() ConnectionPropertyArr
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobConfigurationLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
+}
+
+// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+func (o JobConfigurationLoadOutput) CreateSession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *bool { return v.CreateSession }).(pulumi.BoolPtrOutput)
 }
 
 // [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
@@ -7071,6 +7080,16 @@ func (o JobConfigurationLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutpu
 		}
 		return v.CreateDisposition
 	}).(pulumi.StringPtrOutput)
+}
+
+// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+func (o JobConfigurationLoadPtrOutput) CreateSession() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateSession
+	}).(pulumi.BoolPtrOutput)
 }
 
 // [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
@@ -7360,6 +7379,8 @@ type JobConfigurationLoadResponse struct {
 	ConnectionProperties []ConnectionPropertyResponse `pulumi:"connectionProperties"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition string `pulumi:"createDisposition"`
+	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+	CreateSession bool `pulumi:"createSession"`
 	// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
 	DecimalTargetTypes []string `pulumi:"decimalTargetTypes"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -7462,6 +7483,11 @@ func (o JobConfigurationLoadResponseOutput) ConnectionProperties() ConnectionPro
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobConfigurationLoadResponseOutput) CreateDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.CreateDisposition }).(pulumi.StringOutput)
+}
+
+// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+func (o JobConfigurationLoadResponseOutput) CreateSession() pulumi.BoolOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) bool { return v.CreateSession }).(pulumi.BoolOutput)
 }
 
 // [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
@@ -9016,9 +9042,9 @@ func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
 }
 
 type JobStatistics2ReservationUsageItemResponse struct {
-	// Reservation name or "unreserved" for on-demand resources usage.
+	// [Output only] Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
-	// Slot-milliseconds the job spent in the given reservation.
+	// [Output only] Slot-milliseconds the job spent in the given reservation.
 	SlotMs string `pulumi:"slotMs"`
 }
 
@@ -9036,12 +9062,12 @@ func (o JobStatistics2ReservationUsageItemResponseOutput) ToJobStatistics2Reserv
 	return o
 }
 
-// Reservation name or "unreserved" for on-demand resources usage.
+// [Output only] Reservation name or "unreserved" for on-demand resources usage.
 func (o JobStatistics2ReservationUsageItemResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Slot-milliseconds the job spent in the given reservation.
+// [Output only] Slot-milliseconds the job spent in the given reservation.
 func (o JobStatistics2ReservationUsageItemResponseOutput) SlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2ReservationUsageItemResponse) string { return v.SlotMs }).(pulumi.StringOutput)
 }
@@ -9067,71 +9093,71 @@ func (o JobStatistics2ReservationUsageItemResponseArrayOutput) Index(i pulumi.In
 }
 
 type JobStatistics2Response struct {
-	// BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+	// BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
 	BiEngineStatistics BiEngineStatisticsResponse `pulumi:"biEngineStatistics"`
-	// Billing tier for the job.
+	// [Output only] Billing tier for the job.
 	BillingTier int `pulumi:"billingTier"`
-	// Whether the query result was fetched from the query cache.
+	// [Output only] Whether the query result was fetched from the query cache.
 	CacheHit bool `pulumi:"cacheHit"`
-	// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+	// [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 	DdlAffectedRowAccessPolicyCount string `pulumi:"ddlAffectedRowAccessPolicyCount"`
-	// The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+	// [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
 	DdlDestinationTable TableReferenceResponse `pulumi:"ddlDestinationTable"`
 	// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
 	DdlOperationPerformed string `pulumi:"ddlOperationPerformed"`
-	// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+	// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 	DdlTargetDataset DatasetReferenceResponse `pulumi:"ddlTargetDataset"`
 	// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
 	DdlTargetRoutine RoutineReferenceResponse `pulumi:"ddlTargetRoutine"`
-	// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+	// [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 	DdlTargetRowAccessPolicy RowAccessPolicyReferenceResponse `pulumi:"ddlTargetRowAccessPolicy"`
-	// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+	// [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 	DdlTargetTable TableReferenceResponse `pulumi:"ddlTargetTable"`
-	// Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+	// [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
 	DmlStats DmlStatisticsResponse `pulumi:"dmlStats"`
-	// The original estimate of bytes processed for the job.
+	// [Output only] The original estimate of bytes processed for the job.
 	EstimatedBytesProcessed string `pulumi:"estimatedBytesProcessed"`
-	// Statistics of a BigQuery ML training job.
+	// [Output only] Statistics of a BigQuery ML training job.
 	MlStatistics MlStatisticsResponse `pulumi:"mlStatistics"`
-	// [Output-only, Beta] Information about create model query job progress.
+	// [Output only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponse `pulumi:"modelTraining"`
-	// [Output-only, Beta] Deprecated; do not use.
+	// [Output only, Beta] Deprecated; do not use.
 	//
-	// Deprecated: [Output-only, Beta] Deprecated; do not use.
+	// Deprecated: [Output only, Beta] Deprecated; do not use.
 	ModelTrainingCurrentIteration int `pulumi:"modelTrainingCurrentIteration"`
-	// [Output-only, Beta] Deprecated; do not use.
+	// [Output only, Beta] Deprecated; do not use.
 	//
-	// Deprecated: [Output-only, Beta] Deprecated; do not use.
+	// Deprecated: [Output only, Beta] Deprecated; do not use.
 	ModelTrainingExpectedTotalIteration string `pulumi:"modelTrainingExpectedTotalIteration"`
-	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+	// [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 	NumDmlAffectedRows string `pulumi:"numDmlAffectedRows"`
-	// Describes execution plan for the query.
+	// [Output only] Describes execution plan for the query.
 	QueryPlan []ExplainQueryStageResponse `pulumi:"queryPlan"`
-	// Referenced routines (persistent user-defined functions and stored procedures) for the job.
+	// [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
 	ReferencedRoutines []RoutineReferenceResponse `pulumi:"referencedRoutines"`
-	// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+	// [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 	ReferencedTables []TableReferenceResponse `pulumi:"referencedTables"`
-	// Job resource usage breakdown by reservation.
+	// [Output only] Job resource usage breakdown by reservation.
 	ReservationUsage []JobStatistics2ReservationUsageItemResponse `pulumi:"reservationUsage"`
-	// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+	// [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 	Schema TableSchemaResponse `pulumi:"schema"`
-	// Search query specific statistics.
+	// [Output only] Search query specific statistics.
 	SearchStatistics SearchStatisticsResponse `pulumi:"searchStatistics"`
-	// Statistics of a Spark procedure job.
+	// [Output only] Statistics of a Spark procedure job.
 	SparkStatistics SparkStatisticsResponse `pulumi:"sparkStatistics"`
 	// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
 	StatementType string `pulumi:"statementType"`
-	// [Beta] Describes a timeline of job execution.
+	// [Output only] [Beta] Describes a timeline of job execution.
 	Timeline []QueryTimelineSampleResponse `pulumi:"timeline"`
-	// Total bytes billed for the job.
+	// [Output only] Total bytes billed for the job.
 	TotalBytesBilled string `pulumi:"totalBytesBilled"`
-	// Total bytes processed for the job.
+	// [Output only] Total bytes processed for the job.
 	TotalBytesProcessed string `pulumi:"totalBytesProcessed"`
-	// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+	// [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 	TotalBytesProcessedAccuracy string `pulumi:"totalBytesProcessedAccuracy"`
-	// Total number of partitions processed from all partitioned tables referenced in the job.
+	// [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
 	TotalPartitionsProcessed string `pulumi:"totalPartitionsProcessed"`
-	// Slot-milliseconds for the job.
+	// [Output only] Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
 	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
 	UndeclaredQueryParameters []QueryParameterResponse `pulumi:"undeclaredQueryParameters"`
@@ -9151,27 +9177,27 @@ func (o JobStatistics2ResponseOutput) ToJobStatistics2ResponseOutputWithContext(
 	return o
 }
 
-// BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+// BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
 func (o JobStatistics2ResponseOutput) BiEngineStatistics() BiEngineStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) BiEngineStatisticsResponse { return v.BiEngineStatistics }).(BiEngineStatisticsResponseOutput)
 }
 
-// Billing tier for the job.
+// [Output only] Billing tier for the job.
 func (o JobStatistics2ResponseOutput) BillingTier() pulumi.IntOutput {
 	return o.ApplyT(func(v JobStatistics2Response) int { return v.BillingTier }).(pulumi.IntOutput)
 }
 
-// Whether the query result was fetched from the query cache.
+// [Output only] Whether the query result was fetched from the query cache.
 func (o JobStatistics2ResponseOutput) CacheHit() pulumi.BoolOutput {
 	return o.ApplyT(func(v JobStatistics2Response) bool { return v.CacheHit }).(pulumi.BoolOutput)
 }
 
-// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+// [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponseOutput) DdlAffectedRowAccessPolicyCount() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlAffectedRowAccessPolicyCount }).(pulumi.StringOutput)
 }
 
-// The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+// [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
 func (o JobStatistics2ResponseOutput) DdlDestinationTable() TableReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableReferenceResponse { return v.DdlDestinationTable }).(TableReferenceResponseOutput)
 }
@@ -9181,7 +9207,7 @@ func (o JobStatistics2ResponseOutput) DdlOperationPerformed() pulumi.StringOutpu
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.DdlOperationPerformed }).(pulumi.StringOutput)
 }
 
-// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
+// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.
 func (o JobStatistics2ResponseOutput) DdlTargetDataset() DatasetReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) DatasetReferenceResponse { return v.DdlTargetDataset }).(DatasetReferenceResponseOutput)
 }
@@ -9191,86 +9217,86 @@ func (o JobStatistics2ResponseOutput) DdlTargetRoutine() RoutineReferenceRespons
 	return o.ApplyT(func(v JobStatistics2Response) RoutineReferenceResponse { return v.DdlTargetRoutine }).(RoutineReferenceResponseOutput)
 }
 
-// [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+// [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
 func (o JobStatistics2ResponseOutput) DdlTargetRowAccessPolicy() RowAccessPolicyReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) RowAccessPolicyReferenceResponse { return v.DdlTargetRowAccessPolicy }).(RowAccessPolicyReferenceResponseOutput)
 }
 
-// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+// [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
 func (o JobStatistics2ResponseOutput) DdlTargetTable() TableReferenceResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableReferenceResponse { return v.DdlTargetTable }).(TableReferenceResponseOutput)
 }
 
-// Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+// [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
 func (o JobStatistics2ResponseOutput) DmlStats() DmlStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) DmlStatisticsResponse { return v.DmlStats }).(DmlStatisticsResponseOutput)
 }
 
-// The original estimate of bytes processed for the job.
+// [Output only] The original estimate of bytes processed for the job.
 func (o JobStatistics2ResponseOutput) EstimatedBytesProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.EstimatedBytesProcessed }).(pulumi.StringOutput)
 }
 
-// Statistics of a BigQuery ML training job.
+// [Output only] Statistics of a BigQuery ML training job.
 func (o JobStatistics2ResponseOutput) MlStatistics() MlStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) MlStatisticsResponse { return v.MlStatistics }).(MlStatisticsResponseOutput)
 }
 
-// [Output-only, Beta] Information about create model query job progress.
+// [Output only, Beta] Information about create model query job progress.
 func (o JobStatistics2ResponseOutput) ModelTraining() BigQueryModelTrainingResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) BigQueryModelTrainingResponse { return v.ModelTraining }).(BigQueryModelTrainingResponseOutput)
 }
 
-// [Output-only, Beta] Deprecated; do not use.
+// [Output only, Beta] Deprecated; do not use.
 //
-// Deprecated: [Output-only, Beta] Deprecated; do not use.
+// Deprecated: [Output only, Beta] Deprecated; do not use.
 func (o JobStatistics2ResponseOutput) ModelTrainingCurrentIteration() pulumi.IntOutput {
 	return o.ApplyT(func(v JobStatistics2Response) int { return v.ModelTrainingCurrentIteration }).(pulumi.IntOutput)
 }
 
-// [Output-only, Beta] Deprecated; do not use.
+// [Output only, Beta] Deprecated; do not use.
 //
-// Deprecated: [Output-only, Beta] Deprecated; do not use.
+// Deprecated: [Output only, Beta] Deprecated; do not use.
 func (o JobStatistics2ResponseOutput) ModelTrainingExpectedTotalIteration() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.ModelTrainingExpectedTotalIteration }).(pulumi.StringOutput)
 }
 
-// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+// [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 func (o JobStatistics2ResponseOutput) NumDmlAffectedRows() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.NumDmlAffectedRows }).(pulumi.StringOutput)
 }
 
-// Describes execution plan for the query.
+// [Output only] Describes execution plan for the query.
 func (o JobStatistics2ResponseOutput) QueryPlan() ExplainQueryStageResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []ExplainQueryStageResponse { return v.QueryPlan }).(ExplainQueryStageResponseArrayOutput)
 }
 
-// Referenced routines (persistent user-defined functions and stored procedures) for the job.
+// [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
 func (o JobStatistics2ResponseOutput) ReferencedRoutines() RoutineReferenceResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []RoutineReferenceResponse { return v.ReferencedRoutines }).(RoutineReferenceResponseArrayOutput)
 }
 
-// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+// [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
 func (o JobStatistics2ResponseOutput) ReferencedTables() TableReferenceResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []TableReferenceResponse { return v.ReferencedTables }).(TableReferenceResponseArrayOutput)
 }
 
-// Job resource usage breakdown by reservation.
+// [Output only] Job resource usage breakdown by reservation.
 func (o JobStatistics2ResponseOutput) ReservationUsage() JobStatistics2ReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []JobStatistics2ReservationUsageItemResponse { return v.ReservationUsage }).(JobStatistics2ReservationUsageItemResponseArrayOutput)
 }
 
-// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+// [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
 func (o JobStatistics2ResponseOutput) Schema() TableSchemaResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
 }
 
-// Search query specific statistics.
+// [Output only] Search query specific statistics.
 func (o JobStatistics2ResponseOutput) SearchStatistics() SearchStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) SearchStatisticsResponse { return v.SearchStatistics }).(SearchStatisticsResponseOutput)
 }
 
-// Statistics of a Spark procedure job.
+// [Output only] Statistics of a Spark procedure job.
 func (o JobStatistics2ResponseOutput) SparkStatistics() SparkStatisticsResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) SparkStatisticsResponse { return v.SparkStatistics }).(SparkStatisticsResponseOutput)
 }
@@ -9280,32 +9306,32 @@ func (o JobStatistics2ResponseOutput) StatementType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.StatementType }).(pulumi.StringOutput)
 }
 
-// [Beta] Describes a timeline of job execution.
+// [Output only] [Beta] Describes a timeline of job execution.
 func (o JobStatistics2ResponseOutput) Timeline() QueryTimelineSampleResponseArrayOutput {
 	return o.ApplyT(func(v JobStatistics2Response) []QueryTimelineSampleResponse { return v.Timeline }).(QueryTimelineSampleResponseArrayOutput)
 }
 
-// Total bytes billed for the job.
+// [Output only] Total bytes billed for the job.
 func (o JobStatistics2ResponseOutput) TotalBytesBilled() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesBilled }).(pulumi.StringOutput)
 }
 
-// Total bytes processed for the job.
+// [Output only] Total bytes processed for the job.
 func (o JobStatistics2ResponseOutput) TotalBytesProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesProcessed }).(pulumi.StringOutput)
 }
 
-// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+// [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
 func (o JobStatistics2ResponseOutput) TotalBytesProcessedAccuracy() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalBytesProcessedAccuracy }).(pulumi.StringOutput)
 }
 
-// Total number of partitions processed from all partitioned tables referenced in the job.
+// [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
 func (o JobStatistics2ResponseOutput) TotalPartitionsProcessed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalPartitionsProcessed }).(pulumi.StringOutput)
 }
 
-// Slot-milliseconds for the job.
+// [Output only] Slot-milliseconds for the job.
 func (o JobStatistics2ResponseOutput) TotalSlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalSlotMs }).(pulumi.StringOutput)
 }

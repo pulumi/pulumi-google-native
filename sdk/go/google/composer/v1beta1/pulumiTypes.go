@@ -1823,6 +1823,172 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutpu
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configuration options for networking connections in the Composer 2 environment.
+type NetworkingConfig struct {
+	// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+	ConnectionType *NetworkingConfigConnectionType `pulumi:"connectionType"`
+}
+
+// NetworkingConfigInput is an input type that accepts NetworkingConfigArgs and NetworkingConfigOutput values.
+// You can construct a concrete instance of `NetworkingConfigInput` via:
+//
+//	NetworkingConfigArgs{...}
+type NetworkingConfigInput interface {
+	pulumi.Input
+
+	ToNetworkingConfigOutput() NetworkingConfigOutput
+	ToNetworkingConfigOutputWithContext(context.Context) NetworkingConfigOutput
+}
+
+// Configuration options for networking connections in the Composer 2 environment.
+type NetworkingConfigArgs struct {
+	// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+	ConnectionType NetworkingConfigConnectionTypePtrInput `pulumi:"connectionType"`
+}
+
+func (NetworkingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingConfig)(nil)).Elem()
+}
+
+func (i NetworkingConfigArgs) ToNetworkingConfigOutput() NetworkingConfigOutput {
+	return i.ToNetworkingConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkingConfigArgs) ToNetworkingConfigOutputWithContext(ctx context.Context) NetworkingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingConfigOutput)
+}
+
+func (i NetworkingConfigArgs) ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput {
+	return i.ToNetworkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkingConfigArgs) ToNetworkingConfigPtrOutputWithContext(ctx context.Context) NetworkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingConfigOutput).ToNetworkingConfigPtrOutputWithContext(ctx)
+}
+
+// NetworkingConfigPtrInput is an input type that accepts NetworkingConfigArgs, NetworkingConfigPtr and NetworkingConfigPtrOutput values.
+// You can construct a concrete instance of `NetworkingConfigPtrInput` via:
+//
+//	        NetworkingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkingConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput
+	ToNetworkingConfigPtrOutputWithContext(context.Context) NetworkingConfigPtrOutput
+}
+
+type networkingConfigPtrType NetworkingConfigArgs
+
+func NetworkingConfigPtr(v *NetworkingConfigArgs) NetworkingConfigPtrInput {
+	return (*networkingConfigPtrType)(v)
+}
+
+func (*networkingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkingConfig)(nil)).Elem()
+}
+
+func (i *networkingConfigPtrType) ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput {
+	return i.ToNetworkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkingConfigPtrType) ToNetworkingConfigPtrOutputWithContext(ctx context.Context) NetworkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingConfigPtrOutput)
+}
+
+// Configuration options for networking connections in the Composer 2 environment.
+type NetworkingConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingConfig)(nil)).Elem()
+}
+
+func (o NetworkingConfigOutput) ToNetworkingConfigOutput() NetworkingConfigOutput {
+	return o
+}
+
+func (o NetworkingConfigOutput) ToNetworkingConfigOutputWithContext(ctx context.Context) NetworkingConfigOutput {
+	return o
+}
+
+func (o NetworkingConfigOutput) ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput {
+	return o.ToNetworkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkingConfigOutput) ToNetworkingConfigPtrOutputWithContext(ctx context.Context) NetworkingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkingConfig) *NetworkingConfig {
+		return &v
+	}).(NetworkingConfigPtrOutput)
+}
+
+// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+func (o NetworkingConfigOutput) ConnectionType() NetworkingConfigConnectionTypePtrOutput {
+	return o.ApplyT(func(v NetworkingConfig) *NetworkingConfigConnectionType { return v.ConnectionType }).(NetworkingConfigConnectionTypePtrOutput)
+}
+
+type NetworkingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkingConfig)(nil)).Elem()
+}
+
+func (o NetworkingConfigPtrOutput) ToNetworkingConfigPtrOutput() NetworkingConfigPtrOutput {
+	return o
+}
+
+func (o NetworkingConfigPtrOutput) ToNetworkingConfigPtrOutputWithContext(ctx context.Context) NetworkingConfigPtrOutput {
+	return o
+}
+
+func (o NetworkingConfigPtrOutput) Elem() NetworkingConfigOutput {
+	return o.ApplyT(func(v *NetworkingConfig) NetworkingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkingConfig
+		return ret
+	}).(NetworkingConfigOutput)
+}
+
+// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+func (o NetworkingConfigPtrOutput) ConnectionType() NetworkingConfigConnectionTypePtrOutput {
+	return o.ApplyT(func(v *NetworkingConfig) *NetworkingConfigConnectionType {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(NetworkingConfigConnectionTypePtrOutput)
+}
+
+// Configuration options for networking connections in the Composer 2 environment.
+type NetworkingConfigResponse struct {
+	// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+	ConnectionType string `pulumi:"connectionType"`
+}
+
+// Configuration options for networking connections in the Composer 2 environment.
+type NetworkingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkingConfigResponseOutput) ToNetworkingConfigResponseOutput() NetworkingConfigResponseOutput {
+	return o
+}
+
+func (o NetworkingConfigResponseOutput) ToNetworkingConfigResponseOutputWithContext(ctx context.Context) NetworkingConfigResponseOutput {
+	return o
+}
+
+// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+func (o NetworkingConfigResponseOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkingConfigResponse) string { return v.ConnectionType }).(pulumi.StringOutput)
+}
+
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfig struct {
 	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2460,6 +2626,8 @@ type PrivateEnvironmentConfig struct {
 	EnablePrivateEnvironment *bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
 	EnablePrivatelyUsedPublicIps *bool `pulumi:"enablePrivatelyUsedPublicIps"`
+	// Optional. Configuration for the network connections configuration in the environment.
+	NetworkingConfig *NetworkingConfig `pulumi:"networkingConfig"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
 	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2489,6 +2657,8 @@ type PrivateEnvironmentConfigArgs struct {
 	EnablePrivateEnvironment pulumi.BoolPtrInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
 	EnablePrivatelyUsedPublicIps pulumi.BoolPtrInput `pulumi:"enablePrivatelyUsedPublicIps"`
+	// Optional. Configuration for the network connections configuration in the environment.
+	NetworkingConfig NetworkingConfigPtrInput `pulumi:"networkingConfig"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"privateClusterConfig"`
 	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2598,6 +2768,11 @@ func (o PrivateEnvironmentConfigOutput) EnablePrivatelyUsedPublicIps() pulumi.Bo
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *bool { return v.EnablePrivatelyUsedPublicIps }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Configuration for the network connections configuration in the environment.
+func (o PrivateEnvironmentConfigOutput) NetworkingConfig() NetworkingConfigPtrOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfig) *NetworkingConfig { return v.NetworkingConfig }).(NetworkingConfigPtrOutput)
+}
+
 // Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 func (o PrivateEnvironmentConfigOutput) PrivateClusterConfig() PrivateClusterConfigPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *PrivateClusterConfig { return v.PrivateClusterConfig }).(PrivateClusterConfigPtrOutput)
@@ -2682,6 +2857,16 @@ func (o PrivateEnvironmentConfigPtrOutput) EnablePrivatelyUsedPublicIps() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Configuration for the network connections configuration in the environment.
+func (o PrivateEnvironmentConfigPtrOutput) NetworkingConfig() NetworkingConfigPtrOutput {
+	return o.ApplyT(func(v *PrivateEnvironmentConfig) *NetworkingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkingConfig
+	}).(NetworkingConfigPtrOutput)
+}
+
 // Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 func (o PrivateEnvironmentConfigPtrOutput) PrivateClusterConfig() PrivateClusterConfigPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfig) *PrivateClusterConfig {
@@ -2716,6 +2901,8 @@ type PrivateEnvironmentConfigResponse struct {
 	EnablePrivateEnvironment bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
 	EnablePrivatelyUsedPublicIps bool `pulumi:"enablePrivatelyUsedPublicIps"`
+	// Optional. Configuration for the network connections configuration in the environment.
+	NetworkingConfig NetworkingConfigResponse `pulumi:"networkingConfig"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
 	// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2767,6 +2954,11 @@ func (o PrivateEnvironmentConfigResponseOutput) EnablePrivateEnvironment() pulum
 // Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
 func (o PrivateEnvironmentConfigResponseOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) bool { return v.EnablePrivatelyUsedPublicIps }).(pulumi.BoolOutput)
+}
+
+// Optional. Configuration for the network connections configuration in the environment.
+func (o PrivateEnvironmentConfigResponseOutput) NetworkingConfig() NetworkingConfigResponseOutput {
+	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) NetworkingConfigResponse { return v.NetworkingConfig }).(NetworkingConfigResponseOutput)
 }
 
 // Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
@@ -4379,6 +4571,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigPtrInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigInput)(nil)).Elem(), NetworkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigPtrInput)(nil)).Elem(), NetworkingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
@@ -4425,6 +4619,9 @@ func init() {
 	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigOutput{})
 	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigPtrOutput{})
 	pulumi.RegisterOutputType(MasterAuthorizedNetworksConfigResponseOutput{})
+	pulumi.RegisterOutputType(NetworkingConfigOutput{})
+	pulumi.RegisterOutputType(NetworkingConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkingConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})

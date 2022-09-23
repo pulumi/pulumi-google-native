@@ -417,7 +417,7 @@ class DeliveryPipelineResponse(dict):
                  update_time: str):
         """
         A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.
-        :param Mapping[str, str] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param Mapping[str, str] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
         :param 'PipelineConditionResponse' condition: Information around the state of the Delivery Pipeline.
         :param str create_time: Time at which the pipeline was created.
         :param str description: Description of the `DeliveryPipeline`. Max length is 255 characters.
@@ -445,7 +445,7 @@ class DeliveryPipelineResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
         """
         return pulumi.get(self, "annotations")
 

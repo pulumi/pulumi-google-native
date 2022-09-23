@@ -31,7 +31,7 @@ export interface GetDeliveryPipelineArgs {
 
 export interface GetDeliveryPipelineResult {
     /**
-     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
      */
     readonly annotations: {[key: string]: string};
     /**

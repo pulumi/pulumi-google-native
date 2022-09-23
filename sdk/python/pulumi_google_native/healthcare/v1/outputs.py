@@ -16,24 +16,39 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'CharacterMaskConfigResponse',
+    'CryptoHashConfigResponse',
+    'DateShiftConfigResponse',
+    'DeidentifiedStoreDestinationResponse',
+    'DeidentifyConfigResponse',
+    'DicomConfigResponse',
     'ExprResponse',
+    'FhirConfigResponse',
+    'FieldMetadataResponse',
     'FieldResponse',
     'GoogleCloudHealthcareV1ConsentPolicyResponse',
     'GoogleCloudHealthcareV1FhirBigQueryDestinationResponse',
     'Hl7SchemaConfigResponse',
     'Hl7TypesConfigResponse',
     'Hl7V2NotificationConfigResponse',
+    'ImageConfigResponse',
     'ImageResponse',
+    'InfoTypeTransformationResponse',
+    'KmsWrappedCryptoKeyResponse',
     'NotificationConfigResponse',
     'ParsedDataResponse',
     'ParserConfigResponse',
     'PatientIdResponse',
+    'RedactConfigResponse',
+    'ReplaceWithInfoTypeConfigResponse',
     'SchemaConfigResponse',
     'SchemaPackageResponse',
     'SchematizedDataResponse',
     'SegmentResponse',
     'SignatureResponse',
     'StreamConfigResponse',
+    'TagFilterListResponse',
+    'TextConfigResponse',
     'TypeResponse',
     'ValidationConfigResponse',
     'VersionSourceResponse',
@@ -203,7 +218,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -222,7 +237,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -233,6 +248,315 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CharacterMaskConfigResponse(dict):
+    """
+    Mask a string by replacing its characters with a fixed character.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maskingCharacter":
+            suggest = "masking_character"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CharacterMaskConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CharacterMaskConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CharacterMaskConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 masking_character: str):
+        """
+        Mask a string by replacing its characters with a fixed character.
+        :param str masking_character: Character to mask the sensitive values. If not supplied, defaults to "*".
+        """
+        pulumi.set(__self__, "masking_character", masking_character)
+
+    @property
+    @pulumi.getter(name="maskingCharacter")
+    def masking_character(self) -> str:
+        """
+        Character to mask the sensitive values. If not supplied, defaults to "*".
+        """
+        return pulumi.get(self, "masking_character")
+
+
+@pulumi.output_type
+class CryptoHashConfigResponse(dict):
+    """
+    Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "kmsWrapped":
+            suggest = "kms_wrapped"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoHashConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoHashConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoHashConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crypto_key: str,
+                 kms_wrapped: 'outputs.KmsWrappedCryptoKeyResponse'):
+        """
+        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+        :param str crypto_key: An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        """
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> str:
+        """
+        An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @property
+    @pulumi.getter(name="kmsWrapped")
+    def kms_wrapped(self) -> 'outputs.KmsWrappedCryptoKeyResponse':
+        """
+        KMS wrapped key. Must not be set if `crypto_key` is set.
+        """
+        return pulumi.get(self, "kms_wrapped")
+
+
+@pulumi.output_type
+class DateShiftConfigResponse(dict):
+    """
+    Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "kmsWrapped":
+            suggest = "kms_wrapped"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DateShiftConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DateShiftConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DateShiftConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crypto_key: str,
+                 kms_wrapped: 'outputs.KmsWrappedCryptoKeyResponse'):
+        """
+        Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+        :param str crypto_key: An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        """
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        pulumi.set(__self__, "kms_wrapped", kms_wrapped)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> str:
+        """
+        An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @property
+    @pulumi.getter(name="kmsWrapped")
+    def kms_wrapped(self) -> 'outputs.KmsWrappedCryptoKeyResponse':
+        """
+        KMS wrapped key. Must not be set if `crypto_key` is set.
+        """
+        return pulumi.get(self, "kms_wrapped")
+
+
+@pulumi.output_type
+class DeidentifiedStoreDestinationResponse(dict):
+    """
+    Contains configuration for streaming de-identified FHIR export.
+    """
+    def __init__(__self__, *,
+                 config: 'outputs.DeidentifyConfigResponse',
+                 store: str):
+        """
+        Contains configuration for streaming de-identified FHIR export.
+        :param 'DeidentifyConfigResponse' config: The configuration to use when de-identifying resources that are added to this store.
+        :param str store: The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        """
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "store", store)
+
+    @property
+    @pulumi.getter
+    def config(self) -> 'outputs.DeidentifyConfigResponse':
+        """
+        The configuration to use when de-identifying resources that are added to this store.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def store(self) -> str:
+        """
+        The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        """
+        return pulumi.get(self, "store")
+
+
+@pulumi.output_type
+class DeidentifyConfigResponse(dict):
+    """
+    Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+    """
+    def __init__(__self__, *,
+                 dicom: 'outputs.DicomConfigResponse',
+                 fhir: 'outputs.FhirConfigResponse',
+                 image: 'outputs.ImageConfigResponse',
+                 text: 'outputs.TextConfigResponse'):
+        """
+        Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+        :param 'DicomConfigResponse' dicom: Configures de-id of application/DICOM content.
+        :param 'FhirConfigResponse' fhir: Configures de-id of application/FHIR content.
+        :param 'ImageConfigResponse' image: Configures de-identification of image pixels wherever they are found in the source_dataset.
+        :param 'TextConfigResponse' text: Configures de-identification of text wherever it is found in the source_dataset.
+        """
+        pulumi.set(__self__, "dicom", dicom)
+        pulumi.set(__self__, "fhir", fhir)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def dicom(self) -> 'outputs.DicomConfigResponse':
+        """
+        Configures de-id of application/DICOM content.
+        """
+        return pulumi.get(self, "dicom")
+
+    @property
+    @pulumi.getter
+    def fhir(self) -> 'outputs.FhirConfigResponse':
+        """
+        Configures de-id of application/FHIR content.
+        """
+        return pulumi.get(self, "fhir")
+
+    @property
+    @pulumi.getter
+    def image(self) -> 'outputs.ImageConfigResponse':
+        """
+        Configures de-identification of image pixels wherever they are found in the source_dataset.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def text(self) -> 'outputs.TextConfigResponse':
+        """
+        Configures de-identification of text wherever it is found in the source_dataset.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class DicomConfigResponse(dict):
+    """
+    Specifies the parameters needed for de-identification of DICOM stores.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterProfile":
+            suggest = "filter_profile"
+        elif key == "keepList":
+            suggest = "keep_list"
+        elif key == "removeList":
+            suggest = "remove_list"
+        elif key == "skipIdRedaction":
+            suggest = "skip_id_redaction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DicomConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DicomConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DicomConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_profile: str,
+                 keep_list: 'outputs.TagFilterListResponse',
+                 remove_list: 'outputs.TagFilterListResponse',
+                 skip_id_redaction: bool):
+        """
+        Specifies the parameters needed for de-identification of DICOM stores.
+        :param str filter_profile: Tag filtering profile that determines which tags to keep/remove.
+        :param 'TagFilterListResponse' keep_list: List of tags to keep. Remove all other tags.
+        :param 'TagFilterListResponse' remove_list: List of tags to remove. Keep all other tags.
+        :param bool skip_id_redaction: If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+        """
+        pulumi.set(__self__, "filter_profile", filter_profile)
+        pulumi.set(__self__, "keep_list", keep_list)
+        pulumi.set(__self__, "remove_list", remove_list)
+        pulumi.set(__self__, "skip_id_redaction", skip_id_redaction)
+
+    @property
+    @pulumi.getter(name="filterProfile")
+    def filter_profile(self) -> str:
+        """
+        Tag filtering profile that determines which tags to keep/remove.
+        """
+        return pulumi.get(self, "filter_profile")
+
+    @property
+    @pulumi.getter(name="keepList")
+    def keep_list(self) -> 'outputs.TagFilterListResponse':
+        """
+        List of tags to keep. Remove all other tags.
+        """
+        return pulumi.get(self, "keep_list")
+
+    @property
+    @pulumi.getter(name="removeList")
+    def remove_list(self) -> 'outputs.TagFilterListResponse':
+        """
+        List of tags to remove. Keep all other tags.
+        """
+        return pulumi.get(self, "remove_list")
+
+    @property
+    @pulumi.getter(name="skipIdRedaction")
+    def skip_id_redaction(self) -> bool:
+        """
+        If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+        """
+        return pulumi.get(self, "skip_id_redaction")
 
 
 @pulumi.output_type
@@ -288,6 +612,91 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FhirConfigResponse(dict):
+    """
+    Specifies how to handle de-identification of a FHIR store.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultKeepExtensions":
+            suggest = "default_keep_extensions"
+        elif key == "fieldMetadataList":
+            suggest = "field_metadata_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_keep_extensions: bool,
+                 field_metadata_list: Sequence['outputs.FieldMetadataResponse']):
+        """
+        Specifies how to handle de-identification of a FHIR store.
+        :param bool default_keep_extensions: The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+        :param Sequence['FieldMetadataResponse'] field_metadata_list: Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+        """
+        pulumi.set(__self__, "default_keep_extensions", default_keep_extensions)
+        pulumi.set(__self__, "field_metadata_list", field_metadata_list)
+
+    @property
+    @pulumi.getter(name="defaultKeepExtensions")
+    def default_keep_extensions(self) -> bool:
+        """
+        The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+        """
+        return pulumi.get(self, "default_keep_extensions")
+
+    @property
+    @pulumi.getter(name="fieldMetadataList")
+    def field_metadata_list(self) -> Sequence['outputs.FieldMetadataResponse']:
+        """
+        Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+        """
+        return pulumi.get(self, "field_metadata_list")
+
+
+@pulumi.output_type
+class FieldMetadataResponse(dict):
+    """
+    Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+    """
+    def __init__(__self__, *,
+                 action: str,
+                 paths: Sequence[str]):
+        """
+        Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+        :param str action: Deidentify action for one field.
+        :param Sequence[str] paths: List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "paths", paths)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Deidentify action for one field.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        """
+        List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+        """
+        return pulumi.get(self, "paths")
 
 
 @pulumi.output_type
@@ -637,6 +1046,45 @@ class Hl7V2NotificationConfigResponse(dict):
 
 
 @pulumi.output_type
+class ImageConfigResponse(dict):
+    """
+    Specifies how to handle de-identification of image pixels.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "textRedactionMode":
+            suggest = "text_redaction_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 text_redaction_mode: str):
+        """
+        Specifies how to handle de-identification of image pixels.
+        :param str text_redaction_mode: Determines how to redact text from image.
+        """
+        pulumi.set(__self__, "text_redaction_mode", text_redaction_mode)
+
+    @property
+    @pulumi.getter(name="textRedactionMode")
+    def text_redaction_mode(self) -> str:
+        """
+        Determines how to redact text from image.
+        """
+        return pulumi.get(self, "text_redaction_mode")
+
+
+@pulumi.output_type
 class ImageResponse(dict):
     """
     Raw bytes representing consent artifact content.
@@ -686,6 +1134,162 @@ class ImageResponse(dict):
         Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
         """
         return pulumi.get(self, "raw_bytes")
+
+
+@pulumi.output_type
+class InfoTypeTransformationResponse(dict):
+    """
+    A transformation to apply to text that is identified as a specific info_type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterMaskConfig":
+            suggest = "character_mask_config"
+        elif key == "cryptoHashConfig":
+            suggest = "crypto_hash_config"
+        elif key == "dateShiftConfig":
+            suggest = "date_shift_config"
+        elif key == "infoTypes":
+            suggest = "info_types"
+        elif key == "redactConfig":
+            suggest = "redact_config"
+        elif key == "replaceWithInfoTypeConfig":
+            suggest = "replace_with_info_type_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InfoTypeTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InfoTypeTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InfoTypeTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 character_mask_config: 'outputs.CharacterMaskConfigResponse',
+                 crypto_hash_config: 'outputs.CryptoHashConfigResponse',
+                 date_shift_config: 'outputs.DateShiftConfigResponse',
+                 info_types: Sequence[str],
+                 redact_config: 'outputs.RedactConfigResponse',
+                 replace_with_info_type_config: 'outputs.ReplaceWithInfoTypeConfigResponse'):
+        """
+        A transformation to apply to text that is identified as a specific info_type.
+        :param 'CharacterMaskConfigResponse' character_mask_config: Config for character mask.
+        :param 'CryptoHashConfigResponse' crypto_hash_config: Config for crypto hash.
+        :param 'DateShiftConfigResponse' date_shift_config: Config for date shift.
+        :param Sequence[str] info_types: InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+        :param 'RedactConfigResponse' redact_config: Config for text redaction.
+        :param 'ReplaceWithInfoTypeConfigResponse' replace_with_info_type_config: Config for replace with InfoType.
+        """
+        pulumi.set(__self__, "character_mask_config", character_mask_config)
+        pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+        pulumi.set(__self__, "date_shift_config", date_shift_config)
+        pulumi.set(__self__, "info_types", info_types)
+        pulumi.set(__self__, "redact_config", redact_config)
+        pulumi.set(__self__, "replace_with_info_type_config", replace_with_info_type_config)
+
+    @property
+    @pulumi.getter(name="characterMaskConfig")
+    def character_mask_config(self) -> 'outputs.CharacterMaskConfigResponse':
+        """
+        Config for character mask.
+        """
+        return pulumi.get(self, "character_mask_config")
+
+    @property
+    @pulumi.getter(name="cryptoHashConfig")
+    def crypto_hash_config(self) -> 'outputs.CryptoHashConfigResponse':
+        """
+        Config for crypto hash.
+        """
+        return pulumi.get(self, "crypto_hash_config")
+
+    @property
+    @pulumi.getter(name="dateShiftConfig")
+    def date_shift_config(self) -> 'outputs.DateShiftConfigResponse':
+        """
+        Config for date shift.
+        """
+        return pulumi.get(self, "date_shift_config")
+
+    @property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> Sequence[str]:
+        """
+        InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+        """
+        return pulumi.get(self, "info_types")
+
+    @property
+    @pulumi.getter(name="redactConfig")
+    def redact_config(self) -> 'outputs.RedactConfigResponse':
+        """
+        Config for text redaction.
+        """
+        return pulumi.get(self, "redact_config")
+
+    @property
+    @pulumi.getter(name="replaceWithInfoTypeConfig")
+    def replace_with_info_type_config(self) -> 'outputs.ReplaceWithInfoTypeConfigResponse':
+        """
+        Config for replace with InfoType.
+        """
+        return pulumi.get(self, "replace_with_info_type_config")
+
+
+@pulumi.output_type
+class KmsWrappedCryptoKeyResponse(dict):
+    """
+    Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "wrappedKey":
+            suggest = "wrapped_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KmsWrappedCryptoKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KmsWrappedCryptoKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KmsWrappedCryptoKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crypto_key: str,
+                 wrapped_key: str):
+        """
+        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+        :param str crypto_key: The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+        :param str wrapped_key: The wrapped data crypto key.
+        """
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        pulumi.set(__self__, "wrapped_key", wrapped_key)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> str:
+        """
+        The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @property
+    @pulumi.getter(name="wrappedKey")
+    def wrapped_key(self) -> str:
+        """
+        The wrapped data crypto key.
+        """
+        return pulumi.get(self, "wrapped_key")
 
 
 @pulumi.output_type
@@ -850,6 +1454,30 @@ class PatientIdResponse(dict):
         The patient's unique identifier.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RedactConfigResponse(dict):
+    """
+    Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+    """
+    def __init__(__self__):
+        """
+        Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+        """
+        pass
+
+
+@pulumi.output_type
+class ReplaceWithInfoTypeConfigResponse(dict):
+    """
+    When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+    """
+    def __init__(__self__):
+        """
+        When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1171,6 +1799,8 @@ class StreamConfigResponse(dict):
         suggest = None
         if key == "bigqueryDestination":
             suggest = "bigquery_destination"
+        elif key == "deidentifiedStoreDestination":
+            suggest = "deidentified_store_destination"
         elif key == "resourceTypes":
             suggest = "resource_types"
 
@@ -1187,13 +1817,16 @@ class StreamConfigResponse(dict):
 
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.GoogleCloudHealthcareV1FhirBigQueryDestinationResponse',
+                 deidentified_store_destination: 'outputs.DeidentifiedStoreDestinationResponse',
                  resource_types: Sequence[str]):
         """
         Contains configuration for streaming FHIR export.
         :param 'GoogleCloudHealthcareV1FhirBigQueryDestinationResponse' bigquery_destination: The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        :param 'DeidentifiedStoreDestinationResponse' deidentified_store_destination: The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
         :param Sequence[str] resource_types: Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+        pulumi.set(__self__, "deidentified_store_destination", deidentified_store_destination)
         pulumi.set(__self__, "resource_types", resource_types)
 
     @property
@@ -1205,12 +1838,60 @@ class StreamConfigResponse(dict):
         return pulumi.get(self, "bigquery_destination")
 
     @property
+    @pulumi.getter(name="deidentifiedStoreDestination")
+    def deidentified_store_destination(self) -> 'outputs.DeidentifiedStoreDestinationResponse':
+        """
+        The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        """
+        return pulumi.get(self, "deidentified_store_destination")
+
+    @property
     @pulumi.getter(name="resourceTypes")
     def resource_types(self) -> Sequence[str]:
         """
         Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         return pulumi.get(self, "resource_types")
+
+
+@pulumi.output_type
+class TagFilterListResponse(dict):
+    """
+    List of tags to be filtered.
+    """
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        """
+        List of tags to be filtered.
+        :param Sequence[str] tags: Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class TextConfigResponse(dict):
+    def __init__(__self__, *,
+                 transformations: Sequence['outputs.InfoTypeTransformationResponse']):
+        """
+        :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data.
+        """
+        pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter
+    def transformations(self) -> Sequence['outputs.InfoTypeTransformationResponse']:
+        """
+        The transformations to apply to the detected data.
+        """
+        return pulumi.get(self, "transformations")
 
 
 @pulumi.output_type

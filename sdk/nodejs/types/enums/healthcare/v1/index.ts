@@ -78,6 +78,34 @@ export const ConsentState = {
  */
 export type ConsentState = (typeof ConsentState)[keyof typeof ConsentState];
 
+export const DicomConfigFilterProfile = {
+    /**
+     * No tag filtration profile provided. Same as KEEP_ALL_PROFILE.
+     */
+    TagFilterProfileUnspecified: "TAG_FILTER_PROFILE_UNSPECIFIED",
+    /**
+     * Keep only tags required to produce valid DICOM.
+     */
+    MinimalKeepListProfile: "MINIMAL_KEEP_LIST_PROFILE",
+    /**
+     * Remove tags based on DICOM Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e) http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
+     */
+    AttributeConfidentialityBasicProfile: "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE",
+    /**
+     * Keep all tags.
+     */
+    KeepAllProfile: "KEEP_ALL_PROFILE",
+    /**
+     * Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+     */
+    DeidentifyTagContents: "DEIDENTIFY_TAG_CONTENTS",
+} as const;
+
+/**
+ * Tag filtering profile that determines which tags to keep/remove.
+ */
+export type DicomConfigFilterProfile = (typeof DicomConfigFilterProfile)[keyof typeof DicomConfigFilterProfile];
+
 export const FhirStoreComplexDataTypeReferenceParsing = {
     /**
      * No parsing behavior specified. This is the same as DISABLED for backwards compatibility.
@@ -122,6 +150,30 @@ export const FhirStoreVersion = {
  */
 export type FhirStoreVersion = (typeof FhirStoreVersion)[keyof typeof FhirStoreVersion];
 
+export const FieldMetadataAction = {
+    /**
+     * No action specified.
+     */
+    ActionUnspecified: "ACTION_UNSPECIFIED",
+    /**
+     * Transform the entire field.
+     */
+    Transform: "TRANSFORM",
+    /**
+     * Inspect and transform any found PHI.
+     */
+    InspectAndTransform: "INSPECT_AND_TRANSFORM",
+    /**
+     * Do not transform.
+     */
+    DoNotTransform: "DO_NOT_TRANSFORM",
+} as const;
+
+/**
+ * Deidentify action for one field.
+ */
+export type FieldMetadataAction = (typeof FieldMetadataAction)[keyof typeof FieldMetadataAction];
+
 export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = {
     /**
      * Default behavior is the same as WRITE_EMPTY.
@@ -145,6 +197,30 @@ export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = {
  * Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
  */
 export type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = (typeof GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)[keyof typeof GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition];
+
+export const ImageConfigTextRedactionMode = {
+    /**
+     * No text redaction specified. Same as REDACT_NO_TEXT.
+     */
+    TextRedactionModeUnspecified: "TEXT_REDACTION_MODE_UNSPECIFIED",
+    /**
+     * Redact all text.
+     */
+    RedactAllText: "REDACT_ALL_TEXT",
+    /**
+     * Redact sensitive text. Uses the set of [Default DICOM InfoTypes](https://cloud.google.com/healthcare-api/docs/how-tos/dicom-deidentify#default_dicom_infotypes).
+     */
+    RedactSensitiveText: "REDACT_SENSITIVE_TEXT",
+    /**
+     * Do not redact text.
+     */
+    RedactNoText: "REDACT_NO_TEXT",
+} as const;
+
+/**
+ * Determines how to redact text from image.
+ */
+export type ImageConfigTextRedactionMode = (typeof ImageConfigTextRedactionMode)[keyof typeof ImageConfigTextRedactionMode];
 
 export const ParserConfigVersion = {
     /**

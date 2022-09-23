@@ -500,7 +500,7 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -521,7 +521,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -584,7 +584,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -618,7 +618,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -644,7 +644,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -672,6 +672,1236 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Mask a string by replacing its characters with a fixed character.
+type CharacterMaskConfig struct {
+	// Character to mask the sensitive values. If not supplied, defaults to "*".
+	MaskingCharacter *string `pulumi:"maskingCharacter"`
+}
+
+// CharacterMaskConfigInput is an input type that accepts CharacterMaskConfigArgs and CharacterMaskConfigOutput values.
+// You can construct a concrete instance of `CharacterMaskConfigInput` via:
+//
+//	CharacterMaskConfigArgs{...}
+type CharacterMaskConfigInput interface {
+	pulumi.Input
+
+	ToCharacterMaskConfigOutput() CharacterMaskConfigOutput
+	ToCharacterMaskConfigOutputWithContext(context.Context) CharacterMaskConfigOutput
+}
+
+// Mask a string by replacing its characters with a fixed character.
+type CharacterMaskConfigArgs struct {
+	// Character to mask the sensitive values. If not supplied, defaults to "*".
+	MaskingCharacter pulumi.StringPtrInput `pulumi:"maskingCharacter"`
+}
+
+func (CharacterMaskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskConfig)(nil)).Elem()
+}
+
+func (i CharacterMaskConfigArgs) ToCharacterMaskConfigOutput() CharacterMaskConfigOutput {
+	return i.ToCharacterMaskConfigOutputWithContext(context.Background())
+}
+
+func (i CharacterMaskConfigArgs) ToCharacterMaskConfigOutputWithContext(ctx context.Context) CharacterMaskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskConfigOutput)
+}
+
+func (i CharacterMaskConfigArgs) ToCharacterMaskConfigPtrOutput() CharacterMaskConfigPtrOutput {
+	return i.ToCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CharacterMaskConfigArgs) ToCharacterMaskConfigPtrOutputWithContext(ctx context.Context) CharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskConfigOutput).ToCharacterMaskConfigPtrOutputWithContext(ctx)
+}
+
+// CharacterMaskConfigPtrInput is an input type that accepts CharacterMaskConfigArgs, CharacterMaskConfigPtr and CharacterMaskConfigPtrOutput values.
+// You can construct a concrete instance of `CharacterMaskConfigPtrInput` via:
+//
+//	        CharacterMaskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CharacterMaskConfigPtrInput interface {
+	pulumi.Input
+
+	ToCharacterMaskConfigPtrOutput() CharacterMaskConfigPtrOutput
+	ToCharacterMaskConfigPtrOutputWithContext(context.Context) CharacterMaskConfigPtrOutput
+}
+
+type characterMaskConfigPtrType CharacterMaskConfigArgs
+
+func CharacterMaskConfigPtr(v *CharacterMaskConfigArgs) CharacterMaskConfigPtrInput {
+	return (*characterMaskConfigPtrType)(v)
+}
+
+func (*characterMaskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CharacterMaskConfig)(nil)).Elem()
+}
+
+func (i *characterMaskConfigPtrType) ToCharacterMaskConfigPtrOutput() CharacterMaskConfigPtrOutput {
+	return i.ToCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *characterMaskConfigPtrType) ToCharacterMaskConfigPtrOutputWithContext(ctx context.Context) CharacterMaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskConfigPtrOutput)
+}
+
+// Mask a string by replacing its characters with a fixed character.
+type CharacterMaskConfigOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskConfig)(nil)).Elem()
+}
+
+func (o CharacterMaskConfigOutput) ToCharacterMaskConfigOutput() CharacterMaskConfigOutput {
+	return o
+}
+
+func (o CharacterMaskConfigOutput) ToCharacterMaskConfigOutputWithContext(ctx context.Context) CharacterMaskConfigOutput {
+	return o
+}
+
+func (o CharacterMaskConfigOutput) ToCharacterMaskConfigPtrOutput() CharacterMaskConfigPtrOutput {
+	return o.ToCharacterMaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CharacterMaskConfigOutput) ToCharacterMaskConfigPtrOutputWithContext(ctx context.Context) CharacterMaskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CharacterMaskConfig) *CharacterMaskConfig {
+		return &v
+	}).(CharacterMaskConfigPtrOutput)
+}
+
+// Character to mask the sensitive values. If not supplied, defaults to "*".
+func (o CharacterMaskConfigOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CharacterMaskConfig) *string { return v.MaskingCharacter }).(pulumi.StringPtrOutput)
+}
+
+type CharacterMaskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CharacterMaskConfig)(nil)).Elem()
+}
+
+func (o CharacterMaskConfigPtrOutput) ToCharacterMaskConfigPtrOutput() CharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o CharacterMaskConfigPtrOutput) ToCharacterMaskConfigPtrOutputWithContext(ctx context.Context) CharacterMaskConfigPtrOutput {
+	return o
+}
+
+func (o CharacterMaskConfigPtrOutput) Elem() CharacterMaskConfigOutput {
+	return o.ApplyT(func(v *CharacterMaskConfig) CharacterMaskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CharacterMaskConfig
+		return ret
+	}).(CharacterMaskConfigOutput)
+}
+
+// Character to mask the sensitive values. If not supplied, defaults to "*".
+func (o CharacterMaskConfigPtrOutput) MaskingCharacter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CharacterMaskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaskingCharacter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mask a string by replacing its characters with a fixed character.
+type CharacterMaskConfigResponse struct {
+	// Character to mask the sensitive values. If not supplied, defaults to "*".
+	MaskingCharacter string `pulumi:"maskingCharacter"`
+}
+
+// Mask a string by replacing its characters with a fixed character.
+type CharacterMaskConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskConfigResponse)(nil)).Elem()
+}
+
+func (o CharacterMaskConfigResponseOutput) ToCharacterMaskConfigResponseOutput() CharacterMaskConfigResponseOutput {
+	return o
+}
+
+func (o CharacterMaskConfigResponseOutput) ToCharacterMaskConfigResponseOutputWithContext(ctx context.Context) CharacterMaskConfigResponseOutput {
+	return o
+}
+
+// Character to mask the sensitive values. If not supplied, defaults to "*".
+func (o CharacterMaskConfigResponseOutput) MaskingCharacter() pulumi.StringOutput {
+	return o.ApplyT(func(v CharacterMaskConfigResponse) string { return v.MaskingCharacter }).(pulumi.StringOutput)
+}
+
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+type CryptoHashConfig struct {
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey *string `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
+}
+
+// CryptoHashConfigInput is an input type that accepts CryptoHashConfigArgs and CryptoHashConfigOutput values.
+// You can construct a concrete instance of `CryptoHashConfigInput` via:
+//
+//	CryptoHashConfigArgs{...}
+type CryptoHashConfigInput interface {
+	pulumi.Input
+
+	ToCryptoHashConfigOutput() CryptoHashConfigOutput
+	ToCryptoHashConfigOutputWithContext(context.Context) CryptoHashConfigOutput
+}
+
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+type CryptoHashConfigArgs struct {
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
+}
+
+func (CryptoHashConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashConfig)(nil)).Elem()
+}
+
+func (i CryptoHashConfigArgs) ToCryptoHashConfigOutput() CryptoHashConfigOutput {
+	return i.ToCryptoHashConfigOutputWithContext(context.Background())
+}
+
+func (i CryptoHashConfigArgs) ToCryptoHashConfigOutputWithContext(ctx context.Context) CryptoHashConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashConfigOutput)
+}
+
+func (i CryptoHashConfigArgs) ToCryptoHashConfigPtrOutput() CryptoHashConfigPtrOutput {
+	return i.ToCryptoHashConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoHashConfigArgs) ToCryptoHashConfigPtrOutputWithContext(ctx context.Context) CryptoHashConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashConfigOutput).ToCryptoHashConfigPtrOutputWithContext(ctx)
+}
+
+// CryptoHashConfigPtrInput is an input type that accepts CryptoHashConfigArgs, CryptoHashConfigPtr and CryptoHashConfigPtrOutput values.
+// You can construct a concrete instance of `CryptoHashConfigPtrInput` via:
+//
+//	        CryptoHashConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoHashConfigPtrInput interface {
+	pulumi.Input
+
+	ToCryptoHashConfigPtrOutput() CryptoHashConfigPtrOutput
+	ToCryptoHashConfigPtrOutputWithContext(context.Context) CryptoHashConfigPtrOutput
+}
+
+type cryptoHashConfigPtrType CryptoHashConfigArgs
+
+func CryptoHashConfigPtr(v *CryptoHashConfigArgs) CryptoHashConfigPtrInput {
+	return (*cryptoHashConfigPtrType)(v)
+}
+
+func (*cryptoHashConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoHashConfig)(nil)).Elem()
+}
+
+func (i *cryptoHashConfigPtrType) ToCryptoHashConfigPtrOutput() CryptoHashConfigPtrOutput {
+	return i.ToCryptoHashConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoHashConfigPtrType) ToCryptoHashConfigPtrOutputWithContext(ctx context.Context) CryptoHashConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashConfigPtrOutput)
+}
+
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+type CryptoHashConfigOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashConfig)(nil)).Elem()
+}
+
+func (o CryptoHashConfigOutput) ToCryptoHashConfigOutput() CryptoHashConfigOutput {
+	return o
+}
+
+func (o CryptoHashConfigOutput) ToCryptoHashConfigOutputWithContext(ctx context.Context) CryptoHashConfigOutput {
+	return o
+}
+
+func (o CryptoHashConfigOutput) ToCryptoHashConfigPtrOutput() CryptoHashConfigPtrOutput {
+	return o.ToCryptoHashConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoHashConfigOutput) ToCryptoHashConfigPtrOutputWithContext(ctx context.Context) CryptoHashConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoHashConfig) *CryptoHashConfig {
+		return &v
+	}).(CryptoHashConfigPtrOutput)
+}
+
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o CryptoHashConfigOutput) CryptoKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoHashConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o CryptoHashConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
+	return o.ApplyT(func(v CryptoHashConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+type CryptoHashConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoHashConfig)(nil)).Elem()
+}
+
+func (o CryptoHashConfigPtrOutput) ToCryptoHashConfigPtrOutput() CryptoHashConfigPtrOutput {
+	return o
+}
+
+func (o CryptoHashConfigPtrOutput) ToCryptoHashConfigPtrOutputWithContext(ctx context.Context) CryptoHashConfigPtrOutput {
+	return o
+}
+
+func (o CryptoHashConfigPtrOutput) Elem() CryptoHashConfigOutput {
+	return o.ApplyT(func(v *CryptoHashConfig) CryptoHashConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoHashConfig
+		return ret
+	}).(CryptoHashConfigOutput)
+}
+
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o CryptoHashConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoHashConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CryptoKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o CryptoHashConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
+	return o.ApplyT(func(v *CryptoHashConfig) *KmsWrappedCryptoKey {
+		if v == nil {
+			return nil
+		}
+		return v.KmsWrapped
+	}).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+type CryptoHashConfigResponse struct {
+	// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey string `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
+}
+
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+type CryptoHashConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashConfigResponse)(nil)).Elem()
+}
+
+func (o CryptoHashConfigResponseOutput) ToCryptoHashConfigResponseOutput() CryptoHashConfigResponseOutput {
+	return o
+}
+
+func (o CryptoHashConfigResponseOutput) ToCryptoHashConfigResponseOutputWithContext(ctx context.Context) CryptoHashConfigResponseOutput {
+	return o
+}
+
+// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o CryptoHashConfigResponseOutput) CryptoKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoHashConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o CryptoHashConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
+	return o.ApplyT(func(v CryptoHashConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
+}
+
+// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+type DateShiftConfig struct {
+	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey *string `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
+}
+
+// DateShiftConfigInput is an input type that accepts DateShiftConfigArgs and DateShiftConfigOutput values.
+// You can construct a concrete instance of `DateShiftConfigInput` via:
+//
+//	DateShiftConfigArgs{...}
+type DateShiftConfigInput interface {
+	pulumi.Input
+
+	ToDateShiftConfigOutput() DateShiftConfigOutput
+	ToDateShiftConfigOutputWithContext(context.Context) DateShiftConfigOutput
+}
+
+// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+type DateShiftConfigArgs struct {
+	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
+}
+
+func (DateShiftConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftConfig)(nil)).Elem()
+}
+
+func (i DateShiftConfigArgs) ToDateShiftConfigOutput() DateShiftConfigOutput {
+	return i.ToDateShiftConfigOutputWithContext(context.Background())
+}
+
+func (i DateShiftConfigArgs) ToDateShiftConfigOutputWithContext(ctx context.Context) DateShiftConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftConfigOutput)
+}
+
+func (i DateShiftConfigArgs) ToDateShiftConfigPtrOutput() DateShiftConfigPtrOutput {
+	return i.ToDateShiftConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DateShiftConfigArgs) ToDateShiftConfigPtrOutputWithContext(ctx context.Context) DateShiftConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftConfigOutput).ToDateShiftConfigPtrOutputWithContext(ctx)
+}
+
+// DateShiftConfigPtrInput is an input type that accepts DateShiftConfigArgs, DateShiftConfigPtr and DateShiftConfigPtrOutput values.
+// You can construct a concrete instance of `DateShiftConfigPtrInput` via:
+//
+//	        DateShiftConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DateShiftConfigPtrInput interface {
+	pulumi.Input
+
+	ToDateShiftConfigPtrOutput() DateShiftConfigPtrOutput
+	ToDateShiftConfigPtrOutputWithContext(context.Context) DateShiftConfigPtrOutput
+}
+
+type dateShiftConfigPtrType DateShiftConfigArgs
+
+func DateShiftConfigPtr(v *DateShiftConfigArgs) DateShiftConfigPtrInput {
+	return (*dateShiftConfigPtrType)(v)
+}
+
+func (*dateShiftConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateShiftConfig)(nil)).Elem()
+}
+
+func (i *dateShiftConfigPtrType) ToDateShiftConfigPtrOutput() DateShiftConfigPtrOutput {
+	return i.ToDateShiftConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dateShiftConfigPtrType) ToDateShiftConfigPtrOutputWithContext(ctx context.Context) DateShiftConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftConfigPtrOutput)
+}
+
+// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+type DateShiftConfigOutput struct{ *pulumi.OutputState }
+
+func (DateShiftConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftConfig)(nil)).Elem()
+}
+
+func (o DateShiftConfigOutput) ToDateShiftConfigOutput() DateShiftConfigOutput {
+	return o
+}
+
+func (o DateShiftConfigOutput) ToDateShiftConfigOutputWithContext(ctx context.Context) DateShiftConfigOutput {
+	return o
+}
+
+func (o DateShiftConfigOutput) ToDateShiftConfigPtrOutput() DateShiftConfigPtrOutput {
+	return o.ToDateShiftConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DateShiftConfigOutput) ToDateShiftConfigPtrOutputWithContext(ctx context.Context) DateShiftConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DateShiftConfig) *DateShiftConfig {
+		return &v
+	}).(DateShiftConfigPtrOutput)
+}
+
+// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o DateShiftConfigOutput) CryptoKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DateShiftConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o DateShiftConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
+	return o.ApplyT(func(v DateShiftConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+type DateShiftConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DateShiftConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateShiftConfig)(nil)).Elem()
+}
+
+func (o DateShiftConfigPtrOutput) ToDateShiftConfigPtrOutput() DateShiftConfigPtrOutput {
+	return o
+}
+
+func (o DateShiftConfigPtrOutput) ToDateShiftConfigPtrOutputWithContext(ctx context.Context) DateShiftConfigPtrOutput {
+	return o
+}
+
+func (o DateShiftConfigPtrOutput) Elem() DateShiftConfigOutput {
+	return o.ApplyT(func(v *DateShiftConfig) DateShiftConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DateShiftConfig
+		return ret
+	}).(DateShiftConfigOutput)
+}
+
+// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DateShiftConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CryptoKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
+	return o.ApplyT(func(v *DateShiftConfig) *KmsWrappedCryptoKey {
+		if v == nil {
+			return nil
+		}
+		return v.KmsWrapped
+	}).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+type DateShiftConfigResponse struct {
+	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	CryptoKey string `pulumi:"cryptoKey"`
+	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
+}
+
+// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
+type DateShiftConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DateShiftConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftConfigResponse)(nil)).Elem()
+}
+
+func (o DateShiftConfigResponseOutput) ToDateShiftConfigResponseOutput() DateShiftConfigResponseOutput {
+	return o
+}
+
+func (o DateShiftConfigResponseOutput) ToDateShiftConfigResponseOutputWithContext(ctx context.Context) DateShiftConfigResponseOutput {
+	return o
+}
+
+// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+func (o DateShiftConfigResponseOutput) CryptoKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DateShiftConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// KMS wrapped key. Must not be set if `crypto_key` is set.
+func (o DateShiftConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
+	return o.ApplyT(func(v DateShiftConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
+}
+
+// Contains configuration for streaming de-identified FHIR export.
+type DeidentifiedStoreDestination struct {
+	// The configuration to use when de-identifying resources that are added to this store.
+	Config *DeidentifyConfig `pulumi:"config"`
+	// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	Store *string `pulumi:"store"`
+}
+
+// DeidentifiedStoreDestinationInput is an input type that accepts DeidentifiedStoreDestinationArgs and DeidentifiedStoreDestinationOutput values.
+// You can construct a concrete instance of `DeidentifiedStoreDestinationInput` via:
+//
+//	DeidentifiedStoreDestinationArgs{...}
+type DeidentifiedStoreDestinationInput interface {
+	pulumi.Input
+
+	ToDeidentifiedStoreDestinationOutput() DeidentifiedStoreDestinationOutput
+	ToDeidentifiedStoreDestinationOutputWithContext(context.Context) DeidentifiedStoreDestinationOutput
+}
+
+// Contains configuration for streaming de-identified FHIR export.
+type DeidentifiedStoreDestinationArgs struct {
+	// The configuration to use when de-identifying resources that are added to this store.
+	Config DeidentifyConfigPtrInput `pulumi:"config"`
+	// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	Store pulumi.StringPtrInput `pulumi:"store"`
+}
+
+func (DeidentifiedStoreDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifiedStoreDestination)(nil)).Elem()
+}
+
+func (i DeidentifiedStoreDestinationArgs) ToDeidentifiedStoreDestinationOutput() DeidentifiedStoreDestinationOutput {
+	return i.ToDeidentifiedStoreDestinationOutputWithContext(context.Background())
+}
+
+func (i DeidentifiedStoreDestinationArgs) ToDeidentifiedStoreDestinationOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifiedStoreDestinationOutput)
+}
+
+func (i DeidentifiedStoreDestinationArgs) ToDeidentifiedStoreDestinationPtrOutput() DeidentifiedStoreDestinationPtrOutput {
+	return i.ToDeidentifiedStoreDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i DeidentifiedStoreDestinationArgs) ToDeidentifiedStoreDestinationPtrOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifiedStoreDestinationOutput).ToDeidentifiedStoreDestinationPtrOutputWithContext(ctx)
+}
+
+// DeidentifiedStoreDestinationPtrInput is an input type that accepts DeidentifiedStoreDestinationArgs, DeidentifiedStoreDestinationPtr and DeidentifiedStoreDestinationPtrOutput values.
+// You can construct a concrete instance of `DeidentifiedStoreDestinationPtrInput` via:
+//
+//	        DeidentifiedStoreDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeidentifiedStoreDestinationPtrInput interface {
+	pulumi.Input
+
+	ToDeidentifiedStoreDestinationPtrOutput() DeidentifiedStoreDestinationPtrOutput
+	ToDeidentifiedStoreDestinationPtrOutputWithContext(context.Context) DeidentifiedStoreDestinationPtrOutput
+}
+
+type deidentifiedStoreDestinationPtrType DeidentifiedStoreDestinationArgs
+
+func DeidentifiedStoreDestinationPtr(v *DeidentifiedStoreDestinationArgs) DeidentifiedStoreDestinationPtrInput {
+	return (*deidentifiedStoreDestinationPtrType)(v)
+}
+
+func (*deidentifiedStoreDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeidentifiedStoreDestination)(nil)).Elem()
+}
+
+func (i *deidentifiedStoreDestinationPtrType) ToDeidentifiedStoreDestinationPtrOutput() DeidentifiedStoreDestinationPtrOutput {
+	return i.ToDeidentifiedStoreDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *deidentifiedStoreDestinationPtrType) ToDeidentifiedStoreDestinationPtrOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifiedStoreDestinationPtrOutput)
+}
+
+// Contains configuration for streaming de-identified FHIR export.
+type DeidentifiedStoreDestinationOutput struct{ *pulumi.OutputState }
+
+func (DeidentifiedStoreDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifiedStoreDestination)(nil)).Elem()
+}
+
+func (o DeidentifiedStoreDestinationOutput) ToDeidentifiedStoreDestinationOutput() DeidentifiedStoreDestinationOutput {
+	return o
+}
+
+func (o DeidentifiedStoreDestinationOutput) ToDeidentifiedStoreDestinationOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationOutput {
+	return o
+}
+
+func (o DeidentifiedStoreDestinationOutput) ToDeidentifiedStoreDestinationPtrOutput() DeidentifiedStoreDestinationPtrOutput {
+	return o.ToDeidentifiedStoreDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o DeidentifiedStoreDestinationOutput) ToDeidentifiedStoreDestinationPtrOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeidentifiedStoreDestination) *DeidentifiedStoreDestination {
+		return &v
+	}).(DeidentifiedStoreDestinationPtrOutput)
+}
+
+// The configuration to use when de-identifying resources that are added to this store.
+func (o DeidentifiedStoreDestinationOutput) Config() DeidentifyConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifiedStoreDestination) *DeidentifyConfig { return v.Config }).(DeidentifyConfigPtrOutput)
+}
+
+// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+func (o DeidentifiedStoreDestinationOutput) Store() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeidentifiedStoreDestination) *string { return v.Store }).(pulumi.StringPtrOutput)
+}
+
+type DeidentifiedStoreDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (DeidentifiedStoreDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeidentifiedStoreDestination)(nil)).Elem()
+}
+
+func (o DeidentifiedStoreDestinationPtrOutput) ToDeidentifiedStoreDestinationPtrOutput() DeidentifiedStoreDestinationPtrOutput {
+	return o
+}
+
+func (o DeidentifiedStoreDestinationPtrOutput) ToDeidentifiedStoreDestinationPtrOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationPtrOutput {
+	return o
+}
+
+func (o DeidentifiedStoreDestinationPtrOutput) Elem() DeidentifiedStoreDestinationOutput {
+	return o.ApplyT(func(v *DeidentifiedStoreDestination) DeidentifiedStoreDestination {
+		if v != nil {
+			return *v
+		}
+		var ret DeidentifiedStoreDestination
+		return ret
+	}).(DeidentifiedStoreDestinationOutput)
+}
+
+// The configuration to use when de-identifying resources that are added to this store.
+func (o DeidentifiedStoreDestinationPtrOutput) Config() DeidentifyConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifiedStoreDestination) *DeidentifyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(DeidentifyConfigPtrOutput)
+}
+
+// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+func (o DeidentifiedStoreDestinationPtrOutput) Store() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeidentifiedStoreDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Store
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains configuration for streaming de-identified FHIR export.
+type DeidentifiedStoreDestinationResponse struct {
+	// The configuration to use when de-identifying resources that are added to this store.
+	Config DeidentifyConfigResponse `pulumi:"config"`
+	// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	Store string `pulumi:"store"`
+}
+
+// Contains configuration for streaming de-identified FHIR export.
+type DeidentifiedStoreDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeidentifiedStoreDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifiedStoreDestinationResponse)(nil)).Elem()
+}
+
+func (o DeidentifiedStoreDestinationResponseOutput) ToDeidentifiedStoreDestinationResponseOutput() DeidentifiedStoreDestinationResponseOutput {
+	return o
+}
+
+func (o DeidentifiedStoreDestinationResponseOutput) ToDeidentifiedStoreDestinationResponseOutputWithContext(ctx context.Context) DeidentifiedStoreDestinationResponseOutput {
+	return o
+}
+
+// The configuration to use when de-identifying resources that are added to this store.
+func (o DeidentifiedStoreDestinationResponseOutput) Config() DeidentifyConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifiedStoreDestinationResponse) DeidentifyConfigResponse { return v.Config }).(DeidentifyConfigResponseOutput)
+}
+
+// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+func (o DeidentifiedStoreDestinationResponseOutput) Store() pulumi.StringOutput {
+	return o.ApplyT(func(v DeidentifiedStoreDestinationResponse) string { return v.Store }).(pulumi.StringOutput)
+}
+
+// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+type DeidentifyConfig struct {
+	// Configures de-id of application/DICOM content.
+	Dicom *DicomConfig `pulumi:"dicom"`
+	// Configures de-id of application/FHIR content.
+	Fhir *FhirConfig `pulumi:"fhir"`
+	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	Image *ImageConfig `pulumi:"image"`
+	// Configures de-identification of text wherever it is found in the source_dataset.
+	Text *TextConfig `pulumi:"text"`
+}
+
+// DeidentifyConfigInput is an input type that accepts DeidentifyConfigArgs and DeidentifyConfigOutput values.
+// You can construct a concrete instance of `DeidentifyConfigInput` via:
+//
+//	DeidentifyConfigArgs{...}
+type DeidentifyConfigInput interface {
+	pulumi.Input
+
+	ToDeidentifyConfigOutput() DeidentifyConfigOutput
+	ToDeidentifyConfigOutputWithContext(context.Context) DeidentifyConfigOutput
+}
+
+// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+type DeidentifyConfigArgs struct {
+	// Configures de-id of application/DICOM content.
+	Dicom DicomConfigPtrInput `pulumi:"dicom"`
+	// Configures de-id of application/FHIR content.
+	Fhir FhirConfigPtrInput `pulumi:"fhir"`
+	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	Image ImageConfigPtrInput `pulumi:"image"`
+	// Configures de-identification of text wherever it is found in the source_dataset.
+	Text TextConfigPtrInput `pulumi:"text"`
+}
+
+func (DeidentifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifyConfig)(nil)).Elem()
+}
+
+func (i DeidentifyConfigArgs) ToDeidentifyConfigOutput() DeidentifyConfigOutput {
+	return i.ToDeidentifyConfigOutputWithContext(context.Background())
+}
+
+func (i DeidentifyConfigArgs) ToDeidentifyConfigOutputWithContext(ctx context.Context) DeidentifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifyConfigOutput)
+}
+
+func (i DeidentifyConfigArgs) ToDeidentifyConfigPtrOutput() DeidentifyConfigPtrOutput {
+	return i.ToDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeidentifyConfigArgs) ToDeidentifyConfigPtrOutputWithContext(ctx context.Context) DeidentifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifyConfigOutput).ToDeidentifyConfigPtrOutputWithContext(ctx)
+}
+
+// DeidentifyConfigPtrInput is an input type that accepts DeidentifyConfigArgs, DeidentifyConfigPtr and DeidentifyConfigPtrOutput values.
+// You can construct a concrete instance of `DeidentifyConfigPtrInput` via:
+//
+//	        DeidentifyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeidentifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeidentifyConfigPtrOutput() DeidentifyConfigPtrOutput
+	ToDeidentifyConfigPtrOutputWithContext(context.Context) DeidentifyConfigPtrOutput
+}
+
+type deidentifyConfigPtrType DeidentifyConfigArgs
+
+func DeidentifyConfigPtr(v *DeidentifyConfigArgs) DeidentifyConfigPtrInput {
+	return (*deidentifyConfigPtrType)(v)
+}
+
+func (*deidentifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeidentifyConfig)(nil)).Elem()
+}
+
+func (i *deidentifyConfigPtrType) ToDeidentifyConfigPtrOutput() DeidentifyConfigPtrOutput {
+	return i.ToDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deidentifyConfigPtrType) ToDeidentifyConfigPtrOutputWithContext(ctx context.Context) DeidentifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeidentifyConfigPtrOutput)
+}
+
+// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+type DeidentifyConfigOutput struct{ *pulumi.OutputState }
+
+func (DeidentifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifyConfig)(nil)).Elem()
+}
+
+func (o DeidentifyConfigOutput) ToDeidentifyConfigOutput() DeidentifyConfigOutput {
+	return o
+}
+
+func (o DeidentifyConfigOutput) ToDeidentifyConfigOutputWithContext(ctx context.Context) DeidentifyConfigOutput {
+	return o
+}
+
+func (o DeidentifyConfigOutput) ToDeidentifyConfigPtrOutput() DeidentifyConfigPtrOutput {
+	return o.ToDeidentifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeidentifyConfigOutput) ToDeidentifyConfigPtrOutputWithContext(ctx context.Context) DeidentifyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeidentifyConfig) *DeidentifyConfig {
+		return &v
+	}).(DeidentifyConfigPtrOutput)
+}
+
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigOutput) Dicom() DicomConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *DicomConfig { return v.Dicom }).(DicomConfigPtrOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigOutput) Fhir() FhirConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *FhirConfig { return v.Fhir }).(FhirConfigPtrOutput)
+}
+
+// Configures de-identification of image pixels wherever they are found in the source_dataset.
+func (o DeidentifyConfigOutput) Image() ImageConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *ImageConfig { return v.Image }).(ImageConfigPtrOutput)
+}
+
+// Configures de-identification of text wherever it is found in the source_dataset.
+func (o DeidentifyConfigOutput) Text() TextConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *TextConfig { return v.Text }).(TextConfigPtrOutput)
+}
+
+type DeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeidentifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeidentifyConfig)(nil)).Elem()
+}
+
+func (o DeidentifyConfigPtrOutput) ToDeidentifyConfigPtrOutput() DeidentifyConfigPtrOutput {
+	return o
+}
+
+func (o DeidentifyConfigPtrOutput) ToDeidentifyConfigPtrOutputWithContext(ctx context.Context) DeidentifyConfigPtrOutput {
+	return o
+}
+
+func (o DeidentifyConfigPtrOutput) Elem() DeidentifyConfigOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) DeidentifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeidentifyConfig
+		return ret
+	}).(DeidentifyConfigOutput)
+}
+
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigPtrOutput) Dicom() DicomConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *DicomConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Dicom
+	}).(DicomConfigPtrOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigPtrOutput) Fhir() FhirConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *FhirConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Fhir
+	}).(FhirConfigPtrOutput)
+}
+
+// Configures de-identification of image pixels wherever they are found in the source_dataset.
+func (o DeidentifyConfigPtrOutput) Image() ImageConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *ImageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(ImageConfigPtrOutput)
+}
+
+// Configures de-identification of text wherever it is found in the source_dataset.
+func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *TextConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(TextConfigPtrOutput)
+}
+
+// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+type DeidentifyConfigResponse struct {
+	// Configures de-id of application/DICOM content.
+	Dicom DicomConfigResponse `pulumi:"dicom"`
+	// Configures de-id of application/FHIR content.
+	Fhir FhirConfigResponse `pulumi:"fhir"`
+	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	Image ImageConfigResponse `pulumi:"image"`
+	// Configures de-identification of text wherever it is found in the source_dataset.
+	Text TextConfigResponse `pulumi:"text"`
+}
+
+// Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
+type DeidentifyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DeidentifyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeidentifyConfigResponse)(nil)).Elem()
+}
+
+func (o DeidentifyConfigResponseOutput) ToDeidentifyConfigResponseOutput() DeidentifyConfigResponseOutput {
+	return o
+}
+
+func (o DeidentifyConfigResponseOutput) ToDeidentifyConfigResponseOutputWithContext(ctx context.Context) DeidentifyConfigResponseOutput {
+	return o
+}
+
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigResponseOutput) Dicom() DicomConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) DicomConfigResponse { return v.Dicom }).(DicomConfigResponseOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigResponseOutput) Fhir() FhirConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) FhirConfigResponse { return v.Fhir }).(FhirConfigResponseOutput)
+}
+
+// Configures de-identification of image pixels wherever they are found in the source_dataset.
+func (o DeidentifyConfigResponseOutput) Image() ImageConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) ImageConfigResponse { return v.Image }).(ImageConfigResponseOutput)
+}
+
+// Configures de-identification of text wherever it is found in the source_dataset.
+func (o DeidentifyConfigResponseOutput) Text() TextConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) TextConfigResponse { return v.Text }).(TextConfigResponseOutput)
+}
+
+// Specifies the parameters needed for de-identification of DICOM stores.
+type DicomConfig struct {
+	// Tag filtering profile that determines which tags to keep/remove.
+	FilterProfile *DicomConfigFilterProfile `pulumi:"filterProfile"`
+	// List of tags to keep. Remove all other tags.
+	KeepList *TagFilterList `pulumi:"keepList"`
+	// List of tags to remove. Keep all other tags.
+	RemoveList *TagFilterList `pulumi:"removeList"`
+	// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+	SkipIdRedaction *bool `pulumi:"skipIdRedaction"`
+}
+
+// DicomConfigInput is an input type that accepts DicomConfigArgs and DicomConfigOutput values.
+// You can construct a concrete instance of `DicomConfigInput` via:
+//
+//	DicomConfigArgs{...}
+type DicomConfigInput interface {
+	pulumi.Input
+
+	ToDicomConfigOutput() DicomConfigOutput
+	ToDicomConfigOutputWithContext(context.Context) DicomConfigOutput
+}
+
+// Specifies the parameters needed for de-identification of DICOM stores.
+type DicomConfigArgs struct {
+	// Tag filtering profile that determines which tags to keep/remove.
+	FilterProfile DicomConfigFilterProfilePtrInput `pulumi:"filterProfile"`
+	// List of tags to keep. Remove all other tags.
+	KeepList TagFilterListPtrInput `pulumi:"keepList"`
+	// List of tags to remove. Keep all other tags.
+	RemoveList TagFilterListPtrInput `pulumi:"removeList"`
+	// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+	SkipIdRedaction pulumi.BoolPtrInput `pulumi:"skipIdRedaction"`
+}
+
+func (DicomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomConfig)(nil)).Elem()
+}
+
+func (i DicomConfigArgs) ToDicomConfigOutput() DicomConfigOutput {
+	return i.ToDicomConfigOutputWithContext(context.Background())
+}
+
+func (i DicomConfigArgs) ToDicomConfigOutputWithContext(ctx context.Context) DicomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomConfigOutput)
+}
+
+func (i DicomConfigArgs) ToDicomConfigPtrOutput() DicomConfigPtrOutput {
+	return i.ToDicomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DicomConfigArgs) ToDicomConfigPtrOutputWithContext(ctx context.Context) DicomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomConfigOutput).ToDicomConfigPtrOutputWithContext(ctx)
+}
+
+// DicomConfigPtrInput is an input type that accepts DicomConfigArgs, DicomConfigPtr and DicomConfigPtrOutput values.
+// You can construct a concrete instance of `DicomConfigPtrInput` via:
+//
+//	        DicomConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DicomConfigPtrInput interface {
+	pulumi.Input
+
+	ToDicomConfigPtrOutput() DicomConfigPtrOutput
+	ToDicomConfigPtrOutputWithContext(context.Context) DicomConfigPtrOutput
+}
+
+type dicomConfigPtrType DicomConfigArgs
+
+func DicomConfigPtr(v *DicomConfigArgs) DicomConfigPtrInput {
+	return (*dicomConfigPtrType)(v)
+}
+
+func (*dicomConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomConfig)(nil)).Elem()
+}
+
+func (i *dicomConfigPtrType) ToDicomConfigPtrOutput() DicomConfigPtrOutput {
+	return i.ToDicomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dicomConfigPtrType) ToDicomConfigPtrOutputWithContext(ctx context.Context) DicomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomConfigPtrOutput)
+}
+
+// Specifies the parameters needed for de-identification of DICOM stores.
+type DicomConfigOutput struct{ *pulumi.OutputState }
+
+func (DicomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomConfig)(nil)).Elem()
+}
+
+func (o DicomConfigOutput) ToDicomConfigOutput() DicomConfigOutput {
+	return o
+}
+
+func (o DicomConfigOutput) ToDicomConfigOutputWithContext(ctx context.Context) DicomConfigOutput {
+	return o
+}
+
+func (o DicomConfigOutput) ToDicomConfigPtrOutput() DicomConfigPtrOutput {
+	return o.ToDicomConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DicomConfigOutput) ToDicomConfigPtrOutputWithContext(ctx context.Context) DicomConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomConfig) *DicomConfig {
+		return &v
+	}).(DicomConfigPtrOutput)
+}
+
+// Tag filtering profile that determines which tags to keep/remove.
+func (o DicomConfigOutput) FilterProfile() DicomConfigFilterProfilePtrOutput {
+	return o.ApplyT(func(v DicomConfig) *DicomConfigFilterProfile { return v.FilterProfile }).(DicomConfigFilterProfilePtrOutput)
+}
+
+// List of tags to keep. Remove all other tags.
+func (o DicomConfigOutput) KeepList() TagFilterListPtrOutput {
+	return o.ApplyT(func(v DicomConfig) *TagFilterList { return v.KeepList }).(TagFilterListPtrOutput)
+}
+
+// List of tags to remove. Keep all other tags.
+func (o DicomConfigOutput) RemoveList() TagFilterListPtrOutput {
+	return o.ApplyT(func(v DicomConfig) *TagFilterList { return v.RemoveList }).(TagFilterListPtrOutput)
+}
+
+// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+func (o DicomConfigOutput) SkipIdRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DicomConfig) *bool { return v.SkipIdRedaction }).(pulumi.BoolPtrOutput)
+}
+
+type DicomConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DicomConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomConfig)(nil)).Elem()
+}
+
+func (o DicomConfigPtrOutput) ToDicomConfigPtrOutput() DicomConfigPtrOutput {
+	return o
+}
+
+func (o DicomConfigPtrOutput) ToDicomConfigPtrOutputWithContext(ctx context.Context) DicomConfigPtrOutput {
+	return o
+}
+
+func (o DicomConfigPtrOutput) Elem() DicomConfigOutput {
+	return o.ApplyT(func(v *DicomConfig) DicomConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DicomConfig
+		return ret
+	}).(DicomConfigOutput)
+}
+
+// Tag filtering profile that determines which tags to keep/remove.
+func (o DicomConfigPtrOutput) FilterProfile() DicomConfigFilterProfilePtrOutput {
+	return o.ApplyT(func(v *DicomConfig) *DicomConfigFilterProfile {
+		if v == nil {
+			return nil
+		}
+		return v.FilterProfile
+	}).(DicomConfigFilterProfilePtrOutput)
+}
+
+// List of tags to keep. Remove all other tags.
+func (o DicomConfigPtrOutput) KeepList() TagFilterListPtrOutput {
+	return o.ApplyT(func(v *DicomConfig) *TagFilterList {
+		if v == nil {
+			return nil
+		}
+		return v.KeepList
+	}).(TagFilterListPtrOutput)
+}
+
+// List of tags to remove. Keep all other tags.
+func (o DicomConfigPtrOutput) RemoveList() TagFilterListPtrOutput {
+	return o.ApplyT(func(v *DicomConfig) *TagFilterList {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveList
+	}).(TagFilterListPtrOutput)
+}
+
+// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+func (o DicomConfigPtrOutput) SkipIdRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DicomConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipIdRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the parameters needed for de-identification of DICOM stores.
+type DicomConfigResponse struct {
+	// Tag filtering profile that determines which tags to keep/remove.
+	FilterProfile string `pulumi:"filterProfile"`
+	// List of tags to keep. Remove all other tags.
+	KeepList TagFilterListResponse `pulumi:"keepList"`
+	// List of tags to remove. Keep all other tags.
+	RemoveList TagFilterListResponse `pulumi:"removeList"`
+	// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+	SkipIdRedaction bool `pulumi:"skipIdRedaction"`
+}
+
+// Specifies the parameters needed for de-identification of DICOM stores.
+type DicomConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DicomConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomConfigResponse)(nil)).Elem()
+}
+
+func (o DicomConfigResponseOutput) ToDicomConfigResponseOutput() DicomConfigResponseOutput {
+	return o
+}
+
+func (o DicomConfigResponseOutput) ToDicomConfigResponseOutputWithContext(ctx context.Context) DicomConfigResponseOutput {
+	return o
+}
+
+// Tag filtering profile that determines which tags to keep/remove.
+func (o DicomConfigResponseOutput) FilterProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v DicomConfigResponse) string { return v.FilterProfile }).(pulumi.StringOutput)
+}
+
+// List of tags to keep. Remove all other tags.
+func (o DicomConfigResponseOutput) KeepList() TagFilterListResponseOutput {
+	return o.ApplyT(func(v DicomConfigResponse) TagFilterListResponse { return v.KeepList }).(TagFilterListResponseOutput)
+}
+
+// List of tags to remove. Keep all other tags.
+func (o DicomConfigResponseOutput) RemoveList() TagFilterListResponseOutput {
+	return o.ApplyT(func(v DicomConfigResponse) TagFilterListResponse { return v.RemoveList }).(TagFilterListResponseOutput)
+}
+
+// If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
+func (o DicomConfigResponseOutput) SkipIdRedaction() pulumi.BoolOutput {
+	return o.ApplyT(func(v DicomConfigResponse) bool { return v.SkipIdRedaction }).(pulumi.BoolOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -918,6 +2148,198 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Specifies how to handle de-identification of a FHIR store.
+type FhirConfig struct {
+	// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+	DefaultKeepExtensions *bool `pulumi:"defaultKeepExtensions"`
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+	FieldMetadataList []FieldMetadata `pulumi:"fieldMetadataList"`
+}
+
+// FhirConfigInput is an input type that accepts FhirConfigArgs and FhirConfigOutput values.
+// You can construct a concrete instance of `FhirConfigInput` via:
+//
+//	FhirConfigArgs{...}
+type FhirConfigInput interface {
+	pulumi.Input
+
+	ToFhirConfigOutput() FhirConfigOutput
+	ToFhirConfigOutputWithContext(context.Context) FhirConfigOutput
+}
+
+// Specifies how to handle de-identification of a FHIR store.
+type FhirConfigArgs struct {
+	// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+	DefaultKeepExtensions pulumi.BoolPtrInput `pulumi:"defaultKeepExtensions"`
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+	FieldMetadataList FieldMetadataArrayInput `pulumi:"fieldMetadataList"`
+}
+
+func (FhirConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirConfig)(nil)).Elem()
+}
+
+func (i FhirConfigArgs) ToFhirConfigOutput() FhirConfigOutput {
+	return i.ToFhirConfigOutputWithContext(context.Background())
+}
+
+func (i FhirConfigArgs) ToFhirConfigOutputWithContext(ctx context.Context) FhirConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirConfigOutput)
+}
+
+func (i FhirConfigArgs) ToFhirConfigPtrOutput() FhirConfigPtrOutput {
+	return i.ToFhirConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirConfigArgs) ToFhirConfigPtrOutputWithContext(ctx context.Context) FhirConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirConfigOutput).ToFhirConfigPtrOutputWithContext(ctx)
+}
+
+// FhirConfigPtrInput is an input type that accepts FhirConfigArgs, FhirConfigPtr and FhirConfigPtrOutput values.
+// You can construct a concrete instance of `FhirConfigPtrInput` via:
+//
+//	        FhirConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirConfigPtrOutput() FhirConfigPtrOutput
+	ToFhirConfigPtrOutputWithContext(context.Context) FhirConfigPtrOutput
+}
+
+type fhirConfigPtrType FhirConfigArgs
+
+func FhirConfigPtr(v *FhirConfigArgs) FhirConfigPtrInput {
+	return (*fhirConfigPtrType)(v)
+}
+
+func (*fhirConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirConfig)(nil)).Elem()
+}
+
+func (i *fhirConfigPtrType) ToFhirConfigPtrOutput() FhirConfigPtrOutput {
+	return i.ToFhirConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirConfigPtrType) ToFhirConfigPtrOutputWithContext(ctx context.Context) FhirConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirConfigPtrOutput)
+}
+
+// Specifies how to handle de-identification of a FHIR store.
+type FhirConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirConfig)(nil)).Elem()
+}
+
+func (o FhirConfigOutput) ToFhirConfigOutput() FhirConfigOutput {
+	return o
+}
+
+func (o FhirConfigOutput) ToFhirConfigOutputWithContext(ctx context.Context) FhirConfigOutput {
+	return o
+}
+
+func (o FhirConfigOutput) ToFhirConfigPtrOutput() FhirConfigPtrOutput {
+	return o.ToFhirConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirConfigOutput) ToFhirConfigPtrOutputWithContext(ctx context.Context) FhirConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirConfig) *FhirConfig {
+		return &v
+	}).(FhirConfigPtrOutput)
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+func (o FhirConfigOutput) DefaultKeepExtensions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirConfig) *bool { return v.DefaultKeepExtensions }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+func (o FhirConfigOutput) FieldMetadataList() FieldMetadataArrayOutput {
+	return o.ApplyT(func(v FhirConfig) []FieldMetadata { return v.FieldMetadataList }).(FieldMetadataArrayOutput)
+}
+
+type FhirConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirConfig)(nil)).Elem()
+}
+
+func (o FhirConfigPtrOutput) ToFhirConfigPtrOutput() FhirConfigPtrOutput {
+	return o
+}
+
+func (o FhirConfigPtrOutput) ToFhirConfigPtrOutputWithContext(ctx context.Context) FhirConfigPtrOutput {
+	return o
+}
+
+func (o FhirConfigPtrOutput) Elem() FhirConfigOutput {
+	return o.ApplyT(func(v *FhirConfig) FhirConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirConfig
+		return ret
+	}).(FhirConfigOutput)
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+func (o FhirConfigPtrOutput) DefaultKeepExtensions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultKeepExtensions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+func (o FhirConfigPtrOutput) FieldMetadataList() FieldMetadataArrayOutput {
+	return o.ApplyT(func(v *FhirConfig) []FieldMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.FieldMetadataList
+	}).(FieldMetadataArrayOutput)
+}
+
+// Specifies how to handle de-identification of a FHIR store.
+type FhirConfigResponse struct {
+	// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+	DefaultKeepExtensions bool `pulumi:"defaultKeepExtensions"`
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+	FieldMetadataList []FieldMetadataResponse `pulumi:"fieldMetadataList"`
+}
+
+// Specifies how to handle de-identification of a FHIR store.
+type FhirConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FhirConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirConfigResponse)(nil)).Elem()
+}
+
+func (o FhirConfigResponseOutput) ToFhirConfigResponseOutput() FhirConfigResponseOutput {
+	return o
+}
+
+func (o FhirConfigResponseOutput) ToFhirConfigResponseOutputWithContext(ctx context.Context) FhirConfigResponseOutput {
+	return o
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
+func (o FhirConfigResponseOutput) DefaultKeepExtensions() pulumi.BoolOutput {
+	return o.ApplyT(func(v FhirConfigResponse) bool { return v.DefaultKeepExtensions }).(pulumi.BoolOutput)
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
+func (o FhirConfigResponseOutput) FieldMetadataList() FieldMetadataResponseArrayOutput {
+	return o.ApplyT(func(v FhirConfigResponse) []FieldMetadataResponse { return v.FieldMetadataList }).(FieldMetadataResponseArrayOutput)
+}
+
 // A (sub) field of a type.
 type Field struct {
 	// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
@@ -1052,6 +2474,168 @@ func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Field {
 		return vs[0].([]Field)[vs[1].(int)]
 	}).(FieldOutput)
+}
+
+// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+type FieldMetadata struct {
+	// Deidentify action for one field.
+	Action *FieldMetadataAction `pulumi:"action"`
+	// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+	Paths []string `pulumi:"paths"`
+}
+
+// FieldMetadataInput is an input type that accepts FieldMetadataArgs and FieldMetadataOutput values.
+// You can construct a concrete instance of `FieldMetadataInput` via:
+//
+//	FieldMetadataArgs{...}
+type FieldMetadataInput interface {
+	pulumi.Input
+
+	ToFieldMetadataOutput() FieldMetadataOutput
+	ToFieldMetadataOutputWithContext(context.Context) FieldMetadataOutput
+}
+
+// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+type FieldMetadataArgs struct {
+	// Deidentify action for one field.
+	Action FieldMetadataActionPtrInput `pulumi:"action"`
+	// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+}
+
+func (FieldMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMetadata)(nil)).Elem()
+}
+
+func (i FieldMetadataArgs) ToFieldMetadataOutput() FieldMetadataOutput {
+	return i.ToFieldMetadataOutputWithContext(context.Background())
+}
+
+func (i FieldMetadataArgs) ToFieldMetadataOutputWithContext(ctx context.Context) FieldMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldMetadataOutput)
+}
+
+// FieldMetadataArrayInput is an input type that accepts FieldMetadataArray and FieldMetadataArrayOutput values.
+// You can construct a concrete instance of `FieldMetadataArrayInput` via:
+//
+//	FieldMetadataArray{ FieldMetadataArgs{...} }
+type FieldMetadataArrayInput interface {
+	pulumi.Input
+
+	ToFieldMetadataArrayOutput() FieldMetadataArrayOutput
+	ToFieldMetadataArrayOutputWithContext(context.Context) FieldMetadataArrayOutput
+}
+
+type FieldMetadataArray []FieldMetadataInput
+
+func (FieldMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMetadata)(nil)).Elem()
+}
+
+func (i FieldMetadataArray) ToFieldMetadataArrayOutput() FieldMetadataArrayOutput {
+	return i.ToFieldMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i FieldMetadataArray) ToFieldMetadataArrayOutputWithContext(ctx context.Context) FieldMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldMetadataArrayOutput)
+}
+
+// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+type FieldMetadataOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMetadata)(nil)).Elem()
+}
+
+func (o FieldMetadataOutput) ToFieldMetadataOutput() FieldMetadataOutput {
+	return o
+}
+
+func (o FieldMetadataOutput) ToFieldMetadataOutputWithContext(ctx context.Context) FieldMetadataOutput {
+	return o
+}
+
+// Deidentify action for one field.
+func (o FieldMetadataOutput) Action() FieldMetadataActionPtrOutput {
+	return o.ApplyT(func(v FieldMetadata) *FieldMetadataAction { return v.Action }).(FieldMetadataActionPtrOutput)
+}
+
+// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+func (o FieldMetadataOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FieldMetadata) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type FieldMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMetadata)(nil)).Elem()
+}
+
+func (o FieldMetadataArrayOutput) ToFieldMetadataArrayOutput() FieldMetadataArrayOutput {
+	return o
+}
+
+func (o FieldMetadataArrayOutput) ToFieldMetadataArrayOutputWithContext(ctx context.Context) FieldMetadataArrayOutput {
+	return o
+}
+
+func (o FieldMetadataArrayOutput) Index(i pulumi.IntInput) FieldMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldMetadata {
+		return vs[0].([]FieldMetadata)[vs[1].(int)]
+	}).(FieldMetadataOutput)
+}
+
+// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+type FieldMetadataResponse struct {
+	// Deidentify action for one field.
+	Action string `pulumi:"action"`
+	// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+	Paths []string `pulumi:"paths"`
+}
+
+// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
+type FieldMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldMetadataResponse)(nil)).Elem()
+}
+
+func (o FieldMetadataResponseOutput) ToFieldMetadataResponseOutput() FieldMetadataResponseOutput {
+	return o
+}
+
+func (o FieldMetadataResponseOutput) ToFieldMetadataResponseOutputWithContext(ctx context.Context) FieldMetadataResponseOutput {
+	return o
+}
+
+// Deidentify action for one field.
+func (o FieldMetadataResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldMetadataResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
+func (o FieldMetadataResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FieldMetadataResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+type FieldMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldMetadataResponse)(nil)).Elem()
+}
+
+func (o FieldMetadataResponseArrayOutput) ToFieldMetadataResponseArrayOutput() FieldMetadataResponseArrayOutput {
+	return o
+}
+
+func (o FieldMetadataResponseArrayOutput) ToFieldMetadataResponseArrayOutputWithContext(ctx context.Context) FieldMetadataResponseArrayOutput {
+	return o
+}
+
+func (o FieldMetadataResponseArrayOutput) Index(i pulumi.IntInput) FieldMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldMetadataResponse {
+		return vs[0].([]FieldMetadataResponse)[vs[1].(int)]
+	}).(FieldMetadataResponseOutput)
 }
 
 // A (sub) field of a type.
@@ -2228,6 +3812,172 @@ func (o ImageArrayOutput) Index(i pulumi.IntInput) ImageOutput {
 	}).(ImageOutput)
 }
 
+// Specifies how to handle de-identification of image pixels.
+type ImageConfig struct {
+	// Determines how to redact text from image.
+	TextRedactionMode *ImageConfigTextRedactionMode `pulumi:"textRedactionMode"`
+}
+
+// ImageConfigInput is an input type that accepts ImageConfigArgs and ImageConfigOutput values.
+// You can construct a concrete instance of `ImageConfigInput` via:
+//
+//	ImageConfigArgs{...}
+type ImageConfigInput interface {
+	pulumi.Input
+
+	ToImageConfigOutput() ImageConfigOutput
+	ToImageConfigOutputWithContext(context.Context) ImageConfigOutput
+}
+
+// Specifies how to handle de-identification of image pixels.
+type ImageConfigArgs struct {
+	// Determines how to redact text from image.
+	TextRedactionMode ImageConfigTextRedactionModePtrInput `pulumi:"textRedactionMode"`
+}
+
+func (ImageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageConfig)(nil)).Elem()
+}
+
+func (i ImageConfigArgs) ToImageConfigOutput() ImageConfigOutput {
+	return i.ToImageConfigOutputWithContext(context.Background())
+}
+
+func (i ImageConfigArgs) ToImageConfigOutputWithContext(ctx context.Context) ImageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageConfigOutput)
+}
+
+func (i ImageConfigArgs) ToImageConfigPtrOutput() ImageConfigPtrOutput {
+	return i.ToImageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ImageConfigArgs) ToImageConfigPtrOutputWithContext(ctx context.Context) ImageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageConfigOutput).ToImageConfigPtrOutputWithContext(ctx)
+}
+
+// ImageConfigPtrInput is an input type that accepts ImageConfigArgs, ImageConfigPtr and ImageConfigPtrOutput values.
+// You can construct a concrete instance of `ImageConfigPtrInput` via:
+//
+//	        ImageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageConfigPtrInput interface {
+	pulumi.Input
+
+	ToImageConfigPtrOutput() ImageConfigPtrOutput
+	ToImageConfigPtrOutputWithContext(context.Context) ImageConfigPtrOutput
+}
+
+type imageConfigPtrType ImageConfigArgs
+
+func ImageConfigPtr(v *ImageConfigArgs) ImageConfigPtrInput {
+	return (*imageConfigPtrType)(v)
+}
+
+func (*imageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageConfig)(nil)).Elem()
+}
+
+func (i *imageConfigPtrType) ToImageConfigPtrOutput() ImageConfigPtrOutput {
+	return i.ToImageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *imageConfigPtrType) ToImageConfigPtrOutputWithContext(ctx context.Context) ImageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageConfigPtrOutput)
+}
+
+// Specifies how to handle de-identification of image pixels.
+type ImageConfigOutput struct{ *pulumi.OutputState }
+
+func (ImageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageConfig)(nil)).Elem()
+}
+
+func (o ImageConfigOutput) ToImageConfigOutput() ImageConfigOutput {
+	return o
+}
+
+func (o ImageConfigOutput) ToImageConfigOutputWithContext(ctx context.Context) ImageConfigOutput {
+	return o
+}
+
+func (o ImageConfigOutput) ToImageConfigPtrOutput() ImageConfigPtrOutput {
+	return o.ToImageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ImageConfigOutput) ToImageConfigPtrOutputWithContext(ctx context.Context) ImageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageConfig) *ImageConfig {
+		return &v
+	}).(ImageConfigPtrOutput)
+}
+
+// Determines how to redact text from image.
+func (o ImageConfigOutput) TextRedactionMode() ImageConfigTextRedactionModePtrOutput {
+	return o.ApplyT(func(v ImageConfig) *ImageConfigTextRedactionMode { return v.TextRedactionMode }).(ImageConfigTextRedactionModePtrOutput)
+}
+
+type ImageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageConfig)(nil)).Elem()
+}
+
+func (o ImageConfigPtrOutput) ToImageConfigPtrOutput() ImageConfigPtrOutput {
+	return o
+}
+
+func (o ImageConfigPtrOutput) ToImageConfigPtrOutputWithContext(ctx context.Context) ImageConfigPtrOutput {
+	return o
+}
+
+func (o ImageConfigPtrOutput) Elem() ImageConfigOutput {
+	return o.ApplyT(func(v *ImageConfig) ImageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ImageConfig
+		return ret
+	}).(ImageConfigOutput)
+}
+
+// Determines how to redact text from image.
+func (o ImageConfigPtrOutput) TextRedactionMode() ImageConfigTextRedactionModePtrOutput {
+	return o.ApplyT(func(v *ImageConfig) *ImageConfigTextRedactionMode {
+		if v == nil {
+			return nil
+		}
+		return v.TextRedactionMode
+	}).(ImageConfigTextRedactionModePtrOutput)
+}
+
+// Specifies how to handle de-identification of image pixels.
+type ImageConfigResponse struct {
+	// Determines how to redact text from image.
+	TextRedactionMode string `pulumi:"textRedactionMode"`
+}
+
+// Specifies how to handle de-identification of image pixels.
+type ImageConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageConfigResponse)(nil)).Elem()
+}
+
+func (o ImageConfigResponseOutput) ToImageConfigResponseOutput() ImageConfigResponseOutput {
+	return o
+}
+
+func (o ImageConfigResponseOutput) ToImageConfigResponseOutputWithContext(ctx context.Context) ImageConfigResponseOutput {
+	return o
+}
+
+// Determines how to redact text from image.
+func (o ImageConfigResponseOutput) TextRedactionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageConfigResponse) string { return v.TextRedactionMode }).(pulumi.StringOutput)
+}
+
 // Raw bytes representing consent artifact content.
 type ImageResponse struct {
 	// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
@@ -2279,6 +4029,426 @@ func (o ImageResponseArrayOutput) Index(i pulumi.IntInput) ImageResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageResponse {
 		return vs[0].([]ImageResponse)[vs[1].(int)]
 	}).(ImageResponseOutput)
+}
+
+// A transformation to apply to text that is identified as a specific info_type.
+type InfoTypeTransformation struct {
+	// Config for character mask.
+	CharacterMaskConfig *CharacterMaskConfig `pulumi:"characterMaskConfig"`
+	// Config for crypto hash.
+	CryptoHashConfig *CryptoHashConfig `pulumi:"cryptoHashConfig"`
+	// Config for date shift.
+	DateShiftConfig *DateShiftConfig `pulumi:"dateShiftConfig"`
+	// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+	InfoTypes []string `pulumi:"infoTypes"`
+	// Config for text redaction.
+	RedactConfig *RedactConfig `pulumi:"redactConfig"`
+	// Config for replace with InfoType.
+	ReplaceWithInfoTypeConfig *ReplaceWithInfoTypeConfig `pulumi:"replaceWithInfoTypeConfig"`
+}
+
+// InfoTypeTransformationInput is an input type that accepts InfoTypeTransformationArgs and InfoTypeTransformationOutput values.
+// You can construct a concrete instance of `InfoTypeTransformationInput` via:
+//
+//	InfoTypeTransformationArgs{...}
+type InfoTypeTransformationInput interface {
+	pulumi.Input
+
+	ToInfoTypeTransformationOutput() InfoTypeTransformationOutput
+	ToInfoTypeTransformationOutputWithContext(context.Context) InfoTypeTransformationOutput
+}
+
+// A transformation to apply to text that is identified as a specific info_type.
+type InfoTypeTransformationArgs struct {
+	// Config for character mask.
+	CharacterMaskConfig CharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
+	// Config for crypto hash.
+	CryptoHashConfig CryptoHashConfigPtrInput `pulumi:"cryptoHashConfig"`
+	// Config for date shift.
+	DateShiftConfig DateShiftConfigPtrInput `pulumi:"dateShiftConfig"`
+	// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+	InfoTypes pulumi.StringArrayInput `pulumi:"infoTypes"`
+	// Config for text redaction.
+	RedactConfig RedactConfigPtrInput `pulumi:"redactConfig"`
+	// Config for replace with InfoType.
+	ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfigPtrInput `pulumi:"replaceWithInfoTypeConfig"`
+}
+
+func (InfoTypeTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfoTypeTransformation)(nil)).Elem()
+}
+
+func (i InfoTypeTransformationArgs) ToInfoTypeTransformationOutput() InfoTypeTransformationOutput {
+	return i.ToInfoTypeTransformationOutputWithContext(context.Background())
+}
+
+func (i InfoTypeTransformationArgs) ToInfoTypeTransformationOutputWithContext(ctx context.Context) InfoTypeTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfoTypeTransformationOutput)
+}
+
+// InfoTypeTransformationArrayInput is an input type that accepts InfoTypeTransformationArray and InfoTypeTransformationArrayOutput values.
+// You can construct a concrete instance of `InfoTypeTransformationArrayInput` via:
+//
+//	InfoTypeTransformationArray{ InfoTypeTransformationArgs{...} }
+type InfoTypeTransformationArrayInput interface {
+	pulumi.Input
+
+	ToInfoTypeTransformationArrayOutput() InfoTypeTransformationArrayOutput
+	ToInfoTypeTransformationArrayOutputWithContext(context.Context) InfoTypeTransformationArrayOutput
+}
+
+type InfoTypeTransformationArray []InfoTypeTransformationInput
+
+func (InfoTypeTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfoTypeTransformation)(nil)).Elem()
+}
+
+func (i InfoTypeTransformationArray) ToInfoTypeTransformationArrayOutput() InfoTypeTransformationArrayOutput {
+	return i.ToInfoTypeTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i InfoTypeTransformationArray) ToInfoTypeTransformationArrayOutputWithContext(ctx context.Context) InfoTypeTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfoTypeTransformationArrayOutput)
+}
+
+// A transformation to apply to text that is identified as a specific info_type.
+type InfoTypeTransformationOutput struct{ *pulumi.OutputState }
+
+func (InfoTypeTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfoTypeTransformation)(nil)).Elem()
+}
+
+func (o InfoTypeTransformationOutput) ToInfoTypeTransformationOutput() InfoTypeTransformationOutput {
+	return o
+}
+
+func (o InfoTypeTransformationOutput) ToInfoTypeTransformationOutputWithContext(ctx context.Context) InfoTypeTransformationOutput {
+	return o
+}
+
+// Config for character mask.
+func (o InfoTypeTransformationOutput) CharacterMaskConfig() CharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) *CharacterMaskConfig { return v.CharacterMaskConfig }).(CharacterMaskConfigPtrOutput)
+}
+
+// Config for crypto hash.
+func (o InfoTypeTransformationOutput) CryptoHashConfig() CryptoHashConfigPtrOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) *CryptoHashConfig { return v.CryptoHashConfig }).(CryptoHashConfigPtrOutput)
+}
+
+// Config for date shift.
+func (o InfoTypeTransformationOutput) DateShiftConfig() DateShiftConfigPtrOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) *DateShiftConfig { return v.DateShiftConfig }).(DateShiftConfigPtrOutput)
+}
+
+// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+func (o InfoTypeTransformationOutput) InfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) []string { return v.InfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// Config for text redaction.
+func (o InfoTypeTransformationOutput) RedactConfig() RedactConfigPtrOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) *RedactConfig { return v.RedactConfig }).(RedactConfigPtrOutput)
+}
+
+// Config for replace with InfoType.
+func (o InfoTypeTransformationOutput) ReplaceWithInfoTypeConfig() ReplaceWithInfoTypeConfigPtrOutput {
+	return o.ApplyT(func(v InfoTypeTransformation) *ReplaceWithInfoTypeConfig { return v.ReplaceWithInfoTypeConfig }).(ReplaceWithInfoTypeConfigPtrOutput)
+}
+
+type InfoTypeTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (InfoTypeTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfoTypeTransformation)(nil)).Elem()
+}
+
+func (o InfoTypeTransformationArrayOutput) ToInfoTypeTransformationArrayOutput() InfoTypeTransformationArrayOutput {
+	return o
+}
+
+func (o InfoTypeTransformationArrayOutput) ToInfoTypeTransformationArrayOutputWithContext(ctx context.Context) InfoTypeTransformationArrayOutput {
+	return o
+}
+
+func (o InfoTypeTransformationArrayOutput) Index(i pulumi.IntInput) InfoTypeTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfoTypeTransformation {
+		return vs[0].([]InfoTypeTransformation)[vs[1].(int)]
+	}).(InfoTypeTransformationOutput)
+}
+
+// A transformation to apply to text that is identified as a specific info_type.
+type InfoTypeTransformationResponse struct {
+	// Config for character mask.
+	CharacterMaskConfig CharacterMaskConfigResponse `pulumi:"characterMaskConfig"`
+	// Config for crypto hash.
+	CryptoHashConfig CryptoHashConfigResponse `pulumi:"cryptoHashConfig"`
+	// Config for date shift.
+	DateShiftConfig DateShiftConfigResponse `pulumi:"dateShiftConfig"`
+	// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+	InfoTypes []string `pulumi:"infoTypes"`
+	// Config for text redaction.
+	RedactConfig RedactConfigResponse `pulumi:"redactConfig"`
+	// Config for replace with InfoType.
+	ReplaceWithInfoTypeConfig ReplaceWithInfoTypeConfigResponse `pulumi:"replaceWithInfoTypeConfig"`
+}
+
+// A transformation to apply to text that is identified as a specific info_type.
+type InfoTypeTransformationResponseOutput struct{ *pulumi.OutputState }
+
+func (InfoTypeTransformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfoTypeTransformationResponse)(nil)).Elem()
+}
+
+func (o InfoTypeTransformationResponseOutput) ToInfoTypeTransformationResponseOutput() InfoTypeTransformationResponseOutput {
+	return o
+}
+
+func (o InfoTypeTransformationResponseOutput) ToInfoTypeTransformationResponseOutputWithContext(ctx context.Context) InfoTypeTransformationResponseOutput {
+	return o
+}
+
+// Config for character mask.
+func (o InfoTypeTransformationResponseOutput) CharacterMaskConfig() CharacterMaskConfigResponseOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) CharacterMaskConfigResponse { return v.CharacterMaskConfig }).(CharacterMaskConfigResponseOutput)
+}
+
+// Config for crypto hash.
+func (o InfoTypeTransformationResponseOutput) CryptoHashConfig() CryptoHashConfigResponseOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) CryptoHashConfigResponse { return v.CryptoHashConfig }).(CryptoHashConfigResponseOutput)
+}
+
+// Config for date shift.
+func (o InfoTypeTransformationResponseOutput) DateShiftConfig() DateShiftConfigResponseOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) DateShiftConfigResponse { return v.DateShiftConfig }).(DateShiftConfigResponseOutput)
+}
+
+// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
+func (o InfoTypeTransformationResponseOutput) InfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) []string { return v.InfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// Config for text redaction.
+func (o InfoTypeTransformationResponseOutput) RedactConfig() RedactConfigResponseOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) RedactConfigResponse { return v.RedactConfig }).(RedactConfigResponseOutput)
+}
+
+// Config for replace with InfoType.
+func (o InfoTypeTransformationResponseOutput) ReplaceWithInfoTypeConfig() ReplaceWithInfoTypeConfigResponseOutput {
+	return o.ApplyT(func(v InfoTypeTransformationResponse) ReplaceWithInfoTypeConfigResponse {
+		return v.ReplaceWithInfoTypeConfig
+	}).(ReplaceWithInfoTypeConfigResponseOutput)
+}
+
+type InfoTypeTransformationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InfoTypeTransformationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfoTypeTransformationResponse)(nil)).Elem()
+}
+
+func (o InfoTypeTransformationResponseArrayOutput) ToInfoTypeTransformationResponseArrayOutput() InfoTypeTransformationResponseArrayOutput {
+	return o
+}
+
+func (o InfoTypeTransformationResponseArrayOutput) ToInfoTypeTransformationResponseArrayOutputWithContext(ctx context.Context) InfoTypeTransformationResponseArrayOutput {
+	return o
+}
+
+func (o InfoTypeTransformationResponseArrayOutput) Index(i pulumi.IntInput) InfoTypeTransformationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfoTypeTransformationResponse {
+		return vs[0].([]InfoTypeTransformationResponse)[vs[1].(int)]
+	}).(InfoTypeTransformationResponseOutput)
+}
+
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+type KmsWrappedCryptoKey struct {
+	// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+	CryptoKey string `pulumi:"cryptoKey"`
+	// The wrapped data crypto key.
+	WrappedKey string `pulumi:"wrappedKey"`
+}
+
+// KmsWrappedCryptoKeyInput is an input type that accepts KmsWrappedCryptoKeyArgs and KmsWrappedCryptoKeyOutput values.
+// You can construct a concrete instance of `KmsWrappedCryptoKeyInput` via:
+//
+//	KmsWrappedCryptoKeyArgs{...}
+type KmsWrappedCryptoKeyInput interface {
+	pulumi.Input
+
+	ToKmsWrappedCryptoKeyOutput() KmsWrappedCryptoKeyOutput
+	ToKmsWrappedCryptoKeyOutputWithContext(context.Context) KmsWrappedCryptoKeyOutput
+}
+
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+type KmsWrappedCryptoKeyArgs struct {
+	// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+	CryptoKey pulumi.StringInput `pulumi:"cryptoKey"`
+	// The wrapped data crypto key.
+	WrappedKey pulumi.StringInput `pulumi:"wrappedKey"`
+}
+
+func (KmsWrappedCryptoKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KmsWrappedCryptoKey)(nil)).Elem()
+}
+
+func (i KmsWrappedCryptoKeyArgs) ToKmsWrappedCryptoKeyOutput() KmsWrappedCryptoKeyOutput {
+	return i.ToKmsWrappedCryptoKeyOutputWithContext(context.Background())
+}
+
+func (i KmsWrappedCryptoKeyArgs) ToKmsWrappedCryptoKeyOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KmsWrappedCryptoKeyOutput)
+}
+
+func (i KmsWrappedCryptoKeyArgs) ToKmsWrappedCryptoKeyPtrOutput() KmsWrappedCryptoKeyPtrOutput {
+	return i.ToKmsWrappedCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (i KmsWrappedCryptoKeyArgs) ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KmsWrappedCryptoKeyOutput).ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx)
+}
+
+// KmsWrappedCryptoKeyPtrInput is an input type that accepts KmsWrappedCryptoKeyArgs, KmsWrappedCryptoKeyPtr and KmsWrappedCryptoKeyPtrOutput values.
+// You can construct a concrete instance of `KmsWrappedCryptoKeyPtrInput` via:
+//
+//	        KmsWrappedCryptoKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type KmsWrappedCryptoKeyPtrInput interface {
+	pulumi.Input
+
+	ToKmsWrappedCryptoKeyPtrOutput() KmsWrappedCryptoKeyPtrOutput
+	ToKmsWrappedCryptoKeyPtrOutputWithContext(context.Context) KmsWrappedCryptoKeyPtrOutput
+}
+
+type kmsWrappedCryptoKeyPtrType KmsWrappedCryptoKeyArgs
+
+func KmsWrappedCryptoKeyPtr(v *KmsWrappedCryptoKeyArgs) KmsWrappedCryptoKeyPtrInput {
+	return (*kmsWrappedCryptoKeyPtrType)(v)
+}
+
+func (*kmsWrappedCryptoKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KmsWrappedCryptoKey)(nil)).Elem()
+}
+
+func (i *kmsWrappedCryptoKeyPtrType) ToKmsWrappedCryptoKeyPtrOutput() KmsWrappedCryptoKeyPtrOutput {
+	return i.ToKmsWrappedCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *kmsWrappedCryptoKeyPtrType) ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+type KmsWrappedCryptoKeyOutput struct{ *pulumi.OutputState }
+
+func (KmsWrappedCryptoKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KmsWrappedCryptoKey)(nil)).Elem()
+}
+
+func (o KmsWrappedCryptoKeyOutput) ToKmsWrappedCryptoKeyOutput() KmsWrappedCryptoKeyOutput {
+	return o
+}
+
+func (o KmsWrappedCryptoKeyOutput) ToKmsWrappedCryptoKeyOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyOutput {
+	return o
+}
+
+func (o KmsWrappedCryptoKeyOutput) ToKmsWrappedCryptoKeyPtrOutput() KmsWrappedCryptoKeyPtrOutput {
+	return o.ToKmsWrappedCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (o KmsWrappedCryptoKeyOutput) ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KmsWrappedCryptoKey) *KmsWrappedCryptoKey {
+		return &v
+	}).(KmsWrappedCryptoKeyPtrOutput)
+}
+
+// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+func (o KmsWrappedCryptoKeyOutput) CryptoKey() pulumi.StringOutput {
+	return o.ApplyT(func(v KmsWrappedCryptoKey) string { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// The wrapped data crypto key.
+func (o KmsWrappedCryptoKeyOutput) WrappedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v KmsWrappedCryptoKey) string { return v.WrappedKey }).(pulumi.StringOutput)
+}
+
+type KmsWrappedCryptoKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (KmsWrappedCryptoKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KmsWrappedCryptoKey)(nil)).Elem()
+}
+
+func (o KmsWrappedCryptoKeyPtrOutput) ToKmsWrappedCryptoKeyPtrOutput() KmsWrappedCryptoKeyPtrOutput {
+	return o
+}
+
+func (o KmsWrappedCryptoKeyPtrOutput) ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyPtrOutput {
+	return o
+}
+
+func (o KmsWrappedCryptoKeyPtrOutput) Elem() KmsWrappedCryptoKeyOutput {
+	return o.ApplyT(func(v *KmsWrappedCryptoKey) KmsWrappedCryptoKey {
+		if v != nil {
+			return *v
+		}
+		var ret KmsWrappedCryptoKey
+		return ret
+	}).(KmsWrappedCryptoKeyOutput)
+}
+
+// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+func (o KmsWrappedCryptoKeyPtrOutput) CryptoKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KmsWrappedCryptoKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CryptoKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The wrapped data crypto key.
+func (o KmsWrappedCryptoKeyPtrOutput) WrappedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KmsWrappedCryptoKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WrappedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+type KmsWrappedCryptoKeyResponse struct {
+	// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+	CryptoKey string `pulumi:"cryptoKey"`
+	// The wrapped data crypto key.
+	WrappedKey string `pulumi:"wrappedKey"`
+}
+
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
+type KmsWrappedCryptoKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (KmsWrappedCryptoKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KmsWrappedCryptoKeyResponse)(nil)).Elem()
+}
+
+func (o KmsWrappedCryptoKeyResponseOutput) ToKmsWrappedCryptoKeyResponseOutput() KmsWrappedCryptoKeyResponseOutput {
+	return o
+}
+
+func (o KmsWrappedCryptoKeyResponseOutput) ToKmsWrappedCryptoKeyResponseOutputWithContext(ctx context.Context) KmsWrappedCryptoKeyResponseOutput {
+	return o
+}
+
+// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+func (o KmsWrappedCryptoKeyResponseOutput) CryptoKey() pulumi.StringOutput {
+	return o.ApplyT(func(v KmsWrappedCryptoKeyResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// The wrapped data crypto key.
+func (o KmsWrappedCryptoKeyResponseOutput) WrappedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v KmsWrappedCryptoKeyResponse) string { return v.WrappedKey }).(pulumi.StringOutput)
 }
 
 // Specifies where to send notifications upon changes to a data store.
@@ -2875,6 +5045,286 @@ func (o PatientIdResponseArrayOutput) Index(i pulumi.IntInput) PatientIdResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PatientIdResponse {
 		return vs[0].([]PatientIdResponse)[vs[1].(int)]
 	}).(PatientIdResponseOutput)
+}
+
+// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+type RedactConfig struct {
+}
+
+// RedactConfigInput is an input type that accepts RedactConfigArgs and RedactConfigOutput values.
+// You can construct a concrete instance of `RedactConfigInput` via:
+//
+//	RedactConfigArgs{...}
+type RedactConfigInput interface {
+	pulumi.Input
+
+	ToRedactConfigOutput() RedactConfigOutput
+	ToRedactConfigOutputWithContext(context.Context) RedactConfigOutput
+}
+
+// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+type RedactConfigArgs struct {
+}
+
+func (RedactConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedactConfig)(nil)).Elem()
+}
+
+func (i RedactConfigArgs) ToRedactConfigOutput() RedactConfigOutput {
+	return i.ToRedactConfigOutputWithContext(context.Background())
+}
+
+func (i RedactConfigArgs) ToRedactConfigOutputWithContext(ctx context.Context) RedactConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedactConfigOutput)
+}
+
+func (i RedactConfigArgs) ToRedactConfigPtrOutput() RedactConfigPtrOutput {
+	return i.ToRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RedactConfigArgs) ToRedactConfigPtrOutputWithContext(ctx context.Context) RedactConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedactConfigOutput).ToRedactConfigPtrOutputWithContext(ctx)
+}
+
+// RedactConfigPtrInput is an input type that accepts RedactConfigArgs, RedactConfigPtr and RedactConfigPtrOutput values.
+// You can construct a concrete instance of `RedactConfigPtrInput` via:
+//
+//	        RedactConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RedactConfigPtrInput interface {
+	pulumi.Input
+
+	ToRedactConfigPtrOutput() RedactConfigPtrOutput
+	ToRedactConfigPtrOutputWithContext(context.Context) RedactConfigPtrOutput
+}
+
+type redactConfigPtrType RedactConfigArgs
+
+func RedactConfigPtr(v *RedactConfigArgs) RedactConfigPtrInput {
+	return (*redactConfigPtrType)(v)
+}
+
+func (*redactConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedactConfig)(nil)).Elem()
+}
+
+func (i *redactConfigPtrType) ToRedactConfigPtrOutput() RedactConfigPtrOutput {
+	return i.ToRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *redactConfigPtrType) ToRedactConfigPtrOutputWithContext(ctx context.Context) RedactConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedactConfigPtrOutput)
+}
+
+// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+type RedactConfigOutput struct{ *pulumi.OutputState }
+
+func (RedactConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedactConfig)(nil)).Elem()
+}
+
+func (o RedactConfigOutput) ToRedactConfigOutput() RedactConfigOutput {
+	return o
+}
+
+func (o RedactConfigOutput) ToRedactConfigOutputWithContext(ctx context.Context) RedactConfigOutput {
+	return o
+}
+
+func (o RedactConfigOutput) ToRedactConfigPtrOutput() RedactConfigPtrOutput {
+	return o.ToRedactConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RedactConfigOutput) ToRedactConfigPtrOutputWithContext(ctx context.Context) RedactConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RedactConfig) *RedactConfig {
+		return &v
+	}).(RedactConfigPtrOutput)
+}
+
+type RedactConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RedactConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedactConfig)(nil)).Elem()
+}
+
+func (o RedactConfigPtrOutput) ToRedactConfigPtrOutput() RedactConfigPtrOutput {
+	return o
+}
+
+func (o RedactConfigPtrOutput) ToRedactConfigPtrOutputWithContext(ctx context.Context) RedactConfigPtrOutput {
+	return o
+}
+
+func (o RedactConfigPtrOutput) Elem() RedactConfigOutput {
+	return o.ApplyT(func(v *RedactConfig) RedactConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RedactConfig
+		return ret
+	}).(RedactConfigOutput)
+}
+
+// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+type RedactConfigResponse struct {
+}
+
+// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
+type RedactConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RedactConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedactConfigResponse)(nil)).Elem()
+}
+
+func (o RedactConfigResponseOutput) ToRedactConfigResponseOutput() RedactConfigResponseOutput {
+	return o
+}
+
+func (o RedactConfigResponseOutput) ToRedactConfigResponseOutputWithContext(ctx context.Context) RedactConfigResponseOutput {
+	return o
+}
+
+// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+type ReplaceWithInfoTypeConfig struct {
+}
+
+// ReplaceWithInfoTypeConfigInput is an input type that accepts ReplaceWithInfoTypeConfigArgs and ReplaceWithInfoTypeConfigOutput values.
+// You can construct a concrete instance of `ReplaceWithInfoTypeConfigInput` via:
+//
+//	ReplaceWithInfoTypeConfigArgs{...}
+type ReplaceWithInfoTypeConfigInput interface {
+	pulumi.Input
+
+	ToReplaceWithInfoTypeConfigOutput() ReplaceWithInfoTypeConfigOutput
+	ToReplaceWithInfoTypeConfigOutputWithContext(context.Context) ReplaceWithInfoTypeConfigOutput
+}
+
+// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+type ReplaceWithInfoTypeConfigArgs struct {
+}
+
+func (ReplaceWithInfoTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplaceWithInfoTypeConfig)(nil)).Elem()
+}
+
+func (i ReplaceWithInfoTypeConfigArgs) ToReplaceWithInfoTypeConfigOutput() ReplaceWithInfoTypeConfigOutput {
+	return i.ToReplaceWithInfoTypeConfigOutputWithContext(context.Background())
+}
+
+func (i ReplaceWithInfoTypeConfigArgs) ToReplaceWithInfoTypeConfigOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplaceWithInfoTypeConfigOutput)
+}
+
+func (i ReplaceWithInfoTypeConfigArgs) ToReplaceWithInfoTypeConfigPtrOutput() ReplaceWithInfoTypeConfigPtrOutput {
+	return i.ToReplaceWithInfoTypeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ReplaceWithInfoTypeConfigArgs) ToReplaceWithInfoTypeConfigPtrOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplaceWithInfoTypeConfigOutput).ToReplaceWithInfoTypeConfigPtrOutputWithContext(ctx)
+}
+
+// ReplaceWithInfoTypeConfigPtrInput is an input type that accepts ReplaceWithInfoTypeConfigArgs, ReplaceWithInfoTypeConfigPtr and ReplaceWithInfoTypeConfigPtrOutput values.
+// You can construct a concrete instance of `ReplaceWithInfoTypeConfigPtrInput` via:
+//
+//	        ReplaceWithInfoTypeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReplaceWithInfoTypeConfigPtrInput interface {
+	pulumi.Input
+
+	ToReplaceWithInfoTypeConfigPtrOutput() ReplaceWithInfoTypeConfigPtrOutput
+	ToReplaceWithInfoTypeConfigPtrOutputWithContext(context.Context) ReplaceWithInfoTypeConfigPtrOutput
+}
+
+type replaceWithInfoTypeConfigPtrType ReplaceWithInfoTypeConfigArgs
+
+func ReplaceWithInfoTypeConfigPtr(v *ReplaceWithInfoTypeConfigArgs) ReplaceWithInfoTypeConfigPtrInput {
+	return (*replaceWithInfoTypeConfigPtrType)(v)
+}
+
+func (*replaceWithInfoTypeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplaceWithInfoTypeConfig)(nil)).Elem()
+}
+
+func (i *replaceWithInfoTypeConfigPtrType) ToReplaceWithInfoTypeConfigPtrOutput() ReplaceWithInfoTypeConfigPtrOutput {
+	return i.ToReplaceWithInfoTypeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *replaceWithInfoTypeConfigPtrType) ToReplaceWithInfoTypeConfigPtrOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplaceWithInfoTypeConfigPtrOutput)
+}
+
+// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+type ReplaceWithInfoTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (ReplaceWithInfoTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplaceWithInfoTypeConfig)(nil)).Elem()
+}
+
+func (o ReplaceWithInfoTypeConfigOutput) ToReplaceWithInfoTypeConfigOutput() ReplaceWithInfoTypeConfigOutput {
+	return o
+}
+
+func (o ReplaceWithInfoTypeConfigOutput) ToReplaceWithInfoTypeConfigOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigOutput {
+	return o
+}
+
+func (o ReplaceWithInfoTypeConfigOutput) ToReplaceWithInfoTypeConfigPtrOutput() ReplaceWithInfoTypeConfigPtrOutput {
+	return o.ToReplaceWithInfoTypeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ReplaceWithInfoTypeConfigOutput) ToReplaceWithInfoTypeConfigPtrOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplaceWithInfoTypeConfig) *ReplaceWithInfoTypeConfig {
+		return &v
+	}).(ReplaceWithInfoTypeConfigPtrOutput)
+}
+
+type ReplaceWithInfoTypeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ReplaceWithInfoTypeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplaceWithInfoTypeConfig)(nil)).Elem()
+}
+
+func (o ReplaceWithInfoTypeConfigPtrOutput) ToReplaceWithInfoTypeConfigPtrOutput() ReplaceWithInfoTypeConfigPtrOutput {
+	return o
+}
+
+func (o ReplaceWithInfoTypeConfigPtrOutput) ToReplaceWithInfoTypeConfigPtrOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigPtrOutput {
+	return o
+}
+
+func (o ReplaceWithInfoTypeConfigPtrOutput) Elem() ReplaceWithInfoTypeConfigOutput {
+	return o.ApplyT(func(v *ReplaceWithInfoTypeConfig) ReplaceWithInfoTypeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ReplaceWithInfoTypeConfig
+		return ret
+	}).(ReplaceWithInfoTypeConfigOutput)
+}
+
+// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+type ReplaceWithInfoTypeConfigResponse struct {
+}
+
+// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+type ReplaceWithInfoTypeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplaceWithInfoTypeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplaceWithInfoTypeConfigResponse)(nil)).Elem()
+}
+
+func (o ReplaceWithInfoTypeConfigResponseOutput) ToReplaceWithInfoTypeConfigResponseOutput() ReplaceWithInfoTypeConfigResponseOutput {
+	return o
+}
+
+func (o ReplaceWithInfoTypeConfigResponseOutput) ToReplaceWithInfoTypeConfigResponseOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigResponseOutput {
+	return o
 }
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
@@ -3839,6 +6289,8 @@ func (o SignatureResponseOutput) UserId() pulumi.StringOutput {
 type StreamConfig struct {
 	// The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
 	BigqueryDestination *GoogleCloudHealthcareV1FhirBigQueryDestination `pulumi:"bigqueryDestination"`
+	// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	DeidentifiedStoreDestination *DeidentifiedStoreDestination `pulumi:"deidentifiedStoreDestination"`
 	// Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
@@ -3858,6 +6310,8 @@ type StreamConfigInput interface {
 type StreamConfigArgs struct {
 	// The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
 	BigqueryDestination GoogleCloudHealthcareV1FhirBigQueryDestinationPtrInput `pulumi:"bigqueryDestination"`
+	// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	DeidentifiedStoreDestination DeidentifiedStoreDestinationPtrInput `pulumi:"deidentifiedStoreDestination"`
 	// Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
@@ -3919,6 +6373,11 @@ func (o StreamConfigOutput) BigqueryDestination() GoogleCloudHealthcareV1FhirBig
 	return o.ApplyT(func(v StreamConfig) *GoogleCloudHealthcareV1FhirBigQueryDestination { return v.BigqueryDestination }).(GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput)
 }
 
+// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+func (o StreamConfigOutput) DeidentifiedStoreDestination() DeidentifiedStoreDestinationPtrOutput {
+	return o.ApplyT(func(v StreamConfig) *DeidentifiedStoreDestination { return v.DeidentifiedStoreDestination }).(DeidentifiedStoreDestinationPtrOutput)
+}
+
 // Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 func (o StreamConfigOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StreamConfig) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
@@ -3948,6 +6407,8 @@ func (o StreamConfigArrayOutput) Index(i pulumi.IntInput) StreamConfigOutput {
 type StreamConfigResponse struct {
 	// The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
 	BigqueryDestination GoogleCloudHealthcareV1FhirBigQueryDestinationResponse `pulumi:"bigqueryDestination"`
+	// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+	DeidentifiedStoreDestination DeidentifiedStoreDestinationResponse `pulumi:"deidentifiedStoreDestination"`
 	// Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
@@ -3974,6 +6435,13 @@ func (o StreamConfigResponseOutput) BigqueryDestination() GoogleCloudHealthcareV
 	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput)
 }
 
+// The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+func (o StreamConfigResponseOutput) DeidentifiedStoreDestination() DeidentifiedStoreDestinationResponseOutput {
+	return o.ApplyT(func(v StreamConfigResponse) DeidentifiedStoreDestinationResponse {
+		return v.DeidentifiedStoreDestination
+	}).(DeidentifiedStoreDestinationResponseOutput)
+}
+
 // Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
 func (o StreamConfigResponseOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StreamConfigResponse) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
@@ -3997,6 +6465,333 @@ func (o StreamConfigResponseArrayOutput) Index(i pulumi.IntInput) StreamConfigRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamConfigResponse {
 		return vs[0].([]StreamConfigResponse)[vs[1].(int)]
 	}).(StreamConfigResponseOutput)
+}
+
+// List of tags to be filtered.
+type TagFilterList struct {
+	// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+	Tags []string `pulumi:"tags"`
+}
+
+// TagFilterListInput is an input type that accepts TagFilterListArgs and TagFilterListOutput values.
+// You can construct a concrete instance of `TagFilterListInput` via:
+//
+//	TagFilterListArgs{...}
+type TagFilterListInput interface {
+	pulumi.Input
+
+	ToTagFilterListOutput() TagFilterListOutput
+	ToTagFilterListOutputWithContext(context.Context) TagFilterListOutput
+}
+
+// List of tags to be filtered.
+type TagFilterListArgs struct {
+	// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (TagFilterListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagFilterList)(nil)).Elem()
+}
+
+func (i TagFilterListArgs) ToTagFilterListOutput() TagFilterListOutput {
+	return i.ToTagFilterListOutputWithContext(context.Background())
+}
+
+func (i TagFilterListArgs) ToTagFilterListOutputWithContext(ctx context.Context) TagFilterListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagFilterListOutput)
+}
+
+func (i TagFilterListArgs) ToTagFilterListPtrOutput() TagFilterListPtrOutput {
+	return i.ToTagFilterListPtrOutputWithContext(context.Background())
+}
+
+func (i TagFilterListArgs) ToTagFilterListPtrOutputWithContext(ctx context.Context) TagFilterListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagFilterListOutput).ToTagFilterListPtrOutputWithContext(ctx)
+}
+
+// TagFilterListPtrInput is an input type that accepts TagFilterListArgs, TagFilterListPtr and TagFilterListPtrOutput values.
+// You can construct a concrete instance of `TagFilterListPtrInput` via:
+//
+//	        TagFilterListArgs{...}
+//
+//	or:
+//
+//	        nil
+type TagFilterListPtrInput interface {
+	pulumi.Input
+
+	ToTagFilterListPtrOutput() TagFilterListPtrOutput
+	ToTagFilterListPtrOutputWithContext(context.Context) TagFilterListPtrOutput
+}
+
+type tagFilterListPtrType TagFilterListArgs
+
+func TagFilterListPtr(v *TagFilterListArgs) TagFilterListPtrInput {
+	return (*tagFilterListPtrType)(v)
+}
+
+func (*tagFilterListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagFilterList)(nil)).Elem()
+}
+
+func (i *tagFilterListPtrType) ToTagFilterListPtrOutput() TagFilterListPtrOutput {
+	return i.ToTagFilterListPtrOutputWithContext(context.Background())
+}
+
+func (i *tagFilterListPtrType) ToTagFilterListPtrOutputWithContext(ctx context.Context) TagFilterListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagFilterListPtrOutput)
+}
+
+// List of tags to be filtered.
+type TagFilterListOutput struct{ *pulumi.OutputState }
+
+func (TagFilterListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagFilterList)(nil)).Elem()
+}
+
+func (o TagFilterListOutput) ToTagFilterListOutput() TagFilterListOutput {
+	return o
+}
+
+func (o TagFilterListOutput) ToTagFilterListOutputWithContext(ctx context.Context) TagFilterListOutput {
+	return o
+}
+
+func (o TagFilterListOutput) ToTagFilterListPtrOutput() TagFilterListPtrOutput {
+	return o.ToTagFilterListPtrOutputWithContext(context.Background())
+}
+
+func (o TagFilterListOutput) ToTagFilterListPtrOutputWithContext(ctx context.Context) TagFilterListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagFilterList) *TagFilterList {
+		return &v
+	}).(TagFilterListPtrOutput)
+}
+
+// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+func (o TagFilterListOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TagFilterList) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type TagFilterListPtrOutput struct{ *pulumi.OutputState }
+
+func (TagFilterListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagFilterList)(nil)).Elem()
+}
+
+func (o TagFilterListPtrOutput) ToTagFilterListPtrOutput() TagFilterListPtrOutput {
+	return o
+}
+
+func (o TagFilterListPtrOutput) ToTagFilterListPtrOutputWithContext(ctx context.Context) TagFilterListPtrOutput {
+	return o
+}
+
+func (o TagFilterListPtrOutput) Elem() TagFilterListOutput {
+	return o.ApplyT(func(v *TagFilterList) TagFilterList {
+		if v != nil {
+			return *v
+		}
+		var ret TagFilterList
+		return ret
+	}).(TagFilterListOutput)
+}
+
+// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+func (o TagFilterListPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TagFilterList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of tags to be filtered.
+type TagFilterListResponse struct {
+	// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+	Tags []string `pulumi:"tags"`
+}
+
+// List of tags to be filtered.
+type TagFilterListResponseOutput struct{ *pulumi.OutputState }
+
+func (TagFilterListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagFilterListResponse)(nil)).Elem()
+}
+
+func (o TagFilterListResponseOutput) ToTagFilterListResponseOutput() TagFilterListResponseOutput {
+	return o
+}
+
+func (o TagFilterListResponseOutput) ToTagFilterListResponseOutputWithContext(ctx context.Context) TagFilterListResponseOutput {
+	return o
+}
+
+// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010".
+func (o TagFilterListResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TagFilterListResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type TextConfig struct {
+	// The transformations to apply to the detected data.
+	Transformations []InfoTypeTransformation `pulumi:"transformations"`
+}
+
+// TextConfigInput is an input type that accepts TextConfigArgs and TextConfigOutput values.
+// You can construct a concrete instance of `TextConfigInput` via:
+//
+//	TextConfigArgs{...}
+type TextConfigInput interface {
+	pulumi.Input
+
+	ToTextConfigOutput() TextConfigOutput
+	ToTextConfigOutputWithContext(context.Context) TextConfigOutput
+}
+
+type TextConfigArgs struct {
+	// The transformations to apply to the detected data.
+	Transformations InfoTypeTransformationArrayInput `pulumi:"transformations"`
+}
+
+func (TextConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfig)(nil)).Elem()
+}
+
+func (i TextConfigArgs) ToTextConfigOutput() TextConfigOutput {
+	return i.ToTextConfigOutputWithContext(context.Background())
+}
+
+func (i TextConfigArgs) ToTextConfigOutputWithContext(ctx context.Context) TextConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigOutput)
+}
+
+func (i TextConfigArgs) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return i.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TextConfigArgs) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigOutput).ToTextConfigPtrOutputWithContext(ctx)
+}
+
+// TextConfigPtrInput is an input type that accepts TextConfigArgs, TextConfigPtr and TextConfigPtrOutput values.
+// You can construct a concrete instance of `TextConfigPtrInput` via:
+//
+//	        TextConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TextConfigPtrInput interface {
+	pulumi.Input
+
+	ToTextConfigPtrOutput() TextConfigPtrOutput
+	ToTextConfigPtrOutputWithContext(context.Context) TextConfigPtrOutput
+}
+
+type textConfigPtrType TextConfigArgs
+
+func TextConfigPtr(v *TextConfigArgs) TextConfigPtrInput {
+	return (*textConfigPtrType)(v)
+}
+
+func (*textConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextConfig)(nil)).Elem()
+}
+
+func (i *textConfigPtrType) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return i.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *textConfigPtrType) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigPtrOutput)
+}
+
+type TextConfigOutput struct{ *pulumi.OutputState }
+
+func (TextConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfig)(nil)).Elem()
+}
+
+func (o TextConfigOutput) ToTextConfigOutput() TextConfigOutput {
+	return o
+}
+
+func (o TextConfigOutput) ToTextConfigOutputWithContext(ctx context.Context) TextConfigOutput {
+	return o
+}
+
+func (o TextConfigOutput) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return o.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextConfig) *TextConfig {
+		return &v
+	}).(TextConfigPtrOutput)
+}
+
+// The transformations to apply to the detected data.
+func (o TextConfigOutput) Transformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v TextConfig) []InfoTypeTransformation { return v.Transformations }).(InfoTypeTransformationArrayOutput)
+}
+
+type TextConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TextConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextConfig)(nil)).Elem()
+}
+
+func (o TextConfigPtrOutput) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return o
+}
+
+func (o TextConfigPtrOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return o
+}
+
+func (o TextConfigPtrOutput) Elem() TextConfigOutput {
+	return o.ApplyT(func(v *TextConfig) TextConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TextConfig
+		return ret
+	}).(TextConfigOutput)
+}
+
+// The transformations to apply to the detected data.
+func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v *TextConfig) []InfoTypeTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.Transformations
+	}).(InfoTypeTransformationArrayOutput)
+}
+
+type TextConfigResponse struct {
+	// The transformations to apply to the detected data.
+	Transformations []InfoTypeTransformationResponse `pulumi:"transformations"`
+}
+
+type TextConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (TextConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfigResponse)(nil)).Elem()
+}
+
+func (o TextConfigResponseOutput) ToTextConfigResponseOutput() TextConfigResponseOutput {
+	return o
+}
+
+func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx context.Context) TextConfigResponseOutput {
+	return o
+}
+
+// The transformations to apply to the detected data.
+func (o TextConfigResponseOutput) Transformations() InfoTypeTransformationResponseArrayOutput {
+	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.Transformations }).(InfoTypeTransformationResponseArrayOutput)
 }
 
 // A type definition for some HL7v2 type (incl. Segments and Datatypes).
@@ -4618,10 +7413,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskConfigInput)(nil)).Elem(), CharacterMaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskConfigPtrInput)(nil)).Elem(), CharacterMaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashConfigInput)(nil)).Elem(), CryptoHashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashConfigPtrInput)(nil)).Elem(), CryptoHashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftConfigInput)(nil)).Elem(), DateShiftConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftConfigPtrInput)(nil)).Elem(), DateShiftConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifiedStoreDestinationInput)(nil)).Elem(), DeidentifiedStoreDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifiedStoreDestinationPtrInput)(nil)).Elem(), DeidentifiedStoreDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyConfigInput)(nil)).Elem(), DeidentifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyConfigPtrInput)(nil)).Elem(), DeidentifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigInput)(nil)).Elem(), DicomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigPtrInput)(nil)).Elem(), DicomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigInput)(nil)).Elem(), FhirConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigPtrInput)(nil)).Elem(), FhirConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataInput)(nil)).Elem(), FieldMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataArrayInput)(nil)).Elem(), FieldMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1ConsentPolicyArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1ConsentPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
@@ -4635,12 +7446,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageArrayInput)(nil)).Elem(), ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigInput)(nil)).Elem(), ImageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigPtrInput)(nil)).Elem(), ImageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfoTypeTransformationInput)(nil)).Elem(), InfoTypeTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfoTypeTransformationArrayInput)(nil)).Elem(), InfoTypeTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsWrappedCryptoKeyInput)(nil)).Elem(), KmsWrappedCryptoKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KmsWrappedCryptoKeyPtrInput)(nil)).Elem(), KmsWrappedCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigInput)(nil)).Elem(), ParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigPtrInput)(nil)).Elem(), ParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdInput)(nil)).Elem(), PatientIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdArrayInput)(nil)).Elem(), PatientIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedactConfigInput)(nil)).Elem(), RedactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedactConfigPtrInput)(nil)).Elem(), RedactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplaceWithInfoTypeConfigInput)(nil)).Elem(), ReplaceWithInfoTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplaceWithInfoTypeConfigPtrInput)(nil)).Elem(), ReplaceWithInfoTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigInput)(nil)).Elem(), SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigPtrInput)(nil)).Elem(), SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageInput)(nil)).Elem(), SchemaPackageArgs{})
@@ -4651,6 +7472,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SignaturePtrInput)(nil)).Elem(), SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigInput)(nil)).Elem(), StreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamConfigArrayInput)(nil)).Elem(), StreamConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagFilterListInput)(nil)).Elem(), TagFilterListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagFilterListPtrInput)(nil)).Elem(), TagFilterListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigInput)(nil)).Elem(), TextConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigPtrInput)(nil)).Elem(), TextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeInput)(nil)).Elem(), TypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeArrayInput)(nil)).Elem(), TypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigInput)(nil)).Elem(), ValidationConfigArgs{})
@@ -4673,11 +7498,36 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CharacterMaskConfigOutput{})
+	pulumi.RegisterOutputType(CharacterMaskConfigPtrOutput{})
+	pulumi.RegisterOutputType(CharacterMaskConfigResponseOutput{})
+	pulumi.RegisterOutputType(CryptoHashConfigOutput{})
+	pulumi.RegisterOutputType(CryptoHashConfigPtrOutput{})
+	pulumi.RegisterOutputType(CryptoHashConfigResponseOutput{})
+	pulumi.RegisterOutputType(DateShiftConfigOutput{})
+	pulumi.RegisterOutputType(DateShiftConfigPtrOutput{})
+	pulumi.RegisterOutputType(DateShiftConfigResponseOutput{})
+	pulumi.RegisterOutputType(DeidentifiedStoreDestinationOutput{})
+	pulumi.RegisterOutputType(DeidentifiedStoreDestinationPtrOutput{})
+	pulumi.RegisterOutputType(DeidentifiedStoreDestinationResponseOutput{})
+	pulumi.RegisterOutputType(DeidentifyConfigOutput{})
+	pulumi.RegisterOutputType(DeidentifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeidentifyConfigResponseOutput{})
+	pulumi.RegisterOutputType(DicomConfigOutput{})
+	pulumi.RegisterOutputType(DicomConfigPtrOutput{})
+	pulumi.RegisterOutputType(DicomConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FhirConfigOutput{})
+	pulumi.RegisterOutputType(FhirConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirConfigResponseOutput{})
 	pulumi.RegisterOutputType(FieldOutput{})
 	pulumi.RegisterOutputType(FieldArrayOutput{})
+	pulumi.RegisterOutputType(FieldMetadataOutput{})
+	pulumi.RegisterOutputType(FieldMetadataArrayOutput{})
+	pulumi.RegisterOutputType(FieldMetadataResponseOutput{})
+	pulumi.RegisterOutputType(FieldMetadataResponseArrayOutput{})
 	pulumi.RegisterOutputType(FieldResponseOutput{})
 	pulumi.RegisterOutputType(FieldResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1ConsentPolicyOutput{})
@@ -4702,8 +7552,18 @@ func init() {
 	pulumi.RegisterOutputType(ImageOutput{})
 	pulumi.RegisterOutputType(ImagePtrOutput{})
 	pulumi.RegisterOutputType(ImageArrayOutput{})
+	pulumi.RegisterOutputType(ImageConfigOutput{})
+	pulumi.RegisterOutputType(ImageConfigPtrOutput{})
+	pulumi.RegisterOutputType(ImageConfigResponseOutput{})
 	pulumi.RegisterOutputType(ImageResponseOutput{})
 	pulumi.RegisterOutputType(ImageResponseArrayOutput{})
+	pulumi.RegisterOutputType(InfoTypeTransformationOutput{})
+	pulumi.RegisterOutputType(InfoTypeTransformationArrayOutput{})
+	pulumi.RegisterOutputType(InfoTypeTransformationResponseOutput{})
+	pulumi.RegisterOutputType(InfoTypeTransformationResponseArrayOutput{})
+	pulumi.RegisterOutputType(KmsWrappedCryptoKeyOutput{})
+	pulumi.RegisterOutputType(KmsWrappedCryptoKeyPtrOutput{})
+	pulumi.RegisterOutputType(KmsWrappedCryptoKeyResponseOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
@@ -4715,6 +7575,12 @@ func init() {
 	pulumi.RegisterOutputType(PatientIdArrayOutput{})
 	pulumi.RegisterOutputType(PatientIdResponseOutput{})
 	pulumi.RegisterOutputType(PatientIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(RedactConfigOutput{})
+	pulumi.RegisterOutputType(RedactConfigPtrOutput{})
+	pulumi.RegisterOutputType(RedactConfigResponseOutput{})
+	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigOutput{})
+	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigResponseOutput{})
 	pulumi.RegisterOutputType(SchemaConfigOutput{})
 	pulumi.RegisterOutputType(SchemaConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigResponseOutput{})
@@ -4733,6 +7599,12 @@ func init() {
 	pulumi.RegisterOutputType(StreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(StreamConfigResponseOutput{})
 	pulumi.RegisterOutputType(StreamConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(TagFilterListOutput{})
+	pulumi.RegisterOutputType(TagFilterListPtrOutput{})
+	pulumi.RegisterOutputType(TagFilterListResponseOutput{})
+	pulumi.RegisterOutputType(TextConfigOutput{})
+	pulumi.RegisterOutputType(TextConfigPtrOutput{})
+	pulumi.RegisterOutputType(TextConfigResponseOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypeArrayOutput{})
 	pulumi.RegisterOutputType(TypeResponseOutput{})
