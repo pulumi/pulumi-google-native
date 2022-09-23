@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Redis.V1.Outputs
         /// <summary>
         /// Node identifying string. e.g. 'node-0', 'node-1'
         /// </summary>
-        public readonly string Id;
+        public readonly string NodeInfoId;
         /// <summary>
         /// Location of the node.
         /// </summary>
@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.Redis.V1.Outputs
 
         [OutputConstructor]
         private NodeInfoResponse(
-            string id,
+            string nodeInfoId,
 
             string zone)
         {
-            Id = id;
+            NodeInfoId = nodeInfoId;
             Zone = zone;
         }
     }

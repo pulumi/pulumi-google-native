@@ -33,13 +33,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly string Copyright;
         /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        public readonly string FileOccurrenceId;
+        /// <summary>
         /// This field contains the license information actually found in the file, if any
         /// </summary>
         public readonly ImmutableArray<string> FilesLicenseInfo;
-        /// <summary>
-        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         /// </summary>
@@ -59,9 +59,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string copyright,
 
-            ImmutableArray<string> filesLicenseInfo,
+            string fileOccurrenceId,
 
-            string id,
+            ImmutableArray<string> filesLicenseInfo,
 
             Outputs.LicenseResponse licenseConcluded,
 
@@ -71,8 +71,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Comment = comment;
             Contributors = contributors;
             Copyright = copyright;
+            FileOccurrenceId = fileOccurrenceId;
             FilesLicenseInfo = filesLicenseInfo;
-            Id = id;
             LicenseConcluded = licenseConcluded;
             Notice = notice;
         }

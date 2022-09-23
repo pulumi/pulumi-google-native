@@ -19,12 +19,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// id is the id of the slsa provenance builder
         /// </summary>
-        public readonly string Id;
+        public readonly string SlsaBuilderId;
 
         [OutputConstructor]
-        private SlsaBuilderResponse(string id)
+        private SlsaBuilderResponse(string slsaBuilderId)
         {
-            Id = id;
+            SlsaBuilderId = slsaBuilderId;
         }
     }
 }

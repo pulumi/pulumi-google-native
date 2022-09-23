@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly Outputs.SecretsResponse AvailableSecrets;
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        public readonly string BuildId;
+        /// <summary>
         /// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// </summary>
         public readonly string BuildTriggerId;
@@ -44,10 +48,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         /// </summary>
         public readonly string FinishTime;
-        /// <summary>
-        /// Unique identifier of the build.
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         /// </summary>
@@ -141,6 +141,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             Outputs.SecretsResponse availableSecrets,
 
+            string buildId,
+
             string buildTriggerId,
 
             string createTime,
@@ -148,8 +150,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Outputs.FailureInfoResponse failureInfo,
 
             string finishTime,
-
-            string id,
 
             ImmutableArray<string> images,
 
@@ -196,11 +196,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Approval = approval;
             Artifacts = artifacts;
             AvailableSecrets = availableSecrets;
+            BuildId = buildId;
             BuildTriggerId = buildTriggerId;
             CreateTime = createTime;
             FailureInfo = failureInfo;
             FinishTime = finishTime;
-            Id = id;
             Images = images;
             LogUrl = logUrl;
             LogsBucket = logsBucket;

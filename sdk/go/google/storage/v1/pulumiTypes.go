@@ -14,6 +14,8 @@ import (
 type BucketAccessControlType struct {
 	// The name of the bucket.
 	Bucket *string `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	BucketAccessControlId *string `pulumi:"bucketAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain *string `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -35,8 +37,6 @@ type BucketAccessControlType struct {
 	EntityId *string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag *string `pulumi:"etag"`
-	// The ID of the access-control entry.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -62,6 +62,8 @@ type BucketAccessControlTypeInput interface {
 type BucketAccessControlTypeArgs struct {
 	// The name of the bucket.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	BucketAccessControlId pulumi.StringPtrInput `pulumi:"bucketAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -83,8 +85,6 @@ type BucketAccessControlTypeArgs struct {
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag pulumi.StringPtrInput `pulumi:"etag"`
-	// The ID of the access-control entry.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -152,6 +152,11 @@ func (o BucketAccessControlTypeOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketAccessControlType) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the access-control entry.
+func (o BucketAccessControlTypeOutput) BucketAccessControlId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAccessControlType) *string { return v.BucketAccessControlId }).(pulumi.StringPtrOutput)
+}
+
 // The domain associated with the entity, if any.
 func (o BucketAccessControlTypeOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketAccessControlType) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -186,11 +191,6 @@ func (o BucketAccessControlTypeOutput) EntityId() pulumi.StringPtrOutput {
 // HTTP 1.1 Entity tag for the access-control entry.
 func (o BucketAccessControlTypeOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketAccessControlType) *string { return v.Etag }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the access-control entry.
-func (o BucketAccessControlTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketAccessControlType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
@@ -429,6 +429,8 @@ func (o BucketAccessControlProjectTeamResponseOutput) Team() pulumi.StringOutput
 type BucketAccessControlResponse struct {
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
+	// The ID of the access-control entry.
+	BucketAccessControlId string `pulumi:"bucketAccessControlId"`
 	// The domain associated with the entity, if any.
 	Domain string `pulumi:"domain"`
 	// The email address associated with the entity, if any.
@@ -450,8 +452,6 @@ type BucketAccessControlResponse struct {
 	EntityId string `pulumi:"entityId"`
 	// HTTP 1.1 Entity tag for the access-control entry.
 	Etag string `pulumi:"etag"`
-	// The ID of the access-control entry.
-	Id string `pulumi:"id"`
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
@@ -480,6 +480,11 @@ func (o BucketAccessControlResponseOutput) ToBucketAccessControlResponseOutputWi
 // The name of the bucket.
 func (o BucketAccessControlResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o BucketAccessControlResponseOutput) BucketAccessControlId() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.BucketAccessControlId }).(pulumi.StringOutput)
 }
 
 // The domain associated with the entity, if any.
@@ -516,11 +521,6 @@ func (o BucketAccessControlResponseOutput) EntityId() pulumi.StringOutput {
 // HTTP 1.1 Entity tag for the access-control entry.
 func (o BucketAccessControlResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Etag }).(pulumi.StringOutput)
-}
-
-// The ID of the access-control entry.
-func (o BucketAccessControlResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
@@ -5092,12 +5092,12 @@ type ObjectAccessControlType struct {
 	Etag *string `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation *string `pulumi:"generation"`
-	// The ID of the access-control entry.
-	Id *string `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
+	// The ID of the access-control entry.
+	ObjectAccessControlId *string `pulumi:"objectAccessControlId"`
 	// The project team associated with the entity, if any.
 	ProjectTeam *ObjectAccessControlProjectTeam `pulumi:"projectTeam"`
 	// The access permission for the entity.
@@ -5144,12 +5144,12 @@ type ObjectAccessControlTypeArgs struct {
 	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// The ID of the access-control entry.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput `pulumi:"object"`
+	// The ID of the access-control entry.
+	ObjectAccessControlId pulumi.StringPtrInput `pulumi:"objectAccessControlId"`
 	// The project team associated with the entity, if any.
 	ProjectTeam ObjectAccessControlProjectTeamPtrInput `pulumi:"projectTeam"`
 	// The access permission for the entity.
@@ -5256,11 +5256,6 @@ func (o ObjectAccessControlTypeOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlType) *string { return v.Generation }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the access-control entry.
-func (o ObjectAccessControlTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectAccessControlType) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 func (o ObjectAccessControlTypeOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlType) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -5269,6 +5264,11 @@ func (o ObjectAccessControlTypeOutput) Kind() pulumi.StringPtrOutput {
 // The name of the object, if applied to an object.
 func (o ObjectAccessControlTypeOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlType) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the access-control entry.
+func (o ObjectAccessControlTypeOutput) ObjectAccessControlId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ObjectAccessControlType) *string { return v.ObjectAccessControlId }).(pulumi.StringPtrOutput)
 }
 
 // The project team associated with the entity, if any.
@@ -5525,12 +5525,12 @@ type ObjectAccessControlResponse struct {
 	Etag string `pulumi:"etag"`
 	// The content generation of the object, if applied to an object.
 	Generation string `pulumi:"generation"`
-	// The ID of the access-control entry.
-	Id string `pulumi:"id"`
 	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 	Kind string `pulumi:"kind"`
 	// The name of the object, if applied to an object.
 	Object string `pulumi:"object"`
+	// The ID of the access-control entry.
+	ObjectAccessControlId string `pulumi:"objectAccessControlId"`
 	// The project team associated with the entity, if any.
 	ProjectTeam ObjectAccessControlProjectTeamResponse `pulumi:"projectTeam"`
 	// The access permission for the entity.
@@ -5600,11 +5600,6 @@ func (o ObjectAccessControlResponseOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-// The ID of the access-control entry.
-func (o ObjectAccessControlResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
 func (o ObjectAccessControlResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Kind }).(pulumi.StringOutput)
@@ -5613,6 +5608,11 @@ func (o ObjectAccessControlResponseOutput) Kind() pulumi.StringOutput {
 // The name of the object, if applied to an object.
 func (o ObjectAccessControlResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+// The ID of the access-control entry.
+func (o ObjectAccessControlResponseOutput) ObjectAccessControlId() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.ObjectAccessControlId }).(pulumi.StringOutput)
 }
 
 // The project team associated with the entity, if any.

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// <summary>
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
         /// </summary>
-        public readonly string Id;
+        public readonly string TimeZoneId;
         /// <summary>
         /// Optional. IANA Time Zone Database version number, e.g. "2019a".
         /// </summary>
@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 
         [OutputConstructor]
         private TimeZoneResponse(
-            string id,
+            string timeZoneId,
 
             string version)
         {
-            Id = id;
+            TimeZoneId = timeZoneId;
             Version = version;
         }
     }

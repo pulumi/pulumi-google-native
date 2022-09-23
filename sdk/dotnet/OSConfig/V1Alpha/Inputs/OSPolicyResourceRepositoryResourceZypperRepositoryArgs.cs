@@ -42,8 +42,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         /// <summary>
         /// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("oSPolicyResourceRepositoryResourceZypperRepositoryId", required: true)]
+        public Input<string> OSPolicyResourceRepositoryResourceZypperRepositoryId { get; set; } = null!;
 
         public OSPolicyResourceRepositoryResourceZypperRepositoryArgs()
         {

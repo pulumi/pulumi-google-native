@@ -13,12 +13,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     [OutputType]
     public sealed class BuilderConfigResponse
     {
-        public readonly string Id;
+        public readonly string BuilderConfigId;
 
         [OutputConstructor]
-        private BuilderConfigResponse(string id)
+        private BuilderConfigResponse(string builderConfigId)
         {
-            Id = id;
+            BuilderConfigId = builderConfigId;
         }
     }
 }

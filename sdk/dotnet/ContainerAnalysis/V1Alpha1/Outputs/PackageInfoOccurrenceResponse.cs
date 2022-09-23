@@ -29,13 +29,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly string HomePage;
         /// <summary>
-        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// package or alternative values, if the governing license cannot be determined
         /// </summary>
         public readonly Outputs.LicenseResponse LicenseConcluded;
+        /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        public readonly string PackageInfoOccurrenceId;
         /// <summary>
         /// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
         /// </summary>
@@ -65,9 +65,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string homePage,
 
-            string id,
-
             Outputs.LicenseResponse licenseConcluded,
+
+            string packageInfoOccurrenceId,
 
             string packageType,
 
@@ -82,8 +82,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Comment = comment;
             Filename = filename;
             HomePage = homePage;
-            Id = id;
             LicenseConcluded = licenseConcluded;
+            PackageInfoOccurrenceId = packageInfoOccurrenceId;
             PackageType = packageType;
             SourceInfo = sourceInfo;
             SummaryDescription = summaryDescription;

@@ -791,6 +791,8 @@ class OperationResponse(dict):
             suggest = "insert_time"
         elif key == "operationGroupId":
             suggest = "operation_group_id"
+        elif key == "operationId":
+            suggest = "operation_id"
         elif key == "operationType":
             suggest = "operation_type"
         elif key == "selfLink":
@@ -823,11 +825,11 @@ class OperationResponse(dict):
                  error: 'outputs.OperationErrorResponse',
                  http_error_message: str,
                  http_error_status_code: int,
-                 id: str,
                  insert_time: str,
                  kind: str,
                  name: str,
                  operation_group_id: str,
+                 operation_id: str,
                  operation_type: str,
                  progress: int,
                  region: str,
@@ -849,11 +851,11 @@ class OperationResponse(dict):
         :param 'OperationErrorResponse' error: If errors are generated during processing of the operation, this field will be populated.
         :param str http_error_message: If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param int http_error_status_code: If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
-        :param str id: The unique identifier for the operation. This identifier is defined by the server.
         :param str insert_time: The time that this operation was requested. This value is in RFC3339 text format.
         :param str kind: Type of the resource. Always `compute#operation` for Operation resources.
         :param str name: Name of the operation.
         :param str operation_group_id: An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
+        :param str operation_id: The unique identifier for the operation. This identifier is defined by the server.
         :param str operation_type: The type of operation, such as `insert`, `update`, or `delete`, and so on.
         :param int progress: An optional progress indicator that ranges from 0 to 100. There is no requirement that this be linear or support any granularity of operations. This should not be used to guess when the operation will be complete. This number should monotonically increase as the operation progresses.
         :param str region: The URL of the region where the operation resides. Only applicable when performing regional operations.
@@ -874,11 +876,11 @@ class OperationResponse(dict):
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "http_error_message", http_error_message)
         pulumi.set(__self__, "http_error_status_code", http_error_status_code)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "insert_time", insert_time)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operation_group_id", operation_group_id)
+        pulumi.set(__self__, "operation_id", operation_id)
         pulumi.set(__self__, "operation_type", operation_type)
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "region", region)
@@ -949,14 +951,6 @@ class OperationResponse(dict):
         return pulumi.get(self, "http_error_status_code")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique identifier for the operation. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @property
     @pulumi.getter(name="insertTime")
     def insert_time(self) -> str:
         """
@@ -987,6 +981,14 @@ class OperationResponse(dict):
         An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
         """
         return pulumi.get(self, "operation_group_id")
+
+    @property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> str:
+        """
+        The unique identifier for the operation. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "operation_id")
 
     @property
     @pulumi.getter(name="operationType")

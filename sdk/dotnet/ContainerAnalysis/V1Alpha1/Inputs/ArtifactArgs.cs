@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class ArtifactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+        /// </summary>
+        [Input("artifactId")]
+        public Input<string>? ArtifactId { get; set; }
+
+        /// <summary>
         /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
-
-        /// <summary>
-        /// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.

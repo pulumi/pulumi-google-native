@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> BuildOptions;
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        public readonly string BuildProvenanceId;
+        /// <summary>
         /// Version string of the builder at the time this build was executed.
         /// </summary>
         public readonly string BuilderVersion;
@@ -44,10 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// Time at which execution of the build was finished.
         /// </summary>
         public readonly string EndTime;
-        /// <summary>
-        /// Unique identifier of the build.
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// URI where any logs for this provenance were written.
         /// </summary>
@@ -73,6 +73,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         private BuildProvenanceResponse(
             ImmutableDictionary<string, string> buildOptions,
 
+            string buildProvenanceId,
+
             string builderVersion,
 
             ImmutableArray<Outputs.ArtifactResponse> builtArtifacts,
@@ -85,8 +87,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string endTime,
 
-            string id,
-
             string logsUri,
 
             string project,
@@ -98,13 +98,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
             string triggerId)
         {
             BuildOptions = buildOptions;
+            BuildProvenanceId = buildProvenanceId;
             BuilderVersion = builderVersion;
             BuiltArtifacts = builtArtifacts;
             Commands = commands;
             CreateTime = createTime;
             Creator = creator;
             EndTime = endTime;
-            Id = id;
             LogsUri = logsUri;
             Project = project;
             SourceProvenance = sourceProvenance;

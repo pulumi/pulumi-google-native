@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? Audiences { get; set; }
 
         /// <summary>
+        /// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+        /// </summary>
+        [Input("authProviderId")]
+        public Input<string>? AuthProviderId { get; set; }
+
+        /// <summary>
         /// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
         /// </summary>
         [Input("authorizationUrl")]
         public Input<string>? AuthorizationUrl { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com

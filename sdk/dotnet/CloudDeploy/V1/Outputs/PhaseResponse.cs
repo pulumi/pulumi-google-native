@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// <summary>
         /// The ID of the Phase.
         /// </summary>
-        public readonly string Id;
+        public readonly string PhaseId;
         /// <summary>
         /// Current state of the Phase.
         /// </summary>
@@ -33,12 +33,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private PhaseResponse(
             Outputs.DeploymentJobsResponse deploymentJobs,
 
-            string id,
+            string phaseId,
 
             string state)
         {
             DeploymentJobs = deploymentJobs;
-            Id = id;
+            PhaseId = phaseId;
             State = state;
         }
     }

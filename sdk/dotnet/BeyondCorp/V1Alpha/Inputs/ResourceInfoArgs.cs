@@ -15,12 +15,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// </summary>
     public sealed class ResourceInfoArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Unique Id for the resource.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
         [Input("resource")]
         private InputMap<string>? _resource;
 
@@ -32,6 +26,12 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
             get => _resource ?? (_resource = new InputMap<string>());
             set => _resource = value;
         }
+
+        /// <summary>
+        /// Unique Id for the resource.
+        /// </summary>
+        [Input("resourceInfoId", required: true)]
+        public Input<string> ResourceInfoId { get; set; } = null!;
 
         /// <summary>
         /// Overall health status. Overall status is derived based on the status of each sub level resources.

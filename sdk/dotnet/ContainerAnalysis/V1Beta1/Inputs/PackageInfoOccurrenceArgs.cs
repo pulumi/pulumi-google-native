@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? Filename { get; set; }
 
         /// <summary>
-        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// package or alternative values, if the governing license cannot be determined
         /// </summary>
         [Input("licenseConcluded")]
         public Input<Inputs.LicenseArgs>? LicenseConcluded { get; set; }
+
+        /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        [Input("packageInfoOccurrenceId")]
+        public Input<string>? PackageInfoOccurrenceId { get; set; }
 
         /// <summary>
         /// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package

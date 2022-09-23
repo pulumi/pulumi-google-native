@@ -364,10 +364,10 @@ func (o AnalysisCompletedResponseOutput) AnalysisType() pulumi.StringArrayOutput
 
 // Artifact describes a build product.
 type Artifact struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId *string `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum *string `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id *string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -385,10 +385,10 @@ type ArtifactInput interface {
 
 // Artifact describes a build product.
 type ArtifactArgs struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
@@ -445,14 +445,14 @@ func (o ArtifactOutput) ToArtifactOutputWithContext(ctx context.Context) Artifac
 	return o
 }
 
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Artifact) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Artifact) *string { return v.Checksum }).(pulumi.StringPtrOutput)
-}
-
-// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-func (o ArtifactOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Artifact) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -642,10 +642,10 @@ func (o ArtifactHashesResponseOutput) Sha256() pulumi.StringOutput {
 
 // Artifact describes a build product.
 type ArtifactResponse struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId string `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -665,14 +665,14 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 	return o
 }
 
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-func (o ArtifactResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -1726,6 +1726,8 @@ func (o BuildPtrOutput) Signature() BuildSignaturePtrOutput {
 type BuildProvenance struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions map[string]string `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId string `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion *string `pulumi:"builderVersion"`
 	// Output of the build.
@@ -1738,8 +1740,6 @@ type BuildProvenance struct {
 	Creator *string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime *string `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri *string `pulumi:"logsUri"`
 	// ID of the project.
@@ -1767,6 +1767,8 @@ type BuildProvenanceInput interface {
 type BuildProvenanceArgs struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions pulumi.StringMapInput `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId pulumi.StringInput `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion pulumi.StringPtrInput `pulumi:"builderVersion"`
 	// Output of the build.
@@ -1779,8 +1781,6 @@ type BuildProvenanceArgs struct {
 	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id pulumi.StringInput `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri pulumi.StringPtrInput `pulumi:"logsUri"`
 	// ID of the project.
@@ -1876,6 +1876,11 @@ func (o BuildProvenanceOutput) BuildOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildProvenance) map[string]string { return v.BuildOptions }).(pulumi.StringMapOutput)
 }
 
+// Unique identifier of the build.
+func (o BuildProvenanceOutput) BuildProvenanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenance) string { return v.BuildProvenanceId }).(pulumi.StringOutput)
+}
+
 // Version string of the builder at the time this build was executed.
 func (o BuildProvenanceOutput) BuilderVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildProvenance) *string { return v.BuilderVersion }).(pulumi.StringPtrOutput)
@@ -1904,11 +1909,6 @@ func (o BuildProvenanceOutput) Creator() pulumi.StringPtrOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildProvenance) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the build.
-func (o BuildProvenanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildProvenance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -1968,6 +1968,16 @@ func (o BuildProvenancePtrOutput) BuildOptions() pulumi.StringMapOutput {
 		}
 		return v.BuildOptions
 	}).(pulumi.StringMapOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildProvenancePtrOutput) BuildProvenanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildProvenanceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Version string of the builder at the time this build was executed.
@@ -2030,16 +2040,6 @@ func (o BuildProvenancePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the build.
-func (o BuildProvenancePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenance) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // URI where any logs for this provenance were written.
 func (o BuildProvenancePtrOutput) LogsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildProvenance) *string {
@@ -2094,6 +2094,8 @@ func (o BuildProvenancePtrOutput) TriggerId() pulumi.StringPtrOutput {
 type BuildProvenanceResponse struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions map[string]string `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId string `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion string `pulumi:"builderVersion"`
 	// Output of the build.
@@ -2106,8 +2108,6 @@ type BuildProvenanceResponse struct {
 	Creator string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime string `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri string `pulumi:"logsUri"`
 	// ID of the project.
@@ -2140,6 +2140,11 @@ func (o BuildProvenanceResponseOutput) BuildOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) map[string]string { return v.BuildOptions }).(pulumi.StringMapOutput)
 }
 
+// Unique identifier of the build.
+func (o BuildProvenanceResponseOutput) BuildProvenanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.BuildProvenanceId }).(pulumi.StringOutput)
+}
+
 // Version string of the builder at the time this build was executed.
 func (o BuildProvenanceResponseOutput) BuilderVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
@@ -2168,11 +2173,6 @@ func (o BuildProvenanceResponseOutput) Creator() pulumi.StringOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.EndTime }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the build.
-func (o BuildProvenanceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -3671,12 +3671,12 @@ func (o CloudRepoSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 type Command struct {
 	// Command-line arguments used when executing this command.
 	Args []string `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId *string `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir *string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id *string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3698,12 +3698,12 @@ type CommandInput interface {
 type CommandArgs struct {
 	// Command-line arguments used when executing this command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId pulumi.StringPtrInput `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3767,6 +3767,11 @@ func (o CommandOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Command) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Command) *string { return v.CommandId }).(pulumi.StringPtrOutput)
+}
+
 // Working directory (relative to project source root) used when running this command.
 func (o CommandOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Command) *string { return v.Dir }).(pulumi.StringPtrOutput)
@@ -3775,11 +3780,6 @@ func (o CommandOutput) Dir() pulumi.StringPtrOutput {
 // Environment variables set before running this command.
 func (o CommandOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Command) []string { return v.Env }).(pulumi.StringArrayOutput)
-}
-
-// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-func (o CommandOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Command) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -3816,12 +3816,12 @@ func (o CommandArrayOutput) Index(i pulumi.IntInput) CommandOutput {
 type CommandResponse struct {
 	// Command-line arguments used when executing this command.
 	Args []string `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId string `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3848,6 +3848,11 @@ func (o CommandResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandResponseOutput) CommandId() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.CommandId }).(pulumi.StringOutput)
+}
+
 // Working directory (relative to project source root) used when running this command.
 func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandResponse) string { return v.Dir }).(pulumi.StringOutput)
@@ -3856,11 +3861,6 @@ func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 // Environment variables set before running this command.
 func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
-}
-
-// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-func (o CommandResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v CommandResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -6114,10 +6114,10 @@ type DocumentOccurrence struct {
 	Creators []string `pulumi:"creators"`
 	// A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
 	DocumentComment *string `pulumi:"documentComment"`
+	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+	DocumentOccurrenceId *string `pulumi:"documentOccurrenceId"`
 	// Identify any external SPDX documents referenced within this SPDX document
 	ExternalDocumentRefs []string `pulumi:"externalDocumentRefs"`
-	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-	Id *string `pulumi:"id"`
 	// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
 	LicenseListVersion *string `pulumi:"licenseListVersion"`
 	// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
@@ -6147,10 +6147,10 @@ type DocumentOccurrenceArgs struct {
 	Creators pulumi.StringArrayInput `pulumi:"creators"`
 	// A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
 	DocumentComment pulumi.StringPtrInput `pulumi:"documentComment"`
+	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+	DocumentOccurrenceId pulumi.StringPtrInput `pulumi:"documentOccurrenceId"`
 	// Identify any external SPDX documents referenced within this SPDX document
 	ExternalDocumentRefs pulumi.StringArrayInput `pulumi:"externalDocumentRefs"`
-	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
 	LicenseListVersion pulumi.StringPtrInput `pulumi:"licenseListVersion"`
 	// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
@@ -6257,14 +6257,14 @@ func (o DocumentOccurrenceOutput) DocumentComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentOccurrence) *string { return v.DocumentComment }).(pulumi.StringPtrOutput)
 }
 
+// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+func (o DocumentOccurrenceOutput) DocumentOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentOccurrence) *string { return v.DocumentOccurrenceId }).(pulumi.StringPtrOutput)
+}
+
 // Identify any external SPDX documents referenced within this SPDX document
 func (o DocumentOccurrenceOutput) ExternalDocumentRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DocumentOccurrence) []string { return v.ExternalDocumentRefs }).(pulumi.StringArrayOutput)
-}
-
-// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-func (o DocumentOccurrenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DocumentOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
@@ -6346,6 +6346,16 @@ func (o DocumentOccurrencePtrOutput) DocumentComment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+func (o DocumentOccurrencePtrOutput) DocumentOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentOccurrenceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identify any external SPDX documents referenced within this SPDX document
 func (o DocumentOccurrencePtrOutput) ExternalDocumentRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DocumentOccurrence) []string {
@@ -6354,16 +6364,6 @@ func (o DocumentOccurrencePtrOutput) ExternalDocumentRefs() pulumi.StringArrayOu
 		}
 		return v.ExternalDocumentRefs
 	}).(pulumi.StringArrayOutput)
-}
-
-// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-func (o DocumentOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DocumentOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
 }
 
 // A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
@@ -6406,10 +6406,10 @@ type DocumentOccurrenceResponse struct {
 	Creators []string `pulumi:"creators"`
 	// A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
 	DocumentComment string `pulumi:"documentComment"`
+	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+	DocumentOccurrenceId string `pulumi:"documentOccurrenceId"`
 	// Identify any external SPDX documents referenced within this SPDX document
 	ExternalDocumentRefs []string `pulumi:"externalDocumentRefs"`
-	// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-	Id string `pulumi:"id"`
 	// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
 	LicenseListVersion string `pulumi:"licenseListVersion"`
 	// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
@@ -6453,14 +6453,14 @@ func (o DocumentOccurrenceResponseOutput) DocumentComment() pulumi.StringOutput 
 	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.DocumentComment }).(pulumi.StringOutput)
 }
 
+// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+func (o DocumentOccurrenceResponseOutput) DocumentOccurrenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.DocumentOccurrenceId }).(pulumi.StringOutput)
+}
+
 // Identify any external SPDX documents referenced within this SPDX document
 func (o DocumentOccurrenceResponseOutput) ExternalDocumentRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DocumentOccurrenceResponse) []string { return v.ExternalDocumentRefs }).(pulumi.StringArrayOutput)
-}
-
-// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-func (o DocumentOccurrenceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
@@ -7651,10 +7651,10 @@ type FileOccurrence struct {
 	Contributors []string `pulumi:"contributors"`
 	// Identify the copyright holder of the file, as well as any dates present
 	Copyright *string `pulumi:"copyright"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	FileOccurrenceId *string `pulumi:"fileOccurrenceId"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id *string `pulumi:"id"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
 	LicenseConcluded *License `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -7682,10 +7682,10 @@ type FileOccurrenceArgs struct {
 	Contributors pulumi.StringArrayInput `pulumi:"contributors"`
 	// Identify the copyright holder of the file, as well as any dates present
 	Copyright pulumi.StringPtrInput `pulumi:"copyright"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	FileOccurrenceId pulumi.StringPtrInput `pulumi:"fileOccurrenceId"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo pulumi.StringArrayInput `pulumi:"filesLicenseInfo"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
 	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -7790,14 +7790,14 @@ func (o FileOccurrenceOutput) Copyright() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileOccurrence) *string { return v.Copyright }).(pulumi.StringPtrOutput)
 }
 
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o FileOccurrenceOutput) FileOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileOccurrence) *string { return v.FileOccurrenceId }).(pulumi.StringPtrOutput)
+}
+
 // This field contains the license information actually found in the file, if any
 func (o FileOccurrenceOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileOccurrence) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o FileOccurrenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
@@ -7874,6 +7874,16 @@ func (o FileOccurrencePtrOutput) Copyright() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o FileOccurrencePtrOutput) FileOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileOccurrenceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // This field contains the license information actually found in the file, if any
 func (o FileOccurrencePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FileOccurrence) []string {
@@ -7882,16 +7892,6 @@ func (o FileOccurrencePtrOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 		}
 		return v.FilesLicenseInfo
 	}).(pulumi.StringArrayOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o FileOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
 }
 
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
@@ -7924,10 +7924,10 @@ type FileOccurrenceResponse struct {
 	Contributors []string `pulumi:"contributors"`
 	// Identify the copyright holder of the file, as well as any dates present
 	Copyright string `pulumi:"copyright"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	FileOccurrenceId string `pulumi:"fileOccurrenceId"`
 	// This field contains the license information actually found in the file, if any
 	FilesLicenseInfo []string `pulumi:"filesLicenseInfo"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id string `pulumi:"id"`
 	// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
 	// This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
@@ -7969,14 +7969,14 @@ func (o FileOccurrenceResponseOutput) Copyright() pulumi.StringOutput {
 	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.Copyright }).(pulumi.StringOutput)
 }
 
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o FileOccurrenceResponseOutput) FileOccurrenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.FileOccurrenceId }).(pulumi.StringOutput)
+}
+
 // This field contains the license information actually found in the file, if any
 func (o FileOccurrenceResponseOutput) FilesLicenseInfo() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileOccurrenceResponse) []string { return v.FilesLicenseInfo }).(pulumi.StringArrayOutput)
-}
-
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o FileOccurrenceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v FileOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
@@ -13206,10 +13206,10 @@ type PackageInfoOccurrence struct {
 	Comment *string `pulumi:"comment"`
 	// Provide the actual file name of the package, or path of the directory being treated as a package
 	Filename *string `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id *string `pulumi:"id"`
 	// package or alternative values, if the governing license cannot be determined
 	LicenseConcluded *License `pulumi:"licenseConcluded"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	PackageInfoOccurrenceId *string `pulumi:"packageInfoOccurrenceId"`
 	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
 	SourceInfo *string `pulumi:"sourceInfo"`
 }
@@ -13231,10 +13231,10 @@ type PackageInfoOccurrenceArgs struct {
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Provide the actual file name of the package, or path of the directory being treated as a package
 	Filename pulumi.StringPtrInput `pulumi:"filename"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// package or alternative values, if the governing license cannot be determined
 	LicenseConcluded LicensePtrInput `pulumi:"licenseConcluded"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	PackageInfoOccurrenceId pulumi.StringPtrInput `pulumi:"packageInfoOccurrenceId"`
 	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
 	SourceInfo pulumi.StringPtrInput `pulumi:"sourceInfo"`
 }
@@ -13327,14 +13327,14 @@ func (o PackageInfoOccurrenceOutput) Filename() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Filename }).(pulumi.StringPtrOutput)
 }
 
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageInfoOccurrenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // package or alternative values, if the governing license cannot be determined
 func (o PackageInfoOccurrenceOutput) LicenseConcluded() LicensePtrOutput {
 	return o.ApplyT(func(v PackageInfoOccurrence) *License { return v.LicenseConcluded }).(LicensePtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceOutput) PackageInfoOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageInfoOccurrence) *string { return v.PackageInfoOccurrenceId }).(pulumi.StringPtrOutput)
 }
 
 // Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
@@ -13386,16 +13386,6 @@ func (o PackageInfoOccurrencePtrOutput) Filename() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageInfoOccurrencePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // package or alternative values, if the governing license cannot be determined
 func (o PackageInfoOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
 	return o.ApplyT(func(v *PackageInfoOccurrence) *License {
@@ -13404,6 +13394,16 @@ func (o PackageInfoOccurrencePtrOutput) LicenseConcluded() LicensePtrOutput {
 		}
 		return v.LicenseConcluded
 	}).(LicensePtrOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrencePtrOutput) PackageInfoOccurrenceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageInfoOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageInfoOccurrenceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
@@ -13424,10 +13424,10 @@ type PackageInfoOccurrenceResponse struct {
 	Filename string `pulumi:"filename"`
 	// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
 	HomePage string `pulumi:"homePage"`
-	// Uniquely identify any element in an SPDX document which may be referenced by other elements
-	Id string `pulumi:"id"`
 	// package or alternative values, if the governing license cannot be determined
 	LicenseConcluded LicenseResponse `pulumi:"licenseConcluded"`
+	// Uniquely identify any element in an SPDX document which may be referenced by other elements
+	PackageInfoOccurrenceId string `pulumi:"packageInfoOccurrenceId"`
 	// The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
 	PackageType string `pulumi:"packageType"`
 	// Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
@@ -13470,14 +13470,14 @@ func (o PackageInfoOccurrenceResponseOutput) HomePage() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.HomePage }).(pulumi.StringOutput)
 }
 
-// Uniquely identify any element in an SPDX document which may be referenced by other elements
-func (o PackageInfoOccurrenceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // package or alternative values, if the governing license cannot be determined
 func (o PackageInfoOccurrenceResponseOutput) LicenseConcluded() LicenseResponseOutput {
 	return o.ApplyT(func(v PackageInfoOccurrenceResponse) LicenseResponse { return v.LicenseConcluded }).(LicenseResponseOutput)
+}
+
+// Uniquely identify any element in an SPDX document which may be referenced by other elements
+func (o PackageInfoOccurrenceResponseOutput) PackageInfoOccurrenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageInfoOccurrenceResponse) string { return v.PackageInfoOccurrenceId }).(pulumi.StringOutput)
 }
 
 // The type of package: OS, MAVEN, GO, GO_STDLIB, etc.

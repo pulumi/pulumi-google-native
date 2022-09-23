@@ -1560,18 +1560,18 @@ class GoogleCloudDialogflowCxV3beta1IntentInputArgs:
 class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
-                 id: pulumi.Input[str],
+                 google_cloud_dialogflow_cx_v3beta1_intent_parameter_id: pulumi.Input[str],
                  is_list: Optional[pulumi.Input[bool]] = None,
                  redact: Optional[pulumi.Input[bool]] = None):
         """
         Represents an intent parameter.
         :param pulumi.Input[str] entity_type: The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-        :param pulumi.Input[str] id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        :param pulumi.Input[str] google_cloud_dialogflow_cx_v3beta1_intent_parameter_id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         :param pulumi.Input[bool] is_list: Indicates whether the parameter represents a list of values.
         :param pulumi.Input[bool] redact: Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
         """
         pulumi.set(__self__, "entity_type", entity_type)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "google_cloud_dialogflow_cx_v3beta1_intent_parameter_id", google_cloud_dialogflow_cx_v3beta1_intent_parameter_id)
         if is_list is not None:
             pulumi.set(__self__, "is_list", is_list)
         if redact is not None:
@@ -1590,16 +1590,16 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterArgs:
         pulumi.set(self, "entity_type", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="googleCloudDialogflowCxV3beta1IntentParameterId")
+    def google_cloud_dialogflow_cx_v3beta1_intent_parameter_id(self) -> pulumi.Input[str]:
         """
         The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "google_cloud_dialogflow_cx_v3beta1_intent_parameter_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @google_cloud_dialogflow_cx_v3beta1_intent_parameter_id.setter
+    def google_cloud_dialogflow_cx_v3beta1_intent_parameter_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "google_cloud_dialogflow_cx_v3beta1_intent_parameter_id", value)
 
     @property
     @pulumi.getter(name="isList")

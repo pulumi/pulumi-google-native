@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// <summary>
         /// A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
         /// </summary>
-        public readonly string Id;
+        public readonly string OSPolicyResourceRepositoryResourceYumRepositoryId;
 
         [OutputConstructor]
         private OSPolicyResourceRepositoryResourceYumRepositoryResponse(
@@ -41,12 +41,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 
             ImmutableArray<string> gpgKeys,
 
-            string id)
+            string oSPolicyResourceRepositoryResourceYumRepositoryId)
         {
             BaseUrl = baseUrl;
             DisplayName = displayName;
             GpgKeys = gpgKeys;
-            Id = id;
+            OSPolicyResourceRepositoryResourceYumRepositoryId = oSPolicyResourceRepositoryResourceYumRepositoryId;
         }
     }
 }

@@ -17,10 +17,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
     public sealed class VlanAttachmentResponse
     {
         /// <summary>
-        /// Immutable. The identifier of the attachment within vrf.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Input only. Pairing key.
         /// </summary>
         public readonly string PairingKey;
@@ -40,11 +36,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// The router IP of the attachment.
         /// </summary>
         public readonly string RouterIp;
+        /// <summary>
+        /// Immutable. The identifier of the attachment within vrf.
+        /// </summary>
+        public readonly string VlanAttachmentId;
 
         [OutputConstructor]
         private VlanAttachmentResponse(
-            string id,
-
             string pairingKey,
 
             string peerIp,
@@ -53,14 +51,16 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             Outputs.QosPolicyResponse qosPolicy,
 
-            string routerIp)
+            string routerIp,
+
+            string vlanAttachmentId)
         {
-            Id = id;
             PairingKey = pairingKey;
             PeerIp = peerIp;
             PeerVlanId = peerVlanId;
             QosPolicy = qosPolicy;
             RouterIp = routerIp;
+            VlanAttachmentId = vlanAttachmentId;
         }
     }
 }

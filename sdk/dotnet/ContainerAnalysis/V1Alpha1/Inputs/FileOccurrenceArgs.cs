@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("copyright")]
         public Input<string>? Copyright { get; set; }
 
+        /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        [Input("fileOccurrenceId")]
+        public Input<string>? FileOccurrenceId { get; set; }
+
         [Input("filesLicenseInfo")]
         private InputList<string>? _filesLicenseInfo;
 
@@ -62,12 +68,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
             get => _filesLicenseInfo ?? (_filesLicenseInfo = new InputList<string>());
             set => _filesLicenseInfo = value;
         }
-
-        /// <summary>
-        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined

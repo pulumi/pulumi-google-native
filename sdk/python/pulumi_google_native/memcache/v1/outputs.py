@@ -194,23 +194,40 @@ class MaintenanceScheduleResponse(dict):
 
 @pulumi.output_type
 class MemcacheParametersResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memcacheParametersId":
+            suggest = "memcache_parameters_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MemcacheParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MemcacheParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MemcacheParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str,
+                 memcache_parameters_id: str,
                  params: Mapping[str, str]):
         """
-        :param str id: The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
+        :param str memcache_parameters_id: The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
         :param Mapping[str, str] params: User defined set of parameters to use in the memcached process.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "memcache_parameters_id", memcache_parameters_id)
         pulumi.set(__self__, "params", params)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="memcacheParametersId")
+    def memcache_parameters_id(self) -> str:
         """
         The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "memcache_parameters_id")
 
     @property
     @pulumi.getter

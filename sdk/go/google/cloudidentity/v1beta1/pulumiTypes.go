@@ -162,7 +162,7 @@ func (o CertificateAttributesResponseArrayOutput) Index(i pulumi.IntInput) Certi
 // CertificateTemplate (v3 Extension in X.509).
 type CertificateTemplateResponse struct {
 	// The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
-	Id string `pulumi:"id"`
+	CertificateTemplateId string `pulumi:"certificateTemplateId"`
 	// The Major version of the template. Example: 100.
 	MajorVersion int `pulumi:"majorVersion"`
 	// The minor version of the template. Example: 12.
@@ -185,8 +185,8 @@ func (o CertificateTemplateResponseOutput) ToCertificateTemplateResponseOutputWi
 }
 
 // The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
-func (o CertificateTemplateResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v CertificateTemplateResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o CertificateTemplateResponseOutput) CertificateTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateTemplateResponse) string { return v.CertificateTemplateId }).(pulumi.StringOutput)
 }
 
 // The Major version of the template. Example: 100.
@@ -593,7 +593,7 @@ func (o EndpointVerificationSpecificAttributesResponseOutput) CertificateAttribu
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKey struct {
 	// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-	Id *string `pulumi:"id"`
+	EntityKeyId *string `pulumi:"entityKeyId"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace *string `pulumi:"namespace"`
 }
@@ -612,7 +612,7 @@ type EntityKeyInput interface {
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyArgs struct {
 	// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	EntityKeyId pulumi.StringPtrInput `pulumi:"entityKeyId"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
@@ -696,8 +696,8 @@ func (o EntityKeyOutput) ToEntityKeyPtrOutputWithContext(ctx context.Context) En
 }
 
 // The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-func (o EntityKeyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EntityKey) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o EntityKeyOutput) EntityKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityKey) *string { return v.EntityKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
@@ -730,12 +730,12 @@ func (o EntityKeyPtrOutput) Elem() EntityKeyOutput {
 }
 
 // The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-func (o EntityKeyPtrOutput) Id() pulumi.StringPtrOutput {
+func (o EntityKeyPtrOutput) EntityKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.EntityKeyId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -752,7 +752,7 @@ func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponse struct {
 	// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-	Id string `pulumi:"id"`
+	EntityKeyId string `pulumi:"entityKeyId"`
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace string `pulumi:"namespace"`
 }
@@ -773,8 +773,8 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx contex
 }
 
 // The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
-func (o EntityKeyResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v EntityKeyResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o EntityKeyResponseOutput) EntityKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityKeyResponse) string { return v.EntityKeyId }).(pulumi.StringOutput)
 }
 
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.

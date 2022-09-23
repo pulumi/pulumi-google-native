@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// <summary>
         /// id is the id of the slsa provenance builder
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("slsaBuilderId")]
+        public Input<string>? SlsaBuilderId { get; set; }
 
         public SlsaBuilderArgs()
         {

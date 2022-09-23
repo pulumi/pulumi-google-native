@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         /// <summary>
         /// Identifier of the VLAN attachment.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("intakeVlanAttachmentId")]
+        public Input<string>? IntakeVlanAttachmentId { get; set; }
 
         /// <summary>
         /// Attachment pairing key.

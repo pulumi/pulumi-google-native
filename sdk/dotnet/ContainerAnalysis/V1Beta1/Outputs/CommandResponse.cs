@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
+        /// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        /// </summary>
+        public readonly string CommandId;
+        /// <summary>
         /// Working directory (relative to project source root) used when running this command.
         /// </summary>
         public readonly string Dir;
@@ -28,10 +32,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// Environment variables set before running this command.
         /// </summary>
         public readonly ImmutableArray<string> Env;
-        /// <summary>
-        /// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         /// </summary>
@@ -45,20 +45,20 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         private CommandResponse(
             ImmutableArray<string> args,
 
+            string commandId,
+
             string dir,
 
             ImmutableArray<string> env,
-
-            string id,
 
             string name,
 
             ImmutableArray<string> waitFor)
         {
             Args = args;
+            CommandId = commandId;
             Dir = dir;
             Env = env;
-            Id = id;
             Name = name;
             WaitFor = waitFor;
         }

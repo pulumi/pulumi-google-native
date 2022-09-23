@@ -27,12 +27,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
             set => _databaseFlags = value;
         }
 
-        /// <summary>
-        /// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -50,6 +44,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         /// </summary>
         [Input("machineConfig")]
         public Input<Inputs.MachineConfigArgs>? MachineConfig { get; set; }
+
+        /// <summary>
+        /// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        /// </summary>
+        [Input("primaryInstanceSettingsId", required: true)]
+        public Input<string> PrimaryInstanceSettingsId { get; set; } = null!;
 
         public PrimaryInstanceSettingsArgs()
         {

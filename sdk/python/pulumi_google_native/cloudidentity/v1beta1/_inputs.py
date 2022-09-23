@@ -84,29 +84,29 @@ class DynamicGroupQueryArgs:
 @pulumi.input_type
 class EntityKeyArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 entity_key_id: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
         """
         A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
-        :param pulumi.Input[str] id: The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+        :param pulumi.Input[str] entity_key_id: The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
         :param pulumi.Input[str] namespace: The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if entity_key_id is not None:
+            pulumi.set(__self__, "entity_key_id", entity_key_id)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="entityKeyId")
+    def entity_key_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "entity_key_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @entity_key_id.setter
+    def entity_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_key_id", value)
 
     @property
     @pulumi.getter

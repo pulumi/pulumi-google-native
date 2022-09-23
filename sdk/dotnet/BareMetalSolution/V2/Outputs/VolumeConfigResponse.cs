@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string GcpService;
         /// <summary>
-        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
         /// </summary>
         public readonly ImmutableArray<Outputs.LunRangeResponse> LunRanges;
@@ -64,12 +60,14 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// User note field, it can be used by customers to add additional information for the BMS Ops team .
         /// </summary>
         public readonly string UserNote;
+        /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        public readonly string VolumeConfigId;
 
         [OutputConstructor]
         private VolumeConfigResponse(
             string gcpService,
-
-            string id,
 
             ImmutableArray<Outputs.LunRangeResponse> lunRanges,
 
@@ -89,10 +87,11 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string type,
 
-            string userNote)
+            string userNote,
+
+            string volumeConfigId)
         {
             GcpService = gcpService;
-            Id = id;
             LunRanges = lunRanges;
             MachineIds = machineIds;
             Name = name;
@@ -103,6 +102,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             SnapshotsEnabled = snapshotsEnabled;
             Type = type;
             UserNote = userNote;
+            VolumeConfigId = volumeConfigId;
         }
     }
 }

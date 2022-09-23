@@ -759,7 +759,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 // A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
 type ResourceId struct {
 	// The type-specific id. This should correspond to the id used in the type-specific API's.
-	Id *string `pulumi:"id"`
+	ResourceIdId *string `pulumi:"resourceIdId"`
 	// The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
 	Type *string `pulumi:"type"`
 }
@@ -778,7 +778,7 @@ type ResourceIdInput interface {
 // A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
 type ResourceIdArgs struct {
 	// The type-specific id. This should correspond to the id used in the type-specific API's.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	ResourceIdId pulumi.StringPtrInput `pulumi:"resourceIdId"`
 	// The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -862,8 +862,8 @@ func (o ResourceIdOutput) ToResourceIdPtrOutputWithContext(ctx context.Context) 
 }
 
 // The type-specific id. This should correspond to the id used in the type-specific API's.
-func (o ResourceIdOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceId) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ResourceIdOutput) ResourceIdId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceId) *string { return v.ResourceIdId }).(pulumi.StringPtrOutput)
 }
 
 // The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
@@ -896,12 +896,12 @@ func (o ResourceIdPtrOutput) Elem() ResourceIdOutput {
 }
 
 // The type-specific id. This should correspond to the id used in the type-specific API's.
-func (o ResourceIdPtrOutput) Id() pulumi.StringPtrOutput {
+func (o ResourceIdPtrOutput) ResourceIdId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceId) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.ResourceIdId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -918,7 +918,7 @@ func (o ResourceIdPtrOutput) Type() pulumi.StringPtrOutput {
 // A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
 type ResourceIdResponse struct {
 	// The type-specific id. This should correspond to the id used in the type-specific API's.
-	Id string `pulumi:"id"`
+	ResourceIdId string `pulumi:"resourceIdId"`
 	// The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
 	Type string `pulumi:"type"`
 }
@@ -939,8 +939,8 @@ func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx cont
 }
 
 // The type-specific id. This should correspond to the id used in the type-specific API's.
-func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o ResourceIdResponseOutput) ResourceIdId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceIdResponse) string { return v.ResourceIdId }).(pulumi.StringOutput)
 }
 
 // The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".

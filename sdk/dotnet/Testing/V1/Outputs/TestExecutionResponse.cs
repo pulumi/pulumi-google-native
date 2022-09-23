@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.EnvironmentResponse Environment;
         /// <summary>
-        /// Unique id set by the service.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Id of the containing TestMatrix.
         /// </summary>
         public readonly string MatrixId;
@@ -45,6 +41,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.TestDetailsResponse TestDetails;
         /// <summary>
+        /// Unique id set by the service.
+        /// </summary>
+        public readonly string TestExecutionId;
+        /// <summary>
         /// How to run the test.
         /// </summary>
         public readonly Outputs.TestSpecificationResponse TestSpecification;
@@ -61,8 +61,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         private TestExecutionResponse(
             Outputs.EnvironmentResponse environment,
 
-            string id,
-
             string matrixId,
 
             string project,
@@ -73,6 +71,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             Outputs.TestDetailsResponse testDetails,
 
+            string testExecutionId,
+
             Outputs.TestSpecificationResponse testSpecification,
 
             string timestamp,
@@ -80,12 +80,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             Outputs.ToolResultsStepResponse toolResultsStep)
         {
             Environment = environment;
-            Id = id;
             MatrixId = matrixId;
             Project = project;
             Shard = shard;
             State = state;
             TestDetails = testDetails;
+            TestExecutionId = testExecutionId;
             TestSpecification = testSpecification;
             Timestamp = timestamp;
             ToolResultsStep = toolResultsStep;

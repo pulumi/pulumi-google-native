@@ -25,13 +25,13 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Policy mode
         /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        /// </summary>
+        public readonly string OSPolicyId;
         /// <summary>
         /// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
         /// </summary>
@@ -43,16 +43,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
 
             string description,
 
-            string id,
-
             string mode,
+
+            string oSPolicyId,
 
             ImmutableArray<Outputs.OSPolicyResourceGroupResponse> resourceGroups)
         {
             AllowNoResourceGroupMatch = allowNoResourceGroupMatch;
             Description = description;
-            Id = id;
             Mode = mode;
+            OSPolicyId = oSPolicyId;
             ResourceGroups = resourceGroups;
         }
     }

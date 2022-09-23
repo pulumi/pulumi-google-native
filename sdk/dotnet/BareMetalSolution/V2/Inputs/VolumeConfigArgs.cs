@@ -21,12 +21,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         [Input("gcpService")]
         public Input<string>? GcpService { get; set; }
 
-        /// <summary>
-        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("lunRanges")]
         private InputList<Inputs.LunRangeArgs>? _lunRanges;
 
@@ -98,6 +92,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         /// </summary>
         [Input("userNote")]
         public Input<string>? UserNote { get; set; }
+
+        /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        [Input("volumeConfigId")]
+        public Input<string>? VolumeConfigId { get; set; }
 
         public VolumeConfigArgs()
         {

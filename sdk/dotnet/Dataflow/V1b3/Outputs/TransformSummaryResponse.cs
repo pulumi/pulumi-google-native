@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DisplayDataResponse> DisplayData;
         /// <summary>
-        /// SDK generated id of this transform instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// User names for all collection inputs to this transform.
         /// </summary>
         public readonly ImmutableArray<string> InputCollectionName;
@@ -40,12 +36,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// User names for all collection outputs to this transform.
         /// </summary>
         public readonly ImmutableArray<string> OutputCollectionName;
+        /// <summary>
+        /// SDK generated id of this transform instance.
+        /// </summary>
+        public readonly string TransformSummaryId;
 
         [OutputConstructor]
         private TransformSummaryResponse(
             ImmutableArray<Outputs.DisplayDataResponse> displayData,
-
-            string id,
 
             ImmutableArray<string> inputCollectionName,
 
@@ -53,14 +51,16 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string name,
 
-            ImmutableArray<string> outputCollectionName)
+            ImmutableArray<string> outputCollectionName,
+
+            string transformSummaryId)
         {
             DisplayData = displayData;
-            Id = id;
             InputCollectionName = inputCollectionName;
             Kind = kind;
             Name = name;
             OutputCollectionName = outputCollectionName;
+            TransformSummaryId = transformSummaryId;
         }
     }
 }

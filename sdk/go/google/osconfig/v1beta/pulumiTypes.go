@@ -3894,10 +3894,10 @@ type SoftwareRecipeArtifact struct {
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs *SoftwareRecipeArtifactGcs `pulumi:"gcs"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-	Id string `pulumi:"id"`
 	// A generic remote artifact.
 	Remote *SoftwareRecipeArtifactRemote `pulumi:"remote"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	SoftwareRecipeArtifactId string `pulumi:"softwareRecipeArtifactId"`
 }
 
 // SoftwareRecipeArtifactInput is an input type that accepts SoftwareRecipeArtifactArgs and SoftwareRecipeArtifactOutput values.
@@ -3917,10 +3917,10 @@ type SoftwareRecipeArtifactArgs struct {
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs SoftwareRecipeArtifactGcsPtrInput `pulumi:"gcs"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-	Id pulumi.StringInput `pulumi:"id"`
 	// A generic remote artifact.
 	Remote SoftwareRecipeArtifactRemotePtrInput `pulumi:"remote"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	SoftwareRecipeArtifactId pulumi.StringInput `pulumi:"softwareRecipeArtifactId"`
 }
 
 func (SoftwareRecipeArtifactArgs) ElementType() reflect.Type {
@@ -3985,14 +3985,14 @@ func (o SoftwareRecipeArtifactOutput) Gcs() SoftwareRecipeArtifactGcsPtrOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifact) *SoftwareRecipeArtifactGcs { return v.Gcs }).(SoftwareRecipeArtifactGcsPtrOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-func (o SoftwareRecipeArtifactOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SoftwareRecipeArtifact) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // A generic remote artifact.
 func (o SoftwareRecipeArtifactOutput) Remote() SoftwareRecipeArtifactRemotePtrOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifact) *SoftwareRecipeArtifactRemote { return v.Remote }).(SoftwareRecipeArtifactRemotePtrOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+func (o SoftwareRecipeArtifactOutput) SoftwareRecipeArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifact) string { return v.SoftwareRecipeArtifactId }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeArtifactArrayOutput struct{ *pulumi.OutputState }
@@ -4431,10 +4431,10 @@ type SoftwareRecipeArtifactResponse struct {
 	AllowInsecure bool `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs SoftwareRecipeArtifactGcsResponse `pulumi:"gcs"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-	Id string `pulumi:"id"`
 	// A generic remote artifact.
 	Remote SoftwareRecipeArtifactRemoteResponse `pulumi:"remote"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	SoftwareRecipeArtifactId string `pulumi:"softwareRecipeArtifactId"`
 }
 
 // Specifies a resource to be used in the recipe.
@@ -4462,14 +4462,14 @@ func (o SoftwareRecipeArtifactResponseOutput) Gcs() SoftwareRecipeArtifactGcsRes
 	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) SoftwareRecipeArtifactGcsResponse { return v.Gcs }).(SoftwareRecipeArtifactGcsResponseOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-func (o SoftwareRecipeArtifactResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // A generic remote artifact.
 func (o SoftwareRecipeArtifactResponseOutput) Remote() SoftwareRecipeArtifactRemoteResponseOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) SoftwareRecipeArtifactRemoteResponse { return v.Remote }).(SoftwareRecipeArtifactRemoteResponseOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+func (o SoftwareRecipeArtifactResponseOutput) SoftwareRecipeArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) string { return v.SoftwareRecipeArtifactId }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeArtifactResponseArrayOutput struct{ *pulumi.OutputState }
@@ -6423,7 +6423,7 @@ func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZone struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
-	Id *string `pulumi:"id"`
+	TimeZoneId *string `pulumi:"timeZoneId"`
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version *string `pulumi:"version"`
 }
@@ -6442,7 +6442,7 @@ type TimeZoneInput interface {
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneArgs struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	TimeZoneId pulumi.StringPtrInput `pulumi:"timeZoneId"`
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -6475,8 +6475,8 @@ func (o TimeZoneOutput) ToTimeZoneOutputWithContext(ctx context.Context) TimeZon
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
-func (o TimeZoneOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o TimeZoneOutput) TimeZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeZone) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -6487,7 +6487,7 @@ func (o TimeZoneOutput) Version() pulumi.StringPtrOutput {
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZoneResponse struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
-	Id string `pulumi:"id"`
+	TimeZoneId string `pulumi:"timeZoneId"`
 	// Optional. IANA Time Zone Database version number, e.g. "2019a".
 	Version string `pulumi:"version"`
 }
@@ -6508,8 +6508,8 @@ func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
-func (o TimeZoneResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TimeZoneResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o TimeZoneResponseOutput) TimeZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeZoneResponse) string { return v.TimeZoneId }).(pulumi.StringOutput)
 }
 
 // Optional. IANA Time Zone Database version number, e.g. "2019a".
@@ -6938,7 +6938,7 @@ type YumRepository struct {
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id string `pulumi:"id"`
+	YumRepositoryId string `pulumi:"yumRepositoryId"`
 }
 
 // YumRepositoryInput is an input type that accepts YumRepositoryArgs and YumRepositoryOutput values.
@@ -6961,7 +6961,7 @@ type YumRepositoryArgs struct {
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id pulumi.StringInput `pulumi:"id"`
+	YumRepositoryId pulumi.StringInput `pulumi:"yumRepositoryId"`
 }
 
 func (YumRepositoryArgs) ElementType() reflect.Type {
@@ -7058,8 +7058,8 @@ func (o YumRepositoryOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o YumRepositoryOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v YumRepository) string { return v.Id }).(pulumi.StringOutput)
+func (o YumRepositoryOutput) YumRepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepository) string { return v.YumRepositoryId }).(pulumi.StringOutput)
 }
 
 type YumRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -7117,12 +7117,12 @@ func (o YumRepositoryPtrOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o YumRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
+func (o YumRepositoryPtrOutput) YumRepositoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *YumRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return &v.YumRepositoryId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7135,7 +7135,7 @@ type YumRepositoryResponse struct {
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id string `pulumi:"id"`
+	YumRepositoryId string `pulumi:"yumRepositoryId"`
 }
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
@@ -7169,8 +7169,8 @@ func (o YumRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o YumRepositoryResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v YumRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o YumRepositoryResponseOutput) YumRepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) string { return v.YumRepositoryId }).(pulumi.StringOutput)
 }
 
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
@@ -7426,7 +7426,7 @@ type ZypperRepository struct {
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id string `pulumi:"id"`
+	ZypperRepositoryId string `pulumi:"zypperRepositoryId"`
 }
 
 // ZypperRepositoryInput is an input type that accepts ZypperRepositoryArgs and ZypperRepositoryOutput values.
@@ -7449,7 +7449,7 @@ type ZypperRepositoryArgs struct {
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id pulumi.StringInput `pulumi:"id"`
+	ZypperRepositoryId pulumi.StringInput `pulumi:"zypperRepositoryId"`
 }
 
 func (ZypperRepositoryArgs) ElementType() reflect.Type {
@@ -7546,8 +7546,8 @@ func (o ZypperRepositoryOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o ZypperRepositoryOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZypperRepository) string { return v.Id }).(pulumi.StringOutput)
+func (o ZypperRepositoryOutput) ZypperRepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepository) string { return v.ZypperRepositoryId }).(pulumi.StringOutput)
 }
 
 type ZypperRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -7605,12 +7605,12 @@ func (o ZypperRepositoryPtrOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o ZypperRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
+func (o ZypperRepositoryPtrOutput) ZypperRepositoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZypperRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return &v.ZypperRepositoryId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7623,7 +7623,7 @@ type ZypperRepositoryResponse struct {
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
 	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id string `pulumi:"id"`
+	ZypperRepositoryId string `pulumi:"zypperRepositoryId"`
 }
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
@@ -7657,8 +7657,8 @@ func (o ZypperRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
 }
 
 // A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o ZypperRepositoryResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o ZypperRepositoryResponseOutput) ZypperRepositoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.ZypperRepositoryId }).(pulumi.StringOutput)
 }
 
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.

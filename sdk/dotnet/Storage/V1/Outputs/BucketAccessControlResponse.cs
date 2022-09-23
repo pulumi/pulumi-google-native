@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        public readonly string BucketAccessControlId;
+        /// <summary>
         /// The domain associated with the entity, if any.
         /// </summary>
         public readonly string Domain;
@@ -52,10 +56,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// The ID of the access-control entry.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         /// </summary>
         public readonly string Kind;
@@ -76,6 +76,8 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         private BucketAccessControlResponse(
             string bucket,
 
+            string bucketAccessControlId,
+
             string domain,
 
             string email,
@@ -86,8 +88,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 
             string etag,
 
-            string id,
-
             string kind,
 
             Outputs.BucketAccessControlProjectTeamResponse projectTeam,
@@ -97,12 +97,12 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
             string selfLink)
         {
             Bucket = bucket;
+            BucketAccessControlId = bucketAccessControlId;
             Domain = domain;
             Email = email;
             Entity = entity;
             EntityId = entityId;
             Etag = etag;
-            Id = id;
             Kind = kind;
             ProjectTeam = projectTeam;
             Role = role;

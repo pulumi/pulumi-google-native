@@ -824,6 +824,8 @@ class JobResponse(dict):
         suggest = None
         if key == "deployJob":
             suggest = "deploy_job"
+        elif key == "jobId":
+            suggest = "job_id"
         elif key == "jobRun":
             suggest = "job_run"
         elif key == "verifyJob":
@@ -842,20 +844,20 @@ class JobResponse(dict):
 
     def __init__(__self__, *,
                  deploy_job: 'outputs.DeployJobResponse',
-                 id: str,
+                 job_id: str,
                  job_run: str,
                  state: str,
                  verify_job: 'outputs.VerifyJobResponse'):
         """
         Job represents an operation for a `Rollout`.
         :param 'DeployJobResponse' deploy_job: A deploy Job.
-        :param str id: The ID of the Job.
+        :param str job_id: The ID of the Job.
         :param str job_run: The name of the `JobRun` responsible for the most recent invocation of this Job.
         :param str state: The current state of the Job.
         :param 'VerifyJobResponse' verify_job: A verify Job.
         """
         pulumi.set(__self__, "deploy_job", deploy_job)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "job_run", job_run)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "verify_job", verify_job)
@@ -869,12 +871,12 @@ class JobResponse(dict):
         return pulumi.get(self, "deploy_job")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> str:
         """
         The ID of the Job.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "job_id")
 
     @property
     @pulumi.getter(name="jobRun")
@@ -950,6 +952,8 @@ class PhaseResponse(dict):
         suggest = None
         if key == "deploymentJobs":
             suggest = "deployment_jobs"
+        elif key == "phaseId":
+            suggest = "phase_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PhaseResponse. Access the value via the '{suggest}' property getter instead.")
@@ -964,16 +968,16 @@ class PhaseResponse(dict):
 
     def __init__(__self__, *,
                  deployment_jobs: 'outputs.DeploymentJobsResponse',
-                 id: str,
+                 phase_id: str,
                  state: str):
         """
         Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
         :param 'DeploymentJobsResponse' deployment_jobs: Deployment job composition.
-        :param str id: The ID of the Phase.
+        :param str phase_id: The ID of the Phase.
         :param str state: Current state of the Phase.
         """
         pulumi.set(__self__, "deployment_jobs", deployment_jobs)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "phase_id", phase_id)
         pulumi.set(__self__, "state", state)
 
     @property
@@ -985,12 +989,12 @@ class PhaseResponse(dict):
         return pulumi.get(self, "deployment_jobs")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="phaseId")
+    def phase_id(self) -> str:
         """
         The ID of the Phase.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "phase_id")
 
     @property
     @pulumi.getter

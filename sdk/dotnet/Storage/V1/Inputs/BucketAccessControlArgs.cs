@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
+        /// The ID of the access-control entry.
+        /// </summary>
+        [Input("bucketAccessControlId")]
+        public Input<string>? BucketAccessControlId { get; set; }
+
+        /// <summary>
         /// The domain associated with the entity, if any.
         /// </summary>
         [Input("domain")]
@@ -61,12 +67,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
-
-        /// <summary>
-        /// The ID of the access-control entry.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.

@@ -1355,7 +1355,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServic
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo struct {
 	// Unique Id for the resource.
-	Id string `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId string `pulumi:"googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1380,7 +1380,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput interface {
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs struct {
 	// Unique Id for the resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId pulumi.StringInput `pulumi:"googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource pulumi.StringMapInput `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1495,8 +1495,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) ToGoogleClo
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) string {
+		return v.GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId
+	}).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.
@@ -1548,12 +1550,12 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) Elem() G
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) Id() pulumi.StringPtrOutput {
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return &v.GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1620,7 +1622,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput) Index(
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse struct {
 	// Unique Id for the resource.
-	Id string `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId string `pulumi:"googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1647,8 +1649,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) ToG
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse) string {
+		return v.GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId
+	}).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.
@@ -2771,10 +2775,10 @@ func (o PrincipalInfoResponseOutput) ServiceAccount() ServiceAccountResponseOutp
 
 // ResourceInfo represents the information/status of the associated resource.
 type ResourceInfo struct {
-	// Unique Id for the resource.
-	Id string `pulumi:"id"`
 	// Specific details for the resource.
 	Resource map[string]string `pulumi:"resource"`
+	// Unique Id for the resource.
+	ResourceInfoId string `pulumi:"resourceInfoId"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status *ResourceInfoStatus `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -2796,10 +2800,10 @@ type ResourceInfoInput interface {
 
 // ResourceInfo represents the information/status of the associated resource.
 type ResourceInfoArgs struct {
-	// Unique Id for the resource.
-	Id pulumi.StringInput `pulumi:"id"`
 	// Specific details for the resource.
 	Resource pulumi.StringMapInput `pulumi:"resource"`
+	// Unique Id for the resource.
+	ResourceInfoId pulumi.StringInput `pulumi:"resourceInfoId"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status ResourceInfoStatusPtrInput `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -2911,14 +2915,14 @@ func (o ResourceInfoOutput) ToResourceInfoPtrOutputWithContext(ctx context.Conte
 	}).(ResourceInfoPtrOutput)
 }
 
-// Unique Id for the resource.
-func (o ResourceInfoOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceInfo) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Specific details for the resource.
 func (o ResourceInfoOutput) Resource() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceInfo) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+}
+
+// Unique Id for the resource.
+func (o ResourceInfoOutput) ResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceInfo) string { return v.ResourceInfoId }).(pulumi.StringOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -2960,16 +2964,6 @@ func (o ResourceInfoPtrOutput) Elem() ResourceInfoOutput {
 	}).(ResourceInfoOutput)
 }
 
-// Unique Id for the resource.
-func (o ResourceInfoPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // Specific details for the resource.
 func (o ResourceInfoPtrOutput) Resource() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceInfo) map[string]string {
@@ -2978,6 +2972,16 @@ func (o ResourceInfoPtrOutput) Resource() pulumi.StringMapOutput {
 		}
 		return v.Resource
 	}).(pulumi.StringMapOutput)
+}
+
+// Unique Id for the resource.
+func (o ResourceInfoPtrOutput) ResourceInfoId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceInfoId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -3032,10 +3036,10 @@ func (o ResourceInfoArrayOutput) Index(i pulumi.IntInput) ResourceInfoOutput {
 
 // ResourceInfo represents the information/status of the associated resource.
 type ResourceInfoResponse struct {
-	// Unique Id for the resource.
-	Id string `pulumi:"id"`
 	// Specific details for the resource.
 	Resource map[string]string `pulumi:"resource"`
+	// Unique Id for the resource.
+	ResourceInfoId string `pulumi:"resourceInfoId"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status string `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -3059,14 +3063,14 @@ func (o ResourceInfoResponseOutput) ToResourceInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-// Unique Id for the resource.
-func (o ResourceInfoResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Specific details for the resource.
 func (o ResourceInfoResponseOutput) Resource() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceInfoResponse) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+}
+
+// Unique Id for the resource.
+func (o ResourceInfoResponseOutput) ResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceInfoResponse) string { return v.ResourceInfoId }).(pulumi.StringOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.

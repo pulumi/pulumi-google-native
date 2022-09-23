@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The unique identifier for the resource. This identifier is defined by the server.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Type of the resource. Always compute#reservations for reservations.
         /// </summary>
         public readonly string Kind;
@@ -40,6 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        public readonly string ReservationId;
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -77,11 +77,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string description,
 
-            string id,
-
             string kind,
 
             string name,
+
+            string reservationId,
 
             bool satisfiesPzs,
 
@@ -100,9 +100,9 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
             Description = description;
-            Id = id;
             Kind = kind;
             Name = name;
+            ReservationId = reservationId;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             ShareSettings = shareSettings;

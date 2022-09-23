@@ -507,10 +507,10 @@ class BuildStepArgs:
                  allow_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  allow_failure: Optional[pulumi.Input[bool]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 build_step_id: Optional[pulumi.Input[str]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  entrypoint: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  script: Optional[pulumi.Input[str]] = None,
                  secret_env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
@@ -522,10 +522,10 @@ class BuildStepArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
         :param pulumi.Input[bool] allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+        :param pulumi.Input[str] build_step_id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param pulumi.Input[str] dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-        :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param pulumi.Input[str] script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_env: A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
         :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -539,14 +539,14 @@ class BuildStepArgs:
             pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if build_step_id is not None:
+            pulumi.set(__self__, "build_step_id", build_step_id)
         if dir is not None:
             pulumi.set(__self__, "dir", dir)
         if entrypoint is not None:
             pulumi.set(__self__, "entrypoint", entrypoint)
         if env is not None:
             pulumi.set(__self__, "env", env)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if script is not None:
             pulumi.set(__self__, "script", script)
         if secret_env is not None:
@@ -607,6 +607,18 @@ class BuildStepArgs:
         pulumi.set(self, "args", value)
 
     @property
+    @pulumi.getter(name="buildStepId")
+    def build_step_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        """
+        return pulumi.get(self, "build_step_id")
+
+    @build_step_id.setter
+    def build_step_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_step_id", value)
+
+    @property
     @pulumi.getter
     def dir(self) -> Optional[pulumi.Input[str]]:
         """
@@ -641,18 +653,6 @@ class BuildStepArgs:
     @env.setter
     def env(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter

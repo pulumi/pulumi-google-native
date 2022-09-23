@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         /// </summary>
-        public readonly string Id;
+        public readonly string GoogleCloudDialogflowCxV3IntentParameterId;
         /// <summary>
         /// Indicates whether the parameter represents a list of values.
         /// </summary>
@@ -37,14 +37,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3IntentParameterResponse(
             string entityType,
 
-            string id,
+            string googleCloudDialogflowCxV3IntentParameterId,
 
             bool isList,
 
             bool redact)
         {
             EntityType = entityType;
-            Id = id;
+            GoogleCloudDialogflowCxV3IntentParameterId = googleCloudDialogflowCxV3IntentParameterId;
             IsList = isList;
             Redact = redact;
         }

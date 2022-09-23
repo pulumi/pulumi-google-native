@@ -17,13 +17,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class ArtifactResponse
     {
         /// <summary>
+        /// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+        /// </summary>
+        public readonly string ArtifactId;
+        /// <summary>
         /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         /// </summary>
         public readonly string Checksum;
-        /// <summary>
-        /// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         /// </summary>
@@ -35,16 +35,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private ArtifactResponse(
-            string checksum,
+            string artifactId,
 
-            string id,
+            string checksum,
 
             string name,
 
             ImmutableArray<string> names)
         {
+            ArtifactId = artifactId;
             Checksum = checksum;
-            Id = id;
             Name = name;
             Names = names;
         }

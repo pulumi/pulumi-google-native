@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("documentComment")]
         public Input<string>? DocumentComment { get; set; }
 
+        /// <summary>
+        /// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        /// </summary>
+        [Input("documentOccurrenceId")]
+        public Input<string>? DocumentOccurrenceId { get; set; }
+
         [Input("externalDocumentRefs")]
         private InputList<string>? _externalDocumentRefs;
 
@@ -56,12 +62,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
             get => _externalDocumentRefs ?? (_externalDocumentRefs = new InputList<string>());
             set => _externalDocumentRefs = value;
         }
-
-        /// <summary>
-        /// Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created

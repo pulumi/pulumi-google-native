@@ -22,22 +22,22 @@ __all__ = [
 class AttestorPublicKeyArgs:
     def __init__(__self__, *,
                  ascii_armored_pgp_public_key: Optional[pulumi.Input[str]] = None,
+                 attestor_public_key_id: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  pkix_public_key: Optional[pulumi.Input['PkixPublicKeyArgs']] = None):
         """
         An attestor public key that will be used to verify attestations signed by this attestor.
         :param pulumi.Input[str] ascii_armored_pgp_public_key: ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
+        :param pulumi.Input[str] attestor_public_key_id: The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
         :param pulumi.Input[str] comment: Optional. A descriptive comment. This field may be updated.
-        :param pulumi.Input[str] id: The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
         :param pulumi.Input['PkixPublicKeyArgs'] pkix_public_key: A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
         """
         if ascii_armored_pgp_public_key is not None:
             pulumi.set(__self__, "ascii_armored_pgp_public_key", ascii_armored_pgp_public_key)
+        if attestor_public_key_id is not None:
+            pulumi.set(__self__, "attestor_public_key_id", attestor_public_key_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if pkix_public_key is not None:
             pulumi.set(__self__, "pkix_public_key", pkix_public_key)
 
@@ -54,6 +54,18 @@ class AttestorPublicKeyArgs:
         pulumi.set(self, "ascii_armored_pgp_public_key", value)
 
     @property
+    @pulumi.getter(name="attestorPublicKeyId")
+    def attestor_public_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+        """
+        return pulumi.get(self, "attestor_public_key_id")
+
+    @attestor_public_key_id.setter
+    def attestor_public_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attestor_public_key_id", value)
+
+    @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
@@ -64,18 +76,6 @@ class AttestorPublicKeyArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="pkixPublicKey")

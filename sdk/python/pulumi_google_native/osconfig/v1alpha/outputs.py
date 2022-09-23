@@ -1330,6 +1330,8 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponse(dict):
             suggest = "display_name"
         elif key == "gpgKeys":
             suggest = "gpg_keys"
+        elif key == "oSPolicyResourceRepositoryResourceYumRepositoryId":
+            suggest = "o_s_policy_resource_repository_resource_yum_repository_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OSPolicyResourceRepositoryResourceYumRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1346,18 +1348,18 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponse(dict):
                  base_url: str,
                  display_name: str,
                  gpg_keys: Sequence[str],
-                 id: str):
+                 o_s_policy_resource_repository_resource_yum_repository_id: str):
         """
         Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
         :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
-        :param str id: A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+        :param str o_s_policy_resource_repository_resource_yum_repository_id: A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "gpg_keys", gpg_keys)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "o_s_policy_resource_repository_resource_yum_repository_id", o_s_policy_resource_repository_resource_yum_repository_id)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -1384,12 +1386,12 @@ class OSPolicyResourceRepositoryResourceYumRepositoryResponse(dict):
         return pulumi.get(self, "gpg_keys")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="oSPolicyResourceRepositoryResourceYumRepositoryId")
+    def o_s_policy_resource_repository_resource_yum_repository_id(self) -> str:
         """
         A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "o_s_policy_resource_repository_resource_yum_repository_id")
 
 
 @pulumi.output_type
@@ -1406,6 +1408,8 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponse(dict):
             suggest = "display_name"
         elif key == "gpgKeys":
             suggest = "gpg_keys"
+        elif key == "oSPolicyResourceRepositoryResourceZypperRepositoryId":
+            suggest = "o_s_policy_resource_repository_resource_zypper_repository_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OSPolicyResourceRepositoryResourceZypperRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1422,18 +1426,18 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponse(dict):
                  base_url: str,
                  display_name: str,
                  gpg_keys: Sequence[str],
-                 id: str):
+                 o_s_policy_resource_repository_resource_zypper_repository_id: str):
         """
         Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
         :param str base_url: The location of the repository directory.
         :param str display_name: The display name of the repository.
         :param Sequence[str] gpg_keys: URIs of GPG keys.
-        :param str id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param str o_s_policy_resource_repository_resource_zypper_repository_id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
         """
         pulumi.set(__self__, "base_url", base_url)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "gpg_keys", gpg_keys)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "o_s_policy_resource_repository_resource_zypper_repository_id", o_s_policy_resource_repository_resource_zypper_repository_id)
 
     @property
     @pulumi.getter(name="baseUrl")
@@ -1460,12 +1464,12 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponse(dict):
         return pulumi.get(self, "gpg_keys")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="oSPolicyResourceRepositoryResourceZypperRepositoryId")
+    def o_s_policy_resource_repository_resource_zypper_repository_id(self) -> str:
         """
         A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "o_s_policy_resource_repository_resource_zypper_repository_id")
 
 
 @pulumi.output_type
@@ -1478,6 +1482,8 @@ class OSPolicyResourceResponse(dict):
         suggest = None
         if key == "exec":
             suggest = "exec_"
+        elif key == "oSPolicyResourceId":
+            suggest = "o_s_policy_resource_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OSPolicyResourceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1493,20 +1499,20 @@ class OSPolicyResourceResponse(dict):
     def __init__(__self__, *,
                  exec_: 'outputs.OSPolicyResourceExecResourceResponse',
                  file: 'outputs.OSPolicyResourceFileResourceResponse',
-                 id: str,
+                 o_s_policy_resource_id: str,
                  pkg: 'outputs.OSPolicyResourcePackageResourceResponse',
                  repository: 'outputs.OSPolicyResourceRepositoryResourceResponse'):
         """
         An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
         :param 'OSPolicyResourceExecResourceResponse' exec_: Exec resource
         :param 'OSPolicyResourceFileResourceResponse' file: File resource
-        :param str id: The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        :param str o_s_policy_resource_id: The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
         :param 'OSPolicyResourcePackageResourceResponse' pkg: Package resource
         :param 'OSPolicyResourceRepositoryResourceResponse' repository: Package repository resource
         """
         pulumi.set(__self__, "exec_", exec_)
         pulumi.set(__self__, "file", file)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "o_s_policy_resource_id", o_s_policy_resource_id)
         pulumi.set(__self__, "pkg", pkg)
         pulumi.set(__self__, "repository", repository)
 
@@ -1527,12 +1533,12 @@ class OSPolicyResourceResponse(dict):
         return pulumi.get(self, "file")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="oSPolicyResourceId")
+    def o_s_policy_resource_id(self) -> str:
         """
         The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "o_s_policy_resource_id")
 
     @property
     @pulumi.getter
@@ -1561,6 +1567,8 @@ class OSPolicyResponse(dict):
         suggest = None
         if key == "allowNoResourceGroupMatch":
             suggest = "allow_no_resource_group_match"
+        elif key == "oSPolicyId":
+            suggest = "o_s_policy_id"
         elif key == "resourceGroups":
             suggest = "resource_groups"
 
@@ -1578,21 +1586,21 @@ class OSPolicyResponse(dict):
     def __init__(__self__, *,
                  allow_no_resource_group_match: bool,
                  description: str,
-                 id: str,
                  mode: str,
+                 o_s_policy_id: str,
                  resource_groups: Sequence['outputs.OSPolicyResourceGroupResponse']):
         """
         An OS policy defines the desired state configuration for a VM.
         :param bool allow_no_resource_group_match: This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
         :param str description: Policy description. Length of the description is limited to 1024 characters.
-        :param str id: The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
         :param str mode: Policy mode
+        :param str o_s_policy_id: The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
         :param Sequence['OSPolicyResourceGroupResponse'] resource_groups: List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
         """
         pulumi.set(__self__, "allow_no_resource_group_match", allow_no_resource_group_match)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "o_s_policy_id", o_s_policy_id)
         pulumi.set(__self__, "resource_groups", resource_groups)
 
     @property
@@ -1613,19 +1621,19 @@ class OSPolicyResponse(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
     def mode(self) -> str:
         """
         Policy mode
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="oSPolicyId")
+    def o_s_policy_id(self) -> str:
+        """
+        The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        """
+        return pulumi.get(self, "o_s_policy_id")
 
     @property
     @pulumi.getter(name="resourceGroups")

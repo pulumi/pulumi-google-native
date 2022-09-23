@@ -2058,6 +2058,8 @@ type BuildResponse struct {
 	Artifacts ArtifactsResponse `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets SecretsResponse `pulumi:"availableSecrets"`
+	// Unique identifier of the build.
+	BuildId string `pulumi:"buildId"`
 	// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 	BuildTriggerId string `pulumi:"buildTriggerId"`
 	// Time at which the request to create the build was received.
@@ -2066,8 +2068,6 @@ type BuildResponse struct {
 	FailureInfo FailureInfoResponse `pulumi:"failureInfo"`
 	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 	FinishTime string `pulumi:"finishTime"`
-	// Unique identifier of the build.
-	Id string `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images []string `pulumi:"images"`
 	// URL to logs for this build in Google Cloud Console.
@@ -2142,6 +2142,11 @@ func (o BuildResponseOutput) AvailableSecrets() SecretsResponseOutput {
 	return o.ApplyT(func(v BuildResponse) SecretsResponse { return v.AvailableSecrets }).(SecretsResponseOutput)
 }
 
+// Unique identifier of the build.
+func (o BuildResponseOutput) BuildId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.BuildId }).(pulumi.StringOutput)
+}
+
 // The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
 func (o BuildResponseOutput) BuildTriggerId() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.BuildTriggerId }).(pulumi.StringOutput)
@@ -2160,11 +2165,6 @@ func (o BuildResponseOutput) FailureInfo() FailureInfoResponseOutput {
 // Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
 func (o BuildResponseOutput) FinishTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.FinishTime }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the build.
-func (o BuildResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -2280,14 +2280,14 @@ type BuildStep struct {
 	AllowFailure *bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
+	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+	BuildStepId *string `pulumi:"buildStepId"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir *string `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
 	Entrypoint *string `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
-	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-	Id *string `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
 	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
@@ -2321,14 +2321,14 @@ type BuildStepArgs struct {
 	AllowFailure pulumi.BoolPtrInput `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+	BuildStepId pulumi.StringPtrInput `pulumi:"buildStepId"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
 	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
@@ -2410,6 +2410,11 @@ func (o BuildStepOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStep) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+func (o BuildStepOutput) BuildStepId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildStep) *string { return v.BuildStepId }).(pulumi.StringPtrOutput)
+}
+
 // Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 func (o BuildStepOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildStep) *string { return v.Dir }).(pulumi.StringPtrOutput)
@@ -2423,11 +2428,6 @@ func (o BuildStepOutput) Entrypoint() pulumi.StringPtrOutput {
 // A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 func (o BuildStepOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStep) []string { return v.Env }).(pulumi.StringArrayOutput)
-}
-
-// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-func (o BuildStepOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
@@ -2488,6 +2488,8 @@ type BuildStepResponse struct {
 	AllowFailure bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
+	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+	BuildStepId string `pulumi:"buildStepId"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 	Dir string `pulumi:"dir"`
 	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
@@ -2496,8 +2498,6 @@ type BuildStepResponse struct {
 	Env []string `pulumi:"env"`
 	// Return code from running the step.
 	ExitCode int `pulumi:"exitCode"`
-	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-	Id string `pulumi:"id"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
@@ -2548,6 +2548,11 @@ func (o BuildStepResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+func (o BuildStepResponseOutput) BuildStepId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.BuildStepId }).(pulumi.StringOutput)
+}
+
 // Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
 func (o BuildStepResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildStepResponse) string { return v.Dir }).(pulumi.StringOutput)
@@ -2566,11 +2571,6 @@ func (o BuildStepResponseOutput) Env() pulumi.StringArrayOutput {
 // Return code from running the step.
 func (o BuildStepResponseOutput) ExitCode() pulumi.IntOutput {
 	return o.ApplyT(func(v BuildStepResponse) int { return v.ExitCode }).(pulumi.IntOutput)
-}
-
-// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-func (o BuildStepResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildStepResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.

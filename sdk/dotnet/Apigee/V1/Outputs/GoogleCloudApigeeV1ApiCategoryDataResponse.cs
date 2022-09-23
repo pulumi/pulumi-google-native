@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// <summary>
         /// ID of the category (a UUID).
         /// </summary>
-        public readonly string Id;
+        public readonly string GoogleCloudApigeeV1ApiCategoryDataId;
         /// <summary>
         /// Name of the category.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudApigeeV1ApiCategoryDataResponse(
-            string id,
+            string googleCloudApigeeV1ApiCategoryDataId,
 
             string name,
 
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 
             string updateTime)
         {
-            Id = id;
+            GoogleCloudApigeeV1ApiCategoryDataId = googleCloudApigeeV1ApiCategoryDataId;
             Name = name;
             SiteId = siteId;
             UpdateTime = updateTime;

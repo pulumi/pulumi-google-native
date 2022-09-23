@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Outputs
         /// <summary>
         /// Unique Id for the resource.
         /// </summary>
-        public readonly string Id;
+        public readonly string GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId;
         /// <summary>
         /// Specific details for the resource. This is for internal use only.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(
-            string id,
+            string googleCloudBeyondcorpAppconnectorsV1ResourceInfoId,
 
             ImmutableDictionary<string, string> resource,
 
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Outputs
 
             string time)
         {
-            Id = id;
+            GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId = googleCloudBeyondcorpAppconnectorsV1ResourceInfoId;
             Resource = resource;
             Status = status;
             Sub = sub;

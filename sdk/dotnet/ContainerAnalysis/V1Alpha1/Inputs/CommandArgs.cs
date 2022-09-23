@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         }
 
         /// <summary>
+        /// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
+        /// </summary>
+        [Input("commandId")]
+        public Input<string>? CommandId { get; set; }
+
+        /// <summary>
         /// Working directory (relative to project source root) used when running this Command.
         /// </summary>
         [Input("dir")]
@@ -44,12 +50,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
             get => _env ?? (_env = new InputList<string>());
             set => _env = value;
         }
-
-        /// <summary>
-        /// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.

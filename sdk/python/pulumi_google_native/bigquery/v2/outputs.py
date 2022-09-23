@@ -1748,6 +1748,8 @@ class ExplainQueryStageResponse(dict):
             suggest = "compute_ratio_max"
         elif key == "endMs":
             suggest = "end_ms"
+        elif key == "explainQueryStageId":
+            suggest = "explain_query_stage_id"
         elif key == "inputStages":
             suggest = "input_stages"
         elif key == "parallelInputs":
@@ -1807,7 +1809,7 @@ class ExplainQueryStageResponse(dict):
                  compute_ratio_avg: float,
                  compute_ratio_max: float,
                  end_ms: str,
-                 id: str,
+                 explain_query_stage_id: str,
                  input_stages: Sequence[str],
                  name: str,
                  parallel_inputs: str,
@@ -1838,7 +1840,7 @@ class ExplainQueryStageResponse(dict):
         :param float compute_ratio_avg: Relative amount of time the average shard spent on CPU-bound tasks.
         :param float compute_ratio_max: Relative amount of time the slowest shard spent on CPU-bound tasks.
         :param str end_ms: Stage end time represented as milliseconds since epoch.
-        :param str id: Unique ID for stage within plan.
+        :param str explain_query_stage_id: Unique ID for stage within plan.
         :param Sequence[str] input_stages: IDs for stages that are inputs to this stage.
         :param str name: Human-readable name for stage.
         :param str parallel_inputs: Number of parallel input segments to be processed.
@@ -1869,7 +1871,7 @@ class ExplainQueryStageResponse(dict):
         pulumi.set(__self__, "compute_ratio_avg", compute_ratio_avg)
         pulumi.set(__self__, "compute_ratio_max", compute_ratio_max)
         pulumi.set(__self__, "end_ms", end_ms)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "explain_query_stage_id", explain_query_stage_id)
         pulumi.set(__self__, "input_stages", input_stages)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parallel_inputs", parallel_inputs)
@@ -1943,12 +1945,12 @@ class ExplainQueryStageResponse(dict):
         return pulumi.get(self, "end_ms")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="explainQueryStageId")
+    def explain_query_stage_id(self) -> str:
         """
         Unique ID for stage within plan.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "explain_query_stage_id")
 
     @property
     @pulumi.getter(name="inputStages")

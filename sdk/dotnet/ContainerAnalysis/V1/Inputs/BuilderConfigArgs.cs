@@ -12,8 +12,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 
     public sealed class BuilderConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("builderConfigId")]
+        public Input<string>? BuilderConfigId { get; set; }
 
         public BuilderConfigArgs()
         {

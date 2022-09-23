@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
         /// Policy mode
         /// </summary>
         [Input("mode", required: true)]
         public Input<Pulumi.GoogleNative.OSConfig.V1Alpha.OSPolicyMode> Mode { get; set; } = null!;
+
+        /// <summary>
+        /// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        /// </summary>
+        [Input("oSPolicyId", required: true)]
+        public Input<string> OSPolicyId { get; set; } = null!;
 
         [Input("resourceGroups", required: true)]
         private InputList<Inputs.OSPolicyResourceGroupArgs>? _resourceGroups;

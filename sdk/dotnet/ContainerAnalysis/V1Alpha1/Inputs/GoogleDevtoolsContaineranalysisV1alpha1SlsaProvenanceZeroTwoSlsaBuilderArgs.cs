@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// <summary>
         /// URI indicating the builder’s identity.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderId")]
+        public Input<string>? GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderId { get; set; }
 
         public GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs()
         {

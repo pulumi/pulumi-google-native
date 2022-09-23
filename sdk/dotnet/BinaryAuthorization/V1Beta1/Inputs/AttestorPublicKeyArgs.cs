@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
         public Input<string>? AsciiArmoredPgpPublicKey { get; set; }
 
         /// <summary>
+        /// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+        /// </summary>
+        [Input("attestorPublicKeyId")]
+        public Input<string>? AttestorPublicKeyId { get; set; }
+
+        /// <summary>
         /// Optional. A descriptive comment. This field may be updated.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
-
-        /// <summary>
-        /// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.

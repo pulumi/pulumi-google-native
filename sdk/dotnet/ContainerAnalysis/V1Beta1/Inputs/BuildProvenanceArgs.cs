@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         }
 
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        [Input("buildProvenanceId", required: true)]
+        public Input<string> BuildProvenanceId { get; set; } = null!;
+
+        /// <summary>
         /// Version string of the builder at the time this build was executed.
         /// </summary>
         [Input("builderVersion")]
@@ -74,12 +80,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the build.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// URI where any logs for this provenance were written.

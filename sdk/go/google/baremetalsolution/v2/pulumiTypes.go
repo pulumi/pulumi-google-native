@@ -451,7 +451,7 @@ type InstanceConfig struct {
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading *bool `pulumi:"hyperthreading"`
 	// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-	Id *string `pulumi:"id"`
+	InstanceConfigId *string `pulumi:"instanceConfigId"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType *string `pulumi:"instanceType"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
@@ -488,7 +488,7 @@ type InstanceConfigArgs struct {
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading pulumi.BoolPtrInput `pulumi:"hyperthreading"`
 	// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	InstanceConfigId pulumi.StringPtrInput `pulumi:"instanceConfigId"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
@@ -573,8 +573,8 @@ func (o InstanceConfigOutput) Hyperthreading() pulumi.BoolPtrOutput {
 }
 
 // A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-func (o InstanceConfigOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o InstanceConfigOutput) InstanceConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *string { return v.InstanceConfigId }).(pulumi.StringPtrOutput)
 }
 
 // Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
@@ -641,7 +641,7 @@ type InstanceConfigResponse struct {
 	// Whether the instance should be provisioned with Hyperthreading enabled.
 	Hyperthreading bool `pulumi:"hyperthreading"`
 	// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-	Id string `pulumi:"id"`
+	InstanceConfigId string `pulumi:"instanceConfigId"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType string `pulumi:"instanceType"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
@@ -691,8 +691,8 @@ func (o InstanceConfigResponseOutput) Hyperthreading() pulumi.BoolOutput {
 }
 
 // A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
-func (o InstanceConfigResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceConfigResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o InstanceConfigResponseOutput) InstanceConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) string { return v.InstanceConfigId }).(pulumi.StringOutput)
 }
 
 // Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
@@ -760,7 +760,7 @@ func (o InstanceConfigResponseArrayOutput) Index(i pulumi.IntInput) InstanceConf
 // A GCP vlan attachment.
 type IntakeVlanAttachment struct {
 	// Identifier of the VLAN attachment.
-	Id *string `pulumi:"id"`
+	IntakeVlanAttachmentId *string `pulumi:"intakeVlanAttachmentId"`
 	// Attachment pairing key.
 	PairingKey *string `pulumi:"pairingKey"`
 }
@@ -779,7 +779,7 @@ type IntakeVlanAttachmentInput interface {
 // A GCP vlan attachment.
 type IntakeVlanAttachmentArgs struct {
 	// Identifier of the VLAN attachment.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	IntakeVlanAttachmentId pulumi.StringPtrInput `pulumi:"intakeVlanAttachmentId"`
 	// Attachment pairing key.
 	PairingKey pulumi.StringPtrInput `pulumi:"pairingKey"`
 }
@@ -837,8 +837,8 @@ func (o IntakeVlanAttachmentOutput) ToIntakeVlanAttachmentOutputWithContext(ctx 
 }
 
 // Identifier of the VLAN attachment.
-func (o IntakeVlanAttachmentOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IntakeVlanAttachment) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o IntakeVlanAttachmentOutput) IntakeVlanAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntakeVlanAttachment) *string { return v.IntakeVlanAttachmentId }).(pulumi.StringPtrOutput)
 }
 
 // Attachment pairing key.
@@ -869,7 +869,7 @@ func (o IntakeVlanAttachmentArrayOutput) Index(i pulumi.IntInput) IntakeVlanAtta
 // A GCP vlan attachment.
 type IntakeVlanAttachmentResponse struct {
 	// Identifier of the VLAN attachment.
-	Id string `pulumi:"id"`
+	IntakeVlanAttachmentId string `pulumi:"intakeVlanAttachmentId"`
 	// Attachment pairing key.
 	PairingKey string `pulumi:"pairingKey"`
 }
@@ -890,8 +890,8 @@ func (o IntakeVlanAttachmentResponseOutput) ToIntakeVlanAttachmentResponseOutput
 }
 
 // Identifier of the VLAN attachment.
-func (o IntakeVlanAttachmentResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v IntakeVlanAttachmentResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o IntakeVlanAttachmentResponseOutput) IntakeVlanAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v IntakeVlanAttachmentResponse) string { return v.IntakeVlanAttachmentId }).(pulumi.StringOutput)
 }
 
 // Attachment pairing key.
@@ -923,10 +923,10 @@ func (o IntakeVlanAttachmentResponseArrayOutput) Index(i pulumi.IntInput) Intake
 type LogicalNetworkInterface struct {
 	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
 	DefaultGateway *bool `pulumi:"defaultGateway"`
-	// An identifier for the `Network`, generated by the backend.
-	Id *string `pulumi:"id"`
 	// IP address in the network
 	IpAddress *string `pulumi:"ipAddress"`
+	// An identifier for the `Network`, generated by the backend.
+	LogicalNetworkInterfaceId *string `pulumi:"logicalNetworkInterfaceId"`
 	// Name of the network
 	Network *string `pulumi:"network"`
 	// Type of network.
@@ -948,10 +948,10 @@ type LogicalNetworkInterfaceInput interface {
 type LogicalNetworkInterfaceArgs struct {
 	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
 	DefaultGateway pulumi.BoolPtrInput `pulumi:"defaultGateway"`
-	// An identifier for the `Network`, generated by the backend.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// IP address in the network
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// An identifier for the `Network`, generated by the backend.
+	LogicalNetworkInterfaceId pulumi.StringPtrInput `pulumi:"logicalNetworkInterfaceId"`
 	// Name of the network
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Type of network.
@@ -1015,14 +1015,14 @@ func (o LogicalNetworkInterfaceOutput) DefaultGateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogicalNetworkInterface) *bool { return v.DefaultGateway }).(pulumi.BoolPtrOutput)
 }
 
-// An identifier for the `Network`, generated by the backend.
-func (o LogicalNetworkInterfaceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // IP address in the network
 func (o LogicalNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// An identifier for the `Network`, generated by the backend.
+func (o LogicalNetworkInterfaceOutput) LogicalNetworkInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkInterface) *string { return v.LogicalNetworkInterfaceId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the network
@@ -1059,10 +1059,10 @@ func (o LogicalNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) LogicalNetw
 type LogicalNetworkInterfaceResponse struct {
 	// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
 	DefaultGateway bool `pulumi:"defaultGateway"`
-	// An identifier for the `Network`, generated by the backend.
-	Id string `pulumi:"id"`
 	// IP address in the network
 	IpAddress string `pulumi:"ipAddress"`
+	// An identifier for the `Network`, generated by the backend.
+	LogicalNetworkInterfaceId string `pulumi:"logicalNetworkInterfaceId"`
 	// Name of the network
 	Network string `pulumi:"network"`
 	// Type of network.
@@ -1089,14 +1089,14 @@ func (o LogicalNetworkInterfaceResponseOutput) DefaultGateway() pulumi.BoolOutpu
 	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
 }
 
-// An identifier for the `Network`, generated by the backend.
-func (o LogicalNetworkInterfaceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // IP address in the network
 func (o LogicalNetworkInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// An identifier for the `Network`, generated by the backend.
+func (o LogicalNetworkInterfaceResponseOutput) LogicalNetworkInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LogicalNetworkInterfaceResponse) string { return v.LogicalNetworkInterfaceId }).(pulumi.StringOutput)
 }
 
 // Name of the network
@@ -1134,7 +1134,7 @@ type Lun struct {
 	// Display if this LUN is a boot LUN.
 	BootLun *bool `pulumi:"bootLun"`
 	// An identifier for the LUN, generated by the backend.
-	Id *string `pulumi:"id"`
+	LunId *string `pulumi:"lunId"`
 	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
 	MultiprotocolType *LunMultiprotocolType `pulumi:"multiprotocolType"`
 	// Display if this LUN can be shared between multiple physical servers.
@@ -1167,7 +1167,7 @@ type LunArgs struct {
 	// Display if this LUN is a boot LUN.
 	BootLun pulumi.BoolPtrInput `pulumi:"bootLun"`
 	// An identifier for the LUN, generated by the backend.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	LunId pulumi.StringPtrInput `pulumi:"lunId"`
 	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
 	MultiprotocolType LunMultiprotocolTypePtrInput `pulumi:"multiprotocolType"`
 	// Display if this LUN can be shared between multiple physical servers.
@@ -1242,8 +1242,8 @@ func (o LunOutput) BootLun() pulumi.BoolPtrOutput {
 }
 
 // An identifier for the LUN, generated by the backend.
-func (o LunOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Lun) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LunOutput) LunId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Lun) *string { return v.LunId }).(pulumi.StringPtrOutput)
 }
 
 // The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
@@ -1468,7 +1468,7 @@ type LunResponse struct {
 	// Display if this LUN is a boot LUN.
 	BootLun bool `pulumi:"bootLun"`
 	// An identifier for the LUN, generated by the backend.
-	Id string `pulumi:"id"`
+	LunId string `pulumi:"lunId"`
 	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
 	MultiprotocolType string `pulumi:"multiprotocolType"`
 	// The name of the LUN.
@@ -1508,8 +1508,8 @@ func (o LunResponseOutput) BootLun() pulumi.BoolOutput {
 }
 
 // An identifier for the LUN, generated by the backend.
-func (o LunResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LunResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o LunResponseOutput) LunId() pulumi.StringOutput {
+	return o.ApplyT(func(v LunResponse) string { return v.LunId }).(pulumi.StringOutput)
 }
 
 // The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
@@ -1858,10 +1858,10 @@ type NetworkConfig struct {
 	Cidr *string `pulumi:"cidr"`
 	// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService *string `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id *string `pulumi:"id"`
 	// The JumboFramesEnabled option for customer to set.
 	JumboFramesEnabled *bool `pulumi:"jumboFramesEnabled"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	NetworkConfigId *string `pulumi:"networkConfigId"`
 	// Service CIDR, if any.
 	ServiceCidr *NetworkConfigServiceCidr `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
@@ -1893,10 +1893,10 @@ type NetworkConfigArgs struct {
 	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
 	// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService pulumi.StringPtrInput `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The JumboFramesEnabled option for customer to set.
 	JumboFramesEnabled pulumi.BoolPtrInput `pulumi:"jumboFramesEnabled"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	NetworkConfigId pulumi.StringPtrInput `pulumi:"networkConfigId"`
 	// Service CIDR, if any.
 	ServiceCidr NetworkConfigServiceCidrPtrInput `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
@@ -1976,14 +1976,14 @@ func (o NetworkConfigOutput) GcpService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.GcpService }).(pulumi.StringPtrOutput)
 }
 
-// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-func (o NetworkConfigOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // The JumboFramesEnabled option for customer to set.
 func (o NetworkConfigOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.JumboFramesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+func (o NetworkConfigOutput) NetworkConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *string { return v.NetworkConfigId }).(pulumi.StringPtrOutput)
 }
 
 // Service CIDR, if any.
@@ -2039,12 +2039,12 @@ type NetworkConfigResponse struct {
 	Cidr string `pulumi:"cidr"`
 	// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService string `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id string `pulumi:"id"`
 	// The JumboFramesEnabled option for customer to set.
 	JumboFramesEnabled bool `pulumi:"jumboFramesEnabled"`
 	// The name of the network config.
 	Name string `pulumi:"name"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	NetworkConfigId string `pulumi:"networkConfigId"`
 	// Service CIDR, if any.
 	ServiceCidr string `pulumi:"serviceCidr"`
 	// The type of this network, either Client or Private.
@@ -2087,11 +2087,6 @@ func (o NetworkConfigResponseOutput) GcpService() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.GcpService }).(pulumi.StringOutput)
 }
 
-// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-func (o NetworkConfigResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // The JumboFramesEnabled option for customer to set.
 func (o NetworkConfigResponseOutput) JumboFramesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.JumboFramesEnabled }).(pulumi.BoolOutput)
@@ -2100,6 +2095,11 @@ func (o NetworkConfigResponseOutput) JumboFramesEnabled() pulumi.BoolOutput {
 // The name of the network config.
 func (o NetworkConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+func (o NetworkConfigResponseOutput) NetworkConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.NetworkConfigId }).(pulumi.StringOutput)
 }
 
 // Service CIDR, if any.
@@ -2218,8 +2218,6 @@ func (o NetworkMountPointResponseArrayOutput) Index(i pulumi.IntInput) NetworkMo
 type NetworkResponse struct {
 	// The cidr of the Network.
 	Cidr string `pulumi:"cidr"`
-	// An identifier for the `Network`, generated by the backend.
-	Id string `pulumi:"id"`
 	// IP address configured.
 	IpAddress string `pulumi:"ipAddress"`
 	// Whether network uses standard frames or jumbo ones.
@@ -2232,6 +2230,8 @@ type NetworkResponse struct {
 	MountPoints []NetworkMountPointResponse `pulumi:"mountPoints"`
 	// The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
 	Name string `pulumi:"name"`
+	// An identifier for the `Network`, generated by the backend.
+	NetworkId string `pulumi:"networkId"`
 	// Pod name.
 	Pod string `pulumi:"pod"`
 	// List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
@@ -2268,11 +2268,6 @@ func (o NetworkResponseOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// An identifier for the `Network`, generated by the backend.
-func (o NetworkResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // IP address configured.
 func (o NetworkResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.IpAddress }).(pulumi.StringOutput)
@@ -2301,6 +2296,11 @@ func (o NetworkResponseOutput) MountPoints() NetworkMountPointResponseArrayOutpu
 // The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
 func (o NetworkResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An identifier for the `Network`, generated by the backend.
+func (o NetworkResponseOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
 // Pod name.
@@ -2919,8 +2919,6 @@ func (o VRFResponseOutput) VlanAttachments() VlanAttachmentResponseArrayOutput {
 
 // VLAN attachment details.
 type VlanAttachmentResponse struct {
-	// Immutable. The identifier of the attachment within vrf.
-	Id string `pulumi:"id"`
 	// Input only. Pairing key.
 	PairingKey string `pulumi:"pairingKey"`
 	// The peer IP of the attachment.
@@ -2931,6 +2929,8 @@ type VlanAttachmentResponse struct {
 	QosPolicy QosPolicyResponse `pulumi:"qosPolicy"`
 	// The router IP of the attachment.
 	RouterIp string `pulumi:"routerIp"`
+	// Immutable. The identifier of the attachment within vrf.
+	VlanAttachmentId string `pulumi:"vlanAttachmentId"`
 }
 
 // VLAN attachment details.
@@ -2946,11 +2946,6 @@ func (o VlanAttachmentResponseOutput) ToVlanAttachmentResponseOutput() VlanAttac
 
 func (o VlanAttachmentResponseOutput) ToVlanAttachmentResponseOutputWithContext(ctx context.Context) VlanAttachmentResponseOutput {
 	return o
-}
-
-// Immutable. The identifier of the attachment within vrf.
-func (o VlanAttachmentResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Input only. Pairing key.
@@ -2976,6 +2971,11 @@ func (o VlanAttachmentResponseOutput) QosPolicy() QosPolicyResponseOutput {
 // The router IP of the attachment.
 func (o VlanAttachmentResponseOutput) RouterIp() pulumi.StringOutput {
 	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.RouterIp }).(pulumi.StringOutput)
+}
+
+// Immutable. The identifier of the attachment within vrf.
+func (o VlanAttachmentResponseOutput) VlanAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.VlanAttachmentId }).(pulumi.StringOutput)
 }
 
 type VlanAttachmentResponseArrayOutput struct{ *pulumi.OutputState }
@@ -3006,8 +3006,6 @@ type Volume struct {
 	CurrentSizeGib *string `pulumi:"currentSizeGib"`
 	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 	EmergencySizeGib *string `pulumi:"emergencySizeGib"`
-	// An identifier for the `Volume`, generated by the backend.
-	Id *string `pulumi:"id"`
 	// Labels as key value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
@@ -3036,6 +3034,8 @@ type Volume struct {
 	State *VolumeState `pulumi:"state"`
 	// The storage type for this volume.
 	StorageType *VolumeStorageType `pulumi:"storageType"`
+	// An identifier for the `Volume`, generated by the backend.
+	VolumeId *string `pulumi:"volumeId"`
 }
 
 // VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
@@ -3057,8 +3057,6 @@ type VolumeArgs struct {
 	CurrentSizeGib pulumi.StringPtrInput `pulumi:"currentSizeGib"`
 	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 	EmergencySizeGib pulumi.StringPtrInput `pulumi:"emergencySizeGib"`
-	// An identifier for the `Volume`, generated by the backend.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Labels as key value pairs.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
@@ -3087,6 +3085,8 @@ type VolumeArgs struct {
 	State VolumeStatePtrInput `pulumi:"state"`
 	// The storage type for this volume.
 	StorageType VolumeStorageTypePtrInput `pulumi:"storageType"`
+	// An identifier for the `Volume`, generated by the backend.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -3154,11 +3154,6 @@ func (o VolumeOutput) CurrentSizeGib() pulumi.StringPtrOutput {
 // Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 func (o VolumeOutput) EmergencySizeGib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.EmergencySizeGib }).(pulumi.StringPtrOutput)
-}
-
-// An identifier for the `Volume`, generated by the backend.
-func (o VolumeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Volume) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Labels as key value pairs.
@@ -3231,6 +3226,11 @@ func (o VolumeOutput) StorageType() VolumeStorageTypePtrOutput {
 	return o.ApplyT(func(v Volume) *VolumeStorageType { return v.StorageType }).(VolumeStorageTypePtrOutput)
 }
 
+// An identifier for the `Volume`, generated by the backend.
+func (o VolumeOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Volume) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
 type VolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeArrayOutput) ElementType() reflect.Type {
@@ -3255,8 +3255,6 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 type VolumeConfig struct {
 	// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService *string `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id *string `pulumi:"id"`
 	// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
 	LunRanges []LunRange `pulumi:"lunRanges"`
 	// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
@@ -3275,6 +3273,8 @@ type VolumeConfig struct {
 	Type *VolumeConfigType `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote *string `pulumi:"userNote"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	VolumeConfigId *string `pulumi:"volumeConfigId"`
 }
 
 // VolumeConfigInput is an input type that accepts VolumeConfigArgs and VolumeConfigOutput values.
@@ -3292,8 +3292,6 @@ type VolumeConfigInput interface {
 type VolumeConfigArgs struct {
 	// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService pulumi.StringPtrInput `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
 	LunRanges LunRangeArrayInput `pulumi:"lunRanges"`
 	// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
@@ -3312,6 +3310,8 @@ type VolumeConfigArgs struct {
 	Type VolumeConfigTypePtrInput `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote pulumi.StringPtrInput `pulumi:"userNote"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	VolumeConfigId pulumi.StringPtrInput `pulumi:"volumeConfigId"`
 }
 
 func (VolumeConfigArgs) ElementType() reflect.Type {
@@ -3371,11 +3371,6 @@ func (o VolumeConfigOutput) GcpService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *string { return v.GcpService }).(pulumi.StringPtrOutput)
 }
 
-// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-func (o VolumeConfigOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
 func (o VolumeConfigOutput) LunRanges() LunRangeArrayOutput {
 	return o.ApplyT(func(v VolumeConfig) []LunRange { return v.LunRanges }).(LunRangeArrayOutput)
@@ -3421,6 +3416,11 @@ func (o VolumeConfigOutput) UserNote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *string { return v.UserNote }).(pulumi.StringPtrOutput)
 }
 
+// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+func (o VolumeConfigOutput) VolumeConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeConfig) *string { return v.VolumeConfigId }).(pulumi.StringPtrOutput)
+}
+
 type VolumeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeConfigArrayOutput) ElementType() reflect.Type {
@@ -3445,8 +3445,6 @@ func (o VolumeConfigArrayOutput) Index(i pulumi.IntInput) VolumeConfigOutput {
 type VolumeConfigResponse struct {
 	// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 	GcpService string `pulumi:"gcpService"`
-	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-	Id string `pulumi:"id"`
 	// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
 	LunRanges []LunRangeResponse `pulumi:"lunRanges"`
 	// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
@@ -3467,6 +3465,8 @@ type VolumeConfigResponse struct {
 	Type string `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
 	UserNote string `pulumi:"userNote"`
+	// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+	VolumeConfigId string `pulumi:"volumeConfigId"`
 }
 
 // Configuration parameters for a new volume.
@@ -3487,11 +3487,6 @@ func (o VolumeConfigResponseOutput) ToVolumeConfigResponseOutputWithContext(ctx 
 // The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
 func (o VolumeConfigResponseOutput) GcpService() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) string { return v.GcpService }).(pulumi.StringOutput)
-}
-
-// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-func (o VolumeConfigResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeConfigResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
@@ -3544,6 +3539,11 @@ func (o VolumeConfigResponseOutput) UserNote() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) string { return v.UserNote }).(pulumi.StringOutput)
 }
 
+// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+func (o VolumeConfigResponseOutput) VolumeConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeConfigResponse) string { return v.VolumeConfigId }).(pulumi.StringOutput)
+}
+
 type VolumeConfigResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeConfigResponseArrayOutput) ElementType() reflect.Type {
@@ -3574,8 +3574,6 @@ type VolumeResponse struct {
 	CurrentSizeGib string `pulumi:"currentSizeGib"`
 	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 	EmergencySizeGib string `pulumi:"emergencySizeGib"`
-	// An identifier for the `Volume`, generated by the backend.
-	Id string `pulumi:"id"`
 	// Labels as key value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
@@ -3608,6 +3606,8 @@ type VolumeResponse struct {
 	State string `pulumi:"state"`
 	// The storage type for this volume.
 	StorageType string `pulumi:"storageType"`
+	// An identifier for the `Volume`, generated by the backend.
+	VolumeId string `pulumi:"volumeId"`
 }
 
 // A storage volume.
@@ -3643,11 +3643,6 @@ func (o VolumeResponseOutput) CurrentSizeGib() pulumi.StringOutput {
 // Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 func (o VolumeResponseOutput) EmergencySizeGib() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.EmergencySizeGib }).(pulumi.StringOutput)
-}
-
-// An identifier for the `Volume`, generated by the backend.
-func (o VolumeResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v VolumeResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Labels as key value pairs.
@@ -3728,6 +3723,11 @@ func (o VolumeResponseOutput) State() pulumi.StringOutput {
 // The storage type for this volume.
 func (o VolumeResponseOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// An identifier for the `Volume`, generated by the backend.
+func (o VolumeResponseOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.VolumeId }).(pulumi.StringOutput)
 }
 
 type VolumeResponseArrayOutput struct{ *pulumi.OutputState }

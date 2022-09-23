@@ -150,22 +150,47 @@ class ArtifactResponse(dict):
     """
     Artifact describes a build product.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 artifact_id: str,
                  checksum: str,
-                 id: str,
                  name: str,
                  names: Sequence[str]):
         """
         Artifact describes a build product.
+        :param str artifact_id: Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
         :param str checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-        :param str id: Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
         :param str name: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         :param Sequence[str] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
+        pulumi.set(__self__, "artifact_id", artifact_id)
         pulumi.set(__self__, "checksum", checksum)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> str:
+        """
+        Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+        """
+        return pulumi.get(self, "artifact_id")
 
     @property
     @pulumi.getter
@@ -174,14 +199,6 @@ class ArtifactResponse(dict):
         Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         """
         return pulumi.get(self, "checksum")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -472,6 +489,8 @@ class BuildProvenanceResponse(dict):
         suggest = None
         if key == "buildOptions":
             suggest = "build_options"
+        elif key == "buildProvenanceId":
+            suggest = "build_provenance_id"
         elif key == "builderVersion":
             suggest = "builder_version"
         elif key == "builtArtifacts":
@@ -502,13 +521,13 @@ class BuildProvenanceResponse(dict):
 
     def __init__(__self__, *,
                  build_options: Mapping[str, str],
+                 build_provenance_id: str,
                  builder_version: str,
                  built_artifacts: Sequence['outputs.ArtifactResponse'],
                  commands: Sequence['outputs.CommandResponse'],
                  create_time: str,
                  creator: str,
                  finish_time: str,
-                 id: str,
                  logs_bucket: str,
                  project: str,
                  source_provenance: 'outputs.SourceResponse',
@@ -517,13 +536,13 @@ class BuildProvenanceResponse(dict):
         """
         Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
         :param Mapping[str, str] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+        :param str build_provenance_id: Unique identifier of the build.
         :param str builder_version: Version string of the builder at the time this build was executed.
         :param Sequence['ArtifactResponse'] built_artifacts: Output of the build.
         :param Sequence['CommandResponse'] commands: Commands requested by the build.
         :param str create_time: Time at which the build was created.
         :param str creator: E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
         :param str finish_time: Time at which execution of the build was finished.
-        :param str id: Unique identifier of the build.
         :param str logs_bucket: Google Cloud Storage bucket where logs were written.
         :param str project: ID of the project.
         :param 'SourceResponse' source_provenance: Details of the Source input to the build.
@@ -531,13 +550,13 @@ class BuildProvenanceResponse(dict):
         :param str trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
         """
         pulumi.set(__self__, "build_options", build_options)
+        pulumi.set(__self__, "build_provenance_id", build_provenance_id)
         pulumi.set(__self__, "builder_version", builder_version)
         pulumi.set(__self__, "built_artifacts", built_artifacts)
         pulumi.set(__self__, "commands", commands)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "finish_time", finish_time)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "logs_bucket", logs_bucket)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_provenance", source_provenance)
@@ -551,6 +570,14 @@ class BuildProvenanceResponse(dict):
         Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         """
         return pulumi.get(self, "build_options")
+
+    @property
+    @pulumi.getter(name="buildProvenanceId")
+    def build_provenance_id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "build_provenance_id")
 
     @property
     @pulumi.getter(name="builderVersion")
@@ -599,14 +626,6 @@ class BuildProvenanceResponse(dict):
         Time at which execution of the build was finished.
         """
         return pulumi.get(self, "finish_time")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Unique identifier of the build.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="logsBucket")
@@ -777,14 +796,31 @@ class BuildTypeResponse(dict):
 
 @pulumi.output_type
 class BuilderConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builderConfigId":
+            suggest = "builder_config_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuilderConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuilderConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuilderConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
-        pulumi.set(__self__, "id", id)
+                 builder_config_id: str):
+        pulumi.set(__self__, "builder_config_id", builder_config_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="builderConfigId")
+    def builder_config_id(self) -> str:
+        return pulumi.get(self, "builder_config_id")
 
 
 @pulumi.output_type
@@ -1015,7 +1051,9 @@ class CommandResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "waitFor":
+        if key == "commandId":
+            suggest = "command_id"
+        elif key == "waitFor":
             suggest = "wait_for"
 
         if suggest:
@@ -1031,24 +1069,24 @@ class CommandResponse(dict):
 
     def __init__(__self__, *,
                  args: Sequence[str],
+                 command_id: str,
                  dir: str,
                  env: Sequence[str],
-                 id: str,
                  name: str,
                  wait_for: Sequence[str]):
         """
         Command describes a step performed as part of the build pipeline.
         :param Sequence[str] args: Command-line arguments used when executing this Command.
+        :param str command_id: Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
         :param str dir: Working directory (relative to project source root) used when running this Command.
         :param Sequence[str] env: Environment variables set before running this Command.
-        :param str id: Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
         :param str name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param Sequence[str] wait_for: The ID(s) of the Command(s) that this Command depends on.
         """
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "command_id", command_id)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "env", env)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "wait_for", wait_for)
 
@@ -1059,6 +1097,14 @@ class CommandResponse(dict):
         Command-line arguments used when executing this Command.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> str:
+        """
+        Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
+        """
+        return pulumi.get(self, "command_id")
 
     @property
     @pulumi.getter
@@ -1075,14 +1121,6 @@ class CommandResponse(dict):
         Environment variables set before running this Command.
         """
         return pulumi.get(self, "env")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2232,6 +2270,8 @@ class DocumentOccurrenceResponse(dict):
             suggest = "creator_comment"
         elif key == "documentComment":
             suggest = "document_comment"
+        elif key == "documentOccurrenceId":
+            suggest = "document_occurrence_id"
         elif key == "externalDocumentRefs":
             suggest = "external_document_refs"
         elif key == "licenseListVersion":
@@ -2253,8 +2293,8 @@ class DocumentOccurrenceResponse(dict):
                  creator_comment: str,
                  creators: Sequence[str],
                  document_comment: str,
+                 document_occurrence_id: str,
                  external_document_refs: Sequence[str],
-                 id: str,
                  license_list_version: str,
                  namespace: str,
                  title: str):
@@ -2264,8 +2304,8 @@ class DocumentOccurrenceResponse(dict):
         :param str creator_comment: A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
         :param Sequence[str] creators: Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
         :param str document_comment: A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+        :param str document_occurrence_id: Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
         :param Sequence[str] external_document_refs: Identify any external SPDX documents referenced within this SPDX document
-        :param str id: Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
         :param str license_list_version: A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
         :param str namespace: Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
         :param str title: Identify name of this document as designated by creator
@@ -2274,8 +2314,8 @@ class DocumentOccurrenceResponse(dict):
         pulumi.set(__self__, "creator_comment", creator_comment)
         pulumi.set(__self__, "creators", creators)
         pulumi.set(__self__, "document_comment", document_comment)
+        pulumi.set(__self__, "document_occurrence_id", document_occurrence_id)
         pulumi.set(__self__, "external_document_refs", external_document_refs)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "license_list_version", license_list_version)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "title", title)
@@ -2313,20 +2353,20 @@ class DocumentOccurrenceResponse(dict):
         return pulumi.get(self, "document_comment")
 
     @property
+    @pulumi.getter(name="documentOccurrenceId")
+    def document_occurrence_id(self) -> str:
+        """
+        Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        """
+        return pulumi.get(self, "document_occurrence_id")
+
+    @property
     @pulumi.getter(name="externalDocumentRefs")
     def external_document_refs(self) -> Sequence[str]:
         """
         Identify any external SPDX documents referenced within this SPDX document
         """
         return pulumi.get(self, "external_document_refs")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="licenseListVersion")
@@ -2665,7 +2705,9 @@ class FileOccurrenceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "filesLicenseInfo":
+        if key == "fileOccurrenceId":
+            suggest = "file_occurrence_id"
+        elif key == "filesLicenseInfo":
             suggest = "files_license_info"
         elif key == "licenseConcluded":
             suggest = "license_concluded"
@@ -2686,8 +2728,8 @@ class FileOccurrenceResponse(dict):
                  comment: str,
                  contributors: Sequence[str],
                  copyright: str,
+                 file_occurrence_id: str,
                  files_license_info: Sequence[str],
-                 id: str,
                  license_concluded: 'outputs.LicenseResponse',
                  notice: str):
         """
@@ -2696,8 +2738,8 @@ class FileOccurrenceResponse(dict):
         :param str comment: This field provides a place for the SPDX file creator to record any general comments about the file
         :param Sequence[str] contributors: This field provides a place for the SPDX file creator to record file contributors
         :param str copyright: Identify the copyright holder of the file, as well as any dates present
+        :param str file_occurrence_id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param Sequence[str] files_license_info: This field contains the license information actually found in the file, if any
-        :param str id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param 'LicenseResponse' license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         :param str notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
         """
@@ -2705,8 +2747,8 @@ class FileOccurrenceResponse(dict):
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "contributors", contributors)
         pulumi.set(__self__, "copyright", copyright)
+        pulumi.set(__self__, "file_occurrence_id", file_occurrence_id)
         pulumi.set(__self__, "files_license_info", files_license_info)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "license_concluded", license_concluded)
         pulumi.set(__self__, "notice", notice)
 
@@ -2743,20 +2785,20 @@ class FileOccurrenceResponse(dict):
         return pulumi.get(self, "copyright")
 
     @property
+    @pulumi.getter(name="fileOccurrenceId")
+    def file_occurrence_id(self) -> str:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "file_occurrence_id")
+
+    @property
     @pulumi.getter(name="filesLicenseInfo")
     def files_license_info(self) -> Sequence[str]:
         """
         This field contains the license information actually found in the file, if any
         """
         return pulumi.get(self, "files_license_info")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Uniquely identify any element in an SPDX document which may be referenced by other elements
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="licenseConcluded")
@@ -3171,21 +3213,38 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderRes
     """
     Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderId":
+            suggest = "google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
+                 google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id: str):
         """
         Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
-        :param str id: URI indicating the builder’s identity.
+        :param str google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id: URI indicating the builder’s identity.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id", google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="googleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderId")
+    def google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id(self) -> str:
         """
         URI indicating the builder’s identity.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa_builder_id")
 
 
 @pulumi.output_type
@@ -4465,6 +4524,8 @@ class PackageInfoOccurrenceResponse(dict):
             suggest = "home_page"
         elif key == "licenseConcluded":
             suggest = "license_concluded"
+        elif key == "packageInfoOccurrenceId":
+            suggest = "package_info_occurrence_id"
         elif key == "packageType":
             suggest = "package_type"
         elif key == "sourceInfo":
@@ -4487,8 +4548,8 @@ class PackageInfoOccurrenceResponse(dict):
                  comment: str,
                  filename: str,
                  home_page: str,
-                 id: str,
                  license_concluded: 'outputs.LicenseResponse',
+                 package_info_occurrence_id: str,
                  package_type: str,
                  source_info: str,
                  summary_description: str,
@@ -4499,8 +4560,8 @@ class PackageInfoOccurrenceResponse(dict):
         :param str comment: A place for the SPDX file creator to record any general comments about the package being described
         :param str filename: Provide the actual file name of the package, or path of the directory being treated as a package
         :param str home_page: Provide a place for the SPDX file creator to record a web site that serves as the package's home page
-        :param str id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param 'LicenseResponse' license_concluded: package or alternative values, if the governing license cannot be determined
+        :param str package_info_occurrence_id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param str package_type: The type of package: OS, MAVEN, GO, GO_STDLIB, etc.
         :param str source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
         :param str summary_description: A short description of the package
@@ -4510,8 +4571,8 @@ class PackageInfoOccurrenceResponse(dict):
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "filename", filename)
         pulumi.set(__self__, "home_page", home_page)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "license_concluded", license_concluded)
+        pulumi.set(__self__, "package_info_occurrence_id", package_info_occurrence_id)
         pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "source_info", source_info)
         pulumi.set(__self__, "summary_description", summary_description)
@@ -4543,20 +4604,20 @@ class PackageInfoOccurrenceResponse(dict):
         return pulumi.get(self, "home_page")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Uniquely identify any element in an SPDX document which may be referenced by other elements
-        """
-        return pulumi.get(self, "id")
-
-    @property
     @pulumi.getter(name="licenseConcluded")
     def license_concluded(self) -> 'outputs.LicenseResponse':
         """
         package or alternative values, if the governing license cannot be determined
         """
         return pulumi.get(self, "license_concluded")
+
+    @property
+    @pulumi.getter(name="packageInfoOccurrenceId")
+    def package_info_occurrence_id(self) -> str:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "package_info_occurrence_id")
 
     @property
     @pulumi.getter(name="packageType")
@@ -5250,21 +5311,38 @@ class SlsaBuilderResponse(dict):
     """
     SlsaBuilder encapsulates the identity of the builder of this provenance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsaBuilderId":
+            suggest = "slsa_builder_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaBuilderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaBuilderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaBuilderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
+                 slsa_builder_id: str):
         """
         SlsaBuilder encapsulates the identity of the builder of this provenance.
-        :param str id: id is the id of the slsa provenance builder
+        :param str slsa_builder_id: id is the id of the slsa provenance builder
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "slsa_builder_id", slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="slsaBuilderId")
+    def slsa_builder_id(self) -> str:
         """
         id is the id of the slsa provenance builder
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "slsa_builder_id")
 
 
 @pulumi.output_type

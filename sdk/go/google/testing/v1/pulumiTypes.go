@@ -6467,8 +6467,6 @@ func (o TestDetailsResponseOutput) ProgressMessages() pulumi.StringArrayOutput {
 type TestExecutionResponse struct {
 	// How the host machine(s) are configured.
 	Environment EnvironmentResponse `pulumi:"environment"`
-	// Unique id set by the service.
-	Id string `pulumi:"id"`
 	// Id of the containing TestMatrix.
 	MatrixId string `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
@@ -6479,6 +6477,8 @@ type TestExecutionResponse struct {
 	State string `pulumi:"state"`
 	// Additional details about the running test.
 	TestDetails TestDetailsResponse `pulumi:"testDetails"`
+	// Unique id set by the service.
+	TestExecutionId string `pulumi:"testExecutionId"`
 	// How to run the test.
 	TestSpecification TestSpecificationResponse `pulumi:"testSpecification"`
 	// The time this test execution was initially created.
@@ -6507,11 +6507,6 @@ func (o TestExecutionResponseOutput) Environment() EnvironmentResponseOutput {
 	return o.ApplyT(func(v TestExecutionResponse) EnvironmentResponse { return v.Environment }).(EnvironmentResponseOutput)
 }
 
-// Unique id set by the service.
-func (o TestExecutionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TestExecutionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Id of the containing TestMatrix.
 func (o TestExecutionResponseOutput) MatrixId() pulumi.StringOutput {
 	return o.ApplyT(func(v TestExecutionResponse) string { return v.MatrixId }).(pulumi.StringOutput)
@@ -6535,6 +6530,11 @@ func (o TestExecutionResponseOutput) State() pulumi.StringOutput {
 // Additional details about the running test.
 func (o TestExecutionResponseOutput) TestDetails() TestDetailsResponseOutput {
 	return o.ApplyT(func(v TestExecutionResponse) TestDetailsResponse { return v.TestDetails }).(TestDetailsResponseOutput)
+}
+
+// Unique id set by the service.
+func (o TestExecutionResponseOutput) TestExecutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v TestExecutionResponse) string { return v.TestExecutionId }).(pulumi.StringOutput)
 }
 
 // How to run the test.

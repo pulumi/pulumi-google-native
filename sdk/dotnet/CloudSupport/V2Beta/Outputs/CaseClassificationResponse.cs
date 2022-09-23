@@ -17,22 +17,22 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
     public sealed class CaseClassificationResponse
     {
         /// <summary>
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        /// </summary>
+        public readonly string CaseClassificationId;
+        /// <summary>
         /// The display name of the classification.
         /// </summary>
         public readonly string DisplayName;
-        /// <summary>
-        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private CaseClassificationResponse(
-            string displayName,
+            string caseClassificationId,
 
-            string id)
+            string displayName)
         {
+            CaseClassificationId = caseClassificationId;
             DisplayName = displayName;
-            Id = id;
         }
     }
 }

@@ -3213,12 +3213,12 @@ func (o PostgreSqlConnectionProfileResponseOutput) Username() pulumi.StringOutpu
 type PrimaryInstanceSettings struct {
 	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
-	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-	Id string `pulumi:"id"`
 	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Configuration for the machines that host the underlying database engine.
 	MachineConfig *MachineConfig `pulumi:"machineConfig"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	PrimaryInstanceSettingsId string `pulumi:"primaryInstanceSettingsId"`
 }
 
 // PrimaryInstanceSettingsInput is an input type that accepts PrimaryInstanceSettingsArgs and PrimaryInstanceSettingsOutput values.
@@ -3236,12 +3236,12 @@ type PrimaryInstanceSettingsInput interface {
 type PrimaryInstanceSettingsArgs struct {
 	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
-	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-	Id pulumi.StringInput `pulumi:"id"`
 	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Configuration for the machines that host the underlying database engine.
 	MachineConfig MachineConfigPtrInput `pulumi:"machineConfig"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	PrimaryInstanceSettingsId pulumi.StringInput `pulumi:"primaryInstanceSettingsId"`
 }
 
 func (PrimaryInstanceSettingsArgs) ElementType() reflect.Type {
@@ -3327,11 +3327,6 @@ func (o PrimaryInstanceSettingsOutput) DatabaseFlags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettings) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-func (o PrimaryInstanceSettingsOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrimaryInstanceSettings) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 func (o PrimaryInstanceSettingsOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettings) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -3340,6 +3335,11 @@ func (o PrimaryInstanceSettingsOutput) Labels() pulumi.StringMapOutput {
 // Configuration for the machines that host the underlying database engine.
 func (o PrimaryInstanceSettingsOutput) MachineConfig() MachineConfigPtrOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettings) *MachineConfig { return v.MachineConfig }).(MachineConfigPtrOutput)
+}
+
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsOutput) PrimaryInstanceSettingsId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettings) string { return v.PrimaryInstanceSettingsId }).(pulumi.StringOutput)
 }
 
 type PrimaryInstanceSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -3376,16 +3376,6 @@ func (o PrimaryInstanceSettingsPtrOutput) DatabaseFlags() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
-// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-func (o PrimaryInstanceSettingsPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrimaryInstanceSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 func (o PrimaryInstanceSettingsPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrimaryInstanceSettings) map[string]string {
@@ -3406,16 +3396,26 @@ func (o PrimaryInstanceSettingsPtrOutput) MachineConfig() MachineConfigPtrOutput
 	}).(MachineConfigPtrOutput)
 }
 
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsPtrOutput) PrimaryInstanceSettingsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryInstanceSettingsId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Settings for the cluster's primary instance
 type PrimaryInstanceSettingsResponse struct {
 	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
-	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-	Id string `pulumi:"id"`
 	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Configuration for the machines that host the underlying database engine.
 	MachineConfig MachineConfigResponse `pulumi:"machineConfig"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	PrimaryInstanceSettingsId string `pulumi:"primaryInstanceSettingsId"`
 	// The private IP address for the Instance. This is the connection endpoint for an end-user application.
 	PrivateIp string `pulumi:"privateIp"`
 }
@@ -3440,11 +3440,6 @@ func (o PrimaryInstanceSettingsResponseOutput) DatabaseFlags() pulumi.StringMapO
 	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
-func (o PrimaryInstanceSettingsResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
 func (o PrimaryInstanceSettingsResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -3453,6 +3448,11 @@ func (o PrimaryInstanceSettingsResponseOutput) Labels() pulumi.StringMapOutput {
 // Configuration for the machines that host the underlying database engine.
 func (o PrimaryInstanceSettingsResponseOutput) MachineConfig() MachineConfigResponseOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) MachineConfigResponse { return v.MachineConfig }).(MachineConfigResponseOutput)
+}
+
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsResponseOutput) PrimaryInstanceSettingsId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) string { return v.PrimaryInstanceSettingsId }).(pulumi.StringOutput)
 }
 
 // The private IP address for the Instance. This is the connection endpoint for an end-user application.

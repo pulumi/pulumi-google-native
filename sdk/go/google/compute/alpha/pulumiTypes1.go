@@ -5581,12 +5581,12 @@ func (o VpnGatewayVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) VpnGa
 
 // A VPN gateway interface.
 type VpnGatewayVpnGatewayInterfaceResponse struct {
-	// Numeric identifier for this VPN interface associated with the VPN gateway.
-	Id int `pulumi:"id"`
 	// URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
 	// IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 	IpAddress string `pulumi:"ipAddress"`
+	// Numeric identifier for this VPN interface associated with the VPN gateway.
+	VpnGatewayVpnGatewayInterfaceId int `pulumi:"vpnGatewayVpnGatewayInterfaceId"`
 }
 
 // A VPN gateway interface.
@@ -5604,11 +5604,6 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) ToVpnGatewayVpnGatewayInter
 	return o
 }
 
-// Numeric identifier for this VPN interface associated with the VPN gateway.
-func (o VpnGatewayVpnGatewayInterfaceResponseOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) int { return v.Id }).(pulumi.IntOutput)
-}
-
 // URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
@@ -5617,6 +5612,11 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pu
 // IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Numeric identifier for this VPN interface associated with the VPN gateway.
+func (o VpnGatewayVpnGatewayInterfaceResponseOutput) VpnGatewayVpnGatewayInterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) int { return v.VpnGatewayVpnGatewayInterfaceId }).(pulumi.IntOutput)
 }
 
 type VpnGatewayVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }

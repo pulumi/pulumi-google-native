@@ -248,7 +248,9 @@ class CertificateTemplateResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "majorVersion":
+        if key == "certificateTemplateId":
+            suggest = "certificate_template_id"
+        elif key == "majorVersion":
             suggest = "major_version"
         elif key == "minorVersion":
             suggest = "minor_version"
@@ -265,26 +267,26 @@ class CertificateTemplateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: str,
+                 certificate_template_id: str,
                  major_version: int,
                  minor_version: int):
         """
         CertificateTemplate (v3 Extension in X.509).
-        :param str id: The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
+        :param str certificate_template_id: The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
         :param int major_version: The Major version of the template. Example: 100.
         :param int minor_version: The minor version of the template. Example: 12.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "certificate_template_id", certificate_template_id)
         pulumi.set(__self__, "major_version", major_version)
         pulumi.set(__self__, "minor_version", minor_version)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="certificateTemplateId")
+    def certificate_template_id(self) -> str:
         """
         The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "certificate_template_id")
 
     @property
     @pulumi.getter(name="majorVersion")
@@ -476,24 +478,41 @@ class EntityKeyResponse(dict):
     """
     A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityKeyId":
+            suggest = "entity_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntityKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntityKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntityKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str,
+                 entity_key_id: str,
                  namespace: str):
         """
         A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
-        :param str id: The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+        :param str entity_key_id: The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
         :param str namespace: The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "entity_key_id", entity_key_id)
         pulumi.set(__self__, "namespace", namespace)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="entityKeyId")
+    def entity_key_id(self) -> str:
         """
         The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "entity_key_id")
 
     @property
     @pulumi.getter

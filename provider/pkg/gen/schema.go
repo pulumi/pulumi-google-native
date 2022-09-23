@@ -1014,19 +1014,19 @@ func (g *packageGenerator) setOperationsBaseURL(cloudOp *resources.CloudAPIOpera
 	cloudOp.Operations.EmbeddedOperationField = embeddedOperationFieldName
 }
 
-func (g *packageGenerator) dedupeId(typeName string, resourcePropBag *propertyBag) {
+func (g *packageGenerator) dedupeId(typeName string, propBag *propertyBag) {
 	newId := apiPropNameToSdkName(typeName, typeName+"Id")
 
 	// First check if an existing property with the name id exists in the resource properties (at the top level).
 	// Replace with the newId if so.
-	props, exists := resourcePropBag.specs["id"]
+	props, exists := propBag.specs["id"]
 	if !exists {
 		return
 	}
 
 	tok := g.genToken(typeName)
 	ignoreCollision := false
-	if _, exists = resourcePropBag.specs[newId]; exists {
+	if _, exists = propBag.specs[newId]; exists {
 		if tok == "google-native:baremetalsolution/v2:NfsShare" {
 			ignoreCollision = true
 		} else {
@@ -1034,19 +1034,20 @@ func (g *packageGenerator) dedupeId(typeName string, resourcePropBag *propertyBa
 		}
 	}
 
-	delete(resourcePropBag.specs, "id")
-	resourcePropBag.specs[newId] = props
-	if resourcePropBag.requiredSpecs.Has("id") {
-		resourcePropBag.requiredSpecs.Delete("id")
-		resourcePropBag.requiredSpecs.Add(newId)
+	delete(propBag.specs, "id")
+	propBag.specs[newId] = props
+	if propBag.requiredSpecs.Has("id") {
+		propBag.requiredSpecs.Delete("id")
+		propBag.requiredSpecs.Add(newId)
 	}
 
 	// Next update the metadata to map the id field to newId as the SDK name.
-	metadata := resourcePropBag.properties
-	propMetadata, exists := metadata[newId]
-	if exists && !ignoreCollision {
+	metadata := propBag.properties
+	propMetadata := metadata["id"]
+	if _, exists := metadata[newId]; exists && !ignoreCollision {
 		contract.Failf("Conflicting existing ID field: %q in %q", newId, g.genToken(typeName))
 	}
+	// We only want to change the SdkName in the existing metadata.
 	propMetadata.SdkName = newId
 	metadata["id"] = propMetadata
 }
@@ -1435,6 +1436,9 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			if err != nil {
 				return nil, err
 			}
+
+			// Avoid the possibility of conflicting with the `id` field injected into state by Pulumi.
+			g.dedupeId(schemaName, bag)
 
 			g.pkg.Types[tok] = schema.ComplexTypeSpec{
 				ObjectTypeSpec: schema.ObjectTypeSpec{

@@ -877,6 +877,8 @@ class BuildResponse(dict):
         suggest = None
         if key == "availableSecrets":
             suggest = "available_secrets"
+        elif key == "buildId":
+            suggest = "build_id"
         elif key == "buildTriggerId":
             suggest = "build_trigger_id"
         elif key == "createTime":
@@ -915,11 +917,11 @@ class BuildResponse(dict):
                  approval: 'outputs.BuildApprovalResponse',
                  artifacts: 'outputs.ArtifactsResponse',
                  available_secrets: 'outputs.SecretsResponse',
+                 build_id: str,
                  build_trigger_id: str,
                  create_time: str,
                  failure_info: 'outputs.FailureInfoResponse',
                  finish_time: str,
-                 id: str,
                  images: Sequence[str],
                  log_url: str,
                  logs_bucket: str,
@@ -946,11 +948,11 @@ class BuildResponse(dict):
         :param 'BuildApprovalResponse' approval: Describes this build's approval configuration, status, and result.
         :param 'ArtifactsResponse' artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param 'SecretsResponse' available_secrets: Secrets and secret environment variables.
+        :param str build_id: Unique identifier of the build.
         :param str build_trigger_id: The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         :param str create_time: Time at which the request to create the build was received.
         :param 'FailureInfoResponse' failure_info: Contains information about the build when status=FAILURE.
         :param str finish_time: Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-        :param str id: Unique identifier of the build.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param str log_url: URL to logs for this build in Google Cloud Console.
         :param str logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -976,11 +978,11 @@ class BuildResponse(dict):
         pulumi.set(__self__, "approval", approval)
         pulumi.set(__self__, "artifacts", artifacts)
         pulumi.set(__self__, "available_secrets", available_secrets)
+        pulumi.set(__self__, "build_id", build_id)
         pulumi.set(__self__, "build_trigger_id", build_trigger_id)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "failure_info", failure_info)
         pulumi.set(__self__, "finish_time", finish_time)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "log_url", log_url)
         pulumi.set(__self__, "logs_bucket", logs_bucket)
@@ -1028,6 +1030,14 @@ class BuildResponse(dict):
         return pulumi.get(self, "available_secrets")
 
     @property
+    @pulumi.getter(name="buildId")
+    def build_id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "build_id")
+
+    @property
     @pulumi.getter(name="buildTriggerId")
     def build_trigger_id(self) -> str:
         """
@@ -1058,14 +1068,6 @@ class BuildResponse(dict):
         Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
         """
         return pulumi.get(self, "finish_time")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Unique identifier of the build.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -1248,6 +1250,8 @@ class BuildStepResponse(dict):
             suggest = "allow_exit_codes"
         elif key == "allowFailure":
             suggest = "allow_failure"
+        elif key == "buildStepId":
+            suggest = "build_step_id"
         elif key == "exitCode":
             suggest = "exit_code"
         elif key == "pullTiming":
@@ -1272,11 +1276,11 @@ class BuildStepResponse(dict):
                  allow_exit_codes: Sequence[int],
                  allow_failure: bool,
                  args: Sequence[str],
+                 build_step_id: str,
                  dir: str,
                  entrypoint: str,
                  env: Sequence[str],
                  exit_code: int,
-                 id: str,
                  name: str,
                  pull_timing: 'outputs.TimeSpanResponse',
                  script: str,
@@ -1291,11 +1295,11 @@ class BuildStepResponse(dict):
         :param Sequence[int] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
         :param bool allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param Sequence[str] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+        :param str build_step_id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param str dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param str entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param Sequence[str] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param int exit_code: Return code from running the step.
-        :param str id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param str name: The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         :param 'TimeSpanResponse' pull_timing: Stores timing information for pulling this build step's builder image only.
         :param str script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
@@ -1309,11 +1313,11 @@ class BuildStepResponse(dict):
         pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
         pulumi.set(__self__, "allow_failure", allow_failure)
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "build_step_id", build_step_id)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "env", env)
         pulumi.set(__self__, "exit_code", exit_code)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pull_timing", pull_timing)
         pulumi.set(__self__, "script", script)
@@ -1349,6 +1353,14 @@ class BuildStepResponse(dict):
         return pulumi.get(self, "args")
 
     @property
+    @pulumi.getter(name="buildStepId")
+    def build_step_id(self) -> str:
+        """
+        Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        """
+        return pulumi.get(self, "build_step_id")
+
+    @property
     @pulumi.getter
     def dir(self) -> str:
         """
@@ -1379,14 +1391,6 @@ class BuildStepResponse(dict):
         Return code from running the step.
         """
         return pulumi.get(self, "exit_code")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// <summary>
         /// Identifier of the VLAN attachment.
         /// </summary>
-        public readonly string Id;
+        public readonly string IntakeVlanAttachmentId;
         /// <summary>
         /// Attachment pairing key.
         /// </summary>
@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
         [OutputConstructor]
         private IntakeVlanAttachmentResponse(
-            string id,
+            string intakeVlanAttachmentId,
 
             string pairingKey)
         {
-            Id = id;
+            IntakeVlanAttachmentId = intakeVlanAttachmentId;
             PairingKey = pairingKey;
         }
     }

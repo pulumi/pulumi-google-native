@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
     public sealed class CaseClassificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        /// </summary>
+        [Input("caseClassificationId")]
+        public Input<string>? CaseClassificationId { get; set; }
+
+        /// <summary>
         /// The display name of the classification.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         public CaseClassificationArgs()
         {

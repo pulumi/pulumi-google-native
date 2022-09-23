@@ -159,21 +159,33 @@ class AnalysisCompletedArgs:
 @pulumi.input_type
 class ArtifactArgs:
     def __init__(__self__, *,
+                 artifact_id: Optional[pulumi.Input[str]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Artifact describes a build product.
+        :param pulumi.Input[str] artifact_id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param pulumi.Input[str] checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-        :param pulumi.Input[str] id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
+        if artifact_id is not None:
+            pulumi.set(__self__, "artifact_id", artifact_id)
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if names is not None:
             pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @artifact_id.setter
+    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_id", value)
 
     @property
     @pulumi.getter
@@ -186,18 +198,6 @@ class ArtifactArgs:
     @checksum.setter
     def checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "checksum", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -448,7 +448,7 @@ class BuildOccurrenceArgs:
 @pulumi.input_type
 class BuildProvenanceArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 build_provenance_id: pulumi.Input[str],
                  build_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builder_version: Optional[pulumi.Input[str]] = None,
                  built_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]]] = None,
@@ -463,7 +463,7 @@ class BuildProvenanceArgs:
                  trigger_id: Optional[pulumi.Input[str]] = None):
         """
         Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
-        :param pulumi.Input[str] id: Unique identifier of the build.
+        :param pulumi.Input[str] build_provenance_id: Unique identifier of the build.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         :param pulumi.Input[str] builder_version: Version string of the builder at the time this build was executed.
         :param pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]] built_artifacts: Output of the build.
@@ -477,7 +477,7 @@ class BuildProvenanceArgs:
         :param pulumi.Input[str] start_time: Time at which execution of the build was started.
         :param pulumi.Input[str] trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "build_provenance_id", build_provenance_id)
         if build_options is not None:
             pulumi.set(__self__, "build_options", build_options)
         if builder_version is not None:
@@ -504,16 +504,16 @@ class BuildProvenanceArgs:
             pulumi.set(__self__, "trigger_id", trigger_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="buildProvenanceId")
+    def build_provenance_id(self) -> pulumi.Input[str]:
         """
         Unique identifier of the build.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "build_provenance_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @build_provenance_id.setter
+    def build_provenance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "build_provenance_id", value)
 
     @property
     @pulumi.getter(name="buildOptions")
@@ -663,18 +663,18 @@ class BuildProvenanceArgs:
 @pulumi.input_type
 class BuilderConfigArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 builder_config_id: Optional[pulumi.Input[str]] = None):
+        if builder_config_id is not None:
+            pulumi.set(__self__, "builder_config_id", builder_config_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="builderConfigId")
+    def builder_config_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "builder_config_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @builder_config_id.setter
+    def builder_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "builder_config_id", value)
 
 
 @pulumi.input_type
@@ -1118,28 +1118,28 @@ class CommandArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 command_id: Optional[pulumi.Input[str]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  wait_for: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Command describes a step performed as part of the build pipeline.
         :param pulumi.Input[str] name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Command-line arguments used when executing this command.
+        :param pulumi.Input[str] command_id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param pulumi.Input[str] dir: Working directory (relative to project source root) used when running this command.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: Environment variables set before running this command.
-        :param pulumi.Input[str] id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wait_for: The ID(s) of the command(s) that this command depends on.
         """
         pulumi.set(__self__, "name", name)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if command_id is not None:
+            pulumi.set(__self__, "command_id", command_id)
         if dir is not None:
             pulumi.set(__self__, "dir", dir)
         if env is not None:
             pulumi.set(__self__, "env", env)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if wait_for is not None:
             pulumi.set(__self__, "wait_for", wait_for)
 
@@ -1168,6 +1168,18 @@ class CommandArgs:
         pulumi.set(self, "args", value)
 
     @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        """
+        return pulumi.get(self, "command_id")
+
+    @command_id.setter
+    def command_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "command_id", value)
+
+    @property
     @pulumi.getter
     def dir(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1190,18 +1202,6 @@ class CommandArgs:
     @env.setter
     def env(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="waitFor")
@@ -2517,21 +2517,21 @@ class GrafeasV1FileLocationArgs:
 @pulumi.input_type
 class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
+                 grafeas_v1_slsa_provenance_zero_two_slsa_builder_id: Optional[pulumi.Input[str]] = None):
         """
         Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if grafeas_v1_slsa_provenance_zero_two_slsa_builder_id is not None:
+            pulumi.set(__self__, "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id", grafeas_v1_slsa_provenance_zero_two_slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId")
+    def grafeas_v1_slsa_provenance_zero_two_slsa_builder_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @grafeas_v1_slsa_provenance_zero_two_slsa_builder_id.setter
+    def grafeas_v1_slsa_provenance_zero_two_slsa_builder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id", value)
 
 
 @pulumi.input_type
@@ -4046,18 +4046,18 @@ class SignatureArgs:
 @pulumi.input_type
 class SlsaBuilderArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 slsa_builder_id: Optional[pulumi.Input[str]] = None):
+        if slsa_builder_id is not None:
+            pulumi.set(__self__, "slsa_builder_id", slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="slsaBuilderId")
+    def slsa_builder_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "slsa_builder_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @slsa_builder_id.setter
+    def slsa_builder_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slsa_builder_id", value)
 
 
 @pulumi.input_type

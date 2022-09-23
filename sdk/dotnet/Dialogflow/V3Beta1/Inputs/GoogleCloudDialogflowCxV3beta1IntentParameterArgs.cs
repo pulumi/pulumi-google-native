@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         /// <summary>
         /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("googleCloudDialogflowCxV3beta1IntentParameterId", required: true)]
+        public Input<string> GoogleCloudDialogflowCxV3beta1IntentParameterId { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether the parameter represents a list of values.

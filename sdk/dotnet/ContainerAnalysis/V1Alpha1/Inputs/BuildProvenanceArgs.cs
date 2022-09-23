@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         }
 
         /// <summary>
+        /// Unique identifier of the build.
+        /// </summary>
+        [Input("buildProvenanceId")]
+        public Input<string>? BuildProvenanceId { get; set; }
+
+        /// <summary>
         /// Version string of the builder at the time this build was executed.
         /// </summary>
         [Input("builderVersion")]
@@ -74,12 +80,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         /// </summary>
         [Input("finishTime")]
         public Input<string>? FinishTime { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the build.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Google Cloud Storage bucket where logs were written.

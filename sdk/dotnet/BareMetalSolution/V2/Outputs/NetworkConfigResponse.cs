@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string GcpService;
         /// <summary>
-        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The JumboFramesEnabled option for customer to set.
         /// </summary>
         public readonly bool JumboFramesEnabled;
@@ -40,6 +36,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// The name of the network config.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        public readonly string NetworkConfigId;
         /// <summary>
         /// Service CIDR, if any.
         /// </summary>
@@ -69,11 +69,11 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string gcpService,
 
-            string id,
-
             bool jumboFramesEnabled,
 
             string name,
+
+            string networkConfigId,
 
             string serviceCidr,
 
@@ -88,9 +88,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Bandwidth = bandwidth;
             Cidr = cidr;
             GcpService = gcpService;
-            Id = id;
             JumboFramesEnabled = jumboFramesEnabled;
             Name = name;
+            NetworkConfigId = networkConfigId;
             ServiceCidr = serviceCidr;
             Type = type;
             UserNote = userNote;

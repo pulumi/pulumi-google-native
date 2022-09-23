@@ -236,6 +236,8 @@ class InstanceConfigResponse(dict):
             suggest = "account_networks_enabled"
         elif key == "clientNetwork":
             suggest = "client_network"
+        elif key == "instanceConfigId":
+            suggest = "instance_config_id"
         elif key == "instanceType":
             suggest = "instance_type"
         elif key == "logicalInterfaces":
@@ -266,7 +268,7 @@ class InstanceConfigResponse(dict):
                  account_networks_enabled: bool,
                  client_network: 'outputs.NetworkAddressResponse',
                  hyperthreading: bool,
-                 id: str,
+                 instance_config_id: str,
                  instance_type: str,
                  logical_interfaces: Sequence['outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse'],
                  name: str,
@@ -280,7 +282,7 @@ class InstanceConfigResponse(dict):
         :param bool account_networks_enabled: If true networks can be from different projects of the same vendor account.
         :param 'NetworkAddressResponse' client_network: Client network address. Filled if InstanceConfig.multivlan_config is false.
         :param bool hyperthreading: Whether the instance should be provisioned with Hyperthreading enabled.
-        :param str id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
+        :param str instance_config_id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         :param str instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         :param Sequence['GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse'] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
         :param str name: The name of the instance config.
@@ -293,7 +295,7 @@ class InstanceConfigResponse(dict):
         pulumi.set(__self__, "account_networks_enabled", account_networks_enabled)
         pulumi.set(__self__, "client_network", client_network)
         pulumi.set(__self__, "hyperthreading", hyperthreading)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_config_id", instance_config_id)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "logical_interfaces", logical_interfaces)
         pulumi.set(__self__, "name", name)
@@ -328,12 +330,12 @@ class InstanceConfigResponse(dict):
         return pulumi.get(self, "hyperthreading")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="instanceConfigId")
+    def instance_config_id(self) -> str:
         """
         A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "instance_config_id")
 
     @property
     @pulumi.getter(name="instanceType")
@@ -408,7 +410,9 @@ class IntakeVlanAttachmentResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pairingKey":
+        if key == "intakeVlanAttachmentId":
+            suggest = "intake_vlan_attachment_id"
+        elif key == "pairingKey":
             suggest = "pairing_key"
 
         if suggest:
@@ -423,23 +427,23 @@ class IntakeVlanAttachmentResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: str,
+                 intake_vlan_attachment_id: str,
                  pairing_key: str):
         """
         A GCP vlan attachment.
-        :param str id: Identifier of the VLAN attachment.
+        :param str intake_vlan_attachment_id: Identifier of the VLAN attachment.
         :param str pairing_key: Attachment pairing key.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "intake_vlan_attachment_id", intake_vlan_attachment_id)
         pulumi.set(__self__, "pairing_key", pairing_key)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="intakeVlanAttachmentId")
+    def intake_vlan_attachment_id(self) -> str:
         """
         Identifier of the VLAN attachment.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "intake_vlan_attachment_id")
 
     @property
     @pulumi.getter(name="pairingKey")
@@ -462,6 +466,8 @@ class LogicalNetworkInterfaceResponse(dict):
             suggest = "default_gateway"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "logicalNetworkInterfaceId":
+            suggest = "logical_network_interface_id"
         elif key == "networkType":
             suggest = "network_type"
 
@@ -478,21 +484,21 @@ class LogicalNetworkInterfaceResponse(dict):
 
     def __init__(__self__, *,
                  default_gateway: bool,
-                 id: str,
                  ip_address: str,
+                 logical_network_interface_id: str,
                  network: str,
                  network_type: str):
         """
         Each logical network interface is effectively a network and IP pair.
         :param bool default_gateway: Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
-        :param str id: An identifier for the `Network`, generated by the backend.
         :param str ip_address: IP address in the network
+        :param str logical_network_interface_id: An identifier for the `Network`, generated by the backend.
         :param str network: Name of the network
         :param str network_type: Type of network.
         """
         pulumi.set(__self__, "default_gateway", default_gateway)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "logical_network_interface_id", logical_network_interface_id)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_type", network_type)
 
@@ -505,20 +511,20 @@ class LogicalNetworkInterfaceResponse(dict):
         return pulumi.get(self, "default_gateway")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        An identifier for the `Network`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
-
-    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
         IP address in the network
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="logicalNetworkInterfaceId")
+    def logical_network_interface_id(self) -> str:
+        """
+        An identifier for the `Network`, generated by the backend.
+        """
+        return pulumi.get(self, "logical_network_interface_id")
 
     @property
     @pulumi.getter
@@ -597,6 +603,8 @@ class LunResponse(dict):
         suggest = None
         if key == "bootLun":
             suggest = "boot_lun"
+        elif key == "lunId":
+            suggest = "lun_id"
         elif key == "multiprotocolType":
             suggest = "multiprotocol_type"
         elif key == "sizeGb":
@@ -619,7 +627,7 @@ class LunResponse(dict):
 
     def __init__(__self__, *,
                  boot_lun: bool,
-                 id: str,
+                 lun_id: str,
                  multiprotocol_type: str,
                  name: str,
                  shareable: bool,
@@ -631,7 +639,7 @@ class LunResponse(dict):
         """
         A storage volume logical unit number (LUN).
         :param bool boot_lun: Display if this LUN is a boot LUN.
-        :param str id: An identifier for the LUN, generated by the backend.
+        :param str lun_id: An identifier for the LUN, generated by the backend.
         :param str multiprotocol_type: The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
         :param str name: The name of the LUN.
         :param bool shareable: Display if this LUN can be shared between multiple physical servers.
@@ -642,7 +650,7 @@ class LunResponse(dict):
         :param str wwid: The WWID for this LUN.
         """
         pulumi.set(__self__, "boot_lun", boot_lun)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lun_id", lun_id)
         pulumi.set(__self__, "multiprotocol_type", multiprotocol_type)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "shareable", shareable)
@@ -661,12 +669,12 @@ class LunResponse(dict):
         return pulumi.get(self, "boot_lun")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="lunId")
+    def lun_id(self) -> str:
         """
         An identifier for the LUN, generated by the backend.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "lun_id")
 
     @property
     @pulumi.getter(name="multiprotocolType")
@@ -871,6 +879,8 @@ class NetworkConfigResponse(dict):
             suggest = "gcp_service"
         elif key == "jumboFramesEnabled":
             suggest = "jumbo_frames_enabled"
+        elif key == "networkConfigId":
+            suggest = "network_config_id"
         elif key == "serviceCidr":
             suggest = "service_cidr"
         elif key == "userNote":
@@ -895,9 +905,9 @@ class NetworkConfigResponse(dict):
                  bandwidth: str,
                  cidr: str,
                  gcp_service: str,
-                 id: str,
                  jumbo_frames_enabled: bool,
                  name: str,
+                 network_config_id: str,
                  service_cidr: str,
                  type: str,
                  user_note: str,
@@ -908,9 +918,9 @@ class NetworkConfigResponse(dict):
         :param str bandwidth: Interconnect bandwidth. Set only when type is CLIENT.
         :param str cidr: CIDR range of the network.
         :param str gcp_service: The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-        :param str id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param bool jumbo_frames_enabled: The JumboFramesEnabled option for customer to set.
         :param str name: The name of the network config.
+        :param str network_config_id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param str service_cidr: Service CIDR, if any.
         :param str type: The type of this network, either Client or Private.
         :param str user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -920,9 +930,9 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "gcp_service", gcp_service)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_config_id", network_config_id)
         pulumi.set(__self__, "service_cidr", service_cidr)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_note", user_note)
@@ -954,14 +964,6 @@ class NetworkConfigResponse(dict):
         return pulumi.get(self, "gcp_service")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        """
-        return pulumi.get(self, "id")
-
-    @property
     @pulumi.getter(name="jumboFramesEnabled")
     def jumbo_frames_enabled(self) -> bool:
         """
@@ -976,6 +978,14 @@ class NetworkConfigResponse(dict):
         The name of the network config.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfigId")
+    def network_config_id(self) -> str:
+        """
+        A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        """
+        return pulumi.get(self, "network_config_id")
 
     @property
     @pulumi.getter(name="serviceCidr")
@@ -1110,6 +1120,8 @@ class NetworkResponse(dict):
             suggest = "mac_address"
         elif key == "mountPoints":
             suggest = "mount_points"
+        elif key == "networkId":
+            suggest = "network_id"
         elif key == "servicesCidr":
             suggest = "services_cidr"
         elif key == "vlanId":
@@ -1128,13 +1140,13 @@ class NetworkResponse(dict):
 
     def __init__(__self__, *,
                  cidr: str,
-                 id: str,
                  ip_address: str,
                  jumbo_frames_enabled: bool,
                  labels: Mapping[str, str],
                  mac_address: Sequence[str],
                  mount_points: Sequence['outputs.NetworkMountPointResponse'],
                  name: str,
+                 network_id: str,
                  pod: str,
                  reservations: Sequence['outputs.NetworkAddressReservationResponse'],
                  services_cidr: str,
@@ -1145,13 +1157,13 @@ class NetworkResponse(dict):
         """
         A Network.
         :param str cidr: The cidr of the Network.
-        :param str id: An identifier for the `Network`, generated by the backend.
         :param str ip_address: IP address configured.
         :param bool jumbo_frames_enabled: Whether network uses standard frames or jumbo ones.
         :param Mapping[str, str] labels: Labels as key value pairs.
         :param Sequence[str] mac_address: List of physical interfaces.
         :param Sequence['NetworkMountPointResponse'] mount_points: Input only. List of mount points to attach the network to.
         :param str name: The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
+        :param str network_id: An identifier for the `Network`, generated by the backend.
         :param str pod: Pod name.
         :param Sequence['NetworkAddressReservationResponse'] reservations: List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
         :param str services_cidr: IP range for reserved for services (e.g. NFS).
@@ -1161,13 +1173,13 @@ class NetworkResponse(dict):
         :param 'VRFResponse' vrf: The vrf for the Network.
         """
         pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mac_address", mac_address)
         pulumi.set(__self__, "mount_points", mount_points)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "pod", pod)
         pulumi.set(__self__, "reservations", reservations)
         pulumi.set(__self__, "services_cidr", services_cidr)
@@ -1183,14 +1195,6 @@ class NetworkResponse(dict):
         The cidr of the Network.
         """
         return pulumi.get(self, "cidr")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        An identifier for the `Network`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1239,6 +1243,14 @@ class NetworkResponse(dict):
         The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> str:
+        """
+        An identifier for the `Network`, generated by the backend.
+        """
+        return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter
@@ -1619,6 +1631,8 @@ class VlanAttachmentResponse(dict):
             suggest = "qos_policy"
         elif key == "routerIp":
             suggest = "router_ip"
+        elif key == "vlanAttachmentId":
+            suggest = "vlan_attachment_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VlanAttachmentResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1632,35 +1646,27 @@ class VlanAttachmentResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: str,
                  pairing_key: str,
                  peer_ip: str,
                  peer_vlan_id: str,
                  qos_policy: 'outputs.QosPolicyResponse',
-                 router_ip: str):
+                 router_ip: str,
+                 vlan_attachment_id: str):
         """
         VLAN attachment details.
-        :param str id: Immutable. The identifier of the attachment within vrf.
         :param str pairing_key: Input only. Pairing key.
         :param str peer_ip: The peer IP of the attachment.
         :param str peer_vlan_id: The peer vlan ID of the attachment.
         :param 'QosPolicyResponse' qos_policy: The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
         :param str router_ip: The router IP of the attachment.
+        :param str vlan_attachment_id: Immutable. The identifier of the attachment within vrf.
         """
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "pairing_key", pairing_key)
         pulumi.set(__self__, "peer_ip", peer_ip)
         pulumi.set(__self__, "peer_vlan_id", peer_vlan_id)
         pulumi.set(__self__, "qos_policy", qos_policy)
         pulumi.set(__self__, "router_ip", router_ip)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Immutable. The identifier of the attachment within vrf.
-        """
-        return pulumi.get(self, "id")
+        pulumi.set(__self__, "vlan_attachment_id", vlan_attachment_id)
 
     @property
     @pulumi.getter(name="pairingKey")
@@ -1702,6 +1708,14 @@ class VlanAttachmentResponse(dict):
         """
         return pulumi.get(self, "router_ip")
 
+    @property
+    @pulumi.getter(name="vlanAttachmentId")
+    def vlan_attachment_id(self) -> str:
+        """
+        Immutable. The identifier of the attachment within vrf.
+        """
+        return pulumi.get(self, "vlan_attachment_id")
+
 
 @pulumi.output_type
 class VolumeConfigResponse(dict):
@@ -1727,6 +1741,8 @@ class VolumeConfigResponse(dict):
             suggest = "snapshots_enabled"
         elif key == "userNote":
             suggest = "user_note"
+        elif key == "volumeConfigId":
+            suggest = "volume_config_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1741,7 +1757,6 @@ class VolumeConfigResponse(dict):
 
     def __init__(__self__, *,
                  gcp_service: str,
-                 id: str,
                  lun_ranges: Sequence['outputs.LunRangeResponse'],
                  machine_ids: Sequence[str],
                  name: str,
@@ -1751,11 +1766,11 @@ class VolumeConfigResponse(dict):
                  size_gb: int,
                  snapshots_enabled: bool,
                  type: str,
-                 user_note: str):
+                 user_note: str,
+                 volume_config_id: str):
         """
         Configuration parameters for a new volume.
         :param str gcp_service: The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-        :param str id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param Sequence['LunRangeResponse'] lun_ranges: LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
         :param Sequence[str] machine_ids: Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
         :param str name: The name of the volume config.
@@ -1766,9 +1781,9 @@ class VolumeConfigResponse(dict):
         :param bool snapshots_enabled: Whether snapshots should be enabled.
         :param str type: The type of this Volume.
         :param str user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
+        :param str volume_config_id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         """
         pulumi.set(__self__, "gcp_service", gcp_service)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "lun_ranges", lun_ranges)
         pulumi.set(__self__, "machine_ids", machine_ids)
         pulumi.set(__self__, "name", name)
@@ -1779,6 +1794,7 @@ class VolumeConfigResponse(dict):
         pulumi.set(__self__, "snapshots_enabled", snapshots_enabled)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_note", user_note)
+        pulumi.set(__self__, "volume_config_id", volume_config_id)
 
     @property
     @pulumi.getter(name="gcpService")
@@ -1787,14 +1803,6 @@ class VolumeConfigResponse(dict):
         The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
         """
         return pulumi.get(self, "gcp_service")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="lunRanges")
@@ -1876,6 +1884,14 @@ class VolumeConfigResponse(dict):
         """
         return pulumi.get(self, "user_note")
 
+    @property
+    @pulumi.getter(name="volumeConfigId")
+    def volume_config_id(self) -> str:
+        """
+        A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        """
+        return pulumi.get(self, "volume_config_id")
+
 
 @pulumi.output_type
 class VolumeResponse(dict):
@@ -1913,6 +1929,8 @@ class VolumeResponse(dict):
             suggest = "snapshot_schedule_policy"
         elif key == "storageType":
             suggest = "storage_type"
+        elif key == "volumeId":
+            suggest = "volume_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1930,7 +1948,6 @@ class VolumeResponse(dict):
                  boot_volume: bool,
                  current_size_gib: str,
                  emergency_size_gib: str,
-                 id: str,
                  labels: Mapping[str, str],
                  max_size_gib: str,
                  name: str,
@@ -1946,14 +1963,14 @@ class VolumeResponse(dict):
                  snapshot_reservation_detail: 'outputs.SnapshotReservationDetailResponse',
                  snapshot_schedule_policy: str,
                  state: str,
-                 storage_type: str):
+                 storage_type: str,
+                 volume_id: str):
         """
         A storage volume.
         :param str auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
         :param bool boot_volume: Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
         :param str current_size_gib: The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
         :param str emergency_size_gib: Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-        :param str id: An identifier for the `Volume`, generated by the backend.
         :param Mapping[str, str] labels: Labels as key value pairs.
         :param str max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
         :param str name: The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
@@ -1970,12 +1987,12 @@ class VolumeResponse(dict):
         :param str snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
         :param str state: The state of this storage volume.
         :param str storage_type: The storage type for this volume.
+        :param str volume_id: An identifier for the `Volume`, generated by the backend.
         """
         pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
         pulumi.set(__self__, "boot_volume", boot_volume)
         pulumi.set(__self__, "current_size_gib", current_size_gib)
         pulumi.set(__self__, "emergency_size_gib", emergency_size_gib)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_size_gib", max_size_gib)
         pulumi.set(__self__, "name", name)
@@ -1992,6 +2009,7 @@ class VolumeResponse(dict):
         pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @property
     @pulumi.getter(name="autoGrownSizeGib")
@@ -2024,14 +2042,6 @@ class VolumeResponse(dict):
         Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
         """
         return pulumi.get(self, "emergency_size_gib")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        An identifier for the `Volume`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2160,5 +2170,13 @@ class VolumeResponse(dict):
         The storage type for this volume.
         """
         return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> str:
+        """
+        An identifier for the `Volume`, generated by the backend.
+        """
+        return pulumi.get(self, "volume_id")
 
 

@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         }
 
         /// <summary>
+        /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        /// </summary>
+        [Input("buildStepId")]
+        public Input<string>? BuildStepId { get; set; }
+
+        /// <summary>
         /// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         /// </summary>
         [Input("dir")]
@@ -68,12 +74,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
             get => _env ?? (_env = new InputList<string>());
             set => _env = value;
         }
-
-        /// <summary>
-        /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.

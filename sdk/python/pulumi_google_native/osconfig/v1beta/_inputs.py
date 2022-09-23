@@ -1321,18 +1321,18 @@ class SoftwareRecipeArtifactRemoteArgs:
 @pulumi.input_type
 class SoftwareRecipeArtifactArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 software_recipe_artifact_id: pulumi.Input[str],
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  gcs: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']] = None,
                  remote: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']] = None):
         """
         Specifies a resource to be used in the recipe.
-        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        :param pulumi.Input[str] software_recipe_artifact_id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
         :param pulumi.Input['SoftwareRecipeArtifactGcsArgs'] gcs: A Google Cloud Storage artifact.
         :param pulumi.Input['SoftwareRecipeArtifactRemoteArgs'] remote: A generic remote artifact.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "software_recipe_artifact_id", software_recipe_artifact_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
@@ -1341,16 +1341,16 @@ class SoftwareRecipeArtifactArgs:
             pulumi.set(__self__, "remote", remote)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="softwareRecipeArtifactId")
+    def software_recipe_artifact_id(self) -> pulumi.Input[str]:
         """
         Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "software_recipe_artifact_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @software_recipe_artifact_id.setter
+    def software_recipe_artifact_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "software_recipe_artifact_id", value)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -2039,29 +2039,29 @@ class TimeOfDayArgs:
 @pulumi.input_type
 class TimeZoneArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 time_zone_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
-        :param pulumi.Input[str] id: IANA Time Zone Database time zone, e.g. "America/New_York".
+        :param pulumi.Input[str] time_zone_id: IANA Time Zone Database time zone, e.g. "America/New_York".
         :param pulumi.Input[str] version: Optional. IANA Time Zone Database version number, e.g. "2019a".
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if time_zone_id is not None:
+            pulumi.set(__self__, "time_zone_id", time_zone_id)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="timeZoneId")
+    def time_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         IANA Time Zone Database time zone, e.g. "America/New_York".
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "time_zone_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @time_zone_id.setter
+    def time_zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone_id", value)
 
     @property
     @pulumi.getter
@@ -2213,18 +2213,18 @@ class WindowsUpdateSettingsArgs:
 class YumRepositoryArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
-                 id: pulumi.Input[str],
+                 yum_repository_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
         :param pulumi.Input[str] base_url: The location of the repository directory.
-        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        :param pulumi.Input[str] yum_repository_id: A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
         pulumi.set(__self__, "base_url", base_url)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "yum_repository_id", yum_repository_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
@@ -2243,16 +2243,16 @@ class YumRepositoryArgs:
         pulumi.set(self, "base_url", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="yumRepositoryId")
+    def yum_repository_id(self) -> pulumi.Input[str]:
         """
         A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "yum_repository_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @yum_repository_id.setter
+    def yum_repository_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "yum_repository_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -2355,18 +2355,18 @@ class YumSettingsArgs:
 class ZypperRepositoryArgs:
     def __init__(__self__, *,
                  base_url: pulumi.Input[str],
-                 id: pulumi.Input[str],
+                 zypper_repository_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
         :param pulumi.Input[str] base_url: The location of the repository directory.
-        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        :param pulumi.Input[str] zypper_repository_id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
         pulumi.set(__self__, "base_url", base_url)
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "zypper_repository_id", zypper_repository_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
@@ -2385,16 +2385,16 @@ class ZypperRepositoryArgs:
         pulumi.set(self, "base_url", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="zypperRepositoryId")
+    def zypper_repository_id(self) -> pulumi.Input[str]:
         """
         A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "zypper_repository_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @zypper_repository_id.setter
+    def zypper_repository_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zypper_repository_id", value)
 
     @property
     @pulumi.getter(name="displayName")

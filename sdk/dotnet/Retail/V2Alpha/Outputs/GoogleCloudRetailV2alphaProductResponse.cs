@@ -69,13 +69,13 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2alphaFulfillmentInfoResponse> FulfillmentInfo;
         /// <summary>
+        /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
+        /// </summary>
+        public readonly string GoogleCloudRetailV2alphaProductId;
+        /// <summary>
         /// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         /// </summary>
         public readonly string Gtin;
-        /// <summary>
-        /// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org property [Product.sku](https://schema.org/sku).
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         /// </summary>
@@ -181,9 +181,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
 
             ImmutableArray<Outputs.GoogleCloudRetailV2alphaFulfillmentInfoResponse> fulfillmentInfo,
 
-            string gtin,
+            string googleCloudRetailV2alphaProductId,
 
-            string id,
+            string gtin,
 
             ImmutableArray<Outputs.GoogleCloudRetailV2alphaImageResponse> images,
 
@@ -236,8 +236,8 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
             Description = description;
             ExpireTime = expireTime;
             FulfillmentInfo = fulfillmentInfo;
+            GoogleCloudRetailV2alphaProductId = googleCloudRetailV2alphaProductId;
             Gtin = gtin;
-            Id = id;
             Images = images;
             LanguageCode = languageCode;
             LocalInventories = localInventories;

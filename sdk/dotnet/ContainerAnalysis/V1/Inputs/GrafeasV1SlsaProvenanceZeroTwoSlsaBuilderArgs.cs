@@ -15,8 +15,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// </summary>
     public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId")]
+        public Input<string>? GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId { get; set; }
 
         public GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs()
         {

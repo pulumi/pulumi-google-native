@@ -83,12 +83,12 @@ class BucketAccessControlProjectTeamArgs:
 class BucketAccessControlArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
+                 bucket_access_control_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  entity: Optional[pulumi.Input[str]] = None,
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input['BucketAccessControlProjectTeamArgs']] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -96,6 +96,7 @@ class BucketAccessControlArgs:
         """
         An access-control entry.
         :param pulumi.Input[str] bucket: The name of the bucket.
+        :param pulumi.Input[str] bucket_access_control_id: The ID of the access-control entry.
         :param pulumi.Input[str] domain: The domain associated with the entity, if any.
         :param pulumi.Input[str] email: The email address associated with the entity, if any.
         :param pulumi.Input[str] entity: The entity holding the permission, in one of the following forms: 
@@ -112,7 +113,6 @@ class BucketAccessControlArgs:
                - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] entity_id: The ID for the entity, if any.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
-        :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         :param pulumi.Input['BucketAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
         :param pulumi.Input[str] role: The access permission for the entity.
@@ -120,6 +120,8 @@ class BucketAccessControlArgs:
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if bucket_access_control_id is not None:
+            pulumi.set(__self__, "bucket_access_control_id", bucket_access_control_id)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if email is not None:
@@ -130,8 +132,6 @@ class BucketAccessControlArgs:
             pulumi.set(__self__, "entity_id", entity_id)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if project_team is not None:
@@ -152,6 +152,18 @@ class BucketAccessControlArgs:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="bucketAccessControlId")
+    def bucket_access_control_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "bucket_access_control_id")
+
+    @bucket_access_control_id.setter
+    def bucket_access_control_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_access_control_id", value)
 
     @property
     @pulumi.getter
@@ -223,18 +235,6 @@ class BucketAccessControlArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the access-control entry.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -1442,9 +1442,9 @@ class ObjectAccessControlArgs:
                  entity_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
+                 object_access_control_id: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input['ObjectAccessControlProjectTeamArgs']] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
@@ -1468,9 +1468,9 @@ class ObjectAccessControlArgs:
         :param pulumi.Input[str] entity_id: The ID for the entity, if any.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] generation: The content generation of the object, if applied to an object.
-        :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
+        :param pulumi.Input[str] object_access_control_id: The ID of the access-control entry.
         :param pulumi.Input['ObjectAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
@@ -1489,12 +1489,12 @@ class ObjectAccessControlArgs:
             pulumi.set(__self__, "etag", etag)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if object is not None:
             pulumi.set(__self__, "object", object)
+        if object_access_control_id is not None:
+            pulumi.set(__self__, "object_access_control_id", object_access_control_id)
         if project_team is not None:
             pulumi.set(__self__, "project_team", project_team)
         if role is not None:
@@ -1599,18 +1599,6 @@ class ObjectAccessControlArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the access-control entry.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
@@ -1632,6 +1620,18 @@ class ObjectAccessControlArgs:
     @object.setter
     def object(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter(name="objectAccessControlId")
+    def object_access_control_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the access-control entry.
+        """
+        return pulumi.get(self, "object_access_control_id")
+
+    @object_access_control_id.setter
+    def object_access_control_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_access_control_id", value)
 
     @property
     @pulumi.getter(name="projectTeam")

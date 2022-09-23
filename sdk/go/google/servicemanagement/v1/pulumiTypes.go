@@ -580,10 +580,10 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type AuthProvider struct {
 	// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
 	Audiences *string `pulumi:"audiences"`
+	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+	AuthProviderId *string `pulumi:"authProviderId"`
 	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 	AuthorizationUrl *string `pulumi:"authorizationUrl"`
-	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-	Id *string `pulumi:"id"`
 	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
 	Issuer *string `pulumi:"issuer"`
 	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
@@ -607,10 +607,10 @@ type AuthProviderInput interface {
 type AuthProviderArgs struct {
 	// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
 	Audiences pulumi.StringPtrInput `pulumi:"audiences"`
+	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+	AuthProviderId pulumi.StringPtrInput `pulumi:"authProviderId"`
 	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 	AuthorizationUrl pulumi.StringPtrInput `pulumi:"authorizationUrl"`
-	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
 	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
 	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
@@ -676,14 +676,14 @@ func (o AuthProviderOutput) Audiences() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthProvider) *string { return v.Audiences }).(pulumi.StringPtrOutput)
 }
 
+// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+func (o AuthProviderOutput) AuthProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthProvider) *string { return v.AuthProviderId }).(pulumi.StringPtrOutput)
+}
+
 // Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 func (o AuthProviderOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthProvider) *string { return v.AuthorizationUrl }).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-func (o AuthProviderOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuthProvider) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
@@ -725,10 +725,10 @@ func (o AuthProviderArrayOutput) Index(i pulumi.IntInput) AuthProviderOutput {
 type AuthProviderResponse struct {
 	// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
 	Audiences string `pulumi:"audiences"`
+	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+	AuthProviderId string `pulumi:"authProviderId"`
 	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 	AuthorizationUrl string `pulumi:"authorizationUrl"`
-	// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-	Id string `pulumi:"id"`
 	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
 	Issuer string `pulumi:"issuer"`
 	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
@@ -757,14 +757,14 @@ func (o AuthProviderResponseOutput) Audiences() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthProviderResponse) string { return v.Audiences }).(pulumi.StringOutput)
 }
 
+// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+func (o AuthProviderResponseOutput) AuthProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.AuthProviderId }).(pulumi.StringOutput)
+}
+
 // Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
 func (o AuthProviderResponseOutput) AuthorizationUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthProviderResponse) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
-}
-
-// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-func (o AuthProviderResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v AuthProviderResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com

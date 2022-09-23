@@ -6108,7 +6108,7 @@ type GoogleCloudDialogflowCxV3IntentParameter struct {
 	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType string `pulumi:"entityType"`
 	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-	Id string `pulumi:"id"`
+	GoogleCloudDialogflowCxV3IntentParameterId string `pulumi:"googleCloudDialogflowCxV3IntentParameterId"`
 	// Indicates whether the parameter represents a list of values.
 	IsList *bool `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -6131,7 +6131,7 @@ type GoogleCloudDialogflowCxV3IntentParameterArgs struct {
 	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-	Id pulumi.StringInput `pulumi:"id"`
+	GoogleCloudDialogflowCxV3IntentParameterId pulumi.StringInput `pulumi:"googleCloudDialogflowCxV3IntentParameterId"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolPtrInput `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -6196,8 +6196,10 @@ func (o GoogleCloudDialogflowCxV3IntentParameterOutput) EntityType() pulumi.Stri
 }
 
 // The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-func (o GoogleCloudDialogflowCxV3IntentParameterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentParameter) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowCxV3IntentParameterOutput) GoogleCloudDialogflowCxV3IntentParameterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentParameter) string {
+		return v.GoogleCloudDialogflowCxV3IntentParameterId
+	}).(pulumi.StringOutput)
 }
 
 // Indicates whether the parameter represents a list of values.
@@ -6235,7 +6237,7 @@ type GoogleCloudDialogflowCxV3IntentParameterResponse struct {
 	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType string `pulumi:"entityType"`
 	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-	Id string `pulumi:"id"`
+	GoogleCloudDialogflowCxV3IntentParameterId string `pulumi:"googleCloudDialogflowCxV3IntentParameterId"`
 	// Indicates whether the parameter represents a list of values.
 	IsList bool `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -6263,8 +6265,10 @@ func (o GoogleCloudDialogflowCxV3IntentParameterResponseOutput) EntityType() pul
 }
 
 // The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-func (o GoogleCloudDialogflowCxV3IntentParameterResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentParameterResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowCxV3IntentParameterResponseOutput) GoogleCloudDialogflowCxV3IntentParameterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentParameterResponse) string {
+		return v.GoogleCloudDialogflowCxV3IntentParameterId
+	}).(pulumi.StringOutput)
 }
 
 // Indicates whether the parameter represents a list of values.
@@ -6652,7 +6656,7 @@ func (o GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponseArrayOutput) In
 // Represents an example that the agent is trained on to identify the intent.
 type GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse struct {
 	// The unique identifier of the training phrase.
-	Id string `pulumi:"id"`
+	GoogleCloudDialogflowCxV3IntentTrainingPhraseId string `pulumi:"googleCloudDialogflowCxV3IntentTrainingPhraseId"`
 	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 	Parts []GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse `pulumi:"parts"`
 	// Indicates how many times this example was added to the intent.
@@ -6675,8 +6679,10 @@ func (o GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseOutput) ToGoogleClo
 }
 
 // The unique identifier of the training phrase.
-func (o GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseOutput) GoogleCloudDialogflowCxV3IntentTrainingPhraseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse) string {
+		return v.GoogleCloudDialogflowCxV3IntentTrainingPhraseId
+	}).(pulumi.StringOutput)
 }
 
 // The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.

@@ -389,33 +389,50 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(dict):
     """
     ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudBeyondcorpAppconnectorsV1ResourceInfoId":
+            suggest = "google_cloud_beyondcorp_appconnectors_v1_resource_info_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str,
+                 google_cloud_beyondcorp_appconnectors_v1_resource_info_id: str,
                  resource: Mapping[str, str],
                  status: str,
                  sub: Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
-        :param str id: Unique Id for the resource.
+        :param str google_cloud_beyondcorp_appconnectors_v1_resource_info_id: Unique Id for the resource.
         :param Mapping[str, str] resource: Specific details for the resource. This is for internal use only.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "google_cloud_beyondcorp_appconnectors_v1_resource_info_id", google_cloud_beyondcorp_appconnectors_v1_resource_info_id)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "sub", sub)
         pulumi.set(__self__, "time", time)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="googleCloudBeyondcorpAppconnectorsV1ResourceInfoId")
+    def google_cloud_beyondcorp_appconnectors_v1_resource_info_id(self) -> str:
         """
         Unique Id for the resource.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "google_cloud_beyondcorp_appconnectors_v1_resource_info_id")
 
     @property
     @pulumi.getter

@@ -170,19 +170,44 @@ class ArtifactResponse(dict):
     """
     Artifact describes a build product.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 artifact_id: str,
                  checksum: str,
-                 id: str,
                  names: Sequence[str]):
         """
         Artifact describes a build product.
+        :param str artifact_id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param str checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-        :param str id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param Sequence[str] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
+        pulumi.set(__self__, "artifact_id", artifact_id)
         pulumi.set(__self__, "checksum", checksum)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> str:
+        """
+        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        """
+        return pulumi.get(self, "artifact_id")
 
     @property
     @pulumi.getter
@@ -191,14 +216,6 @@ class ArtifactResponse(dict):
         Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         """
         return pulumi.get(self, "checksum")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -461,6 +478,8 @@ class BuildProvenanceResponse(dict):
         suggest = None
         if key == "buildOptions":
             suggest = "build_options"
+        elif key == "buildProvenanceId":
+            suggest = "build_provenance_id"
         elif key == "builderVersion":
             suggest = "builder_version"
         elif key == "builtArtifacts":
@@ -491,13 +510,13 @@ class BuildProvenanceResponse(dict):
 
     def __init__(__self__, *,
                  build_options: Mapping[str, str],
+                 build_provenance_id: str,
                  builder_version: str,
                  built_artifacts: Sequence['outputs.ArtifactResponse'],
                  commands: Sequence['outputs.CommandResponse'],
                  create_time: str,
                  creator: str,
                  end_time: str,
-                 id: str,
                  logs_uri: str,
                  project: str,
                  source_provenance: 'outputs.SourceResponse',
@@ -506,13 +525,13 @@ class BuildProvenanceResponse(dict):
         """
         Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
         :param Mapping[str, str] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+        :param str build_provenance_id: Unique identifier of the build.
         :param str builder_version: Version string of the builder at the time this build was executed.
         :param Sequence['ArtifactResponse'] built_artifacts: Output of the build.
         :param Sequence['CommandResponse'] commands: Commands requested by the build.
         :param str create_time: Time at which the build was created.
         :param str creator: E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
         :param str end_time: Time at which execution of the build was finished.
-        :param str id: Unique identifier of the build.
         :param str logs_uri: URI where any logs for this provenance were written.
         :param str project: ID of the project.
         :param 'SourceResponse' source_provenance: Details of the Source input to the build.
@@ -520,13 +539,13 @@ class BuildProvenanceResponse(dict):
         :param str trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
         """
         pulumi.set(__self__, "build_options", build_options)
+        pulumi.set(__self__, "build_provenance_id", build_provenance_id)
         pulumi.set(__self__, "builder_version", builder_version)
         pulumi.set(__self__, "built_artifacts", built_artifacts)
         pulumi.set(__self__, "commands", commands)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "creator", creator)
         pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "logs_uri", logs_uri)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "source_provenance", source_provenance)
@@ -540,6 +559,14 @@ class BuildProvenanceResponse(dict):
         Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         """
         return pulumi.get(self, "build_options")
+
+    @property
+    @pulumi.getter(name="buildProvenanceId")
+    def build_provenance_id(self) -> str:
+        """
+        Unique identifier of the build.
+        """
+        return pulumi.get(self, "build_provenance_id")
 
     @property
     @pulumi.getter(name="builderVersion")
@@ -590,14 +617,6 @@ class BuildProvenanceResponse(dict):
         return pulumi.get(self, "end_time")
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Unique identifier of the build.
-        """
-        return pulumi.get(self, "id")
-
-    @property
     @pulumi.getter(name="logsUri")
     def logs_uri(self) -> str:
         """
@@ -640,14 +659,31 @@ class BuildProvenanceResponse(dict):
 
 @pulumi.output_type
 class BuilderConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builderConfigId":
+            suggest = "builder_config_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuilderConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuilderConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuilderConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
-        pulumi.set(__self__, "id", id)
+                 builder_config_id: str):
+        pulumi.set(__self__, "builder_config_id", builder_config_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="builderConfigId")
+    def builder_config_id(self) -> str:
+        return pulumi.get(self, "builder_config_id")
 
 
 @pulumi.output_type
@@ -1084,7 +1120,9 @@ class CommandResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "waitFor":
+        if key == "commandId":
+            suggest = "command_id"
+        elif key == "waitFor":
             suggest = "wait_for"
 
         if suggest:
@@ -1100,24 +1138,24 @@ class CommandResponse(dict):
 
     def __init__(__self__, *,
                  args: Sequence[str],
+                 command_id: str,
                  dir: str,
                  env: Sequence[str],
-                 id: str,
                  name: str,
                  wait_for: Sequence[str]):
         """
         Command describes a step performed as part of the build pipeline.
         :param Sequence[str] args: Command-line arguments used when executing this command.
+        :param str command_id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param str dir: Working directory (relative to project source root) used when running this command.
         :param Sequence[str] env: Environment variables set before running this command.
-        :param str id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param str name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param Sequence[str] wait_for: The ID(s) of the command(s) that this command depends on.
         """
         pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "command_id", command_id)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "env", env)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "wait_for", wait_for)
 
@@ -1128,6 +1166,14 @@ class CommandResponse(dict):
         Command-line arguments used when executing this command.
         """
         return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> str:
+        """
+        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        """
+        return pulumi.get(self, "command_id")
 
     @property
     @pulumi.getter
@@ -1144,14 +1190,6 @@ class CommandResponse(dict):
         Environment variables set before running this command.
         """
         return pulumi.get(self, "env")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -2527,17 +2565,34 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse(dict):
     """
     Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId":
+            suggest = "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
+                 grafeas_v1_slsa_provenance_zero_two_slsa_builder_id: str):
         """
         Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id", grafeas_v1_slsa_provenance_zero_two_slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId")
+    def grafeas_v1_slsa_provenance_zero_two_slsa_builder_id(self) -> str:
+        return pulumi.get(self, "grafeas_v1_slsa_provenance_zero_two_slsa_builder_id")
 
 
 @pulumi.output_type
@@ -4163,14 +4218,31 @@ class SignatureResponse(dict):
 
 @pulumi.output_type
 class SlsaBuilderResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsaBuilderId":
+            suggest = "slsa_builder_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SlsaBuilderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SlsaBuilderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SlsaBuilderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str):
-        pulumi.set(__self__, "id", id)
+                 slsa_builder_id: str):
+        pulumi.set(__self__, "slsa_builder_id", slsa_builder_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
-        return pulumi.get(self, "id")
+    @pulumi.getter(name="slsaBuilderId")
+    def slsa_builder_id(self) -> str:
+        return pulumi.get(self, "slsa_builder_id")
 
 
 @pulumi.output_type

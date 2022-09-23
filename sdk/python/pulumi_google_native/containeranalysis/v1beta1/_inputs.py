@@ -193,21 +193,33 @@ class ArtifactRuleArgs:
 @pulumi.input_type
 class ArtifactArgs:
     def __init__(__self__, *,
+                 artifact_id: Optional[pulumi.Input[str]] = None,
                  checksum: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Artifact describes a build product.
+        :param pulumi.Input[str] artifact_id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param pulumi.Input[str] checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
-        :param pulumi.Input[str] id: Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
+        if artifact_id is not None:
+            pulumi.set(__self__, "artifact_id", artifact_id)
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if names is not None:
             pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @artifact_id.setter
+    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_id", value)
 
     @property
     @pulumi.getter
@@ -220,18 +232,6 @@ class ArtifactArgs:
     @checksum.setter
     def checksum(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "checksum", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -403,7 +403,7 @@ class BindingArgs:
 @pulumi.input_type
 class BuildProvenanceArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 build_provenance_id: pulumi.Input[str],
                  build_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  builder_version: Optional[pulumi.Input[str]] = None,
                  built_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]]] = None,
@@ -418,7 +418,7 @@ class BuildProvenanceArgs:
                  trigger_id: Optional[pulumi.Input[str]] = None):
         """
         Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
-        :param pulumi.Input[str] id: Unique identifier of the build.
+        :param pulumi.Input[str] build_provenance_id: Unique identifier of the build.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_options: Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
         :param pulumi.Input[str] builder_version: Version string of the builder at the time this build was executed.
         :param pulumi.Input[Sequence[pulumi.Input['ArtifactArgs']]] built_artifacts: Output of the build.
@@ -432,7 +432,7 @@ class BuildProvenanceArgs:
         :param pulumi.Input[str] start_time: Time at which execution of the build was started.
         :param pulumi.Input[str] trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "build_provenance_id", build_provenance_id)
         if build_options is not None:
             pulumi.set(__self__, "build_options", build_options)
         if builder_version is not None:
@@ -459,16 +459,16 @@ class BuildProvenanceArgs:
             pulumi.set(__self__, "trigger_id", trigger_id)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="buildProvenanceId")
+    def build_provenance_id(self) -> pulumi.Input[str]:
         """
         Unique identifier of the build.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "build_provenance_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @build_provenance_id.setter
+    def build_provenance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "build_provenance_id", value)
 
     @property
     @pulumi.getter(name="buildOptions")
@@ -1146,28 +1146,28 @@ class CommandArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 command_id: Optional[pulumi.Input[str]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  wait_for: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Command describes a step performed as part of the build pipeline.
         :param pulumi.Input[str] name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Command-line arguments used when executing this command.
+        :param pulumi.Input[str] command_id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param pulumi.Input[str] dir: Working directory (relative to project source root) used when running this command.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: Environment variables set before running this command.
-        :param pulumi.Input[str] id: Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wait_for: The ID(s) of the command(s) that this command depends on.
         """
         pulumi.set(__self__, "name", name)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if command_id is not None:
+            pulumi.set(__self__, "command_id", command_id)
         if dir is not None:
             pulumi.set(__self__, "dir", dir)
         if env is not None:
             pulumi.set(__self__, "env", env)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if wait_for is not None:
             pulumi.set(__self__, "wait_for", wait_for)
 
@@ -1196,6 +1196,18 @@ class CommandArgs:
         pulumi.set(self, "args", value)
 
     @property
+    @pulumi.getter(name="commandId")
+    def command_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+        """
+        return pulumi.get(self, "command_id")
+
+    @command_id.setter
+    def command_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "command_id", value)
+
+    @property
     @pulumi.getter
     def dir(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1218,18 +1230,6 @@ class CommandArgs:
     @env.setter
     def env(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "env", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="waitFor")
@@ -1946,8 +1946,8 @@ class DocumentOccurrenceArgs:
                  creator_comment: Optional[pulumi.Input[str]] = None,
                  creators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  document_comment: Optional[pulumi.Input[str]] = None,
+                 document_occurrence_id: Optional[pulumi.Input[str]] = None,
                  external_document_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  license_list_version: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
@@ -1957,8 +1957,8 @@ class DocumentOccurrenceArgs:
         :param pulumi.Input[str] creator_comment: A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] creators: Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name
         :param pulumi.Input[str] document_comment: A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+        :param pulumi.Input[str] document_occurrence_id: Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
         :param pulumi.Input[Sequence[pulumi.Input[str]]] external_document_refs: Identify any external SPDX documents referenced within this SPDX document
-        :param pulumi.Input[str] id: Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
         :param pulumi.Input[str] license_list_version: A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
         :param pulumi.Input[str] namespace: Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
         :param pulumi.Input[str] title: Identify name of this document as designated by creator
@@ -1971,10 +1971,10 @@ class DocumentOccurrenceArgs:
             pulumi.set(__self__, "creators", creators)
         if document_comment is not None:
             pulumi.set(__self__, "document_comment", document_comment)
+        if document_occurrence_id is not None:
+            pulumi.set(__self__, "document_occurrence_id", document_occurrence_id)
         if external_document_refs is not None:
             pulumi.set(__self__, "external_document_refs", external_document_refs)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if license_list_version is not None:
             pulumi.set(__self__, "license_list_version", license_list_version)
         if namespace is not None:
@@ -2031,6 +2031,18 @@ class DocumentOccurrenceArgs:
         pulumi.set(self, "document_comment", value)
 
     @property
+    @pulumi.getter(name="documentOccurrenceId")
+    def document_occurrence_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
+        """
+        return pulumi.get(self, "document_occurrence_id")
+
+    @document_occurrence_id.setter
+    def document_occurrence_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "document_occurrence_id", value)
+
+    @property
     @pulumi.getter(name="externalDocumentRefs")
     def external_document_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2041,18 +2053,6 @@ class DocumentOccurrenceArgs:
     @external_document_refs.setter
     def external_document_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "external_document_refs", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identify the current SPDX document which may be referenced in relationships by other files, packages internally and documents externally
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="licenseListVersion")
@@ -2391,8 +2391,8 @@ class FileOccurrenceArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  contributors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  copyright: Optional[pulumi.Input[str]] = None,
+                 file_occurrence_id: Optional[pulumi.Input[str]] = None,
                  files_license_info: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  license_concluded: Optional[pulumi.Input['LicenseArgs']] = None,
                  notice: Optional[pulumi.Input[str]] = None):
         """
@@ -2401,8 +2401,8 @@ class FileOccurrenceArgs:
         :param pulumi.Input[str] comment: This field provides a place for the SPDX file creator to record any general comments about the file
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contributors: This field provides a place for the SPDX file creator to record file contributors
         :param pulumi.Input[str] copyright: Identify the copyright holder of the file, as well as any dates present
+        :param pulumi.Input[str] file_occurrence_id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param pulumi.Input[Sequence[pulumi.Input[str]]] files_license_info: This field contains the license information actually found in the file, if any
-        :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param pulumi.Input['LicenseArgs'] license_concluded: This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
         :param pulumi.Input[str] notice: This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
         """
@@ -2414,10 +2414,10 @@ class FileOccurrenceArgs:
             pulumi.set(__self__, "contributors", contributors)
         if copyright is not None:
             pulumi.set(__self__, "copyright", copyright)
+        if file_occurrence_id is not None:
+            pulumi.set(__self__, "file_occurrence_id", file_occurrence_id)
         if files_license_info is not None:
             pulumi.set(__self__, "files_license_info", files_license_info)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if license_concluded is not None:
             pulumi.set(__self__, "license_concluded", license_concluded)
         if notice is not None:
@@ -2472,6 +2472,18 @@ class FileOccurrenceArgs:
         pulumi.set(self, "copyright", value)
 
     @property
+    @pulumi.getter(name="fileOccurrenceId")
+    def file_occurrence_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "file_occurrence_id")
+
+    @file_occurrence_id.setter
+    def file_occurrence_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_occurrence_id", value)
+
+    @property
     @pulumi.getter(name="filesLicenseInfo")
     def files_license_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2482,18 +2494,6 @@ class FileOccurrenceArgs:
     @files_license_info.setter
     def files_license_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "files_license_info", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Uniquely identify any element in an SPDX document which may be referenced by other elements
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="licenseConcluded")
@@ -3759,25 +3759,25 @@ class PackageInfoOccurrenceArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  license_concluded: Optional[pulumi.Input['LicenseArgs']] = None,
+                 package_info_occurrence_id: Optional[pulumi.Input[str]] = None,
                  source_info: Optional[pulumi.Input[str]] = None):
         """
         PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
         :param pulumi.Input[str] comment: A place for the SPDX file creator to record any general comments about the package being described
         :param pulumi.Input[str] filename: Provide the actual file name of the package, or path of the directory being treated as a package
-        :param pulumi.Input[str] id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param pulumi.Input['LicenseArgs'] license_concluded: package or alternative values, if the governing license cannot be determined
+        :param pulumi.Input[str] package_info_occurrence_id: Uniquely identify any element in an SPDX document which may be referenced by other elements
         :param pulumi.Input[str] source_info: Provide a place for the SPDX file creator to record any relevant background information or additional comments about the origin of the package
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if filename is not None:
             pulumi.set(__self__, "filename", filename)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if license_concluded is not None:
             pulumi.set(__self__, "license_concluded", license_concluded)
+        if package_info_occurrence_id is not None:
+            pulumi.set(__self__, "package_info_occurrence_id", package_info_occurrence_id)
         if source_info is not None:
             pulumi.set(__self__, "source_info", source_info)
 
@@ -3806,18 +3806,6 @@ class PackageInfoOccurrenceArgs:
         pulumi.set(self, "filename", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Uniquely identify any element in an SPDX document which may be referenced by other elements
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="licenseConcluded")
     def license_concluded(self) -> Optional[pulumi.Input['LicenseArgs']]:
         """
@@ -3828,6 +3816,18 @@ class PackageInfoOccurrenceArgs:
     @license_concluded.setter
     def license_concluded(self, value: Optional[pulumi.Input['LicenseArgs']]):
         pulumi.set(self, "license_concluded", value)
+
+    @property
+    @pulumi.getter(name="packageInfoOccurrenceId")
+    def package_info_occurrence_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Uniquely identify any element in an SPDX document which may be referenced by other elements
+        """
+        return pulumi.get(self, "package_info_occurrence_id")
+
+    @package_info_occurrence_id.setter
+    def package_info_occurrence_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_info_occurrence_id", value)
 
     @property
     @pulumi.getter(name="sourceInfo")

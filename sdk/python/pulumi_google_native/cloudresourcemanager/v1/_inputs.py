@@ -229,29 +229,29 @@ class ExprArgs:
 @pulumi.input_type
 class ResourceIdArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 resource_id_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
-        :param pulumi.Input[str] id: The type-specific id. This should correspond to the id used in the type-specific API's.
+        :param pulumi.Input[str] resource_id_id: The type-specific id. This should correspond to the id used in the type-specific API's.
         :param pulumi.Input[str] type: The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if resource_id_id is not None:
+            pulumi.set(__self__, "resource_id_id", resource_id_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="resourceIdId")
+    def resource_id_id(self) -> Optional[pulumi.Input[str]]:
         """
         The type-specific id. This should correspond to the id used in the type-specific API's.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "resource_id_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @resource_id_id.setter
+    def resource_id_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id_id", value)
 
     @property
     @pulumi.getter

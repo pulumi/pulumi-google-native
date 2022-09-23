@@ -34,16 +34,16 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<string>? GcpService { get; set; }
 
         /// <summary>
-        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// The JumboFramesEnabled option for customer to set.
         /// </summary>
         [Input("jumboFramesEnabled")]
         public Input<bool>? JumboFramesEnabled { get; set; }
+
+        /// <summary>
+        /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        /// </summary>
+        [Input("networkConfigId")]
+        public Input<string>? NetworkConfigId { get; set; }
 
         /// <summary>
         /// Service CIDR, if any.

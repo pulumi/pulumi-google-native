@@ -3995,7 +3995,9 @@ class ExternalVpnGatewayInterfaceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipAddress":
+        if key == "externalVpnGatewayInterfaceId":
+            suggest = "external_vpn_gateway_interface_id"
+        elif key == "ipAddress":
             suggest = "ip_address"
 
         if suggest:
@@ -4010,23 +4012,23 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: int,
+                 external_vpn_gateway_interface_id: int,
                  ip_address: str):
         """
         The interface for the external VPN gateway.
-        :param int id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
+        :param int external_vpn_gateway_interface_id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         :param str ip_address: IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "external_vpn_gateway_interface_id", external_vpn_gateway_interface_id)
         pulumi.set(__self__, "ip_address", ip_address)
 
     @property
-    @pulumi.getter
-    def id(self) -> int:
+    @pulumi.getter(name="externalVpnGatewayInterfaceId")
+    def external_vpn_gateway_interface_id(self) -> int:
         """
         The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "external_vpn_gateway_interface_id")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -10072,6 +10074,8 @@ class ReservationResponse(dict):
         suggest = None
         if key == "creationTimestamp":
             suggest = "creation_timestamp"
+        elif key == "reservationId":
+            suggest = "reservation_id"
         elif key == "satisfiesPzs":
             suggest = "satisfies_pzs"
         elif key == "selfLink":
@@ -10098,9 +10102,9 @@ class ReservationResponse(dict):
                  commitment: str,
                  creation_timestamp: str,
                  description: str,
-                 id: str,
                  kind: str,
                  name: str,
+                 reservation_id: str,
                  satisfies_pzs: bool,
                  self_link: str,
                  share_settings: 'outputs.ShareSettingsResponse',
@@ -10113,9 +10117,9 @@ class ReservationResponse(dict):
         :param str commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
-        :param str id: The unique identifier for the resource. This identifier is defined by the server.
         :param str kind: Type of the resource. Always compute#reservations for reservations.
         :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param str reservation_id: The unique identifier for the resource. This identifier is defined by the server.
         :param bool satisfies_pzs: Reserved for future use.
         :param str self_link: Server-defined fully-qualified URL for this resource.
         :param 'ShareSettingsResponse' share_settings: Share-settings for shared-reservation
@@ -10127,9 +10131,9 @@ class ReservationResponse(dict):
         pulumi.set(__self__, "commitment", commitment)
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reservation_id", reservation_id)
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "share_settings", share_settings)
@@ -10164,14 +10168,6 @@ class ReservationResponse(dict):
 
     @property
     @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique identifier for the resource. This identifier is defined by the server.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
     def kind(self) -> str:
         """
         Type of the resource. Always compute#reservations for reservations.
@@ -10185,6 +10181,14 @@ class ReservationResponse(dict):
         The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> str:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -14974,6 +14978,8 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
             suggest = "interconnect_attachment"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "vpnGatewayVpnGatewayInterfaceId":
+            suggest = "vpn_gateway_vpn_gateway_interface_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VpnGatewayVpnGatewayInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -14987,26 +14993,18 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: int,
                  interconnect_attachment: str,
-                 ip_address: str):
+                 ip_address: str,
+                 vpn_gateway_vpn_gateway_interface_id: int):
         """
         A VPN gateway interface.
-        :param int id: Numeric identifier for this VPN interface associated with the VPN gateway.
         :param str interconnect_attachment: URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
         :param str ip_address: IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
+        :param int vpn_gateway_vpn_gateway_interface_id: Numeric identifier for this VPN interface associated with the VPN gateway.
         """
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         pulumi.set(__self__, "ip_address", ip_address)
-
-    @property
-    @pulumi.getter
-    def id(self) -> int:
-        """
-        Numeric identifier for this VPN interface associated with the VPN gateway.
-        """
-        return pulumi.get(self, "id")
+        pulumi.set(__self__, "vpn_gateway_vpn_gateway_interface_id", vpn_gateway_vpn_gateway_interface_id)
 
     @property
     @pulumi.getter(name="interconnectAttachment")
@@ -15023,6 +15021,14 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="vpnGatewayVpnGatewayInterfaceId")
+    def vpn_gateway_vpn_gateway_interface_id(self) -> int:
+        """
+        Numeric identifier for this VPN interface associated with the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_vpn_gateway_interface_id")
 
 
 @pulumi.output_type

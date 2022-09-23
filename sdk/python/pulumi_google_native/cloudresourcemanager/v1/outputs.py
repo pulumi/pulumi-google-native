@@ -225,24 +225,41 @@ class ResourceIdResponse(dict):
     """
     A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceIdId":
+            suggest = "resource_id_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str,
+                 resource_id_id: str,
                  type: str):
         """
         A container to reference an id for any resource type. A `resource` in Google Cloud Platform is a generic term for something you (a developer) may want to interact with through one of our API's. Some examples are an App Engine app, a Compute Engine instance, a Cloud SQL database, and so on.
-        :param str id: The type-specific id. This should correspond to the id used in the type-specific API's.
+        :param str resource_id_id: The type-specific id. This should correspond to the id used in the type-specific API's.
         :param str type: The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id_id", resource_id_id)
         pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="resourceIdId")
+    def resource_id_id(self) -> str:
         """
         The type-specific id. This should correspond to the id used in the type-specific API's.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "resource_id_id")
 
     @property
     @pulumi.getter

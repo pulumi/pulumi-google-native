@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class ArtifactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+        /// </summary>
+        [Input("artifactId")]
+        public Input<string>? ArtifactId { get; set; }
+
+        /// <summary>
         /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         /// </summary>
         [Input("checksum")]
         public Input<string>? Checksum { get; set; }
-
-        /// <summary>
-        /// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("names")]
         private InputList<string>? _names;

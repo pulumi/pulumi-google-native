@@ -951,18 +951,18 @@ class PostgreSqlConnectionProfileArgs:
 @pulumi.input_type
 class PrimaryInstanceSettingsArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 primary_instance_settings_id: pulumi.Input[str],
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input['MachineConfigArgs']] = None):
         """
         Settings for the cluster's primary instance
-        :param pulumi.Input[str] id: The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        :param pulumi.Input[str] primary_instance_settings_id: The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
         :param pulumi.Input['MachineConfigArgs'] machine_config: Configuration for the machines that host the underlying database engine.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "primary_instance_settings_id", primary_instance_settings_id)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if labels is not None:
@@ -971,16 +971,16 @@ class PrimaryInstanceSettingsArgs:
             pulumi.set(__self__, "machine_config", machine_config)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="primaryInstanceSettingsId")
+    def primary_instance_settings_id(self) -> pulumi.Input[str]:
         """
         The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "primary_instance_settings_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @primary_instance_settings_id.setter
+    def primary_instance_settings_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "primary_instance_settings_id", value)
 
     @property
     @pulumi.getter(name="databaseFlags")

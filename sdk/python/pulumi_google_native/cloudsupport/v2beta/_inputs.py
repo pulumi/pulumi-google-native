@@ -58,17 +58,29 @@ class ActorArgs:
 @pulumi.input_type
 class CaseClassificationArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None):
+                 case_classification_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None):
         """
         A classification object with a product type and value.
+        :param pulumi.Input[str] case_classification_id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         :param pulumi.Input[str] display_name: The display name of the classification.
-        :param pulumi.Input[str] id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         """
+        if case_classification_id is not None:
+            pulumi.set(__self__, "case_classification_id", case_classification_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="caseClassificationId")
+    def case_classification_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        """
+        return pulumi.get(self, "case_classification_id")
+
+    @case_classification_id.setter
+    def case_classification_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "case_classification_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -81,17 +93,5 @@ class CaseClassificationArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
 

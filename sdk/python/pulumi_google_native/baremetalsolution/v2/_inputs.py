@@ -195,7 +195,7 @@ class InstanceConfigArgs:
                  account_networks_enabled: Optional[pulumi.Input[bool]] = None,
                  client_network: Optional[pulumi.Input['NetworkAddressArgs']] = None,
                  hyperthreading: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 instance_config_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  logical_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]] = None,
                  network_config: Optional[pulumi.Input['InstanceConfigNetworkConfig']] = None,
@@ -208,7 +208,7 @@ class InstanceConfigArgs:
         :param pulumi.Input[bool] account_networks_enabled: If true networks can be from different projects of the same vendor account.
         :param pulumi.Input['NetworkAddressArgs'] client_network: Client network address. Filled if InstanceConfig.multivlan_config is false.
         :param pulumi.Input[bool] hyperthreading: Whether the instance should be provisioned with Hyperthreading enabled.
-        :param pulumi.Input[str] id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
+        :param pulumi.Input[str] instance_config_id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         :param pulumi.Input[str] instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
         :param pulumi.Input['InstanceConfigNetworkConfig'] network_config: The type of network configuration on the instance.
@@ -223,8 +223,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "client_network", client_network)
         if hyperthreading is not None:
             pulumi.set(__self__, "hyperthreading", hyperthreading)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if instance_config_id is not None:
+            pulumi.set(__self__, "instance_config_id", instance_config_id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if logical_interfaces is not None:
@@ -277,16 +277,16 @@ class InstanceConfigArgs:
         pulumi.set(self, "hyperthreading", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="instanceConfigId")
+    def instance_config_id(self) -> Optional[pulumi.Input[str]]:
         """
         A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "instance_config_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @instance_config_id.setter
+    def instance_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_config_id", value)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -376,29 +376,29 @@ class InstanceConfigArgs:
 @pulumi.input_type
 class IntakeVlanAttachmentArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
+                 intake_vlan_attachment_id: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None):
         """
         A GCP vlan attachment.
-        :param pulumi.Input[str] id: Identifier of the VLAN attachment.
+        :param pulumi.Input[str] intake_vlan_attachment_id: Identifier of the VLAN attachment.
         :param pulumi.Input[str] pairing_key: Attachment pairing key.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if intake_vlan_attachment_id is not None:
+            pulumi.set(__self__, "intake_vlan_attachment_id", intake_vlan_attachment_id)
         if pairing_key is not None:
             pulumi.set(__self__, "pairing_key", pairing_key)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="intakeVlanAttachmentId")
+    def intake_vlan_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the VLAN attachment.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "intake_vlan_attachment_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @intake_vlan_attachment_id.setter
+    def intake_vlan_attachment_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intake_vlan_attachment_id", value)
 
     @property
     @pulumi.getter(name="pairingKey")
@@ -417,24 +417,24 @@ class IntakeVlanAttachmentArgs:
 class LogicalNetworkInterfaceArgs:
     def __init__(__self__, *,
                  default_gateway: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 logical_network_interface_id: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input['LogicalNetworkInterfaceNetworkType']] = None):
         """
         Each logical network interface is effectively a network and IP pair.
         :param pulumi.Input[bool] default_gateway: Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
-        :param pulumi.Input[str] id: An identifier for the `Network`, generated by the backend.
         :param pulumi.Input[str] ip_address: IP address in the network
+        :param pulumi.Input[str] logical_network_interface_id: An identifier for the `Network`, generated by the backend.
         :param pulumi.Input[str] network: Name of the network
         :param pulumi.Input['LogicalNetworkInterfaceNetworkType'] network_type: Type of network.
         """
         if default_gateway is not None:
             pulumi.set(__self__, "default_gateway", default_gateway)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if logical_network_interface_id is not None:
+            pulumi.set(__self__, "logical_network_interface_id", logical_network_interface_id)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if network_type is not None:
@@ -453,18 +453,6 @@ class LogicalNetworkInterfaceArgs:
         pulumi.set(self, "default_gateway", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An identifier for the `Network`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -475,6 +463,18 @@ class LogicalNetworkInterfaceArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="logicalNetworkInterfaceId")
+    def logical_network_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for the `Network`, generated by the backend.
+        """
+        return pulumi.get(self, "logical_network_interface_id")
+
+    @logical_network_interface_id.setter
+    def logical_network_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logical_network_interface_id", value)
 
     @property
     @pulumi.getter
@@ -545,7 +545,7 @@ class LunRangeArgs:
 class LunArgs:
     def __init__(__self__, *,
                  boot_lun: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
+                 lun_id: Optional[pulumi.Input[str]] = None,
                  multiprotocol_type: Optional[pulumi.Input['LunMultiprotocolType']] = None,
                  shareable: Optional[pulumi.Input[bool]] = None,
                  size_gb: Optional[pulumi.Input[str]] = None,
@@ -556,7 +556,7 @@ class LunArgs:
         """
         A storage volume logical unit number (LUN).
         :param pulumi.Input[bool] boot_lun: Display if this LUN is a boot LUN.
-        :param pulumi.Input[str] id: An identifier for the LUN, generated by the backend.
+        :param pulumi.Input[str] lun_id: An identifier for the LUN, generated by the backend.
         :param pulumi.Input['LunMultiprotocolType'] multiprotocol_type: The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
         :param pulumi.Input[bool] shareable: Display if this LUN can be shared between multiple physical servers.
         :param pulumi.Input[str] size_gb: The size of this LUN, in gigabytes.
@@ -567,8 +567,8 @@ class LunArgs:
         """
         if boot_lun is not None:
             pulumi.set(__self__, "boot_lun", boot_lun)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if lun_id is not None:
+            pulumi.set(__self__, "lun_id", lun_id)
         if multiprotocol_type is not None:
             pulumi.set(__self__, "multiprotocol_type", multiprotocol_type)
         if shareable is not None:
@@ -597,16 +597,16 @@ class LunArgs:
         pulumi.set(self, "boot_lun", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="lunId")
+    def lun_id(self) -> Optional[pulumi.Input[str]]:
         """
         An identifier for the LUN, generated by the backend.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "lun_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+    @lun_id.setter
+    def lun_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lun_id", value)
 
     @property
     @pulumi.getter(name="multiprotocolType")
@@ -755,8 +755,8 @@ class NetworkConfigArgs:
                  bandwidth: Optional[pulumi.Input['NetworkConfigBandwidth']] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  gcp_service: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  jumbo_frames_enabled: Optional[pulumi.Input[bool]] = None,
+                 network_config_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input['NetworkConfigServiceCidr']] = None,
                  type: Optional[pulumi.Input['NetworkConfigType']] = None,
                  user_note: Optional[pulumi.Input[str]] = None,
@@ -767,8 +767,8 @@ class NetworkConfigArgs:
         :param pulumi.Input['NetworkConfigBandwidth'] bandwidth: Interconnect bandwidth. Set only when type is CLIENT.
         :param pulumi.Input[str] cidr: CIDR range of the network.
         :param pulumi.Input[str] gcp_service: The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-        :param pulumi.Input[str] id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param pulumi.Input[bool] jumbo_frames_enabled: The JumboFramesEnabled option for customer to set.
+        :param pulumi.Input[str] network_config_id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param pulumi.Input['NetworkConfigServiceCidr'] service_cidr: Service CIDR, if any.
         :param pulumi.Input['NetworkConfigType'] type: The type of this network, either Client or Private.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -781,10 +781,10 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "cidr", cidr)
         if gcp_service is not None:
             pulumi.set(__self__, "gcp_service", gcp_service)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if jumbo_frames_enabled is not None:
             pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
+        if network_config_id is not None:
+            pulumi.set(__self__, "network_config_id", network_config_id)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
         if type is not None:
@@ -833,18 +833,6 @@ class NetworkConfigArgs:
         pulumi.set(self, "gcp_service", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="jumboFramesEnabled")
     def jumbo_frames_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -855,6 +843,18 @@ class NetworkConfigArgs:
     @jumbo_frames_enabled.setter
     def jumbo_frames_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "jumbo_frames_enabled", value)
+
+    @property
+    @pulumi.getter(name="networkConfigId")
+    def network_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        """
+        return pulumi.get(self, "network_config_id")
+
+    @network_config_id.setter
+    def network_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_config_id", value)
 
     @property
     @pulumi.getter(name="serviceCidr")
@@ -1113,7 +1113,6 @@ class SnapshotReservationDetailArgs:
 class VolumeConfigArgs:
     def __init__(__self__, *,
                  gcp_service: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  lun_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['LunRangeArgs']]]] = None,
                  machine_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  nfs_exports: Optional[pulumi.Input[Sequence[pulumi.Input['NfsExportArgs']]]] = None,
@@ -1122,11 +1121,11 @@ class VolumeConfigArgs:
                  size_gb: Optional[pulumi.Input[int]] = None,
                  snapshots_enabled: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input['VolumeConfigType']] = None,
-                 user_note: Optional[pulumi.Input[str]] = None):
+                 user_note: Optional[pulumi.Input[str]] = None,
+                 volume_config_id: Optional[pulumi.Input[str]] = None):
         """
         Configuration parameters for a new volume.
         :param pulumi.Input[str] gcp_service: The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-        :param pulumi.Input[str] id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         :param pulumi.Input[Sequence[pulumi.Input['LunRangeArgs']]] lun_ranges: LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_ids: Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
         :param pulumi.Input[Sequence[pulumi.Input['NfsExportArgs']]] nfs_exports: NFS exports. Set only when protocol is PROTOCOL_NFS.
@@ -1136,11 +1135,10 @@ class VolumeConfigArgs:
         :param pulumi.Input[bool] snapshots_enabled: Whether snapshots should be enabled.
         :param pulumi.Input['VolumeConfigType'] type: The type of this Volume.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
+        :param pulumi.Input[str] volume_config_id: A transient unique identifier to identify a volume within an ProvisioningConfig request.
         """
         if gcp_service is not None:
             pulumi.set(__self__, "gcp_service", gcp_service)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if lun_ranges is not None:
             pulumi.set(__self__, "lun_ranges", lun_ranges)
         if machine_ids is not None:
@@ -1159,6 +1157,8 @@ class VolumeConfigArgs:
             pulumi.set(__self__, "type", type)
         if user_note is not None:
             pulumi.set(__self__, "user_note", user_note)
+        if volume_config_id is not None:
+            pulumi.set(__self__, "volume_config_id", volume_config_id)
 
     @property
     @pulumi.getter(name="gcpService")
@@ -1171,18 +1171,6 @@ class VolumeConfigArgs:
     @gcp_service.setter
     def gcp_service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gcp_service", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A transient unique identifier to identify a volume within an ProvisioningConfig request.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="lunRanges")
@@ -1292,6 +1280,18 @@ class VolumeConfigArgs:
     def user_note(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_note", value)
 
+    @property
+    @pulumi.getter(name="volumeConfigId")
+    def volume_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A transient unique identifier to identify a volume within an ProvisioningConfig request.
+        """
+        return pulumi.get(self, "volume_config_id")
+
+    @volume_config_id.setter
+    def volume_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_config_id", value)
+
 
 @pulumi.input_type
 class VolumeArgs:
@@ -1299,7 +1299,6 @@ class VolumeArgs:
                  auto_grown_size_gib: Optional[pulumi.Input[str]] = None,
                  current_size_gib: Optional[pulumi.Input[str]] = None,
                  emergency_size_gib: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_size_gib: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
@@ -1313,13 +1312,13 @@ class VolumeArgs:
                  snapshot_reservation_detail: Optional[pulumi.Input['SnapshotReservationDetailArgs']] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['VolumeState']] = None,
-                 storage_type: Optional[pulumi.Input['VolumeStorageType']] = None):
+                 storage_type: Optional[pulumi.Input['VolumeStorageType']] = None,
+                 volume_id: Optional[pulumi.Input[str]] = None):
         """
         A storage volume.
         :param pulumi.Input[str] auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
         :param pulumi.Input[str] current_size_gib: The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
         :param pulumi.Input[str] emergency_size_gib: Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
-        :param pulumi.Input[str] id: An identifier for the `Volume`, generated by the backend.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
         :param pulumi.Input[str] max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
         :param pulumi.Input[str] notes: Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
@@ -1334,6 +1333,7 @@ class VolumeArgs:
         :param pulumi.Input[str] snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
         :param pulumi.Input['VolumeState'] state: The state of this storage volume.
         :param pulumi.Input['VolumeStorageType'] storage_type: The storage type for this volume.
+        :param pulumi.Input[str] volume_id: An identifier for the `Volume`, generated by the backend.
         """
         if auto_grown_size_gib is not None:
             pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
@@ -1341,8 +1341,6 @@ class VolumeArgs:
             pulumi.set(__self__, "current_size_gib", current_size_gib)
         if emergency_size_gib is not None:
             pulumi.set(__self__, "emergency_size_gib", emergency_size_gib)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_size_gib is not None:
@@ -1371,6 +1369,8 @@ class VolumeArgs:
             pulumi.set(__self__, "state", state)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
 
     @property
     @pulumi.getter(name="autoGrownSizeGib")
@@ -1407,18 +1407,6 @@ class VolumeArgs:
     @emergency_size_gib.setter
     def emergency_size_gib(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "emergency_size_gib", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An identifier for the `Volume`, generated by the backend.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -1587,5 +1575,17 @@ class VolumeArgs:
     @storage_type.setter
     def storage_type(self, value: Optional[pulumi.Input['VolumeStorageType']]):
         pulumi.set(self, "storage_type", value)
+
+    @property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for the `Volume`, generated by the backend.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_id", value)
 
 

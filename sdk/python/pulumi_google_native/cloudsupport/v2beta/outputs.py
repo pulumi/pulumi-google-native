@@ -86,7 +86,9 @@ class CaseClassificationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "displayName":
+        if key == "caseClassificationId":
+            suggest = "case_classification_id"
+        elif key == "displayName":
             suggest = "display_name"
 
         if suggest:
@@ -101,15 +103,23 @@ class CaseClassificationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 display_name: str,
-                 id: str):
+                 case_classification_id: str,
+                 display_name: str):
         """
         A classification object with a product type and value.
+        :param str case_classification_id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         :param str display_name: The display name of the classification.
-        :param str id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         """
+        pulumi.set(__self__, "case_classification_id", case_classification_id)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="caseClassificationId")
+    def case_classification_id(self) -> str:
+        """
+        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+        """
+        return pulumi.get(self, "case_classification_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -118,13 +128,5 @@ class CaseClassificationResponse(dict):
         The display name of the classification.
         """
         return pulumi.get(self, "display_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-        """
-        return pulumi.get(self, "id")
 
 

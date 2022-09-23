@@ -254,20 +254,20 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs:
 @pulumi.input_type
 class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
+                 google_cloud_beyondcorp_appconnectors_v1_resource_info_id: pulumi.Input[str],
                  resource: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus']] = None,
                  sub: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]]] = None,
                  time: Optional[pulumi.Input[str]] = None):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
-        :param pulumi.Input[str] id: Unique Id for the resource.
+        :param pulumi.Input[str] google_cloud_beyondcorp_appconnectors_v1_resource_info_id: Unique Id for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource: Specific details for the resource. This is for internal use only.
         :param pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus'] status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]] sub: List of Info for the sub level resources.
         :param pulumi.Input[str] time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "google_cloud_beyondcorp_appconnectors_v1_resource_info_id", google_cloud_beyondcorp_appconnectors_v1_resource_info_id)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
         if status is not None:
@@ -278,16 +278,16 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs:
             pulumi.set(__self__, "time", time)
 
     @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="googleCloudBeyondcorpAppconnectorsV1ResourceInfoId")
+    def google_cloud_beyondcorp_appconnectors_v1_resource_info_id(self) -> pulumi.Input[str]:
         """
         Unique Id for the resource.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "google_cloud_beyondcorp_appconnectors_v1_resource_info_id")
 
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
+    @google_cloud_beyondcorp_appconnectors_v1_resource_info_id.setter
+    def google_cloud_beyondcorp_appconnectors_v1_resource_info_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "google_cloud_beyondcorp_appconnectors_v1_resource_info_id", value)
 
     @property
     @pulumi.getter

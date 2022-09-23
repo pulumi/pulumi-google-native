@@ -27,12 +27,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
             set => _displayData = value;
         }
 
-        /// <summary>
-        /// SDK generated id of this transform instance.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("inputCollectionName")]
         private InputList<string>? _inputCollectionName;
 
@@ -68,6 +62,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
             get => _outputCollectionName ?? (_outputCollectionName = new InputList<string>());
             set => _outputCollectionName = value;
         }
+
+        /// <summary>
+        /// SDK generated id of this transform instance.
+        /// </summary>
+        [Input("transformSummaryId")]
+        public Input<string>? TransformSummaryId { get; set; }
 
         public TransformSummaryArgs()
         {

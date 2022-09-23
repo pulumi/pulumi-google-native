@@ -2069,7 +2069,7 @@ type JobResponse struct {
 	// A deploy Job.
 	DeployJob DeployJobResponse `pulumi:"deployJob"`
 	// The ID of the Job.
-	Id string `pulumi:"id"`
+	JobId string `pulumi:"jobId"`
 	// The name of the `JobRun` responsible for the most recent invocation of this Job.
 	JobRun string `pulumi:"jobRun"`
 	// The current state of the Job.
@@ -2099,8 +2099,8 @@ func (o JobResponseOutput) DeployJob() DeployJobResponseOutput {
 }
 
 // The ID of the Job.
-func (o JobResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o JobResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobResponse) string { return v.JobId }).(pulumi.StringOutput)
 }
 
 // The name of the `JobRun` responsible for the most recent invocation of this Job.
@@ -2149,7 +2149,7 @@ type PhaseResponse struct {
 	// Deployment job composition.
 	DeploymentJobs DeploymentJobsResponse `pulumi:"deploymentJobs"`
 	// The ID of the Phase.
-	Id string `pulumi:"id"`
+	PhaseId string `pulumi:"phaseId"`
 	// Current state of the Phase.
 	State string `pulumi:"state"`
 }
@@ -2175,8 +2175,8 @@ func (o PhaseResponseOutput) DeploymentJobs() DeploymentJobsResponseOutput {
 }
 
 // The ID of the Phase.
-func (o PhaseResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PhaseResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o PhaseResponseOutput) PhaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseResponse) string { return v.PhaseId }).(pulumi.StringOutput)
 }
 
 // Current state of the Phase.

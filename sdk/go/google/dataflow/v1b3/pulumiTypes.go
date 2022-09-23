@@ -2506,7 +2506,7 @@ type ExecutionStageSummary struct {
 	// Transforms that comprise this execution stage.
 	ComponentTransform []ComponentTransform `pulumi:"componentTransform"`
 	// Dataflow service generated id for this stage.
-	Id *string `pulumi:"id"`
+	ExecutionStageSummaryId *string `pulumi:"executionStageSummaryId"`
 	// Input sources for this stage.
 	InputSource []StageSource `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
@@ -2537,7 +2537,7 @@ type ExecutionStageSummaryArgs struct {
 	// Transforms that comprise this execution stage.
 	ComponentTransform ComponentTransformArrayInput `pulumi:"componentTransform"`
 	// Dataflow service generated id for this stage.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	ExecutionStageSummaryId pulumi.StringPtrInput `pulumi:"executionStageSummaryId"`
 	// Input sources for this stage.
 	InputSource StageSourceArrayInput `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
@@ -2613,8 +2613,8 @@ func (o ExecutionStageSummaryOutput) ComponentTransform() ComponentTransformArra
 }
 
 // Dataflow service generated id for this stage.
-func (o ExecutionStageSummaryOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionStageSummary) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o ExecutionStageSummaryOutput) ExecutionStageSummaryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionStageSummary) *string { return v.ExecutionStageSummaryId }).(pulumi.StringPtrOutput)
 }
 
 // Input sources for this stage.
@@ -2669,7 +2669,7 @@ type ExecutionStageSummaryResponse struct {
 	// Transforms that comprise this execution stage.
 	ComponentTransform []ComponentTransformResponse `pulumi:"componentTransform"`
 	// Dataflow service generated id for this stage.
-	Id string `pulumi:"id"`
+	ExecutionStageSummaryId string `pulumi:"executionStageSummaryId"`
 	// Input sources for this stage.
 	InputSource []StageSourceResponse `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
@@ -2708,8 +2708,8 @@ func (o ExecutionStageSummaryResponseOutput) ComponentTransform() ComponentTrans
 }
 
 // Dataflow service generated id for this stage.
-func (o ExecutionStageSummaryResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ExecutionStageSummaryResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o ExecutionStageSummaryResponseOutput) ExecutionStageSummaryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionStageSummaryResponse) string { return v.ExecutionStageSummaryId }).(pulumi.StringOutput)
 }
 
 // Input sources for this stage.
@@ -6218,8 +6218,6 @@ func (o TemplateMetadataResponseOutput) Parameters() ParameterMetadataResponseAr
 type TransformSummary struct {
 	// Transform-specific display data.
 	DisplayData []DisplayData `pulumi:"displayData"`
-	// SDK generated id of this transform instance.
-	Id *string `pulumi:"id"`
 	// User names for all collection inputs to this transform.
 	InputCollectionName []string `pulumi:"inputCollectionName"`
 	// Type of transform.
@@ -6228,6 +6226,8 @@ type TransformSummary struct {
 	Name *string `pulumi:"name"`
 	// User names for all collection outputs to this transform.
 	OutputCollectionName []string `pulumi:"outputCollectionName"`
+	// SDK generated id of this transform instance.
+	TransformSummaryId *string `pulumi:"transformSummaryId"`
 }
 
 // TransformSummaryInput is an input type that accepts TransformSummaryArgs and TransformSummaryOutput values.
@@ -6245,8 +6245,6 @@ type TransformSummaryInput interface {
 type TransformSummaryArgs struct {
 	// Transform-specific display data.
 	DisplayData DisplayDataArrayInput `pulumi:"displayData"`
-	// SDK generated id of this transform instance.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// User names for all collection inputs to this transform.
 	InputCollectionName pulumi.StringArrayInput `pulumi:"inputCollectionName"`
 	// Type of transform.
@@ -6255,6 +6253,8 @@ type TransformSummaryArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// User names for all collection outputs to this transform.
 	OutputCollectionName pulumi.StringArrayInput `pulumi:"outputCollectionName"`
+	// SDK generated id of this transform instance.
+	TransformSummaryId pulumi.StringPtrInput `pulumi:"transformSummaryId"`
 }
 
 func (TransformSummaryArgs) ElementType() reflect.Type {
@@ -6314,11 +6314,6 @@ func (o TransformSummaryOutput) DisplayData() DisplayDataArrayOutput {
 	return o.ApplyT(func(v TransformSummary) []DisplayData { return v.DisplayData }).(DisplayDataArrayOutput)
 }
 
-// SDK generated id of this transform instance.
-func (o TransformSummaryOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransformSummary) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // User names for all collection inputs to this transform.
 func (o TransformSummaryOutput) InputCollectionName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransformSummary) []string { return v.InputCollectionName }).(pulumi.StringArrayOutput)
@@ -6337,6 +6332,11 @@ func (o TransformSummaryOutput) Name() pulumi.StringPtrOutput {
 // User names for all collection outputs to this transform.
 func (o TransformSummaryOutput) OutputCollectionName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransformSummary) []string { return v.OutputCollectionName }).(pulumi.StringArrayOutput)
+}
+
+// SDK generated id of this transform instance.
+func (o TransformSummaryOutput) TransformSummaryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransformSummary) *string { return v.TransformSummaryId }).(pulumi.StringPtrOutput)
 }
 
 type TransformSummaryArrayOutput struct{ *pulumi.OutputState }
@@ -6363,8 +6363,6 @@ func (o TransformSummaryArrayOutput) Index(i pulumi.IntInput) TransformSummaryOu
 type TransformSummaryResponse struct {
 	// Transform-specific display data.
 	DisplayData []DisplayDataResponse `pulumi:"displayData"`
-	// SDK generated id of this transform instance.
-	Id string `pulumi:"id"`
 	// User names for all collection inputs to this transform.
 	InputCollectionName []string `pulumi:"inputCollectionName"`
 	// Type of transform.
@@ -6373,6 +6371,8 @@ type TransformSummaryResponse struct {
 	Name string `pulumi:"name"`
 	// User names for all collection outputs to this transform.
 	OutputCollectionName []string `pulumi:"outputCollectionName"`
+	// SDK generated id of this transform instance.
+	TransformSummaryId string `pulumi:"transformSummaryId"`
 }
 
 // Description of the type, names/ids, and input/outputs for a transform.
@@ -6395,11 +6395,6 @@ func (o TransformSummaryResponseOutput) DisplayData() DisplayDataResponseArrayOu
 	return o.ApplyT(func(v TransformSummaryResponse) []DisplayDataResponse { return v.DisplayData }).(DisplayDataResponseArrayOutput)
 }
 
-// SDK generated id of this transform instance.
-func (o TransformSummaryResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v TransformSummaryResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // User names for all collection inputs to this transform.
 func (o TransformSummaryResponseOutput) InputCollectionName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransformSummaryResponse) []string { return v.InputCollectionName }).(pulumi.StringArrayOutput)
@@ -6418,6 +6413,11 @@ func (o TransformSummaryResponseOutput) Name() pulumi.StringOutput {
 // User names for all collection outputs to this transform.
 func (o TransformSummaryResponseOutput) OutputCollectionName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransformSummaryResponse) []string { return v.OutputCollectionName }).(pulumi.StringArrayOutput)
+}
+
+// SDK generated id of this transform instance.
+func (o TransformSummaryResponseOutput) TransformSummaryId() pulumi.StringOutput {
+	return o.ApplyT(func(v TransformSummaryResponse) string { return v.TransformSummaryId }).(pulumi.StringOutput)
 }
 
 type TransformSummaryResponseArrayOutput struct{ *pulumi.OutputState }

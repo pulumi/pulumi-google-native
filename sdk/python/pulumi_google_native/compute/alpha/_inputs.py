@@ -4743,29 +4743,29 @@ class ExprArgs:
 @pulumi.input_type
 class ExternalVpnGatewayInterfaceArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[int]] = None,
+                 external_vpn_gateway_interface_id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
         The interface for the external VPN gateway.
-        :param pulumi.Input[int] id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
+        :param pulumi.Input[int] external_vpn_gateway_interface_id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         :param pulumi.Input[str] ip_address: IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
         """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+        if external_vpn_gateway_interface_id is not None:
+            pulumi.set(__self__, "external_vpn_gateway_interface_id", external_vpn_gateway_interface_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="externalVpnGatewayInterfaceId")
+    def external_vpn_gateway_interface_id(self) -> Optional[pulumi.Input[int]]:
         """
         The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "external_vpn_gateway_interface_id")
 
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "id", value)
+    @external_vpn_gateway_interface_id.setter
+    def external_vpn_gateway_interface_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "external_vpn_gateway_interface_id", value)
 
     @property
     @pulumi.getter(name="ipAddress")

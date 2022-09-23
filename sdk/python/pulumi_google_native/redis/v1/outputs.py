@@ -180,24 +180,41 @@ class NodeInfoResponse(dict):
     """
     Node specific properties.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeInfoId":
+            suggest = "node_info_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: str,
+                 node_info_id: str,
                  zone: str):
         """
         Node specific properties.
-        :param str id: Node identifying string. e.g. 'node-0', 'node-1'
+        :param str node_info_id: Node identifying string. e.g. 'node-0', 'node-1'
         :param str zone: Location of the node.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_info_id", node_info_id)
         pulumi.set(__self__, "zone", zone)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="nodeInfoId")
+    def node_info_id(self) -> str:
         """
         Node identifying string. e.g. 'node-0', 'node-1'
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "node_info_id")
 
     @property
     @pulumi.getter

@@ -45,10 +45,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
         /// </summary>
         public readonly int HttpErrorStatusCode;
         /// <summary>
-        /// The unique identifier for the operation. This identifier is defined by the server.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The time that this operation was requested. This value is in RFC3339 text format.
         /// </summary>
         public readonly string InsertTime;
@@ -64,6 +60,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
         /// An ID that represents a group of operations, such as when a group of operations results from a `bulkInsert` API request.
         /// </summary>
         public readonly string OperationGroupId;
+        /// <summary>
+        /// The unique identifier for the operation. This identifier is defined by the server.
+        /// </summary>
+        public readonly string OperationId;
         /// <summary>
         /// The type of operation, such as `insert`, `update`, or `delete`, and so on.
         /// </summary>
@@ -129,8 +129,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
 
             int httpErrorStatusCode,
 
-            string id,
-
             string insertTime,
 
             string kind,
@@ -138,6 +136,8 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
             string name,
 
             string operationGroupId,
+
+            string operationId,
 
             string operationType,
 
@@ -170,11 +170,11 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Outputs
             Error = error;
             HttpErrorMessage = httpErrorMessage;
             HttpErrorStatusCode = httpErrorStatusCode;
-            Id = id;
             InsertTime = insertTime;
             Kind = kind;
             Name = name;
             OperationGroupId = operationGroupId;
+            OperationId = operationId;
             OperationType = operationType;
             Progress = progress;
             Region = region;

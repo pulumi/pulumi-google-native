@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1.Inputs
         /// <summary>
         /// The type-specific id. This should correspond to the id used in the type-specific API's.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("resourceIdId")]
+        public Input<string>? ResourceIdId { get; set; }
 
         /// <summary>
         /// The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".

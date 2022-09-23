@@ -21,13 +21,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly string Audiences;
         /// <summary>
+        /// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
+        /// </summary>
+        public readonly string AuthProviderId;
+        /// <summary>
         /// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
         /// </summary>
         public readonly string AuthorizationUrl;
-        /// <summary>
-        /// The unique identifier of the auth provider. It will be referred to by `AuthRequirement.provider_id`. Example: "bookstore_auth".
-        /// </summary>
-        public readonly string Id;
         /// <summary>
         /// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
         /// </summary>
@@ -45,9 +45,9 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         private AuthProviderResponse(
             string audiences,
 
-            string authorizationUrl,
+            string authProviderId,
 
-            string id,
+            string authorizationUrl,
 
             string issuer,
 
@@ -56,8 +56,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
             ImmutableArray<Outputs.JwtLocationResponse> jwtLocations)
         {
             Audiences = audiences;
+            AuthProviderId = authProviderId;
             AuthorizationUrl = authorizationUrl;
-            Id = id;
             Issuer = issuer;
             JwksUri = jwksUri;
             JwtLocations = jwtLocations;

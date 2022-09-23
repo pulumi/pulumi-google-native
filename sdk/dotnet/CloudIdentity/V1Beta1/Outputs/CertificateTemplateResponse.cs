@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
         /// <summary>
         /// The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
         /// </summary>
-        public readonly string Id;
+        public readonly string CertificateTemplateId;
         /// <summary>
         /// The Major version of the template. Example: 100.
         /// </summary>
@@ -31,13 +31,13 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 
         [OutputConstructor]
         private CertificateTemplateResponse(
-            string id,
+            string certificateTemplateId,
 
             int majorVersion,
 
             int minorVersion)
         {
-            Id = id;
+            CertificateTemplateId = certificateTemplateId;
             MajorVersion = majorVersion;
             MinorVersion = minorVersion;
         }

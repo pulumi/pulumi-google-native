@@ -14,10 +14,10 @@ import (
 type AttestorPublicKey struct {
 	// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
 	AsciiArmoredPgpPublicKey *string `pulumi:"asciiArmoredPgpPublicKey"`
+	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+	AttestorPublicKeyId *string `pulumi:"attestorPublicKeyId"`
 	// Optional. A descriptive comment. This field may be updated.
 	Comment *string `pulumi:"comment"`
-	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-	Id *string `pulumi:"id"`
 	// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
 	PkixPublicKey *PkixPublicKey `pulumi:"pkixPublicKey"`
 }
@@ -37,10 +37,10 @@ type AttestorPublicKeyInput interface {
 type AttestorPublicKeyArgs struct {
 	// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
 	AsciiArmoredPgpPublicKey pulumi.StringPtrInput `pulumi:"asciiArmoredPgpPublicKey"`
+	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+	AttestorPublicKeyId pulumi.StringPtrInput `pulumi:"attestorPublicKeyId"`
 	// Optional. A descriptive comment. This field may be updated.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
 	PkixPublicKey PkixPublicKeyPtrInput `pulumi:"pkixPublicKey"`
 }
@@ -102,14 +102,14 @@ func (o AttestorPublicKeyOutput) AsciiArmoredPgpPublicKey() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AttestorPublicKey) *string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+func (o AttestorPublicKeyOutput) AttestorPublicKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttestorPublicKey) *string { return v.AttestorPublicKeyId }).(pulumi.StringPtrOutput)
+}
+
 // Optional. A descriptive comment. This field may be updated.
 func (o AttestorPublicKeyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorPublicKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-func (o AttestorPublicKeyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorPublicKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
@@ -141,10 +141,10 @@ func (o AttestorPublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorPublicKey
 type AttestorPublicKeyResponse struct {
 	// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
 	AsciiArmoredPgpPublicKey string `pulumi:"asciiArmoredPgpPublicKey"`
+	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+	AttestorPublicKeyId string `pulumi:"attestorPublicKeyId"`
 	// Optional. A descriptive comment. This field may be updated.
 	Comment string `pulumi:"comment"`
-	// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-	Id string `pulumi:"id"`
 	// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
 	PkixPublicKey PkixPublicKeyResponse `pulumi:"pkixPublicKey"`
 }
@@ -169,14 +169,14 @@ func (o AttestorPublicKeyResponseOutput) AsciiArmoredPgpPublicKey() pulumi.Strin
 	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringOutput)
 }
 
+// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
+func (o AttestorPublicKeyResponseOutput) AttestorPublicKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.AttestorPublicKeyId }).(pulumi.StringOutput)
+}
+
 // Optional. A descriptive comment. This field may be updated.
 func (o AttestorPublicKeyResponseOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.Comment }).(pulumi.StringOutput)
-}
-
-// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
-func (o AttestorPublicKeyResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.

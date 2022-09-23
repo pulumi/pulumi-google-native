@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         /// <summary>
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("timeZoneId")]
+        public Input<string>? TimeZoneId { get; set; }
 
         /// <summary>
         /// Optional. IANA Time Zone Database version number, e.g. "2019a".

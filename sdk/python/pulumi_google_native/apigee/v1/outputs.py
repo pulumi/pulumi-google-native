@@ -176,7 +176,9 @@ class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "siteId":
+        if key == "googleCloudApigeeV1ApiCategoryDataId":
+            suggest = "google_cloud_apigee_v1_api_category_data_id"
+        elif key == "siteId":
             suggest = "site_id"
         elif key == "updateTime":
             suggest = "update_time"
@@ -193,29 +195,29 @@ class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: str,
+                 google_cloud_apigee_v1_api_category_data_id: str,
                  name: str,
                  site_id: str,
                  update_time: str):
         """
         the Api category resource.
-        :param str id: ID of the category (a UUID).
+        :param str google_cloud_apigee_v1_api_category_data_id: ID of the category (a UUID).
         :param str name: Name of the category.
         :param str site_id: Name of the portal.
         :param str update_time: Time the category was last modified in milliseconds since epoch.
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "google_cloud_apigee_v1_api_category_data_id", google_cloud_apigee_v1_api_category_data_id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "update_time", update_time)
 
     @property
-    @pulumi.getter
-    def id(self) -> str:
+    @pulumi.getter(name="googleCloudApigeeV1ApiCategoryDataId")
+    def google_cloud_apigee_v1_api_category_data_id(self) -> str:
         """
         ID of the category (a UUID).
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "google_cloud_apigee_v1_api_category_data_id")
 
     @property
     @pulumi.getter

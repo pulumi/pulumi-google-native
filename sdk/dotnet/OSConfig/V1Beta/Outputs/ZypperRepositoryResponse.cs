@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// <summary>
         /// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         /// </summary>
-        public readonly string Id;
+        public readonly string ZypperRepositoryId;
 
         [OutputConstructor]
         private ZypperRepositoryResponse(
@@ -41,12 +41,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 
             ImmutableArray<string> gpgKeys,
 
-            string id)
+            string zypperRepositoryId)
         {
             BaseUrl = baseUrl;
             DisplayName = displayName;
             GpgKeys = gpgKeys;
-            Id = id;
+            ZypperRepositoryId = zypperRepositoryId;
         }
     }
 }

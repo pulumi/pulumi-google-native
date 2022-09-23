@@ -17,13 +17,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
     public sealed class ResourceInfoResponse
     {
         /// <summary>
-        /// Unique Id for the resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Specific details for the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Resource;
+        /// <summary>
+        /// Unique Id for the resource.
+        /// </summary>
+        public readonly string ResourceInfoId;
         /// <summary>
         /// Overall health status. Overall status is derived based on the status of each sub level resources.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
 
         [OutputConstructor]
         private ResourceInfoResponse(
-            string id,
-
             ImmutableDictionary<string, string> resource,
+
+            string resourceInfoId,
 
             string status,
 
@@ -49,8 +49,8 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
 
             string time)
         {
-            Id = id;
             Resource = resource;
+            ResourceInfoId = resourceInfoId;
             Status = status;
             Sub = sub;
             Time = time;

@@ -12,8 +12,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 
     public sealed class SlsaBuilderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("slsaBuilderId")]
+        public Input<string>? SlsaBuilderId { get; set; }
 
         public SlsaBuilderArgs()
         {

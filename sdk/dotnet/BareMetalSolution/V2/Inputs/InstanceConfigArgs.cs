@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         /// <summary>
         /// A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("instanceConfigId")]
+        public Input<string>? InstanceConfigId { get; set; }
 
         /// <summary>
         /// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)

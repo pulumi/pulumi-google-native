@@ -42,8 +42,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// <summary>
         /// Dataflow service generated id for this stage.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("executionStageSummaryId")]
+        public Input<string>? ExecutionStageSummaryId { get; set; }
 
         [Input("inputSource")]
         private InputList<Inputs.StageSourceArgs>? _inputSource;

@@ -211,10 +211,10 @@ func (o ActorResponseOutput) GoogleSupport() pulumi.BoolOutput {
 
 // A classification object with a product type and value.
 type CaseClassification struct {
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	CaseClassificationId *string `pulumi:"caseClassificationId"`
 	// The display name of the classification.
 	DisplayName *string `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-	Id *string `pulumi:"id"`
 }
 
 // CaseClassificationInput is an input type that accepts CaseClassificationArgs and CaseClassificationOutput values.
@@ -230,10 +230,10 @@ type CaseClassificationInput interface {
 
 // A classification object with a product type and value.
 type CaseClassificationArgs struct {
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	CaseClassificationId pulumi.StringPtrInput `pulumi:"caseClassificationId"`
 	// The display name of the classification.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (CaseClassificationArgs) ElementType() reflect.Type {
@@ -314,14 +314,14 @@ func (o CaseClassificationOutput) ToCaseClassificationPtrOutputWithContext(ctx c
 	}).(CaseClassificationPtrOutput)
 }
 
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+func (o CaseClassificationOutput) CaseClassificationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaseClassification) *string { return v.CaseClassificationId }).(pulumi.StringPtrOutput)
+}
+
 // The display name of the classification.
 func (o CaseClassificationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-func (o CaseClassificationOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CaseClassification) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type CaseClassificationPtrOutput struct{ *pulumi.OutputState }
@@ -348,6 +348,16 @@ func (o CaseClassificationPtrOutput) Elem() CaseClassificationOutput {
 	}).(CaseClassificationOutput)
 }
 
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+func (o CaseClassificationPtrOutput) CaseClassificationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaseClassification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaseClassificationId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The display name of the classification.
 func (o CaseClassificationPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaseClassification) *string {
@@ -358,22 +368,12 @@ func (o CaseClassificationPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-func (o CaseClassificationPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CaseClassification) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // A classification object with a product type and value.
 type CaseClassificationResponse struct {
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+	CaseClassificationId string `pulumi:"caseClassificationId"`
 	// The display name of the classification.
 	DisplayName string `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-	Id string `pulumi:"id"`
 }
 
 // A classification object with a product type and value.
@@ -391,14 +391,14 @@ func (o CaseClassificationResponseOutput) ToCaseClassificationResponseOutputWith
 	return o
 }
 
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
+func (o CaseClassificationResponseOutput) CaseClassificationId() pulumi.StringOutput {
+	return o.ApplyT(func(v CaseClassificationResponse) string { return v.CaseClassificationId }).(pulumi.StringOutput)
+}
+
 // The display name of the classification.
 func (o CaseClassificationResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v CaseClassificationResponse) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
-func (o CaseClassificationResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v CaseClassificationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

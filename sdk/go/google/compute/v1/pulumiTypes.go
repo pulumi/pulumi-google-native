@@ -11452,7 +11452,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 // The interface for the external VPN gateway.
 type ExternalVpnGatewayInterface struct {
 	// The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
-	Id *int `pulumi:"id"`
+	ExternalVpnGatewayInterfaceId *int `pulumi:"externalVpnGatewayInterfaceId"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress *string `pulumi:"ipAddress"`
 }
@@ -11471,7 +11471,7 @@ type ExternalVpnGatewayInterfaceInput interface {
 // The interface for the external VPN gateway.
 type ExternalVpnGatewayInterfaceArgs struct {
 	// The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
-	Id pulumi.IntPtrInput `pulumi:"id"`
+	ExternalVpnGatewayInterfaceId pulumi.IntPtrInput `pulumi:"externalVpnGatewayInterfaceId"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 }
@@ -11529,8 +11529,8 @@ func (o ExternalVpnGatewayInterfaceOutput) ToExternalVpnGatewayInterfaceOutputWi
 }
 
 // The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
-func (o ExternalVpnGatewayInterfaceOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ExternalVpnGatewayInterface) *int { return v.Id }).(pulumi.IntPtrOutput)
+func (o ExternalVpnGatewayInterfaceOutput) ExternalVpnGatewayInterfaceId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterface) *int { return v.ExternalVpnGatewayInterfaceId }).(pulumi.IntPtrOutput)
 }
 
 // IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
@@ -11561,7 +11561,7 @@ func (o ExternalVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) Externa
 // The interface for the external VPN gateway.
 type ExternalVpnGatewayInterfaceResponse struct {
 	// The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
-	Id int `pulumi:"id"`
+	ExternalVpnGatewayInterfaceId int `pulumi:"externalVpnGatewayInterfaceId"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress string `pulumi:"ipAddress"`
 }
@@ -11582,8 +11582,8 @@ func (o ExternalVpnGatewayInterfaceResponseOutput) ToExternalVpnGatewayInterface
 }
 
 // The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3
-func (o ExternalVpnGatewayInterfaceResponseOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) int { return v.Id }).(pulumi.IntOutput)
+func (o ExternalVpnGatewayInterfaceResponseOutput) ExternalVpnGatewayInterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) int { return v.ExternalVpnGatewayInterfaceId }).(pulumi.IntOutput)
 }
 
 // IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
@@ -28556,12 +28556,12 @@ type ReservationResponse struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// The unique identifier for the resource. This identifier is defined by the server.
-	Id string `pulumi:"id"`
 	// Type of the resource. Always compute#reservations for reservations.
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	ReservationId string `pulumi:"reservationId"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -28608,11 +28608,6 @@ func (o ReservationResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the resource. This identifier is defined by the server.
-func (o ReservationResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ReservationResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Type of the resource. Always compute#reservations for reservations.
 func (o ReservationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Kind }).(pulumi.StringOutput)
@@ -28621,6 +28616,11 @@ func (o ReservationResponseOutput) Kind() pulumi.StringOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o ReservationResponseOutput) ReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationResponse) string { return v.ReservationId }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.
@@ -42290,12 +42290,12 @@ func (o VpnGatewayVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) VpnGa
 
 // A VPN gateway interface.
 type VpnGatewayVpnGatewayInterfaceResponse struct {
-	// Numeric identifier for this VPN interface associated with the VPN gateway.
-	Id int `pulumi:"id"`
 	// URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
 	// IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 	IpAddress string `pulumi:"ipAddress"`
+	// Numeric identifier for this VPN interface associated with the VPN gateway.
+	VpnGatewayVpnGatewayInterfaceId int `pulumi:"vpnGatewayVpnGatewayInterfaceId"`
 }
 
 // A VPN gateway interface.
@@ -42313,11 +42313,6 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) ToVpnGatewayVpnGatewayInter
 	return o
 }
 
-// Numeric identifier for this VPN interface associated with the VPN gateway.
-func (o VpnGatewayVpnGatewayInterfaceResponseOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) int { return v.Id }).(pulumi.IntOutput)
-}
-
 // URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
@@ -42326,6 +42321,11 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pu
 // IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Numeric identifier for this VPN interface associated with the VPN gateway.
+func (o VpnGatewayVpnGatewayInterfaceResponseOutput) VpnGatewayVpnGatewayInterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) int { return v.VpnGatewayVpnGatewayInterfaceId }).(pulumi.IntOutput)
 }
 
 type VpnGatewayVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }

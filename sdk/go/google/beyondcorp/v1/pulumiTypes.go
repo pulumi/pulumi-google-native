@@ -1072,7 +1072,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAcco
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo struct {
 	// Unique Id for the resource.
-	Id string `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId string `pulumi:"googleCloudBeyondcorpAppconnectorsV1ResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1097,7 +1097,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoInput interface {
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs struct {
 	// Unique Id for the resource.
-	Id pulumi.StringInput `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId pulumi.StringInput `pulumi:"googleCloudBeyondcorpAppconnectorsV1ResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource pulumi.StringMapInput `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1212,8 +1212,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) ToGoogleCloudBey
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) string {
+		return v.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId
+	}).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.
@@ -1265,12 +1267,12 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Elem() Google
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Id() pulumi.StringPtrOutput {
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return &v.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1337,7 +1339,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) Index(i pul
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse struct {
 	// Unique Id for the resource.
-	Id string `pulumi:"id"`
+	GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId string `pulumi:"googleCloudBeyondcorpAppconnectorsV1ResourceInfoId"`
 	// Specific details for the resource. This is for internal use only.
 	Resource map[string]string `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1364,8 +1366,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogle
 }
 
 // Unique Id for the resource.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse) string {
+		return v.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoId
+	}).(pulumi.StringOutput)
 }
 
 // Specific details for the resource. This is for internal use only.

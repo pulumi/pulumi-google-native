@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         /// <summary>
         /// Unique Id for the resource.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId", required: true)]
+        public Input<string> GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoId { get; set; } = null!;
 
         [Input("resource")]
         private InputMap<string>? _resource;

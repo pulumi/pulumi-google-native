@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<Inputs.SoftwareRecipeArtifactGcsArgs>? Gcs { get; set; }
 
         /// <summary>
-        /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
         /// A generic remote artifact.
         /// </summary>
         [Input("remote")]
         public Input<Inputs.SoftwareRecipeArtifactRemoteArgs>? Remote { get; set; }
+
+        /// <summary>
+        /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        /// </summary>
+        [Input("softwareRecipeArtifactId", required: true)]
+        public Input<string> SoftwareRecipeArtifactId { get; set; } = null!;
 
         public SoftwareRecipeArtifactArgs()
         {

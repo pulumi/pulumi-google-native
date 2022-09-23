@@ -469,7 +469,7 @@ func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) Enabled() pulumi.
 // the Api category resource.
 type GoogleCloudApigeeV1ApiCategoryDataResponse struct {
 	// ID of the category (a UUID).
-	Id string `pulumi:"id"`
+	GoogleCloudApigeeV1ApiCategoryDataId string `pulumi:"googleCloudApigeeV1ApiCategoryDataId"`
 	// Name of the category.
 	Name string `pulumi:"name"`
 	// Name of the portal.
@@ -494,8 +494,10 @@ func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1A
 }
 
 // ID of the category (a UUID).
-func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) GoogleCloudApigeeV1ApiCategoryDataId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string {
+		return v.GoogleCloudApigeeV1ApiCategoryDataId
+	}).(pulumi.StringOutput)
 }
 
 // Name of the category.

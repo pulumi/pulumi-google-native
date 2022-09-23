@@ -25,13 +25,13 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.SoftwareRecipeArtifactGcsResponse Gcs;
         /// <summary>
-        /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A generic remote artifact.
         /// </summary>
         public readonly Outputs.SoftwareRecipeArtifactRemoteResponse Remote;
+        /// <summary>
+        /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        /// </summary>
+        public readonly string SoftwareRecipeArtifactId;
 
         [OutputConstructor]
         private SoftwareRecipeArtifactResponse(
@@ -39,14 +39,14 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
 
             Outputs.SoftwareRecipeArtifactGcsResponse gcs,
 
-            string id,
+            Outputs.SoftwareRecipeArtifactRemoteResponse remote,
 
-            Outputs.SoftwareRecipeArtifactRemoteResponse remote)
+            string softwareRecipeArtifactId)
         {
             AllowInsecure = allowInsecure;
             Gcs = gcs;
-            Id = id;
             Remote = remote;
+            SoftwareRecipeArtifactId = softwareRecipeArtifactId;
         }
     }
 }

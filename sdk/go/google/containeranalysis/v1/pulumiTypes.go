@@ -364,10 +364,10 @@ func (o AnalysisCompletedResponseOutput) AnalysisType() pulumi.StringArrayOutput
 
 // Artifact describes a build product.
 type Artifact struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId *string `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum *string `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id *string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -385,10 +385,10 @@ type ArtifactInput interface {
 
 // Artifact describes a build product.
 type ArtifactArgs struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
@@ -445,14 +445,14 @@ func (o ArtifactOutput) ToArtifactOutputWithContext(ctx context.Context) Artifac
 	return o
 }
 
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Artifact) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Artifact) *string { return v.Checksum }).(pulumi.StringPtrOutput)
-}
-
-// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-func (o ArtifactOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Artifact) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -482,10 +482,10 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 
 // Artifact describes a build product.
 type ArtifactResponse struct {
+	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+	ArtifactId string `pulumi:"artifactId"`
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
-	// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-	Id string `pulumi:"id"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -505,14 +505,14 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 	return o
 }
 
+// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
+func (o ArtifactResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
-func (o ArtifactResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v ArtifactResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -1528,6 +1528,8 @@ func (o BuildOccurrenceResponseOutput) ProvenanceBytes() pulumi.StringOutput {
 type BuildProvenance struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions map[string]string `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId string `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion *string `pulumi:"builderVersion"`
 	// Output of the build.
@@ -1540,8 +1542,6 @@ type BuildProvenance struct {
 	Creator *string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime *string `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri *string `pulumi:"logsUri"`
 	// ID of the project.
@@ -1569,6 +1569,8 @@ type BuildProvenanceInput interface {
 type BuildProvenanceArgs struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions pulumi.StringMapInput `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId pulumi.StringInput `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion pulumi.StringPtrInput `pulumi:"builderVersion"`
 	// Output of the build.
@@ -1581,8 +1583,6 @@ type BuildProvenanceArgs struct {
 	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id pulumi.StringInput `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri pulumi.StringPtrInput `pulumi:"logsUri"`
 	// ID of the project.
@@ -1678,6 +1678,11 @@ func (o BuildProvenanceOutput) BuildOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildProvenance) map[string]string { return v.BuildOptions }).(pulumi.StringMapOutput)
 }
 
+// Unique identifier of the build.
+func (o BuildProvenanceOutput) BuildProvenanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenance) string { return v.BuildProvenanceId }).(pulumi.StringOutput)
+}
+
 // Version string of the builder at the time this build was executed.
 func (o BuildProvenanceOutput) BuilderVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildProvenance) *string { return v.BuilderVersion }).(pulumi.StringPtrOutput)
@@ -1706,11 +1711,6 @@ func (o BuildProvenanceOutput) Creator() pulumi.StringPtrOutput {
 // Time at which execution of the build was finished.
 func (o BuildProvenanceOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildProvenance) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the build.
-func (o BuildProvenanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildProvenance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -1770,6 +1770,16 @@ func (o BuildProvenancePtrOutput) BuildOptions() pulumi.StringMapOutput {
 		}
 		return v.BuildOptions
 	}).(pulumi.StringMapOutput)
+}
+
+// Unique identifier of the build.
+func (o BuildProvenancePtrOutput) BuildProvenanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildProvenanceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Version string of the builder at the time this build was executed.
@@ -1832,16 +1842,6 @@ func (o BuildProvenancePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the build.
-func (o BuildProvenancePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildProvenance) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // URI where any logs for this provenance were written.
 func (o BuildProvenancePtrOutput) LogsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildProvenance) *string {
@@ -1896,6 +1896,8 @@ func (o BuildProvenancePtrOutput) TriggerId() pulumi.StringPtrOutput {
 type BuildProvenanceResponse struct {
 	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
 	BuildOptions map[string]string `pulumi:"buildOptions"`
+	// Unique identifier of the build.
+	BuildProvenanceId string `pulumi:"buildProvenanceId"`
 	// Version string of the builder at the time this build was executed.
 	BuilderVersion string `pulumi:"builderVersion"`
 	// Output of the build.
@@ -1908,8 +1910,6 @@ type BuildProvenanceResponse struct {
 	Creator string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime string `pulumi:"endTime"`
-	// Unique identifier of the build.
-	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri string `pulumi:"logsUri"`
 	// ID of the project.
@@ -1942,6 +1942,11 @@ func (o BuildProvenanceResponseOutput) BuildOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) map[string]string { return v.BuildOptions }).(pulumi.StringMapOutput)
 }
 
+// Unique identifier of the build.
+func (o BuildProvenanceResponseOutput) BuildProvenanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.BuildProvenanceId }).(pulumi.StringOutput)
+}
+
 // Version string of the builder at the time this build was executed.
 func (o BuildProvenanceResponseOutput) BuilderVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
@@ -1972,11 +1977,6 @@ func (o BuildProvenanceResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the build.
-func (o BuildProvenanceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // URI where any logs for this provenance were written.
 func (o BuildProvenanceResponseOutput) LogsUri() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.LogsUri }).(pulumi.StringOutput)
@@ -2003,7 +2003,7 @@ func (o BuildProvenanceResponseOutput) TriggerId() pulumi.StringOutput {
 }
 
 type BuilderConfig struct {
-	Id *string `pulumi:"id"`
+	BuilderConfigId *string `pulumi:"builderConfigId"`
 }
 
 // BuilderConfigInput is an input type that accepts BuilderConfigArgs and BuilderConfigOutput values.
@@ -2018,7 +2018,7 @@ type BuilderConfigInput interface {
 }
 
 type BuilderConfigArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	BuilderConfigId pulumi.StringPtrInput `pulumi:"builderConfigId"`
 }
 
 func (BuilderConfigArgs) ElementType() reflect.Type {
@@ -2098,8 +2098,8 @@ func (o BuilderConfigOutput) ToBuilderConfigPtrOutputWithContext(ctx context.Con
 	}).(BuilderConfigPtrOutput)
 }
 
-func (o BuilderConfigOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuilderConfig) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o BuilderConfigOutput) BuilderConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuilderConfig) *string { return v.BuilderConfigId }).(pulumi.StringPtrOutput)
 }
 
 type BuilderConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2126,17 +2126,17 @@ func (o BuilderConfigPtrOutput) Elem() BuilderConfigOutput {
 	}).(BuilderConfigOutput)
 }
 
-func (o BuilderConfigPtrOutput) Id() pulumi.StringPtrOutput {
+func (o BuilderConfigPtrOutput) BuilderConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuilderConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.BuilderConfigId
 	}).(pulumi.StringPtrOutput)
 }
 
 type BuilderConfigResponse struct {
-	Id string `pulumi:"id"`
+	BuilderConfigId string `pulumi:"builderConfigId"`
 }
 
 type BuilderConfigResponseOutput struct{ *pulumi.OutputState }
@@ -2153,8 +2153,8 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o BuilderConfigResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v BuilderConfigResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o BuilderConfigResponseOutput) BuilderConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuilderConfigResponse) string { return v.BuilderConfigId }).(pulumi.StringOutput)
 }
 
 // Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
@@ -3485,12 +3485,12 @@ func (o CloudRepoSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 type Command struct {
 	// Command-line arguments used when executing this command.
 	Args []string `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId *string `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir *string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id *string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3512,12 +3512,12 @@ type CommandInput interface {
 type CommandArgs struct {
 	// Command-line arguments used when executing this command.
 	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId pulumi.StringPtrInput `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3581,6 +3581,11 @@ func (o CommandOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Command) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Command) *string { return v.CommandId }).(pulumi.StringPtrOutput)
+}
+
 // Working directory (relative to project source root) used when running this command.
 func (o CommandOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Command) *string { return v.Dir }).(pulumi.StringPtrOutput)
@@ -3589,11 +3594,6 @@ func (o CommandOutput) Dir() pulumi.StringPtrOutput {
 // Environment variables set before running this command.
 func (o CommandOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Command) []string { return v.Env }).(pulumi.StringArrayOutput)
-}
-
-// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-func (o CommandOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Command) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -3630,12 +3630,12 @@ func (o CommandArrayOutput) Index(i pulumi.IntInput) CommandOutput {
 type CommandResponse struct {
 	// Command-line arguments used when executing this command.
 	Args []string `pulumi:"args"`
+	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+	CommandId string `pulumi:"commandId"`
 	// Working directory (relative to project source root) used when running this command.
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
-	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-	Id string `pulumi:"id"`
 	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
@@ -3662,6 +3662,11 @@ func (o CommandResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
+func (o CommandResponseOutput) CommandId() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.CommandId }).(pulumi.StringOutput)
+}
+
 // Working directory (relative to project source root) used when running this command.
 func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandResponse) string { return v.Dir }).(pulumi.StringOutput)
@@ -3670,11 +3675,6 @@ func (o CommandResponseOutput) Dir() pulumi.StringOutput {
 // Environment variables set before running this command.
 func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
-}
-
-// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
-func (o CommandResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v CommandResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
@@ -8181,7 +8181,7 @@ func (o GrafeasV1FileLocationResponseArrayOutput) Index(i pulumi.IntInput) Grafe
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder struct {
-	Id *string `pulumi:"id"`
+	GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId *string `pulumi:"grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId"`
 }
 
 // GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput values.
@@ -8197,7 +8197,7 @@ type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderInput interface {
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId pulumi.StringPtrInput `pulumi:"grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId"`
 }
 
 func (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs) ElementType() reflect.Type {
@@ -8278,8 +8278,10 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) ToGrafeasV1SlsaProvenan
 	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *string {
+		return v.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput struct{ *pulumi.OutputState }
@@ -8306,18 +8308,18 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Elem() GrafeasV1Slsa
 	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrOutput) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId
 	}).(pulumi.StringPtrOutput)
 }
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse struct {
-	Id string `pulumi:"id"`
+	GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId string `pulumi:"grafeasV1SlsaProvenanceZeroTwoSlsaBuilderId"`
 }
 
 // Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
@@ -8335,8 +8337,10 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) ToGrafeasV1Slsa
 	return o
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponseOutput) GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse) string {
+		return v.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderId
+	}).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.
@@ -13961,7 +13965,7 @@ func (o SignatureResponseArrayOutput) Index(i pulumi.IntInput) SignatureResponse
 }
 
 type SlsaBuilder struct {
-	Id *string `pulumi:"id"`
+	SlsaBuilderId *string `pulumi:"slsaBuilderId"`
 }
 
 // SlsaBuilderInput is an input type that accepts SlsaBuilderArgs and SlsaBuilderOutput values.
@@ -13976,7 +13980,7 @@ type SlsaBuilderInput interface {
 }
 
 type SlsaBuilderArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	SlsaBuilderId pulumi.StringPtrInput `pulumi:"slsaBuilderId"`
 }
 
 func (SlsaBuilderArgs) ElementType() reflect.Type {
@@ -14056,8 +14060,8 @@ func (o SlsaBuilderOutput) ToSlsaBuilderPtrOutputWithContext(ctx context.Context
 	}).(SlsaBuilderPtrOutput)
 }
 
-func (o SlsaBuilderOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SlsaBuilder) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o SlsaBuilderOutput) SlsaBuilderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlsaBuilder) *string { return v.SlsaBuilderId }).(pulumi.StringPtrOutput)
 }
 
 type SlsaBuilderPtrOutput struct{ *pulumi.OutputState }
@@ -14084,17 +14088,17 @@ func (o SlsaBuilderPtrOutput) Elem() SlsaBuilderOutput {
 	}).(SlsaBuilderOutput)
 }
 
-func (o SlsaBuilderPtrOutput) Id() pulumi.StringPtrOutput {
+func (o SlsaBuilderPtrOutput) SlsaBuilderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SlsaBuilder) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.SlsaBuilderId
 	}).(pulumi.StringPtrOutput)
 }
 
 type SlsaBuilderResponse struct {
-	Id string `pulumi:"id"`
+	SlsaBuilderId string `pulumi:"slsaBuilderId"`
 }
 
 type SlsaBuilderResponseOutput struct{ *pulumi.OutputState }
@@ -14111,8 +14115,8 @@ func (o SlsaBuilderResponseOutput) ToSlsaBuilderResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SlsaBuilderResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SlsaBuilderResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o SlsaBuilderResponseOutput) SlsaBuilderId() pulumi.StringOutput {
+	return o.ApplyT(func(v SlsaBuilderResponse) string { return v.SlsaBuilderId }).(pulumi.StringOutput)
 }
 
 // Indicates that the builder claims certain fields in this message to be complete.
