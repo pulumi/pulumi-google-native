@@ -1027,6 +1027,8 @@ func (g *packageGenerator) dedupeId(typeName string, propBag *propertyBag) {
 	tok := g.genToken(typeName)
 	ignoreCollision := false
 	if _, exists = propBag.specs[newId]; exists {
+		// In this resource Id is actually a replacement for NfsShareId and is an alias.
+		// Ignore and move on.
 		if tok == "google-native:baremetalsolution/v2:NfsShare" {
 			ignoreCollision = true
 		} else {
