@@ -350,7 +350,7 @@
       }
     }
   },
-  "revision": "20220822",
+  "revision": "20220916",
   "rootUrl": "https://vpcaccess.googleapis.com/",
   "schemas": {
     "Connector": {
