@@ -1546,7 +1546,7 @@
       }
     }
   },
-  "revision": "20220920",
+  "revision": "20220927",
   "rootUrl": "https://cloudidentity.googleapis.com/",
   "schemas": {
     "CancelUserInvitationRequest": {
