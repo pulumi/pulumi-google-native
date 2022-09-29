@@ -86,6 +86,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.v1.GitHubEventsConfigResponse>;
     /**
+     * GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+     */
+    public readonly gitlabEnterpriseEventsConfig!: pulumi.Output<outputs.cloudbuild.v1.GitLabEventsConfigResponse>;
+    /**
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */
     public readonly ignoredFiles!: pulumi.Output<string[]>;
@@ -165,6 +169,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["gitFileSource"] = args ? args.gitFileSource : undefined;
             resourceInputs["github"] = args ? args.github : undefined;
+            resourceInputs["gitlabEnterpriseEventsConfig"] = args ? args.gitlabEnterpriseEventsConfig : undefined;
             resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             resourceInputs["includeBuildLogs"] = args ? args.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
@@ -194,6 +199,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["gitFileSource"] = undefined /*out*/;
             resourceInputs["github"] = undefined /*out*/;
+            resourceInputs["gitlabEnterpriseEventsConfig"] = undefined /*out*/;
             resourceInputs["ignoredFiles"] = undefined /*out*/;
             resourceInputs["includeBuildLogs"] = undefined /*out*/;
             resourceInputs["includedFiles"] = undefined /*out*/;
@@ -265,6 +271,10 @@ export interface TriggerArgs {
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
     github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfigArgs>;
+    /**
+     * GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+     */
+    gitlabEnterpriseEventsConfig?: pulumi.Input<inputs.cloudbuild.v1.GitLabEventsConfigArgs>;
     /**
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */

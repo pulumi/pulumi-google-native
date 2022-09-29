@@ -894,6 +894,198 @@ func (o BasicAuthenticationResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicAuthenticationResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+type BasicService struct {
+	// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceLabels map[string]string `pulumi:"serviceLabels"`
+	// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceType *string `pulumi:"serviceType"`
+}
+
+// BasicServiceInput is an input type that accepts BasicServiceArgs and BasicServiceOutput values.
+// You can construct a concrete instance of `BasicServiceInput` via:
+//
+//	BasicServiceArgs{...}
+type BasicServiceInput interface {
+	pulumi.Input
+
+	ToBasicServiceOutput() BasicServiceOutput
+	ToBasicServiceOutputWithContext(context.Context) BasicServiceOutput
+}
+
+// A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+type BasicServiceArgs struct {
+	// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceLabels pulumi.StringMapInput `pulumi:"serviceLabels"`
+	// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+}
+
+func (BasicServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicService)(nil)).Elem()
+}
+
+func (i BasicServiceArgs) ToBasicServiceOutput() BasicServiceOutput {
+	return i.ToBasicServiceOutputWithContext(context.Background())
+}
+
+func (i BasicServiceArgs) ToBasicServiceOutputWithContext(ctx context.Context) BasicServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicServiceOutput)
+}
+
+func (i BasicServiceArgs) ToBasicServicePtrOutput() BasicServicePtrOutput {
+	return i.ToBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (i BasicServiceArgs) ToBasicServicePtrOutputWithContext(ctx context.Context) BasicServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicServiceOutput).ToBasicServicePtrOutputWithContext(ctx)
+}
+
+// BasicServicePtrInput is an input type that accepts BasicServiceArgs, BasicServicePtr and BasicServicePtrOutput values.
+// You can construct a concrete instance of `BasicServicePtrInput` via:
+//
+//	        BasicServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BasicServicePtrInput interface {
+	pulumi.Input
+
+	ToBasicServicePtrOutput() BasicServicePtrOutput
+	ToBasicServicePtrOutputWithContext(context.Context) BasicServicePtrOutput
+}
+
+type basicServicePtrType BasicServiceArgs
+
+func BasicServicePtr(v *BasicServiceArgs) BasicServicePtrInput {
+	return (*basicServicePtrType)(v)
+}
+
+func (*basicServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicService)(nil)).Elem()
+}
+
+func (i *basicServicePtrType) ToBasicServicePtrOutput() BasicServicePtrOutput {
+	return i.ToBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (i *basicServicePtrType) ToBasicServicePtrOutputWithContext(ctx context.Context) BasicServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicServicePtrOutput)
+}
+
+// A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+type BasicServiceOutput struct{ *pulumi.OutputState }
+
+func (BasicServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicService)(nil)).Elem()
+}
+
+func (o BasicServiceOutput) ToBasicServiceOutput() BasicServiceOutput {
+	return o
+}
+
+func (o BasicServiceOutput) ToBasicServiceOutputWithContext(ctx context.Context) BasicServiceOutput {
+	return o
+}
+
+func (o BasicServiceOutput) ToBasicServicePtrOutput() BasicServicePtrOutput {
+	return o.ToBasicServicePtrOutputWithContext(context.Background())
+}
+
+func (o BasicServiceOutput) ToBasicServicePtrOutputWithContext(ctx context.Context) BasicServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BasicService) *BasicService {
+		return &v
+	}).(BasicServicePtrOutput)
+}
+
+// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServiceOutput) ServiceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BasicService) map[string]string { return v.ServiceLabels }).(pulumi.StringMapOutput)
+}
+
+// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServiceOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BasicService) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+type BasicServicePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicService)(nil)).Elem()
+}
+
+func (o BasicServicePtrOutput) ToBasicServicePtrOutput() BasicServicePtrOutput {
+	return o
+}
+
+func (o BasicServicePtrOutput) ToBasicServicePtrOutputWithContext(ctx context.Context) BasicServicePtrOutput {
+	return o
+}
+
+func (o BasicServicePtrOutput) Elem() BasicServiceOutput {
+	return o.ApplyT(func(v *BasicService) BasicService {
+		if v != nil {
+			return *v
+		}
+		var ret BasicService
+		return ret
+	}).(BasicServiceOutput)
+}
+
+// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServicePtrOutput) ServiceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BasicService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServicePtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+type BasicServiceResponse struct {
+	// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceLabels map[string]string `pulumi:"serviceLabels"`
+	// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+type BasicServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicServiceResponse)(nil)).Elem()
+}
+
+func (o BasicServiceResponseOutput) ToBasicServiceResponseOutput() BasicServiceResponseOutput {
+	return o
+}
+
+func (o BasicServiceResponseOutput) ToBasicServiceResponseOutputWithContext(ctx context.Context) BasicServiceResponseOutput {
+	return o
+}
+
+// Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServiceResponseOutput) ServiceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BasicServiceResponse) map[string]string { return v.ServiceLabels }).(pulumi.StringMapOutput)
+}
+
+// The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o BasicServiceResponseOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicServiceResponse) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
 // An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
 type BasicSli struct {
 	// Good service is defined to be the count of requests made to this service that return successfully.
@@ -9799,6 +9991,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AvailabilityCriteriaPtrInput)(nil)).Elem(), AvailabilityCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationInput)(nil)).Elem(), BasicAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicAuthenticationPtrInput)(nil)).Elem(), BasicAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicServiceInput)(nil)).Elem(), BasicServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BasicServicePtrInput)(nil)).Elem(), BasicServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliInput)(nil)).Elem(), BasicSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliPtrInput)(nil)).Elem(), BasicSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsInput)(nil)).Elem(), CloudEndpointsArgs{})
@@ -9898,6 +10092,9 @@ func init() {
 	pulumi.RegisterOutputType(BasicAuthenticationOutput{})
 	pulumi.RegisterOutputType(BasicAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(BasicAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(BasicServiceOutput{})
+	pulumi.RegisterOutputType(BasicServicePtrOutput{})
+	pulumi.RegisterOutputType(BasicServiceResponseOutput{})
 	pulumi.RegisterOutputType(BasicSliOutput{})
 	pulumi.RegisterOutputType(BasicSliPtrOutput{})
 	pulumi.RegisterOutputType(BasicSliResponseOutput{})

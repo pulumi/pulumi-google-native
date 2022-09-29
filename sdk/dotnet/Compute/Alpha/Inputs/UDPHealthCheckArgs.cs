@@ -13,13 +13,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class UDPHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The UDP port number for the health check request. Valid values are 1 through 65535.
+        /// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        /// Not supported.
         /// </summary>
         [Input("portName")]
         public Input<string>? PortName { get; set; }

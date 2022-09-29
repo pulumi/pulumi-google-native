@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BitbucketServerConfig{}
 	case "google-native:cloudbuild/v1:Build":
 		r = &Build{}
+	case "google-native:cloudbuild/v1:GitLabConfig":
+		r = &GitLabConfig{}
 	case "google-native:cloudbuild/v1:GithubEnterpriseConfig":
 		r = &GithubEnterpriseConfig{}
 	case "google-native:cloudbuild/v1:Trigger":

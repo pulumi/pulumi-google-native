@@ -161,6 +161,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourcePolicies!: pulumi.Output<string[]>;
     /**
+     * Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.beta.ResourceStatusResponse>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -271,6 +275,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["lastStartTimestamp"] = undefined /*out*/;
             resourceInputs["lastStopTimestamp"] = undefined /*out*/;
             resourceInputs["lastSuspendedTimestamp"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["startRestricted"] = undefined /*out*/;
@@ -310,6 +315,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["scheduling"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;

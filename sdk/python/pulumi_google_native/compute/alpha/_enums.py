@@ -210,6 +210,7 @@ __all__ = [
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
+    'SecurityPolicyUserDefinedFieldBase',
     'ServerBindingType',
     'ServerTlsSettingsTlsMode',
     'ServiceAttachmentConnectionPreference',
@@ -1349,19 +1350,19 @@ class FutureReservationPlanningStatus(str, Enum):
 
 class GRPCHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 
@@ -1619,19 +1620,19 @@ class GuestOsFeatureType(str, Enum):
 
 class HTTP2HealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 
@@ -1663,19 +1664,19 @@ class HTTP2HealthCheckWeightReportMode(str, Enum):
 
 class HTTPHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 
@@ -1707,19 +1708,19 @@ class HTTPHealthCheckWeightReportMode(str, Enum):
 
 class HTTPSHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 
@@ -3353,19 +3354,19 @@ class RuleAction(str, Enum):
 
 class SSLHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 
@@ -3554,6 +3555,16 @@ class SecurityPolicyType(str, Enum):
     CLOUD_ARMOR_INTERNAL_SERVICE = "CLOUD_ARMOR_INTERNAL_SERVICE"
     CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
+
+
+class SecurityPolicyUserDefinedFieldBase(str, Enum):
+    """
+    The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+    """
+    IPV4 = "IPV4"
+    IPV6 = "IPV6"
+    TCP = "TCP"
+    UDP = "UDP"
 
 
 class ServerBindingType(str, Enum):
@@ -3837,19 +3848,19 @@ class SubsettingPolicy(str, Enum):
 
 class TCPHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
-    The port number in port is used for health checking.
+    The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
     """
     USE_NAMED_PORT = "USE_NAMED_PORT"
     """
-    The portName is used for health checking.
+    Not supported.
     """
     USE_SERVING_PORT = "USE_SERVING_PORT"
     """
-    For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+    For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
     """
 
 

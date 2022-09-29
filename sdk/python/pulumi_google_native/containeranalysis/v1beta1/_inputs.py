@@ -4873,6 +4873,7 @@ class VulnerabilityArgs:
                  cvss_score: Optional[pulumi.Input[float]] = None,
                  cvss_v2: Optional[pulumi.Input['CVSSArgs']] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSv3Args']] = None,
+                 cvss_version: Optional[pulumi.Input['VulnerabilityCvssVersion']] = None,
                  cwe: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
                  severity: Optional[pulumi.Input['VulnerabilitySeverity']] = None,
@@ -4883,6 +4884,7 @@ class VulnerabilityArgs:
         :param pulumi.Input[float] cvss_score: The CVSS score for this vulnerability.
         :param pulumi.Input['CVSSArgs'] cvss_v2: The full description of the CVSS for version 2.
         :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSS for version 3.
+        :param pulumi.Input['VulnerabilityCvssVersion'] cvss_version: CVSS version used to populate cvss_score and severity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cwe: A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
         :param pulumi.Input['VulnerabilitySeverity'] severity: Note provider assigned impact of the vulnerability.
@@ -4895,6 +4897,8 @@ class VulnerabilityArgs:
             pulumi.set(__self__, "cvss_v2", cvss_v2)
         if cvss_v3 is not None:
             pulumi.set(__self__, "cvss_v3", cvss_v3)
+        if cvss_version is not None:
+            pulumi.set(__self__, "cvss_version", cvss_version)
         if cwe is not None:
             pulumi.set(__self__, "cwe", cwe)
         if details is not None:
@@ -4941,6 +4945,18 @@ class VulnerabilityArgs:
     @cvss_v3.setter
     def cvss_v3(self, value: Optional[pulumi.Input['CVSSv3Args']]):
         pulumi.set(self, "cvss_v3", value)
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> Optional[pulumi.Input['VulnerabilityCvssVersion']]:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
+
+    @cvss_version.setter
+    def cvss_version(self, value: Optional[pulumi.Input['VulnerabilityCvssVersion']]):
+        pulumi.set(self, "cvss_version", value)
 
     @property
     @pulumi.getter

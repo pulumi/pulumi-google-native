@@ -10359,15 +10359,15 @@ func (in *futureReservationPlanningStatusPtr) ToFutureReservationPlanningStatusP
 	return pulumi.ToOutputWithContext(ctx, in).(FutureReservationPlanningStatusPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type GRPCHealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	GRPCHealthCheckPortSpecificationUseFixedPort = GRPCHealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	GRPCHealthCheckPortSpecificationUseNamedPort = GRPCHealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	GRPCHealthCheckPortSpecificationUseServingPort = GRPCHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -12751,15 +12751,15 @@ func (in *guestOsFeatureTypePtr) ToGuestOsFeatureTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GuestOsFeatureTypePtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTP2HealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	HTTP2HealthCheckPortSpecificationUseFixedPort = HTTP2HealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	HTTP2HealthCheckPortSpecificationUseNamedPort = HTTP2HealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	HTTP2HealthCheckPortSpecificationUseServingPort = HTTP2HealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -13254,15 +13254,15 @@ func (in *http2healthCheckWeightReportModePtr) ToHTTP2HealthCheckWeightReportMod
 	return pulumi.ToOutputWithContext(ctx, in).(HTTP2HealthCheckWeightReportModePtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPHealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	HTTPHealthCheckPortSpecificationUseFixedPort = HTTPHealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	HTTPHealthCheckPortSpecificationUseNamedPort = HTTPHealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	HTTPHealthCheckPortSpecificationUseServingPort = HTTPHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -13757,15 +13757,15 @@ func (in *httphealthCheckWeightReportModePtr) ToHTTPHealthCheckWeightReportModeP
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPHealthCheckWeightReportModePtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPSHealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	HTTPSHealthCheckPortSpecificationUseFixedPort = HTTPSHealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	HTTPSHealthCheckPortSpecificationUseNamedPort = HTTPSHealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	HTTPSHealthCheckPortSpecificationUseServingPort = HTTPSHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -31634,15 +31634,15 @@ func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type SSLHealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	SSLHealthCheckPortSpecificationUseFixedPort = SSLHealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	SSLHealthCheckPortSpecificationUseNamedPort = SSLHealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	SSLHealthCheckPortSpecificationUseServingPort = SSLHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -34631,6 +34631,173 @@ func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutput() SecurityPolicyT
 
 func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutputWithContext(ctx context.Context) SecurityPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyTypePtrOutput)
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+type SecurityPolicyUserDefinedFieldBase string
+
+const (
+	SecurityPolicyUserDefinedFieldBaseIpv4 = SecurityPolicyUserDefinedFieldBase("IPV4")
+	SecurityPolicyUserDefinedFieldBaseIpv6 = SecurityPolicyUserDefinedFieldBase("IPV6")
+	SecurityPolicyUserDefinedFieldBaseTcp  = SecurityPolicyUserDefinedFieldBase("TCP")
+	SecurityPolicyUserDefinedFieldBaseUdp  = SecurityPolicyUserDefinedFieldBase("UDP")
+)
+
+func (SecurityPolicyUserDefinedFieldBase) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return e.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return SecurityPolicyUserDefinedFieldBase(e).ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx).ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyUserDefinedFieldBaseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBaseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyUserDefinedFieldBase) *SecurityPolicyUserDefinedFieldBase {
+		return &v
+	}).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyUserDefinedFieldBase) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyUserDefinedFieldBase) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyUserDefinedFieldBasePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) Elem() SecurityPolicyUserDefinedFieldBaseOutput {
+	return o.ApplyT(func(v *SecurityPolicyUserDefinedFieldBase) SecurityPolicyUserDefinedFieldBase {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyUserDefinedFieldBase
+		return ret
+	}).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyUserDefinedFieldBase) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyUserDefinedFieldBaseInput is an input type that accepts SecurityPolicyUserDefinedFieldBaseArgs and SecurityPolicyUserDefinedFieldBaseOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldBaseInput` via:
+//
+//	SecurityPolicyUserDefinedFieldBaseArgs{...}
+type SecurityPolicyUserDefinedFieldBaseInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput
+	ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldBaseOutput
+}
+
+var securityPolicyUserDefinedFieldBasePtrType = reflect.TypeOf((**SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+
+type SecurityPolicyUserDefinedFieldBasePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput
+	ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput
+}
+
+type securityPolicyUserDefinedFieldBasePtr string
+
+func SecurityPolicyUserDefinedFieldBasePtr(v string) SecurityPolicyUserDefinedFieldBasePtrInput {
+	return (*securityPolicyUserDefinedFieldBasePtr)(&v)
+}
+
+func (*securityPolicyUserDefinedFieldBasePtr) ElementType() reflect.Type {
+	return securityPolicyUserDefinedFieldBasePtrType
+}
+
+func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
 }
 
 type ServerBindingType string
@@ -37666,15 +37833,15 @@ func (in *subsettingPolicyPtr) ToSubsettingPolicyPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SubsettingPolicyPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type TCPHealthCheckPortSpecification string
 
 const (
-	// The port number in port is used for health checking.
+	// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
 	TCPHealthCheckPortSpecificationUseFixedPort = TCPHealthCheckPortSpecification("USE_FIXED_PORT")
-	// The portName is used for health checking.
+	// Not supported.
 	TCPHealthCheckPortSpecificationUseNamedPort = TCPHealthCheckPortSpecification("USE_NAMED_PORT")
-	// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+	// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
 	TCPHealthCheckPortSpecificationUseServingPort = TCPHealthCheckPortSpecification("USE_SERVING_PORT")
 )
 
@@ -39759,6 +39926,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsTypePtrInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyTypeInput)(nil)).Elem(), SecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyTypePtrInput)(nil)).Elem(), SecurityPolicyType("CLOUD_ARMOR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldBaseInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldBase("IPV4"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldBasePtrInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldBase("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingTypeInput)(nil)).Elem(), ServerBindingType("RESTART_NODE_ON_ANY_SERVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingTypePtrInput)(nil)).Elem(), ServerBindingType("RESTART_NODE_ON_ANY_SERVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsTlsModeInput)(nil)).Elem(), ServerTlsSettingsTlsMode("INVALID"))
@@ -40227,6 +40396,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldBaseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldBasePtrOutput{})
 	pulumi.RegisterOutputType(ServerBindingTypeOutput{})
 	pulumi.RegisterOutputType(ServerBindingTypePtrOutput{})
 	pulumi.RegisterOutputType(ServerTlsSettingsTlsModeOutput{})

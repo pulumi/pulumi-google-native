@@ -2138,6 +2138,8 @@ func (o ReachabilityDetailsResponseOutput) VerifyTime() pulumi.StringOutput {
 type RouteInfoResponse struct {
 	// Destination IP range of the route.
 	DestIpRange string `pulumi:"destIpRange"`
+	// Destination port ranges of the route. Policy based routes only.
+	DestPortRanges []string `pulumi:"destPortRanges"`
 	// Name of a Compute Engine route.
 	DisplayName string `pulumi:"displayName"`
 	// Instance tags of the route.
@@ -2150,8 +2152,14 @@ type RouteInfoResponse struct {
 	NextHopType string `pulumi:"nextHopType"`
 	// Priority of the route.
 	Priority int `pulumi:"priority"`
+	// Protocols of the route. Policy based routes only.
+	Protocols []string `pulumi:"protocols"`
 	// Type of route.
 	RouteType string `pulumi:"routeType"`
+	// Source IP address range of the route. Policy based routes only.
+	SrcIpRange string `pulumi:"srcIpRange"`
+	// Source port ranges of the route. Policy based routes only.
+	SrcPortRanges []string `pulumi:"srcPortRanges"`
 	// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
 	Uri string `pulumi:"uri"`
 }
@@ -2174,6 +2182,11 @@ func (o RouteInfoResponseOutput) ToRouteInfoResponseOutputWithContext(ctx contex
 // Destination IP range of the route.
 func (o RouteInfoResponseOutput) DestIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.DestIpRange }).(pulumi.StringOutput)
+}
+
+// Destination port ranges of the route. Policy based routes only.
+func (o RouteInfoResponseOutput) DestPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteInfoResponse) []string { return v.DestPortRanges }).(pulumi.StringArrayOutput)
 }
 
 // Name of a Compute Engine route.
@@ -2206,9 +2219,24 @@ func (o RouteInfoResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v RouteInfoResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// Protocols of the route. Policy based routes only.
+func (o RouteInfoResponseOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteInfoResponse) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
 // Type of route.
 func (o RouteInfoResponseOutput) RouteType() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteInfoResponse) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
+// Source IP address range of the route. Policy based routes only.
+func (o RouteInfoResponseOutput) SrcIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteInfoResponse) string { return v.SrcIpRange }).(pulumi.StringOutput)
+}
+
+// Source port ranges of the route. Policy based routes only.
+func (o RouteInfoResponseOutput) SrcPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouteInfoResponse) []string { return v.SrcPortRanges }).(pulumi.StringArrayOutput)
 }
 
 // URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.

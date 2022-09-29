@@ -2183,6 +2183,8 @@ func (o NetworkMountPointResponseArrayOutput) Index(i pulumi.IntInput) NetworkMo
 type NetworkResponse struct {
 	// The cidr of the Network.
 	Cidr string `pulumi:"cidr"`
+	// Gateway ip address.
+	GatewayIp string `pulumi:"gatewayIp"`
 	// IP address configured.
 	IpAddress string `pulumi:"ipAddress"`
 	// Whether network uses standard frames or jumbo ones.
@@ -2229,6 +2231,11 @@ func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Co
 // The cidr of the Network.
 func (o NetworkResponseOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Gateway ip address.
+func (o NetworkResponseOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
 // IP address configured.

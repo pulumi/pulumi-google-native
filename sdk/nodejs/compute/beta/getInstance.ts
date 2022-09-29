@@ -149,6 +149,10 @@ export interface GetInstanceResult {
      */
     readonly resourcePolicies: string[];
     /**
+     * Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+     */
+    readonly resourceStatus: outputs.compute.beta.ResourceStatusResponse;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;

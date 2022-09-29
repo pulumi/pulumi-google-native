@@ -22,6 +22,10 @@ __all__ = [
     'GitFileSourceArgs',
     'GitHubEnterpriseSecretsArgs',
     'GitHubEventsConfigArgs',
+    'GitLabEnterpriseConfigArgs',
+    'GitLabEventsConfigArgs',
+    'GitLabRepositoryIdArgs',
+    'GitLabSecretsArgs',
     'GitRepoSourceArgs',
     'InlineSecretArgs',
     'NetworkConfigArgs',
@@ -34,6 +38,7 @@ __all__ = [
     'SecretManagerSecretArgs',
     'SecretsArgs',
     'SecretArgs',
+    'ServiceDirectoryConfigArgs',
     'SourceArgs',
     'StorageSourceManifestArgs',
     'StorageSourceArgs',
@@ -1275,6 +1280,225 @@ class GitHubEventsConfigArgs:
 
 
 @pulumi.input_type
+class GitLabEnterpriseConfigArgs:
+    def __init__(__self__, *,
+                 host_uri: Optional[pulumi.Input[str]] = None,
+                 service_directory_config: Optional[pulumi.Input['ServiceDirectoryConfigArgs']] = None,
+                 ssl_ca: Optional[pulumi.Input[str]] = None):
+        """
+        GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+        :param pulumi.Input[str] host_uri: Immutable. The URI of the GitlabEnterprise host.
+        :param pulumi.Input['ServiceDirectoryConfigArgs'] service_directory_config: The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+        :param pulumi.Input[str] ssl_ca: The SSL certificate to use in requests to GitLab Enterprise instances.
+        """
+        if host_uri is not None:
+            pulumi.set(__self__, "host_uri", host_uri)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca is not None:
+            pulumi.set(__self__, "ssl_ca", ssl_ca)
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The URI of the GitlabEnterprise host.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @host_uri.setter
+    def host_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_uri", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ServiceDirectoryConfigArgs']]:
+        """
+        The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @property
+    @pulumi.getter(name="sslCa")
+    def ssl_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSL certificate to use in requests to GitLab Enterprise instances.
+        """
+        return pulumi.get(self, "ssl_ca")
+
+    @ssl_ca.setter
+    def ssl_ca(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_ca", value)
+
+
+@pulumi.input_type
+class GitLabEventsConfigArgs:
+    def __init__(__self__, *,
+                 gitlab_config_resource: Optional[pulumi.Input[str]] = None,
+                 project_namespace: Optional[pulumi.Input[str]] = None,
+                 pull_request: Optional[pulumi.Input['PullRequestFilterArgs']] = None,
+                 push: Optional[pulumi.Input['PushFilterArgs']] = None):
+        """
+        GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+        :param pulumi.Input[str] gitlab_config_resource: The GitLab config resource that this trigger config maps to.
+        :param pulumi.Input[str] project_namespace: Namespace of the GitLab project.
+        :param pulumi.Input['PullRequestFilterArgs'] pull_request: Filter to match changes in pull requests.
+        :param pulumi.Input['PushFilterArgs'] push: Filter to match changes in refs like branches, tags.
+        """
+        if gitlab_config_resource is not None:
+            pulumi.set(__self__, "gitlab_config_resource", gitlab_config_resource)
+        if project_namespace is not None:
+            pulumi.set(__self__, "project_namespace", project_namespace)
+        if pull_request is not None:
+            pulumi.set(__self__, "pull_request", pull_request)
+        if push is not None:
+            pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="gitlabConfigResource")
+    def gitlab_config_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GitLab config resource that this trigger config maps to.
+        """
+        return pulumi.get(self, "gitlab_config_resource")
+
+    @gitlab_config_resource.setter
+    def gitlab_config_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gitlab_config_resource", value)
+
+    @property
+    @pulumi.getter(name="projectNamespace")
+    def project_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace of the GitLab project.
+        """
+        return pulumi.get(self, "project_namespace")
+
+    @project_namespace.setter
+    def project_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_namespace", value)
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> Optional[pulumi.Input['PullRequestFilterArgs']]:
+        """
+        Filter to match changes in pull requests.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @pull_request.setter
+    def pull_request(self, value: Optional[pulumi.Input['PullRequestFilterArgs']]):
+        pulumi.set(self, "pull_request", value)
+
+    @property
+    @pulumi.getter
+    def push(self) -> Optional[pulumi.Input['PushFilterArgs']]:
+        """
+        Filter to match changes in refs like branches, tags.
+        """
+        return pulumi.get(self, "push")
+
+    @push.setter
+    def push(self, value: Optional[pulumi.Input['PushFilterArgs']]):
+        pulumi.set(self, "push", value)
+
+
+@pulumi.input_type
+class GitLabRepositoryIdArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str]):
+        """
+        GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+        :param pulumi.Input[str] id: Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GitLabSecretsArgs:
+    def __init__(__self__, *,
+                 api_access_token_version: pulumi.Input[str],
+                 api_key_version: pulumi.Input[str],
+                 read_access_token_version: pulumi.Input[str],
+                 webhook_secret_version: pulumi.Input[str]):
+        """
+        GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+        :param pulumi.Input[str] api_access_token_version: The resource name for the api access token’s secret version
+        :param pulumi.Input[str] api_key_version: Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+        :param pulumi.Input[str] read_access_token_version: The resource name for the read access token’s secret version
+        :param pulumi.Input[str] webhook_secret_version: Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+        """
+        pulumi.set(__self__, "api_access_token_version", api_access_token_version)
+        pulumi.set(__self__, "api_key_version", api_key_version)
+        pulumi.set(__self__, "read_access_token_version", read_access_token_version)
+        pulumi.set(__self__, "webhook_secret_version", webhook_secret_version)
+
+    @property
+    @pulumi.getter(name="apiAccessTokenVersion")
+    def api_access_token_version(self) -> pulumi.Input[str]:
+        """
+        The resource name for the api access token’s secret version
+        """
+        return pulumi.get(self, "api_access_token_version")
+
+    @api_access_token_version.setter
+    def api_access_token_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_access_token_version", value)
+
+    @property
+    @pulumi.getter(name="apiKeyVersion")
+    def api_key_version(self) -> pulumi.Input[str]:
+        """
+        Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+        """
+        return pulumi.get(self, "api_key_version")
+
+    @api_key_version.setter
+    def api_key_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_key_version", value)
+
+    @property
+    @pulumi.getter(name="readAccessTokenVersion")
+    def read_access_token_version(self) -> pulumi.Input[str]:
+        """
+        The resource name for the read access token’s secret version
+        """
+        return pulumi.get(self, "read_access_token_version")
+
+    @read_access_token_version.setter
+    def read_access_token_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "read_access_token_version", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretVersion")
+    def webhook_secret_version(self) -> pulumi.Input[str]:
+        """
+        Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+        """
+        return pulumi.get(self, "webhook_secret_version")
+
+    @webhook_secret_version.setter
+    def webhook_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_secret_version", value)
+
+
+@pulumi.input_type
 class GitRepoSourceArgs:
     def __init__(__self__, *,
                  bitbucket_server_config: Optional[pulumi.Input[str]] = None,
@@ -1927,6 +2151,30 @@ class SecretArgs:
     @secret_env.setter
     def secret_env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "secret_env", value)
+
+
+@pulumi.input_type
+class ServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+        :param pulumi.Input[str] service: The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type

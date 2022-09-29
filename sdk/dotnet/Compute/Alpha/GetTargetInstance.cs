@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The resource URL for the security policy associated with this target instance.
+        /// </summary>
+        public readonly string SecurityPolicy;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string network,
 
+            string securityPolicy,
+
             string selfLink,
 
             string selfLinkWithId,
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             NatPolicy = natPolicy;
             Network = network;
+            SecurityPolicy = securityPolicy;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             Zone = zone;

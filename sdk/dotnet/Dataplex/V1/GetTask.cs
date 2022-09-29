@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Config related to running scheduled Notebooks.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse Notebook;
+        /// <summary>
         /// Config related to running custom Spark tasks.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1TaskSparkTaskConfigResponse Spark;
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
             string name,
 
+            Outputs.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse notebook,
+
             Outputs.GoogleCloudDataplexV1TaskSparkTaskConfigResponse spark,
 
             string state,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             ExecutionStatus = executionStatus;
             Labels = labels;
             Name = name;
+            Notebook = notebook;
             Spark = spark;
             State = state;
             TriggerSpec = triggerSpec;

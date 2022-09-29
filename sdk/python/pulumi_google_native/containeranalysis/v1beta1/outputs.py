@@ -2964,6 +2964,8 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         suggest = None
         if key == "cvssScore":
             suggest = "cvss_score"
+        elif key == "cvssVersion":
+            suggest = "cvss_version"
         elif key == "effectiveSeverity":
             suggest = "effective_severity"
         elif key == "longDescription":
@@ -2988,6 +2990,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvss_version: str,
                  effective_severity: str,
                  long_description: str,
                  package_issue: Sequence['outputs.PackageIssueResponse'],
@@ -2998,6 +3001,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         """
         Details of a vulnerability Occurrence.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+        :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param str effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param str long_description: A detailed description of this vulnerability.
         :param Sequence['PackageIssueResponse'] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
@@ -3007,6 +3011,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "long_description", long_description)
         pulumi.set(__self__, "package_issue", package_issue)
@@ -3022,6 +3027,14 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> str:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
 
     @property
     @pulumi.getter(name="effectiveSeverity")
@@ -4982,6 +4995,8 @@ class VulnerabilityResponse(dict):
             suggest = "cvss_v2"
         elif key == "cvssV3":
             suggest = "cvss_v3"
+        elif key == "cvssVersion":
+            suggest = "cvss_version"
         elif key == "sourceUpdateTime":
             suggest = "source_update_time"
         elif key == "windowsDetails":
@@ -5002,6 +5017,7 @@ class VulnerabilityResponse(dict):
                  cvss_score: float,
                  cvss_v2: 'outputs.CVSSResponse',
                  cvss_v3: 'outputs.CVSSv3Response',
+                 cvss_version: str,
                  cwe: Sequence[str],
                  details: Sequence['outputs.DetailResponse'],
                  severity: str,
@@ -5012,6 +5028,7 @@ class VulnerabilityResponse(dict):
         :param float cvss_score: The CVSS score for this vulnerability.
         :param 'CVSSResponse' cvss_v2: The full description of the CVSS for version 2.
         :param 'CVSSv3Response' cvss_v3: The full description of the CVSS for version 3.
+        :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param Sequence[str] cwe: A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
         :param Sequence['DetailResponse'] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
         :param str severity: Note provider assigned impact of the vulnerability.
@@ -5021,6 +5038,7 @@ class VulnerabilityResponse(dict):
         pulumi.set(__self__, "cvss_score", cvss_score)
         pulumi.set(__self__, "cvss_v2", cvss_v2)
         pulumi.set(__self__, "cvss_v3", cvss_v3)
+        pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "cwe", cwe)
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "severity", severity)
@@ -5050,6 +5068,14 @@ class VulnerabilityResponse(dict):
         The full description of the CVSS for version 3.
         """
         return pulumi.get(self, "cvss_v3")
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> str:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
 
     @property
     @pulumi.getter

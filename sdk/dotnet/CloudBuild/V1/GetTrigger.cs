@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly Outputs.GitHubEventsConfigResponse Github;
         /// <summary>
+        /// GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+        /// </summary>
+        public readonly Outputs.GitLabEventsConfigResponse GitlabEnterpriseEventsConfig;
+        /// <summary>
         /// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         /// </summary>
         public readonly ImmutableArray<string> IgnoredFiles;
@@ -192,6 +196,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             Outputs.GitHubEventsConfigResponse github,
 
+            Outputs.GitLabEventsConfigResponse gitlabEnterpriseEventsConfig,
+
             ImmutableArray<string> ignoredFiles,
 
             string includeBuildLogs,
@@ -228,6 +234,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             Filter = filter;
             GitFileSource = gitFileSource;
             Github = github;
+            GitlabEnterpriseEventsConfig = gitlabEnterpriseEventsConfig;
             IgnoredFiles = ignoredFiles;
             IncludeBuildLogs = includeBuildLogs;
             IncludedFiles = includedFiles;

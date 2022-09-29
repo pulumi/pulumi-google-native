@@ -106,6 +106,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Configures which regions are enabled for SMS verification code sending.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse SmsRegionConfig;
+        /// <summary>
         /// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
         /// </summary>
         public readonly ImmutableDictionary<string, string> TestPhoneNumbers;
@@ -136,6 +140,8 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
             string name,
 
+            Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse smsRegionConfig,
+
             ImmutableDictionary<string, string> testPhoneNumbers)
         {
             AllowPasswordSignup = allowPasswordSignup;
@@ -150,6 +156,7 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
             MfaConfig = mfaConfig;
             Monitoring = monitoring;
             Name = name;
+            SmsRegionConfig = smsRegionConfig;
             TestPhoneNumbers = testPhoneNumbers;
         }
     }

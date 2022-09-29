@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetInstanceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, instance=None, kind=None, name=None, nat_policy=None, network=None, self_link=None, self_link_with_id=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, instance=None, kind=None, name=None, nat_policy=None, network=None, security_policy=None, self_link=None, self_link_with_id=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -40,6 +40,9 @@ class GetTargetInstanceResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if security_policy and not isinstance(security_policy, str):
+            raise TypeError("Expected argument 'security_policy' to be a str")
+        pulumi.set(__self__, "security_policy", security_policy)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -107,6 +110,14 @@ class GetTargetInstanceResult:
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        """
+        The resource URL for the security policy associated with this target instance.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -144,6 +155,7 @@ class AwaitableGetTargetInstanceResult(GetTargetInstanceResult):
             name=self.name,
             nat_policy=self.nat_policy,
             network=self.network,
+            security_policy=self.security_policy,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             zone=self.zone)
@@ -171,6 +183,7 @@ def get_target_instance(project: Optional[str] = None,
         name=__ret__.name,
         nat_policy=__ret__.nat_policy,
         network=__ret__.network,
+        security_policy=__ret__.security_policy,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         zone=__ret__.zone)

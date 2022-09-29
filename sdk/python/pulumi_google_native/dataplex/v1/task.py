@@ -25,6 +25,7 @@ class TaskArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 notebook: Optional[pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
@@ -36,6 +37,7 @@ class TaskArgs:
         :param pulumi.Input[str] description: Optional. Description of the task.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
+        :param pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs'] notebook: Config related to running scheduled Notebooks.
         :param pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs'] spark: Config related to running custom Spark tasks.
         :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
@@ -51,6 +53,8 @@ class TaskArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if notebook is not None:
+            pulumi.set(__self__, "notebook", notebook)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if spark is not None:
@@ -150,6 +154,18 @@ class TaskArgs:
 
     @property
     @pulumi.getter
+    def notebook(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]:
+        """
+        Config related to running scheduled Notebooks.
+        """
+        return pulumi.get(self, "notebook")
+
+    @notebook.setter
+    def notebook(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]):
+        pulumi.set(self, "notebook", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -193,6 +209,7 @@ class Task(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
@@ -209,6 +226,7 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskExecutionSpecArgs']] execution_spec: Spec related to how a task is executed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']] notebook: Config related to running scheduled Notebooks.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] spark: Config related to running custom Spark tasks.
         :param pulumi.Input[str] task_id: Required. Task identifier.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']] trigger_spec: Spec related to how often and when a task should be triggered.
@@ -245,6 +263,7 @@ class Task(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
@@ -269,6 +288,7 @@ class Task(pulumi.CustomResource):
                 raise TypeError("Missing required property 'lake_id'")
             __props__.__dict__["lake_id"] = lake_id
             __props__.__dict__["location"] = location
+            __props__.__dict__["notebook"] = notebook
             __props__.__dict__["project"] = project
             __props__.__dict__["spark"] = spark
             if task_id is None and not opts.urn:
@@ -317,6 +337,7 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["lake_id"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["notebook"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["spark"] = None
         __props__.__dict__["state"] = None
@@ -392,6 +413,14 @@ class Task(pulumi.CustomResource):
         The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def notebook(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse']:
+        """
+        Config related to running scheduled Notebooks.
+        """
+        return pulumi.get(self, "notebook")
 
     @property
     @pulumi.getter

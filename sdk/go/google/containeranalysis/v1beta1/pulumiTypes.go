@@ -10328,6 +10328,8 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) Type() pulumi.StringPtrOutp
 type GrafeasV1beta1VulnerabilityDetailsResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion string `pulumi:"cvssVersion"`
 	// The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
 	// A detailed description of this vulnerability.
@@ -10362,6 +10364,11 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) ToGrafeasV1beta1Vulner
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
+}
+
+// CVSS version used to populate cvss_score and severity.
+func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) CvssVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) string { return v.CvssVersion }).(pulumi.StringOutput)
 }
 
 // The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -16528,6 +16535,8 @@ type Vulnerability struct {
 	CvssV2 *CVSS `pulumi:"cvssV2"`
 	// The full description of the CVSS for version 3.
 	CvssV3 *CVSSv3 `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion *VulnerabilityCvssVersion `pulumi:"cvssVersion"`
 	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
 	Cwe []string `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -16559,6 +16568,8 @@ type VulnerabilityArgs struct {
 	CvssV2 CVSSPtrInput `pulumi:"cvssV2"`
 	// The full description of the CVSS for version 3.
 	CvssV3 CVSSv3PtrInput `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion VulnerabilityCvssVersionPtrInput `pulumi:"cvssVersion"`
 	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
 	Cwe pulumi.StringArrayInput `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -16664,6 +16675,11 @@ func (o VulnerabilityOutput) CvssV3() CVSSv3PtrOutput {
 	return o.ApplyT(func(v Vulnerability) *CVSSv3 { return v.CvssV3 }).(CVSSv3PtrOutput)
 }
 
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityOutput) CvssVersion() VulnerabilityCvssVersionPtrOutput {
+	return o.ApplyT(func(v Vulnerability) *VulnerabilityCvssVersion { return v.CvssVersion }).(VulnerabilityCvssVersionPtrOutput)
+}
+
 // A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
 func (o VulnerabilityOutput) Cwe() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Vulnerability) []string { return v.Cwe }).(pulumi.StringArrayOutput)
@@ -16741,6 +16757,16 @@ func (o VulnerabilityPtrOutput) CvssV3() CVSSv3PtrOutput {
 		}
 		return v.CvssV3
 	}).(CVSSv3PtrOutput)
+}
+
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityPtrOutput) CvssVersion() VulnerabilityCvssVersionPtrOutput {
+	return o.ApplyT(func(v *Vulnerability) *VulnerabilityCvssVersion {
+		if v == nil {
+			return nil
+		}
+		return v.CvssVersion
+	}).(VulnerabilityCvssVersionPtrOutput)
 }
 
 // A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
@@ -17019,6 +17045,8 @@ type VulnerabilityResponse struct {
 	CvssV2 CVSSResponse `pulumi:"cvssV2"`
 	// The full description of the CVSS for version 3.
 	CvssV3 CVSSv3Response `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion string `pulumi:"cvssVersion"`
 	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
 	Cwe []string `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -17059,6 +17087,11 @@ func (o VulnerabilityResponseOutput) CvssV2() CVSSResponseOutput {
 // The full description of the CVSS for version 3.
 func (o VulnerabilityResponseOutput) CvssV3() CVSSv3ResponseOutput {
 	return o.ApplyT(func(v VulnerabilityResponse) CVSSv3Response { return v.CvssV3 }).(CVSSv3ResponseOutput)
+}
+
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityResponseOutput) CvssVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityResponse) string { return v.CvssVersion }).(pulumi.StringOutput)
 }
 
 // A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html

@@ -64,6 +64,10 @@ export interface GetTargetPoolResult {
      */
     readonly region: string;
     /**
+     * The resource URL for the security policy associated with this target pool.
+     */
+    readonly securityPolicy: string;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;

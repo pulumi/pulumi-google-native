@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2ProbeResponse LivenessProbe;
+        /// <summary>
         /// Name of the container specified as a DNS_LABEL.
         /// </summary>
         public readonly string Name;
@@ -44,6 +48,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ResourceRequirementsResponse Resources;
+        /// <summary>
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2ProbeResponse StartupProbe;
         /// <summary>
         /// Volume to mount into the container's filesystem.
         /// </summary>
@@ -63,11 +71,15 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
             string image,
 
+            Outputs.GoogleCloudRunV2ProbeResponse livenessProbe,
+
             string name,
 
             ImmutableArray<Outputs.GoogleCloudRunV2ContainerPortResponse> ports,
 
             Outputs.GoogleCloudRunV2ResourceRequirementsResponse resources,
+
+            Outputs.GoogleCloudRunV2ProbeResponse startupProbe,
 
             ImmutableArray<Outputs.GoogleCloudRunV2VolumeMountResponse> volumeMounts,
 
@@ -77,9 +89,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
             Command = command;
             Env = env;
             Image = image;
+            LivenessProbe = livenessProbe;
             Name = name;
             Ports = ports;
             Resources = resources;
+            StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

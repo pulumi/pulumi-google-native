@@ -3657,6 +3657,818 @@ func (o GitHubEventsConfigResponseOutput) Push() PushFilterResponseOutput {
 	return o.ApplyT(func(v GitHubEventsConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
 }
 
+// GitLabConfig represents the configuration for a GitLab integration.
+type GitLabConfigResponse struct {
+	// Connected GitLab.com or GitLabEnterprise repositories for this config.
+	ConnectedRepositories []GitLabRepositoryIdResponse `pulumi:"connectedRepositories"`
+	// Time when the config was created.
+	CreateTime string `pulumi:"createTime"`
+	// Optional. GitLabEnterprise config.
+	EnterpriseConfig GitLabEnterpriseConfigResponse `pulumi:"enterpriseConfig"`
+	// The resource name for the config.
+	Name string `pulumi:"name"`
+	// Secret Manager secrets needed by the config.
+	Secrets GitLabSecretsResponse `pulumi:"secrets"`
+	// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
+	Username string `pulumi:"username"`
+	// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+	WebhookKey string `pulumi:"webhookKey"`
+}
+
+// GitLabConfig represents the configuration for a GitLab integration.
+type GitLabConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GitLabConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabConfigResponse)(nil)).Elem()
+}
+
+func (o GitLabConfigResponseOutput) ToGitLabConfigResponseOutput() GitLabConfigResponseOutput {
+	return o
+}
+
+func (o GitLabConfigResponseOutput) ToGitLabConfigResponseOutputWithContext(ctx context.Context) GitLabConfigResponseOutput {
+	return o
+}
+
+// Connected GitLab.com or GitLabEnterprise repositories for this config.
+func (o GitLabConfigResponseOutput) ConnectedRepositories() GitLabRepositoryIdResponseArrayOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) []GitLabRepositoryIdResponse { return v.ConnectedRepositories }).(GitLabRepositoryIdResponseArrayOutput)
+}
+
+// Time when the config was created.
+func (o GitLabConfigResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. GitLabEnterprise config.
+func (o GitLabConfigResponseOutput) EnterpriseConfig() GitLabEnterpriseConfigResponseOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) GitLabEnterpriseConfigResponse { return v.EnterpriseConfig }).(GitLabEnterpriseConfigResponseOutput)
+}
+
+// The resource name for the config.
+func (o GitLabConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Secret Manager secrets needed by the config.
+func (o GitLabConfigResponseOutput) Secrets() GitLabSecretsResponseOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) GitLabSecretsResponse { return v.Secrets }).(GitLabSecretsResponseOutput)
+}
+
+// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
+func (o GitLabConfigResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+func (o GitLabConfigResponseOutput) WebhookKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabConfigResponse) string { return v.WebhookKey }).(pulumi.StringOutput)
+}
+
+// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+type GitLabEnterpriseConfig struct {
+	// Immutable. The URI of the GitlabEnterprise host.
+	HostUri *string `pulumi:"hostUri"`
+	// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+	ServiceDirectoryConfig *ServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// The SSL certificate to use in requests to GitLab Enterprise instances.
+	SslCa *string `pulumi:"sslCa"`
+}
+
+// GitLabEnterpriseConfigInput is an input type that accepts GitLabEnterpriseConfigArgs and GitLabEnterpriseConfigOutput values.
+// You can construct a concrete instance of `GitLabEnterpriseConfigInput` via:
+//
+//	GitLabEnterpriseConfigArgs{...}
+type GitLabEnterpriseConfigInput interface {
+	pulumi.Input
+
+	ToGitLabEnterpriseConfigOutput() GitLabEnterpriseConfigOutput
+	ToGitLabEnterpriseConfigOutputWithContext(context.Context) GitLabEnterpriseConfigOutput
+}
+
+// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+type GitLabEnterpriseConfigArgs struct {
+	// Immutable. The URI of the GitlabEnterprise host.
+	HostUri pulumi.StringPtrInput `pulumi:"hostUri"`
+	// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+	ServiceDirectoryConfig ServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// The SSL certificate to use in requests to GitLab Enterprise instances.
+	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
+}
+
+func (GitLabEnterpriseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEnterpriseConfig)(nil)).Elem()
+}
+
+func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigOutput() GitLabEnterpriseConfigOutput {
+	return i.ToGitLabEnterpriseConfigOutputWithContext(context.Background())
+}
+
+func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigOutputWithContext(ctx context.Context) GitLabEnterpriseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEnterpriseConfigOutput)
+}
+
+func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput {
+	return i.ToGitLabEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GitLabEnterpriseConfigArgs) ToGitLabEnterpriseConfigPtrOutputWithContext(ctx context.Context) GitLabEnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEnterpriseConfigOutput).ToGitLabEnterpriseConfigPtrOutputWithContext(ctx)
+}
+
+// GitLabEnterpriseConfigPtrInput is an input type that accepts GitLabEnterpriseConfigArgs, GitLabEnterpriseConfigPtr and GitLabEnterpriseConfigPtrOutput values.
+// You can construct a concrete instance of `GitLabEnterpriseConfigPtrInput` via:
+//
+//	        GitLabEnterpriseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitLabEnterpriseConfigPtrInput interface {
+	pulumi.Input
+
+	ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput
+	ToGitLabEnterpriseConfigPtrOutputWithContext(context.Context) GitLabEnterpriseConfigPtrOutput
+}
+
+type gitLabEnterpriseConfigPtrType GitLabEnterpriseConfigArgs
+
+func GitLabEnterpriseConfigPtr(v *GitLabEnterpriseConfigArgs) GitLabEnterpriseConfigPtrInput {
+	return (*gitLabEnterpriseConfigPtrType)(v)
+}
+
+func (*gitLabEnterpriseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitLabEnterpriseConfig)(nil)).Elem()
+}
+
+func (i *gitLabEnterpriseConfigPtrType) ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput {
+	return i.ToGitLabEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gitLabEnterpriseConfigPtrType) ToGitLabEnterpriseConfigPtrOutputWithContext(ctx context.Context) GitLabEnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEnterpriseConfigPtrOutput)
+}
+
+// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+type GitLabEnterpriseConfigOutput struct{ *pulumi.OutputState }
+
+func (GitLabEnterpriseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEnterpriseConfig)(nil)).Elem()
+}
+
+func (o GitLabEnterpriseConfigOutput) ToGitLabEnterpriseConfigOutput() GitLabEnterpriseConfigOutput {
+	return o
+}
+
+func (o GitLabEnterpriseConfigOutput) ToGitLabEnterpriseConfigOutputWithContext(ctx context.Context) GitLabEnterpriseConfigOutput {
+	return o
+}
+
+func (o GitLabEnterpriseConfigOutput) ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput {
+	return o.ToGitLabEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GitLabEnterpriseConfigOutput) ToGitLabEnterpriseConfigPtrOutputWithContext(ctx context.Context) GitLabEnterpriseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitLabEnterpriseConfig) *GitLabEnterpriseConfig {
+		return &v
+	}).(GitLabEnterpriseConfigPtrOutput)
+}
+
+// Immutable. The URI of the GitlabEnterprise host.
+func (o GitLabEnterpriseConfigOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfig) *string { return v.HostUri }).(pulumi.StringPtrOutput)
+}
+
+// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+func (o GitLabEnterpriseConfigOutput) ServiceDirectoryConfig() ServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfig) *ServiceDirectoryConfig { return v.ServiceDirectoryConfig }).(ServiceDirectoryConfigPtrOutput)
+}
+
+// The SSL certificate to use in requests to GitLab Enterprise instances.
+func (o GitLabEnterpriseConfigOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfig) *string { return v.SslCa }).(pulumi.StringPtrOutput)
+}
+
+type GitLabEnterpriseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GitLabEnterpriseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitLabEnterpriseConfig)(nil)).Elem()
+}
+
+func (o GitLabEnterpriseConfigPtrOutput) ToGitLabEnterpriseConfigPtrOutput() GitLabEnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o GitLabEnterpriseConfigPtrOutput) ToGitLabEnterpriseConfigPtrOutputWithContext(ctx context.Context) GitLabEnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o GitLabEnterpriseConfigPtrOutput) Elem() GitLabEnterpriseConfigOutput {
+	return o.ApplyT(func(v *GitLabEnterpriseConfig) GitLabEnterpriseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GitLabEnterpriseConfig
+		return ret
+	}).(GitLabEnterpriseConfigOutput)
+}
+
+// Immutable. The URI of the GitlabEnterprise host.
+func (o GitLabEnterpriseConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitLabEnterpriseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+func (o GitLabEnterpriseConfigPtrOutput) ServiceDirectoryConfig() ServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *GitLabEnterpriseConfig) *ServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ServiceDirectoryConfigPtrOutput)
+}
+
+// The SSL certificate to use in requests to GitLab Enterprise instances.
+func (o GitLabEnterpriseConfigPtrOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitLabEnterpriseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+type GitLabEnterpriseConfigResponse struct {
+	// Immutable. The URI of the GitlabEnterprise host.
+	HostUri string `pulumi:"hostUri"`
+	// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+	ServiceDirectoryConfig ServiceDirectoryConfigResponse `pulumi:"serviceDirectoryConfig"`
+	// The SSL certificate to use in requests to GitLab Enterprise instances.
+	SslCa string `pulumi:"sslCa"`
+}
+
+// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+type GitLabEnterpriseConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GitLabEnterpriseConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEnterpriseConfigResponse)(nil)).Elem()
+}
+
+func (o GitLabEnterpriseConfigResponseOutput) ToGitLabEnterpriseConfigResponseOutput() GitLabEnterpriseConfigResponseOutput {
+	return o
+}
+
+func (o GitLabEnterpriseConfigResponseOutput) ToGitLabEnterpriseConfigResponseOutputWithContext(ctx context.Context) GitLabEnterpriseConfigResponseOutput {
+	return o
+}
+
+// Immutable. The URI of the GitlabEnterprise host.
+func (o GitLabEnterpriseConfigResponseOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfigResponse) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+func (o GitLabEnterpriseConfigResponseOutput) ServiceDirectoryConfig() ServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfigResponse) ServiceDirectoryConfigResponse { return v.ServiceDirectoryConfig }).(ServiceDirectoryConfigResponseOutput)
+}
+
+// The SSL certificate to use in requests to GitLab Enterprise instances.
+func (o GitLabEnterpriseConfigResponseOutput) SslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabEnterpriseConfigResponse) string { return v.SslCa }).(pulumi.StringOutput)
+}
+
+// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+type GitLabEventsConfig struct {
+	// The GitLab config resource that this trigger config maps to.
+	GitlabConfigResource *string `pulumi:"gitlabConfigResource"`
+	// Namespace of the GitLab project.
+	ProjectNamespace *string `pulumi:"projectNamespace"`
+	// Filter to match changes in pull requests.
+	PullRequest *PullRequestFilter `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push *PushFilter `pulumi:"push"`
+}
+
+// GitLabEventsConfigInput is an input type that accepts GitLabEventsConfigArgs and GitLabEventsConfigOutput values.
+// You can construct a concrete instance of `GitLabEventsConfigInput` via:
+//
+//	GitLabEventsConfigArgs{...}
+type GitLabEventsConfigInput interface {
+	pulumi.Input
+
+	ToGitLabEventsConfigOutput() GitLabEventsConfigOutput
+	ToGitLabEventsConfigOutputWithContext(context.Context) GitLabEventsConfigOutput
+}
+
+// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+type GitLabEventsConfigArgs struct {
+	// The GitLab config resource that this trigger config maps to.
+	GitlabConfigResource pulumi.StringPtrInput `pulumi:"gitlabConfigResource"`
+	// Namespace of the GitLab project.
+	ProjectNamespace pulumi.StringPtrInput `pulumi:"projectNamespace"`
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterPtrInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterPtrInput `pulumi:"push"`
+}
+
+func (GitLabEventsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEventsConfig)(nil)).Elem()
+}
+
+func (i GitLabEventsConfigArgs) ToGitLabEventsConfigOutput() GitLabEventsConfigOutput {
+	return i.ToGitLabEventsConfigOutputWithContext(context.Background())
+}
+
+func (i GitLabEventsConfigArgs) ToGitLabEventsConfigOutputWithContext(ctx context.Context) GitLabEventsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEventsConfigOutput)
+}
+
+func (i GitLabEventsConfigArgs) ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput {
+	return i.ToGitLabEventsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GitLabEventsConfigArgs) ToGitLabEventsConfigPtrOutputWithContext(ctx context.Context) GitLabEventsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEventsConfigOutput).ToGitLabEventsConfigPtrOutputWithContext(ctx)
+}
+
+// GitLabEventsConfigPtrInput is an input type that accepts GitLabEventsConfigArgs, GitLabEventsConfigPtr and GitLabEventsConfigPtrOutput values.
+// You can construct a concrete instance of `GitLabEventsConfigPtrInput` via:
+//
+//	        GitLabEventsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitLabEventsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput
+	ToGitLabEventsConfigPtrOutputWithContext(context.Context) GitLabEventsConfigPtrOutput
+}
+
+type gitLabEventsConfigPtrType GitLabEventsConfigArgs
+
+func GitLabEventsConfigPtr(v *GitLabEventsConfigArgs) GitLabEventsConfigPtrInput {
+	return (*gitLabEventsConfigPtrType)(v)
+}
+
+func (*gitLabEventsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitLabEventsConfig)(nil)).Elem()
+}
+
+func (i *gitLabEventsConfigPtrType) ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput {
+	return i.ToGitLabEventsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gitLabEventsConfigPtrType) ToGitLabEventsConfigPtrOutputWithContext(ctx context.Context) GitLabEventsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabEventsConfigPtrOutput)
+}
+
+// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+type GitLabEventsConfigOutput struct{ *pulumi.OutputState }
+
+func (GitLabEventsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEventsConfig)(nil)).Elem()
+}
+
+func (o GitLabEventsConfigOutput) ToGitLabEventsConfigOutput() GitLabEventsConfigOutput {
+	return o
+}
+
+func (o GitLabEventsConfigOutput) ToGitLabEventsConfigOutputWithContext(ctx context.Context) GitLabEventsConfigOutput {
+	return o
+}
+
+func (o GitLabEventsConfigOutput) ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput {
+	return o.ToGitLabEventsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GitLabEventsConfigOutput) ToGitLabEventsConfigPtrOutputWithContext(ctx context.Context) GitLabEventsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitLabEventsConfig) *GitLabEventsConfig {
+		return &v
+	}).(GitLabEventsConfigPtrOutput)
+}
+
+// The GitLab config resource that this trigger config maps to.
+func (o GitLabEventsConfigOutput) GitlabConfigResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitLabEventsConfig) *string { return v.GitlabConfigResource }).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the GitLab project.
+func (o GitLabEventsConfigOutput) ProjectNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitLabEventsConfig) *string { return v.ProjectNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o GitLabEventsConfigOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v GitLabEventsConfig) *PullRequestFilter { return v.PullRequest }).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o GitLabEventsConfigOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v GitLabEventsConfig) *PushFilter { return v.Push }).(PushFilterPtrOutput)
+}
+
+type GitLabEventsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GitLabEventsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitLabEventsConfig)(nil)).Elem()
+}
+
+func (o GitLabEventsConfigPtrOutput) ToGitLabEventsConfigPtrOutput() GitLabEventsConfigPtrOutput {
+	return o
+}
+
+func (o GitLabEventsConfigPtrOutput) ToGitLabEventsConfigPtrOutputWithContext(ctx context.Context) GitLabEventsConfigPtrOutput {
+	return o
+}
+
+func (o GitLabEventsConfigPtrOutput) Elem() GitLabEventsConfigOutput {
+	return o.ApplyT(func(v *GitLabEventsConfig) GitLabEventsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GitLabEventsConfig
+		return ret
+	}).(GitLabEventsConfigOutput)
+}
+
+// The GitLab config resource that this trigger config maps to.
+func (o GitLabEventsConfigPtrOutput) GitlabConfigResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitLabEventsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GitlabConfigResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the GitLab project.
+func (o GitLabEventsConfigPtrOutput) ProjectNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitLabEventsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o GitLabEventsConfigPtrOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v *GitLabEventsConfig) *PullRequestFilter {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o GitLabEventsConfigPtrOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v *GitLabEventsConfig) *PushFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(PushFilterPtrOutput)
+}
+
+// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+type GitLabEventsConfigResponse struct {
+	// The GitLabConfig specified in the gitlab_config_resource field.
+	GitlabConfig GitLabConfigResponse `pulumi:"gitlabConfig"`
+	// The GitLab config resource that this trigger config maps to.
+	GitlabConfigResource string `pulumi:"gitlabConfigResource"`
+	// Namespace of the GitLab project.
+	ProjectNamespace string `pulumi:"projectNamespace"`
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponse `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterResponse `pulumi:"push"`
+}
+
+// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+type GitLabEventsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GitLabEventsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabEventsConfigResponse)(nil)).Elem()
+}
+
+func (o GitLabEventsConfigResponseOutput) ToGitLabEventsConfigResponseOutput() GitLabEventsConfigResponseOutput {
+	return o
+}
+
+func (o GitLabEventsConfigResponseOutput) ToGitLabEventsConfigResponseOutputWithContext(ctx context.Context) GitLabEventsConfigResponseOutput {
+	return o
+}
+
+// The GitLabConfig specified in the gitlab_config_resource field.
+func (o GitLabEventsConfigResponseOutput) GitlabConfig() GitLabConfigResponseOutput {
+	return o.ApplyT(func(v GitLabEventsConfigResponse) GitLabConfigResponse { return v.GitlabConfig }).(GitLabConfigResponseOutput)
+}
+
+// The GitLab config resource that this trigger config maps to.
+func (o GitLabEventsConfigResponseOutput) GitlabConfigResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabEventsConfigResponse) string { return v.GitlabConfigResource }).(pulumi.StringOutput)
+}
+
+// Namespace of the GitLab project.
+func (o GitLabEventsConfigResponseOutput) ProjectNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabEventsConfigResponse) string { return v.ProjectNamespace }).(pulumi.StringOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o GitLabEventsConfigResponseOutput) PullRequest() PullRequestFilterResponseOutput {
+	return o.ApplyT(func(v GitLabEventsConfigResponse) PullRequestFilterResponse { return v.PullRequest }).(PullRequestFilterResponseOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o GitLabEventsConfigResponseOutput) Push() PushFilterResponseOutput {
+	return o.ApplyT(func(v GitLabEventsConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
+}
+
+// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+type GitLabRepositoryId struct {
+	// Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
+	Id string `pulumi:"id"`
+}
+
+// GitLabRepositoryIdInput is an input type that accepts GitLabRepositoryIdArgs and GitLabRepositoryIdOutput values.
+// You can construct a concrete instance of `GitLabRepositoryIdInput` via:
+//
+//	GitLabRepositoryIdArgs{...}
+type GitLabRepositoryIdInput interface {
+	pulumi.Input
+
+	ToGitLabRepositoryIdOutput() GitLabRepositoryIdOutput
+	ToGitLabRepositoryIdOutputWithContext(context.Context) GitLabRepositoryIdOutput
+}
+
+// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+type GitLabRepositoryIdArgs struct {
+	// Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GitLabRepositoryIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabRepositoryId)(nil)).Elem()
+}
+
+func (i GitLabRepositoryIdArgs) ToGitLabRepositoryIdOutput() GitLabRepositoryIdOutput {
+	return i.ToGitLabRepositoryIdOutputWithContext(context.Background())
+}
+
+func (i GitLabRepositoryIdArgs) ToGitLabRepositoryIdOutputWithContext(ctx context.Context) GitLabRepositoryIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabRepositoryIdOutput)
+}
+
+// GitLabRepositoryIdArrayInput is an input type that accepts GitLabRepositoryIdArray and GitLabRepositoryIdArrayOutput values.
+// You can construct a concrete instance of `GitLabRepositoryIdArrayInput` via:
+//
+//	GitLabRepositoryIdArray{ GitLabRepositoryIdArgs{...} }
+type GitLabRepositoryIdArrayInput interface {
+	pulumi.Input
+
+	ToGitLabRepositoryIdArrayOutput() GitLabRepositoryIdArrayOutput
+	ToGitLabRepositoryIdArrayOutputWithContext(context.Context) GitLabRepositoryIdArrayOutput
+}
+
+type GitLabRepositoryIdArray []GitLabRepositoryIdInput
+
+func (GitLabRepositoryIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitLabRepositoryId)(nil)).Elem()
+}
+
+func (i GitLabRepositoryIdArray) ToGitLabRepositoryIdArrayOutput() GitLabRepositoryIdArrayOutput {
+	return i.ToGitLabRepositoryIdArrayOutputWithContext(context.Background())
+}
+
+func (i GitLabRepositoryIdArray) ToGitLabRepositoryIdArrayOutputWithContext(ctx context.Context) GitLabRepositoryIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabRepositoryIdArrayOutput)
+}
+
+// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+type GitLabRepositoryIdOutput struct{ *pulumi.OutputState }
+
+func (GitLabRepositoryIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabRepositoryId)(nil)).Elem()
+}
+
+func (o GitLabRepositoryIdOutput) ToGitLabRepositoryIdOutput() GitLabRepositoryIdOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdOutput) ToGitLabRepositoryIdOutputWithContext(ctx context.Context) GitLabRepositoryIdOutput {
+	return o
+}
+
+// Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
+func (o GitLabRepositoryIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabRepositoryId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GitLabRepositoryIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GitLabRepositoryIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitLabRepositoryId)(nil)).Elem()
+}
+
+func (o GitLabRepositoryIdArrayOutput) ToGitLabRepositoryIdArrayOutput() GitLabRepositoryIdArrayOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdArrayOutput) ToGitLabRepositoryIdArrayOutputWithContext(ctx context.Context) GitLabRepositoryIdArrayOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdArrayOutput) Index(i pulumi.IntInput) GitLabRepositoryIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitLabRepositoryId {
+		return vs[0].([]GitLabRepositoryId)[vs[1].(int)]
+	}).(GitLabRepositoryIdOutput)
+}
+
+// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+type GitLabRepositoryIdResponse struct {
+	// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+	WebhookId int `pulumi:"webhookId"`
+}
+
+// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+type GitLabRepositoryIdResponseOutput struct{ *pulumi.OutputState }
+
+func (GitLabRepositoryIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabRepositoryIdResponse)(nil)).Elem()
+}
+
+func (o GitLabRepositoryIdResponseOutput) ToGitLabRepositoryIdResponseOutput() GitLabRepositoryIdResponseOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdResponseOutput) ToGitLabRepositoryIdResponseOutputWithContext(ctx context.Context) GitLabRepositoryIdResponseOutput {
+	return o
+}
+
+// The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+func (o GitLabRepositoryIdResponseOutput) WebhookId() pulumi.IntOutput {
+	return o.ApplyT(func(v GitLabRepositoryIdResponse) int { return v.WebhookId }).(pulumi.IntOutput)
+}
+
+type GitLabRepositoryIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GitLabRepositoryIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitLabRepositoryIdResponse)(nil)).Elem()
+}
+
+func (o GitLabRepositoryIdResponseArrayOutput) ToGitLabRepositoryIdResponseArrayOutput() GitLabRepositoryIdResponseArrayOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdResponseArrayOutput) ToGitLabRepositoryIdResponseArrayOutputWithContext(ctx context.Context) GitLabRepositoryIdResponseArrayOutput {
+	return o
+}
+
+func (o GitLabRepositoryIdResponseArrayOutput) Index(i pulumi.IntInput) GitLabRepositoryIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitLabRepositoryIdResponse {
+		return vs[0].([]GitLabRepositoryIdResponse)[vs[1].(int)]
+	}).(GitLabRepositoryIdResponseOutput)
+}
+
+// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+type GitLabSecrets struct {
+	// The resource name for the api access token’s secret version
+	ApiAccessTokenVersion string `pulumi:"apiAccessTokenVersion"`
+	// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+	ApiKeyVersion string `pulumi:"apiKeyVersion"`
+	// The resource name for the read access token’s secret version
+	ReadAccessTokenVersion string `pulumi:"readAccessTokenVersion"`
+	// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+	WebhookSecretVersion string `pulumi:"webhookSecretVersion"`
+}
+
+// GitLabSecretsInput is an input type that accepts GitLabSecretsArgs and GitLabSecretsOutput values.
+// You can construct a concrete instance of `GitLabSecretsInput` via:
+//
+//	GitLabSecretsArgs{...}
+type GitLabSecretsInput interface {
+	pulumi.Input
+
+	ToGitLabSecretsOutput() GitLabSecretsOutput
+	ToGitLabSecretsOutputWithContext(context.Context) GitLabSecretsOutput
+}
+
+// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+type GitLabSecretsArgs struct {
+	// The resource name for the api access token’s secret version
+	ApiAccessTokenVersion pulumi.StringInput `pulumi:"apiAccessTokenVersion"`
+	// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+	ApiKeyVersion pulumi.StringInput `pulumi:"apiKeyVersion"`
+	// The resource name for the read access token’s secret version
+	ReadAccessTokenVersion pulumi.StringInput `pulumi:"readAccessTokenVersion"`
+	// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+	WebhookSecretVersion pulumi.StringInput `pulumi:"webhookSecretVersion"`
+}
+
+func (GitLabSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabSecrets)(nil)).Elem()
+}
+
+func (i GitLabSecretsArgs) ToGitLabSecretsOutput() GitLabSecretsOutput {
+	return i.ToGitLabSecretsOutputWithContext(context.Background())
+}
+
+func (i GitLabSecretsArgs) ToGitLabSecretsOutputWithContext(ctx context.Context) GitLabSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitLabSecretsOutput)
+}
+
+// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+type GitLabSecretsOutput struct{ *pulumi.OutputState }
+
+func (GitLabSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabSecrets)(nil)).Elem()
+}
+
+func (o GitLabSecretsOutput) ToGitLabSecretsOutput() GitLabSecretsOutput {
+	return o
+}
+
+func (o GitLabSecretsOutput) ToGitLabSecretsOutputWithContext(ctx context.Context) GitLabSecretsOutput {
+	return o
+}
+
+// The resource name for the api access token’s secret version
+func (o GitLabSecretsOutput) ApiAccessTokenVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecrets) string { return v.ApiAccessTokenVersion }).(pulumi.StringOutput)
+}
+
+// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+func (o GitLabSecretsOutput) ApiKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecrets) string { return v.ApiKeyVersion }).(pulumi.StringOutput)
+}
+
+// The resource name for the read access token’s secret version
+func (o GitLabSecretsOutput) ReadAccessTokenVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecrets) string { return v.ReadAccessTokenVersion }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+func (o GitLabSecretsOutput) WebhookSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecrets) string { return v.WebhookSecretVersion }).(pulumi.StringOutput)
+}
+
+// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+type GitLabSecretsResponse struct {
+	// The resource name for the api access token’s secret version
+	ApiAccessTokenVersion string `pulumi:"apiAccessTokenVersion"`
+	// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+	ApiKeyVersion string `pulumi:"apiKeyVersion"`
+	// The resource name for the read access token’s secret version
+	ReadAccessTokenVersion string `pulumi:"readAccessTokenVersion"`
+	// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+	WebhookSecretVersion string `pulumi:"webhookSecretVersion"`
+}
+
+// GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+type GitLabSecretsResponseOutput struct{ *pulumi.OutputState }
+
+func (GitLabSecretsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitLabSecretsResponse)(nil)).Elem()
+}
+
+func (o GitLabSecretsResponseOutput) ToGitLabSecretsResponseOutput() GitLabSecretsResponseOutput {
+	return o
+}
+
+func (o GitLabSecretsResponseOutput) ToGitLabSecretsResponseOutputWithContext(ctx context.Context) GitLabSecretsResponseOutput {
+	return o
+}
+
+// The resource name for the api access token’s secret version
+func (o GitLabSecretsResponseOutput) ApiAccessTokenVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecretsResponse) string { return v.ApiAccessTokenVersion }).(pulumi.StringOutput)
+}
+
+// Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+func (o GitLabSecretsResponseOutput) ApiKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecretsResponse) string { return v.ApiKeyVersion }).(pulumi.StringOutput)
+}
+
+// The resource name for the read access token’s secret version
+func (o GitLabSecretsResponseOutput) ReadAccessTokenVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecretsResponse) string { return v.ReadAccessTokenVersion }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+func (o GitLabSecretsResponseOutput) WebhookSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GitLabSecretsResponse) string { return v.WebhookSecretVersion }).(pulumi.StringOutput)
+}
+
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSource struct {
 	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -6225,6 +7037,172 @@ func (o SecretsResponseOutput) SecretManager() SecretManagerSecretResponseArrayO
 	return o.ApplyT(func(v SecretsResponse) []SecretManagerSecretResponse { return v.SecretManager }).(SecretManagerSecretResponseArrayOutput)
 }
 
+// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+type ServiceDirectoryConfig struct {
+	// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service *string `pulumi:"service"`
+}
+
+// ServiceDirectoryConfigInput is an input type that accepts ServiceDirectoryConfigArgs and ServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ServiceDirectoryConfigInput` via:
+//
+//	ServiceDirectoryConfigArgs{...}
+type ServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToServiceDirectoryConfigOutput() ServiceDirectoryConfigOutput
+	ToServiceDirectoryConfigOutputWithContext(context.Context) ServiceDirectoryConfigOutput
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+type ServiceDirectoryConfigArgs struct {
+	// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigOutput() ServiceDirectoryConfigOutput {
+	return i.ToServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigOutputWithContext(ctx context.Context) ServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDirectoryConfigOutput)
+}
+
+func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput {
+	return i.ToServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceDirectoryConfigArgs) ToServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDirectoryConfigOutput).ToServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceDirectoryConfigPtrInput is an input type that accepts ServiceDirectoryConfigArgs, ServiceDirectoryConfigPtr and ServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceDirectoryConfigPtrInput` via:
+//
+//	        ServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput
+	ToServiceDirectoryConfigPtrOutputWithContext(context.Context) ServiceDirectoryConfigPtrOutput
+}
+
+type serviceDirectoryConfigPtrType ServiceDirectoryConfigArgs
+
+func ServiceDirectoryConfigPtr(v *ServiceDirectoryConfigArgs) ServiceDirectoryConfigPtrInput {
+	return (*serviceDirectoryConfigPtrType)(v)
+}
+
+func (*serviceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *serviceDirectoryConfigPtrType) ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput {
+	return i.ToServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceDirectoryConfigPtrType) ToServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceDirectoryConfigPtrOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+type ServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ServiceDirectoryConfigOutput) ToServiceDirectoryConfigOutput() ServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ServiceDirectoryConfigOutput) ToServiceDirectoryConfigOutputWithContext(ctx context.Context) ServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ServiceDirectoryConfigOutput) ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput {
+	return o.ToServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceDirectoryConfigOutput) ToServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceDirectoryConfig) *ServiceDirectoryConfig {
+		return &v
+	}).(ServiceDirectoryConfigPtrOutput)
+}
+
+// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ServiceDirectoryConfigPtrOutput) ToServiceDirectoryConfigPtrOutput() ServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ServiceDirectoryConfigPtrOutput) ToServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ServiceDirectoryConfigPtrOutput) Elem() ServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ServiceDirectoryConfig) ServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceDirectoryConfig
+		return ret
+	}).(ServiceDirectoryConfigOutput)
+}
+
+// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+type ServiceDirectoryConfigResponse struct {
+	// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service string `pulumi:"service"`
+}
+
+// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+type ServiceDirectoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceDirectoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o ServiceDirectoryConfigResponseOutput) ToServiceDirectoryConfigResponseOutput() ServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o ServiceDirectoryConfigResponseOutput) ToServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) ServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ServiceDirectoryConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceDirectoryConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
 // Location of the source in a supported storage service.
 type Source struct {
 	// If provided, get the source from this location in a Cloud Source Repository.
@@ -7580,6 +8558,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEnterpriseSecretsPtrInput)(nil)).Elem(), GitHubEnterpriseSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigInput)(nil)).Elem(), GitHubEventsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubEventsConfigPtrInput)(nil)).Elem(), GitHubEventsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabEnterpriseConfigInput)(nil)).Elem(), GitLabEnterpriseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabEnterpriseConfigPtrInput)(nil)).Elem(), GitLabEnterpriseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabEventsConfigInput)(nil)).Elem(), GitLabEventsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabEventsConfigPtrInput)(nil)).Elem(), GitLabEventsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabRepositoryIdInput)(nil)).Elem(), GitLabRepositoryIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabRepositoryIdArrayInput)(nil)).Elem(), GitLabRepositoryIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitLabSecretsInput)(nil)).Elem(), GitLabSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourceInput)(nil)).Elem(), GitRepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourcePtrInput)(nil)).Elem(), GitRepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretInput)(nil)).Elem(), InlineSecretArgs{})
@@ -7604,6 +8589,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretArrayInput)(nil)).Elem(), SecretManagerSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretsInput)(nil)).Elem(), SecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretsPtrInput)(nil)).Elem(), SecretsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDirectoryConfigInput)(nil)).Elem(), ServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDirectoryConfigPtrInput)(nil)).Elem(), ServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceInput)(nil)).Elem(), StorageSourceArgs{})
@@ -7657,6 +8644,19 @@ func init() {
 	pulumi.RegisterOutputType(GitHubEventsConfigOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GitLabConfigResponseOutput{})
+	pulumi.RegisterOutputType(GitLabEnterpriseConfigOutput{})
+	pulumi.RegisterOutputType(GitLabEnterpriseConfigPtrOutput{})
+	pulumi.RegisterOutputType(GitLabEnterpriseConfigResponseOutput{})
+	pulumi.RegisterOutputType(GitLabEventsConfigOutput{})
+	pulumi.RegisterOutputType(GitLabEventsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GitLabEventsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GitLabRepositoryIdOutput{})
+	pulumi.RegisterOutputType(GitLabRepositoryIdArrayOutput{})
+	pulumi.RegisterOutputType(GitLabRepositoryIdResponseOutput{})
+	pulumi.RegisterOutputType(GitLabRepositoryIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(GitLabSecretsOutput{})
+	pulumi.RegisterOutputType(GitLabSecretsResponseOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceOutput{})
 	pulumi.RegisterOutputType(GitRepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceResponseOutput{})
@@ -7697,6 +8697,9 @@ func init() {
 	pulumi.RegisterOutputType(SecretsOutput{})
 	pulumi.RegisterOutputType(SecretsPtrOutput{})
 	pulumi.RegisterOutputType(SecretsResponseOutput{})
+	pulumi.RegisterOutputType(ServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceDirectoryConfigResponseOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
 	pulumi.RegisterOutputType(SourceProvenanceResponseOutput{})

@@ -43,6 +43,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly appEngine!: pulumi.Output<outputs.monitoring.v3.AppEngineResponse>;
     /**
+     * Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+     */
+    public readonly basicService!: pulumi.Output<outputs.monitoring.v3.BasicServiceResponse>;
+    /**
      * Type used for Cloud Endpoints services.
      */
     public readonly cloudEndpoints!: pulumi.Output<outputs.monitoring.v3.CloudEndpointsResponse>;
@@ -119,6 +123,7 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'v3Id1'");
             }
             resourceInputs["appEngine"] = args ? args.appEngine : undefined;
+            resourceInputs["basicService"] = args ? args.basicService : undefined;
             resourceInputs["cloudEndpoints"] = args ? args.cloudEndpoints : undefined;
             resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["clusterIstio"] = args ? args.clusterIstio : undefined;
@@ -137,6 +142,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
             resourceInputs["appEngine"] = undefined /*out*/;
+            resourceInputs["basicService"] = undefined /*out*/;
             resourceInputs["cloudEndpoints"] = undefined /*out*/;
             resourceInputs["cloudRun"] = undefined /*out*/;
             resourceInputs["clusterIstio"] = undefined /*out*/;
@@ -169,6 +175,10 @@ export interface ServiceArgs {
      * Type used for App Engine services.
      */
     appEngine?: pulumi.Input<inputs.monitoring.v3.AppEngineArgs>;
+    /**
+     * Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+     */
+    basicService?: pulumi.Input<inputs.monitoring.v3.BasicServiceArgs>;
     /**
      * Type used for Cloud Endpoints services.
      */

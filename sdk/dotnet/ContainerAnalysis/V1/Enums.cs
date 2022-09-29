@@ -762,7 +762,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         public static DiscoveryOccurrenceAnalysisStatus FinishedSuccess { get; } = new DiscoveryOccurrenceAnalysisStatus("FINISHED_SUCCESS");
         /// <summary>
-        /// Analysis has completed
+        /// Analysis has completed.
         /// </summary>
         public static DiscoveryOccurrenceAnalysisStatus Complete { get; } = new DiscoveryOccurrenceAnalysisStatus("COMPLETE");
         /// <summary>
@@ -950,6 +950,38 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VersionKind other && Equals(other);
         public bool Equals(VersionKind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// CVSS version used to populate cvss_score and severity.
+    /// </summary>
+    [EnumType]
+    public readonly struct VulnerabilityNoteCvssVersion : IEquatable<VulnerabilityNoteCvssVersion>
+    {
+        private readonly string _value;
+
+        private VulnerabilityNoteCvssVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VulnerabilityNoteCvssVersion CvssVersionUnspecified { get; } = new VulnerabilityNoteCvssVersion("CVSS_VERSION_UNSPECIFIED");
+        public static VulnerabilityNoteCvssVersion CvssVersion2 { get; } = new VulnerabilityNoteCvssVersion("CVSS_VERSION_2");
+        public static VulnerabilityNoteCvssVersion CvssVersion3 { get; } = new VulnerabilityNoteCvssVersion("CVSS_VERSION_3");
+
+        public static bool operator ==(VulnerabilityNoteCvssVersion left, VulnerabilityNoteCvssVersion right) => left.Equals(right);
+        public static bool operator !=(VulnerabilityNoteCvssVersion left, VulnerabilityNoteCvssVersion right) => !left.Equals(right);
+
+        public static explicit operator string(VulnerabilityNoteCvssVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VulnerabilityNoteCvssVersion other && Equals(other);
+        public bool Equals(VulnerabilityNoteCvssVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

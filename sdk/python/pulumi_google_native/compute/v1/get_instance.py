@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, fingerprint=None, guest_accelerators=None, hostname=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -107,6 +107,9 @@ class GetInstanceResult:
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
+        if resource_status and not isinstance(resource_status, dict):
+            raise TypeError("Expected argument 'resource_status' to be a dict")
+        pulumi.set(__self__, "resource_status", resource_status)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -374,6 +377,14 @@ class GetInstanceResult:
         return pulumi.get(self, "resource_policies")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.ResourceStatusResponse':
+        """
+        Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -507,6 +518,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             private_ipv6_google_access=self.private_ipv6_google_access,
             reservation_affinity=self.reservation_affinity,
             resource_policies=self.resource_policies,
+            resource_status=self.resource_status,
             satisfies_pzs=self.satisfies_pzs,
             scheduling=self.scheduling,
             self_link=self.self_link,
@@ -566,6 +578,7 @@ def get_instance(instance: Optional[str] = None,
         private_ipv6_google_access=__ret__.private_ipv6_google_access,
         reservation_affinity=__ret__.reservation_affinity,
         resource_policies=__ret__.resource_policies,
+        resource_status=__ret__.resource_status,
         satisfies_pzs=__ret__.satisfies_pzs,
         scheduling=__ret__.scheduling,
         self_link=__ret__.self_link,

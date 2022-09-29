@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamBinding":
-		r = &ConnectionPolicyIamBinding{}
-	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamMember":
-		r = &ConnectionPolicyIamMember{}
-	case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamPolicy":
-		r = &ConnectionPolicyIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:Hub":
 		r = &Hub{}
 	case "google-native:networkconnectivity/v1alpha1:HubIamBinding":
@@ -41,18 +35,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InternalRangeIamMember{}
 	case "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
 		r = &InternalRangeIamPolicy{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamBinding":
-		r = &ServiceIdentifierIamBinding{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamMember":
-		r = &ServiceIdentifierIamMember{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceIdentifierIamPolicy":
-		r = &ServiceIdentifierIamPolicy{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamBinding":
-		r = &ServiceInstanceIamBinding{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamMember":
-		r = &ServiceInstanceIamMember{}
-	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy":
-		r = &ServiceInstanceIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceClassIamBinding":
+		r = &ServiceClassIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceClassIamMember":
+		r = &ServiceClassIamMember{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceClassIamPolicy":
+		r = &ServiceClassIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamBinding":
+		r = &ServiceConnectionMapIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamMember":
+		r = &ServiceConnectionMapIamMember{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamPolicy":
+		r = &ServiceConnectionMapIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamBinding":
+		r = &ServiceConnectionPolicyIamBinding{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamMember":
+		r = &ServiceConnectionPolicyIamMember{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamPolicy":
+		r = &ServiceConnectionPolicyIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:Spoke":
 		r = &Spoke{}
 	case "google-native:networkconnectivity/v1alpha1:SpokeIamBinding":

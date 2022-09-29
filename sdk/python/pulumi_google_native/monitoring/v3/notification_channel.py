@@ -212,7 +212,7 @@ class NotificationChannel(pulumi.CustomResource):
                  verification_status: Optional[pulumi.Input['NotificationChannelVerificationStatus']] = None,
                  __props__=None):
         """
-        Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
+        Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,7 +234,7 @@ class NotificationChannel(pulumi.CustomResource):
                  args: Optional[NotificationChannelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
+        Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel.
 
         :param str resource_name: The name of the resource.
         :param NotificationChannelArgs args: The arguments to use to populate this resource's properties.

@@ -1887,8 +1887,10 @@ const (
 	VolumeConfigPerformanceTierVolumePerformanceTierUnspecified = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED")
 	// Regular volumes, shared aggregates.
 	VolumeConfigPerformanceTierVolumePerformanceTierShared = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED")
-	// Dedicated (assigned) aggregates.
-	VolumeConfigPerformanceTierVolumePerformanceTierDedicated = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED")
+	// Assigned aggregates.
+	VolumeConfigPerformanceTierVolumePerformanceTierAssigned = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_ASSIGNED")
+	// High throughput aggregates.
+	VolumeConfigPerformanceTierVolumePerformanceTierHt = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_HT")
 )
 
 func (VolumeConfigPerformanceTier) ElementType() reflect.Type {
@@ -2394,8 +2396,10 @@ const (
 	VolumePerformanceTierVolumePerformanceTierUnspecified = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED")
 	// Regular volumes, shared aggregates.
 	VolumePerformanceTierVolumePerformanceTierShared = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED")
-	// Dedicated (assigned) aggregates.
-	VolumePerformanceTierVolumePerformanceTierDedicated = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED")
+	// Assigned aggregates.
+	VolumePerformanceTierVolumePerformanceTierAssigned = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_ASSIGNED")
+	// High throughput aggregates.
+	VolumePerformanceTierVolumePerformanceTierHt = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_HT")
 )
 
 func (VolumePerformanceTier) ElementType() reflect.Type {
@@ -2738,6 +2742,8 @@ const (
 	VolumeStateReady = VolumeState("READY")
 	// The storage volume has been requested to be deleted.
 	VolumeStateDeleting = VolumeState("DELETING")
+	// The storage volume is being updated.
+	VolumeStateUpdating = VolumeState("UPDATING")
 )
 
 func (VolumeState) ElementType() reflect.Type {

@@ -4998,6 +4998,8 @@ class VulnerabilityNoteResponse(dict):
             suggest = "cvss_score"
         elif key == "cvssV3":
             suggest = "cvss_v3"
+        elif key == "cvssVersion":
+            suggest = "cvss_version"
         elif key == "sourceUpdateTime":
             suggest = "source_update_time"
         elif key == "windowsDetails":
@@ -5017,6 +5019,7 @@ class VulnerabilityNoteResponse(dict):
     def __init__(__self__, *,
                  cvss_score: float,
                  cvss_v3: 'outputs.CVSSv3Response',
+                 cvss_version: str,
                  details: Sequence['outputs.DetailResponse'],
                  severity: str,
                  source_update_time: str,
@@ -5025,6 +5028,7 @@ class VulnerabilityNoteResponse(dict):
         A security vulnerability that can be found in resources.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
         :param 'CVSSv3Response' cvss_v3: The full description of the CVSSv3 for this vulnerability.
+        :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param Sequence['DetailResponse'] details: Details of all known distros and packages affected by this vulnerability.
         :param str severity: The note provider assigned severity of this vulnerability.
         :param str source_update_time: The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
@@ -5032,6 +5036,7 @@ class VulnerabilityNoteResponse(dict):
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
         pulumi.set(__self__, "cvss_v3", cvss_v3)
+        pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "severity", severity)
         pulumi.set(__self__, "source_update_time", source_update_time)
@@ -5052,6 +5057,14 @@ class VulnerabilityNoteResponse(dict):
         The full description of the CVSSv3 for this vulnerability.
         """
         return pulumi.get(self, "cvss_v3")
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> str:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
 
     @property
     @pulumi.getter
@@ -5096,6 +5109,8 @@ class VulnerabilityOccurrenceResponse(dict):
         suggest = None
         if key == "cvssScore":
             suggest = "cvss_score"
+        elif key == "cvssVersion":
+            suggest = "cvss_version"
         elif key == "effectiveSeverity":
             suggest = "effective_severity"
         elif key == "fixAvailable":
@@ -5122,6 +5137,7 @@ class VulnerabilityOccurrenceResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvss_version: str,
                  cvssv3: 'outputs.CVSSResponse',
                  effective_severity: str,
                  fix_available: bool,
@@ -5134,6 +5150,7 @@ class VulnerabilityOccurrenceResponse(dict):
         """
         An occurrence of a severity vulnerability on a resource.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
+        :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param 'CVSSResponse' cvssv3: The cvss v3 score for the vulnerability.
         :param str effective_severity: The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param bool fix_available: Whether at least one of the affected packages has a fix available.
@@ -5145,6 +5162,7 @@ class VulnerabilityOccurrenceResponse(dict):
         :param str type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "cvssv3", cvssv3)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "fix_available", fix_available)
@@ -5162,6 +5180,14 @@ class VulnerabilityOccurrenceResponse(dict):
         The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> str:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
 
     @property
     @pulumi.getter

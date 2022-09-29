@@ -13793,11 +13793,11 @@ func (o ForwardingRuleServiceDirectoryRegistrationResponseArrayOutput) Index(i p
 type GRPCHealthCheck struct {
 	// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
 	GrpcServiceName *string `pulumi:"grpcServiceName"`
-	// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *GRPCHealthCheckPortSpecification `pulumi:"portSpecification"`
 }
 
@@ -13815,11 +13815,11 @@ type GRPCHealthCheckInput interface {
 type GRPCHealthCheckArgs struct {
 	// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
 	GrpcServiceName pulumi.StringPtrInput `pulumi:"grpcServiceName"`
-	// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification GRPCHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 }
 
@@ -13905,17 +13905,17 @@ func (o GRPCHealthCheckOutput) GrpcServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *string { return v.GrpcServiceName }).(pulumi.StringPtrOutput)
 }
 
-// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o GRPCHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+// Not supported.
 func (o GRPCHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckOutput) PortSpecification() GRPCHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *GRPCHealthCheckPortSpecification { return v.PortSpecification }).(GRPCHealthCheckPortSpecificationPtrOutput)
 }
@@ -13954,7 +13954,7 @@ func (o GRPCHealthCheckPtrOutput) GrpcServiceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o GRPCHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GRPCHealthCheck) *int {
 		if v == nil {
@@ -13964,7 +13964,7 @@ func (o GRPCHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+// Not supported.
 func (o GRPCHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GRPCHealthCheck) *string {
 		if v == nil {
@@ -13974,7 +13974,7 @@ func (o GRPCHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckPtrOutput) PortSpecification() GRPCHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *GRPCHealthCheck) *GRPCHealthCheckPortSpecification {
 		if v == nil {
@@ -13987,11 +13987,11 @@ func (o GRPCHealthCheckPtrOutput) PortSpecification() GRPCHealthCheckPortSpecifi
 type GRPCHealthCheckResponse struct {
 	// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
 	GrpcServiceName string `pulumi:"grpcServiceName"`
-	// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 }
 
@@ -14014,17 +14014,17 @@ func (o GRPCHealthCheckResponseOutput) GrpcServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) string { return v.GrpcServiceName }).(pulumi.StringOutput)
 }
 
-// The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o GRPCHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+// Not supported.
 func (o GRPCHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -14176,19 +14176,19 @@ func (o GuestOsFeatureResponseArrayOutput) Index(i pulumi.IntInput) GuestOsFeatu
 }
 
 type HTTP2HealthCheck struct {
-	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host *string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTP2HealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTP2HealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTP/2 health check request. The default value is /.
 	RequestPath *string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response *string `pulumi:"response"`
 }
 
@@ -14204,19 +14204,19 @@ type HTTP2HealthCheckInput interface {
 }
 
 type HTTP2HealthCheckArgs struct {
-	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTP2HealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTP2HealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP/2 health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -14297,22 +14297,22 @@ func (o HTTP2HealthCheckOutput) ToHTTP2HealthCheckPtrOutputWithContext(ctx conte
 	}).(HTTP2HealthCheckPtrOutput)
 }
 
-// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTP2HealthCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTP2HealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTP2HealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckOutput) PortSpecification() HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *HTTP2HealthCheckPortSpecification { return v.PortSpecification }).(HTTP2HealthCheckPortSpecificationPtrOutput)
 }
@@ -14327,7 +14327,7 @@ func (o HTTP2HealthCheckOutput) RequestPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTP2HealthCheckOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -14356,7 +14356,7 @@ func (o HTTP2HealthCheckPtrOutput) Elem() HTTP2HealthCheckOutput {
 	}).(HTTP2HealthCheckOutput)
 }
 
-// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTP2HealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *string {
 		if v == nil {
@@ -14366,7 +14366,7 @@ func (o HTTP2HealthCheckPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTP2HealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *int {
 		if v == nil {
@@ -14376,7 +14376,7 @@ func (o HTTP2HealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTP2HealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *string {
 		if v == nil {
@@ -14386,7 +14386,7 @@ func (o HTTP2HealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckPtrOutput) PortSpecification() HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *HTTP2HealthCheckPortSpecification {
 		if v == nil {
@@ -14416,7 +14416,7 @@ func (o HTTP2HealthCheckPtrOutput) RequestPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTP2HealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *string {
 		if v == nil {
@@ -14427,19 +14427,19 @@ func (o HTTP2HealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type HTTP2HealthCheckResponse struct {
-	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
 	// The request path of the HTTP/2 health check request. The default value is /.
 	RequestPath string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response string `pulumi:"response"`
 }
 
@@ -14457,22 +14457,22 @@ func (o HTTP2HealthCheckResponseOutput) ToHTTP2HealthCheckResponseOutputWithCont
 	return o
 }
 
-// The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTP2HealthCheckResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTP2HealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTP2HealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -14487,25 +14487,25 @@ func (o HTTP2HealthCheckResponseOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTP2HealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
 
 type HTTPHealthCheckType struct {
-	// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host *string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTPHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTP health check request. The default value is /.
 	RequestPath *string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response *string `pulumi:"response"`
 }
 
@@ -14521,19 +14521,19 @@ type HTTPHealthCheckTypeInput interface {
 }
 
 type HTTPHealthCheckTypeArgs struct {
-	// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -14614,22 +14614,22 @@ func (o HTTPHealthCheckTypeOutput) ToHTTPHealthCheckTypePtrOutputWithContext(ctx
 	}).(HTTPHealthCheckTypePtrOutput)
 }
 
-// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPHealthCheckTypeOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o HTTPHealthCheckTypeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckTypeOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *HTTPHealthCheckPortSpecification { return v.PortSpecification }).(HTTPHealthCheckPortSpecificationPtrOutput)
 }
@@ -14644,7 +14644,7 @@ func (o HTTPHealthCheckTypeOutput) RequestPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPHealthCheckTypeOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -14673,7 +14673,7 @@ func (o HTTPHealthCheckTypePtrOutput) Elem() HTTPHealthCheckTypeOutput {
 	}).(HTTPHealthCheckTypeOutput)
 }
 
-// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
@@ -14683,7 +14683,7 @@ func (o HTTPHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o HTTPHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *int {
 		if v == nil {
@@ -14693,7 +14693,7 @@ func (o HTTPHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
@@ -14703,7 +14703,7 @@ func (o HTTPHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckTypePtrOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *HTTPHealthCheckPortSpecification {
 		if v == nil {
@@ -14733,7 +14733,7 @@ func (o HTTPHealthCheckTypePtrOutput) RequestPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *string {
 		if v == nil {
@@ -14744,19 +14744,19 @@ func (o HTTPHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type HTTPHealthCheckResponse struct {
-	// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
 	// The request path of the HTTP health check request. The default value is /.
 	RequestPath string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response string `pulumi:"response"`
 }
 
@@ -14774,22 +14774,22 @@ func (o HTTPHealthCheckResponseOutput) ToHTTPHealthCheckResponseOutputWithContex
 	return o
 }
 
-// The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPHealthCheckResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o HTTPHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -14804,25 +14804,25 @@ func (o HTTPHealthCheckResponseOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPHealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
 
 type HTTPSHealthCheckType struct {
-	// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host *string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTPSHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTPSHealthCheckProxyHeader `pulumi:"proxyHeader"`
 	// The request path of the HTTPS health check request. The default value is /.
 	RequestPath *string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response *string `pulumi:"response"`
 }
 
@@ -14838,19 +14838,19 @@ type HTTPSHealthCheckTypeInput interface {
 }
 
 type HTTPSHealthCheckTypeArgs struct {
-	// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTPSHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTPSHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTPS health check request. The default value is /.
 	RequestPath pulumi.StringPtrInput `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -14931,22 +14931,22 @@ func (o HTTPSHealthCheckTypeOutput) ToHTTPSHealthCheckTypePtrOutputWithContext(c
 	}).(HTTPSHealthCheckTypePtrOutput)
 }
 
-// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPSHealthCheckTypeOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTPSHealthCheckTypeOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPSHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckTypeOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification { return v.PortSpecification }).(HTTPSHealthCheckPortSpecificationPtrOutput)
 }
@@ -14961,7 +14961,7 @@ func (o HTTPSHealthCheckTypeOutput) RequestPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.RequestPath }).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPSHealthCheckTypeOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -14990,7 +14990,7 @@ func (o HTTPSHealthCheckTypePtrOutput) Elem() HTTPSHealthCheckTypeOutput {
 	}).(HTTPSHealthCheckTypeOutput)
 }
 
-// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPSHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
@@ -15000,7 +15000,7 @@ func (o HTTPSHealthCheckTypePtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTPSHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *int {
 		if v == nil {
@@ -15010,7 +15010,7 @@ func (o HTTPSHealthCheckTypePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPSHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
@@ -15020,7 +15020,7 @@ func (o HTTPSHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckTypePtrOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification {
 		if v == nil {
@@ -15050,7 +15050,7 @@ func (o HTTPSHealthCheckTypePtrOutput) RequestPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPSHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *string {
 		if v == nil {
@@ -15061,19 +15061,19 @@ func (o HTTPSHealthCheckTypePtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type HTTPSHealthCheckResponse struct {
-	// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+	// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 	Host string `pulumi:"host"`
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
 	// The request path of the HTTPS health check request. The default value is /.
 	RequestPath string `pulumi:"requestPath"`
-	// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+	// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 	Response string `pulumi:"response"`
 }
 
@@ -15091,22 +15091,22 @@ func (o HTTPSHealthCheckResponseOutput) ToHTTPSHealthCheckResponseOutputWithCont
 	return o
 }
 
-// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+// The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
 func (o HTTPSHealthCheckResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o HTTPSHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o HTTPSHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -15121,7 +15121,7 @@ func (o HTTPSHealthCheckResponseOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
-// The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+// Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
 func (o HTTPSHealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -24026,6 +24026,167 @@ func (o NetworkEndpointGroupCloudRunResponseOutput) UrlMask() pulumi.StringOutpu
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
 
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscData struct {
+}
+
+// NetworkEndpointGroupPscDataInput is an input type that accepts NetworkEndpointGroupPscDataArgs and NetworkEndpointGroupPscDataOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupPscDataInput` via:
+//
+//	NetworkEndpointGroupPscDataArgs{...}
+type NetworkEndpointGroupPscDataInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput
+	ToNetworkEndpointGroupPscDataOutputWithContext(context.Context) NetworkEndpointGroupPscDataOutput
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataArgs struct {
+}
+
+func (NetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput {
+	return i.ToNetworkEndpointGroupPscDataOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataOutput)
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return i.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataOutput).ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx)
+}
+
+// NetworkEndpointGroupPscDataPtrInput is an input type that accepts NetworkEndpointGroupPscDataArgs, NetworkEndpointGroupPscDataPtr and NetworkEndpointGroupPscDataPtrOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupPscDataPtrInput` via:
+//
+//	        NetworkEndpointGroupPscDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkEndpointGroupPscDataPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput
+	ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Context) NetworkEndpointGroupPscDataPtrOutput
+}
+
+type networkEndpointGroupPscDataPtrType NetworkEndpointGroupPscDataArgs
+
+func NetworkEndpointGroupPscDataPtr(v *NetworkEndpointGroupPscDataArgs) NetworkEndpointGroupPscDataPtrInput {
+	return (*networkEndpointGroupPscDataPtrType)(v)
+}
+
+func (*networkEndpointGroupPscDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i *networkEndpointGroupPscDataPtrType) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return i.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupPscDataPtrType) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataPtrOutput)
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return o.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpointGroupPscData) *NetworkEndpointGroupPscData {
+		return &v
+	}).(NetworkEndpointGroupPscDataPtrOutput)
+}
+
+type NetworkEndpointGroupPscDataPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) Elem() NetworkEndpointGroupPscDataOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupPscData) NetworkEndpointGroupPscData {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupPscData
+		return ret
+	}).(NetworkEndpointGroupPscDataOutput)
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataResponse struct {
+	// Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress string `pulumi:"consumerPscAddress"`
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The connection status of the PSC Forwarding Rule.
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscDataResponse)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataResponseOutput) ToNetworkEndpointGroupPscDataResponseOutput() NetworkEndpointGroupPscDataResponseOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataResponseOutput) ToNetworkEndpointGroupPscDataResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataResponseOutput {
+	return o
+}
+
+// Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+func (o NetworkEndpointGroupPscDataResponseOutput) ConsumerPscAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.ConsumerPscAddress }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Network Endpoint Group Consumer.
+func (o NetworkEndpointGroupPscDataResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The connection status of the PSC Forwarding Rule.
+func (o NetworkEndpointGroupPscDataResponseOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
 // A network interface resource attached to an instance.
 type NetworkInterface struct {
 	// An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
@@ -31183,6 +31344,32 @@ func (o ResourcePolicyWeeklyCycleResponseOutput) DayOfWeeks() ResourcePolicyWeek
 	}).(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput)
 }
 
+// Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+type ResourceStatusResponse struct {
+	// An opaque ID of the host on which the VM is running.
+	PhysicalHost string `pulumi:"physicalHost"`
+}
+
+// Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+type ResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutput() ResourceStatusResponseOutput {
+	return o
+}
+
+func (o ResourceStatusResponseOutput) ToResourceStatusResponseOutputWithContext(ctx context.Context) ResourceStatusResponseOutput {
+	return o
+}
+
+// An opaque ID of the host on which the VM is running.
+func (o ResourceStatusResponseOutput) PhysicalHost() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) string { return v.PhysicalHost }).(pulumi.StringOutput)
+}
+
 type RouteAsPathResponse struct {
 	// The AS numbers of the AS Path.
 	AsLists []int `pulumi:"asLists"`
@@ -31739,6 +31926,8 @@ type RouterBgpPeer struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName *string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -31783,6 +31972,8 @@ type RouterBgpPeerArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress pulumi.StringPtrInput `pulumi:"ipv6NexthopAddress"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName pulumi.StringPtrInput `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -31894,6 +32085,11 @@ func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 // IPv6 address of the interface inside Google Cloud Platform.
 func (o RouterBgpPeerOutput) Ipv6NexthopAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Ipv6NexthopAddress }).(pulumi.StringPtrOutput)
+}
+
+// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+func (o RouterBgpPeerOutput) Md5AuthenticationKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Md5AuthenticationKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -32205,6 +32401,8 @@ type RouterBgpPeerResponse struct {
 	Ipv6NexthopAddress string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKeyName string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -32284,6 +32482,11 @@ func (o RouterBgpPeerResponseOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 // The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 func (o RouterBgpPeerResponseOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.ManagementType }).(pulumi.StringOutput)
+}
+
+// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+func (o RouterBgpPeerResponseOutput) Md5AuthenticationKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Md5AuthenticationKeyName }).(pulumi.StringOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -32625,6 +32828,163 @@ func (o RouterInterfaceResponseArrayOutput) Index(i pulumi.IntInput) RouterInter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterInterfaceResponse {
 		return vs[0].([]RouterInterfaceResponse)[vs[1].(int)]
 	}).(RouterInterfaceResponseOutput)
+}
+
+type RouterMd5AuthenticationKey struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key *string `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name *string `pulumi:"name"`
+}
+
+// RouterMd5AuthenticationKeyInput is an input type that accepts RouterMd5AuthenticationKeyArgs and RouterMd5AuthenticationKeyOutput values.
+// You can construct a concrete instance of `RouterMd5AuthenticationKeyInput` via:
+//
+//	RouterMd5AuthenticationKeyArgs{...}
+type RouterMd5AuthenticationKeyInput interface {
+	pulumi.Input
+
+	ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput
+	ToRouterMd5AuthenticationKeyOutputWithContext(context.Context) RouterMd5AuthenticationKeyOutput
+}
+
+type RouterMd5AuthenticationKeyArgs struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (RouterMd5AuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
+	return i.ToRouterMd5AuthenticationKeyOutputWithContext(context.Background())
+}
+
+func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyOutput)
+}
+
+// RouterMd5AuthenticationKeyArrayInput is an input type that accepts RouterMd5AuthenticationKeyArray and RouterMd5AuthenticationKeyArrayOutput values.
+// You can construct a concrete instance of `RouterMd5AuthenticationKeyArrayInput` via:
+//
+//	RouterMd5AuthenticationKeyArray{ RouterMd5AuthenticationKeyArgs{...} }
+type RouterMd5AuthenticationKeyArrayInput interface {
+	pulumi.Input
+
+	ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput
+	ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Context) RouterMd5AuthenticationKeyArrayOutput
+}
+
+type RouterMd5AuthenticationKeyArray []RouterMd5AuthenticationKeyInput
+
+func (RouterMd5AuthenticationKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
+	return i.ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Background())
+}
+
+func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyArrayOutput)
+}
+
+type RouterMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+func (o RouterMd5AuthenticationKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+func (o RouterMd5AuthenticationKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type RouterMd5AuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKey {
+		return vs[0].([]RouterMd5AuthenticationKey)[vs[1].(int)]
+	}).(RouterMd5AuthenticationKeyOutput)
+}
+
+type RouterMd5AuthenticationKeyResponse struct {
+	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+	Key string `pulumi:"key"`
+	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+	Name string `pulumi:"name"`
+}
+
+type RouterMd5AuthenticationKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterMd5AuthenticationKeyResponse)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutput() RouterMd5AuthenticationKeyResponseOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseOutput {
+	return o
+}
+
+// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+func (o RouterMd5AuthenticationKeyResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+func (o RouterMd5AuthenticationKeyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type RouterMd5AuthenticationKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterMd5AuthenticationKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterMd5AuthenticationKeyResponse)(nil)).Elem()
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutput() RouterMd5AuthenticationKeyResponseArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseArrayOutput {
+	return o
+}
+
+func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKeyResponse {
+		return vs[0].([]RouterMd5AuthenticationKeyResponse)[vs[1].(int)]
+	}).(RouterMd5AuthenticationKeyResponseOutput)
 }
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
@@ -34031,17 +34391,17 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 }
 
 type SSLHealthCheck struct {
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *SSLHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *SSLHealthCheckProxyHeader `pulumi:"proxyHeader"`
-	// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 	Request *string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response *string `pulumi:"response"`
 }
 
@@ -34057,17 +34417,17 @@ type SSLHealthCheckInput interface {
 }
 
 type SSLHealthCheckArgs struct {
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification SSLHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader SSLHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
-	// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 	Request pulumi.StringPtrInput `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -34148,17 +34508,17 @@ func (o SSLHealthCheckOutput) ToSSLHealthCheckPtrOutputWithContext(ctx context.C
 	}).(SSLHealthCheckPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o SSLHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o SSLHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckOutput) PortSpecification() SSLHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *SSLHealthCheckPortSpecification { return v.PortSpecification }).(SSLHealthCheckPortSpecificationPtrOutput)
 }
@@ -34168,12 +34528,12 @@ func (o SSLHealthCheckOutput) ProxyHeader() SSLHealthCheckProxyHeaderPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *SSLHealthCheckProxyHeader { return v.ProxyHeader }).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 func (o SSLHealthCheckOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *string { return v.Request }).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o SSLHealthCheckOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -34202,7 +34562,7 @@ func (o SSLHealthCheckPtrOutput) Elem() SSLHealthCheckOutput {
 	}).(SSLHealthCheckOutput)
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o SSLHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *int {
 		if v == nil {
@@ -34212,7 +34572,7 @@ func (o SSLHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o SSLHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *string {
 		if v == nil {
@@ -34222,7 +34582,7 @@ func (o SSLHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckPtrOutput) PortSpecification() SSLHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *SSLHealthCheckPortSpecification {
 		if v == nil {
@@ -34242,7 +34602,7 @@ func (o SSLHealthCheckPtrOutput) ProxyHeader() SSLHealthCheckProxyHeaderPtrOutpu
 	}).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 func (o SSLHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *string {
 		if v == nil {
@@ -34252,7 +34612,7 @@ func (o SSLHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o SSLHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *string {
 		if v == nil {
@@ -34263,17 +34623,17 @@ func (o SSLHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type SSLHealthCheckResponse struct {
-	// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
-	// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 	Request string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response string `pulumi:"response"`
 }
 
@@ -34291,17 +34651,17 @@ func (o SSLHealthCheckResponseOutput) ToSSLHealthCheckResponseOutputWithContext(
 	return o
 }
 
-// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
 func (o SSLHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o SSLHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -34311,12 +34671,12 @@ func (o SSLHealthCheckResponseOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
-// The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
 func (o SSLHealthCheckResponseOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.Request }).(pulumi.StringOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o SSLHealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -41088,17 +41448,17 @@ func (o SubsettingResponseOutput) Policy() pulumi.StringOutput {
 }
 
 type TCPHealthCheck struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request *string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response *string `pulumi:"response"`
 }
 
@@ -41114,17 +41474,17 @@ type TCPHealthCheckInput interface {
 }
 
 type TCPHealthCheckArgs struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification TCPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader TCPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request pulumi.StringPtrInput `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -41205,17 +41565,17 @@ func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.C
 	}).(TCPHealthCheckPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckPortSpecification { return v.PortSpecification }).(TCPHealthCheckPortSpecificationPtrOutput)
 }
@@ -41225,12 +41585,12 @@ func (o TCPHealthCheckOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckProxyHeader { return v.ProxyHeader }).(TCPHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Request }).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -41259,7 +41619,7 @@ func (o TCPHealthCheckPtrOutput) Elem() TCPHealthCheckOutput {
 	}).(TCPHealthCheckOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *int {
 		if v == nil {
@@ -41269,7 +41629,7 @@ func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -41279,7 +41639,7 @@ func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckPtrOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckPortSpecification {
 		if v == nil {
@@ -41299,7 +41659,7 @@ func (o TCPHealthCheckPtrOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutpu
 	}).(TCPHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -41309,7 +41669,7 @@ func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -41320,17 +41680,17 @@ func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type TCPHealthCheckResponse struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response string `pulumi:"response"`
 }
 
@@ -41348,17 +41708,17 @@ func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutputWithContext(
 	return o
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -41368,12 +41728,12 @@ func (o TCPHealthCheckResponseOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckResponseOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Request }).(pulumi.StringOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -42719,6 +43079,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupPscDataInput)(nil)).Elem(), NetworkEndpointGroupPscDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupPscDataPtrInput)(nil)).Elem(), NetworkEndpointGroupPscDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigInput)(nil)).Elem(), NetworkPerformanceConfigArgs{})
@@ -42793,6 +43155,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyInput)(nil)).Elem(), RouterMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyArrayInput)(nil)).Elem(), RouterMd5AuthenticationKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), RouterNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigInput)(nil)).Elem(), RouterNatLogConfigArgs{})
@@ -43261,6 +43625,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponseOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataPtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
@@ -43376,6 +43743,7 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleDayOfWeekResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(RouteAsPathResponseOutput{})
 	pulumi.RegisterOutputType(RouteAsPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteWarningsItemDataItemResponseOutput{})
@@ -43400,6 +43768,10 @@ func init() {
 	pulumi.RegisterOutputType(RouterInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseOutput{})
+	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatOutput{})
 	pulumi.RegisterOutputType(RouterNatArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigOutput{})

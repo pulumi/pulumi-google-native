@@ -32,6 +32,7 @@ class RegionSecurityPolicyArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input['RegionSecurityPolicyType']] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicy resource.
@@ -43,6 +44,7 @@ class RegionSecurityPolicyArgs:
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['RegionSecurityPolicyType'] type: The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         """
         pulumi.set(__self__, "region", region)
@@ -74,6 +76,8 @@ class RegionSecurityPolicyArgs:
             pulumi.set(__self__, "rules", rules)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if user_defined_fields is not None:
+            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -237,6 +241,18 @@ class RegionSecurityPolicyArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]]:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+    @user_defined_fields.setter
+    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]]):
+        pulumi.set(self, "user_defined_fields", value)
+
+    @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -269,6 +285,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input['RegionSecurityPolicyType']] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -284,6 +301,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['RegionSecurityPolicyType'] type: The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         """
         ...
@@ -325,6 +343,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input['RegionSecurityPolicyType']] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -352,6 +371,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type
+            __props__.__dict__["user_defined_fields"] = user_defined_fields
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -408,6 +428,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["user_defined_fields"] = None
         __props__.__dict__["validate_only"] = None
         return RegionSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -573,6 +594,14 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> pulumi.Output[Sequence['outputs.SecurityPolicyUserDefinedFieldResponse']]:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        """
+        return pulumi.get(self, "user_defined_fields")
 
     @property
     @pulumi.getter(name="validateOnly")

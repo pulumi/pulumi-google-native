@@ -52,6 +52,8 @@ type LookupTriggerResult struct {
 	GitFileSource GitFileSourceResponse `pulumi:"gitFileSource"`
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github GitHubEventsConfigResponse `pulumi:"github"`
+	// GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+	GitlabEnterpriseEventsConfig GitLabEventsConfigResponse `pulumi:"gitlabEnterpriseEventsConfig"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
 	IgnoredFiles []string `pulumi:"ignoredFiles"`
 	// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
@@ -176,6 +178,11 @@ func (o LookupTriggerResultOutput) GitFileSource() GitFileSourceResponseOutput {
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 func (o LookupTriggerResultOutput) Github() GitHubEventsConfigResponseOutput {
 	return o.ApplyT(func(v LookupTriggerResult) GitHubEventsConfigResponse { return v.Github }).(GitHubEventsConfigResponseOutput)
+}
+
+// GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+func (o LookupTriggerResultOutput) GitlabEnterpriseEventsConfig() GitLabEventsConfigResponseOutput {
+	return o.ApplyT(func(v LookupTriggerResult) GitLabEventsConfigResponse { return v.GitlabEnterpriseEventsConfig }).(GitLabEventsConfigResponseOutput)
 }
 
 // ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.

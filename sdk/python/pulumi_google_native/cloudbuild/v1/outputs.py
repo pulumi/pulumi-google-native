@@ -29,6 +29,11 @@ __all__ = [
     'GitFileSourceResponse',
     'GitHubEnterpriseSecretsResponse',
     'GitHubEventsConfigResponse',
+    'GitLabConfigResponse',
+    'GitLabEnterpriseConfigResponse',
+    'GitLabEventsConfigResponse',
+    'GitLabRepositoryIdResponse',
+    'GitLabSecretsResponse',
     'GitRepoSourceResponse',
     'InlineSecretResponse',
     'NetworkConfigResponse',
@@ -42,6 +47,7 @@ __all__ = [
     'SecretManagerSecretResponse',
     'SecretResponse',
     'SecretsResponse',
+    'ServiceDirectoryConfigResponse',
     'SourceProvenanceResponse',
     'SourceResponse',
     'StorageSourceManifestResponse',
@@ -1860,6 +1866,388 @@ class GitHubEventsConfigResponse(dict):
 
 
 @pulumi.output_type
+class GitLabConfigResponse(dict):
+    """
+    GitLabConfig represents the configuration for a GitLab integration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectedRepositories":
+            suggest = "connected_repositories"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "enterpriseConfig":
+            suggest = "enterprise_config"
+        elif key == "webhookKey":
+            suggest = "webhook_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitLabConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitLabConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitLabConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connected_repositories: Sequence['outputs.GitLabRepositoryIdResponse'],
+                 create_time: str,
+                 enterprise_config: 'outputs.GitLabEnterpriseConfigResponse',
+                 name: str,
+                 secrets: 'outputs.GitLabSecretsResponse',
+                 username: str,
+                 webhook_key: str):
+        """
+        GitLabConfig represents the configuration for a GitLab integration.
+        :param Sequence['GitLabRepositoryIdResponse'] connected_repositories: Connected GitLab.com or GitLabEnterprise repositories for this config.
+        :param str create_time: Time when the config was created.
+        :param 'GitLabEnterpriseConfigResponse' enterprise_config: Optional. GitLabEnterprise config.
+        :param str name: The resource name for the config.
+        :param 'GitLabSecretsResponse' secrets: Secret Manager secrets needed by the config.
+        :param str username: Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
+        :param str webhook_key: UUID included in webhook requests. The UUID is used to look up the corresponding config.
+        """
+        pulumi.set(__self__, "connected_repositories", connected_repositories)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "enterprise_config", enterprise_config)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secrets", secrets)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "webhook_key", webhook_key)
+
+    @property
+    @pulumi.getter(name="connectedRepositories")
+    def connected_repositories(self) -> Sequence['outputs.GitLabRepositoryIdResponse']:
+        """
+        Connected GitLab.com or GitLabEnterprise repositories for this config.
+        """
+        return pulumi.get(self, "connected_repositories")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time when the config was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> 'outputs.GitLabEnterpriseConfigResponse':
+        """
+        Optional. GitLabEnterprise config.
+        """
+        return pulumi.get(self, "enterprise_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name for the config.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> 'outputs.GitLabSecretsResponse':
+        """
+        Secret Manager secrets needed by the config.
+        """
+        return pulumi.get(self, "secrets")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="webhookKey")
+    def webhook_key(self) -> str:
+        """
+        UUID included in webhook requests. The UUID is used to look up the corresponding config.
+        """
+        return pulumi.get(self, "webhook_key")
+
+
+@pulumi.output_type
+class GitLabEnterpriseConfigResponse(dict):
+    """
+    GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostUri":
+            suggest = "host_uri"
+        elif key == "serviceDirectoryConfig":
+            suggest = "service_directory_config"
+        elif key == "sslCa":
+            suggest = "ssl_ca"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitLabEnterpriseConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitLabEnterpriseConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitLabEnterpriseConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_uri: str,
+                 service_directory_config: 'outputs.ServiceDirectoryConfigResponse',
+                 ssl_ca: str):
+        """
+        GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.
+        :param str host_uri: Immutable. The URI of the GitlabEnterprise host.
+        :param 'ServiceDirectoryConfigResponse' service_directory_config: The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+        :param str ssl_ca: The SSL certificate to use in requests to GitLab Enterprise instances.
+        """
+        pulumi.set(__self__, "host_uri", host_uri)
+        pulumi.set(__self__, "service_directory_config", service_directory_config)
+        pulumi.set(__self__, "ssl_ca", ssl_ca)
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> str:
+        """
+        Immutable. The URI of the GitlabEnterprise host.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> 'outputs.ServiceDirectoryConfigResponse':
+        """
+        The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter(name="sslCa")
+    def ssl_ca(self) -> str:
+        """
+        The SSL certificate to use in requests to GitLab Enterprise instances.
+        """
+        return pulumi.get(self, "ssl_ca")
+
+
+@pulumi.output_type
+class GitLabEventsConfigResponse(dict):
+    """
+    GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gitlabConfig":
+            suggest = "gitlab_config"
+        elif key == "gitlabConfigResource":
+            suggest = "gitlab_config_resource"
+        elif key == "projectNamespace":
+            suggest = "project_namespace"
+        elif key == "pullRequest":
+            suggest = "pull_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitLabEventsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitLabEventsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitLabEventsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gitlab_config: 'outputs.GitLabConfigResponse',
+                 gitlab_config_resource: str,
+                 project_namespace: str,
+                 pull_request: 'outputs.PullRequestFilterResponse',
+                 push: 'outputs.PushFilterResponse'):
+        """
+        GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is received.
+        :param 'GitLabConfigResponse' gitlab_config: The GitLabConfig specified in the gitlab_config_resource field.
+        :param str gitlab_config_resource: The GitLab config resource that this trigger config maps to.
+        :param str project_namespace: Namespace of the GitLab project.
+        :param 'PullRequestFilterResponse' pull_request: Filter to match changes in pull requests.
+        :param 'PushFilterResponse' push: Filter to match changes in refs like branches, tags.
+        """
+        pulumi.set(__self__, "gitlab_config", gitlab_config)
+        pulumi.set(__self__, "gitlab_config_resource", gitlab_config_resource)
+        pulumi.set(__self__, "project_namespace", project_namespace)
+        pulumi.set(__self__, "pull_request", pull_request)
+        pulumi.set(__self__, "push", push)
+
+    @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> 'outputs.GitLabConfigResponse':
+        """
+        The GitLabConfig specified in the gitlab_config_resource field.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @property
+    @pulumi.getter(name="gitlabConfigResource")
+    def gitlab_config_resource(self) -> str:
+        """
+        The GitLab config resource that this trigger config maps to.
+        """
+        return pulumi.get(self, "gitlab_config_resource")
+
+    @property
+    @pulumi.getter(name="projectNamespace")
+    def project_namespace(self) -> str:
+        """
+        Namespace of the GitLab project.
+        """
+        return pulumi.get(self, "project_namespace")
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> 'outputs.PullRequestFilterResponse':
+        """
+        Filter to match changes in pull requests.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @property
+    @pulumi.getter
+    def push(self) -> 'outputs.PushFilterResponse':
+        """
+        Filter to match changes in refs like branches, tags.
+        """
+        return pulumi.get(self, "push")
+
+
+@pulumi.output_type
+class GitLabRepositoryIdResponse(dict):
+    """
+    GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "webhookId":
+            suggest = "webhook_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitLabRepositoryIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitLabRepositoryIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitLabRepositoryIdResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 webhook_id: int):
+        """
+        GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise
+        :param int webhook_id: The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+        """
+        pulumi.set(__self__, "webhook_id", webhook_id)
+
+    @property
+    @pulumi.getter(name="webhookId")
+    def webhook_id(self) -> int:
+        """
+        The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
+        """
+        return pulumi.get(self, "webhook_id")
+
+
+@pulumi.output_type
+class GitLabSecretsResponse(dict):
+    """
+    GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiAccessTokenVersion":
+            suggest = "api_access_token_version"
+        elif key == "apiKeyVersion":
+            suggest = "api_key_version"
+        elif key == "readAccessTokenVersion":
+            suggest = "read_access_token_version"
+        elif key == "webhookSecretVersion":
+            suggest = "webhook_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitLabSecretsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitLabSecretsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitLabSecretsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_access_token_version: str,
+                 api_key_version: str,
+                 read_access_token_version: str,
+                 webhook_secret_version: str):
+        """
+        GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.
+        :param str api_access_token_version: The resource name for the api access token’s secret version
+        :param str api_key_version: Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+        :param str read_access_token_version: The resource name for the read access token’s secret version
+        :param str webhook_secret_version: Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+        """
+        pulumi.set(__self__, "api_access_token_version", api_access_token_version)
+        pulumi.set(__self__, "api_key_version", api_key_version)
+        pulumi.set(__self__, "read_access_token_version", read_access_token_version)
+        pulumi.set(__self__, "webhook_secret_version", webhook_secret_version)
+
+    @property
+    @pulumi.getter(name="apiAccessTokenVersion")
+    def api_access_token_version(self) -> str:
+        """
+        The resource name for the api access token’s secret version
+        """
+        return pulumi.get(self, "api_access_token_version")
+
+    @property
+    @pulumi.getter(name="apiKeyVersion")
+    def api_key_version(self) -> str:
+        """
+        Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
+        """
+        return pulumi.get(self, "api_key_version")
+
+    @property
+    @pulumi.getter(name="readAccessTokenVersion")
+    def read_access_token_version(self) -> str:
+        """
+        The resource name for the read access token’s secret version
+        """
+        return pulumi.get(self, "read_access_token_version")
+
+    @property
+    @pulumi.getter(name="webhookSecretVersion")
+    def webhook_secret_version(self) -> str:
+        """
+        Immutable. The resource name for the webhook secret’s secret version. Once this field has been set, it cannot be changed. If you need to change it, please create another GitLabConfig.
+        """
+        return pulumi.get(self, "webhook_secret_version")
+
+
+@pulumi.output_type
 class GitRepoSourceResponse(dict):
     """
     GitRepoSource describes a repo and ref of a code repository.
@@ -2696,6 +3084,28 @@ class SecretsResponse(dict):
         Secrets in Secret Manager and associated secret environment variable.
         """
         return pulumi.get(self, "secret_manager")
+
+
+@pulumi.output_type
+class ServiceDirectoryConfigResponse(dict):
+    """
+    ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+    """
+    def __init__(__self__, *,
+                 service: str):
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
+        :param str service: The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type

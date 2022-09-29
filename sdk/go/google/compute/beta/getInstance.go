@@ -87,6 +87,8 @@ type LookupInstanceResult struct {
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+	ResourceStatus ResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
@@ -305,6 +307,11 @@ func (o LookupInstanceResultOutput) ReservationAffinity() ReservationAffinityRes
 // Resource policies applied to this instance.
 func (o LookupInstanceResultOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+func (o LookupInstanceResultOutput) ResourceStatus() ResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) ResourceStatusResponse { return v.ResourceStatus }).(ResourceStatusResponseOutput)
 }
 
 // Reserved for future use.

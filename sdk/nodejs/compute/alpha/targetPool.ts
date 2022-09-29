@@ -76,6 +76,10 @@ export class TargetPool extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * The resource URL for the security policy associated with this target pool.
+     */
+    public /*out*/ readonly securityPolicy!: pulumi.Output<string>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class TargetPool extends pulumi.CustomResource {
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
@@ -128,6 +133,7 @@ export class TargetPool extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sessionAffinity"] = undefined /*out*/;

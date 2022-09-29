@@ -50,6 +50,8 @@ type LookupTenantResult struct {
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name string `pulumi:"name"`
+	// Configures which regions are enabled for SMS verification code sending.
+	SmsRegionConfig GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse `pulumi:"smsRegionConfig"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
 	TestPhoneNumbers map[string]string `pulumi:"testPhoneNumbers"`
 }
@@ -154,6 +156,13 @@ func (o LookupTenantResultOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 func (o LookupTenantResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configures which regions are enabled for SMS verification code sending.
+func (o LookupTenantResultOutput) SmsRegionConfig() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput {
+	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse {
+		return v.SmsRegionConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput)
 }
 
 // A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).

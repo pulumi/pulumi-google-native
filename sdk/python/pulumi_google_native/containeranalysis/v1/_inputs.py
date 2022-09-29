@@ -4998,6 +4998,7 @@ class VulnerabilityNoteArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSv3Args']] = None,
+                 cvss_version: Optional[pulumi.Input['VulnerabilityNoteCvssVersion']] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
                  severity: Optional[pulumi.Input['VulnerabilityNoteSeverity']] = None,
                  source_update_time: Optional[pulumi.Input[str]] = None,
@@ -5006,6 +5007,7 @@ class VulnerabilityNoteArgs:
         A security vulnerability that can be found in resources.
         :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
         :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSSv3 for this vulnerability.
+        :param pulumi.Input['VulnerabilityNoteCvssVersion'] cvss_version: CVSS version used to populate cvss_score and severity.
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: Details of all known distros and packages affected by this vulnerability.
         :param pulumi.Input['VulnerabilityNoteSeverity'] severity: The note provider assigned severity of this vulnerability.
         :param pulumi.Input[str] source_update_time: The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
@@ -5015,6 +5017,8 @@ class VulnerabilityNoteArgs:
             pulumi.set(__self__, "cvss_score", cvss_score)
         if cvss_v3 is not None:
             pulumi.set(__self__, "cvss_v3", cvss_v3)
+        if cvss_version is not None:
+            pulumi.set(__self__, "cvss_version", cvss_version)
         if details is not None:
             pulumi.set(__self__, "details", details)
         if severity is not None:
@@ -5047,6 +5051,18 @@ class VulnerabilityNoteArgs:
     @cvss_v3.setter
     def cvss_v3(self, value: Optional[pulumi.Input['CVSSv3Args']]):
         pulumi.set(self, "cvss_v3", value)
+
+    @property
+    @pulumi.getter(name="cvssVersion")
+    def cvss_version(self) -> Optional[pulumi.Input['VulnerabilityNoteCvssVersion']]:
+        """
+        CVSS version used to populate cvss_score and severity.
+        """
+        return pulumi.get(self, "cvss_version")
+
+    @cvss_version.setter
+    def cvss_version(self, value: Optional[pulumi.Input['VulnerabilityNoteCvssVersion']]):
+        pulumi.set(self, "cvss_version", value)
 
     @property
     @pulumi.getter

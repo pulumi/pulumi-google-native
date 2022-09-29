@@ -1928,7 +1928,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct GRPCHealthCheckPortSpecification : IEquatable<GRPCHealthCheckPortSpecification>
@@ -1941,15 +1941,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static GRPCHealthCheckPortSpecification UseFixedPort { get; } = new GRPCHealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static GRPCHealthCheckPortSpecification UseNamedPort { get; } = new GRPCHealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static GRPCHealthCheckPortSpecification UseServingPort { get; } = new GRPCHealthCheckPortSpecification("USE_SERVING_PORT");
 
@@ -2434,7 +2434,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTP2HealthCheckPortSpecification : IEquatable<HTTP2HealthCheckPortSpecification>
@@ -2447,15 +2447,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static HTTP2HealthCheckPortSpecification UseFixedPort { get; } = new HTTP2HealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static HTTP2HealthCheckPortSpecification UseNamedPort { get; } = new HTTP2HealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static HTTP2HealthCheckPortSpecification UseServingPort { get; } = new HTTP2HealthCheckPortSpecification("USE_SERVING_PORT");
 
@@ -2506,7 +2506,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTPHealthCheckPortSpecification : IEquatable<HTTPHealthCheckPortSpecification>
@@ -2519,15 +2519,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static HTTPHealthCheckPortSpecification UseFixedPort { get; } = new HTTPHealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static HTTPHealthCheckPortSpecification UseNamedPort { get; } = new HTTPHealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static HTTPHealthCheckPortSpecification UseServingPort { get; } = new HTTPHealthCheckPortSpecification("USE_SERVING_PORT");
 
@@ -2578,7 +2578,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTPSHealthCheckPortSpecification : IEquatable<HTTPSHealthCheckPortSpecification>
@@ -2591,15 +2591,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static HTTPSHealthCheckPortSpecification UseFixedPort { get; } = new HTTPSHealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static HTTPSHealthCheckPortSpecification UseNamedPort { get; } = new HTTPSHealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static HTTPSHealthCheckPortSpecification UseServingPort { get; } = new HTTPSHealthCheckPortSpecification("USE_SERVING_PORT");
 
@@ -5487,7 +5487,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct SSLHealthCheckPortSpecification : IEquatable<SSLHealthCheckPortSpecification>
@@ -5500,15 +5500,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static SSLHealthCheckPortSpecification UseFixedPort { get; } = new SSLHealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static SSLHealthCheckPortSpecification UseNamedPort { get; } = new SSLHealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static SSLHealthCheckPortSpecification UseServingPort { get; } = new SSLHealthCheckPortSpecification("USE_SERVING_PORT");
 
@@ -6526,7 +6526,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct TCPHealthCheckPortSpecification : IEquatable<TCPHealthCheckPortSpecification>
@@ -6539,15 +6539,15 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// The port number in port is used for health checking.
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
         /// </summary>
         public static TCPHealthCheckPortSpecification UseFixedPort { get; } = new TCPHealthCheckPortSpecification("USE_FIXED_PORT");
         /// <summary>
-        /// The portName is used for health checking.
+        /// Not supported.
         /// </summary>
         public static TCPHealthCheckPortSpecification UseNamedPort { get; } = new TCPHealthCheckPortSpecification("USE_NAMED_PORT");
         /// <summary>
-        /// For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking.
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
         /// </summary>
         public static TCPHealthCheckPortSpecification UseServingPort { get; } = new TCPHealthCheckPortSpecification("USE_SERVING_PORT");
 

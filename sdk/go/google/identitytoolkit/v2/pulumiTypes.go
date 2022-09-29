@@ -10,6 +10,338 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefault struct {
+	// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	DisallowedRegions []string `pulumi:"disallowedRegions"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2AllowByDefaultInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs and GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2AllowByDefaultInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput
+	ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput
+}
+
+// Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs struct {
+	// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	DisallowedRegions pulumi.StringArrayInput `pulumi:"disallowedRegions"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowByDefault)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput).ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs, GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtr and GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs
+
+func GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtr(v *GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2AllowByDefault)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2AllowByDefaultPtrType) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
+}
+
+// Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowByDefault)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2AllowByDefault) *GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
+}
+
+// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput) DisallowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowByDefault) []string { return v.DisallowedRegions }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2AllowByDefault)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2AllowByDefault) GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2AllowByDefault
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput)
+}
+
+// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput) DisallowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2AllowByDefault) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisallowedRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse struct {
+	// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	DisallowedRegions []string `pulumi:"disallowedRegions"`
+}
+
+// Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+type GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput {
+	return o
+}
+
+// Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput) DisallowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse) []string { return v.DisallowedRegions }).(pulumi.StringArrayOutput)
+}
+
+// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnly struct {
+	// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	AllowedRegions []string `pulumi:"allowedRegions"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs and GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput
+	ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput
+}
+
+// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs struct {
+	// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	AllowedRegions pulumi.StringArrayInput `pulumi:"allowedRegions"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput).ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs, GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtr and GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs
+
+func GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtr(v *GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2AllowlistOnly)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrType) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
+}
+
+// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowlistOnly)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2AllowlistOnly) *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
+}
+
+// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput) AllowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowlistOnly) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2AllowlistOnly)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly) GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2AllowlistOnly
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput)
+}
+
+// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput) AllowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse struct {
+	// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+	AllowedRegions []string `pulumi:"allowedRegions"`
+}
+
+// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+type GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput {
+	return o
+}
+
+// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+func (o GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput) AllowedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
+}
+
 // Additional config for SignInWithApple.
 type GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig struct {
 	// A list of Bundle ID's usable by this project
@@ -2146,6 +2478,206 @@ func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) Enabled()
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig struct {
+	// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+	AllowByDefault *GoogleCloudIdentitytoolkitAdminV2AllowByDefault `pulumi:"allowByDefault"`
+	// A policy of only allowing regions by explicitly adding them to an allowlist.
+	AllowlistOnly *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly `pulumi:"allowlistOnly"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs and GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput
+}
+
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs struct {
+	// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+	AllowByDefault GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput `pulumi:"allowByDefault"`
+	// A policy of only allowing regions by explicitly adding them to an allowlist.
+	AllowlistOnly GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput `pulumi:"allowlistOnly"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput).ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs, GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtr and GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs
+
+func GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtr(v *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput)
+}
+
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput)
+}
+
+// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) AllowByDefault() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
+		return v.AllowByDefault
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
+}
+
+// A policy of only allowing regions by explicitly adding them to an allowlist.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput) AllowlistOnly() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
+		return v.AllowlistOnly
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput)
+}
+
+// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) AllowByDefault() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
+		if v == nil {
+			return nil
+		}
+		return v.AllowByDefault
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput)
+}
+
+// A policy of only allowing regions by explicitly adding them to an allowlist.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput) AllowlistOnly() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig) *GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
+		if v == nil {
+			return nil
+		}
+		return v.AllowlistOnly
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput)
+}
+
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse struct {
+	// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+	AllowByDefault GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse `pulumi:"allowByDefault"`
+	// A policy of only allowing regions by explicitly adding them to an allowlist.
+	AllowlistOnly GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse `pulumi:"allowlistOnly"`
+}
+
+// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+type GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput {
+	return o
+}
+
+// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) AllowByDefault() GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse) GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse {
+		return v.AllowByDefault
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput)
+}
+
+// A policy of only allowing regions by explicitly adding them to an allowlist.
+func (o GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput) AllowlistOnly() GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse) GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse {
+		return v.AllowlistOnly
+	}).(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput)
+}
+
 // The SP's certificate data for IDP to verify the SAMLRequest generated by the SP.
 type GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse struct {
 	// Timestamp of the cert expiration instance.
@@ -3147,6 +3679,10 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowByDefaultInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs{})
@@ -3169,6 +3705,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
@@ -3179,6 +3717,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponseOutput{})
@@ -3214,6 +3758,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpConfigOutput{})

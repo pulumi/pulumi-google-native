@@ -4649,6 +4649,254 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput) Sub
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse) string { return v.SubNetwork }).(pulumi.StringOutput)
 }
 
+// Config for running scheduled notebooks.
+type GoogleCloudDataplexV1TaskNotebookTaskConfig struct {
+	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. Infrastructure specification for the execution.
+	InfrastructureSpec *GoogleCloudDataplexV1TaskInfrastructureSpec `pulumi:"infrastructureSpec"`
+	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	Notebook string `pulumi:"notebook"`
+}
+
+// GoogleCloudDataplexV1TaskNotebookTaskConfigInput is an input type that accepts GoogleCloudDataplexV1TaskNotebookTaskConfigArgs and GoogleCloudDataplexV1TaskNotebookTaskConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TaskNotebookTaskConfigInput` via:
+//
+//	GoogleCloudDataplexV1TaskNotebookTaskConfigArgs{...}
+type GoogleCloudDataplexV1TaskNotebookTaskConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigOutput
+	ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutputWithContext(context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigOutput
+}
+
+// Config for running scheduled notebooks.
+type GoogleCloudDataplexV1TaskNotebookTaskConfigArgs struct {
+	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. Infrastructure specification for the execution.
+	InfrastructureSpec GoogleCloudDataplexV1TaskInfrastructureSpecPtrInput `pulumi:"infrastructureSpec"`
+	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	Notebook pulumi.StringInput `pulumi:"notebook"`
+}
+
+func (GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TaskNotebookTaskConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
+	return i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput)
+}
+
+func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput).ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput is an input type that accepts GoogleCloudDataplexV1TaskNotebookTaskConfigArgs, GoogleCloudDataplexV1TaskNotebookTaskConfigPtr and GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput` via:
+//
+//	        GoogleCloudDataplexV1TaskNotebookTaskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput
+	ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput
+}
+
+type googleCloudDataplexV1TaskNotebookTaskConfigPtrType GoogleCloudDataplexV1TaskNotebookTaskConfigArgs
+
+func GoogleCloudDataplexV1TaskNotebookTaskConfigPtr(v *GoogleCloudDataplexV1TaskNotebookTaskConfigArgs) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput {
+	return (*googleCloudDataplexV1TaskNotebookTaskConfigPtrType)(v)
+}
+
+func (*googleCloudDataplexV1TaskNotebookTaskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TaskNotebookTaskConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1TaskNotebookTaskConfigPtrType) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return i.ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1TaskNotebookTaskConfigPtrType) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput)
+}
+
+// Config for running scheduled notebooks.
+type GoogleCloudDataplexV1TaskNotebookTaskConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TaskNotebookTaskConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return o.ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TaskNotebookTaskConfig) *GoogleCloudDataplexV1TaskNotebookTaskConfig {
+		return &v
+	}).(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput)
+}
+
+// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. GCS URIs of files to be placed in the working directory of each executor.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Infrastructure specification for the execution.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) InfrastructureSpec() GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) *GoogleCloudDataplexV1TaskInfrastructureSpec {
+		return v.InfrastructureSpec
+	}).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
+}
+
+// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) Notebook() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) string { return v.Notebook }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TaskNotebookTaskConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Elem() GoogleCloudDataplexV1TaskNotebookTaskConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) GoogleCloudDataplexV1TaskNotebookTaskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1TaskNotebookTaskConfig
+		return ret
+	}).(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput)
+}
+
+// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. GCS URIs of files to be placed in the working directory of each executor.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Infrastructure specification for the execution.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) InfrastructureSpec() GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) *GoogleCloudDataplexV1TaskInfrastructureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureSpec
+	}).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
+}
+
+// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Notebook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Notebook
+	}).(pulumi.StringPtrOutput)
+}
+
+// Config for running scheduled notebooks.
+type GoogleCloudDataplexV1TaskNotebookTaskConfigResponse struct {
+	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. Infrastructure specification for the execution.
+	InfrastructureSpec GoogleCloudDataplexV1TaskInfrastructureSpecResponse `pulumi:"infrastructureSpec"`
+	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	Notebook string `pulumi:"notebook"`
+}
+
+// Config for running scheduled notebooks.
+type GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TaskNotebookTaskConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput() GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToGoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput {
+	return o
+}
+
+// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. GCS URIs of files to be placed in the working directory of each executor.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Infrastructure specification for the execution.
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) InfrastructureSpec() GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) GoogleCloudDataplexV1TaskInfrastructureSpecResponse {
+		return v.InfrastructureSpec
+	}).(GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput)
+}
+
+// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) Notebook() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) string { return v.Notebook }).(pulumi.StringOutput)
+}
+
 // User-specified config for running a Spark task.
 type GoogleCloudDataplexV1TaskSparkTaskConfig struct {
 	// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -6297,7 +6545,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role *string `pulumi:"role"`
@@ -6318,7 +6566,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -6381,7 +6629,7 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6415,7 +6663,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role string `pulumi:"role"`
@@ -6441,7 +6689,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6754,6 +7002,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrInput)(nil)).Elem(), GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkInput)(nil)).Elem(), GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskNotebookTaskConfigInput)(nil)).Elem(), GoogleCloudDataplexV1TaskNotebookTaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TaskNotebookTaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskSparkTaskConfigInput)(nil)).Elem(), GoogleCloudDataplexV1TaskSparkTaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TaskSparkTaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskTriggerSpecInput)(nil)).Elem(), GoogleCloudDataplexV1TaskTriggerSpecArgs{})
@@ -6846,6 +7096,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskSparkTaskConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput{})

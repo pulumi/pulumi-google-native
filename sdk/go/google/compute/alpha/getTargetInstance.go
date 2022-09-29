@@ -41,6 +41,8 @@ type LookupTargetInstanceResult struct {
 	NatPolicy string `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network string `pulumi:"network"`
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -119,6 +121,11 @@ func (o LookupTargetInstanceResultOutput) NatPolicy() pulumi.StringOutput {
 // The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 func (o LookupTargetInstanceResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The resource URL for the security policy associated with this target instance.
+func (o LookupTargetInstanceResultOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetInstanceResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

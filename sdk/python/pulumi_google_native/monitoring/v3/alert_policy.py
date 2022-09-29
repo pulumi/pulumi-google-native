@@ -246,7 +246,7 @@ class AlertPolicy(pulumi.CustomResource):
                  validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  __props__=None):
         """
-        Creates a new alerting policy.
+        Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -270,7 +270,7 @@ class AlertPolicy(pulumi.CustomResource):
                  args: Optional[AlertPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new alerting policy.
+        Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
 
         :param str resource_name: The name of the resource.
         :param AlertPolicyArgs args: The arguments to use to populate this resource's properties.

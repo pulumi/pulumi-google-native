@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTaskResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, execution_spec=None, execution_status=None, labels=None, name=None, spark=None, state=None, trigger_spec=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, execution_spec=None, execution_status=None, labels=None, name=None, notebook=None, spark=None, state=None, trigger_spec=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +41,9 @@ class GetTaskResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if notebook and not isinstance(notebook, dict):
+            raise TypeError("Expected argument 'notebook' to be a dict")
+        pulumi.set(__self__, "notebook", notebook)
         if spark and not isinstance(spark, dict):
             raise TypeError("Expected argument 'spark' to be a dict")
         pulumi.set(__self__, "spark", spark)
@@ -115,6 +118,14 @@ class GetTaskResult:
 
     @property
     @pulumi.getter
+    def notebook(self) -> 'outputs.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse':
+        """
+        Config related to running scheduled Notebooks.
+        """
+        return pulumi.get(self, "notebook")
+
+    @property
+    @pulumi.getter
     def spark(self) -> 'outputs.GoogleCloudDataplexV1TaskSparkTaskConfigResponse':
         """
         Config related to running custom Spark tasks.
@@ -167,6 +178,7 @@ class AwaitableGetTaskResult(GetTaskResult):
             execution_status=self.execution_status,
             labels=self.labels,
             name=self.name,
+            notebook=self.notebook,
             spark=self.spark,
             state=self.state,
             trigger_spec=self.trigger_spec,
@@ -198,6 +210,7 @@ def get_task(lake_id: Optional[str] = None,
         execution_status=__ret__.execution_status,
         labels=__ret__.labels,
         name=__ret__.name,
+        notebook=__ret__.notebook,
         spark=__ret__.spark,
         state=__ret__.state,
         trigger_spec=__ret__.trigger_spec,

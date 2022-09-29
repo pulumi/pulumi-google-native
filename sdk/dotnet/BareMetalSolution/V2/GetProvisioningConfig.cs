@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly string CloudConsoleUri;
         /// <summary>
+        /// Optional. The user-defined identifier of the provisioning config.
+        /// </summary>
+        public readonly string CustomId;
+        /// <summary>
         /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         /// </summary>
         public readonly string Email;
@@ -84,7 +88,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// The name of the provisioning config.
+        /// The system-generated name of the provisioning config. This follows the UUID format.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         private GetProvisioningConfigResult(
             string cloudConsoleUri,
 
+            string customId,
+
             string email,
 
             string handoverServiceAccount,
@@ -145,6 +151,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             bool vpcScEnabled)
         {
             CloudConsoleUri = cloudConsoleUri;
+            CustomId = customId;
             Email = email;
             HandoverServiceAccount = handoverServiceAccount;
             Instances = instances;

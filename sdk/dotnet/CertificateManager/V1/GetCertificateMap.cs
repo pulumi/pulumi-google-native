@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// A list of GCLB targets which use this Certificate Map.
+        /// A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
         /// </summary>
         public readonly ImmutableArray<Outputs.GclbTargetResponse> GclbTargets;
         /// <summary>

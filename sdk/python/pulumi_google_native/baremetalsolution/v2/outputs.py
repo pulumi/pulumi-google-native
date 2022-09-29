@@ -1047,7 +1047,9 @@ class NetworkResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipAddress":
+        if key == "gatewayIp":
+            suggest = "gateway_ip"
+        elif key == "ipAddress":
             suggest = "ip_address"
         elif key == "jumboFramesEnabled":
             suggest = "jumbo_frames_enabled"
@@ -1073,6 +1075,7 @@ class NetworkResponse(dict):
 
     def __init__(__self__, *,
                  cidr: str,
+                 gateway_ip: str,
                  ip_address: str,
                  jumbo_frames_enabled: bool,
                  labels: Mapping[str, str],
@@ -1089,6 +1092,7 @@ class NetworkResponse(dict):
         """
         A Network.
         :param str cidr: The cidr of the Network.
+        :param str gateway_ip: Gateway ip address.
         :param str ip_address: IP address configured.
         :param bool jumbo_frames_enabled: Whether network uses standard frames or jumbo ones.
         :param Mapping[str, str] labels: Labels as key value pairs.
@@ -1104,6 +1108,7 @@ class NetworkResponse(dict):
         :param 'VRFResponse' vrf: The vrf for the Network.
         """
         pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "gateway_ip", gateway_ip)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         pulumi.set(__self__, "labels", labels)
@@ -1125,6 +1130,14 @@ class NetworkResponse(dict):
         The cidr of the Network.
         """
         return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> str:
+        """
+        Gateway ip address.
+        """
+        return pulumi.get(self, "gateway_ip")
 
     @property
     @pulumi.getter(name="ipAddress")

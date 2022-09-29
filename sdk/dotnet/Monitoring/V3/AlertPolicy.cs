@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
-    /// Creates a new alerting policy.
+    /// Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:AlertPolicy")]
     public partial class AlertPolicy : global::Pulumi.CustomResource

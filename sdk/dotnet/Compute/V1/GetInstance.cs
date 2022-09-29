@@ -174,6 +174,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
+        /// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        /// </summary>
+        public readonly Outputs.ResourceStatusResponse ResourceStatus;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -280,6 +284,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             ImmutableArray<string> resourcePolicies,
 
+            Outputs.ResourceStatusResponse resourceStatus,
+
             bool satisfiesPzs,
 
             Outputs.SchedulingResponse scheduling,
@@ -335,6 +341,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;
+            ResourceStatus = resourceStatus;
             SatisfiesPzs = satisfiesPzs;
             Scheduling = scheduling;
             SelfLink = selfLink;

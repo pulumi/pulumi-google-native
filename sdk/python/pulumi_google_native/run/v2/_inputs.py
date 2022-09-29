@@ -18,11 +18,16 @@ __all__ = [
     'GoogleCloudRunV2EnvVarSourceArgs',
     'GoogleCloudRunV2EnvVarArgs',
     'GoogleCloudRunV2ExecutionTemplateArgs',
+    'GoogleCloudRunV2GRPCActionArgs',
+    'GoogleCloudRunV2HTTPGetActionArgs',
+    'GoogleCloudRunV2HTTPHeaderArgs',
+    'GoogleCloudRunV2ProbeArgs',
     'GoogleCloudRunV2ResourceRequirementsArgs',
     'GoogleCloudRunV2RevisionScalingArgs',
     'GoogleCloudRunV2RevisionTemplateArgs',
     'GoogleCloudRunV2SecretKeySelectorArgs',
     'GoogleCloudRunV2SecretVolumeSourceArgs',
+    'GoogleCloudRunV2TCPSocketActionArgs',
     'GoogleCloudRunV2TaskTemplateArgs',
     'GoogleCloudRunV2TrafficTargetArgs',
     'GoogleCloudRunV2VersionToPathArgs',
@@ -146,9 +151,11 @@ class GoogleCloudRunV2ContainerArgs:
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  command: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]]] = None,
+                 liveness_probe: Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]]] = None,
                  resources: Optional[pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs']] = None,
+                 startup_probe: Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -157,9 +164,11 @@ class GoogleCloudRunV2ContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
+        :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] liveness_probe: Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
         :param pulumi.Input[str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
@@ -170,12 +179,16 @@ class GoogleCloudRunV2ContainerArgs:
             pulumi.set(__self__, "command", command)
         if env is not None:
             pulumi.set(__self__, "env", env)
+        if liveness_probe is not None:
+            pulumi.set(__self__, "liveness_probe", liveness_probe)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if startup_probe is not None:
+            pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -230,6 +243,18 @@ class GoogleCloudRunV2ContainerArgs:
         pulumi.set(self, "env", value)
 
     @property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']]:
+        """
+        Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @liveness_probe.setter
+    def liveness_probe(self, value: Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']]):
+        pulumi.set(self, "liveness_probe", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -264,6 +289,18 @@ class GoogleCloudRunV2ContainerArgs:
     @resources.setter
     def resources(self, value: Optional[pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs']]):
         pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']]:
+        """
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "startup_probe")
+
+    @startup_probe.setter
+    def startup_probe(self, value: Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']]):
+        pulumi.set(self, "startup_probe", value)
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -454,6 +491,276 @@ class GoogleCloudRunV2ExecutionTemplateArgs:
     @task_count.setter
     def task_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "task_count", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2GRPCActionArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        GRPCAction describes an action involving a GRPC port.
+        :param pulumi.Input[int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2HTTPGetActionArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2HTTPHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 scheme: Optional[pulumi.Input[str]] = None):
+        """
+        HTTPGetAction describes an action based on HTTP Get requests.
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2HTTPHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param pulumi.Input[str] path: Path to access on the HTTP server. Defaults to '/'.
+        :param pulumi.Input[str] scheme: Scheme to use for connecting to the host. Defaults to HTTP.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if http_headers is not None:
+            pulumi.set(__self__, "http_headers", http_headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2HTTPHeaderArgs']]]]:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @http_headers.setter
+    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2HTTPHeaderArgs']]]]):
+        pulumi.set(self, "http_headers", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme to use for connecting to the host. Defaults to HTTP.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2HTTPHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        HTTPHeader describes a custom header to be used in HTTP probes
+        :param pulumi.Input[str] name: The header field name
+        :param pulumi.Input[str] value: The header field value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2ProbeArgs:
+    def __init__(__self__, *,
+                 failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpc: Optional[pulumi.Input['GoogleCloudRunV2GRPCActionArgs']] = None,
+                 http_get: Optional[pulumi.Input['GoogleCloudRunV2HTTPGetActionArgs']] = None,
+                 initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+                 period_seconds: Optional[pulumi.Input[int]] = None,
+                 tcp_socket: Optional[pulumi.Input['GoogleCloudRunV2TCPSocketActionArgs']] = None,
+                 timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+        :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['GoogleCloudRunV2GRPCActionArgs'] grpc: GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
+        :param pulumi.Input['GoogleCloudRunV2HTTPGetActionArgs'] http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param pulumi.Input['GoogleCloudRunV2TCPSocketActionArgs'] tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['GoogleCloudRunV2GRPCActionArgs']]:
+        """
+        GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['GoogleCloudRunV2GRPCActionArgs']]):
+        pulumi.set(self, "grpc", value)
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> Optional[pulumi.Input['GoogleCloudRunV2HTTPGetActionArgs']]:
+        """
+        HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: Optional[pulumi.Input['GoogleCloudRunV2HTTPGetActionArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['GoogleCloudRunV2TCPSocketActionArgs']]:
+        """
+        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['GoogleCloudRunV2TCPSocketActionArgs']]):
+        pulumi.set(self, "tcp_socket", value)
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout_seconds", value)
 
 
 @pulumi.input_type
@@ -828,6 +1135,46 @@ class GoogleCloudRunV2SecretVolumeSourceArgs:
     @items.setter
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]]]):
         pulumi.set(self, "items", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2TCPSocketActionArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        TCPSocketAction describes an action based on opening a socket
+        :param pulumi.Input[str] host: Host name to connect to, defaults to the pod IP.
+        :param pulumi.Input[int] port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host name to connect to, defaults to the pod IP.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 
 @pulumi.input_type

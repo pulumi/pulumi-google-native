@@ -19,6 +19,8 @@ type ProvisioningConfig struct {
 
 	// URI to Cloud Console UI view of this provisioning config.
 	CloudConsoleUri pulumi.StringOutput `pulumi:"cloudConsoleUri"`
+	// Optional. The user-defined identifier of the provisioning config.
+	CustomId pulumi.StringOutput `pulumi:"customId"`
 	// Optional. Email provided to send a confirmation with provisioning config to.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// A service account to enable customers to access instance credentials upon handover.
@@ -26,7 +28,7 @@ type ProvisioningConfig struct {
 	// Instances to be created.
 	Instances InstanceConfigResponseArrayOutput `pulumi:"instances"`
 	Location  pulumi.StringOutput               `pulumi:"location"`
-	// The name of the provisioning config.
+	// The system-generated name of the provisioning config. This follows the UUID format.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networks to be created.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
@@ -89,6 +91,8 @@ func (ProvisioningConfigState) ElementType() reflect.Type {
 }
 
 type provisioningConfigArgs struct {
+	// Optional. The user-defined identifier of the provisioning config.
+	CustomId *string `pulumi:"customId"`
 	// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
 	//
 	// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -114,6 +118,8 @@ type provisioningConfigArgs struct {
 
 // The set of arguments for constructing a ProvisioningConfig resource.
 type ProvisioningConfigArgs struct {
+	// Optional. The user-defined identifier of the provisioning config.
+	CustomId pulumi.StringPtrInput
 	// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
 	//
 	// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -179,6 +185,11 @@ func (o ProvisioningConfigOutput) CloudConsoleUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.CloudConsoleUri }).(pulumi.StringOutput)
 }
 
+// Optional. The user-defined identifier of the provisioning config.
+func (o ProvisioningConfigOutput) CustomId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.CustomId }).(pulumi.StringOutput)
+}
+
 // Optional. Email provided to send a confirmation with provisioning config to.
 func (o ProvisioningConfigOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
@@ -198,7 +209,7 @@ func (o ProvisioningConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the provisioning config.
+// The system-generated name of the provisioning config. This follows the UUID format.
 func (o ProvisioningConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

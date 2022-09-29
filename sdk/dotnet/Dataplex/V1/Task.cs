@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Config related to running scheduled Notebooks.
+        /// </summary>
+        [Output("notebook")]
+        public Output<Outputs.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse> Notebook { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -196,6 +202,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Config related to running scheduled Notebooks.
+        /// </summary>
+        [Input("notebook")]
+        public Input<Inputs.GoogleCloudDataplexV1TaskNotebookTaskConfigArgs>? Notebook { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

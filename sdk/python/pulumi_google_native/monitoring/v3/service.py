@@ -19,6 +19,7 @@ class ServiceArgs:
                  v3_id: pulumi.Input[str],
                  v3_id1: pulumi.Input[str],
                  app_engine: Optional[pulumi.Input['AppEngineArgs']] = None,
+                 basic_service: Optional[pulumi.Input['BasicServiceArgs']] = None,
                  cloud_endpoints: Optional[pulumi.Input['CloudEndpointsArgs']] = None,
                  cloud_run: Optional[pulumi.Input['CloudRunArgs']] = None,
                  cluster_istio: Optional[pulumi.Input['ClusterIstioArgs']] = None,
@@ -36,6 +37,7 @@ class ServiceArgs:
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input['AppEngineArgs'] app_engine: Type used for App Engine services.
+        :param pulumi.Input['BasicServiceArgs'] basic_service: Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
         :param pulumi.Input['CloudEndpointsArgs'] cloud_endpoints: Type used for Cloud Endpoints services.
         :param pulumi.Input['CloudRunArgs'] cloud_run: Type used for Cloud Run services.
         :param pulumi.Input['ClusterIstioArgs'] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
@@ -55,6 +57,8 @@ class ServiceArgs:
         pulumi.set(__self__, "v3_id1", v3_id1)
         if app_engine is not None:
             pulumi.set(__self__, "app_engine", app_engine)
+        if basic_service is not None:
+            pulumi.set(__self__, "basic_service", basic_service)
         if cloud_endpoints is not None:
             pulumi.set(__self__, "cloud_endpoints", cloud_endpoints)
         if cloud_run is not None:
@@ -113,6 +117,18 @@ class ServiceArgs:
     @app_engine.setter
     def app_engine(self, value: Optional[pulumi.Input['AppEngineArgs']]):
         pulumi.set(self, "app_engine", value)
+
+    @property
+    @pulumi.getter(name="basicService")
+    def basic_service(self) -> Optional[pulumi.Input['BasicServiceArgs']]:
+        """
+        Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "basic_service")
+
+    @basic_service.setter
+    def basic_service(self, value: Optional[pulumi.Input['BasicServiceArgs']]):
+        pulumi.set(self, "basic_service", value)
 
     @property
     @pulumi.getter(name="cloudEndpoints")
@@ -289,6 +305,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
+                 basic_service: Optional[pulumi.Input[pulumi.InputType['BasicServiceArgs']]] = None,
                  cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
                  cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
@@ -313,6 +330,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AppEngineArgs']] app_engine: Type used for App Engine services.
+        :param pulumi.Input[pulumi.InputType['BasicServiceArgs']] basic_service: Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
         :param pulumi.Input[pulumi.InputType['CloudEndpointsArgs']] cloud_endpoints: Type used for Cloud Endpoints services.
         :param pulumi.Input[pulumi.InputType['CloudRunArgs']] cloud_run: Type used for Cloud Run services.
         :param pulumi.Input[pulumi.InputType['ClusterIstioArgs']] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
@@ -354,6 +372,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
+                 basic_service: Optional[pulumi.Input[pulumi.InputType['BasicServiceArgs']]] = None,
                  cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
                  cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
                  cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
@@ -380,6 +399,7 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["app_engine"] = app_engine
+            __props__.__dict__["basic_service"] = basic_service
             __props__.__dict__["cloud_endpoints"] = cloud_endpoints
             __props__.__dict__["cloud_run"] = cloud_run
             __props__.__dict__["cluster_istio"] = cluster_istio
@@ -425,6 +445,7 @@ class Service(pulumi.CustomResource):
         __props__ = ServiceArgs.__new__(ServiceArgs)
 
         __props__.__dict__["app_engine"] = None
+        __props__.__dict__["basic_service"] = None
         __props__.__dict__["cloud_endpoints"] = None
         __props__.__dict__["cloud_run"] = None
         __props__.__dict__["cluster_istio"] = None
@@ -450,6 +471,14 @@ class Service(pulumi.CustomResource):
         Type used for App Engine services.
         """
         return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="basicService")
+    def basic_service(self) -> pulumi.Output['outputs.BasicServiceResponse']:
+        """
+        Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "basic_service")
 
     @property
     @pulumi.getter(name="cloudEndpoints")

@@ -61,6 +61,10 @@ export interface GetTaskResult {
      */
     readonly name: string;
     /**
+     * Config related to running scheduled Notebooks.
+     */
+    readonly notebook: outputs.dataplex.v1.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse;
+    /**
      * Config related to running custom Spark tasks.
      */
     readonly spark: outputs.dataplex.v1.GoogleCloudDataplexV1TaskSparkTaskConfigResponse;

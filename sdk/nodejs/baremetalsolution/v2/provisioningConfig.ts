@@ -45,6 +45,10 @@ export class ProvisioningConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudConsoleUri!: pulumi.Output<string>;
     /**
+     * Optional. The user-defined identifier of the provisioning config.
+     */
+    public readonly customId!: pulumi.Output<string>;
+    /**
      * Optional. Email provided to send a confirmation with provisioning config to.
      */
     public readonly email!: pulumi.Output<string>;
@@ -58,7 +62,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
     public readonly instances!: pulumi.Output<outputs.baremetalsolution.v2.InstanceConfigResponse[]>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of the provisioning config.
+     * The system-generated name of the provisioning config. This follows the UUID format.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -102,6 +106,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["customId"] = args ? args.customId : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["handoverServiceAccount"] = args ? args.handoverServiceAccount : undefined;
             resourceInputs["instances"] = args ? args.instances : undefined;
@@ -118,6 +123,7 @@ export class ProvisioningConfig extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["cloudConsoleUri"] = undefined /*out*/;
+            resourceInputs["customId"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["handoverServiceAccount"] = undefined /*out*/;
             resourceInputs["instances"] = undefined /*out*/;
@@ -143,6 +149,10 @@ export class ProvisioningConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a ProvisioningConfig resource.
  */
 export interface ProvisioningConfigArgs {
+    /**
+     * Optional. The user-defined identifier of the provisioning config.
+     */
+    customId?: pulumi.Input<string>;
     /**
      * Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
      *

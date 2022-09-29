@@ -10,6 +10,957 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type SecurityPolicyUserDefinedFieldResponse struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base string `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size int `pulumi:"size"`
+}
+
+type SecurityPolicyUserDefinedFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutput() SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Base() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Base }).(pulumi.StringOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Mask() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Mask }).(pulumi.StringOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutput() SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedFieldResponse {
+		return vs[0].([]SecurityPolicyUserDefinedFieldResponse)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldResponseOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettings struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication *string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy *AuthenticationPolicy `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// SecuritySettingsInput is an input type that accepts SecuritySettingsArgs and SecuritySettingsOutput values.
+// You can construct a concrete instance of `SecuritySettingsInput` via:
+//
+//	SecuritySettingsArgs{...}
+type SecuritySettingsInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsOutput() SecuritySettingsOutput
+	ToSecuritySettingsOutputWithContext(context.Context) SecuritySettingsOutput
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsArgs struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyPtrInput `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (SecuritySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return i.ToSecuritySettingsOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput)
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput).ToSecuritySettingsPtrOutputWithContext(ctx)
+}
+
+// SecuritySettingsPtrInput is an input type that accepts SecuritySettingsArgs, SecuritySettingsPtr and SecuritySettingsPtrOutput values.
+// You can construct a concrete instance of `SecuritySettingsPtrInput` via:
+//
+//	        SecuritySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecuritySettingsPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput
+	ToSecuritySettingsPtrOutputWithContext(context.Context) SecuritySettingsPtrOutput
+}
+
+type securitySettingsPtrType SecuritySettingsArgs
+
+func SecuritySettingsPtr(v *SecuritySettingsArgs) SecuritySettingsPtrInput {
+	return (*securitySettingsPtrType)(v)
+}
+
+func (*securitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsPtrOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettings) *SecuritySettings {
+		return &v
+	}).(SecuritySettingsPtrOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthenticationPolicy { return v.AuthenticationPolicy }).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthorizationConfig { return v.AuthorizationConfig }).(AuthorizationConfigPtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type SecuritySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
+	return o.ApplyT(func(v *SecuritySettings) SecuritySettings {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettings
+		return ret
+	}).(SecuritySettingsOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsPtrOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthenticationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationPolicy
+	}).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsPtrOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthorizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationConfig
+	}).(AuthorizationConfigPtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *ClientTlsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsSettings
+	}).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecuritySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsResponse struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyResponse `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigResponse `pulumi:"authorizationConfig"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsResponse `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingsResponse)(nil)).Elem()
+}
+
+func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutput() SecuritySettingsResponseOutput {
+	return o
+}
+
+func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutputWithContext(ctx context.Context) SecuritySettingsResponseOutput {
+	return o
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsResponseOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsResponseOutput) AuthenticationPolicy() AuthenticationPolicyResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) AuthenticationPolicyResponse { return v.AuthenticationPolicy }).(AuthenticationPolicyResponseOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsResponseOutput) AuthorizationConfig() AuthorizationConfigResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) AuthorizationConfigResponse { return v.AuthorizationConfig }).(AuthorizationConfigResponseOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsResponseOutput) ClientTlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsResponseOutput) ClientTlsSettings() ClientTlsSettingsResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) ClientTlsSettingsResponse { return v.ClientTlsSettings }).(ClientTlsSettingsResponseOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type ServerBinding struct {
+	Type *ServerBindingType `pulumi:"type"`
+}
+
+// ServerBindingInput is an input type that accepts ServerBindingArgs and ServerBindingOutput values.
+// You can construct a concrete instance of `ServerBindingInput` via:
+//
+//	ServerBindingArgs{...}
+type ServerBindingInput interface {
+	pulumi.Input
+
+	ToServerBindingOutput() ServerBindingOutput
+	ToServerBindingOutputWithContext(context.Context) ServerBindingOutput
+}
+
+type ServerBindingArgs struct {
+	Type ServerBindingTypePtrInput `pulumi:"type"`
+}
+
+func (ServerBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerBinding)(nil)).Elem()
+}
+
+func (i ServerBindingArgs) ToServerBindingOutput() ServerBindingOutput {
+	return i.ToServerBindingOutputWithContext(context.Background())
+}
+
+func (i ServerBindingArgs) ToServerBindingOutputWithContext(ctx context.Context) ServerBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerBindingOutput)
+}
+
+func (i ServerBindingArgs) ToServerBindingPtrOutput() ServerBindingPtrOutput {
+	return i.ToServerBindingPtrOutputWithContext(context.Background())
+}
+
+func (i ServerBindingArgs) ToServerBindingPtrOutputWithContext(ctx context.Context) ServerBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerBindingOutput).ToServerBindingPtrOutputWithContext(ctx)
+}
+
+// ServerBindingPtrInput is an input type that accepts ServerBindingArgs, ServerBindingPtr and ServerBindingPtrOutput values.
+// You can construct a concrete instance of `ServerBindingPtrInput` via:
+//
+//	        ServerBindingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerBindingPtrInput interface {
+	pulumi.Input
+
+	ToServerBindingPtrOutput() ServerBindingPtrOutput
+	ToServerBindingPtrOutputWithContext(context.Context) ServerBindingPtrOutput
+}
+
+type serverBindingPtrType ServerBindingArgs
+
+func ServerBindingPtr(v *ServerBindingArgs) ServerBindingPtrInput {
+	return (*serverBindingPtrType)(v)
+}
+
+func (*serverBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerBinding)(nil)).Elem()
+}
+
+func (i *serverBindingPtrType) ToServerBindingPtrOutput() ServerBindingPtrOutput {
+	return i.ToServerBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *serverBindingPtrType) ToServerBindingPtrOutputWithContext(ctx context.Context) ServerBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerBindingPtrOutput)
+}
+
+type ServerBindingOutput struct{ *pulumi.OutputState }
+
+func (ServerBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerBinding)(nil)).Elem()
+}
+
+func (o ServerBindingOutput) ToServerBindingOutput() ServerBindingOutput {
+	return o
+}
+
+func (o ServerBindingOutput) ToServerBindingOutputWithContext(ctx context.Context) ServerBindingOutput {
+	return o
+}
+
+func (o ServerBindingOutput) ToServerBindingPtrOutput() ServerBindingPtrOutput {
+	return o.ToServerBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ServerBindingOutput) ToServerBindingPtrOutputWithContext(ctx context.Context) ServerBindingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerBinding) *ServerBinding {
+		return &v
+	}).(ServerBindingPtrOutput)
+}
+
+func (o ServerBindingOutput) Type() ServerBindingTypePtrOutput {
+	return o.ApplyT(func(v ServerBinding) *ServerBindingType { return v.Type }).(ServerBindingTypePtrOutput)
+}
+
+type ServerBindingPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerBinding)(nil)).Elem()
+}
+
+func (o ServerBindingPtrOutput) ToServerBindingPtrOutput() ServerBindingPtrOutput {
+	return o
+}
+
+func (o ServerBindingPtrOutput) ToServerBindingPtrOutputWithContext(ctx context.Context) ServerBindingPtrOutput {
+	return o
+}
+
+func (o ServerBindingPtrOutput) Elem() ServerBindingOutput {
+	return o.ApplyT(func(v *ServerBinding) ServerBinding {
+		if v != nil {
+			return *v
+		}
+		var ret ServerBinding
+		return ret
+	}).(ServerBindingOutput)
+}
+
+func (o ServerBindingPtrOutput) Type() ServerBindingTypePtrOutput {
+	return o.ApplyT(func(v *ServerBinding) *ServerBindingType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ServerBindingTypePtrOutput)
+}
+
+type ServerBindingResponse struct {
+	Type string `pulumi:"type"`
+}
+
+type ServerBindingResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerBindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerBindingResponse)(nil)).Elem()
+}
+
+func (o ServerBindingResponseOutput) ToServerBindingResponseOutput() ServerBindingResponseOutput {
+	return o
+}
+
+func (o ServerBindingResponseOutput) ToServerBindingResponseOutputWithContext(ctx context.Context) ServerBindingResponseOutput {
+	return o
+}
+
+func (o ServerBindingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerBindingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The TLS settings for the server.
+type ServerTlsSettings struct {
+	// Configures the mechanism to obtain security certificates and identity information.
+	ProxyTlsContext *TlsContext `pulumi:"proxyTlsContext"`
+	// A list of alternate names to verify the subject identity in the certificate presented by the client.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+	// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	TlsMode *ServerTlsSettingsTlsMode `pulumi:"tlsMode"`
+}
+
+// ServerTlsSettingsInput is an input type that accepts ServerTlsSettingsArgs and ServerTlsSettingsOutput values.
+// You can construct a concrete instance of `ServerTlsSettingsInput` via:
+//
+//	ServerTlsSettingsArgs{...}
+type ServerTlsSettingsInput interface {
+	pulumi.Input
+
+	ToServerTlsSettingsOutput() ServerTlsSettingsOutput
+	ToServerTlsSettingsOutputWithContext(context.Context) ServerTlsSettingsOutput
+}
+
+// The TLS settings for the server.
+type ServerTlsSettingsArgs struct {
+	// Configures the mechanism to obtain security certificates and identity information.
+	ProxyTlsContext TlsContextPtrInput `pulumi:"proxyTlsContext"`
+	// A list of alternate names to verify the subject identity in the certificate presented by the client.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+	// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	TlsMode ServerTlsSettingsTlsModePtrInput `pulumi:"tlsMode"`
+}
+
+func (ServerTlsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsSettings)(nil)).Elem()
+}
+
+func (i ServerTlsSettingsArgs) ToServerTlsSettingsOutput() ServerTlsSettingsOutput {
+	return i.ToServerTlsSettingsOutputWithContext(context.Background())
+}
+
+func (i ServerTlsSettingsArgs) ToServerTlsSettingsOutputWithContext(ctx context.Context) ServerTlsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsSettingsOutput)
+}
+
+func (i ServerTlsSettingsArgs) ToServerTlsSettingsPtrOutput() ServerTlsSettingsPtrOutput {
+	return i.ToServerTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsSettingsArgs) ToServerTlsSettingsPtrOutputWithContext(ctx context.Context) ServerTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsSettingsOutput).ToServerTlsSettingsPtrOutputWithContext(ctx)
+}
+
+// ServerTlsSettingsPtrInput is an input type that accepts ServerTlsSettingsArgs, ServerTlsSettingsPtr and ServerTlsSettingsPtrOutput values.
+// You can construct a concrete instance of `ServerTlsSettingsPtrInput` via:
+//
+//	        ServerTlsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToServerTlsSettingsPtrOutput() ServerTlsSettingsPtrOutput
+	ToServerTlsSettingsPtrOutputWithContext(context.Context) ServerTlsSettingsPtrOutput
+}
+
+type serverTlsSettingsPtrType ServerTlsSettingsArgs
+
+func ServerTlsSettingsPtr(v *ServerTlsSettingsArgs) ServerTlsSettingsPtrInput {
+	return (*serverTlsSettingsPtrType)(v)
+}
+
+func (*serverTlsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsSettings)(nil)).Elem()
+}
+
+func (i *serverTlsSettingsPtrType) ToServerTlsSettingsPtrOutput() ServerTlsSettingsPtrOutput {
+	return i.ToServerTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsSettingsPtrType) ToServerTlsSettingsPtrOutputWithContext(ctx context.Context) ServerTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsSettingsPtrOutput)
+}
+
+// The TLS settings for the server.
+type ServerTlsSettingsOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsSettings)(nil)).Elem()
+}
+
+func (o ServerTlsSettingsOutput) ToServerTlsSettingsOutput() ServerTlsSettingsOutput {
+	return o
+}
+
+func (o ServerTlsSettingsOutput) ToServerTlsSettingsOutputWithContext(ctx context.Context) ServerTlsSettingsOutput {
+	return o
+}
+
+func (o ServerTlsSettingsOutput) ToServerTlsSettingsPtrOutput() ServerTlsSettingsPtrOutput {
+	return o.ToServerTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsSettingsOutput) ToServerTlsSettingsPtrOutputWithContext(ctx context.Context) ServerTlsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsSettings) *ServerTlsSettings {
+		return &v
+	}).(ServerTlsSettingsPtrOutput)
+}
+
+// Configures the mechanism to obtain security certificates and identity information.
+func (o ServerTlsSettingsOutput) ProxyTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v ServerTlsSettings) *TlsContext { return v.ProxyTlsContext }).(TlsContextPtrOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate presented by the client.
+func (o ServerTlsSettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServerTlsSettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ServerTlsSettingsOutput) TlsMode() ServerTlsSettingsTlsModePtrOutput {
+	return o.ApplyT(func(v ServerTlsSettings) *ServerTlsSettingsTlsMode { return v.TlsMode }).(ServerTlsSettingsTlsModePtrOutput)
+}
+
+type ServerTlsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsSettings)(nil)).Elem()
+}
+
+func (o ServerTlsSettingsPtrOutput) ToServerTlsSettingsPtrOutput() ServerTlsSettingsPtrOutput {
+	return o
+}
+
+func (o ServerTlsSettingsPtrOutput) ToServerTlsSettingsPtrOutputWithContext(ctx context.Context) ServerTlsSettingsPtrOutput {
+	return o
+}
+
+func (o ServerTlsSettingsPtrOutput) Elem() ServerTlsSettingsOutput {
+	return o.ApplyT(func(v *ServerTlsSettings) ServerTlsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsSettings
+		return ret
+	}).(ServerTlsSettingsOutput)
+}
+
+// Configures the mechanism to obtain security certificates and identity information.
+func (o ServerTlsSettingsPtrOutput) ProxyTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v *ServerTlsSettings) *TlsContext {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyTlsContext
+	}).(TlsContextPtrOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate presented by the client.
+func (o ServerTlsSettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerTlsSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ServerTlsSettingsPtrOutput) TlsMode() ServerTlsSettingsTlsModePtrOutput {
+	return o.ApplyT(func(v *ServerTlsSettings) *ServerTlsSettingsTlsMode {
+		if v == nil {
+			return nil
+		}
+		return v.TlsMode
+	}).(ServerTlsSettingsTlsModePtrOutput)
+}
+
+// The TLS settings for the server.
+type ServerTlsSettingsResponse struct {
+	// Configures the mechanism to obtain security certificates and identity information.
+	ProxyTlsContext TlsContextResponse `pulumi:"proxyTlsContext"`
+	// A list of alternate names to verify the subject identity in the certificate presented by the client.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+	// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	TlsMode string `pulumi:"tlsMode"`
+}
+
+// The TLS settings for the server.
+type ServerTlsSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsSettingsResponse)(nil)).Elem()
+}
+
+func (o ServerTlsSettingsResponseOutput) ToServerTlsSettingsResponseOutput() ServerTlsSettingsResponseOutput {
+	return o
+}
+
+func (o ServerTlsSettingsResponseOutput) ToServerTlsSettingsResponseOutputWithContext(ctx context.Context) ServerTlsSettingsResponseOutput {
+	return o
+}
+
+// Configures the mechanism to obtain security certificates and identity information.
+func (o ServerTlsSettingsResponseOutput) ProxyTlsContext() TlsContextResponseOutput {
+	return o.ApplyT(func(v ServerTlsSettingsResponse) TlsContextResponse { return v.ProxyTlsContext }).(TlsContextResponseOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate presented by the client.
+func (o ServerTlsSettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServerTlsSettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ServerTlsSettingsResponseOutput) TlsMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTlsSettingsResponse) string { return v.TlsMode }).(pulumi.StringOutput)
+}
+
+// A service account.
+type ServiceAccount struct {
+	// Email address of the service account.
+	Email *string `pulumi:"email"`
+	// The list of scopes to be made available for this service account.
+	Scopes []string `pulumi:"scopes"`
+}
+
+// ServiceAccountInput is an input type that accepts ServiceAccountArgs and ServiceAccountOutput values.
+// You can construct a concrete instance of `ServiceAccountInput` via:
+//
+//	ServiceAccountArgs{...}
+type ServiceAccountInput interface {
+	pulumi.Input
+
+	ToServiceAccountOutput() ServiceAccountOutput
+	ToServiceAccountOutputWithContext(context.Context) ServiceAccountOutput
+}
+
+// A service account.
+type ServiceAccountArgs struct {
+	// Email address of the service account.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The list of scopes to be made available for this service account.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (ServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAccount)(nil)).Elem()
+}
+
+func (i ServiceAccountArgs) ToServiceAccountOutput() ServiceAccountOutput {
+	return i.ToServiceAccountOutputWithContext(context.Background())
+}
+
+func (i ServiceAccountArgs) ToServiceAccountOutputWithContext(ctx context.Context) ServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountOutput)
+}
+
+// ServiceAccountArrayInput is an input type that accepts ServiceAccountArray and ServiceAccountArrayOutput values.
+// You can construct a concrete instance of `ServiceAccountArrayInput` via:
+//
+//	ServiceAccountArray{ ServiceAccountArgs{...} }
+type ServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToServiceAccountArrayOutput() ServiceAccountArrayOutput
+	ToServiceAccountArrayOutputWithContext(context.Context) ServiceAccountArrayOutput
+}
+
+type ServiceAccountArray []ServiceAccountInput
+
+func (ServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAccount)(nil)).Elem()
+}
+
+func (i ServiceAccountArray) ToServiceAccountArrayOutput() ServiceAccountArrayOutput {
+	return i.ToServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAccountArray) ToServiceAccountArrayOutputWithContext(ctx context.Context) ServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountArrayOutput)
+}
+
+// A service account.
+type ServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAccount)(nil)).Elem()
+}
+
+func (o ServiceAccountOutput) ToServiceAccountOutput() ServiceAccountOutput {
+	return o
+}
+
+func (o ServiceAccountOutput) ToServiceAccountOutputWithContext(ctx context.Context) ServiceAccountOutput {
+	return o
+}
+
+// Email address of the service account.
+func (o ServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The list of scopes to be made available for this service account.
+func (o ServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type ServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAccount)(nil)).Elem()
+}
+
+func (o ServiceAccountArrayOutput) ToServiceAccountArrayOutput() ServiceAccountArrayOutput {
+	return o
+}
+
+func (o ServiceAccountArrayOutput) ToServiceAccountArrayOutputWithContext(ctx context.Context) ServiceAccountArrayOutput {
+	return o
+}
+
+func (o ServiceAccountArrayOutput) Index(i pulumi.IntInput) ServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAccount {
+		return vs[0].([]ServiceAccount)[vs[1].(int)]
+	}).(ServiceAccountOutput)
+}
+
+// A service account.
+type ServiceAccountResponse struct {
+	// Email address of the service account.
+	Email string `pulumi:"email"`
+	// The list of scopes to be made available for this service account.
+	Scopes []string `pulumi:"scopes"`
+}
+
+// A service account.
+type ServiceAccountResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAccountResponse)(nil)).Elem()
+}
+
+func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutput() ServiceAccountResponseOutput {
+	return o
+}
+
+func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutputWithContext(ctx context.Context) ServiceAccountResponseOutput {
+	return o
+}
+
+// Email address of the service account.
+func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The list of scopes to be made available for this service account.
+func (o ServiceAccountResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceAccountResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type ServiceAccountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAccountResponse)(nil)).Elem()
+}
+
+func (o ServiceAccountResponseArrayOutput) ToServiceAccountResponseArrayOutput() ServiceAccountResponseArrayOutput {
+	return o
+}
+
+func (o ServiceAccountResponseArrayOutput) ToServiceAccountResponseArrayOutputWithContext(ctx context.Context) ServiceAccountResponseArrayOutput {
+	return o
+}
+
+func (o ServiceAccountResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAccountResponse {
+		return vs[0].([]ServiceAccountResponse)[vs[1].(int)]
+	}).(ServiceAccountResponseOutput)
+}
+
 // [Output Only] A connection connected to this service attachment.
 type ServiceAttachmentConnectedEndpointResponse struct {
 	// The url of a connected endpoint.
@@ -3201,17 +4152,17 @@ func (o SubsettingResponseOutput) SubsetSize() pulumi.IntOutput {
 }
 
 type TCPHealthCheck struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request *string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response *string `pulumi:"response"`
 }
 
@@ -3227,17 +4178,17 @@ type TCPHealthCheckInput interface {
 }
 
 type TCPHealthCheckArgs struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification TCPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader TCPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request pulumi.StringPtrInput `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response pulumi.StringPtrInput `pulumi:"response"`
 }
 
@@ -3318,17 +4269,17 @@ func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.C
 	}).(TCPHealthCheckPtrOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckPortSpecification { return v.PortSpecification }).(TCPHealthCheckPortSpecificationPtrOutput)
 }
@@ -3338,12 +4289,12 @@ func (o TCPHealthCheckOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckProxyHeader { return v.ProxyHeader }).(TCPHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Request }).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
 }
@@ -3372,7 +4323,7 @@ func (o TCPHealthCheckPtrOutput) Elem() TCPHealthCheckOutput {
 	}).(TCPHealthCheckOutput)
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *int {
 		if v == nil {
@@ -3382,7 +4333,7 @@ func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -3392,7 +4343,7 @@ func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckPtrOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckPortSpecification {
 		if v == nil {
@@ -3412,7 +4363,7 @@ func (o TCPHealthCheckPtrOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutpu
 	}).(TCPHealthCheckProxyHeaderPtrOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -3422,7 +4373,7 @@ func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TCPHealthCheck) *string {
 		if v == nil {
@@ -3433,17 +4384,17 @@ func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type TCPHealthCheckResponse struct {
-	// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
-	// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 	Request string `pulumi:"request"`
-	// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 	Response string `pulumi:"response"`
 }
 
@@ -3461,17 +4412,17 @@ func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutputWithContext(
 	return o
 }
 
-// The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
 func (o TCPHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o TCPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o TCPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -3481,12 +4432,12 @@ func (o TCPHealthCheckResponseOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
-// The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
 func (o TCPHealthCheckResponseOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Request }).(pulumi.StringOutput)
 }
 
-// The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
 func (o TCPHealthCheckResponseOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -4485,9 +5436,9 @@ func (o TlsValidationContextResponseOutput) ValidationSource() pulumi.StringOutp
 }
 
 type UDPHealthCheck struct {
-	// The UDP port number for the health check request. Valid values are 1 through 65535.
+	// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port *int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName *string `pulumi:"portName"`
 	// Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
 	Request *string `pulumi:"request"`
@@ -4507,9 +5458,9 @@ type UDPHealthCheckInput interface {
 }
 
 type UDPHealthCheckArgs struct {
-	// The UDP port number for the health check request. Valid values are 1 through 65535.
+	// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
 	// Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
 	Request pulumi.StringPtrInput `pulumi:"request"`
@@ -4594,12 +5545,12 @@ func (o UDPHealthCheckOutput) ToUDPHealthCheckPtrOutputWithContext(ctx context.C
 	}).(UDPHealthCheckPtrOutput)
 }
 
-// The UDP port number for the health check request. Valid values are 1 through 65535.
+// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o UDPHealthCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UDPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o UDPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UDPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
@@ -4638,7 +5589,7 @@ func (o UDPHealthCheckPtrOutput) Elem() UDPHealthCheckOutput {
 	}).(UDPHealthCheckOutput)
 }
 
-// The UDP port number for the health check request. Valid values are 1 through 65535.
+// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o UDPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UDPHealthCheck) *int {
 		if v == nil {
@@ -4648,7 +5599,7 @@ func (o UDPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o UDPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UDPHealthCheck) *string {
 		if v == nil {
@@ -4679,9 +5630,9 @@ func (o UDPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 }
 
 type UDPHealthCheckResponse struct {
-	// The UDP port number for the health check request. Valid values are 1 through 65535.
+	// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 	Port int `pulumi:"port"`
-	// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+	// Not supported.
 	PortName string `pulumi:"portName"`
 	// Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
 	Request string `pulumi:"request"`
@@ -4703,12 +5654,12 @@ func (o UDPHealthCheckResponseOutput) ToUDPHealthCheckResponseOutputWithContext(
 	return o
 }
 
-// The UDP port number for the health check request. Valid values are 1 through 65535.
+// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
 func (o UDPHealthCheckResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v UDPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+// Not supported.
 func (o UDPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v UDPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
@@ -5811,6 +6762,14 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingInput)(nil)).Elem(), ServerBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingPtrInput)(nil)).Elem(), ServerBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsInput)(nil)).Elem(), ServerTlsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsPtrInput)(nil)).Elem(), ServerTlsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountInput)(nil)).Elem(), ServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountArrayInput)(nil)).Elem(), ServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitArrayInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsInput)(nil)).Elem(), ShareSettingsArgs{})
@@ -5865,6 +6824,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})
+	pulumi.RegisterOutputType(ServerBindingOutput{})
+	pulumi.RegisterOutputType(ServerBindingPtrOutput{})
+	pulumi.RegisterOutputType(ServerBindingResponseOutput{})
+	pulumi.RegisterOutputType(ServerTlsSettingsOutput{})
+	pulumi.RegisterOutputType(ServerTlsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ServiceAccountOutput{})
+	pulumi.RegisterOutputType(ServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
+	pulumi.RegisterOutputType(ServiceAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitOutput{})

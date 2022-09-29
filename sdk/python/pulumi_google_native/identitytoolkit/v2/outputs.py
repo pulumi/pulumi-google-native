@@ -12,6 +12,8 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse',
+    'GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse',
     'GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse',
@@ -24,6 +26,7 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse',
+    'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigResponse',
     'GoogleIamV1AuditConfigResponse',
@@ -31,6 +34,84 @@ __all__ = [
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse(dict):
+    """
+    Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disallowedRegions":
+            suggest = "disallowed_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disallowed_regions: Sequence[str]):
+        """
+        Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+        :param Sequence[str] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        pulumi.set(__self__, "disallowed_regions", disallowed_regions)
+
+    @property
+    @pulumi.getter(name="disallowedRegions")
+    def disallowed_regions(self) -> Sequence[str]:
+        """
+        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "disallowed_regions")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse(dict):
+    """
+    Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedRegions":
+            suggest = "allowed_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_regions: Sequence[str]):
+        """
+        Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+        :param Sequence[str] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        pulumi.set(__self__, "allowed_regions", allowed_regions)
+
+    @property
+    @pulumi.getter(name="allowedRegions")
+    def allowed_regions(self) -> Sequence[str]:
+        """
+        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "allowed_regions")
+
 
 @pulumi.output_type
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse(dict):
@@ -632,6 +713,58 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse(dict):
         Whether logging is enabled for this project or not.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse(dict):
+    """
+    Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowByDefault":
+            suggest = "allow_by_default"
+        elif key == "allowlistOnly":
+            suggest = "allowlist_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_by_default: 'outputs.GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse',
+                 allowlist_only: 'outputs.GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse'):
+        """
+        Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param 'GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse' allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        :param 'GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse' allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+        """
+        pulumi.set(__self__, "allow_by_default", allow_by_default)
+        pulumi.set(__self__, "allowlist_only", allowlist_only)
+
+    @property
+    @pulumi.getter(name="allowByDefault")
+    def allow_by_default(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse':
+        """
+        A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        """
+        return pulumi.get(self, "allow_by_default")
+
+    @property
+    @pulumi.getter(name="allowlistOnly")
+    def allowlist_only(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse':
+        """
+        A policy of only allowing regions by explicitly adding them to an allowlist.
+        """
+        return pulumi.get(self, "allowlist_only")
 
 
 @pulumi.output_type

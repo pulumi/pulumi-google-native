@@ -685,6 +685,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["last_start_timestamp"] = None
             __props__.__dict__["last_stop_timestamp"] = None
             __props__.__dict__["last_suspended_timestamp"] = None
+            __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["start_restricted"] = None
@@ -745,6 +746,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
+        __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["scheduling"] = None
         __props__.__dict__["self_link"] = None
@@ -999,6 +1001,14 @@ class Instance(pulumi.CustomResource):
         Resource policies applied to this instance.
         """
         return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.ResourceStatusResponse']:
+        """
+        Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        """
+        return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatcherResponse Match;
         /// <summary>
+        /// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleNetworkMatcherResponse NetworkMatch;
+        /// <summary>
         /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         /// </summary>
         public readonly Outputs.SecurityPolicyRulePreconfiguredWafConfigResponse PreconfiguredWafConfig;
@@ -105,6 +109,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.SecurityPolicyRuleMatcherResponse match,
 
+            Outputs.SecurityPolicyRuleNetworkMatcherResponse networkMatch,
+
             Outputs.SecurityPolicyRulePreconfiguredWafConfigResponse preconfiguredWafConfig,
 
             bool preview,
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             HeaderAction = headerAction;
             Kind = kind;
             Match = match;
+            NetworkMatch = networkMatch;
             PreconfiguredWafConfig = preconfiguredWafConfig;
             Preview = preview;
             Priority = priority;

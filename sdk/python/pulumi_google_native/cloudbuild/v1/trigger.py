@@ -29,6 +29,7 @@ class TriggerArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input['GitFileSourceArgs']] = None,
                  github: Optional[pulumi.Input['GitHubEventsConfigArgs']] = None,
+                 gitlab_enterprise_events_config: Optional[pulumi.Input['GitLabEventsConfigArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -57,6 +58,7 @@ class TriggerArgs:
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input['GitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
         :param pulumi.Input['GitHubEventsConfigArgs'] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+        :param pulumi.Input['GitLabEventsConfigArgs'] gitlab_enterprise_events_config: GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         :param pulumi.Input['TriggerIncludeBuildLogs'] include_build_logs: If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
@@ -93,6 +95,8 @@ class TriggerArgs:
             pulumi.set(__self__, "git_file_source", git_file_source)
         if github is not None:
             pulumi.set(__self__, "github", github)
+        if gitlab_enterprise_events_config is not None:
+            pulumi.set(__self__, "gitlab_enterprise_events_config", gitlab_enterprise_events_config)
         if ignored_files is not None:
             pulumi.set(__self__, "ignored_files", ignored_files)
         if include_build_logs is not None:
@@ -265,6 +269,18 @@ class TriggerArgs:
     @github.setter
     def github(self, value: Optional[pulumi.Input['GitHubEventsConfigArgs']]):
         pulumi.set(self, "github", value)
+
+    @property
+    @pulumi.getter(name="gitlabEnterpriseEventsConfig")
+    def gitlab_enterprise_events_config(self) -> Optional[pulumi.Input['GitLabEventsConfigArgs']]:
+        """
+        GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+        """
+        return pulumi.get(self, "gitlab_enterprise_events_config")
+
+    @gitlab_enterprise_events_config.setter
+    def gitlab_enterprise_events_config(self, value: Optional[pulumi.Input['GitLabEventsConfigArgs']]):
+        pulumi.set(self, "gitlab_enterprise_events_config", value)
 
     @property
     @pulumi.getter(name="ignoredFiles")
@@ -445,6 +461,7 @@ class Trigger(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
+                 gitlab_enterprise_events_config: Optional[pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -477,6 +494,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] filter: A Common Expression Language string.
         :param pulumi.Input[pulumi.InputType['GitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
         :param pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+        :param pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']] gitlab_enterprise_events_config: GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         :param pulumi.Input['TriggerIncludeBuildLogs'] include_build_logs: If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
@@ -526,6 +544,7 @@ class Trigger(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
+                 gitlab_enterprise_events_config: Optional[pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -561,6 +580,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["git_file_source"] = git_file_source
             __props__.__dict__["github"] = github
+            __props__.__dict__["gitlab_enterprise_events_config"] = gitlab_enterprise_events_config
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["include_build_logs"] = include_build_logs
             __props__.__dict__["included_files"] = included_files
@@ -615,6 +635,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["filter"] = None
         __props__.__dict__["git_file_source"] = None
         __props__.__dict__["github"] = None
+        __props__.__dict__["gitlab_enterprise_events_config"] = None
         __props__.__dict__["ignored_files"] = None
         __props__.__dict__["include_build_logs"] = None
         __props__.__dict__["included_files"] = None
@@ -727,6 +748,14 @@ class Trigger(pulumi.CustomResource):
         GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         """
         return pulumi.get(self, "github")
+
+    @property
+    @pulumi.getter(name="gitlabEnterpriseEventsConfig")
+    def gitlab_enterprise_events_config(self) -> pulumi.Output['outputs.GitLabEventsConfigResponse']:
+        """
+        GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+        """
+        return pulumi.get(self, "gitlab_enterprise_events_config")
 
     @property
     @pulumi.getter(name="ignoredFiles")

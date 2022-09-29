@@ -42,6 +42,8 @@ type LookupTaskResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
 	Name string `pulumi:"name"`
+	// Config related to running scheduled Notebooks.
+	Notebook GoogleCloudDataplexV1TaskNotebookTaskConfigResponse `pulumi:"notebook"`
 	// Config related to running custom Spark tasks.
 	Spark GoogleCloudDataplexV1TaskSparkTaskConfigResponse `pulumi:"spark"`
 	// Current state of the task.
@@ -125,6 +127,11 @@ func (o LookupTaskResultOutput) Labels() pulumi.StringMapOutput {
 // The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
 func (o LookupTaskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTaskResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Config related to running scheduled Notebooks.
+func (o LookupTaskResultOutput) Notebook() GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput {
+	return o.ApplyT(func(v LookupTaskResult) GoogleCloudDataplexV1TaskNotebookTaskConfigResponse { return v.Notebook }).(GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput)
 }
 
 // Config related to running custom Spark tasks.

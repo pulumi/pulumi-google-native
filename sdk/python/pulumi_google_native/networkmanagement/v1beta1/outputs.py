@@ -1970,6 +1970,8 @@ class RouteInfoResponse(dict):
         suggest = None
         if key == "destIpRange":
             suggest = "dest_ip_range"
+        elif key == "destPortRanges":
+            suggest = "dest_port_ranges"
         elif key == "displayName":
             suggest = "display_name"
         elif key == "instanceTags":
@@ -1982,6 +1984,10 @@ class RouteInfoResponse(dict):
             suggest = "next_hop_type"
         elif key == "routeType":
             suggest = "route_type"
+        elif key == "srcIpRange":
+            suggest = "src_ip_range"
+        elif key == "srcPortRanges":
+            suggest = "src_port_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RouteInfoResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1996,34 +2002,46 @@ class RouteInfoResponse(dict):
 
     def __init__(__self__, *,
                  dest_ip_range: str,
+                 dest_port_ranges: Sequence[str],
                  display_name: str,
                  instance_tags: Sequence[str],
                  network_uri: str,
                  next_hop: str,
                  next_hop_type: str,
                  priority: int,
+                 protocols: Sequence[str],
                  route_type: str,
+                 src_ip_range: str,
+                 src_port_ranges: Sequence[str],
                  uri: str):
         """
         For display only. Metadata associated with a Compute Engine route.
         :param str dest_ip_range: Destination IP range of the route.
+        :param Sequence[str] dest_port_ranges: Destination port ranges of the route. Policy based routes only.
         :param str display_name: Name of a Compute Engine route.
         :param Sequence[str] instance_tags: Instance tags of the route.
         :param str network_uri: URI of a Compute Engine network.
         :param str next_hop: Next hop of the route.
         :param str next_hop_type: Type of next hop.
         :param int priority: Priority of the route.
+        :param Sequence[str] protocols: Protocols of the route. Policy based routes only.
         :param str route_type: Type of route.
+        :param str src_ip_range: Source IP address range of the route. Policy based routes only.
+        :param Sequence[str] src_port_ranges: Source port ranges of the route. Policy based routes only.
         :param str uri: URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
         """
         pulumi.set(__self__, "dest_ip_range", dest_ip_range)
+        pulumi.set(__self__, "dest_port_ranges", dest_port_ranges)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_tags", instance_tags)
         pulumi.set(__self__, "network_uri", network_uri)
         pulumi.set(__self__, "next_hop", next_hop)
         pulumi.set(__self__, "next_hop_type", next_hop_type)
         pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "route_type", route_type)
+        pulumi.set(__self__, "src_ip_range", src_ip_range)
+        pulumi.set(__self__, "src_port_ranges", src_port_ranges)
         pulumi.set(__self__, "uri", uri)
 
     @property
@@ -2033,6 +2051,14 @@ class RouteInfoResponse(dict):
         Destination IP range of the route.
         """
         return pulumi.get(self, "dest_ip_range")
+
+    @property
+    @pulumi.getter(name="destPortRanges")
+    def dest_port_ranges(self) -> Sequence[str]:
+        """
+        Destination port ranges of the route. Policy based routes only.
+        """
+        return pulumi.get(self, "dest_port_ranges")
 
     @property
     @pulumi.getter(name="displayName")
@@ -2083,12 +2109,36 @@ class RouteInfoResponse(dict):
         return pulumi.get(self, "priority")
 
     @property
+    @pulumi.getter
+    def protocols(self) -> Sequence[str]:
+        """
+        Protocols of the route. Policy based routes only.
+        """
+        return pulumi.get(self, "protocols")
+
+    @property
     @pulumi.getter(name="routeType")
     def route_type(self) -> str:
         """
         Type of route.
         """
         return pulumi.get(self, "route_type")
+
+    @property
+    @pulumi.getter(name="srcIpRange")
+    def src_ip_range(self) -> str:
+        """
+        Source IP address range of the route. Policy based routes only.
+        """
+        return pulumi.get(self, "src_ip_range")
+
+    @property
+    @pulumi.getter(name="srcPortRanges")
+    def src_port_ranges(self) -> Sequence[str]:
+        """
+        Source port ranges of the route. Policy based routes only.
+        """
+        return pulumi.get(self, "src_port_ranges")
 
     @property
     @pulumi.getter

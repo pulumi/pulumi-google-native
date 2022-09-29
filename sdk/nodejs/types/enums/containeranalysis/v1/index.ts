@@ -304,7 +304,7 @@ export const DiscoveryOccurrenceAnalysisStatus = {
      */
     FinishedSuccess: "FINISHED_SUCCESS",
     /**
-     * Analysis has completed
+     * Analysis has completed.
      */
     Complete: "COMPLETE",
     /**
@@ -405,6 +405,17 @@ export const VersionKind = {
  * Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
  */
 export type VersionKind = (typeof VersionKind)[keyof typeof VersionKind];
+
+export const VulnerabilityNoteCvssVersion = {
+    CvssVersionUnspecified: "CVSS_VERSION_UNSPECIFIED",
+    CvssVersion2: "CVSS_VERSION_2",
+    CvssVersion3: "CVSS_VERSION_3",
+} as const;
+
+/**
+ * CVSS version used to populate cvss_score and severity.
+ */
+export type VulnerabilityNoteCvssVersion = (typeof VulnerabilityNoteCvssVersion)[keyof typeof VulnerabilityNoteCvssVersion];
 
 export const VulnerabilityNoteSeverity = {
     /**

@@ -173,6 +173,7 @@ __all__ = [
     'ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse',
     'ResourcePolicyWeeklyCycleDayOfWeekResponse',
     'ResourcePolicyWeeklyCycleResponse',
+    'ResourceStatusResponse',
     'RolloutPolicyResponse',
     'RouteAsPathResponse',
     'RouteWarningsItemDataItemResponse',
@@ -5025,9 +5026,9 @@ class GRPCHealthCheckResponse(dict):
                  port_specification: str):
         """
         :param str grpc_service_name: The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
-        :param int port: The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+        :param int port: The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         pulumi.set(__self__, "grpc_service_name", grpc_service_name)
         pulumi.set(__self__, "port", port)
@@ -5046,7 +5047,7 @@ class GRPCHealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The port number for the health check request. Must be specified if port_name and port_specification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -5054,7 +5055,7 @@ class GRPCHealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence. The port_name should conform to RFC1035.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -5062,7 +5063,7 @@ class GRPCHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5123,13 +5124,13 @@ class HTTP2HealthCheckResponse(dict):
                  request_path: str,
                  response: str):
         """
-        :param str host: The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-        :param int port: The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+        :param str host: The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
+        :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTP/2 health check request. The default value is /.
-        :param str response: The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        :param str response: Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -5143,7 +5144,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        The value of the host header in the HTTP/2 health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+        The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         """
         return pulumi.get(self, "host")
 
@@ -5151,7 +5152,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -5159,7 +5160,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -5167,7 +5168,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5191,7 +5192,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter
     def response(self) -> str:
         """
-        The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         return pulumi.get(self, "response")
 
@@ -5230,13 +5231,13 @@ class HTTPHealthCheckResponse(dict):
                  request_path: str,
                  response: str):
         """
-        :param str host: The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-        :param int port: The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+        :param str host: The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
+        :param int port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTP health check request. The default value is /.
-        :param str response: The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        :param str response: Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -5250,7 +5251,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        The value of the host header in the HTTP health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+        The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         """
         return pulumi.get(self, "host")
 
@@ -5258,7 +5259,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -5266,7 +5267,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -5274,7 +5275,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5298,7 +5299,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter
     def response(self) -> str:
         """
-        The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         return pulumi.get(self, "response")
 
@@ -5337,13 +5338,13 @@ class HTTPSHealthCheckResponse(dict):
                  request_path: str,
                  response: str):
         """
-        :param str host: The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
-        :param int port: The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+        :param str host: The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
+        :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTPS health check request. The default value is /.
-        :param str response: The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        :param str response: Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -5357,7 +5358,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
+        The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         """
         return pulumi.get(self, "host")
 
@@ -5365,7 +5366,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -5373,7 +5374,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -5381,7 +5382,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5405,7 +5406,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter
     def response(self) -> str:
         """
-        The string to match anywhere in the first 1024 bytes of the response body. If left empty (the default value), the status code determines health. The response data can only be ASCII.
+        Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
         """
         return pulumi.get(self, "response")
 
@@ -11772,6 +11773,45 @@ class ResourcePolicyWeeklyCycleResponse(dict):
 
 
 @pulumi.output_type
+class ResourceStatusResponse(dict):
+    """
+    Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "physicalHost":
+            suggest = "physical_host"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 physical_host: str):
+        """
+        Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
+        :param str physical_host: An opaque ID of the host on which the VM is running.
+        """
+        pulumi.set(__self__, "physical_host", physical_host)
+
+    @property
+    @pulumi.getter(name="physicalHost")
+    def physical_host(self) -> str:
+        """
+        An opaque ID of the host on which the VM is running.
+        """
+        return pulumi.get(self, "physical_host")
+
+
+@pulumi.output_type
 class RolloutPolicyResponse(dict):
     """
     A rollout policy configuration.
@@ -13118,12 +13158,12 @@ class SSLHealthCheckResponse(dict):
                  request: str,
                  response: str):
         """
-        :param int port: The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+        :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-        :param str request: The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
-        :param str response: The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+        :param str request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
+        :param str response: Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "port_name", port_name)
@@ -13136,7 +13176,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -13144,7 +13184,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -13152,7 +13192,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -13168,7 +13208,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter
     def request(self) -> str:
         """
-        The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+        Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
         """
         return pulumi.get(self, "request")
 
@@ -13176,7 +13216,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter
     def response(self) -> str:
         """
-        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+        Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
         """
         return pulumi.get(self, "response")
 
@@ -16185,12 +16225,12 @@ class TCPHealthCheckResponse(dict):
                  request: str,
                  response: str):
         """
-        :param int port: The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
-        :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
-        :param str port_specification: Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+        :param int port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+        :param str port_name: Not supported.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-        :param str request: The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
-        :param str response: The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+        :param str request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+        :param str response: Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "port_name", port_name)
@@ -16203,7 +16243,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The TCP port number for the health check request. The default value is 80. Valid values are 1 through 65535.
+        The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         """
         return pulumi.get(self, "port")
 
@@ -16211,7 +16251,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        Not supported.
         """
         return pulumi.get(self, "port_name")
 
@@ -16219,7 +16259,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in port and portName fields.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -16235,7 +16275,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter
     def request(self) -> str:
         """
-        The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
+        Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
         """
         return pulumi.get(self, "request")
 
@@ -16243,7 +16283,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter
     def response(self) -> str:
         """
-        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
+        Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
         """
         return pulumi.get(self, "response")
 

@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.AppEngineResponse> AppEngine { get; private set; } = null!;
 
         /// <summary>
+        /// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        /// </summary>
+        [Output("basicService")]
+        public Output<Outputs.BasicServiceResponse> BasicService { get; private set; } = null!;
+
+        /// <summary>
         /// Type used for Cloud Endpoints services.
         /// </summary>
         [Output("cloudEndpoints")]
@@ -167,6 +173,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Input("appEngine")]
         public Input<Inputs.AppEngineArgs>? AppEngine { get; set; }
+
+        /// <summary>
+        /// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        /// </summary>
+        [Input("basicService")]
+        public Input<Inputs.BasicServiceArgs>? BasicService { get; set; }
 
         /// <summary>
         /// Type used for Cloud Endpoints services.

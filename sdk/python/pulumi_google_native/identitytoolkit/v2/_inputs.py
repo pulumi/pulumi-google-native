@@ -11,6 +11,8 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs',
+    'GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs',
     'GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs',
@@ -22,12 +24,61 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs',
+    'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
     'GoogleTypeExprArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs:
+    def __init__(__self__, *,
+                 disallowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disallowed_regions: Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if disallowed_regions is not None:
+            pulumi.set(__self__, "disallowed_regions", disallowed_regions)
+
+    @property
+    @pulumi.getter(name="disallowedRegions")
+    def disallowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "disallowed_regions")
+
+    @disallowed_regions.setter
+    def disallowed_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disallowed_regions", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs:
+    def __init__(__self__, *,
+                 allowed_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Defines a policy of only allowing regions by explicitly adding them to an allowlist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_regions: Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        if allowed_regions is not None:
+            pulumi.set(__self__, "allowed_regions", allowed_regions)
+
+    @property
+    @pulumi.getter(name="allowedRegions")
+    def allowed_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
+        """
+        return pulumi.get(self, "allowed_regions")
+
+    @allowed_regions.setter
+    def allowed_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_regions", value)
+
 
 @pulumi.input_type
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs:
@@ -447,6 +498,46 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs:
+    def __init__(__self__, *,
+                 allow_by_default: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs']] = None,
+                 allowlist_only: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs']] = None):
+        """
+        Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs'] allow_by_default: A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs'] allowlist_only: A policy of only allowing regions by explicitly adding them to an allowlist.
+        """
+        if allow_by_default is not None:
+            pulumi.set(__self__, "allow_by_default", allow_by_default)
+        if allowlist_only is not None:
+            pulumi.set(__self__, "allowlist_only", allowlist_only)
+
+    @property
+    @pulumi.getter(name="allowByDefault")
+    def allow_by_default(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs']]:
+        """
+        A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
+        """
+        return pulumi.get(self, "allow_by_default")
+
+    @allow_by_default.setter
+    def allow_by_default(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowByDefaultArgs']]):
+        pulumi.set(self, "allow_by_default", value)
+
+    @property
+    @pulumi.getter(name="allowlistOnly")
+    def allowlist_only(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs']]:
+        """
+        A policy of only allowing regions by explicitly adding them to an allowlist.
+        """
+        return pulumi.get(self, "allowlist_only")
+
+    @allowlist_only.setter
+    def allowlist_only(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyArgs']]):
+        pulumi.set(self, "allowlist_only", value)
 
 
 @pulumi.input_type

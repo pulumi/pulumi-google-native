@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        [Output("pscData")]
+        public Output<Outputs.NetworkEndpointGroupPscDataResponse> PscData { get; private set; } = null!;
+
         /// <summary>
         /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         /// </summary>
@@ -237,6 +240,9 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pscData")]
+        public Input<Inputs.NetworkEndpointGroupPscDataArgs>? PscData { get; set; }
 
         /// <summary>
         /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"

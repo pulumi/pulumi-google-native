@@ -242,7 +242,7 @@ class CertificateMap(pulumi.CustomResource):
     @pulumi.getter(name="gclbTargets")
     def gclb_targets(self) -> pulumi.Output[Sequence['outputs.GclbTargetResponse']]:
         """
-        A list of GCLB targets which use this Certificate Map.
+        A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
         """
         return pulumi.get(self, "gclb_targets")
 

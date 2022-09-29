@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, app_engine=None, cloud_endpoints=None, cloud_run=None, cluster_istio=None, custom=None, display_name=None, gke_namespace=None, gke_service=None, gke_workload=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None, user_labels=None):
+    def __init__(__self__, app_engine=None, basic_service=None, cloud_endpoints=None, cloud_run=None, cluster_istio=None, custom=None, display_name=None, gke_namespace=None, gke_service=None, gke_workload=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None, user_labels=None):
         if app_engine and not isinstance(app_engine, dict):
             raise TypeError("Expected argument 'app_engine' to be a dict")
         pulumi.set(__self__, "app_engine", app_engine)
+        if basic_service and not isinstance(basic_service, dict):
+            raise TypeError("Expected argument 'basic_service' to be a dict")
+        pulumi.set(__self__, "basic_service", basic_service)
         if cloud_endpoints and not isinstance(cloud_endpoints, dict):
             raise TypeError("Expected argument 'cloud_endpoints' to be a dict")
         pulumi.set(__self__, "cloud_endpoints", cloud_endpoints)
@@ -70,6 +73,14 @@ class GetServiceResult:
         Type used for App Engine services.
         """
         return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="basicService")
+    def basic_service(self) -> 'outputs.BasicServiceResponse':
+        """
+        Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "basic_service")
 
     @property
     @pulumi.getter(name="cloudEndpoints")
@@ -183,6 +194,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             yield self
         return GetServiceResult(
             app_engine=self.app_engine,
+            basic_service=self.basic_service,
             cloud_endpoints=self.cloud_endpoints,
             cloud_run=self.cloud_run,
             cluster_istio=self.cluster_istio,
@@ -214,6 +226,7 @@ def get_service(service_id: Optional[str] = None,
 
     return AwaitableGetServiceResult(
         app_engine=__ret__.app_engine,
+        basic_service=__ret__.basic_service,
         cloud_endpoints=__ret__.cloud_endpoints,
         cloud_run=__ret__.cloud_run,
         cluster_istio=__ret__.cluster_istio,

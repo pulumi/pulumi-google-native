@@ -88,6 +88,10 @@ export class Tenant extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Configures which regions are enabled for SMS verification code sending.
+     */
+    public readonly smsRegionConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>;
+    /**
      * A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
      */
     public readonly testPhoneNumbers!: pulumi.Output<{[key: string]: string}>;
@@ -114,6 +118,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["mfaConfig"] = args ? args.mfaConfig : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["smsRegionConfig"] = args ? args.smsRegionConfig : undefined;
             resourceInputs["testPhoneNumbers"] = args ? args.testPhoneNumbers : undefined;
             resourceInputs["hashConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -131,6 +136,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["monitoring"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["smsRegionConfig"] = undefined /*out*/;
             resourceInputs["testPhoneNumbers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -185,6 +191,10 @@ export interface TenantArgs {
      */
     monitoring?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Configures which regions are enabled for SMS verification code sending.
+     */
+    smsRegionConfig?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs>;
     /**
      * A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
      */

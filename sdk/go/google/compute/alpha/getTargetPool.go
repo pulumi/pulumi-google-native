@@ -45,6 +45,8 @@ type LookupTargetPoolResult struct {
 	Name string `pulumi:"name"`
 	// URL of the region where the target pool resides.
 	Region string `pulumi:"region"`
+	// The resource URL for the security policy associated with this target pool.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -133,6 +135,11 @@ func (o LookupTargetPoolResultOutput) Name() pulumi.StringOutput {
 // URL of the region where the target pool resides.
 func (o LookupTargetPoolResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetPoolResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The resource URL for the security policy associated with this target pool.
+func (o LookupTargetPoolResultOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetPoolResult) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

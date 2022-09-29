@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly Outputs.AppEngineResponse AppEngine;
         /// <summary>
+        /// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        /// </summary>
+        public readonly Outputs.BasicServiceResponse BasicService;
+        /// <summary>
         /// Type used for Cloud Endpoints services.
         /// </summary>
         public readonly Outputs.CloudEndpointsResponse CloudEndpoints;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         private GetServiceResult(
             Outputs.AppEngineResponse appEngine,
 
+            Outputs.BasicServiceResponse basicService,
+
             Outputs.CloudEndpointsResponse cloudEndpoints,
 
             Outputs.CloudRunResponse cloudRun,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             ImmutableDictionary<string, string> userLabels)
         {
             AppEngine = appEngine;
+            BasicService = basicService;
             CloudEndpoints = cloudEndpoints;
             CloudRun = cloudRun;
             ClusterIstio = clusterIstio;

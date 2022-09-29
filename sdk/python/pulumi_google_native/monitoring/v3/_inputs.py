@@ -16,6 +16,7 @@ __all__ = [
     'AppEngineArgs',
     'AvailabilityCriteriaArgs',
     'BasicAuthenticationArgs',
+    'BasicServiceArgs',
     'BasicSliArgs',
     'CloudEndpointsArgs',
     'CloudRunArgs',
@@ -242,6 +243,46 @@ class BasicAuthenticationArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class BasicServiceArgs:
+    def __init__(__self__, *,
+                 service_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service_type: Optional[pulumi.Input[str]] = None):
+        """
+        A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_labels: Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        :param pulumi.Input[str] service_type: The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        if service_labels is not None:
+            pulumi.set(__self__, "service_labels", service_labels)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+
+    @property
+    @pulumi.getter(name="serviceLabels")
+    def service_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "service_labels")
+
+    @service_labels.setter
+    def service_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "service_labels", value)
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_type", value)
 
 
 @pulumi.input_type

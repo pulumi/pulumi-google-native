@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, cloud_armor_config=None, creation_timestamp=None, ddos_protection_config=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, cloud_armor_config=None, creation_timestamp=None, ddos_protection_config=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None, user_defined_fields=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -83,6 +83,9 @@ class GetRegionSecurityPolicyResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if user_defined_fields and not isinstance(user_defined_fields, list):
+            raise TypeError("Expected argument 'user_defined_fields' to be a list")
+        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -237,6 +240,14 @@ class GetRegionSecurityPolicyResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Sequence['outputs.SecurityPolicyUserDefinedFieldResponse']:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        """
+        return pulumi.get(self, "user_defined_fields")
+
 
 class AwaitableGetRegionSecurityPolicyResult(GetRegionSecurityPolicyResult):
     # pylint: disable=using-constant-test
@@ -264,7 +275,8 @@ class AwaitableGetRegionSecurityPolicyResult(GetRegionSecurityPolicyResult):
             rules=self.rules,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
-            type=self.type)
+            type=self.type,
+            user_defined_fields=self.user_defined_fields)
 
 
 def get_region_security_policy(project: Optional[str] = None,
@@ -302,7 +314,8 @@ def get_region_security_policy(project: Optional[str] = None,
         rules=__ret__.rules,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
-        type=__ret__.type)
+        type=__ret__.type,
+        user_defined_fields=__ret__.user_defined_fields)
 
 
 @_utilities.lift_output_func(get_region_security_policy)

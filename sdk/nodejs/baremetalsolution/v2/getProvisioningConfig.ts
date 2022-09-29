@@ -35,6 +35,10 @@ export interface GetProvisioningConfigResult {
      */
     readonly cloudConsoleUri: string;
     /**
+     * Optional. The user-defined identifier of the provisioning config.
+     */
+    readonly customId: string;
+    /**
      * Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
      *
      * @deprecated Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -53,7 +57,7 @@ export interface GetProvisioningConfigResult {
      */
     readonly location: string;
     /**
-     * The name of the provisioning config.
+     * The system-generated name of the provisioning config. This follows the UUID format.
      */
     readonly name: string;
     /**

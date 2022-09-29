@@ -31,6 +31,7 @@ __all__ = [
     'DistributionArchitecture',
     'PackageNoteArchitecture',
     'VersionKind',
+    'VulnerabilityNoteCvssVersion',
     'VulnerabilityNoteSeverity',
     'VulnerabilityOccurrenceEffectiveSeverity',
 ]
@@ -300,7 +301,7 @@ class DiscoveryOccurrenceAnalysisStatus(str, Enum):
     """
     COMPLETE = "COMPLETE"
     """
-    Analysis has completed
+    Analysis has completed.
     """
     FINISHED_FAILED = "FINISHED_FAILED"
     """
@@ -386,6 +387,15 @@ class VersionKind(str, Enum):
     """
     A special version representing positive infinity.
     """
+
+
+class VulnerabilityNoteCvssVersion(str, Enum):
+    """
+    CVSS version used to populate cvss_score and severity.
+    """
+    CVSS_VERSION_UNSPECIFIED = "CVSS_VERSION_UNSPECIFIED"
+    CVSS_VERSION2 = "CVSS_VERSION_2"
+    CVSS_VERSION3 = "CVSS_VERSION_3"
 
 
 class VulnerabilityNoteSeverity(str, Enum):

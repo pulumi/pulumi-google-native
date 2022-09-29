@@ -252,9 +252,13 @@ export const VolumeConfigPerformanceTier = {
      */
     VolumePerformanceTierShared: "VOLUME_PERFORMANCE_TIER_SHARED",
     /**
-     * Dedicated (assigned) aggregates.
+     * Assigned aggregates.
      */
-    VolumePerformanceTierDedicated: "VOLUME_PERFORMANCE_TIER_DEDICATED",
+    VolumePerformanceTierAssigned: "VOLUME_PERFORMANCE_TIER_ASSIGNED",
+    /**
+     * High throughput aggregates.
+     */
+    VolumePerformanceTierHt: "VOLUME_PERFORMANCE_TIER_HT",
 } as const;
 
 /**
@@ -312,9 +316,13 @@ export const VolumePerformanceTier = {
      */
     VolumePerformanceTierShared: "VOLUME_PERFORMANCE_TIER_SHARED",
     /**
-     * Dedicated (assigned) aggregates.
+     * Assigned aggregates.
      */
-    VolumePerformanceTierDedicated: "VOLUME_PERFORMANCE_TIER_DEDICATED",
+    VolumePerformanceTierAssigned: "VOLUME_PERFORMANCE_TIER_ASSIGNED",
+    /**
+     * High throughput aggregates.
+     */
+    VolumePerformanceTierHt: "VOLUME_PERFORMANCE_TIER_HT",
 } as const;
 
 /**
@@ -363,6 +371,10 @@ export const VolumeState = {
      * The storage volume has been requested to be deleted.
      */
     Deleting: "DELETING",
+    /**
+     * The storage volume is being updated.
+     */
+    Updating: "UPDATING",
 } as const;
 
 /**

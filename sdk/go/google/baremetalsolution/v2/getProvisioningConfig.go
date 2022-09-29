@@ -29,6 +29,8 @@ type LookupProvisioningConfigArgs struct {
 type LookupProvisioningConfigResult struct {
 	// URI to Cloud Console UI view of this provisioning config.
 	CloudConsoleUri string `pulumi:"cloudConsoleUri"`
+	// Optional. The user-defined identifier of the provisioning config.
+	CustomId string `pulumi:"customId"`
 	// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
 	//
 	// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -39,7 +41,7 @@ type LookupProvisioningConfigResult struct {
 	Instances []InstanceConfigResponse `pulumi:"instances"`
 	// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
 	Location string `pulumi:"location"`
-	// The name of the provisioning config.
+	// The system-generated name of the provisioning config. This follows the UUID format.
 	Name string `pulumi:"name"`
 	// Networks to be created.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
@@ -99,6 +101,11 @@ func (o LookupProvisioningConfigResultOutput) CloudConsoleUri() pulumi.StringOut
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.CloudConsoleUri }).(pulumi.StringOutput)
 }
 
+// Optional. The user-defined identifier of the provisioning config.
+func (o LookupProvisioningConfigResultOutput) CustomId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.CustomId }).(pulumi.StringOutput)
+}
+
 // Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
 //
 // Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -121,7 +128,7 @@ func (o LookupProvisioningConfigResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the provisioning config.
+// The system-generated name of the provisioning config. This follows the UUID format.
 func (o LookupProvisioningConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProvisioningConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

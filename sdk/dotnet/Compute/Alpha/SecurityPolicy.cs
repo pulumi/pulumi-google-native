@@ -136,6 +136,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        /// </summary>
+        [Output("userDefinedFields")]
+        public Output<ImmutableArray<Outputs.SecurityPolicyUserDefinedFieldResponse>> UserDefinedFields { get; private set; } = null!;
+
+        /// <summary>
         /// If true, the request will not be committed.
         /// </summary>
         [Output("validateOnly")]
@@ -273,6 +279,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyType>? Type { get; set; }
+
+        [Input("userDefinedFields")]
+        private InputList<Inputs.SecurityPolicyUserDefinedFieldArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyUserDefinedFieldArgs> UserDefinedFields
+        {
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.SecurityPolicyUserDefinedFieldArgs>());
+            set => _userDefinedFields = value;
+        }
 
         /// <summary>
         /// If true, the request will not be committed.

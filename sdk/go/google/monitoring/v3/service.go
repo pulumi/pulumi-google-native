@@ -18,6 +18,8 @@ type Service struct {
 
 	// Type used for App Engine services.
 	AppEngine AppEngineResponseOutput `pulumi:"appEngine"`
+	// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	BasicService BasicServiceResponseOutput `pulumi:"basicService"`
 	// Type used for Cloud Endpoints services.
 	CloudEndpoints CloudEndpointsResponseOutput `pulumi:"cloudEndpoints"`
 	// Type used for Cloud Run services.
@@ -102,6 +104,8 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// Type used for App Engine services.
 	AppEngine *AppEngine `pulumi:"appEngine"`
+	// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	BasicService *BasicService `pulumi:"basicService"`
 	// Type used for Cloud Endpoints services.
 	CloudEndpoints *CloudEndpoints `pulumi:"cloudEndpoints"`
 	// Type used for Cloud Run services.
@@ -138,6 +142,8 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// Type used for App Engine services.
 	AppEngine AppEnginePtrInput
+	// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	BasicService BasicServicePtrInput
 	// Type used for Cloud Endpoints services.
 	CloudEndpoints CloudEndpointsPtrInput
 	// Type used for Cloud Run services.
@@ -210,6 +216,11 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 // Type used for App Engine services.
 func (o ServiceOutput) AppEngine() AppEngineResponseOutput {
 	return o.ApplyT(func(v *Service) AppEngineResponseOutput { return v.AppEngine }).(AppEngineResponseOutput)
+}
+
+// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o ServiceOutput) BasicService() BasicServiceResponseOutput {
+	return o.ApplyT(func(v *Service) BasicServiceResponseOutput { return v.BasicService }).(BasicServiceResponseOutput)
 }
 
 // Type used for Cloud Endpoints services.

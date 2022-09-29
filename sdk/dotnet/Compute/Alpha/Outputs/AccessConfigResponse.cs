@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string PublicPtrDomainName;
         /// <summary>
+        /// The resource URL for the security policy associated with this access config.
+        /// </summary>
+        public readonly string SecurityPolicy;
+        /// <summary>
         /// Specifies whether a public DNS 'A' record should be created for the external IP address of this access configuration.
         /// </summary>
         public readonly bool SetPublicDns;
@@ -79,6 +83,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string publicPtrDomainName,
 
+            string securityPolicy,
+
             bool setPublicDns,
 
             bool setPublicPtr,
@@ -93,6 +99,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             NetworkTier = networkTier;
             PublicDnsName = publicDnsName;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
             SetPublicDns = setPublicDns;
             SetPublicPtr = setPublicPtr;
             Type = type;

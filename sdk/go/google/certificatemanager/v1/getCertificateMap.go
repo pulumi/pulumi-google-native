@@ -31,7 +31,7 @@ type LookupCertificateMapResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a certificate map.
 	Description string `pulumi:"description"`
-	// A list of GCLB targets which use this Certificate Map.
+	// A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
 	GclbTargets []GclbTargetResponse `pulumi:"gclbTargets"`
 	// Set of labels associated with a Certificate Map.
 	Labels map[string]string `pulumi:"labels"`
@@ -88,7 +88,7 @@ func (o LookupCertificateMapResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateMapResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// A list of GCLB targets which use this Certificate Map.
+// A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
 func (o LookupCertificateMapResultOutput) GclbTargets() GclbTargetResponseArrayOutput {
 	return o.ApplyT(func(v LookupCertificateMapResult) []GclbTargetResponse { return v.GclbTargets }).(GclbTargetResponseArrayOutput)
 }

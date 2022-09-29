@@ -10,9 +10,11 @@ from .bitbucket_server_config import *
 from .build import *
 from .get_bitbucket_server_config import *
 from .get_build import *
+from .get_git_lab_config import *
 from .get_github_enterprise_config import *
 from .get_trigger import *
 from .get_worker_pool import *
+from .git_lab_config import *
 from .github_enterprise_config import *
 from .trigger import *
 from .worker_pool import *

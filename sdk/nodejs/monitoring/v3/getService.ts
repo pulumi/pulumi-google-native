@@ -35,6 +35,10 @@ export interface GetServiceResult {
      */
     readonly appEngine: outputs.monitoring.v3.AppEngineResponse;
     /**
+     * Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+     */
+    readonly basicService: outputs.monitoring.v3.BasicServiceResponse;
+    /**
      * Type used for Cloud Endpoints services.
      */
     readonly cloudEndpoints: outputs.monitoring.v3.CloudEndpointsResponse;

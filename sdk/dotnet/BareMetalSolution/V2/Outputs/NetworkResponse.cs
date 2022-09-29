@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string Cidr;
         /// <summary>
+        /// Gateway ip address.
+        /// </summary>
+        public readonly string GatewayIp;
+        /// <summary>
         /// IP address configured.
         /// </summary>
         public readonly string IpAddress;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         private NetworkResponse(
             string cidr,
 
+            string gatewayIp,
+
             string ipAddress,
 
             bool jumboFramesEnabled,
@@ -104,6 +110,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Outputs.VRFResponse vrf)
         {
             Cidr = cidr;
+            GatewayIp = gatewayIp;
             IpAddress = ipAddress;
             JumboFramesEnabled = jumboFramesEnabled;
             Labels = labels;

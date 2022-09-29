@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string DestIpRange;
         /// <summary>
+        /// Destination port ranges of the route. Policy based routes only.
+        /// </summary>
+        public readonly ImmutableArray<string> DestPortRanges;
+        /// <summary>
         /// Name of a Compute Engine route.
         /// </summary>
         public readonly string DisplayName;
@@ -45,9 +49,21 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// Protocols of the route. Policy based routes only.
+        /// </summary>
+        public readonly ImmutableArray<string> Protocols;
+        /// <summary>
         /// Type of route.
         /// </summary>
         public readonly string RouteType;
+        /// <summary>
+        /// Source IP address range of the route. Policy based routes only.
+        /// </summary>
+        public readonly string SrcIpRange;
+        /// <summary>
+        /// Source port ranges of the route. Policy based routes only.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcPortRanges;
         /// <summary>
         /// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from Google Cloud VPC to on-premises network also does not have a URI.
         /// </summary>
@@ -56,6 +72,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         [OutputConstructor]
         private RouteInfoResponse(
             string destIpRange,
+
+            ImmutableArray<string> destPortRanges,
 
             string displayName,
 
@@ -69,18 +87,28 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             int priority,
 
+            ImmutableArray<string> protocols,
+
             string routeType,
+
+            string srcIpRange,
+
+            ImmutableArray<string> srcPortRanges,
 
             string uri)
         {
             DestIpRange = destIpRange;
+            DestPortRanges = destPortRanges;
             DisplayName = displayName;
             InstanceTags = instanceTags;
             NetworkUri = networkUri;
             NextHop = nextHop;
             NextHopType = nextHopType;
             Priority = priority;
+            Protocols = protocols;
             RouteType = routeType;
+            SrcIpRange = srcIpRange;
+            SrcPortRanges = srcPortRanges;
             Uri = uri;
         }
     }

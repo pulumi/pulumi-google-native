@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> CloudConsoleUri { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The user-defined identifier of the provisioning config.
+        /// </summary>
+        [Output("customId")]
+        public Output<string> CustomId { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Email provided to send a confirmation with provisioning config to.
         /// </summary>
         [Output("email")]
@@ -46,7 +52,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the provisioning config.
+        /// The system-generated name of the provisioning config. This follows the UUID format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -146,6 +152,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
     public sealed class ProvisioningConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The user-defined identifier of the provisioning config.
+        /// </summary>
+        [Input("customId")]
+        public Input<string>? CustomId { get; set; }
+
         /// <summary>
         /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         /// </summary>

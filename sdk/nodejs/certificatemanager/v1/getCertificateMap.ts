@@ -39,7 +39,7 @@ export interface GetCertificateMapResult {
      */
     readonly description: string;
     /**
-     * A list of GCLB targets which use this Certificate Map.
+     * A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
      */
     readonly gclbTargets: outputs.certificatemanager.v1.GclbTargetResponse[];
     /**

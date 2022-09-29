@@ -256,9 +256,13 @@ class VolumeConfigPerformanceTier(str, Enum):
     """
     Regular volumes, shared aggregates.
     """
-    VOLUME_PERFORMANCE_TIER_DEDICATED = "VOLUME_PERFORMANCE_TIER_DEDICATED"
+    VOLUME_PERFORMANCE_TIER_ASSIGNED = "VOLUME_PERFORMANCE_TIER_ASSIGNED"
     """
-    Dedicated (assigned) aggregates.
+    Assigned aggregates.
+    """
+    VOLUME_PERFORMANCE_TIER_HT = "VOLUME_PERFORMANCE_TIER_HT"
+    """
+    High throughput aggregates.
     """
 
 
@@ -310,9 +314,13 @@ class VolumePerformanceTier(str, Enum):
     """
     Regular volumes, shared aggregates.
     """
-    VOLUME_PERFORMANCE_TIER_DEDICATED = "VOLUME_PERFORMANCE_TIER_DEDICATED"
+    VOLUME_PERFORMANCE_TIER_ASSIGNED = "VOLUME_PERFORMANCE_TIER_ASSIGNED"
     """
-    Dedicated (assigned) aggregates.
+    Assigned aggregates.
+    """
+    VOLUME_PERFORMANCE_TIER_HT = "VOLUME_PERFORMANCE_TIER_HT"
+    """
+    High throughput aggregates.
     """
 
 
@@ -357,6 +365,10 @@ class VolumeState(str, Enum):
     DELETING = "DELETING"
     """
     The storage volume has been requested to be deleted.
+    """
+    UPDATING = "UPDATING"
+    """
+    The storage volume is being updated.
     """
 
 

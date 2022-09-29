@@ -17425,6 +17425,8 @@ type VulnerabilityNote struct {
 	CvssScore *float64 `pulumi:"cvssScore"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 *CVSSv3 `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion *VulnerabilityNoteCvssVersion `pulumi:"cvssVersion"`
 	// Details of all known distros and packages affected by this vulnerability.
 	Details []Detail `pulumi:"details"`
 	// The note provider assigned severity of this vulnerability.
@@ -17452,6 +17454,8 @@ type VulnerabilityNoteArgs struct {
 	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 CVSSv3PtrInput `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion VulnerabilityNoteCvssVersionPtrInput `pulumi:"cvssVersion"`
 	// Details of all known distros and packages affected by this vulnerability.
 	Details DetailArrayInput `pulumi:"details"`
 	// The note provider assigned severity of this vulnerability.
@@ -17550,6 +17554,11 @@ func (o VulnerabilityNoteOutput) CvssV3() CVSSv3PtrOutput {
 	return o.ApplyT(func(v VulnerabilityNote) *CVSSv3 { return v.CvssV3 }).(CVSSv3PtrOutput)
 }
 
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityNoteOutput) CvssVersion() VulnerabilityNoteCvssVersionPtrOutput {
+	return o.ApplyT(func(v VulnerabilityNote) *VulnerabilityNoteCvssVersion { return v.CvssVersion }).(VulnerabilityNoteCvssVersionPtrOutput)
+}
+
 // Details of all known distros and packages affected by this vulnerability.
 func (o VulnerabilityNoteOutput) Details() DetailArrayOutput {
 	return o.ApplyT(func(v VulnerabilityNote) []Detail { return v.Details }).(DetailArrayOutput)
@@ -17614,6 +17623,16 @@ func (o VulnerabilityNotePtrOutput) CvssV3() CVSSv3PtrOutput {
 	}).(CVSSv3PtrOutput)
 }
 
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityNotePtrOutput) CvssVersion() VulnerabilityNoteCvssVersionPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityNote) *VulnerabilityNoteCvssVersion {
+		if v == nil {
+			return nil
+		}
+		return v.CvssVersion
+	}).(VulnerabilityNoteCvssVersionPtrOutput)
+}
+
 // Details of all known distros and packages affected by this vulnerability.
 func (o VulnerabilityNotePtrOutput) Details() DetailArrayOutput {
 	return o.ApplyT(func(v *VulnerabilityNote) []Detail {
@@ -17660,6 +17679,8 @@ type VulnerabilityNoteResponse struct {
 	CvssScore float64 `pulumi:"cvssScore"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 CVSSv3Response `pulumi:"cvssV3"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion string `pulumi:"cvssVersion"`
 	// Details of all known distros and packages affected by this vulnerability.
 	Details []DetailResponse `pulumi:"details"`
 	// The note provider assigned severity of this vulnerability.
@@ -17693,6 +17714,11 @@ func (o VulnerabilityNoteResponseOutput) CvssScore() pulumi.Float64Output {
 // The full description of the CVSSv3 for this vulnerability.
 func (o VulnerabilityNoteResponseOutput) CvssV3() CVSSv3ResponseOutput {
 	return o.ApplyT(func(v VulnerabilityNoteResponse) CVSSv3Response { return v.CvssV3 }).(CVSSv3ResponseOutput)
+}
+
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityNoteResponseOutput) CvssVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityNoteResponse) string { return v.CvssVersion }).(pulumi.StringOutput)
 }
 
 // Details of all known distros and packages affected by this vulnerability.
@@ -17916,6 +17942,8 @@ func (o VulnerabilityOccurrencePtrOutput) Type() pulumi.StringPtrOutput {
 type VulnerabilityOccurrenceResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
+	// CVSS version used to populate cvss_score and severity.
+	CvssVersion string `pulumi:"cvssVersion"`
 	// The cvss v3 score for the vulnerability.
 	Cvssv3 CVSSResponse `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -17954,6 +17982,11 @@ func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponse
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 func (o VulnerabilityOccurrenceResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
+}
+
+// CVSS version used to populate cvss_score and severity.
+func (o VulnerabilityOccurrenceResponseOutput) CvssVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.CvssVersion }).(pulumi.StringOutput)
 }
 
 // The cvss v3 score for the vulnerability.

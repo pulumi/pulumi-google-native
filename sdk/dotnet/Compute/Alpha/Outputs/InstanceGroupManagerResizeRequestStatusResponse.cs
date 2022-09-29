@@ -14,13 +14,21 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerResizeRequestStatusResponse
     {
         /// <summary>
+        /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerResizeRequestStatusErrorResponse Error;
+        /// <summary>
         /// Constraints for the time when the instances start provisioning. Always exposed as absolute time.
         /// </summary>
         public readonly Outputs.QueuingPolicyResponse QueuingPolicy;
 
         [OutputConstructor]
-        private InstanceGroupManagerResizeRequestStatusResponse(Outputs.QueuingPolicyResponse queuingPolicy)
+        private InstanceGroupManagerResizeRequestStatusResponse(
+            Outputs.InstanceGroupManagerResizeRequestStatusErrorResponse error,
+
+            Outputs.QueuingPolicyResponse queuingPolicy)
         {
+            Error = error;
             QueuingPolicy = queuingPolicy;
         }
     }

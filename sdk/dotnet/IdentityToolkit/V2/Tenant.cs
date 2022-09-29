@@ -92,6 +92,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Configures which regions are enabled for SMS verification code sending.
+        /// </summary>
+        [Output("smsRegionConfig")]
+        public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse> SmsRegionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
         /// </summary>
         [Output("testPhoneNumbers")]
@@ -208,6 +214,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configures which regions are enabled for SMS verification code sending.
+        /// </summary>
+        [Input("smsRegionConfig")]
+        public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs>? SmsRegionConfig { get; set; }
 
         [Input("testPhoneNumbers")]
         private InputMap<string>? _testPhoneNumbers;

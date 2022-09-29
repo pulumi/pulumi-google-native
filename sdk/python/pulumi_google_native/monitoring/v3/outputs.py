@@ -17,6 +17,7 @@ __all__ = [
     'AppEngineResponse',
     'AvailabilityCriteriaResponse',
     'BasicAuthenticationResponse',
+    'BasicServiceResponse',
     'BasicSliResponse',
     'CloudEndpointsResponse',
     'CloudRunResponse',
@@ -272,6 +273,58 @@ class BasicAuthenticationResponse(dict):
         The username to use when authenticating with the HTTP server.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class BasicServiceResponse(dict):
+    """
+    A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceLabels":
+            suggest = "service_labels"
+        elif key == "serviceType":
+            suggest = "service_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_labels: Mapping[str, str],
+                 service_type: str):
+        """
+        A well-known service type, defined by its service type and service labels. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        :param Mapping[str, str] service_labels: Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        :param str service_type: The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        pulumi.set(__self__, "service_labels", service_labels)
+        pulumi.set(__self__, "service_type", service_type)
+
+    @property
+    @pulumi.getter(name="serviceLabels")
+    def service_labels(self) -> Mapping[str, str]:
+        """
+        Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "service_labels")
+
+    @property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> str:
+        """
+        The type of service that this basic service defines, e.g. APP_ENGINE service type. Documentation and valid values here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        """
+        return pulumi.get(self, "service_type")
 
 
 @pulumi.output_type

@@ -68,6 +68,10 @@ export class Task extends pulumi.CustomResource {
      * The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Config related to running scheduled Notebooks.
+     */
+    public readonly notebook!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1TaskNotebookTaskConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Config related to running custom Spark tasks.
@@ -127,6 +131,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lakeId"] = args ? args.lakeId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["notebook"] = args ? args.notebook : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spark"] = args ? args.spark : undefined;
             resourceInputs["taskId"] = args ? args.taskId : undefined;
@@ -148,6 +153,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["lakeId"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["notebook"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["spark"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -186,6 +192,10 @@ export interface TaskArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     lakeId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Config related to running scheduled Notebooks.
+     */
+    notebook?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskNotebookTaskConfigArgs>;
     project?: pulumi.Input<string>;
     /**
      * Config related to running custom Spark tasks.

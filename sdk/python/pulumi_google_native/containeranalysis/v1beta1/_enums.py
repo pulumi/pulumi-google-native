@@ -39,6 +39,7 @@ __all__ = [
     'PgpSignedAttestationContentType',
     'RelationshipNoteType',
     'VersionKind',
+    'VulnerabilityCvssVersion',
     'VulnerabilitySeverity',
 ]
 
@@ -958,6 +959,15 @@ class VersionKind(str, Enum):
     """
     A special version representing positive infinity.
     """
+
+
+class VulnerabilityCvssVersion(str, Enum):
+    """
+    CVSS version used to populate cvss_score and severity.
+    """
+    CVSS_VERSION_UNSPECIFIED = "CVSS_VERSION_UNSPECIFIED"
+    CVSS_VERSION2 = "CVSS_VERSION_2"
+    CVSS_VERSION3 = "CVSS_VERSION_3"
 
 
 class VulnerabilitySeverity(str, Enum):

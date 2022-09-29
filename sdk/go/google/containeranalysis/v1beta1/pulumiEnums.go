@@ -5927,6 +5927,172 @@ func (in *versionKindPtr) ToVersionKindPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(VersionKindPtrOutput)
 }
 
+// CVSS version used to populate cvss_score and severity.
+type VulnerabilityCvssVersion string
+
+const (
+	VulnerabilityCvssVersionCvssVersionUnspecified = VulnerabilityCvssVersion("CVSS_VERSION_UNSPECIFIED")
+	VulnerabilityCvssVersionCvssVersion2           = VulnerabilityCvssVersion("CVSS_VERSION_2")
+	VulnerabilityCvssVersionCvssVersion3           = VulnerabilityCvssVersion("CVSS_VERSION_3")
+)
+
+func (VulnerabilityCvssVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityCvssVersion)(nil)).Elem()
+}
+
+func (e VulnerabilityCvssVersion) ToVulnerabilityCvssVersionOutput() VulnerabilityCvssVersionOutput {
+	return pulumi.ToOutput(e).(VulnerabilityCvssVersionOutput)
+}
+
+func (e VulnerabilityCvssVersion) ToVulnerabilityCvssVersionOutputWithContext(ctx context.Context) VulnerabilityCvssVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VulnerabilityCvssVersionOutput)
+}
+
+func (e VulnerabilityCvssVersion) ToVulnerabilityCvssVersionPtrOutput() VulnerabilityCvssVersionPtrOutput {
+	return e.ToVulnerabilityCvssVersionPtrOutputWithContext(context.Background())
+}
+
+func (e VulnerabilityCvssVersion) ToVulnerabilityCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityCvssVersionPtrOutput {
+	return VulnerabilityCvssVersion(e).ToVulnerabilityCvssVersionOutputWithContext(ctx).ToVulnerabilityCvssVersionPtrOutputWithContext(ctx)
+}
+
+func (e VulnerabilityCvssVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VulnerabilityCvssVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VulnerabilityCvssVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VulnerabilityCvssVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VulnerabilityCvssVersionOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityCvssVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityCvssVersion)(nil)).Elem()
+}
+
+func (o VulnerabilityCvssVersionOutput) ToVulnerabilityCvssVersionOutput() VulnerabilityCvssVersionOutput {
+	return o
+}
+
+func (o VulnerabilityCvssVersionOutput) ToVulnerabilityCvssVersionOutputWithContext(ctx context.Context) VulnerabilityCvssVersionOutput {
+	return o
+}
+
+func (o VulnerabilityCvssVersionOutput) ToVulnerabilityCvssVersionPtrOutput() VulnerabilityCvssVersionPtrOutput {
+	return o.ToVulnerabilityCvssVersionPtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityCvssVersionOutput) ToVulnerabilityCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityCvssVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityCvssVersion) *VulnerabilityCvssVersion {
+		return &v
+	}).(VulnerabilityCvssVersionPtrOutput)
+}
+
+func (o VulnerabilityCvssVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityCvssVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VulnerabilityCvssVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VulnerabilityCvssVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityCvssVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VulnerabilityCvssVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VulnerabilityCvssVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityCvssVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityCvssVersion)(nil)).Elem()
+}
+
+func (o VulnerabilityCvssVersionPtrOutput) ToVulnerabilityCvssVersionPtrOutput() VulnerabilityCvssVersionPtrOutput {
+	return o
+}
+
+func (o VulnerabilityCvssVersionPtrOutput) ToVulnerabilityCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityCvssVersionPtrOutput {
+	return o
+}
+
+func (o VulnerabilityCvssVersionPtrOutput) Elem() VulnerabilityCvssVersionOutput {
+	return o.ApplyT(func(v *VulnerabilityCvssVersion) VulnerabilityCvssVersion {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityCvssVersion
+		return ret
+	}).(VulnerabilityCvssVersionOutput)
+}
+
+func (o VulnerabilityCvssVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityCvssVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VulnerabilityCvssVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VulnerabilityCvssVersionInput is an input type that accepts VulnerabilityCvssVersionArgs and VulnerabilityCvssVersionOutput values.
+// You can construct a concrete instance of `VulnerabilityCvssVersionInput` via:
+//
+//	VulnerabilityCvssVersionArgs{...}
+type VulnerabilityCvssVersionInput interface {
+	pulumi.Input
+
+	ToVulnerabilityCvssVersionOutput() VulnerabilityCvssVersionOutput
+	ToVulnerabilityCvssVersionOutputWithContext(context.Context) VulnerabilityCvssVersionOutput
+}
+
+var vulnerabilityCvssVersionPtrType = reflect.TypeOf((**VulnerabilityCvssVersion)(nil)).Elem()
+
+type VulnerabilityCvssVersionPtrInput interface {
+	pulumi.Input
+
+	ToVulnerabilityCvssVersionPtrOutput() VulnerabilityCvssVersionPtrOutput
+	ToVulnerabilityCvssVersionPtrOutputWithContext(context.Context) VulnerabilityCvssVersionPtrOutput
+}
+
+type vulnerabilityCvssVersionPtr string
+
+func VulnerabilityCvssVersionPtr(v string) VulnerabilityCvssVersionPtrInput {
+	return (*vulnerabilityCvssVersionPtr)(&v)
+}
+
+func (*vulnerabilityCvssVersionPtr) ElementType() reflect.Type {
+	return vulnerabilityCvssVersionPtrType
+}
+
+func (in *vulnerabilityCvssVersionPtr) ToVulnerabilityCvssVersionPtrOutput() VulnerabilityCvssVersionPtrOutput {
+	return pulumi.ToOutput(in).(VulnerabilityCvssVersionPtrOutput)
+}
+
+func (in *vulnerabilityCvssVersionPtr) ToVulnerabilityCvssVersionPtrOutputWithContext(ctx context.Context) VulnerabilityCvssVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VulnerabilityCvssVersionPtrOutput)
+}
+
 // Note provider assigned impact of the vulnerability.
 type VulnerabilitySeverity string
 
@@ -6171,6 +6337,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteTypePtrInput)(nil)).Elem(), RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindPtrInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityCvssVersionInput)(nil)).Elem(), VulnerabilityCvssVersion("CVSS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityCvssVersionPtrInput)(nil)).Elem(), VulnerabilityCvssVersion("CVSS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilitySeverityInput)(nil)).Elem(), VulnerabilitySeverity("SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilitySeverityPtrInput)(nil)).Elem(), VulnerabilitySeverity("SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AliasContextKindOutput{})
@@ -6241,6 +6409,8 @@ func init() {
 	pulumi.RegisterOutputType(RelationshipNoteTypePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityCvssVersionOutput{})
+	pulumi.RegisterOutputType(VulnerabilityCvssVersionPtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilitySeverityOutput{})
 	pulumi.RegisterOutputType(VulnerabilitySeverityPtrOutput{})
 }

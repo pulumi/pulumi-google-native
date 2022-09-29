@@ -21,11 +21,16 @@ __all__ = [
     'GoogleCloudRunV2EnvVarSourceResponse',
     'GoogleCloudRunV2ExecutionReferenceResponse',
     'GoogleCloudRunV2ExecutionTemplateResponse',
+    'GoogleCloudRunV2GRPCActionResponse',
+    'GoogleCloudRunV2HTTPGetActionResponse',
+    'GoogleCloudRunV2HTTPHeaderResponse',
+    'GoogleCloudRunV2ProbeResponse',
     'GoogleCloudRunV2ResourceRequirementsResponse',
     'GoogleCloudRunV2RevisionScalingResponse',
     'GoogleCloudRunV2RevisionTemplateResponse',
     'GoogleCloudRunV2SecretKeySelectorResponse',
     'GoogleCloudRunV2SecretVolumeSourceResponse',
+    'GoogleCloudRunV2TCPSocketActionResponse',
     'GoogleCloudRunV2TaskTemplateResponse',
     'GoogleCloudRunV2TrafficTargetResponse',
     'GoogleCloudRunV2TrafficTargetStatusResponse',
@@ -291,7 +296,11 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "volumeMounts":
+        if key == "livenessProbe":
+            suggest = "liveness_probe"
+        elif key == "startupProbe":
+            suggest = "startup_probe"
+        elif key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
             suggest = "working_dir"
@@ -312,9 +321,11 @@ class GoogleCloudRunV2ContainerResponse(dict):
                  command: Sequence[str],
                  env: Sequence['outputs.GoogleCloudRunV2EnvVarResponse'],
                  image: str,
+                 liveness_probe: 'outputs.GoogleCloudRunV2ProbeResponse',
                  name: str,
                  ports: Sequence['outputs.GoogleCloudRunV2ContainerPortResponse'],
                  resources: 'outputs.GoogleCloudRunV2ResourceRequirementsResponse',
+                 startup_probe: 'outputs.GoogleCloudRunV2ProbeResponse',
                  volume_mounts: Sequence['outputs.GoogleCloudRunV2VolumeMountResponse'],
                  working_dir: str):
         """
@@ -323,9 +334,11 @@ class GoogleCloudRunV2ContainerResponse(dict):
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param 'GoogleCloudRunV2ProbeResponse' liveness_probe: Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param str name: Name of the container specified as a DNS_LABEL.
         :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'GoogleCloudRunV2ProbeResponse' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param Sequence['GoogleCloudRunV2VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
@@ -333,9 +346,11 @@ class GoogleCloudRunV2ContainerResponse(dict):
         pulumi.set(__self__, "command", command)
         pulumi.set(__self__, "env", env)
         pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "liveness_probe", liveness_probe)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "startup_probe", startup_probe)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
 
@@ -372,6 +387,14 @@ class GoogleCloudRunV2ContainerResponse(dict):
         return pulumi.get(self, "image")
 
     @property
+    @pulumi.getter(name="livenessProbe")
+    def liveness_probe(self) -> 'outputs.GoogleCloudRunV2ProbeResponse':
+        """
+        Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "liveness_probe")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -394,6 +417,14 @@ class GoogleCloudRunV2ContainerResponse(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="startupProbe")
+    def startup_probe(self) -> 'outputs.GoogleCloudRunV2ProbeResponse':
+        """
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "startup_probe")
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -656,6 +687,259 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
         Describes the task(s) that will be created when executing an execution.
         """
         return pulumi.get(self, "template")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2GRPCActionResponse(dict):
+    """
+    GRPCAction describes an action involving a GRPC port.
+    """
+    def __init__(__self__, *,
+                 port: int,
+                 service: str):
+        """
+        GRPCAction describes an action involving a GRPC port.
+        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2HTTPGetActionResponse(dict):
+    """
+    HTTPGetAction describes an action based on HTTP Get requests.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2HTTPGetActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2HTTPGetActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2HTTPGetActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: str,
+                 http_headers: Sequence['outputs.GoogleCloudRunV2HTTPHeaderResponse'],
+                 path: str,
+                 scheme: str):
+        """
+        HTTPGetAction describes an action based on HTTP Get requests.
+        :param str host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        :param Sequence['GoogleCloudRunV2HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param str scheme: Scheme to use for connecting to the host. Defaults to HTTP.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "http_headers", http_headers)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "scheme", scheme)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="httpHeaders")
+    def http_headers(self) -> Sequence['outputs.GoogleCloudRunV2HTTPHeaderResponse']:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        """
+        return pulumi.get(self, "http_headers")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> str:
+        """
+        Scheme to use for connecting to the host. Defaults to HTTP.
+        """
+        return pulumi.get(self, "scheme")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2HTTPHeaderResponse(dict):
+    """
+    HTTPHeader describes a custom header to be used in HTTP probes
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        HTTPHeader describes a custom header to be used in HTTP probes
+        :param str name: The header field name
+        :param str value: The header field value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The header field name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The header field value
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2ProbeResponse(dict):
+    """
+    Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ProbeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2ProbeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2ProbeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: int,
+                 grpc: 'outputs.GoogleCloudRunV2GRPCActionResponse',
+                 http_get: 'outputs.GoogleCloudRunV2HTTPGetActionResponse',
+                 initial_delay_seconds: int,
+                 period_seconds: int,
+                 tcp_socket: 'outputs.GoogleCloudRunV2TCPSocketActionResponse',
+                 timeout_seconds: int):
+        """
+        Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'GoogleCloudRunV2GRPCActionResponse' grpc: GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
+        :param 'GoogleCloudRunV2HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param 'GoogleCloudRunV2TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "grpc", grpc)
+        pulumi.set(__self__, "http_get", http_get)
+        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "tcp_socket", tcp_socket)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> int:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> 'outputs.GoogleCloudRunV2GRPCActionResponse':
+        """
+        GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
+        """
+        return pulumi.get(self, "grpc")
+
+    @property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> 'outputs.GoogleCloudRunV2HTTPGetActionResponse':
+        """
+        HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        """
+        return pulumi.get(self, "http_get")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> int:
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> int:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> 'outputs.GoogleCloudRunV2TCPSocketActionResponse':
+        """
+        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> int:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
+        return pulumi.get(self, "timeout_seconds")
 
 
 @pulumi.output_type
@@ -1020,6 +1304,39 @@ class GoogleCloudRunV2SecretVolumeSourceResponse(dict):
         The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         """
         return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2TCPSocketActionResponse(dict):
+    """
+    TCPSocketAction describes an action based on opening a socket
+    """
+    def __init__(__self__, *,
+                 host: str,
+                 port: int):
+        """
+        TCPSocketAction describes an action based on opening a socket
+        :param str host: Host name to connect to, defaults to the pod IP.
+        :param int port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host name to connect to, defaults to the pod IP.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

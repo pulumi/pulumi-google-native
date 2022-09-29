@@ -21,6 +21,10 @@ export { GetBuildArgs, GetBuildResult, GetBuildOutputArgs } from "./getBuild";
 export const getBuild: typeof import("./getBuild").getBuild = null as any;
 export const getBuildOutput: typeof import("./getBuild").getBuildOutput = null as any;
 
+export { GetGitLabConfigArgs, GetGitLabConfigResult, GetGitLabConfigOutputArgs } from "./getGitLabConfig";
+export const getGitLabConfig: typeof import("./getGitLabConfig").getGitLabConfig = null as any;
+export const getGitLabConfigOutput: typeof import("./getGitLabConfig").getGitLabConfigOutput = null as any;
+
 export { GetGithubEnterpriseConfigArgs, GetGithubEnterpriseConfigResult, GetGithubEnterpriseConfigOutputArgs } from "./getGithubEnterpriseConfig";
 export const getGithubEnterpriseConfig: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfig = null as any;
 export const getGithubEnterpriseConfigOutput: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfigOutput = null as any;
@@ -32,6 +36,10 @@ export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = 
 export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
 export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
 export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
+
+export { GitLabConfigArgs } from "./gitLabConfig";
+export type GitLabConfig = import("./gitLabConfig").GitLabConfig;
+export const GitLabConfig: typeof import("./gitLabConfig").GitLabConfig = null as any;
 
 export { GithubEnterpriseConfigArgs } from "./githubEnterpriseConfig";
 export type GithubEnterpriseConfig = import("./githubEnterpriseConfig").GithubEnterpriseConfig;
@@ -49,9 +57,11 @@ utilities.lazyLoad(exports, ["BitbucketServerConfig"], () => require("./bitbucke
 utilities.lazyLoad(exports, ["Build"], () => require("./build"));
 utilities.lazyLoad(exports, ["getBitbucketServerConfig","getBitbucketServerConfigOutput"], () => require("./getBitbucketServerConfig"));
 utilities.lazyLoad(exports, ["getBuild","getBuildOutput"], () => require("./getBuild"));
+utilities.lazyLoad(exports, ["getGitLabConfig","getGitLabConfigOutput"], () => require("./getGitLabConfig"));
 utilities.lazyLoad(exports, ["getGithubEnterpriseConfig","getGithubEnterpriseConfigOutput"], () => require("./getGithubEnterpriseConfig"));
 utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
+utilities.lazyLoad(exports, ["GitLabConfig"], () => require("./gitLabConfig"));
 utilities.lazyLoad(exports, ["GithubEnterpriseConfig"], () => require("./githubEnterpriseConfig"));
 utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
@@ -67,6 +77,8 @@ const _module = {
                 return new BitbucketServerConfig(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:Build":
                 return new Build(name, <any>undefined, { urn })
+            case "google-native:cloudbuild/v1:GitLabConfig":
+                return new GitLabConfig(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:GithubEnterpriseConfig":
                 return new GithubEnterpriseConfig(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:Trigger":

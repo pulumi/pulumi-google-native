@@ -1707,6 +1707,38 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
     }
 
     /// <summary>
+    /// CVSS version used to populate cvss_score and severity.
+    /// </summary>
+    [EnumType]
+    public readonly struct VulnerabilityCvssVersion : IEquatable<VulnerabilityCvssVersion>
+    {
+        private readonly string _value;
+
+        private VulnerabilityCvssVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static VulnerabilityCvssVersion CvssVersionUnspecified { get; } = new VulnerabilityCvssVersion("CVSS_VERSION_UNSPECIFIED");
+        public static VulnerabilityCvssVersion CvssVersion2 { get; } = new VulnerabilityCvssVersion("CVSS_VERSION_2");
+        public static VulnerabilityCvssVersion CvssVersion3 { get; } = new VulnerabilityCvssVersion("CVSS_VERSION_3");
+
+        public static bool operator ==(VulnerabilityCvssVersion left, VulnerabilityCvssVersion right) => left.Equals(right);
+        public static bool operator !=(VulnerabilityCvssVersion left, VulnerabilityCvssVersion right) => !left.Equals(right);
+
+        public static explicit operator string(VulnerabilityCvssVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VulnerabilityCvssVersion other && Equals(other);
+        public bool Equals(VulnerabilityCvssVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Note provider assigned impact of the vulnerability.
     /// </summary>
     [EnumType]

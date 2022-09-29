@@ -31,8 +31,10 @@ type Task struct {
 	LakeId   pulumi.StringOutput    `pulumi:"lakeId"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Config related to running scheduled Notebooks.
+	Notebook GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput `pulumi:"notebook"`
+	Project  pulumi.StringOutput                                       `pulumi:"project"`
 	// Config related to running custom Spark tasks.
 	Spark GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput `pulumi:"spark"`
 	// Current state of the task.
@@ -117,7 +119,9 @@ type taskArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	LakeId   string            `pulumi:"lakeId"`
 	Location *string           `pulumi:"location"`
-	Project  *string           `pulumi:"project"`
+	// Config related to running scheduled Notebooks.
+	Notebook *GoogleCloudDataplexV1TaskNotebookTaskConfig `pulumi:"notebook"`
+	Project  *string                                      `pulumi:"project"`
 	// Config related to running custom Spark tasks.
 	Spark *GoogleCloudDataplexV1TaskSparkTaskConfig `pulumi:"spark"`
 	// Required. Task identifier.
@@ -140,6 +144,8 @@ type TaskArgs struct {
 	Labels   pulumi.StringMapInput
 	LakeId   pulumi.StringInput
 	Location pulumi.StringPtrInput
+	// Config related to running scheduled Notebooks.
+	Notebook GoogleCloudDataplexV1TaskNotebookTaskConfigPtrInput
 	Project  pulumi.StringPtrInput
 	// Config related to running custom Spark tasks.
 	Spark GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput
@@ -229,6 +235,11 @@ func (o TaskOutput) Location() pulumi.StringOutput {
 // The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
 func (o TaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Config related to running scheduled Notebooks.
+func (o TaskOutput) Notebook() GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput {
+	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput { return v.Notebook }).(GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput)
 }
 
 func (o TaskOutput) Project() pulumi.StringOutput {

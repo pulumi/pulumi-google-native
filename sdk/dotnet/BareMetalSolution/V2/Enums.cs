@@ -500,9 +500,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public static VolumeConfigPerformanceTier VolumePerformanceTierShared { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED");
         /// <summary>
-        /// Dedicated (assigned) aggregates.
+        /// Assigned aggregates.
         /// </summary>
-        public static VolumeConfigPerformanceTier VolumePerformanceTierDedicated { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED");
+        public static VolumeConfigPerformanceTier VolumePerformanceTierAssigned { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_ASSIGNED");
+        /// <summary>
+        /// High throughput aggregates.
+        /// </summary>
+        public static VolumeConfigPerformanceTier VolumePerformanceTierHt { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_HT");
 
         public static bool operator ==(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => left.Equals(right);
         public static bool operator !=(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => !left.Equals(right);
@@ -623,9 +627,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public static VolumePerformanceTier VolumePerformanceTierShared { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED");
         /// <summary>
-        /// Dedicated (assigned) aggregates.
+        /// Assigned aggregates.
         /// </summary>
-        public static VolumePerformanceTier VolumePerformanceTierDedicated { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED");
+        public static VolumePerformanceTier VolumePerformanceTierAssigned { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_ASSIGNED");
+        /// <summary>
+        /// High throughput aggregates.
+        /// </summary>
+        public static VolumePerformanceTier VolumePerformanceTierHt { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_HT");
 
         public static bool operator ==(VolumePerformanceTier left, VolumePerformanceTier right) => left.Equals(right);
         public static bool operator !=(VolumePerformanceTier left, VolumePerformanceTier right) => !left.Equals(right);
@@ -716,6 +724,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// The storage volume has been requested to be deleted.
         /// </summary>
         public static VolumeState Deleting { get; } = new VolumeState("DELETING");
+        /// <summary>
+        /// The storage volume is being updated.
+        /// </summary>
+        public static VolumeState Updating { get; } = new VolumeState("UPDATING");
 
         public static bool operator ==(VolumeState left, VolumeState right) => left.Equals(right);
         public static bool operator !=(VolumeState left, VolumeState right) => !left.Equals(right);

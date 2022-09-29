@@ -17,6 +17,7 @@ __all__ = ['ProvisioningConfigArgs', 'ProvisioningConfig']
 @pulumi.input_type
 class ProvisioningConfigArgs:
     def __init__(__self__, *,
+                 custom_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  handover_service_account: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]]] = None,
@@ -29,6 +30,7 @@ class ProvisioningConfigArgs:
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ProvisioningConfig resource.
+        :param pulumi.Input[str] custom_id: Optional. The user-defined identifier of the provisioning config.
         :param pulumi.Input[str] email: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         :param pulumi.Input[str] handover_service_account: A service account to enable customers to access instance credentials upon handover.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigArgs']]] instances: Instances to be created.
@@ -39,6 +41,8 @@ class ProvisioningConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeConfigArgs']]] volumes: Volumes to be created.
         :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
         """
+        if custom_id is not None:
+            pulumi.set(__self__, "custom_id", custom_id)
         if email is not None:
             warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
             pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
@@ -62,6 +66,18 @@ class ProvisioningConfigArgs:
             pulumi.set(__self__, "volumes", volumes)
         if vpc_sc_enabled is not None:
             pulumi.set(__self__, "vpc_sc_enabled", vpc_sc_enabled)
+
+    @property
+    @pulumi.getter(name="customId")
+    def custom_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The user-defined identifier of the provisioning config.
+        """
+        return pulumi.get(self, "custom_id")
+
+    @custom_id.setter
+    def custom_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_id", value)
 
     @property
     @pulumi.getter
@@ -186,6 +202,7 @@ class ProvisioningConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  handover_service_account: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
@@ -205,6 +222,7 @@ class ProvisioningConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] custom_id: Optional. The user-defined identifier of the provisioning config.
         :param pulumi.Input[str] email: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         :param pulumi.Input[str] handover_service_account: A service account to enable customers to access instance credentials upon handover.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] instances: Instances to be created.
@@ -242,6 +260,7 @@ class ProvisioningConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  handover_service_account: Optional[pulumi.Input[str]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
@@ -261,6 +280,7 @@ class ProvisioningConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProvisioningConfigArgs.__new__(ProvisioningConfigArgs)
 
+            __props__.__dict__["custom_id"] = custom_id
             if email is not None and not opts.urn:
                 warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
                 pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
@@ -303,6 +323,7 @@ class ProvisioningConfig(pulumi.CustomResource):
         __props__ = ProvisioningConfigArgs.__new__(ProvisioningConfigArgs)
 
         __props__.__dict__["cloud_console_uri"] = None
+        __props__.__dict__["custom_id"] = None
         __props__.__dict__["email"] = None
         __props__.__dict__["handover_service_account"] = None
         __props__.__dict__["instances"] = None
@@ -325,6 +346,14 @@ class ProvisioningConfig(pulumi.CustomResource):
         URI to Cloud Console UI view of this provisioning config.
         """
         return pulumi.get(self, "cloud_console_uri")
+
+    @property
+    @pulumi.getter(name="customId")
+    def custom_id(self) -> pulumi.Output[str]:
+        """
+        Optional. The user-defined identifier of the provisioning config.
+        """
+        return pulumi.get(self, "custom_id")
 
     @property
     @pulumi.getter
@@ -359,7 +388,7 @@ class ProvisioningConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the provisioning config.
+        The system-generated name of the provisioning config. This follows the UUID format.
         """
         return pulumi.get(self, "name")
 

@@ -74,6 +74,7 @@ export interface GetNetworkEndpointGroupResult {
      * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     readonly networkEndpointType: string;
+    readonly pscData: outputs.compute.v1.NetworkEndpointGroupPscDataResponse;
     /**
      * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */

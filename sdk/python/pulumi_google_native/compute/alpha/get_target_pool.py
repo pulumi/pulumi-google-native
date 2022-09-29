@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetPoolResult:
-    def __init__(__self__, backup_pool=None, creation_timestamp=None, description=None, failover_ratio=None, health_checks=None, instances=None, kind=None, name=None, region=None, self_link=None, self_link_with_id=None, session_affinity=None):
+    def __init__(__self__, backup_pool=None, creation_timestamp=None, description=None, failover_ratio=None, health_checks=None, instances=None, kind=None, name=None, region=None, security_policy=None, self_link=None, self_link_with_id=None, session_affinity=None):
         if backup_pool and not isinstance(backup_pool, str):
             raise TypeError("Expected argument 'backup_pool' to be a str")
         pulumi.set(__self__, "backup_pool", backup_pool)
@@ -46,6 +46,9 @@ class GetTargetPoolResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if security_policy and not isinstance(security_policy, str):
+            raise TypeError("Expected argument 'security_policy' to be a str")
+        pulumi.set(__self__, "security_policy", security_policy)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -129,6 +132,14 @@ class GetTargetPoolResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        """
+        The resource URL for the security policy associated with this target pool.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -168,6 +179,7 @@ class AwaitableGetTargetPoolResult(GetTargetPoolResult):
             kind=self.kind,
             name=self.name,
             region=self.region,
+            security_policy=self.security_policy,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             session_affinity=self.session_affinity)
@@ -197,6 +209,7 @@ def get_target_pool(project: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         region=__ret__.region,
+        security_policy=__ret__.security_policy,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         session_affinity=__ret__.session_affinity)

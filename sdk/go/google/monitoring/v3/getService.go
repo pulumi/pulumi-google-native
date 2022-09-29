@@ -29,6 +29,8 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	// Type used for App Engine services.
 	AppEngine AppEngineResponse `pulumi:"appEngine"`
+	// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+	BasicService BasicServiceResponse `pulumi:"basicService"`
 	// Type used for Cloud Endpoints services.
 	CloudEndpoints CloudEndpointsResponse `pulumi:"cloudEndpoints"`
 	// Type used for Cloud Run services.
@@ -97,6 +99,11 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 // Type used for App Engine services.
 func (o LookupServiceResultOutput) AppEngine() AppEngineResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) AppEngineResponse { return v.AppEngine }).(AppEngineResponseOutput)
+}
+
+// Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+func (o LookupServiceResultOutput) BasicService() BasicServiceResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) BasicServiceResponse { return v.BasicService }).(BasicServiceResponseOutput)
 }
 
 // Type used for Cloud Endpoints services.

@@ -77,6 +77,8 @@ type Instance struct {
 	ReservationAffinity ReservationAffinityResponseOutput `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
+	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+	ResourceStatus ResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
@@ -487,6 +489,11 @@ func (o InstanceOutput) ReservationAffinity() ReservationAffinityResponseOutput 
 // Resource policies applied to this instance.
 func (o InstanceOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+func (o InstanceOutput) ResourceStatus() ResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Instance) ResourceStatusResponseOutput { return v.ResourceStatus }).(ResourceStatusResponseOutput)
 }
 
 // Reserved for future use.

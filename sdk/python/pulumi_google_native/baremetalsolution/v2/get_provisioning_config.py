@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetProvisioningConfigResult:
-    def __init__(__self__, cloud_console_uri=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, status_message=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
+    def __init__(__self__, cloud_console_uri=None, custom_id=None, email=None, handover_service_account=None, instances=None, location=None, name=None, networks=None, state=None, status_message=None, ticket_id=None, update_time=None, volumes=None, vpc_sc_enabled=None):
         if cloud_console_uri and not isinstance(cloud_console_uri, str):
             raise TypeError("Expected argument 'cloud_console_uri' to be a str")
         pulumi.set(__self__, "cloud_console_uri", cloud_console_uri)
+        if custom_id and not isinstance(custom_id, str):
+            raise TypeError("Expected argument 'custom_id' to be a str")
+        pulumi.set(__self__, "custom_id", custom_id)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         if email is not None:
@@ -73,6 +76,14 @@ class GetProvisioningConfigResult:
         return pulumi.get(self, "cloud_console_uri")
 
     @property
+    @pulumi.getter(name="customId")
+    def custom_id(self) -> str:
+        """
+        Optional. The user-defined identifier of the provisioning config.
+        """
+        return pulumi.get(self, "custom_id")
+
+    @property
     @pulumi.getter
     def email(self) -> str:
         """
@@ -108,7 +119,7 @@ class GetProvisioningConfigResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the provisioning config.
+        The system-generated name of the provisioning config. This follows the UUID format.
         """
         return pulumi.get(self, "name")
 
@@ -176,6 +187,7 @@ class AwaitableGetProvisioningConfigResult(GetProvisioningConfigResult):
             yield self
         return GetProvisioningConfigResult(
             cloud_console_uri=self.cloud_console_uri,
+            custom_id=self.custom_id,
             email=self.email,
             handover_service_account=self.handover_service_account,
             instances=self.instances,
@@ -206,6 +218,7 @@ def get_provisioning_config(location: Optional[str] = None,
 
     return AwaitableGetProvisioningConfigResult(
         cloud_console_uri=__ret__.cloud_console_uri,
+        custom_id=__ret__.custom_id,
         email=__ret__.email,
         handover_service_account=__ret__.handover_service_account,
         instances=__ret__.instances,

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class UDPHealthCheckResponse
     {
         /// <summary>
-        /// The UDP port number for the health check request. Valid values are 1 through 65535.
+        /// The UDP port number to which the health check prober sends packets. Valid values are 1 through 65535.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
+        /// Not supported.
         /// </summary>
         public readonly string PortName;
         /// <summary>

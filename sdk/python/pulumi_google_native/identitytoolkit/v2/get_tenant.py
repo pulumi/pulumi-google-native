@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTenantResult:
-    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, monitoring=None, name=None, test_phone_numbers=None):
+    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, monitoring=None, name=None, sms_region_config=None, test_phone_numbers=None):
         if allow_password_signup and not isinstance(allow_password_signup, bool):
             raise TypeError("Expected argument 'allow_password_signup' to be a bool")
         pulumi.set(__self__, "allow_password_signup", allow_password_signup)
@@ -56,6 +56,9 @@ class GetTenantResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if sms_region_config and not isinstance(sms_region_config, dict):
+            raise TypeError("Expected argument 'sms_region_config' to be a dict")
+        pulumi.set(__self__, "sms_region_config", sms_region_config)
         if test_phone_numbers and not isinstance(test_phone_numbers, dict):
             raise TypeError("Expected argument 'test_phone_numbers' to be a dict")
         pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
@@ -157,6 +160,14 @@ class GetTenantResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="smsRegionConfig")
+    def sms_region_config(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse':
+        """
+        Configures which regions are enabled for SMS verification code sending.
+        """
+        return pulumi.get(self, "sms_region_config")
+
+    @property
     @pulumi.getter(name="testPhoneNumbers")
     def test_phone_numbers(self) -> Mapping[str, str]:
         """
@@ -183,6 +194,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             mfa_config=self.mfa_config,
             monitoring=self.monitoring,
             name=self.name,
+            sms_region_config=self.sms_region_config,
             test_phone_numbers=self.test_phone_numbers)
 
 
@@ -211,6 +223,7 @@ def get_tenant(project: Optional[str] = None,
         mfa_config=__ret__.mfa_config,
         monitoring=__ret__.monitoring,
         name=__ret__.name,
+        sms_region_config=__ret__.sms_region_config,
         test_phone_numbers=__ret__.test_phone_numbers)
 
 

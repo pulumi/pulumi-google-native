@@ -987,6 +987,17 @@ export const VersionKind = {
  */
 export type VersionKind = (typeof VersionKind)[keyof typeof VersionKind];
 
+export const VulnerabilityCvssVersion = {
+    CvssVersionUnspecified: "CVSS_VERSION_UNSPECIFIED",
+    CvssVersion2: "CVSS_VERSION_2",
+    CvssVersion3: "CVSS_VERSION_3",
+} as const;
+
+/**
+ * CVSS version used to populate cvss_score and severity.
+ */
+export type VulnerabilityCvssVersion = (typeof VulnerabilityCvssVersion)[keyof typeof VulnerabilityCvssVersion];
+
 export const VulnerabilitySeverity = {
     /**
      * Unknown.

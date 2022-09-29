@@ -205,6 +205,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.ResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
