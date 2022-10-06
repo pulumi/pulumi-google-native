@@ -103,8 +103,6 @@ class AccessPolicyIamBinding(pulumi.CustomResource):
                  __props__=None):
         """
         Sets the IAM policy for the specified Access Context Manager access policy. This method replaces the existing IAM policy on the access policy. The IAM policy controls the set of users who can perform specific operations on the Access Context Manager access policy.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,8 +124,6 @@ class AccessPolicyIamBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Sets the IAM policy for the specified Access Context Manager access policy. This method replaces the existing IAM policy on the access policy. The IAM policy controls the set of users who can perform specific operations on the Access Context Manager access policy.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param AccessPolicyIamBindingArgs args: The arguments to use to populate this resource's properties.

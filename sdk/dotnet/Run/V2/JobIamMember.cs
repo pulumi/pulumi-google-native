@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.Run.V2
 {
     /// <summary>
     /// Sets the IAM Access control policy for the specified Job. Overwrites any existing policy.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v2:JobIamMember")]
     public partial class JobIamMember : global::Pulumi.CustomResource

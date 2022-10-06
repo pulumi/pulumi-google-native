@@ -855,11 +855,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	if resourceMeta.Delete.Undefined() {
-		description += "\nNote - this resource's API doesn't support deletion. When deleted, the resource will persist\n" +
-			"on Google Cloud even though it will be deleted from Pulumi state."
-	}
-
 	// Apply auto-project and auto-location population.
 	requiredInputProperties.Delete("project")
 	requiredInputProperties.Delete("location")
@@ -890,12 +885,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1beta1:Cluster/getKubeconfig"
 	}
 
-	g.pkg.Resources[resourceTok] = resourceSpec
-	g.metadata.Resources[resourceTok] = resourceMeta
-
 	// For resources with a `setIamPolicy` method defined, also generate Binding and Member resources to provide
 	// more granular alternatives to overwriting the entire policy.
 	if dd.hasIAMOverlays {
+		resourceMeta := deepcopy.Copy(resourceMeta).(resources.CloudAPIResource)
 		// Delete for policy is the same operation as an update.
 		resourceMeta.Delete.Endpoint = resourceMeta.Update.Endpoint
 		resourceMeta.Delete.SDKProperties = resourceMeta.Update.SDKProperties
@@ -959,6 +952,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		g.pkg.Resources[iamMemberToken] = member
 		g.metadata.Resources[iamMemberToken] = resourceMeta
 	}
+
+	if resourceMeta.Delete.Undefined() {
+		resourceSpec.ObjectTypeSpec.Description +=
+			"\nNote - this resource's API doesn't support deletion. When deleted, the resource will persist\n" +
+				"on Google Cloud even though it will be deleted from Pulumi state."
+	}
+
+	g.pkg.Resources[resourceTok] = resourceSpec
+	g.metadata.Resources[resourceTok] = resourceMeta
 
 	return nil
 }

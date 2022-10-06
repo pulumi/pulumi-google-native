@@ -9,8 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Sets the IAM policy.
- * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
- * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class DataExchangeIamBinding extends pulumi.CustomResource {
     /**

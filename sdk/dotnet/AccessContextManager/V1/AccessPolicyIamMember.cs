@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
     /// Sets the IAM policy for the specified Access Context Manager access policy. This method replaces the existing IAM policy on the access policy. The IAM policy controls the set of users who can perform specific operations on the Access Context Manager access policy.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyIamMember")]
     public partial class AccessPolicyIamMember : global::Pulumi.CustomResource

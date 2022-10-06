@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 {
     /// <summary>
     /// Sets the IAM access control policy on the specified function. Replaces any existing policy.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudfunctions/v1:FunctionIamBinding")]
     public partial class FunctionIamBinding : global::Pulumi.CustomResource

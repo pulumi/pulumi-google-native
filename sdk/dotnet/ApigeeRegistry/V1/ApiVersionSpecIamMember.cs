@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:ApiVersionSpecIamMember")]
     public partial class ApiVersionSpecIamMember : global::Pulumi.CustomResource

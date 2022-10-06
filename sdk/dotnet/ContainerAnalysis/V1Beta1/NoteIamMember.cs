@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1beta1:NoteIamMember")]
     public partial class NoteIamMember : global::Pulumi.CustomResource

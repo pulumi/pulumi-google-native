@@ -9,8 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
- * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
- * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class FolderIamBinding extends pulumi.CustomResource {
     /**

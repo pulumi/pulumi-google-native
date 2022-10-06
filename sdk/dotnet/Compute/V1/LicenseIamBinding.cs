@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:LicenseIamBinding")]
     public partial class LicenseIamBinding : global::Pulumi.CustomResource

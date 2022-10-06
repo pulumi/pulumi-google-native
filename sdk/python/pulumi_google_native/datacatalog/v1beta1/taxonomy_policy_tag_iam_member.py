@@ -103,8 +103,6 @@ class TaxonomyPolicyTagIamMember(pulumi.CustomResource):
                  __props__=None):
         """
         Sets the IAM policy for a taxonomy or a policy tag.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,8 +124,6 @@ class TaxonomyPolicyTagIamMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Sets the IAM policy for a taxonomy or a policy tag.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param TaxonomyPolicyTagIamMemberArgs args: The arguments to use to populate this resource's properties.
