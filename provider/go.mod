@@ -1,9 +1,9 @@
 module github.com/pulumi/pulumi-google-native/provider
 
-go 1.17
+go 1.19
 
 require (
-	github.com/evanphx/json-patch v4.12.0+incompatible
+	github.com/evanphx/json-patch v5.6.0+incompatible
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813
 	github.com/golang/glog v1.0.0
 	github.com/golang/protobuf v1.5.2
