@@ -8,53 +8,53 @@ import * as utilities from "../../utilities";
 export { CompositeTypeArgs } from "./compositeType";
 export type CompositeType = import("./compositeType").CompositeType;
 export const CompositeType: typeof import("./compositeType").CompositeType = null as any;
+utilities.lazyLoad(exports, ["CompositeType"], () => require("./compositeType"));
 
 export { DeploymentArgs } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
+utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
 
 export { DeploymentIamBindingArgs } from "./deploymentIamBinding";
 export type DeploymentIamBinding = import("./deploymentIamBinding").DeploymentIamBinding;
 export const DeploymentIamBinding: typeof import("./deploymentIamBinding").DeploymentIamBinding = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamBinding"], () => require("./deploymentIamBinding"));
 
 export { DeploymentIamMemberArgs } from "./deploymentIamMember";
 export type DeploymentIamMember = import("./deploymentIamMember").DeploymentIamMember;
 export const DeploymentIamMember: typeof import("./deploymentIamMember").DeploymentIamMember = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamMember"], () => require("./deploymentIamMember"));
 
 export { DeploymentIamPolicyArgs } from "./deploymentIamPolicy";
 export type DeploymentIamPolicy = import("./deploymentIamPolicy").DeploymentIamPolicy;
 export const DeploymentIamPolicy: typeof import("./deploymentIamPolicy").DeploymentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamPolicy"], () => require("./deploymentIamPolicy"));
 
 export { GetCompositeTypeArgs, GetCompositeTypeResult, GetCompositeTypeOutputArgs } from "./getCompositeType";
 export const getCompositeType: typeof import("./getCompositeType").getCompositeType = null as any;
 export const getCompositeTypeOutput: typeof import("./getCompositeType").getCompositeTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getCompositeType","getCompositeTypeOutput"], () => require("./getCompositeType"));
 
 export { GetDeploymentArgs, GetDeploymentResult, GetDeploymentOutputArgs } from "./getDeployment";
 export const getDeployment: typeof import("./getDeployment").getDeployment = null as any;
 export const getDeploymentOutput: typeof import("./getDeployment").getDeploymentOutput = null as any;
+utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
 
 export { GetDeploymentIamPolicyArgs, GetDeploymentIamPolicyResult, GetDeploymentIamPolicyOutputArgs } from "./getDeploymentIamPolicy";
 export const getDeploymentIamPolicy: typeof import("./getDeploymentIamPolicy").getDeploymentIamPolicy = null as any;
 export const getDeploymentIamPolicyOutput: typeof import("./getDeploymentIamPolicy").getDeploymentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDeploymentIamPolicy","getDeploymentIamPolicyOutput"], () => require("./getDeploymentIamPolicy"));
 
 export { GetTypeProviderArgs, GetTypeProviderResult, GetTypeProviderOutputArgs } from "./getTypeProvider";
 export const getTypeProvider: typeof import("./getTypeProvider").getTypeProvider = null as any;
 export const getTypeProviderOutput: typeof import("./getTypeProvider").getTypeProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getTypeProvider","getTypeProviderOutput"], () => require("./getTypeProvider"));
 
 export { TypeProviderArgs } from "./typeProvider";
 export type TypeProvider = import("./typeProvider").TypeProvider;
 export const TypeProvider: typeof import("./typeProvider").TypeProvider = null as any;
-
-utilities.lazyLoad(exports, ["CompositeType"], () => require("./compositeType"));
-utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
-utilities.lazyLoad(exports, ["DeploymentIamBinding"], () => require("./deploymentIamBinding"));
-utilities.lazyLoad(exports, ["DeploymentIamMember"], () => require("./deploymentIamMember"));
-utilities.lazyLoad(exports, ["DeploymentIamPolicy"], () => require("./deploymentIamPolicy"));
-utilities.lazyLoad(exports, ["getCompositeType","getCompositeTypeOutput"], () => require("./getCompositeType"));
-utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
-utilities.lazyLoad(exports, ["getDeploymentIamPolicy","getDeploymentIamPolicyOutput"], () => require("./getDeploymentIamPolicy"));
-utilities.lazyLoad(exports, ["getTypeProvider","getTypeProviderOutput"], () => require("./getTypeProvider"));
 utilities.lazyLoad(exports, ["TypeProvider"], () => require("./typeProvider"));
+
 
 // Export enums:
 export * from "../../types/enums/deploymentmanager/alpha";

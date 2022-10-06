@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { CatalogItemArgs } from "./catalogItem";
 export type CatalogItem = import("./catalogItem").CatalogItem;
 export const CatalogItem: typeof import("./catalogItem").CatalogItem = null as any;
+utilities.lazyLoad(exports, ["CatalogItem"], () => require("./catalogItem"));
 
 export { GetCatalogItemArgs, GetCatalogItemResult, GetCatalogItemOutputArgs } from "./getCatalogItem";
 export const getCatalogItem: typeof import("./getCatalogItem").getCatalogItem = null as any;
 export const getCatalogItemOutput: typeof import("./getCatalogItem").getCatalogItemOutput = null as any;
-
-utilities.lazyLoad(exports, ["CatalogItem"], () => require("./catalogItem"));
 utilities.lazyLoad(exports, ["getCatalogItem","getCatalogItemOutput"], () => require("./getCatalogItem"));
+
 
 // Export enums:
 export * from "../../types/enums/recommendationengine/v1beta1";

@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { AccessLevelArgs } from "./accessLevel";
 export type AccessLevel = import("./accessLevel").AccessLevel;
 export const AccessLevel: typeof import("./accessLevel").AccessLevel = null as any;
+utilities.lazyLoad(exports, ["AccessLevel"], () => require("./accessLevel"));
 
 export { AccessPolicyArgs } from "./accessPolicy";
 export type AccessPolicy = import("./accessPolicy").AccessPolicy;
 export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
 
 export { AccessPolicyIamBindingArgs } from "./accessPolicyIamBinding";
 export type AccessPolicyIamBinding = import("./accessPolicyIamBinding").AccessPolicyIamBinding;
 export const AccessPolicyIamBinding: typeof import("./accessPolicyIamBinding").AccessPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["AccessPolicyIamBinding"], () => require("./accessPolicyIamBinding"));
 
 export { AccessPolicyIamMemberArgs } from "./accessPolicyIamMember";
 export type AccessPolicyIamMember = import("./accessPolicyIamMember").AccessPolicyIamMember;
 export const AccessPolicyIamMember: typeof import("./accessPolicyIamMember").AccessPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["AccessPolicyIamMember"], () => require("./accessPolicyIamMember"));
 
 export { AccessPolicyIamPolicyArgs } from "./accessPolicyIamPolicy";
 export type AccessPolicyIamPolicy = import("./accessPolicyIamPolicy").AccessPolicyIamPolicy;
 export const AccessPolicyIamPolicy: typeof import("./accessPolicyIamPolicy").AccessPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessPolicyIamPolicy"], () => require("./accessPolicyIamPolicy"));
 
 export { GcpUserAccessBindingArgs } from "./gcpUserAccessBinding";
 export type GcpUserAccessBinding = import("./gcpUserAccessBinding").GcpUserAccessBinding;
 export const GcpUserAccessBinding: typeof import("./gcpUserAccessBinding").GcpUserAccessBinding = null as any;
+utilities.lazyLoad(exports, ["GcpUserAccessBinding"], () => require("./gcpUserAccessBinding"));
 
 export { GetAccessLevelArgs, GetAccessLevelResult, GetAccessLevelOutputArgs } from "./getAccessLevel";
 export const getAccessLevel: typeof import("./getAccessLevel").getAccessLevel = null as any;
 export const getAccessLevelOutput: typeof import("./getAccessLevel").getAccessLevelOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessLevel","getAccessLevelOutput"], () => require("./getAccessLevel"));
 
 export { GetAccessPolicyArgs, GetAccessPolicyResult, GetAccessPolicyOutputArgs } from "./getAccessPolicy";
 export const getAccessPolicy: typeof import("./getAccessPolicy").getAccessPolicy = null as any;
 export const getAccessPolicyOutput: typeof import("./getAccessPolicy").getAccessPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPolicy","getAccessPolicyOutput"], () => require("./getAccessPolicy"));
 
 export { GetAccessPolicyIamPolicyArgs, GetAccessPolicyIamPolicyResult, GetAccessPolicyIamPolicyOutputArgs } from "./getAccessPolicyIamPolicy";
 export const getAccessPolicyIamPolicy: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicy = null as any;
 export const getAccessPolicyIamPolicyOutput: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPolicyIamPolicy","getAccessPolicyIamPolicyOutput"], () => require("./getAccessPolicyIamPolicy"));
 
 export { GetGcpUserAccessBindingArgs, GetGcpUserAccessBindingResult, GetGcpUserAccessBindingOutputArgs } from "./getGcpUserAccessBinding";
 export const getGcpUserAccessBinding: typeof import("./getGcpUserAccessBinding").getGcpUserAccessBinding = null as any;
 export const getGcpUserAccessBindingOutput: typeof import("./getGcpUserAccessBinding").getGcpUserAccessBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getGcpUserAccessBinding","getGcpUserAccessBindingOutput"], () => require("./getGcpUserAccessBinding"));
 
 export { GetServicePerimeterArgs, GetServicePerimeterResult, GetServicePerimeterOutputArgs } from "./getServicePerimeter";
 export const getServicePerimeter: typeof import("./getServicePerimeter").getServicePerimeter = null as any;
 export const getServicePerimeterOutput: typeof import("./getServicePerimeter").getServicePerimeterOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePerimeter","getServicePerimeterOutput"], () => require("./getServicePerimeter"));
 
 export { ServicePerimeterArgs } from "./servicePerimeter";
 export type ServicePerimeter = import("./servicePerimeter").ServicePerimeter;
 export const ServicePerimeter: typeof import("./servicePerimeter").ServicePerimeter = null as any;
-
-utilities.lazyLoad(exports, ["AccessLevel"], () => require("./accessLevel"));
-utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
-utilities.lazyLoad(exports, ["AccessPolicyIamBinding"], () => require("./accessPolicyIamBinding"));
-utilities.lazyLoad(exports, ["AccessPolicyIamMember"], () => require("./accessPolicyIamMember"));
-utilities.lazyLoad(exports, ["AccessPolicyIamPolicy"], () => require("./accessPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["GcpUserAccessBinding"], () => require("./gcpUserAccessBinding"));
-utilities.lazyLoad(exports, ["getAccessLevel","getAccessLevelOutput"], () => require("./getAccessLevel"));
-utilities.lazyLoad(exports, ["getAccessPolicy","getAccessPolicyOutput"], () => require("./getAccessPolicy"));
-utilities.lazyLoad(exports, ["getAccessPolicyIamPolicy","getAccessPolicyIamPolicyOutput"], () => require("./getAccessPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["getGcpUserAccessBinding","getGcpUserAccessBindingOutput"], () => require("./getGcpUserAccessBinding"));
-utilities.lazyLoad(exports, ["getServicePerimeter","getServicePerimeterOutput"], () => require("./getServicePerimeter"));
 utilities.lazyLoad(exports, ["ServicePerimeter"], () => require("./servicePerimeter"));
+
 
 // Export enums:
 export * from "../../types/enums/accesscontextmanager/v1";

@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GetGlossaryArgs, GetGlossaryResult, GetGlossaryOutputArgs } from "./getGlossary";
 export const getGlossary: typeof import("./getGlossary").getGlossary = null as any;
 export const getGlossaryOutput: typeof import("./getGlossary").getGlossaryOutput = null as any;
+utilities.lazyLoad(exports, ["getGlossary","getGlossaryOutput"], () => require("./getGlossary"));
 
 export { GetGlossaryEntryArgs, GetGlossaryEntryResult, GetGlossaryEntryOutputArgs } from "./getGlossaryEntry";
 export const getGlossaryEntry: typeof import("./getGlossaryEntry").getGlossaryEntry = null as any;
 export const getGlossaryEntryOutput: typeof import("./getGlossaryEntry").getGlossaryEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getGlossaryEntry","getGlossaryEntryOutput"], () => require("./getGlossaryEntry"));
 
 export { GlossaryArgs } from "./glossary";
 export type Glossary = import("./glossary").Glossary;
 export const Glossary: typeof import("./glossary").Glossary = null as any;
+utilities.lazyLoad(exports, ["Glossary"], () => require("./glossary"));
 
 export { GlossaryEntryArgs } from "./glossaryEntry";
 export type GlossaryEntry = import("./glossaryEntry").GlossaryEntry;
 export const GlossaryEntry: typeof import("./glossaryEntry").GlossaryEntry = null as any;
-
-utilities.lazyLoad(exports, ["getGlossary","getGlossaryOutput"], () => require("./getGlossary"));
-utilities.lazyLoad(exports, ["getGlossaryEntry","getGlossaryEntryOutput"], () => require("./getGlossaryEntry"));
-utilities.lazyLoad(exports, ["Glossary"], () => require("./glossary"));
 utilities.lazyLoad(exports, ["GlossaryEntry"], () => require("./glossaryEntry"));
+
 
 const _module = {
     version: utilities.getVersion(),

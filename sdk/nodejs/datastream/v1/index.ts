@@ -8,43 +8,43 @@ import * as utilities from "../../utilities";
 export { ConnectionProfileArgs } from "./connectionProfile";
 export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
 export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
 export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
 export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
 
 export { GetPrivateConnectionArgs, GetPrivateConnectionResult, GetPrivateConnectionOutputArgs } from "./getPrivateConnection";
 export const getPrivateConnection: typeof import("./getPrivateConnection").getPrivateConnection = null as any;
 export const getPrivateConnectionOutput: typeof import("./getPrivateConnection").getPrivateConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateConnection","getPrivateConnectionOutput"], () => require("./getPrivateConnection"));
 
 export { GetRouteArgs, GetRouteResult, GetRouteOutputArgs } from "./getRoute";
 export const getRoute: typeof import("./getRoute").getRoute = null as any;
 export const getRouteOutput: typeof import("./getRoute").getRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getRoute","getRouteOutput"], () => require("./getRoute"));
 
 export { GetStreamArgs, GetStreamResult, GetStreamOutputArgs } from "./getStream";
 export const getStream: typeof import("./getStream").getStream = null as any;
 export const getStreamOutput: typeof import("./getStream").getStreamOutput = null as any;
+utilities.lazyLoad(exports, ["getStream","getStreamOutput"], () => require("./getStream"));
 
 export { PrivateConnectionArgs } from "./privateConnection";
 export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
+utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
 
 export { RouteArgs } from "./route";
 export type Route = import("./route").Route;
 export const Route: typeof import("./route").Route = null as any;
+utilities.lazyLoad(exports, ["Route"], () => require("./route"));
 
 export { StreamArgs } from "./stream";
 export type Stream = import("./stream").Stream;
 export const Stream: typeof import("./stream").Stream = null as any;
-
-utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
-utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
-utilities.lazyLoad(exports, ["getPrivateConnection","getPrivateConnectionOutput"], () => require("./getPrivateConnection"));
-utilities.lazyLoad(exports, ["getRoute","getRouteOutput"], () => require("./getRoute"));
-utilities.lazyLoad(exports, ["getStream","getStreamOutput"], () => require("./getStream"));
-utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
-utilities.lazyLoad(exports, ["Route"], () => require("./route"));
 utilities.lazyLoad(exports, ["Stream"], () => require("./stream"));
+
 
 // Export enums:
 export * from "../../types/enums/datastream/v1";

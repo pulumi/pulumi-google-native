@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { EndpointArgs } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
 
 export { EndpointIamBindingArgs } from "./endpointIamBinding";
 export type EndpointIamBinding = import("./endpointIamBinding").EndpointIamBinding;
 export const EndpointIamBinding: typeof import("./endpointIamBinding").EndpointIamBinding = null as any;
+utilities.lazyLoad(exports, ["EndpointIamBinding"], () => require("./endpointIamBinding"));
 
 export { EndpointIamMemberArgs } from "./endpointIamMember";
 export type EndpointIamMember = import("./endpointIamMember").EndpointIamMember;
 export const EndpointIamMember: typeof import("./endpointIamMember").EndpointIamMember = null as any;
+utilities.lazyLoad(exports, ["EndpointIamMember"], () => require("./endpointIamMember"));
 
 export { EndpointIamPolicyArgs } from "./endpointIamPolicy";
 export type EndpointIamPolicy = import("./endpointIamPolicy").EndpointIamPolicy;
 export const EndpointIamPolicy: typeof import("./endpointIamPolicy").EndpointIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EndpointIamPolicy"], () => require("./endpointIamPolicy"));
 
 export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
 export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
 export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
 
 export { GetEndpointIamPolicyArgs, GetEndpointIamPolicyResult, GetEndpointIamPolicyOutputArgs } from "./getEndpointIamPolicy";
 export const getEndpointIamPolicy: typeof import("./getEndpointIamPolicy").getEndpointIamPolicy = null as any;
 export const getEndpointIamPolicyOutput: typeof import("./getEndpointIamPolicy").getEndpointIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
-utilities.lazyLoad(exports, ["EndpointIamBinding"], () => require("./endpointIamBinding"));
-utilities.lazyLoad(exports, ["EndpointIamMember"], () => require("./endpointIamMember"));
-utilities.lazyLoad(exports, ["EndpointIamPolicy"], () => require("./endpointIamPolicy"));
-utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
 utilities.lazyLoad(exports, ["getEndpointIamPolicy","getEndpointIamPolicyOutput"], () => require("./getEndpointIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/ids/v1";

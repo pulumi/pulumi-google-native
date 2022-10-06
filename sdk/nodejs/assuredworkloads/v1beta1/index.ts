@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetWorkloadArgs, GetWorkloadResult, GetWorkloadOutputArgs } from "./getWorkload";
 export const getWorkload: typeof import("./getWorkload").getWorkload = null as any;
 export const getWorkloadOutput: typeof import("./getWorkload").getWorkloadOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkload","getWorkloadOutput"], () => require("./getWorkload"));
 
 export { WorkloadArgs } from "./workload";
 export type Workload = import("./workload").Workload;
 export const Workload: typeof import("./workload").Workload = null as any;
-
-utilities.lazyLoad(exports, ["getWorkload","getWorkloadOutput"], () => require("./getWorkload"));
 utilities.lazyLoad(exports, ["Workload"], () => require("./workload"));
+
 
 // Export enums:
 export * from "../../types/enums/assuredworkloads/v1beta1";

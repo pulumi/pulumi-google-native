@@ -8,233 +8,233 @@ import * as utilities from "../../utilities";
 export { AssetArgs } from "./asset";
 export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
+utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
 
 export { ContentArgs } from "./content";
 export type Content = import("./content").Content;
 export const Content: typeof import("./content").Content = null as any;
+utilities.lazyLoad(exports, ["Content"], () => require("./content"));
 
 export { ContentitemArgs } from "./contentitem";
 export type Contentitem = import("./contentitem").Contentitem;
 export const Contentitem: typeof import("./contentitem").Contentitem = null as any;
+utilities.lazyLoad(exports, ["Contentitem"], () => require("./contentitem"));
 
 export { EntityArgs } from "./entity";
 export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
+utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
 export { EnvironmentArgs } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { GetAssetArgs, GetAssetResult, GetAssetOutputArgs } from "./getAsset";
 export const getAsset: typeof import("./getAsset").getAsset = null as any;
 export const getAssetOutput: typeof import("./getAsset").getAssetOutput = null as any;
+utilities.lazyLoad(exports, ["getAsset","getAssetOutput"], () => require("./getAsset"));
 
 export { GetContentArgs, GetContentResult, GetContentOutputArgs } from "./getContent";
 export const getContent: typeof import("./getContent").getContent = null as any;
 export const getContentOutput: typeof import("./getContent").getContentOutput = null as any;
+utilities.lazyLoad(exports, ["getContent","getContentOutput"], () => require("./getContent"));
 
 export { GetContentitemArgs, GetContentitemResult, GetContentitemOutputArgs } from "./getContentitem";
 export const getContentitem: typeof import("./getContentitem").getContentitem = null as any;
 export const getContentitemOutput: typeof import("./getContentitem").getContentitemOutput = null as any;
+utilities.lazyLoad(exports, ["getContentitem","getContentitemOutput"], () => require("./getContentitem"));
 
 export { GetEntityArgs, GetEntityResult, GetEntityOutputArgs } from "./getEntity";
 export const getEntity: typeof import("./getEntity").getEntity = null as any;
 export const getEntityOutput: typeof import("./getEntity").getEntityOutput = null as any;
+utilities.lazyLoad(exports, ["getEntity","getEntityOutput"], () => require("./getEntity"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetLakeArgs, GetLakeResult, GetLakeOutputArgs } from "./getLake";
 export const getLake: typeof import("./getLake").getLake = null as any;
 export const getLakeOutput: typeof import("./getLake").getLakeOutput = null as any;
+utilities.lazyLoad(exports, ["getLake","getLakeOutput"], () => require("./getLake"));
 
 export { GetLakeAssetIamPolicyArgs, GetLakeAssetIamPolicyResult, GetLakeAssetIamPolicyOutputArgs } from "./getLakeAssetIamPolicy";
 export const getLakeAssetIamPolicy: typeof import("./getLakeAssetIamPolicy").getLakeAssetIamPolicy = null as any;
 export const getLakeAssetIamPolicyOutput: typeof import("./getLakeAssetIamPolicy").getLakeAssetIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeAssetIamPolicy","getLakeAssetIamPolicyOutput"], () => require("./getLakeAssetIamPolicy"));
 
 export { GetLakeContentIamPolicyArgs, GetLakeContentIamPolicyResult, GetLakeContentIamPolicyOutputArgs } from "./getLakeContentIamPolicy";
 export const getLakeContentIamPolicy: typeof import("./getLakeContentIamPolicy").getLakeContentIamPolicy = null as any;
 export const getLakeContentIamPolicyOutput: typeof import("./getLakeContentIamPolicy").getLakeContentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeContentIamPolicy","getLakeContentIamPolicyOutput"], () => require("./getLakeContentIamPolicy"));
 
 export { GetLakeContentitemIamPolicyArgs, GetLakeContentitemIamPolicyResult, GetLakeContentitemIamPolicyOutputArgs } from "./getLakeContentitemIamPolicy";
 export const getLakeContentitemIamPolicy: typeof import("./getLakeContentitemIamPolicy").getLakeContentitemIamPolicy = null as any;
 export const getLakeContentitemIamPolicyOutput: typeof import("./getLakeContentitemIamPolicy").getLakeContentitemIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeContentitemIamPolicy","getLakeContentitemIamPolicyOutput"], () => require("./getLakeContentitemIamPolicy"));
 
 export { GetLakeEnvironmentIamPolicyArgs, GetLakeEnvironmentIamPolicyResult, GetLakeEnvironmentIamPolicyOutputArgs } from "./getLakeEnvironmentIamPolicy";
 export const getLakeEnvironmentIamPolicy: typeof import("./getLakeEnvironmentIamPolicy").getLakeEnvironmentIamPolicy = null as any;
 export const getLakeEnvironmentIamPolicyOutput: typeof import("./getLakeEnvironmentIamPolicy").getLakeEnvironmentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeEnvironmentIamPolicy","getLakeEnvironmentIamPolicyOutput"], () => require("./getLakeEnvironmentIamPolicy"));
 
 export { GetLakeIamPolicyArgs, GetLakeIamPolicyResult, GetLakeIamPolicyOutputArgs } from "./getLakeIamPolicy";
 export const getLakeIamPolicy: typeof import("./getLakeIamPolicy").getLakeIamPolicy = null as any;
 export const getLakeIamPolicyOutput: typeof import("./getLakeIamPolicy").getLakeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeIamPolicy","getLakeIamPolicyOutput"], () => require("./getLakeIamPolicy"));
 
 export { GetLakeTaskIamPolicyArgs, GetLakeTaskIamPolicyResult, GetLakeTaskIamPolicyOutputArgs } from "./getLakeTaskIamPolicy";
 export const getLakeTaskIamPolicy: typeof import("./getLakeTaskIamPolicy").getLakeTaskIamPolicy = null as any;
 export const getLakeTaskIamPolicyOutput: typeof import("./getLakeTaskIamPolicy").getLakeTaskIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeTaskIamPolicy","getLakeTaskIamPolicyOutput"], () => require("./getLakeTaskIamPolicy"));
 
 export { GetLakeZoneIamPolicyArgs, GetLakeZoneIamPolicyResult, GetLakeZoneIamPolicyOutputArgs } from "./getLakeZoneIamPolicy";
 export const getLakeZoneIamPolicy: typeof import("./getLakeZoneIamPolicy").getLakeZoneIamPolicy = null as any;
 export const getLakeZoneIamPolicyOutput: typeof import("./getLakeZoneIamPolicy").getLakeZoneIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeZoneIamPolicy","getLakeZoneIamPolicyOutput"], () => require("./getLakeZoneIamPolicy"));
 
 export { GetPartitionArgs, GetPartitionResult, GetPartitionOutputArgs } from "./getPartition";
 export const getPartition: typeof import("./getPartition").getPartition = null as any;
 export const getPartitionOutput: typeof import("./getPartition").getPartitionOutput = null as any;
+utilities.lazyLoad(exports, ["getPartition","getPartitionOutput"], () => require("./getPartition"));
 
 export { GetTaskArgs, GetTaskResult, GetTaskOutputArgs } from "./getTask";
 export const getTask: typeof import("./getTask").getTask = null as any;
 export const getTaskOutput: typeof import("./getTask").getTaskOutput = null as any;
+utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
 
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
 
 export { LakeArgs } from "./lake";
 export type Lake = import("./lake").Lake;
 export const Lake: typeof import("./lake").Lake = null as any;
+utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
 
 export { LakeAssetIamBindingArgs } from "./lakeAssetIamBinding";
 export type LakeAssetIamBinding = import("./lakeAssetIamBinding").LakeAssetIamBinding;
 export const LakeAssetIamBinding: typeof import("./lakeAssetIamBinding").LakeAssetIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeAssetIamBinding"], () => require("./lakeAssetIamBinding"));
 
 export { LakeAssetIamMemberArgs } from "./lakeAssetIamMember";
 export type LakeAssetIamMember = import("./lakeAssetIamMember").LakeAssetIamMember;
 export const LakeAssetIamMember: typeof import("./lakeAssetIamMember").LakeAssetIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeAssetIamMember"], () => require("./lakeAssetIamMember"));
 
 export { LakeAssetIamPolicyArgs } from "./lakeAssetIamPolicy";
 export type LakeAssetIamPolicy = import("./lakeAssetIamPolicy").LakeAssetIamPolicy;
 export const LakeAssetIamPolicy: typeof import("./lakeAssetIamPolicy").LakeAssetIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeAssetIamPolicy"], () => require("./lakeAssetIamPolicy"));
 
 export { LakeContentIamBindingArgs } from "./lakeContentIamBinding";
 export type LakeContentIamBinding = import("./lakeContentIamBinding").LakeContentIamBinding;
 export const LakeContentIamBinding: typeof import("./lakeContentIamBinding").LakeContentIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeContentIamBinding"], () => require("./lakeContentIamBinding"));
 
 export { LakeContentIamMemberArgs } from "./lakeContentIamMember";
 export type LakeContentIamMember = import("./lakeContentIamMember").LakeContentIamMember;
 export const LakeContentIamMember: typeof import("./lakeContentIamMember").LakeContentIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeContentIamMember"], () => require("./lakeContentIamMember"));
 
 export { LakeContentIamPolicyArgs } from "./lakeContentIamPolicy";
 export type LakeContentIamPolicy = import("./lakeContentIamPolicy").LakeContentIamPolicy;
 export const LakeContentIamPolicy: typeof import("./lakeContentIamPolicy").LakeContentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeContentIamPolicy"], () => require("./lakeContentIamPolicy"));
 
 export { LakeContentitemIamBindingArgs } from "./lakeContentitemIamBinding";
 export type LakeContentitemIamBinding = import("./lakeContentitemIamBinding").LakeContentitemIamBinding;
 export const LakeContentitemIamBinding: typeof import("./lakeContentitemIamBinding").LakeContentitemIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeContentitemIamBinding"], () => require("./lakeContentitemIamBinding"));
 
 export { LakeContentitemIamMemberArgs } from "./lakeContentitemIamMember";
 export type LakeContentitemIamMember = import("./lakeContentitemIamMember").LakeContentitemIamMember;
 export const LakeContentitemIamMember: typeof import("./lakeContentitemIamMember").LakeContentitemIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeContentitemIamMember"], () => require("./lakeContentitemIamMember"));
 
 export { LakeContentitemIamPolicyArgs } from "./lakeContentitemIamPolicy";
 export type LakeContentitemIamPolicy = import("./lakeContentitemIamPolicy").LakeContentitemIamPolicy;
 export const LakeContentitemIamPolicy: typeof import("./lakeContentitemIamPolicy").LakeContentitemIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeContentitemIamPolicy"], () => require("./lakeContentitemIamPolicy"));
 
 export { LakeEnvironmentIamBindingArgs } from "./lakeEnvironmentIamBinding";
 export type LakeEnvironmentIamBinding = import("./lakeEnvironmentIamBinding").LakeEnvironmentIamBinding;
 export const LakeEnvironmentIamBinding: typeof import("./lakeEnvironmentIamBinding").LakeEnvironmentIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeEnvironmentIamBinding"], () => require("./lakeEnvironmentIamBinding"));
 
 export { LakeEnvironmentIamMemberArgs } from "./lakeEnvironmentIamMember";
 export type LakeEnvironmentIamMember = import("./lakeEnvironmentIamMember").LakeEnvironmentIamMember;
 export const LakeEnvironmentIamMember: typeof import("./lakeEnvironmentIamMember").LakeEnvironmentIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeEnvironmentIamMember"], () => require("./lakeEnvironmentIamMember"));
 
 export { LakeEnvironmentIamPolicyArgs } from "./lakeEnvironmentIamPolicy";
 export type LakeEnvironmentIamPolicy = import("./lakeEnvironmentIamPolicy").LakeEnvironmentIamPolicy;
 export const LakeEnvironmentIamPolicy: typeof import("./lakeEnvironmentIamPolicy").LakeEnvironmentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeEnvironmentIamPolicy"], () => require("./lakeEnvironmentIamPolicy"));
 
 export { LakeIamBindingArgs } from "./lakeIamBinding";
 export type LakeIamBinding = import("./lakeIamBinding").LakeIamBinding;
 export const LakeIamBinding: typeof import("./lakeIamBinding").LakeIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeIamBinding"], () => require("./lakeIamBinding"));
 
 export { LakeIamMemberArgs } from "./lakeIamMember";
 export type LakeIamMember = import("./lakeIamMember").LakeIamMember;
 export const LakeIamMember: typeof import("./lakeIamMember").LakeIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeIamMember"], () => require("./lakeIamMember"));
 
 export { LakeIamPolicyArgs } from "./lakeIamPolicy";
 export type LakeIamPolicy = import("./lakeIamPolicy").LakeIamPolicy;
 export const LakeIamPolicy: typeof import("./lakeIamPolicy").LakeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
 
 export { LakeTaskIamBindingArgs } from "./lakeTaskIamBinding";
 export type LakeTaskIamBinding = import("./lakeTaskIamBinding").LakeTaskIamBinding;
 export const LakeTaskIamBinding: typeof import("./lakeTaskIamBinding").LakeTaskIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeTaskIamBinding"], () => require("./lakeTaskIamBinding"));
 
 export { LakeTaskIamMemberArgs } from "./lakeTaskIamMember";
 export type LakeTaskIamMember = import("./lakeTaskIamMember").LakeTaskIamMember;
 export const LakeTaskIamMember: typeof import("./lakeTaskIamMember").LakeTaskIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeTaskIamMember"], () => require("./lakeTaskIamMember"));
 
 export { LakeTaskIamPolicyArgs } from "./lakeTaskIamPolicy";
 export type LakeTaskIamPolicy = import("./lakeTaskIamPolicy").LakeTaskIamPolicy;
 export const LakeTaskIamPolicy: typeof import("./lakeTaskIamPolicy").LakeTaskIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeTaskIamPolicy"], () => require("./lakeTaskIamPolicy"));
 
 export { LakeZoneIamBindingArgs } from "./lakeZoneIamBinding";
 export type LakeZoneIamBinding = import("./lakeZoneIamBinding").LakeZoneIamBinding;
 export const LakeZoneIamBinding: typeof import("./lakeZoneIamBinding").LakeZoneIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeZoneIamBinding"], () => require("./lakeZoneIamBinding"));
 
 export { LakeZoneIamMemberArgs } from "./lakeZoneIamMember";
 export type LakeZoneIamMember = import("./lakeZoneIamMember").LakeZoneIamMember;
 export const LakeZoneIamMember: typeof import("./lakeZoneIamMember").LakeZoneIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeZoneIamMember"], () => require("./lakeZoneIamMember"));
 
 export { LakeZoneIamPolicyArgs } from "./lakeZoneIamPolicy";
 export type LakeZoneIamPolicy = import("./lakeZoneIamPolicy").LakeZoneIamPolicy;
 export const LakeZoneIamPolicy: typeof import("./lakeZoneIamPolicy").LakeZoneIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeZoneIamPolicy"], () => require("./lakeZoneIamPolicy"));
 
 export { PartitionArgs } from "./partition";
 export type Partition = import("./partition").Partition;
 export const Partition: typeof import("./partition").Partition = null as any;
+utilities.lazyLoad(exports, ["Partition"], () => require("./partition"));
 
 export { TaskArgs } from "./task";
 export type Task = import("./task").Task;
 export const Task: typeof import("./task").Task = null as any;
+utilities.lazyLoad(exports, ["Task"], () => require("./task"));
 
 export { ZoneArgs } from "./zone";
 export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
-
-utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
-utilities.lazyLoad(exports, ["Content"], () => require("./content"));
-utilities.lazyLoad(exports, ["Contentitem"], () => require("./contentitem"));
-utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["getAsset","getAssetOutput"], () => require("./getAsset"));
-utilities.lazyLoad(exports, ["getContent","getContentOutput"], () => require("./getContent"));
-utilities.lazyLoad(exports, ["getContentitem","getContentitemOutput"], () => require("./getContentitem"));
-utilities.lazyLoad(exports, ["getEntity","getEntityOutput"], () => require("./getEntity"));
-utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
-utilities.lazyLoad(exports, ["getLake","getLakeOutput"], () => require("./getLake"));
-utilities.lazyLoad(exports, ["getLakeAssetIamPolicy","getLakeAssetIamPolicyOutput"], () => require("./getLakeAssetIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeContentIamPolicy","getLakeContentIamPolicyOutput"], () => require("./getLakeContentIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeContentitemIamPolicy","getLakeContentitemIamPolicyOutput"], () => require("./getLakeContentitemIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeEnvironmentIamPolicy","getLakeEnvironmentIamPolicyOutput"], () => require("./getLakeEnvironmentIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeIamPolicy","getLakeIamPolicyOutput"], () => require("./getLakeIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeTaskIamPolicy","getLakeTaskIamPolicyOutput"], () => require("./getLakeTaskIamPolicy"));
-utilities.lazyLoad(exports, ["getLakeZoneIamPolicy","getLakeZoneIamPolicyOutput"], () => require("./getLakeZoneIamPolicy"));
-utilities.lazyLoad(exports, ["getPartition","getPartitionOutput"], () => require("./getPartition"));
-utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
-utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
-utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
-utilities.lazyLoad(exports, ["LakeAssetIamBinding"], () => require("./lakeAssetIamBinding"));
-utilities.lazyLoad(exports, ["LakeAssetIamMember"], () => require("./lakeAssetIamMember"));
-utilities.lazyLoad(exports, ["LakeAssetIamPolicy"], () => require("./lakeAssetIamPolicy"));
-utilities.lazyLoad(exports, ["LakeContentIamBinding"], () => require("./lakeContentIamBinding"));
-utilities.lazyLoad(exports, ["LakeContentIamMember"], () => require("./lakeContentIamMember"));
-utilities.lazyLoad(exports, ["LakeContentIamPolicy"], () => require("./lakeContentIamPolicy"));
-utilities.lazyLoad(exports, ["LakeContentitemIamBinding"], () => require("./lakeContentitemIamBinding"));
-utilities.lazyLoad(exports, ["LakeContentitemIamMember"], () => require("./lakeContentitemIamMember"));
-utilities.lazyLoad(exports, ["LakeContentitemIamPolicy"], () => require("./lakeContentitemIamPolicy"));
-utilities.lazyLoad(exports, ["LakeEnvironmentIamBinding"], () => require("./lakeEnvironmentIamBinding"));
-utilities.lazyLoad(exports, ["LakeEnvironmentIamMember"], () => require("./lakeEnvironmentIamMember"));
-utilities.lazyLoad(exports, ["LakeEnvironmentIamPolicy"], () => require("./lakeEnvironmentIamPolicy"));
-utilities.lazyLoad(exports, ["LakeIamBinding"], () => require("./lakeIamBinding"));
-utilities.lazyLoad(exports, ["LakeIamMember"], () => require("./lakeIamMember"));
-utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
-utilities.lazyLoad(exports, ["LakeTaskIamBinding"], () => require("./lakeTaskIamBinding"));
-utilities.lazyLoad(exports, ["LakeTaskIamMember"], () => require("./lakeTaskIamMember"));
-utilities.lazyLoad(exports, ["LakeTaskIamPolicy"], () => require("./lakeTaskIamPolicy"));
-utilities.lazyLoad(exports, ["LakeZoneIamBinding"], () => require("./lakeZoneIamBinding"));
-utilities.lazyLoad(exports, ["LakeZoneIamMember"], () => require("./lakeZoneIamMember"));
-utilities.lazyLoad(exports, ["LakeZoneIamPolicy"], () => require("./lakeZoneIamPolicy"));
-utilities.lazyLoad(exports, ["Partition"], () => require("./partition"));
-utilities.lazyLoad(exports, ["Task"], () => require("./task"));
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
 
 // Export enums:
 export * from "../../types/enums/dataplex/v1";

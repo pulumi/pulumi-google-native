@@ -8,53 +8,53 @@ import * as utilities from "../../utilities";
 export { ConnectionArgs } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
 export { ConnectionIamBindingArgs } from "./connectionIamBinding";
 export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
 export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
 
 export { ConnectionIamMemberArgs } from "./connectionIamMember";
 export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
 export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 
 export { ConnectionIamPolicyArgs } from "./connectionIamPolicy";
 export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
 export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnectionIamPolicyOutputArgs } from "./getConnectionIamPolicy";
 export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
 
 export { GetProviderIamPolicyArgs, GetProviderIamPolicyResult, GetProviderIamPolicyOutputArgs } from "./getProviderIamPolicy";
 export const getProviderIamPolicy: typeof import("./getProviderIamPolicy").getProviderIamPolicy = null as any;
 export const getProviderIamPolicyOutput: typeof import("./getProviderIamPolicy").getProviderIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getProviderIamPolicy","getProviderIamPolicyOutput"], () => require("./getProviderIamPolicy"));
 
 export { ProviderIamBindingArgs } from "./providerIamBinding";
 export type ProviderIamBinding = import("./providerIamBinding").ProviderIamBinding;
 export const ProviderIamBinding: typeof import("./providerIamBinding").ProviderIamBinding = null as any;
+utilities.lazyLoad(exports, ["ProviderIamBinding"], () => require("./providerIamBinding"));
 
 export { ProviderIamMemberArgs } from "./providerIamMember";
 export type ProviderIamMember = import("./providerIamMember").ProviderIamMember;
 export const ProviderIamMember: typeof import("./providerIamMember").ProviderIamMember = null as any;
+utilities.lazyLoad(exports, ["ProviderIamMember"], () => require("./providerIamMember"));
 
 export { ProviderIamPolicyArgs } from "./providerIamPolicy";
 export type ProviderIamPolicy = import("./providerIamPolicy").ProviderIamPolicy;
 export const ProviderIamPolicy: typeof import("./providerIamPolicy").ProviderIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
-utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
-utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
-utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
-utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
-utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["getProviderIamPolicy","getProviderIamPolicyOutput"], () => require("./getProviderIamPolicy"));
-utilities.lazyLoad(exports, ["ProviderIamBinding"], () => require("./providerIamBinding"));
-utilities.lazyLoad(exports, ["ProviderIamMember"], () => require("./providerIamMember"));
 utilities.lazyLoad(exports, ["ProviderIamPolicy"], () => require("./providerIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/connectors/v1";

@@ -8,73 +8,73 @@ import * as utilities from "../../utilities";
 export { AlertPolicyArgs } from "./alertPolicy";
 export type AlertPolicy = import("./alertPolicy").AlertPolicy;
 export const AlertPolicy: typeof import("./alertPolicy").AlertPolicy = null as any;
+utilities.lazyLoad(exports, ["AlertPolicy"], () => require("./alertPolicy"));
 
 export { GetAlertPolicyArgs, GetAlertPolicyResult, GetAlertPolicyOutputArgs } from "./getAlertPolicy";
 export const getAlertPolicy: typeof import("./getAlertPolicy").getAlertPolicy = null as any;
 export const getAlertPolicyOutput: typeof import("./getAlertPolicy").getAlertPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertPolicy","getAlertPolicyOutput"], () => require("./getAlertPolicy"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
 export { GetMetricDescriptorArgs, GetMetricDescriptorResult, GetMetricDescriptorOutputArgs } from "./getMetricDescriptor";
 export const getMetricDescriptor: typeof import("./getMetricDescriptor").getMetricDescriptor = null as any;
 export const getMetricDescriptorOutput: typeof import("./getMetricDescriptor").getMetricDescriptorOutput = null as any;
+utilities.lazyLoad(exports, ["getMetricDescriptor","getMetricDescriptorOutput"], () => require("./getMetricDescriptor"));
 
 export { GetNotificationChannelArgs, GetNotificationChannelResult, GetNotificationChannelOutputArgs } from "./getNotificationChannel";
 export const getNotificationChannel: typeof import("./getNotificationChannel").getNotificationChannel = null as any;
 export const getNotificationChannelOutput: typeof import("./getNotificationChannel").getNotificationChannelOutput = null as any;
+utilities.lazyLoad(exports, ["getNotificationChannel","getNotificationChannelOutput"], () => require("./getNotificationChannel"));
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
 export { GetServiceLevelObjectiveArgs, GetServiceLevelObjectiveResult, GetServiceLevelObjectiveOutputArgs } from "./getServiceLevelObjective";
 export const getServiceLevelObjective: typeof import("./getServiceLevelObjective").getServiceLevelObjective = null as any;
 export const getServiceLevelObjectiveOutput: typeof import("./getServiceLevelObjective").getServiceLevelObjectiveOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceLevelObjective","getServiceLevelObjectiveOutput"], () => require("./getServiceLevelObjective"));
 
 export { GetUptimeCheckConfigArgs, GetUptimeCheckConfigResult, GetUptimeCheckConfigOutputArgs } from "./getUptimeCheckConfig";
 export const getUptimeCheckConfig: typeof import("./getUptimeCheckConfig").getUptimeCheckConfig = null as any;
 export const getUptimeCheckConfigOutput: typeof import("./getUptimeCheckConfig").getUptimeCheckConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getUptimeCheckConfig","getUptimeCheckConfigOutput"], () => require("./getUptimeCheckConfig"));
 
 export { GroupArgs } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
 export { MetricDescriptorArgs } from "./metricDescriptor";
 export type MetricDescriptor = import("./metricDescriptor").MetricDescriptor;
 export const MetricDescriptor: typeof import("./metricDescriptor").MetricDescriptor = null as any;
+utilities.lazyLoad(exports, ["MetricDescriptor"], () => require("./metricDescriptor"));
 
 export { NotificationChannelArgs } from "./notificationChannel";
 export type NotificationChannel = import("./notificationChannel").NotificationChannel;
 export const NotificationChannel: typeof import("./notificationChannel").NotificationChannel = null as any;
+utilities.lazyLoad(exports, ["NotificationChannel"], () => require("./notificationChannel"));
 
 export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 export { ServiceLevelObjectiveArgs } from "./serviceLevelObjective";
 export type ServiceLevelObjective = import("./serviceLevelObjective").ServiceLevelObjective;
 export const ServiceLevelObjective: typeof import("./serviceLevelObjective").ServiceLevelObjective = null as any;
+utilities.lazyLoad(exports, ["ServiceLevelObjective"], () => require("./serviceLevelObjective"));
 
 export { UptimeCheckConfigArgs } from "./uptimeCheckConfig";
 export type UptimeCheckConfig = import("./uptimeCheckConfig").UptimeCheckConfig;
 export const UptimeCheckConfig: typeof import("./uptimeCheckConfig").UptimeCheckConfig = null as any;
-
-utilities.lazyLoad(exports, ["AlertPolicy"], () => require("./alertPolicy"));
-utilities.lazyLoad(exports, ["getAlertPolicy","getAlertPolicyOutput"], () => require("./getAlertPolicy"));
-utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
-utilities.lazyLoad(exports, ["getMetricDescriptor","getMetricDescriptorOutput"], () => require("./getMetricDescriptor"));
-utilities.lazyLoad(exports, ["getNotificationChannel","getNotificationChannelOutput"], () => require("./getNotificationChannel"));
-utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
-utilities.lazyLoad(exports, ["getServiceLevelObjective","getServiceLevelObjectiveOutput"], () => require("./getServiceLevelObjective"));
-utilities.lazyLoad(exports, ["getUptimeCheckConfig","getUptimeCheckConfigOutput"], () => require("./getUptimeCheckConfig"));
-utilities.lazyLoad(exports, ["Group"], () => require("./group"));
-utilities.lazyLoad(exports, ["MetricDescriptor"], () => require("./metricDescriptor"));
-utilities.lazyLoad(exports, ["NotificationChannel"], () => require("./notificationChannel"));
-utilities.lazyLoad(exports, ["Service"], () => require("./service"));
-utilities.lazyLoad(exports, ["ServiceLevelObjective"], () => require("./serviceLevelObjective"));
 utilities.lazyLoad(exports, ["UptimeCheckConfig"], () => require("./uptimeCheckConfig"));
+
 
 // Export enums:
 export * from "../../types/enums/monitoring/v3";

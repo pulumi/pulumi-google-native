@@ -8,133 +8,133 @@ import * as utilities from "../../utilities";
 export { AgentArgs } from "./agent";
 export type Agent = import("./agent").Agent;
 export const Agent: typeof import("./agent").Agent = null as any;
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
 
 export { EntityTypeArgs } from "./entityType";
 export type EntityType = import("./entityType").EntityType;
 export const EntityType: typeof import("./entityType").EntityType = null as any;
+utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
 
 export { EnvironmentArgs } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { ExperimentArgs } from "./experiment";
 export type Experiment = import("./experiment").Experiment;
 export const Experiment: typeof import("./experiment").Experiment = null as any;
+utilities.lazyLoad(exports, ["Experiment"], () => require("./experiment"));
 
 export { FlowArgs } from "./flow";
 export type Flow = import("./flow").Flow;
 export const Flow: typeof import("./flow").Flow = null as any;
+utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
 
 export { GetAgentArgs, GetAgentResult, GetAgentOutputArgs } from "./getAgent";
 export const getAgent: typeof import("./getAgent").getAgent = null as any;
 export const getAgentOutput: typeof import("./getAgent").getAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getAgent","getAgentOutput"], () => require("./getAgent"));
 
 export { GetEntityTypeArgs, GetEntityTypeResult, GetEntityTypeOutputArgs } from "./getEntityType";
 export const getEntityType: typeof import("./getEntityType").getEntityType = null as any;
 export const getEntityTypeOutput: typeof import("./getEntityType").getEntityTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getEntityType","getEntityTypeOutput"], () => require("./getEntityType"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetExperimentArgs, GetExperimentResult, GetExperimentOutputArgs } from "./getExperiment";
 export const getExperiment: typeof import("./getExperiment").getExperiment = null as any;
 export const getExperimentOutput: typeof import("./getExperiment").getExperimentOutput = null as any;
+utilities.lazyLoad(exports, ["getExperiment","getExperimentOutput"], () => require("./getExperiment"));
 
 export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
 export const getFlow: typeof import("./getFlow").getFlow = null as any;
 export const getFlowOutput: typeof import("./getFlow").getFlowOutput = null as any;
+utilities.lazyLoad(exports, ["getFlow","getFlowOutput"], () => require("./getFlow"));
 
 export { GetIntentArgs, GetIntentResult, GetIntentOutputArgs } from "./getIntent";
 export const getIntent: typeof import("./getIntent").getIntent = null as any;
 export const getIntentOutput: typeof import("./getIntent").getIntentOutput = null as any;
+utilities.lazyLoad(exports, ["getIntent","getIntentOutput"], () => require("./getIntent"));
 
 export { GetPageArgs, GetPageResult, GetPageOutputArgs } from "./getPage";
 export const getPage: typeof import("./getPage").getPage = null as any;
 export const getPageOutput: typeof import("./getPage").getPageOutput = null as any;
+utilities.lazyLoad(exports, ["getPage","getPageOutput"], () => require("./getPage"));
 
 export { GetSecuritySettingArgs, GetSecuritySettingResult, GetSecuritySettingOutputArgs } from "./getSecuritySetting";
 export const getSecuritySetting: typeof import("./getSecuritySetting").getSecuritySetting = null as any;
 export const getSecuritySettingOutput: typeof import("./getSecuritySetting").getSecuritySettingOutput = null as any;
+utilities.lazyLoad(exports, ["getSecuritySetting","getSecuritySettingOutput"], () => require("./getSecuritySetting"));
 
 export { GetSessionEntityTypeArgs, GetSessionEntityTypeResult, GetSessionEntityTypeOutputArgs } from "./getSessionEntityType";
 export const getSessionEntityType: typeof import("./getSessionEntityType").getSessionEntityType = null as any;
 export const getSessionEntityTypeOutput: typeof import("./getSessionEntityType").getSessionEntityTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getSessionEntityType","getSessionEntityTypeOutput"], () => require("./getSessionEntityType"));
 
 export { GetTestCaseArgs, GetTestCaseResult, GetTestCaseOutputArgs } from "./getTestCase";
 export const getTestCase: typeof import("./getTestCase").getTestCase = null as any;
 export const getTestCaseOutput: typeof import("./getTestCase").getTestCaseOutput = null as any;
+utilities.lazyLoad(exports, ["getTestCase","getTestCaseOutput"], () => require("./getTestCase"));
 
 export { GetTransitionRouteGroupArgs, GetTransitionRouteGroupResult, GetTransitionRouteGroupOutputArgs } from "./getTransitionRouteGroup";
 export const getTransitionRouteGroup: typeof import("./getTransitionRouteGroup").getTransitionRouteGroup = null as any;
 export const getTransitionRouteGroupOutput: typeof import("./getTransitionRouteGroup").getTransitionRouteGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getTransitionRouteGroup","getTransitionRouteGroupOutput"], () => require("./getTransitionRouteGroup"));
 
 export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
 export const getVersion: typeof import("./getVersion").getVersion = null as any;
 export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
+utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 
 export { IntentArgs } from "./intent";
 export type Intent = import("./intent").Intent;
 export const Intent: typeof import("./intent").Intent = null as any;
+utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
 
 export { PageArgs } from "./page";
 export type Page = import("./page").Page;
 export const Page: typeof import("./page").Page = null as any;
+utilities.lazyLoad(exports, ["Page"], () => require("./page"));
 
 export { SecuritySettingArgs } from "./securitySetting";
 export type SecuritySetting = import("./securitySetting").SecuritySetting;
 export const SecuritySetting: typeof import("./securitySetting").SecuritySetting = null as any;
+utilities.lazyLoad(exports, ["SecuritySetting"], () => require("./securitySetting"));
 
 export { SessionEntityTypeArgs } from "./sessionEntityType";
 export type SessionEntityType = import("./sessionEntityType").SessionEntityType;
 export const SessionEntityType: typeof import("./sessionEntityType").SessionEntityType = null as any;
+utilities.lazyLoad(exports, ["SessionEntityType"], () => require("./sessionEntityType"));
 
 export { TestCaseArgs } from "./testCase";
 export type TestCase = import("./testCase").TestCase;
 export const TestCase: typeof import("./testCase").TestCase = null as any;
+utilities.lazyLoad(exports, ["TestCase"], () => require("./testCase"));
 
 export { TransitionRouteGroupArgs } from "./transitionRouteGroup";
 export type TransitionRouteGroup = import("./transitionRouteGroup").TransitionRouteGroup;
 export const TransitionRouteGroup: typeof import("./transitionRouteGroup").TransitionRouteGroup = null as any;
+utilities.lazyLoad(exports, ["TransitionRouteGroup"], () => require("./transitionRouteGroup"));
 
 export { VersionArgs } from "./version";
 export type Version = import("./version").Version;
 export const Version: typeof import("./version").Version = null as any;
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
 
 export { WebhookArgs } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
-
-utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
-utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["Experiment"], () => require("./experiment"));
-utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
-utilities.lazyLoad(exports, ["getAgent","getAgentOutput"], () => require("./getAgent"));
-utilities.lazyLoad(exports, ["getEntityType","getEntityTypeOutput"], () => require("./getEntityType"));
-utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
-utilities.lazyLoad(exports, ["getExperiment","getExperimentOutput"], () => require("./getExperiment"));
-utilities.lazyLoad(exports, ["getFlow","getFlowOutput"], () => require("./getFlow"));
-utilities.lazyLoad(exports, ["getIntent","getIntentOutput"], () => require("./getIntent"));
-utilities.lazyLoad(exports, ["getPage","getPageOutput"], () => require("./getPage"));
-utilities.lazyLoad(exports, ["getSecuritySetting","getSecuritySettingOutput"], () => require("./getSecuritySetting"));
-utilities.lazyLoad(exports, ["getSessionEntityType","getSessionEntityTypeOutput"], () => require("./getSessionEntityType"));
-utilities.lazyLoad(exports, ["getTestCase","getTestCaseOutput"], () => require("./getTestCase"));
-utilities.lazyLoad(exports, ["getTransitionRouteGroup","getTransitionRouteGroupOutput"], () => require("./getTransitionRouteGroup"));
-utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
-utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
-utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
-utilities.lazyLoad(exports, ["Page"], () => require("./page"));
-utilities.lazyLoad(exports, ["SecuritySetting"], () => require("./securitySetting"));
-utilities.lazyLoad(exports, ["SessionEntityType"], () => require("./sessionEntityType"));
-utilities.lazyLoad(exports, ["TestCase"], () => require("./testCase"));
-utilities.lazyLoad(exports, ["TransitionRouteGroup"], () => require("./transitionRouteGroup"));
-utilities.lazyLoad(exports, ["Version"], () => require("./version"));
 utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export enums:
 export * from "../../types/enums/dialogflow/v3beta1";

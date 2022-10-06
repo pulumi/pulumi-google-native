@@ -8,53 +8,53 @@ import * as utilities from "../../utilities";
 export { BrandArgs } from "./brand";
 export type Brand = import("./brand").Brand;
 export const Brand: typeof import("./brand").Brand = null as any;
+utilities.lazyLoad(exports, ["Brand"], () => require("./brand"));
 
 export { DestGroupArgs } from "./destGroup";
 export type DestGroup = import("./destGroup").DestGroup;
 export const DestGroup: typeof import("./destGroup").DestGroup = null as any;
+utilities.lazyLoad(exports, ["DestGroup"], () => require("./destGroup"));
 
 export { GetBrandArgs, GetBrandResult, GetBrandOutputArgs } from "./getBrand";
 export const getBrand: typeof import("./getBrand").getBrand = null as any;
 export const getBrandOutput: typeof import("./getBrand").getBrandOutput = null as any;
+utilities.lazyLoad(exports, ["getBrand","getBrandOutput"], () => require("./getBrand"));
 
 export { GetDestGroupArgs, GetDestGroupResult, GetDestGroupOutputArgs } from "./getDestGroup";
 export const getDestGroup: typeof import("./getDestGroup").getDestGroup = null as any;
 export const getDestGroupOutput: typeof import("./getDestGroup").getDestGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getDestGroup","getDestGroupOutput"], () => require("./getDestGroup"));
 
 export { GetIdentityAwareProxyClientArgs, GetIdentityAwareProxyClientResult, GetIdentityAwareProxyClientOutputArgs } from "./getIdentityAwareProxyClient";
 export const getIdentityAwareProxyClient: typeof import("./getIdentityAwareProxyClient").getIdentityAwareProxyClient = null as any;
 export const getIdentityAwareProxyClientOutput: typeof import("./getIdentityAwareProxyClient").getIdentityAwareProxyClientOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityAwareProxyClient","getIdentityAwareProxyClientOutput"], () => require("./getIdentityAwareProxyClient"));
 
 export { GetV1IamPolicyArgs, GetV1IamPolicyResult, GetV1IamPolicyOutputArgs } from "./getV1IamPolicy";
 export const getV1IamPolicy: typeof import("./getV1IamPolicy").getV1IamPolicy = null as any;
 export const getV1IamPolicyOutput: typeof import("./getV1IamPolicy").getV1IamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getV1IamPolicy","getV1IamPolicyOutput"], () => require("./getV1IamPolicy"));
 
 export { IdentityAwareProxyClientArgs } from "./identityAwareProxyClient";
 export type IdentityAwareProxyClient = import("./identityAwareProxyClient").IdentityAwareProxyClient;
 export const IdentityAwareProxyClient: typeof import("./identityAwareProxyClient").IdentityAwareProxyClient = null as any;
+utilities.lazyLoad(exports, ["IdentityAwareProxyClient"], () => require("./identityAwareProxyClient"));
 
 export { V1IamBindingArgs } from "./v1iamBinding";
 export type V1IamBinding = import("./v1iamBinding").V1IamBinding;
 export const V1IamBinding: typeof import("./v1iamBinding").V1IamBinding = null as any;
+utilities.lazyLoad(exports, ["V1IamBinding"], () => require("./v1iamBinding"));
 
 export { V1IamMemberArgs } from "./v1iamMember";
 export type V1IamMember = import("./v1iamMember").V1IamMember;
 export const V1IamMember: typeof import("./v1iamMember").V1IamMember = null as any;
+utilities.lazyLoad(exports, ["V1IamMember"], () => require("./v1iamMember"));
 
 export { V1IamPolicyArgs } from "./v1iamPolicy";
 export type V1IamPolicy = import("./v1iamPolicy").V1IamPolicy;
 export const V1IamPolicy: typeof import("./v1iamPolicy").V1IamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Brand"], () => require("./brand"));
-utilities.lazyLoad(exports, ["DestGroup"], () => require("./destGroup"));
-utilities.lazyLoad(exports, ["getBrand","getBrandOutput"], () => require("./getBrand"));
-utilities.lazyLoad(exports, ["getDestGroup","getDestGroupOutput"], () => require("./getDestGroup"));
-utilities.lazyLoad(exports, ["getIdentityAwareProxyClient","getIdentityAwareProxyClientOutput"], () => require("./getIdentityAwareProxyClient"));
-utilities.lazyLoad(exports, ["getV1IamPolicy","getV1IamPolicyOutput"], () => require("./getV1IamPolicy"));
-utilities.lazyLoad(exports, ["IdentityAwareProxyClient"], () => require("./identityAwareProxyClient"));
-utilities.lazyLoad(exports, ["V1IamBinding"], () => require("./v1iamBinding"));
-utilities.lazyLoad(exports, ["V1IamMember"], () => require("./v1iamMember"));
 utilities.lazyLoad(exports, ["V1IamPolicy"], () => require("./v1iamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

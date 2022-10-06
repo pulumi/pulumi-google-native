@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
 export const getMembership: typeof import("./getMembership").getMembership = null as any;
 export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
+utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
 
 export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
 export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
 export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
 
 export { MembershipArgs } from "./membership";
 export type Membership = import("./membership").Membership;
 export const Membership: typeof import("./membership").Membership = null as any;
+utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
 
 export { MembershipIamBindingArgs } from "./membershipIamBinding";
 export type MembershipIamBinding = import("./membershipIamBinding").MembershipIamBinding;
 export const MembershipIamBinding: typeof import("./membershipIamBinding").MembershipIamBinding = null as any;
+utilities.lazyLoad(exports, ["MembershipIamBinding"], () => require("./membershipIamBinding"));
 
 export { MembershipIamMemberArgs } from "./membershipIamMember";
 export type MembershipIamMember = import("./membershipIamMember").MembershipIamMember;
 export const MembershipIamMember: typeof import("./membershipIamMember").MembershipIamMember = null as any;
+utilities.lazyLoad(exports, ["MembershipIamMember"], () => require("./membershipIamMember"));
 
 export { MembershipIamPolicyArgs } from "./membershipIamPolicy";
 export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamPolicy;
 export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
-utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
-utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
-utilities.lazyLoad(exports, ["MembershipIamBinding"], () => require("./membershipIamBinding"));
-utilities.lazyLoad(exports, ["MembershipIamMember"], () => require("./membershipIamMember"));
 utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/gkehub/v1alpha2";

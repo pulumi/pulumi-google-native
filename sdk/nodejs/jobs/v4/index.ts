@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { CompanyArgs } from "./company";
 export type Company = import("./company").Company;
 export const Company: typeof import("./company").Company = null as any;
+utilities.lazyLoad(exports, ["Company"], () => require("./company"));
 
 export { GetCompanyArgs, GetCompanyResult, GetCompanyOutputArgs } from "./getCompany";
 export const getCompany: typeof import("./getCompany").getCompany = null as any;
 export const getCompanyOutput: typeof import("./getCompany").getCompanyOutput = null as any;
+utilities.lazyLoad(exports, ["getCompany","getCompanyOutput"], () => require("./getCompany"));
 
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
 export { GetTenantArgs, GetTenantResult, GetTenantOutputArgs } from "./getTenant";
 export const getTenant: typeof import("./getTenant").getTenant = null as any;
 export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
+utilities.lazyLoad(exports, ["getTenant","getTenantOutput"], () => require("./getTenant"));
 
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { TenantArgs } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
-
-utilities.lazyLoad(exports, ["Company"], () => require("./company"));
-utilities.lazyLoad(exports, ["getCompany","getCompanyOutput"], () => require("./getCompany"));
-utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
-utilities.lazyLoad(exports, ["getTenant","getTenantOutput"], () => require("./getTenant"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+
 
 // Export enums:
 export * from "../../types/enums/jobs/v4";

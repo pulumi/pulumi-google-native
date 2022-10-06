@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
 export { GetJobTemplateArgs, GetJobTemplateResult, GetJobTemplateOutputArgs } from "./getJobTemplate";
 export const getJobTemplate: typeof import("./getJobTemplate").getJobTemplate = null as any;
 export const getJobTemplateOutput: typeof import("./getJobTemplate").getJobTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getJobTemplate","getJobTemplateOutput"], () => require("./getJobTemplate"));
 
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { JobTemplateArgs } from "./jobTemplate";
 export type JobTemplate = import("./jobTemplate").JobTemplate;
 export const JobTemplate: typeof import("./jobTemplate").JobTemplate = null as any;
-
-utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
-utilities.lazyLoad(exports, ["getJobTemplate","getJobTemplateOutput"], () => require("./getJobTemplate"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 utilities.lazyLoad(exports, ["JobTemplate"], () => require("./jobTemplate"));
+
 
 // Export enums:
 export * from "../../types/enums/transcoder/v1";

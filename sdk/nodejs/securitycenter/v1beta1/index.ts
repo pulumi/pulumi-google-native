@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
 export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
 export const getOrganizationSourceIamPolicyOutput: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
 
 export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
 export const getSource: typeof import("./getSource").getSource = null as any;
 export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
 
 export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
 export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
 export const OrganizationSourceIamBinding: typeof import("./organizationSourceIamBinding").OrganizationSourceIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
 
 export { OrganizationSourceIamMemberArgs } from "./organizationSourceIamMember";
 export type OrganizationSourceIamMember = import("./organizationSourceIamMember").OrganizationSourceIamMember;
 export const OrganizationSourceIamMember: typeof import("./organizationSourceIamMember").OrganizationSourceIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
 
 export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
 export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
 export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
 
 export { SourceArgs } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
-
-utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
-utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
+
 
 // Export enums:
 export * from "../../types/enums/securitycenter/v1beta1";

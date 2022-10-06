@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { BitbucketServerConfigArgs } from "./bitbucketServerConfig";
 export type BitbucketServerConfig = import("./bitbucketServerConfig").BitbucketServerConfig;
 export const BitbucketServerConfig: typeof import("./bitbucketServerConfig").BitbucketServerConfig = null as any;
+utilities.lazyLoad(exports, ["BitbucketServerConfig"], () => require("./bitbucketServerConfig"));
 
 export { BuildArgs } from "./build";
 export type Build = import("./build").Build;
 export const Build: typeof import("./build").Build = null as any;
+utilities.lazyLoad(exports, ["Build"], () => require("./build"));
 
 export { GetBitbucketServerConfigArgs, GetBitbucketServerConfigResult, GetBitbucketServerConfigOutputArgs } from "./getBitbucketServerConfig";
 export const getBitbucketServerConfig: typeof import("./getBitbucketServerConfig").getBitbucketServerConfig = null as any;
 export const getBitbucketServerConfigOutput: typeof import("./getBitbucketServerConfig").getBitbucketServerConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getBitbucketServerConfig","getBitbucketServerConfigOutput"], () => require("./getBitbucketServerConfig"));
 
 export { GetBuildArgs, GetBuildResult, GetBuildOutputArgs } from "./getBuild";
 export const getBuild: typeof import("./getBuild").getBuild = null as any;
 export const getBuildOutput: typeof import("./getBuild").getBuildOutput = null as any;
+utilities.lazyLoad(exports, ["getBuild","getBuildOutput"], () => require("./getBuild"));
 
 export { GetGitLabConfigArgs, GetGitLabConfigResult, GetGitLabConfigOutputArgs } from "./getGitLabConfig";
 export const getGitLabConfig: typeof import("./getGitLabConfig").getGitLabConfig = null as any;
 export const getGitLabConfigOutput: typeof import("./getGitLabConfig").getGitLabConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getGitLabConfig","getGitLabConfigOutput"], () => require("./getGitLabConfig"));
 
 export { GetGithubEnterpriseConfigArgs, GetGithubEnterpriseConfigResult, GetGithubEnterpriseConfigOutputArgs } from "./getGithubEnterpriseConfig";
 export const getGithubEnterpriseConfig: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfig = null as any;
 export const getGithubEnterpriseConfigOutput: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getGithubEnterpriseConfig","getGithubEnterpriseConfigOutput"], () => require("./getGithubEnterpriseConfig"));
 
 export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
 export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
 export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 
 export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
 export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
 export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
 
 export { GitLabConfigArgs } from "./gitLabConfig";
 export type GitLabConfig = import("./gitLabConfig").GitLabConfig;
 export const GitLabConfig: typeof import("./gitLabConfig").GitLabConfig = null as any;
+utilities.lazyLoad(exports, ["GitLabConfig"], () => require("./gitLabConfig"));
 
 export { GithubEnterpriseConfigArgs } from "./githubEnterpriseConfig";
 export type GithubEnterpriseConfig = import("./githubEnterpriseConfig").GithubEnterpriseConfig;
 export const GithubEnterpriseConfig: typeof import("./githubEnterpriseConfig").GithubEnterpriseConfig = null as any;
+utilities.lazyLoad(exports, ["GithubEnterpriseConfig"], () => require("./githubEnterpriseConfig"));
 
 export { TriggerArgs } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 
 export { WorkerPoolArgs } from "./workerPool";
 export type WorkerPool = import("./workerPool").WorkerPool;
 export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
-
-utilities.lazyLoad(exports, ["BitbucketServerConfig"], () => require("./bitbucketServerConfig"));
-utilities.lazyLoad(exports, ["Build"], () => require("./build"));
-utilities.lazyLoad(exports, ["getBitbucketServerConfig","getBitbucketServerConfigOutput"], () => require("./getBitbucketServerConfig"));
-utilities.lazyLoad(exports, ["getBuild","getBuildOutput"], () => require("./getBuild"));
-utilities.lazyLoad(exports, ["getGitLabConfig","getGitLabConfigOutput"], () => require("./getGitLabConfig"));
-utilities.lazyLoad(exports, ["getGithubEnterpriseConfig","getGithubEnterpriseConfigOutput"], () => require("./getGithubEnterpriseConfig"));
-utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
-utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
-utilities.lazyLoad(exports, ["GitLabConfig"], () => require("./gitLabConfig"));
-utilities.lazyLoad(exports, ["GithubEnterpriseConfig"], () => require("./githubEnterpriseConfig"));
-utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudbuild/v1";

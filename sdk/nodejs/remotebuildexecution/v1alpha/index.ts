@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 
 export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
 export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
 export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
 
 export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { WorkerPoolArgs } from "./workerPool";
 export type WorkerPool = import("./workerPool").WorkerPool;
 export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
-
-utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
-utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
+
 
 // Export enums:
 export * from "../../types/enums/remotebuildexecution/v1alpha";

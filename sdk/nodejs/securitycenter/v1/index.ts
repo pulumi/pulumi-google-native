@@ -8,93 +8,93 @@ import * as utilities from "../../utilities";
 export { FolderBigQueryExportArgs } from "./folderBigQueryExport";
 export type FolderBigQueryExport = import("./folderBigQueryExport").FolderBigQueryExport;
 export const FolderBigQueryExport: typeof import("./folderBigQueryExport").FolderBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
 
 export { GetFolderBigQueryExportArgs, GetFolderBigQueryExportResult, GetFolderBigQueryExportOutputArgs } from "./getFolderBigQueryExport";
 export const getFolderBigQueryExport: typeof import("./getFolderBigQueryExport").getFolderBigQueryExport = null as any;
 export const getFolderBigQueryExportOutput: typeof import("./getFolderBigQueryExport").getFolderBigQueryExportOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
 
 export { GetMuteConfigArgs, GetMuteConfigResult, GetMuteConfigOutputArgs } from "./getMuteConfig";
 export const getMuteConfig: typeof import("./getMuteConfig").getMuteConfig = null as any;
 export const getMuteConfigOutput: typeof import("./getMuteConfig").getMuteConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getMuteConfig","getMuteConfigOutput"], () => require("./getMuteConfig"));
 
 export { GetNotificationConfigArgs, GetNotificationConfigResult, GetNotificationConfigOutputArgs } from "./getNotificationConfig";
 export const getNotificationConfig: typeof import("./getNotificationConfig").getNotificationConfig = null as any;
 export const getNotificationConfigOutput: typeof import("./getNotificationConfig").getNotificationConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getNotificationConfig","getNotificationConfigOutput"], () => require("./getNotificationConfig"));
 
 export { GetOrganizationBigQueryExportArgs, GetOrganizationBigQueryExportResult, GetOrganizationBigQueryExportOutputArgs } from "./getOrganizationBigQueryExport";
 export const getOrganizationBigQueryExport: typeof import("./getOrganizationBigQueryExport").getOrganizationBigQueryExport = null as any;
 export const getOrganizationBigQueryExportOutput: typeof import("./getOrganizationBigQueryExport").getOrganizationBigQueryExportOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationBigQueryExport","getOrganizationBigQueryExportOutput"], () => require("./getOrganizationBigQueryExport"));
 
 export { GetOrganizationMuteConfigArgs, GetOrganizationMuteConfigResult, GetOrganizationMuteConfigOutputArgs } from "./getOrganizationMuteConfig";
 export const getOrganizationMuteConfig: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfig = null as any;
 export const getOrganizationMuteConfigOutput: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationMuteConfig","getOrganizationMuteConfigOutput"], () => require("./getOrganizationMuteConfig"));
 
 export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
 export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
 export const getOrganizationSourceIamPolicyOutput: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
 
 export { GetProjectBigQueryExportArgs, GetProjectBigQueryExportResult, GetProjectBigQueryExportOutputArgs } from "./getProjectBigQueryExport";
 export const getProjectBigQueryExport: typeof import("./getProjectBigQueryExport").getProjectBigQueryExport = null as any;
 export const getProjectBigQueryExportOutput: typeof import("./getProjectBigQueryExport").getProjectBigQueryExportOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectBigQueryExport","getProjectBigQueryExportOutput"], () => require("./getProjectBigQueryExport"));
 
 export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
 export const getSource: typeof import("./getSource").getSource = null as any;
 export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
 
 export { MuteConfigArgs } from "./muteConfig";
 export type MuteConfig = import("./muteConfig").MuteConfig;
 export const MuteConfig: typeof import("./muteConfig").MuteConfig = null as any;
+utilities.lazyLoad(exports, ["MuteConfig"], () => require("./muteConfig"));
 
 export { NotificationConfigArgs } from "./notificationConfig";
 export type NotificationConfig = import("./notificationConfig").NotificationConfig;
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
+utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 
 export { OrganizationBigQueryExportArgs } from "./organizationBigQueryExport";
 export type OrganizationBigQueryExport = import("./organizationBigQueryExport").OrganizationBigQueryExport;
 export const OrganizationBigQueryExport: typeof import("./organizationBigQueryExport").OrganizationBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["OrganizationBigQueryExport"], () => require("./organizationBigQueryExport"));
 
 export { OrganizationMuteConfigArgs } from "./organizationMuteConfig";
 export type OrganizationMuteConfig = import("./organizationMuteConfig").OrganizationMuteConfig;
 export const OrganizationMuteConfig: typeof import("./organizationMuteConfig").OrganizationMuteConfig = null as any;
+utilities.lazyLoad(exports, ["OrganizationMuteConfig"], () => require("./organizationMuteConfig"));
 
 export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
 export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
 export const OrganizationSourceIamBinding: typeof import("./organizationSourceIamBinding").OrganizationSourceIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
 
 export { OrganizationSourceIamMemberArgs } from "./organizationSourceIamMember";
 export type OrganizationSourceIamMember = import("./organizationSourceIamMember").OrganizationSourceIamMember;
 export const OrganizationSourceIamMember: typeof import("./organizationSourceIamMember").OrganizationSourceIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
 
 export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
 export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
 export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
 
 export { ProjectBigQueryExportArgs } from "./projectBigQueryExport";
 export type ProjectBigQueryExport = import("./projectBigQueryExport").ProjectBigQueryExport;
 export const ProjectBigQueryExport: typeof import("./projectBigQueryExport").ProjectBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
 
 export { SourceArgs } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
-
-utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
-utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
-utilities.lazyLoad(exports, ["getMuteConfig","getMuteConfigOutput"], () => require("./getMuteConfig"));
-utilities.lazyLoad(exports, ["getNotificationConfig","getNotificationConfigOutput"], () => require("./getNotificationConfig"));
-utilities.lazyLoad(exports, ["getOrganizationBigQueryExport","getOrganizationBigQueryExportOutput"], () => require("./getOrganizationBigQueryExport"));
-utilities.lazyLoad(exports, ["getOrganizationMuteConfig","getOrganizationMuteConfigOutput"], () => require("./getOrganizationMuteConfig"));
-utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
-utilities.lazyLoad(exports, ["getProjectBigQueryExport","getProjectBigQueryExportOutput"], () => require("./getProjectBigQueryExport"));
-utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
-utilities.lazyLoad(exports, ["MuteConfig"], () => require("./muteConfig"));
-utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
-utilities.lazyLoad(exports, ["OrganizationBigQueryExport"], () => require("./organizationBigQueryExport"));
-utilities.lazyLoad(exports, ["OrganizationMuteConfig"], () => require("./organizationMuteConfig"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
-utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
-utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
+
 
 // Export enums:
 export * from "../../types/enums/securitycenter/v1";

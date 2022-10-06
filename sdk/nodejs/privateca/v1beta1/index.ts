@@ -8,83 +8,83 @@ import * as utilities from "../../utilities";
 export { CertificateArgs } from "./certificate";
 export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
 export { CertificateAuthorityArgs } from "./certificateAuthority";
 export type CertificateAuthority = import("./certificateAuthority").CertificateAuthority;
 export const CertificateAuthority: typeof import("./certificateAuthority").CertificateAuthority = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
 
 export { CertificateAuthorityCertificateRevocationListIamBindingArgs } from "./certificateAuthorityCertificateRevocationListIamBinding";
 export type CertificateAuthorityCertificateRevocationListIamBinding = import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding;
 export const CertificateAuthorityCertificateRevocationListIamBinding: typeof import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamBinding"], () => require("./certificateAuthorityCertificateRevocationListIamBinding"));
 
 export { CertificateAuthorityCertificateRevocationListIamMemberArgs } from "./certificateAuthorityCertificateRevocationListIamMember";
 export type CertificateAuthorityCertificateRevocationListIamMember = import("./certificateAuthorityCertificateRevocationListIamMember").CertificateAuthorityCertificateRevocationListIamMember;
 export const CertificateAuthorityCertificateRevocationListIamMember: typeof import("./certificateAuthorityCertificateRevocationListIamMember").CertificateAuthorityCertificateRevocationListIamMember = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamMember"], () => require("./certificateAuthorityCertificateRevocationListIamMember"));
 
 export { CertificateAuthorityCertificateRevocationListIamPolicyArgs } from "./certificateAuthorityCertificateRevocationListIamPolicy";
 export type CertificateAuthorityCertificateRevocationListIamPolicy = import("./certificateAuthorityCertificateRevocationListIamPolicy").CertificateAuthorityCertificateRevocationListIamPolicy;
 export const CertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./certificateAuthorityCertificateRevocationListIamPolicy").CertificateAuthorityCertificateRevocationListIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamPolicy"], () => require("./certificateAuthorityCertificateRevocationListIamPolicy"));
 
 export { CertificateAuthorityIamBindingArgs } from "./certificateAuthorityIamBinding";
 export type CertificateAuthorityIamBinding = import("./certificateAuthorityIamBinding").CertificateAuthorityIamBinding;
 export const CertificateAuthorityIamBinding: typeof import("./certificateAuthorityIamBinding").CertificateAuthorityIamBinding = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityIamBinding"], () => require("./certificateAuthorityIamBinding"));
 
 export { CertificateAuthorityIamMemberArgs } from "./certificateAuthorityIamMember";
 export type CertificateAuthorityIamMember = import("./certificateAuthorityIamMember").CertificateAuthorityIamMember;
 export const CertificateAuthorityIamMember: typeof import("./certificateAuthorityIamMember").CertificateAuthorityIamMember = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityIamMember"], () => require("./certificateAuthorityIamMember"));
 
 export { CertificateAuthorityIamPolicyArgs } from "./certificateAuthorityIamPolicy";
 export type CertificateAuthorityIamPolicy = import("./certificateAuthorityIamPolicy").CertificateAuthorityIamPolicy;
 export const CertificateAuthorityIamPolicy: typeof import("./certificateAuthorityIamPolicy").CertificateAuthorityIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CertificateAuthorityIamPolicy"], () => require("./certificateAuthorityIamPolicy"));
 
 export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
 export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
 export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
 
 export { GetCertificateAuthorityArgs, GetCertificateAuthorityResult, GetCertificateAuthorityOutputArgs } from "./getCertificateAuthority";
 export const getCertificateAuthority: typeof import("./getCertificateAuthority").getCertificateAuthority = null as any;
 export const getCertificateAuthorityOutput: typeof import("./getCertificateAuthority").getCertificateAuthorityOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateAuthority","getCertificateAuthorityOutput"], () => require("./getCertificateAuthority"));
 
 export { GetCertificateAuthorityCertificateRevocationListIamPolicyArgs, GetCertificateAuthorityCertificateRevocationListIamPolicyResult, GetCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs } from "./getCertificateAuthorityCertificateRevocationListIamPolicy";
 export const getCertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./getCertificateAuthorityCertificateRevocationListIamPolicy").getCertificateAuthorityCertificateRevocationListIamPolicy = null as any;
 export const getCertificateAuthorityCertificateRevocationListIamPolicyOutput: typeof import("./getCertificateAuthorityCertificateRevocationListIamPolicy").getCertificateAuthorityCertificateRevocationListIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateAuthorityCertificateRevocationListIamPolicy","getCertificateAuthorityCertificateRevocationListIamPolicyOutput"], () => require("./getCertificateAuthorityCertificateRevocationListIamPolicy"));
 
 export { GetCertificateAuthorityIamPolicyArgs, GetCertificateAuthorityIamPolicyResult, GetCertificateAuthorityIamPolicyOutputArgs } from "./getCertificateAuthorityIamPolicy";
 export const getCertificateAuthorityIamPolicy: typeof import("./getCertificateAuthorityIamPolicy").getCertificateAuthorityIamPolicy = null as any;
 export const getCertificateAuthorityIamPolicyOutput: typeof import("./getCertificateAuthorityIamPolicy").getCertificateAuthorityIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateAuthorityIamPolicy","getCertificateAuthorityIamPolicyOutput"], () => require("./getCertificateAuthorityIamPolicy"));
 
 export { GetReusableConfigIamPolicyArgs, GetReusableConfigIamPolicyResult, GetReusableConfigIamPolicyOutputArgs } from "./getReusableConfigIamPolicy";
 export const getReusableConfigIamPolicy: typeof import("./getReusableConfigIamPolicy").getReusableConfigIamPolicy = null as any;
 export const getReusableConfigIamPolicyOutput: typeof import("./getReusableConfigIamPolicy").getReusableConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getReusableConfigIamPolicy","getReusableConfigIamPolicyOutput"], () => require("./getReusableConfigIamPolicy"));
 
 export { ReusableConfigIamBindingArgs } from "./reusableConfigIamBinding";
 export type ReusableConfigIamBinding = import("./reusableConfigIamBinding").ReusableConfigIamBinding;
 export const ReusableConfigIamBinding: typeof import("./reusableConfigIamBinding").ReusableConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["ReusableConfigIamBinding"], () => require("./reusableConfigIamBinding"));
 
 export { ReusableConfigIamMemberArgs } from "./reusableConfigIamMember";
 export type ReusableConfigIamMember = import("./reusableConfigIamMember").ReusableConfigIamMember;
 export const ReusableConfigIamMember: typeof import("./reusableConfigIamMember").ReusableConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["ReusableConfigIamMember"], () => require("./reusableConfigIamMember"));
 
 export { ReusableConfigIamPolicyArgs } from "./reusableConfigIamPolicy";
 export type ReusableConfigIamPolicy = import("./reusableConfigIamPolicy").ReusableConfigIamPolicy;
 export const ReusableConfigIamPolicy: typeof import("./reusableConfigIamPolicy").ReusableConfigIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
-utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
-utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamBinding"], () => require("./certificateAuthorityCertificateRevocationListIamBinding"));
-utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamMember"], () => require("./certificateAuthorityCertificateRevocationListIamMember"));
-utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamPolicy"], () => require("./certificateAuthorityCertificateRevocationListIamPolicy"));
-utilities.lazyLoad(exports, ["CertificateAuthorityIamBinding"], () => require("./certificateAuthorityIamBinding"));
-utilities.lazyLoad(exports, ["CertificateAuthorityIamMember"], () => require("./certificateAuthorityIamMember"));
-utilities.lazyLoad(exports, ["CertificateAuthorityIamPolicy"], () => require("./certificateAuthorityIamPolicy"));
-utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
-utilities.lazyLoad(exports, ["getCertificateAuthority","getCertificateAuthorityOutput"], () => require("./getCertificateAuthority"));
-utilities.lazyLoad(exports, ["getCertificateAuthorityCertificateRevocationListIamPolicy","getCertificateAuthorityCertificateRevocationListIamPolicyOutput"], () => require("./getCertificateAuthorityCertificateRevocationListIamPolicy"));
-utilities.lazyLoad(exports, ["getCertificateAuthorityIamPolicy","getCertificateAuthorityIamPolicyOutput"], () => require("./getCertificateAuthorityIamPolicy"));
-utilities.lazyLoad(exports, ["getReusableConfigIamPolicy","getReusableConfigIamPolicyOutput"], () => require("./getReusableConfigIamPolicy"));
-utilities.lazyLoad(exports, ["ReusableConfigIamBinding"], () => require("./reusableConfigIamBinding"));
-utilities.lazyLoad(exports, ["ReusableConfigIamMember"], () => require("./reusableConfigIamMember"));
 utilities.lazyLoad(exports, ["ReusableConfigIamPolicy"], () => require("./reusableConfigIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/privateca/v1beta1";

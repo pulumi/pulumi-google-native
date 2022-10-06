@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetGlossaryArgs, GetGlossaryResult, GetGlossaryOutputArgs } from "./getGlossary";
 export const getGlossary: typeof import("./getGlossary").getGlossary = null as any;
 export const getGlossaryOutput: typeof import("./getGlossary").getGlossaryOutput = null as any;
+utilities.lazyLoad(exports, ["getGlossary","getGlossaryOutput"], () => require("./getGlossary"));
 
 export { GlossaryArgs } from "./glossary";
 export type Glossary = import("./glossary").Glossary;
 export const Glossary: typeof import("./glossary").Glossary = null as any;
-
-utilities.lazyLoad(exports, ["getGlossary","getGlossaryOutput"], () => require("./getGlossary"));
 utilities.lazyLoad(exports, ["Glossary"], () => require("./glossary"));
+
 
 const _module = {
     version: utilities.getVersion(),

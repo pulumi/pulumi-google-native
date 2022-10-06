@@ -8,43 +8,43 @@ import * as utilities from "../../utilities";
 export { CustomConstraintArgs } from "./customConstraint";
 export type CustomConstraint = import("./customConstraint").CustomConstraint;
 export const CustomConstraint: typeof import("./customConstraint").CustomConstraint = null as any;
+utilities.lazyLoad(exports, ["CustomConstraint"], () => require("./customConstraint"));
 
 export { FolderPolicyArgs } from "./folderPolicy";
 export type FolderPolicy = import("./folderPolicy").FolderPolicy;
 export const FolderPolicy: typeof import("./folderPolicy").FolderPolicy = null as any;
+utilities.lazyLoad(exports, ["FolderPolicy"], () => require("./folderPolicy"));
 
 export { GetCustomConstraintArgs, GetCustomConstraintResult, GetCustomConstraintOutputArgs } from "./getCustomConstraint";
 export const getCustomConstraint: typeof import("./getCustomConstraint").getCustomConstraint = null as any;
 export const getCustomConstraintOutput: typeof import("./getCustomConstraint").getCustomConstraintOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomConstraint","getCustomConstraintOutput"], () => require("./getCustomConstraint"));
 
 export { GetFolderPolicyArgs, GetFolderPolicyResult, GetFolderPolicyOutputArgs } from "./getFolderPolicy";
 export const getFolderPolicy: typeof import("./getFolderPolicy").getFolderPolicy = null as any;
 export const getFolderPolicyOutput: typeof import("./getFolderPolicy").getFolderPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderPolicy","getFolderPolicyOutput"], () => require("./getFolderPolicy"));
 
 export { GetOrganizationPolicyArgs, GetOrganizationPolicyResult, GetOrganizationPolicyOutputArgs } from "./getOrganizationPolicy";
 export const getOrganizationPolicy: typeof import("./getOrganizationPolicy").getOrganizationPolicy = null as any;
 export const getOrganizationPolicyOutput: typeof import("./getOrganizationPolicy").getOrganizationPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationPolicy","getOrganizationPolicyOutput"], () => require("./getOrganizationPolicy"));
 
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
 
 export { OrganizationPolicyArgs } from "./organizationPolicy";
 export type OrganizationPolicy = import("./organizationPolicy").OrganizationPolicy;
 export const OrganizationPolicy: typeof import("./organizationPolicy").OrganizationPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationPolicy"], () => require("./organizationPolicy"));
 
 export { PolicyArgs } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
-
-utilities.lazyLoad(exports, ["CustomConstraint"], () => require("./customConstraint"));
-utilities.lazyLoad(exports, ["FolderPolicy"], () => require("./folderPolicy"));
-utilities.lazyLoad(exports, ["getCustomConstraint","getCustomConstraintOutput"], () => require("./getCustomConstraint"));
-utilities.lazyLoad(exports, ["getFolderPolicy","getFolderPolicyOutput"], () => require("./getFolderPolicy"));
-utilities.lazyLoad(exports, ["getOrganizationPolicy","getOrganizationPolicyOutput"], () => require("./getOrganizationPolicy"));
-utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
-utilities.lazyLoad(exports, ["OrganizationPolicy"], () => require("./organizationPolicy"));
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
 
 // Export enums:
 export * from "../../types/enums/orgpolicy/v2";

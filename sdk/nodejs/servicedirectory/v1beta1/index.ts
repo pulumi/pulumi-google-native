@@ -8,113 +8,113 @@ import * as utilities from "../../utilities";
 export { EndpointArgs } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
 
 export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
 export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
 export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
 
 export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
 export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
 export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
 
 export { GetNamespaceIamPolicyArgs, GetNamespaceIamPolicyResult, GetNamespaceIamPolicyOutputArgs } from "./getNamespaceIamPolicy";
 export const getNamespaceIamPolicy: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicy = null as any;
 export const getNamespaceIamPolicyOutput: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaceIamPolicy","getNamespaceIamPolicyOutput"], () => require("./getNamespaceIamPolicy"));
 
 export { GetNamespaceServiceIamPolicyArgs, GetNamespaceServiceIamPolicyResult, GetNamespaceServiceIamPolicyOutputArgs } from "./getNamespaceServiceIamPolicy";
 export const getNamespaceServiceIamPolicy: typeof import("./getNamespaceServiceIamPolicy").getNamespaceServiceIamPolicy = null as any;
 export const getNamespaceServiceIamPolicyOutput: typeof import("./getNamespaceServiceIamPolicy").getNamespaceServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaceServiceIamPolicy","getNamespaceServiceIamPolicyOutput"], () => require("./getNamespaceServiceIamPolicy"));
 
 export { GetNamespaceServiceWorkloadIamPolicyArgs, GetNamespaceServiceWorkloadIamPolicyResult, GetNamespaceServiceWorkloadIamPolicyOutputArgs } from "./getNamespaceServiceWorkloadIamPolicy";
 export const getNamespaceServiceWorkloadIamPolicy: typeof import("./getNamespaceServiceWorkloadIamPolicy").getNamespaceServiceWorkloadIamPolicy = null as any;
 export const getNamespaceServiceWorkloadIamPolicyOutput: typeof import("./getNamespaceServiceWorkloadIamPolicy").getNamespaceServiceWorkloadIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaceServiceWorkloadIamPolicy","getNamespaceServiceWorkloadIamPolicyOutput"], () => require("./getNamespaceServiceWorkloadIamPolicy"));
 
 export { GetRegistrationPolicyIamPolicyArgs, GetRegistrationPolicyIamPolicyResult, GetRegistrationPolicyIamPolicyOutputArgs } from "./getRegistrationPolicyIamPolicy";
 export const getRegistrationPolicyIamPolicy: typeof import("./getRegistrationPolicyIamPolicy").getRegistrationPolicyIamPolicy = null as any;
 export const getRegistrationPolicyIamPolicyOutput: typeof import("./getRegistrationPolicyIamPolicy").getRegistrationPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistrationPolicyIamPolicy","getRegistrationPolicyIamPolicyOutput"], () => require("./getRegistrationPolicyIamPolicy"));
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
 export { NamespaceArgs } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
 
 export { NamespaceIamBindingArgs } from "./namespaceIamBinding";
 export type NamespaceIamBinding = import("./namespaceIamBinding").NamespaceIamBinding;
 export const NamespaceIamBinding: typeof import("./namespaceIamBinding").NamespaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["NamespaceIamBinding"], () => require("./namespaceIamBinding"));
 
 export { NamespaceIamMemberArgs } from "./namespaceIamMember";
 export type NamespaceIamMember = import("./namespaceIamMember").NamespaceIamMember;
 export const NamespaceIamMember: typeof import("./namespaceIamMember").NamespaceIamMember = null as any;
+utilities.lazyLoad(exports, ["NamespaceIamMember"], () => require("./namespaceIamMember"));
 
 export { NamespaceIamPolicyArgs } from "./namespaceIamPolicy";
 export type NamespaceIamPolicy = import("./namespaceIamPolicy").NamespaceIamPolicy;
 export const NamespaceIamPolicy: typeof import("./namespaceIamPolicy").NamespaceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
 
 export { NamespaceServiceIamBindingArgs } from "./namespaceServiceIamBinding";
 export type NamespaceServiceIamBinding = import("./namespaceServiceIamBinding").NamespaceServiceIamBinding;
 export const NamespaceServiceIamBinding: typeof import("./namespaceServiceIamBinding").NamespaceServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceIamBinding"], () => require("./namespaceServiceIamBinding"));
 
 export { NamespaceServiceIamMemberArgs } from "./namespaceServiceIamMember";
 export type NamespaceServiceIamMember = import("./namespaceServiceIamMember").NamespaceServiceIamMember;
 export const NamespaceServiceIamMember: typeof import("./namespaceServiceIamMember").NamespaceServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceIamMember"], () => require("./namespaceServiceIamMember"));
 
 export { NamespaceServiceIamPolicyArgs } from "./namespaceServiceIamPolicy";
 export type NamespaceServiceIamPolicy = import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy;
 export const NamespaceServiceIamPolicy: typeof import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceIamPolicy"], () => require("./namespaceServiceIamPolicy"));
 
 export { NamespaceServiceWorkloadIamBindingArgs } from "./namespaceServiceWorkloadIamBinding";
 export type NamespaceServiceWorkloadIamBinding = import("./namespaceServiceWorkloadIamBinding").NamespaceServiceWorkloadIamBinding;
 export const NamespaceServiceWorkloadIamBinding: typeof import("./namespaceServiceWorkloadIamBinding").NamespaceServiceWorkloadIamBinding = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamBinding"], () => require("./namespaceServiceWorkloadIamBinding"));
 
 export { NamespaceServiceWorkloadIamMemberArgs } from "./namespaceServiceWorkloadIamMember";
 export type NamespaceServiceWorkloadIamMember = import("./namespaceServiceWorkloadIamMember").NamespaceServiceWorkloadIamMember;
 export const NamespaceServiceWorkloadIamMember: typeof import("./namespaceServiceWorkloadIamMember").NamespaceServiceWorkloadIamMember = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamMember"], () => require("./namespaceServiceWorkloadIamMember"));
 
 export { NamespaceServiceWorkloadIamPolicyArgs } from "./namespaceServiceWorkloadIamPolicy";
 export type NamespaceServiceWorkloadIamPolicy = import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy;
 export const NamespaceServiceWorkloadIamPolicy: typeof import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamPolicy"], () => require("./namespaceServiceWorkloadIamPolicy"));
 
 export { RegistrationPolicyIamBindingArgs } from "./registrationPolicyIamBinding";
 export type RegistrationPolicyIamBinding = import("./registrationPolicyIamBinding").RegistrationPolicyIamBinding;
 export const RegistrationPolicyIamBinding: typeof import("./registrationPolicyIamBinding").RegistrationPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegistrationPolicyIamBinding"], () => require("./registrationPolicyIamBinding"));
 
 export { RegistrationPolicyIamMemberArgs } from "./registrationPolicyIamMember";
 export type RegistrationPolicyIamMember = import("./registrationPolicyIamMember").RegistrationPolicyIamMember;
 export const RegistrationPolicyIamMember: typeof import("./registrationPolicyIamMember").RegistrationPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["RegistrationPolicyIamMember"], () => require("./registrationPolicyIamMember"));
 
 export { RegistrationPolicyIamPolicyArgs } from "./registrationPolicyIamPolicy";
 export type RegistrationPolicyIamPolicy = import("./registrationPolicyIamPolicy").RegistrationPolicyIamPolicy;
 export const RegistrationPolicyIamPolicy: typeof import("./registrationPolicyIamPolicy").RegistrationPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegistrationPolicyIamPolicy"], () => require("./registrationPolicyIamPolicy"));
 
 export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
-
-utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
-utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
-utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
-utilities.lazyLoad(exports, ["getNamespaceIamPolicy","getNamespaceIamPolicyOutput"], () => require("./getNamespaceIamPolicy"));
-utilities.lazyLoad(exports, ["getNamespaceServiceIamPolicy","getNamespaceServiceIamPolicyOutput"], () => require("./getNamespaceServiceIamPolicy"));
-utilities.lazyLoad(exports, ["getNamespaceServiceWorkloadIamPolicy","getNamespaceServiceWorkloadIamPolicyOutput"], () => require("./getNamespaceServiceWorkloadIamPolicy"));
-utilities.lazyLoad(exports, ["getRegistrationPolicyIamPolicy","getRegistrationPolicyIamPolicyOutput"], () => require("./getRegistrationPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
-utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
-utilities.lazyLoad(exports, ["NamespaceIamBinding"], () => require("./namespaceIamBinding"));
-utilities.lazyLoad(exports, ["NamespaceIamMember"], () => require("./namespaceIamMember"));
-utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
-utilities.lazyLoad(exports, ["NamespaceServiceIamBinding"], () => require("./namespaceServiceIamBinding"));
-utilities.lazyLoad(exports, ["NamespaceServiceIamMember"], () => require("./namespaceServiceIamMember"));
-utilities.lazyLoad(exports, ["NamespaceServiceIamPolicy"], () => require("./namespaceServiceIamPolicy"));
-utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamBinding"], () => require("./namespaceServiceWorkloadIamBinding"));
-utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamMember"], () => require("./namespaceServiceWorkloadIamMember"));
-utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamPolicy"], () => require("./namespaceServiceWorkloadIamPolicy"));
-utilities.lazyLoad(exports, ["RegistrationPolicyIamBinding"], () => require("./registrationPolicyIamBinding"));
-utilities.lazyLoad(exports, ["RegistrationPolicyIamMember"], () => require("./registrationPolicyIamMember"));
-utilities.lazyLoad(exports, ["RegistrationPolicyIamPolicy"], () => require("./registrationPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
 
 const _module = {
     version: utilities.getVersion(),

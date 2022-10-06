@@ -8,83 +8,83 @@ import * as utilities from "../../utilities";
 export { DatasetArgs } from "./dataset";
 export type Dataset = import("./dataset").Dataset;
 export const Dataset: typeof import("./dataset").Dataset = null as any;
+utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
 
 export { GetDatasetArgs, GetDatasetResult, GetDatasetOutputArgs } from "./getDataset";
 export const getDataset: typeof import("./getDataset").getDataset = null as any;
 export const getDatasetOutput: typeof import("./getDataset").getDatasetOutput = null as any;
+utilities.lazyLoad(exports, ["getDataset","getDatasetOutput"], () => require("./getDataset"));
 
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
 export { GetRoutineArgs, GetRoutineResult, GetRoutineOutputArgs } from "./getRoutine";
 export const getRoutine: typeof import("./getRoutine").getRoutine = null as any;
 export const getRoutineOutput: typeof import("./getRoutine").getRoutineOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutine","getRoutineOutput"], () => require("./getRoutine"));
 
 export { GetRowAccessPolicyIamPolicyArgs, GetRowAccessPolicyIamPolicyResult, GetRowAccessPolicyIamPolicyOutputArgs } from "./getRowAccessPolicyIamPolicy";
 export const getRowAccessPolicyIamPolicy: typeof import("./getRowAccessPolicyIamPolicy").getRowAccessPolicyIamPolicy = null as any;
 export const getRowAccessPolicyIamPolicyOutput: typeof import("./getRowAccessPolicyIamPolicy").getRowAccessPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRowAccessPolicyIamPolicy","getRowAccessPolicyIamPolicyOutput"], () => require("./getRowAccessPolicyIamPolicy"));
 
 export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
 export const getTable: typeof import("./getTable").getTable = null as any;
 export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
+utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
 
 export { GetTableIamPolicyArgs, GetTableIamPolicyResult, GetTableIamPolicyOutputArgs } from "./getTableIamPolicy";
 export const getTableIamPolicy: typeof import("./getTableIamPolicy").getTableIamPolicy = null as any;
 export const getTableIamPolicyOutput: typeof import("./getTableIamPolicy").getTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
 
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { RoutineArgs } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
+utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
 
 export { RowAccessPolicyIamBindingArgs } from "./rowAccessPolicyIamBinding";
 export type RowAccessPolicyIamBinding = import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding;
 export const RowAccessPolicyIamBinding: typeof import("./rowAccessPolicyIamBinding").RowAccessPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["RowAccessPolicyIamBinding"], () => require("./rowAccessPolicyIamBinding"));
 
 export { RowAccessPolicyIamMemberArgs } from "./rowAccessPolicyIamMember";
 export type RowAccessPolicyIamMember = import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember;
 export const RowAccessPolicyIamMember: typeof import("./rowAccessPolicyIamMember").RowAccessPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["RowAccessPolicyIamMember"], () => require("./rowAccessPolicyIamMember"));
 
 export { RowAccessPolicyIamPolicyArgs } from "./rowAccessPolicyIamPolicy";
 export type RowAccessPolicyIamPolicy = import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy;
 export const RowAccessPolicyIamPolicy: typeof import("./rowAccessPolicyIamPolicy").RowAccessPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RowAccessPolicyIamPolicy"], () => require("./rowAccessPolicyIamPolicy"));
 
 export { TableArgs } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
+utilities.lazyLoad(exports, ["Table"], () => require("./table"));
 
 export { TableIamBindingArgs } from "./tableIamBinding";
 export type TableIamBinding = import("./tableIamBinding").TableIamBinding;
 export const TableIamBinding: typeof import("./tableIamBinding").TableIamBinding = null as any;
+utilities.lazyLoad(exports, ["TableIamBinding"], () => require("./tableIamBinding"));
 
 export { TableIamMemberArgs } from "./tableIamMember";
 export type TableIamMember = import("./tableIamMember").TableIamMember;
 export const TableIamMember: typeof import("./tableIamMember").TableIamMember = null as any;
+utilities.lazyLoad(exports, ["TableIamMember"], () => require("./tableIamMember"));
 
 export { TableIamPolicyArgs } from "./tableIamPolicy";
 export type TableIamPolicy = import("./tableIamPolicy").TableIamPolicy;
 export const TableIamPolicy: typeof import("./tableIamPolicy").TableIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Dataset"], () => require("./dataset"));
-utilities.lazyLoad(exports, ["getDataset","getDatasetOutput"], () => require("./getDataset"));
-utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
-utilities.lazyLoad(exports, ["getRoutine","getRoutineOutput"], () => require("./getRoutine"));
-utilities.lazyLoad(exports, ["getRowAccessPolicyIamPolicy","getRowAccessPolicyIamPolicyOutput"], () => require("./getRowAccessPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
-utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
-utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
-utilities.lazyLoad(exports, ["RowAccessPolicyIamBinding"], () => require("./rowAccessPolicyIamBinding"));
-utilities.lazyLoad(exports, ["RowAccessPolicyIamMember"], () => require("./rowAccessPolicyIamMember"));
-utilities.lazyLoad(exports, ["RowAccessPolicyIamPolicy"], () => require("./rowAccessPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["Table"], () => require("./table"));
-utilities.lazyLoad(exports, ["TableIamBinding"], () => require("./tableIamBinding"));
-utilities.lazyLoad(exports, ["TableIamMember"], () => require("./tableIamMember"));
 utilities.lazyLoad(exports, ["TableIamPolicy"], () => require("./tableIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/bigquery/v2";

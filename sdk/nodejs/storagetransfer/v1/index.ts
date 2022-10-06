@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { AgentPoolArgs } from "./agentPool";
 export type AgentPool = import("./agentPool").AgentPool;
 export const AgentPool: typeof import("./agentPool").AgentPool = null as any;
+utilities.lazyLoad(exports, ["AgentPool"], () => require("./agentPool"));
 
 export { GetAgentPoolArgs, GetAgentPoolResult, GetAgentPoolOutputArgs } from "./getAgentPool";
 export const getAgentPool: typeof import("./getAgentPool").getAgentPool = null as any;
 export const getAgentPoolOutput: typeof import("./getAgentPool").getAgentPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPool","getAgentPoolOutput"], () => require("./getAgentPool"));
 
 export { GetTransferJobArgs, GetTransferJobResult, GetTransferJobOutputArgs } from "./getTransferJob";
 export const getTransferJob: typeof import("./getTransferJob").getTransferJob = null as any;
 export const getTransferJobOutput: typeof import("./getTransferJob").getTransferJobOutput = null as any;
+utilities.lazyLoad(exports, ["getTransferJob","getTransferJobOutput"], () => require("./getTransferJob"));
 
 export { TransferJobArgs } from "./transferJob";
 export type TransferJob = import("./transferJob").TransferJob;
 export const TransferJob: typeof import("./transferJob").TransferJob = null as any;
-
-utilities.lazyLoad(exports, ["AgentPool"], () => require("./agentPool"));
-utilities.lazyLoad(exports, ["getAgentPool","getAgentPoolOutput"], () => require("./getAgentPool"));
-utilities.lazyLoad(exports, ["getTransferJob","getTransferJobOutput"], () => require("./getTransferJob"));
 utilities.lazyLoad(exports, ["TransferJob"], () => require("./transferJob"));
+
 
 // Export enums:
 export * from "../../types/enums/storagetransfer/v1";

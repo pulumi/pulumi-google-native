@@ -8,53 +8,53 @@ import * as utilities from "../../utilities";
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 
 export { GetInstanceNamespaceIamPolicyArgs, GetInstanceNamespaceIamPolicyResult, GetInstanceNamespaceIamPolicyOutputArgs } from "./getInstanceNamespaceIamPolicy";
 export const getInstanceNamespaceIamPolicy: typeof import("./getInstanceNamespaceIamPolicy").getInstanceNamespaceIamPolicy = null as any;
 export const getInstanceNamespaceIamPolicyOutput: typeof import("./getInstanceNamespaceIamPolicy").getInstanceNamespaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceNamespaceIamPolicy","getInstanceNamespaceIamPolicyOutput"], () => require("./getInstanceNamespaceIamPolicy"));
 
 export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { InstanceIamBindingArgs } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
 export { InstanceIamMemberArgs } from "./instanceIamMember";
 export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
 export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 export { InstanceNamespaceIamBindingArgs } from "./instanceNamespaceIamBinding";
 export type InstanceNamespaceIamBinding = import("./instanceNamespaceIamBinding").InstanceNamespaceIamBinding;
 export const InstanceNamespaceIamBinding: typeof import("./instanceNamespaceIamBinding").InstanceNamespaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceNamespaceIamBinding"], () => require("./instanceNamespaceIamBinding"));
 
 export { InstanceNamespaceIamMemberArgs } from "./instanceNamespaceIamMember";
 export type InstanceNamespaceIamMember = import("./instanceNamespaceIamMember").InstanceNamespaceIamMember;
 export const InstanceNamespaceIamMember: typeof import("./instanceNamespaceIamMember").InstanceNamespaceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceNamespaceIamMember"], () => require("./instanceNamespaceIamMember"));
 
 export { InstanceNamespaceIamPolicyArgs } from "./instanceNamespaceIamPolicy";
 export type InstanceNamespaceIamPolicy = import("./instanceNamespaceIamPolicy").InstanceNamespaceIamPolicy;
 export const InstanceNamespaceIamPolicy: typeof import("./instanceNamespaceIamPolicy").InstanceNamespaceIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
-utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
-utilities.lazyLoad(exports, ["getInstanceNamespaceIamPolicy","getInstanceNamespaceIamPolicyOutput"], () => require("./getInstanceNamespaceIamPolicy"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
-utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
-utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
-utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
-utilities.lazyLoad(exports, ["InstanceNamespaceIamBinding"], () => require("./instanceNamespaceIamBinding"));
-utilities.lazyLoad(exports, ["InstanceNamespaceIamMember"], () => require("./instanceNamespaceIamMember"));
 utilities.lazyLoad(exports, ["InstanceNamespaceIamPolicy"], () => require("./instanceNamespaceIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/datafusion/v1beta1";

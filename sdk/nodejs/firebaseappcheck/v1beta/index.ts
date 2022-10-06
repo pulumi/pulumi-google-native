@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { DebugTokenArgs } from "./debugToken";
 export type DebugToken = import("./debugToken").DebugToken;
 export const DebugToken: typeof import("./debugToken").DebugToken = null as any;
+utilities.lazyLoad(exports, ["DebugToken"], () => require("./debugToken"));
 
 export { GetDebugTokenArgs, GetDebugTokenResult, GetDebugTokenOutputArgs } from "./getDebugToken";
 export const getDebugToken: typeof import("./getDebugToken").getDebugToken = null as any;
 export const getDebugTokenOutput: typeof import("./getDebugToken").getDebugTokenOutput = null as any;
-
-utilities.lazyLoad(exports, ["DebugToken"], () => require("./debugToken"));
 utilities.lazyLoad(exports, ["getDebugToken","getDebugTokenOutput"], () => require("./getDebugToken"));
+
 
 const _module = {
     version: utilities.getVersion(),

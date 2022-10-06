@@ -8,83 +8,83 @@ import * as utilities from "../../utilities";
 export { CloneJobArgs } from "./cloneJob";
 export type CloneJob = import("./cloneJob").CloneJob;
 export const CloneJob: typeof import("./cloneJob").CloneJob = null as any;
+utilities.lazyLoad(exports, ["CloneJob"], () => require("./cloneJob"));
 
 export { CutoverJobArgs } from "./cutoverJob";
 export type CutoverJob = import("./cutoverJob").CutoverJob;
 export const CutoverJob: typeof import("./cutoverJob").CutoverJob = null as any;
+utilities.lazyLoad(exports, ["CutoverJob"], () => require("./cutoverJob"));
 
 export { DatacenterConnectorArgs } from "./datacenterConnector";
 export type DatacenterConnector = import("./datacenterConnector").DatacenterConnector;
 export const DatacenterConnector: typeof import("./datacenterConnector").DatacenterConnector = null as any;
+utilities.lazyLoad(exports, ["DatacenterConnector"], () => require("./datacenterConnector"));
 
 export { GetCloneJobArgs, GetCloneJobResult, GetCloneJobOutputArgs } from "./getCloneJob";
 export const getCloneJob: typeof import("./getCloneJob").getCloneJob = null as any;
 export const getCloneJobOutput: typeof import("./getCloneJob").getCloneJobOutput = null as any;
+utilities.lazyLoad(exports, ["getCloneJob","getCloneJobOutput"], () => require("./getCloneJob"));
 
 export { GetCutoverJobArgs, GetCutoverJobResult, GetCutoverJobOutputArgs } from "./getCutoverJob";
 export const getCutoverJob: typeof import("./getCutoverJob").getCutoverJob = null as any;
 export const getCutoverJobOutput: typeof import("./getCutoverJob").getCutoverJobOutput = null as any;
+utilities.lazyLoad(exports, ["getCutoverJob","getCutoverJobOutput"], () => require("./getCutoverJob"));
 
 export { GetDatacenterConnectorArgs, GetDatacenterConnectorResult, GetDatacenterConnectorOutputArgs } from "./getDatacenterConnector";
 export const getDatacenterConnector: typeof import("./getDatacenterConnector").getDatacenterConnector = null as any;
 export const getDatacenterConnectorOutput: typeof import("./getDatacenterConnector").getDatacenterConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getDatacenterConnector","getDatacenterConnectorOutput"], () => require("./getDatacenterConnector"));
 
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
 export { GetMigratingVmArgs, GetMigratingVmResult, GetMigratingVmOutputArgs } from "./getMigratingVm";
 export const getMigratingVm: typeof import("./getMigratingVm").getMigratingVm = null as any;
 export const getMigratingVmOutput: typeof import("./getMigratingVm").getMigratingVmOutput = null as any;
+utilities.lazyLoad(exports, ["getMigratingVm","getMigratingVmOutput"], () => require("./getMigratingVm"));
 
 export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
 export const getSource: typeof import("./getSource").getSource = null as any;
 export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
 
 export { GetTargetProjectArgs, GetTargetProjectResult, GetTargetProjectOutputArgs } from "./getTargetProject";
 export const getTargetProject: typeof import("./getTargetProject").getTargetProject = null as any;
 export const getTargetProjectOutput: typeof import("./getTargetProject").getTargetProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getTargetProject","getTargetProjectOutput"], () => require("./getTargetProject"));
 
 export { GetUtilizationReportArgs, GetUtilizationReportResult, GetUtilizationReportOutputArgs } from "./getUtilizationReport";
 export const getUtilizationReport: typeof import("./getUtilizationReport").getUtilizationReport = null as any;
 export const getUtilizationReportOutput: typeof import("./getUtilizationReport").getUtilizationReportOutput = null as any;
+utilities.lazyLoad(exports, ["getUtilizationReport","getUtilizationReportOutput"], () => require("./getUtilizationReport"));
 
 export { GroupArgs } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
 export { MigratingVmArgs } from "./migratingVm";
 export type MigratingVm = import("./migratingVm").MigratingVm;
 export const MigratingVm: typeof import("./migratingVm").MigratingVm = null as any;
+utilities.lazyLoad(exports, ["MigratingVm"], () => require("./migratingVm"));
 
 export { SourceArgs } from "./source";
 export type Source = import("./source").Source;
 export const Source: typeof import("./source").Source = null as any;
+utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
 export { TargetProjectArgs } from "./targetProject";
 export type TargetProject = import("./targetProject").TargetProject;
 export const TargetProject: typeof import("./targetProject").TargetProject = null as any;
+utilities.lazyLoad(exports, ["TargetProject"], () => require("./targetProject"));
 
 export { UtilizationReportArgs } from "./utilizationReport";
 export type UtilizationReport = import("./utilizationReport").UtilizationReport;
 export const UtilizationReport: typeof import("./utilizationReport").UtilizationReport = null as any;
-
-utilities.lazyLoad(exports, ["CloneJob"], () => require("./cloneJob"));
-utilities.lazyLoad(exports, ["CutoverJob"], () => require("./cutoverJob"));
-utilities.lazyLoad(exports, ["DatacenterConnector"], () => require("./datacenterConnector"));
-utilities.lazyLoad(exports, ["getCloneJob","getCloneJobOutput"], () => require("./getCloneJob"));
-utilities.lazyLoad(exports, ["getCutoverJob","getCutoverJobOutput"], () => require("./getCutoverJob"));
-utilities.lazyLoad(exports, ["getDatacenterConnector","getDatacenterConnectorOutput"], () => require("./getDatacenterConnector"));
-utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
-utilities.lazyLoad(exports, ["getMigratingVm","getMigratingVmOutput"], () => require("./getMigratingVm"));
-utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
-utilities.lazyLoad(exports, ["getTargetProject","getTargetProjectOutput"], () => require("./getTargetProject"));
-utilities.lazyLoad(exports, ["getUtilizationReport","getUtilizationReportOutput"], () => require("./getUtilizationReport"));
-utilities.lazyLoad(exports, ["Group"], () => require("./group"));
-utilities.lazyLoad(exports, ["MigratingVm"], () => require("./migratingVm"));
-utilities.lazyLoad(exports, ["Source"], () => require("./source"));
-utilities.lazyLoad(exports, ["TargetProject"], () => require("./targetProject"));
 utilities.lazyLoad(exports, ["UtilizationReport"], () => require("./utilizationReport"));
+
 
 // Export enums:
 export * from "../../types/enums/vmmigration/v1";

@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GetReleaseArgs, GetReleaseResult, GetReleaseOutputArgs } from "./getRelease";
 export const getRelease: typeof import("./getRelease").getRelease = null as any;
 export const getReleaseOutput: typeof import("./getRelease").getReleaseOutput = null as any;
+utilities.lazyLoad(exports, ["getRelease","getReleaseOutput"], () => require("./getRelease"));
 
 export { GetRulesetArgs, GetRulesetResult, GetRulesetOutputArgs } from "./getRuleset";
 export const getRuleset: typeof import("./getRuleset").getRuleset = null as any;
 export const getRulesetOutput: typeof import("./getRuleset").getRulesetOutput = null as any;
+utilities.lazyLoad(exports, ["getRuleset","getRulesetOutput"], () => require("./getRuleset"));
 
 export { ReleaseArgs } from "./release";
 export type Release = import("./release").Release;
 export const Release: typeof import("./release").Release = null as any;
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 
 export { RulesetArgs } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
-
-utilities.lazyLoad(exports, ["getRelease","getReleaseOutput"], () => require("./getRelease"));
-utilities.lazyLoad(exports, ["getRuleset","getRulesetOutput"], () => require("./getRuleset"));
-utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 utilities.lazyLoad(exports, ["Ruleset"], () => require("./ruleset"));
+
 
 const _module = {
     version: utilities.getVersion(),

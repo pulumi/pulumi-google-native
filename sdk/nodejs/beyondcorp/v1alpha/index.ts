@@ -8,233 +8,233 @@ import * as utilities from "../../utilities";
 export { AppConnectionArgs } from "./appConnection";
 export type AppConnection = import("./appConnection").AppConnection;
 export const AppConnection: typeof import("./appConnection").AppConnection = null as any;
+utilities.lazyLoad(exports, ["AppConnection"], () => require("./appConnection"));
 
 export { AppConnectionIamBindingArgs } from "./appConnectionIamBinding";
 export type AppConnectionIamBinding = import("./appConnectionIamBinding").AppConnectionIamBinding;
 export const AppConnectionIamBinding: typeof import("./appConnectionIamBinding").AppConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["AppConnectionIamBinding"], () => require("./appConnectionIamBinding"));
 
 export { AppConnectionIamMemberArgs } from "./appConnectionIamMember";
 export type AppConnectionIamMember = import("./appConnectionIamMember").AppConnectionIamMember;
 export const AppConnectionIamMember: typeof import("./appConnectionIamMember").AppConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["AppConnectionIamMember"], () => require("./appConnectionIamMember"));
 
 export { AppConnectionIamPolicyArgs } from "./appConnectionIamPolicy";
 export type AppConnectionIamPolicy = import("./appConnectionIamPolicy").AppConnectionIamPolicy;
 export const AppConnectionIamPolicy: typeof import("./appConnectionIamPolicy").AppConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AppConnectionIamPolicy"], () => require("./appConnectionIamPolicy"));
 
 export { AppConnectorArgs } from "./appConnector";
 export type AppConnector = import("./appConnector").AppConnector;
 export const AppConnector: typeof import("./appConnector").AppConnector = null as any;
+utilities.lazyLoad(exports, ["AppConnector"], () => require("./appConnector"));
 
 export { AppConnectorIamBindingArgs } from "./appConnectorIamBinding";
 export type AppConnectorIamBinding = import("./appConnectorIamBinding").AppConnectorIamBinding;
 export const AppConnectorIamBinding: typeof import("./appConnectorIamBinding").AppConnectorIamBinding = null as any;
+utilities.lazyLoad(exports, ["AppConnectorIamBinding"], () => require("./appConnectorIamBinding"));
 
 export { AppConnectorIamMemberArgs } from "./appConnectorIamMember";
 export type AppConnectorIamMember = import("./appConnectorIamMember").AppConnectorIamMember;
 export const AppConnectorIamMember: typeof import("./appConnectorIamMember").AppConnectorIamMember = null as any;
+utilities.lazyLoad(exports, ["AppConnectorIamMember"], () => require("./appConnectorIamMember"));
 
 export { AppConnectorIamPolicyArgs } from "./appConnectorIamPolicy";
 export type AppConnectorIamPolicy = import("./appConnectorIamPolicy").AppConnectorIamPolicy;
 export const AppConnectorIamPolicy: typeof import("./appConnectorIamPolicy").AppConnectorIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AppConnectorIamPolicy"], () => require("./appConnectorIamPolicy"));
 
 export { AppGatewayArgs } from "./appGateway";
 export type AppGateway = import("./appGateway").AppGateway;
 export const AppGateway: typeof import("./appGateway").AppGateway = null as any;
+utilities.lazyLoad(exports, ["AppGateway"], () => require("./appGateway"));
 
 export { AppGatewayIamBindingArgs } from "./appGatewayIamBinding";
 export type AppGatewayIamBinding = import("./appGatewayIamBinding").AppGatewayIamBinding;
 export const AppGatewayIamBinding: typeof import("./appGatewayIamBinding").AppGatewayIamBinding = null as any;
+utilities.lazyLoad(exports, ["AppGatewayIamBinding"], () => require("./appGatewayIamBinding"));
 
 export { AppGatewayIamMemberArgs } from "./appGatewayIamMember";
 export type AppGatewayIamMember = import("./appGatewayIamMember").AppGatewayIamMember;
 export const AppGatewayIamMember: typeof import("./appGatewayIamMember").AppGatewayIamMember = null as any;
+utilities.lazyLoad(exports, ["AppGatewayIamMember"], () => require("./appGatewayIamMember"));
 
 export { AppGatewayIamPolicyArgs } from "./appGatewayIamPolicy";
 export type AppGatewayIamPolicy = import("./appGatewayIamPolicy").AppGatewayIamPolicy;
 export const AppGatewayIamPolicy: typeof import("./appGatewayIamPolicy").AppGatewayIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AppGatewayIamPolicy"], () => require("./appGatewayIamPolicy"));
 
 export { ApplicationIamBindingArgs } from "./applicationIamBinding";
 export type ApplicationIamBinding = import("./applicationIamBinding").ApplicationIamBinding;
 export const ApplicationIamBinding: typeof import("./applicationIamBinding").ApplicationIamBinding = null as any;
+utilities.lazyLoad(exports, ["ApplicationIamBinding"], () => require("./applicationIamBinding"));
 
 export { ApplicationIamMemberArgs } from "./applicationIamMember";
 export type ApplicationIamMember = import("./applicationIamMember").ApplicationIamMember;
 export const ApplicationIamMember: typeof import("./applicationIamMember").ApplicationIamMember = null as any;
+utilities.lazyLoad(exports, ["ApplicationIamMember"], () => require("./applicationIamMember"));
 
 export { ApplicationIamPolicyArgs } from "./applicationIamPolicy";
 export type ApplicationIamPolicy = import("./applicationIamPolicy").ApplicationIamPolicy;
 export const ApplicationIamPolicy: typeof import("./applicationIamPolicy").ApplicationIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ApplicationIamPolicy"], () => require("./applicationIamPolicy"));
 
 export { ClientConnectorServiceArgs } from "./clientConnectorService";
 export type ClientConnectorService = import("./clientConnectorService").ClientConnectorService;
 export const ClientConnectorService: typeof import("./clientConnectorService").ClientConnectorService = null as any;
+utilities.lazyLoad(exports, ["ClientConnectorService"], () => require("./clientConnectorService"));
 
 export { ClientConnectorServiceIamBindingArgs } from "./clientConnectorServiceIamBinding";
 export type ClientConnectorServiceIamBinding = import("./clientConnectorServiceIamBinding").ClientConnectorServiceIamBinding;
 export const ClientConnectorServiceIamBinding: typeof import("./clientConnectorServiceIamBinding").ClientConnectorServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["ClientConnectorServiceIamBinding"], () => require("./clientConnectorServiceIamBinding"));
 
 export { ClientConnectorServiceIamMemberArgs } from "./clientConnectorServiceIamMember";
 export type ClientConnectorServiceIamMember = import("./clientConnectorServiceIamMember").ClientConnectorServiceIamMember;
 export const ClientConnectorServiceIamMember: typeof import("./clientConnectorServiceIamMember").ClientConnectorServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["ClientConnectorServiceIamMember"], () => require("./clientConnectorServiceIamMember"));
 
 export { ClientConnectorServiceIamPolicyArgs } from "./clientConnectorServiceIamPolicy";
 export type ClientConnectorServiceIamPolicy = import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy;
 export const ClientConnectorServiceIamPolicy: typeof import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ClientConnectorServiceIamPolicy"], () => require("./clientConnectorServiceIamPolicy"));
 
 export { ClientGatewayArgs } from "./clientGateway";
 export type ClientGateway = import("./clientGateway").ClientGateway;
 export const ClientGateway: typeof import("./clientGateway").ClientGateway = null as any;
+utilities.lazyLoad(exports, ["ClientGateway"], () => require("./clientGateway"));
 
 export { ClientGatewayIamBindingArgs } from "./clientGatewayIamBinding";
 export type ClientGatewayIamBinding = import("./clientGatewayIamBinding").ClientGatewayIamBinding;
 export const ClientGatewayIamBinding: typeof import("./clientGatewayIamBinding").ClientGatewayIamBinding = null as any;
+utilities.lazyLoad(exports, ["ClientGatewayIamBinding"], () => require("./clientGatewayIamBinding"));
 
 export { ClientGatewayIamMemberArgs } from "./clientGatewayIamMember";
 export type ClientGatewayIamMember = import("./clientGatewayIamMember").ClientGatewayIamMember;
 export const ClientGatewayIamMember: typeof import("./clientGatewayIamMember").ClientGatewayIamMember = null as any;
+utilities.lazyLoad(exports, ["ClientGatewayIamMember"], () => require("./clientGatewayIamMember"));
 
 export { ClientGatewayIamPolicyArgs } from "./clientGatewayIamPolicy";
 export type ClientGatewayIamPolicy = import("./clientGatewayIamPolicy").ClientGatewayIamPolicy;
 export const ClientGatewayIamPolicy: typeof import("./clientGatewayIamPolicy").ClientGatewayIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ClientGatewayIamPolicy"], () => require("./clientGatewayIamPolicy"));
 
 export { ConnectionArgs } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
 export { ConnectionIamBindingArgs } from "./connectionIamBinding";
 export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
 export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
 
 export { ConnectionIamMemberArgs } from "./connectionIamMember";
 export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
 export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 
 export { ConnectionIamPolicyArgs } from "./connectionIamPolicy";
 export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
 export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 
 export { ConnectorArgs } from "./connector";
 export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
 export { ConnectorIamBindingArgs } from "./connectorIamBinding";
 export type ConnectorIamBinding = import("./connectorIamBinding").ConnectorIamBinding;
 export const ConnectorIamBinding: typeof import("./connectorIamBinding").ConnectorIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectorIamBinding"], () => require("./connectorIamBinding"));
 
 export { ConnectorIamMemberArgs } from "./connectorIamMember";
 export type ConnectorIamMember = import("./connectorIamMember").ConnectorIamMember;
 export const ConnectorIamMember: typeof import("./connectorIamMember").ConnectorIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectorIamMember"], () => require("./connectorIamMember"));
 
 export { ConnectorIamPolicyArgs } from "./connectorIamPolicy";
 export type ConnectorIamPolicy = import("./connectorIamPolicy").ConnectorIamPolicy;
 export const ConnectorIamPolicy: typeof import("./connectorIamPolicy").ConnectorIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectorIamPolicy"], () => require("./connectorIamPolicy"));
 
 export { GetAppConnectionArgs, GetAppConnectionResult, GetAppConnectionOutputArgs } from "./getAppConnection";
 export const getAppConnection: typeof import("./getAppConnection").getAppConnection = null as any;
 export const getAppConnectionOutput: typeof import("./getAppConnection").getAppConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getAppConnection","getAppConnectionOutput"], () => require("./getAppConnection"));
 
 export { GetAppConnectionIamPolicyArgs, GetAppConnectionIamPolicyResult, GetAppConnectionIamPolicyOutputArgs } from "./getAppConnectionIamPolicy";
 export const getAppConnectionIamPolicy: typeof import("./getAppConnectionIamPolicy").getAppConnectionIamPolicy = null as any;
 export const getAppConnectionIamPolicyOutput: typeof import("./getAppConnectionIamPolicy").getAppConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppConnectionIamPolicy","getAppConnectionIamPolicyOutput"], () => require("./getAppConnectionIamPolicy"));
 
 export { GetAppConnectorArgs, GetAppConnectorResult, GetAppConnectorOutputArgs } from "./getAppConnector";
 export const getAppConnector: typeof import("./getAppConnector").getAppConnector = null as any;
 export const getAppConnectorOutput: typeof import("./getAppConnector").getAppConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getAppConnector","getAppConnectorOutput"], () => require("./getAppConnector"));
 
 export { GetAppConnectorIamPolicyArgs, GetAppConnectorIamPolicyResult, GetAppConnectorIamPolicyOutputArgs } from "./getAppConnectorIamPolicy";
 export const getAppConnectorIamPolicy: typeof import("./getAppConnectorIamPolicy").getAppConnectorIamPolicy = null as any;
 export const getAppConnectorIamPolicyOutput: typeof import("./getAppConnectorIamPolicy").getAppConnectorIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppConnectorIamPolicy","getAppConnectorIamPolicyOutput"], () => require("./getAppConnectorIamPolicy"));
 
 export { GetAppGatewayArgs, GetAppGatewayResult, GetAppGatewayOutputArgs } from "./getAppGateway";
 export const getAppGateway: typeof import("./getAppGateway").getAppGateway = null as any;
 export const getAppGatewayOutput: typeof import("./getAppGateway").getAppGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
 
 export { GetAppGatewayIamPolicyArgs, GetAppGatewayIamPolicyResult, GetAppGatewayIamPolicyOutputArgs } from "./getAppGatewayIamPolicy";
 export const getAppGatewayIamPolicy: typeof import("./getAppGatewayIamPolicy").getAppGatewayIamPolicy = null as any;
 export const getAppGatewayIamPolicyOutput: typeof import("./getAppGatewayIamPolicy").getAppGatewayIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppGatewayIamPolicy","getAppGatewayIamPolicyOutput"], () => require("./getAppGatewayIamPolicy"));
 
 export { GetApplicationIamPolicyArgs, GetApplicationIamPolicyResult, GetApplicationIamPolicyOutputArgs } from "./getApplicationIamPolicy";
 export const getApplicationIamPolicy: typeof import("./getApplicationIamPolicy").getApplicationIamPolicy = null as any;
 export const getApplicationIamPolicyOutput: typeof import("./getApplicationIamPolicy").getApplicationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationIamPolicy","getApplicationIamPolicyOutput"], () => require("./getApplicationIamPolicy"));
 
 export { GetClientConnectorServiceArgs, GetClientConnectorServiceResult, GetClientConnectorServiceOutputArgs } from "./getClientConnectorService";
 export const getClientConnectorService: typeof import("./getClientConnectorService").getClientConnectorService = null as any;
 export const getClientConnectorServiceOutput: typeof import("./getClientConnectorService").getClientConnectorServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getClientConnectorService","getClientConnectorServiceOutput"], () => require("./getClientConnectorService"));
 
 export { GetClientConnectorServiceIamPolicyArgs, GetClientConnectorServiceIamPolicyResult, GetClientConnectorServiceIamPolicyOutputArgs } from "./getClientConnectorServiceIamPolicy";
 export const getClientConnectorServiceIamPolicy: typeof import("./getClientConnectorServiceIamPolicy").getClientConnectorServiceIamPolicy = null as any;
 export const getClientConnectorServiceIamPolicyOutput: typeof import("./getClientConnectorServiceIamPolicy").getClientConnectorServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getClientConnectorServiceIamPolicy","getClientConnectorServiceIamPolicyOutput"], () => require("./getClientConnectorServiceIamPolicy"));
 
 export { GetClientGatewayArgs, GetClientGatewayResult, GetClientGatewayOutputArgs } from "./getClientGateway";
 export const getClientGateway: typeof import("./getClientGateway").getClientGateway = null as any;
 export const getClientGatewayOutput: typeof import("./getClientGateway").getClientGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getClientGateway","getClientGatewayOutput"], () => require("./getClientGateway"));
 
 export { GetClientGatewayIamPolicyArgs, GetClientGatewayIamPolicyResult, GetClientGatewayIamPolicyOutputArgs } from "./getClientGatewayIamPolicy";
 export const getClientGatewayIamPolicy: typeof import("./getClientGatewayIamPolicy").getClientGatewayIamPolicy = null as any;
 export const getClientGatewayIamPolicyOutput: typeof import("./getClientGatewayIamPolicy").getClientGatewayIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getClientGatewayIamPolicy","getClientGatewayIamPolicyOutput"], () => require("./getClientGatewayIamPolicy"));
 
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
 
 export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnectionIamPolicyOutputArgs } from "./getConnectionIamPolicy";
 export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
 export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
 
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
 export const getConnectorOutput: typeof import("./getConnector").getConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
 
 export { GetConnectorIamPolicyArgs, GetConnectorIamPolicyResult, GetConnectorIamPolicyOutputArgs } from "./getConnectorIamPolicy";
 export const getConnectorIamPolicy: typeof import("./getConnectorIamPolicy").getConnectorIamPolicy = null as any;
 export const getConnectorIamPolicyOutput: typeof import("./getConnectorIamPolicy").getConnectorIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["AppConnection"], () => require("./appConnection"));
-utilities.lazyLoad(exports, ["AppConnectionIamBinding"], () => require("./appConnectionIamBinding"));
-utilities.lazyLoad(exports, ["AppConnectionIamMember"], () => require("./appConnectionIamMember"));
-utilities.lazyLoad(exports, ["AppConnectionIamPolicy"], () => require("./appConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["AppConnector"], () => require("./appConnector"));
-utilities.lazyLoad(exports, ["AppConnectorIamBinding"], () => require("./appConnectorIamBinding"));
-utilities.lazyLoad(exports, ["AppConnectorIamMember"], () => require("./appConnectorIamMember"));
-utilities.lazyLoad(exports, ["AppConnectorIamPolicy"], () => require("./appConnectorIamPolicy"));
-utilities.lazyLoad(exports, ["AppGateway"], () => require("./appGateway"));
-utilities.lazyLoad(exports, ["AppGatewayIamBinding"], () => require("./appGatewayIamBinding"));
-utilities.lazyLoad(exports, ["AppGatewayIamMember"], () => require("./appGatewayIamMember"));
-utilities.lazyLoad(exports, ["AppGatewayIamPolicy"], () => require("./appGatewayIamPolicy"));
-utilities.lazyLoad(exports, ["ApplicationIamBinding"], () => require("./applicationIamBinding"));
-utilities.lazyLoad(exports, ["ApplicationIamMember"], () => require("./applicationIamMember"));
-utilities.lazyLoad(exports, ["ApplicationIamPolicy"], () => require("./applicationIamPolicy"));
-utilities.lazyLoad(exports, ["ClientConnectorService"], () => require("./clientConnectorService"));
-utilities.lazyLoad(exports, ["ClientConnectorServiceIamBinding"], () => require("./clientConnectorServiceIamBinding"));
-utilities.lazyLoad(exports, ["ClientConnectorServiceIamMember"], () => require("./clientConnectorServiceIamMember"));
-utilities.lazyLoad(exports, ["ClientConnectorServiceIamPolicy"], () => require("./clientConnectorServiceIamPolicy"));
-utilities.lazyLoad(exports, ["ClientGateway"], () => require("./clientGateway"));
-utilities.lazyLoad(exports, ["ClientGatewayIamBinding"], () => require("./clientGatewayIamBinding"));
-utilities.lazyLoad(exports, ["ClientGatewayIamMember"], () => require("./clientGatewayIamMember"));
-utilities.lazyLoad(exports, ["ClientGatewayIamPolicy"], () => require("./clientGatewayIamPolicy"));
-utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
-utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
-utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
-utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
-utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
-utilities.lazyLoad(exports, ["ConnectorIamBinding"], () => require("./connectorIamBinding"));
-utilities.lazyLoad(exports, ["ConnectorIamMember"], () => require("./connectorIamMember"));
-utilities.lazyLoad(exports, ["ConnectorIamPolicy"], () => require("./connectorIamPolicy"));
-utilities.lazyLoad(exports, ["getAppConnection","getAppConnectionOutput"], () => require("./getAppConnection"));
-utilities.lazyLoad(exports, ["getAppConnectionIamPolicy","getAppConnectionIamPolicyOutput"], () => require("./getAppConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["getAppConnector","getAppConnectorOutput"], () => require("./getAppConnector"));
-utilities.lazyLoad(exports, ["getAppConnectorIamPolicy","getAppConnectorIamPolicyOutput"], () => require("./getAppConnectorIamPolicy"));
-utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
-utilities.lazyLoad(exports, ["getAppGatewayIamPolicy","getAppGatewayIamPolicyOutput"], () => require("./getAppGatewayIamPolicy"));
-utilities.lazyLoad(exports, ["getApplicationIamPolicy","getApplicationIamPolicyOutput"], () => require("./getApplicationIamPolicy"));
-utilities.lazyLoad(exports, ["getClientConnectorService","getClientConnectorServiceOutput"], () => require("./getClientConnectorService"));
-utilities.lazyLoad(exports, ["getClientConnectorServiceIamPolicy","getClientConnectorServiceIamPolicyOutput"], () => require("./getClientConnectorServiceIamPolicy"));
-utilities.lazyLoad(exports, ["getClientGateway","getClientGatewayOutput"], () => require("./getClientGateway"));
-utilities.lazyLoad(exports, ["getClientGatewayIamPolicy","getClientGatewayIamPolicyOutput"], () => require("./getClientGatewayIamPolicy"));
-utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
-utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
 utilities.lazyLoad(exports, ["getConnectorIamPolicy","getConnectorIamPolicyOutput"], () => require("./getConnectorIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/beyondcorp/v1alpha";

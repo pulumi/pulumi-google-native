@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { CaseArgs } from "./case";
 export type Case = import("./case").Case;
 export const Case: typeof import("./case").Case = null as any;
+utilities.lazyLoad(exports, ["Case"], () => require("./case"));
 
 export { GetCaseArgs, GetCaseResult, GetCaseOutputArgs } from "./getCase";
 export const getCase: typeof import("./getCase").getCase = null as any;
 export const getCaseOutput: typeof import("./getCase").getCaseOutput = null as any;
-
-utilities.lazyLoad(exports, ["Case"], () => require("./case"));
 utilities.lazyLoad(exports, ["getCase","getCaseOutput"], () => require("./getCase"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudsupport/v2beta";

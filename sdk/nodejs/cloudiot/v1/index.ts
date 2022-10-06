@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { DeviceArgs } from "./device";
 export type Device = import("./device").Device;
 export const Device: typeof import("./device").Device = null as any;
+utilities.lazyLoad(exports, ["Device"], () => require("./device"));
 
 export { GetDeviceArgs, GetDeviceResult, GetDeviceOutputArgs } from "./getDevice";
 export const getDevice: typeof import("./getDevice").getDevice = null as any;
 export const getDeviceOutput: typeof import("./getDevice").getDeviceOutput = null as any;
+utilities.lazyLoad(exports, ["getDevice","getDeviceOutput"], () => require("./getDevice"));
 
 export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
 
 export { GetRegistryGroupIamPolicyArgs, GetRegistryGroupIamPolicyResult, GetRegistryGroupIamPolicyOutputArgs } from "./getRegistryGroupIamPolicy";
 export const getRegistryGroupIamPolicy: typeof import("./getRegistryGroupIamPolicy").getRegistryGroupIamPolicy = null as any;
 export const getRegistryGroupIamPolicyOutput: typeof import("./getRegistryGroupIamPolicy").getRegistryGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryGroupIamPolicy","getRegistryGroupIamPolicyOutput"], () => require("./getRegistryGroupIamPolicy"));
 
 export { GetRegistryIamPolicyArgs, GetRegistryIamPolicyResult, GetRegistryIamPolicyOutputArgs } from "./getRegistryIamPolicy";
 export const getRegistryIamPolicy: typeof import("./getRegistryIamPolicy").getRegistryIamPolicy = null as any;
 export const getRegistryIamPolicyOutput: typeof import("./getRegistryIamPolicy").getRegistryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryIamPolicy","getRegistryIamPolicyOutput"], () => require("./getRegistryIamPolicy"));
 
 export { RegistryArgs } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
 
 export { RegistryGroupIamBindingArgs } from "./registryGroupIamBinding";
 export type RegistryGroupIamBinding = import("./registryGroupIamBinding").RegistryGroupIamBinding;
 export const RegistryGroupIamBinding: typeof import("./registryGroupIamBinding").RegistryGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegistryGroupIamBinding"], () => require("./registryGroupIamBinding"));
 
 export { RegistryGroupIamMemberArgs } from "./registryGroupIamMember";
 export type RegistryGroupIamMember = import("./registryGroupIamMember").RegistryGroupIamMember;
 export const RegistryGroupIamMember: typeof import("./registryGroupIamMember").RegistryGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["RegistryGroupIamMember"], () => require("./registryGroupIamMember"));
 
 export { RegistryGroupIamPolicyArgs } from "./registryGroupIamPolicy";
 export type RegistryGroupIamPolicy = import("./registryGroupIamPolicy").RegistryGroupIamPolicy;
 export const RegistryGroupIamPolicy: typeof import("./registryGroupIamPolicy").RegistryGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegistryGroupIamPolicy"], () => require("./registryGroupIamPolicy"));
 
 export { RegistryIamBindingArgs } from "./registryIamBinding";
 export type RegistryIamBinding = import("./registryIamBinding").RegistryIamBinding;
 export const RegistryIamBinding: typeof import("./registryIamBinding").RegistryIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegistryIamBinding"], () => require("./registryIamBinding"));
 
 export { RegistryIamMemberArgs } from "./registryIamMember";
 export type RegistryIamMember = import("./registryIamMember").RegistryIamMember;
 export const RegistryIamMember: typeof import("./registryIamMember").RegistryIamMember = null as any;
+utilities.lazyLoad(exports, ["RegistryIamMember"], () => require("./registryIamMember"));
 
 export { RegistryIamPolicyArgs } from "./registryIamPolicy";
 export type RegistryIamPolicy = import("./registryIamPolicy").RegistryIamPolicy;
 export const RegistryIamPolicy: typeof import("./registryIamPolicy").RegistryIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Device"], () => require("./device"));
-utilities.lazyLoad(exports, ["getDevice","getDeviceOutput"], () => require("./getDevice"));
-utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
-utilities.lazyLoad(exports, ["getRegistryGroupIamPolicy","getRegistryGroupIamPolicyOutput"], () => require("./getRegistryGroupIamPolicy"));
-utilities.lazyLoad(exports, ["getRegistryIamPolicy","getRegistryIamPolicyOutput"], () => require("./getRegistryIamPolicy"));
-utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
-utilities.lazyLoad(exports, ["RegistryGroupIamBinding"], () => require("./registryGroupIamBinding"));
-utilities.lazyLoad(exports, ["RegistryGroupIamMember"], () => require("./registryGroupIamMember"));
-utilities.lazyLoad(exports, ["RegistryGroupIamPolicy"], () => require("./registryGroupIamPolicy"));
-utilities.lazyLoad(exports, ["RegistryIamBinding"], () => require("./registryIamBinding"));
-utilities.lazyLoad(exports, ["RegistryIamMember"], () => require("./registryIamMember"));
 utilities.lazyLoad(exports, ["RegistryIamPolicy"], () => require("./registryIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudiot/v1";

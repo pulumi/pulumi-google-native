@@ -8,93 +8,93 @@ import * as utilities from "../../utilities";
 export { ChannelArgs } from "./channel";
 export type Channel = import("./channel").Channel;
 export const Channel: typeof import("./channel").Channel = null as any;
+utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
 
 export { ChannelConnectionArgs } from "./channelConnection";
 export type ChannelConnection = import("./channelConnection").ChannelConnection;
 export const ChannelConnection: typeof import("./channelConnection").ChannelConnection = null as any;
+utilities.lazyLoad(exports, ["ChannelConnection"], () => require("./channelConnection"));
 
 export { ChannelConnectionIamBindingArgs } from "./channelConnectionIamBinding";
 export type ChannelConnectionIamBinding = import("./channelConnectionIamBinding").ChannelConnectionIamBinding;
 export const ChannelConnectionIamBinding: typeof import("./channelConnectionIamBinding").ChannelConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["ChannelConnectionIamBinding"], () => require("./channelConnectionIamBinding"));
 
 export { ChannelConnectionIamMemberArgs } from "./channelConnectionIamMember";
 export type ChannelConnectionIamMember = import("./channelConnectionIamMember").ChannelConnectionIamMember;
 export const ChannelConnectionIamMember: typeof import("./channelConnectionIamMember").ChannelConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["ChannelConnectionIamMember"], () => require("./channelConnectionIamMember"));
 
 export { ChannelConnectionIamPolicyArgs } from "./channelConnectionIamPolicy";
 export type ChannelConnectionIamPolicy = import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy;
 export const ChannelConnectionIamPolicy: typeof import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ChannelConnectionIamPolicy"], () => require("./channelConnectionIamPolicy"));
 
 export { ChannelIamBindingArgs } from "./channelIamBinding";
 export type ChannelIamBinding = import("./channelIamBinding").ChannelIamBinding;
 export const ChannelIamBinding: typeof import("./channelIamBinding").ChannelIamBinding = null as any;
+utilities.lazyLoad(exports, ["ChannelIamBinding"], () => require("./channelIamBinding"));
 
 export { ChannelIamMemberArgs } from "./channelIamMember";
 export type ChannelIamMember = import("./channelIamMember").ChannelIamMember;
 export const ChannelIamMember: typeof import("./channelIamMember").ChannelIamMember = null as any;
+utilities.lazyLoad(exports, ["ChannelIamMember"], () => require("./channelIamMember"));
 
 export { ChannelIamPolicyArgs } from "./channelIamPolicy";
 export type ChannelIamPolicy = import("./channelIamPolicy").ChannelIamPolicy;
 export const ChannelIamPolicy: typeof import("./channelIamPolicy").ChannelIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ChannelIamPolicy"], () => require("./channelIamPolicy"));
 
 export { GetChannelArgs, GetChannelResult, GetChannelOutputArgs } from "./getChannel";
 export const getChannel: typeof import("./getChannel").getChannel = null as any;
 export const getChannelOutput: typeof import("./getChannel").getChannelOutput = null as any;
+utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
 
 export { GetChannelConnectionArgs, GetChannelConnectionResult, GetChannelConnectionOutputArgs } from "./getChannelConnection";
 export const getChannelConnection: typeof import("./getChannelConnection").getChannelConnection = null as any;
 export const getChannelConnectionOutput: typeof import("./getChannelConnection").getChannelConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getChannelConnection","getChannelConnectionOutput"], () => require("./getChannelConnection"));
 
 export { GetChannelConnectionIamPolicyArgs, GetChannelConnectionIamPolicyResult, GetChannelConnectionIamPolicyOutputArgs } from "./getChannelConnectionIamPolicy";
 export const getChannelConnectionIamPolicy: typeof import("./getChannelConnectionIamPolicy").getChannelConnectionIamPolicy = null as any;
 export const getChannelConnectionIamPolicyOutput: typeof import("./getChannelConnectionIamPolicy").getChannelConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getChannelConnectionIamPolicy","getChannelConnectionIamPolicyOutput"], () => require("./getChannelConnectionIamPolicy"));
 
 export { GetChannelIamPolicyArgs, GetChannelIamPolicyResult, GetChannelIamPolicyOutputArgs } from "./getChannelIamPolicy";
 export const getChannelIamPolicy: typeof import("./getChannelIamPolicy").getChannelIamPolicy = null as any;
 export const getChannelIamPolicyOutput: typeof import("./getChannelIamPolicy").getChannelIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getChannelIamPolicy","getChannelIamPolicyOutput"], () => require("./getChannelIamPolicy"));
 
 export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
 export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
 export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 
 export { GetTriggerIamPolicyArgs, GetTriggerIamPolicyResult, GetTriggerIamPolicyOutputArgs } from "./getTriggerIamPolicy";
 export const getTriggerIamPolicy: typeof import("./getTriggerIamPolicy").getTriggerIamPolicy = null as any;
 export const getTriggerIamPolicyOutput: typeof import("./getTriggerIamPolicy").getTriggerIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
 
 export { TriggerArgs } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 
 export { TriggerIamBindingArgs } from "./triggerIamBinding";
 export type TriggerIamBinding = import("./triggerIamBinding").TriggerIamBinding;
 export const TriggerIamBinding: typeof import("./triggerIamBinding").TriggerIamBinding = null as any;
+utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
 
 export { TriggerIamMemberArgs } from "./triggerIamMember";
 export type TriggerIamMember = import("./triggerIamMember").TriggerIamMember;
 export const TriggerIamMember: typeof import("./triggerIamMember").TriggerIamMember = null as any;
+utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 
 export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
 export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
 export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
-utilities.lazyLoad(exports, ["ChannelConnection"], () => require("./channelConnection"));
-utilities.lazyLoad(exports, ["ChannelConnectionIamBinding"], () => require("./channelConnectionIamBinding"));
-utilities.lazyLoad(exports, ["ChannelConnectionIamMember"], () => require("./channelConnectionIamMember"));
-utilities.lazyLoad(exports, ["ChannelConnectionIamPolicy"], () => require("./channelConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["ChannelIamBinding"], () => require("./channelIamBinding"));
-utilities.lazyLoad(exports, ["ChannelIamMember"], () => require("./channelIamMember"));
-utilities.lazyLoad(exports, ["ChannelIamPolicy"], () => require("./channelIamPolicy"));
-utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
-utilities.lazyLoad(exports, ["getChannelConnection","getChannelConnectionOutput"], () => require("./getChannelConnection"));
-utilities.lazyLoad(exports, ["getChannelConnectionIamPolicy","getChannelConnectionIamPolicyOutput"], () => require("./getChannelConnectionIamPolicy"));
-utilities.lazyLoad(exports, ["getChannelIamPolicy","getChannelIamPolicyOutput"], () => require("./getChannelIamPolicy"));
-utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
-utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
-utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
-utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
-utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/eventarc/v1";

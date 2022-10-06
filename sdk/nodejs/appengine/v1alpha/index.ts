@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { AuthorizedCertificateArgs } from "./authorizedCertificate";
 export type AuthorizedCertificate = import("./authorizedCertificate").AuthorizedCertificate;
 export const AuthorizedCertificate: typeof import("./authorizedCertificate").AuthorizedCertificate = null as any;
+utilities.lazyLoad(exports, ["AuthorizedCertificate"], () => require("./authorizedCertificate"));
 
 export { DomainMappingArgs } from "./domainMapping";
 export type DomainMapping = import("./domainMapping").DomainMapping;
 export const DomainMapping: typeof import("./domainMapping").DomainMapping = null as any;
+utilities.lazyLoad(exports, ["DomainMapping"], () => require("./domainMapping"));
 
 export { GetAuthorizedCertificateArgs, GetAuthorizedCertificateResult, GetAuthorizedCertificateOutputArgs } from "./getAuthorizedCertificate";
 export const getAuthorizedCertificate: typeof import("./getAuthorizedCertificate").getAuthorizedCertificate = null as any;
 export const getAuthorizedCertificateOutput: typeof import("./getAuthorizedCertificate").getAuthorizedCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizedCertificate","getAuthorizedCertificateOutput"], () => require("./getAuthorizedCertificate"));
 
 export { GetDomainMappingArgs, GetDomainMappingResult, GetDomainMappingOutputArgs } from "./getDomainMapping";
 export const getDomainMapping: typeof import("./getDomainMapping").getDomainMapping = null as any;
 export const getDomainMappingOutput: typeof import("./getDomainMapping").getDomainMappingOutput = null as any;
-
-utilities.lazyLoad(exports, ["AuthorizedCertificate"], () => require("./authorizedCertificate"));
-utilities.lazyLoad(exports, ["DomainMapping"], () => require("./domainMapping"));
-utilities.lazyLoad(exports, ["getAuthorizedCertificate","getAuthorizedCertificateOutput"], () => require("./getAuthorizedCertificate"));
 utilities.lazyLoad(exports, ["getDomainMapping","getDomainMappingOutput"], () => require("./getDomainMapping"));
+
 
 const _module = {
     version: utilities.getVersion(),

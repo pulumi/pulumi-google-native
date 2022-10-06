@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { BackupArgs } from "./backup";
 export type Backup = import("./backup").Backup;
 export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 
 export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
 export const getBackup: typeof import("./getBackup").getBackup = null as any;
 export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 
 export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
 export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
 export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
 
 export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { SnapshotArgs } from "./snapshot";
 export type Snapshot = import("./snapshot").Snapshot;
 export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
-
-utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
-utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
-utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
-utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
 
 // Export enums:
 export * from "../../types/enums/file/v1";
