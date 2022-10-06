@@ -8,133 +8,133 @@ import * as utilities from "../../utilities";
 export { EntryArgs } from "./entry";
 export type Entry = import("./entry").Entry;
 export const Entry: typeof import("./entry").Entry = null as any;
+utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
 
 export { EntryGroupArgs } from "./entryGroup";
 export type EntryGroup = import("./entryGroup").EntryGroup;
 export const EntryGroup: typeof import("./entryGroup").EntryGroup = null as any;
+utilities.lazyLoad(exports, ["EntryGroup"], () => require("./entryGroup"));
 
 export { EntryGroupIamBindingArgs } from "./entryGroupIamBinding";
 export type EntryGroupIamBinding = import("./entryGroupIamBinding").EntryGroupIamBinding;
 export const EntryGroupIamBinding: typeof import("./entryGroupIamBinding").EntryGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamBinding"], () => require("./entryGroupIamBinding"));
 
 export { EntryGroupIamMemberArgs } from "./entryGroupIamMember";
 export type EntryGroupIamMember = import("./entryGroupIamMember").EntryGroupIamMember;
 export const EntryGroupIamMember: typeof import("./entryGroupIamMember").EntryGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamMember"], () => require("./entryGroupIamMember"));
 
 export { EntryGroupIamPolicyArgs } from "./entryGroupIamPolicy";
 export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamPolicy;
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
 
 export { GetEntryArgs, GetEntryResult, GetEntryOutputArgs } from "./getEntry";
 export const getEntry: typeof import("./getEntry").getEntry = null as any;
 export const getEntryOutput: typeof import("./getEntry").getEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getEntry","getEntryOutput"], () => require("./getEntry"));
 
 export { GetEntryGroupArgs, GetEntryGroupResult, GetEntryGroupOutputArgs } from "./getEntryGroup";
 export const getEntryGroup: typeof import("./getEntryGroup").getEntryGroup = null as any;
 export const getEntryGroupOutput: typeof import("./getEntryGroup").getEntryGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryGroup","getEntryGroupOutput"], () => require("./getEntryGroup"));
 
 export { GetEntryGroupIamPolicyArgs, GetEntryGroupIamPolicyResult, GetEntryGroupIamPolicyOutputArgs } from "./getEntryGroupIamPolicy";
 export const getEntryGroupIamPolicy: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicy = null as any;
 export const getEntryGroupIamPolicyOutput: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
 
 export { GetPolicyTagArgs, GetPolicyTagResult, GetPolicyTagOutputArgs } from "./getPolicyTag";
 export const getPolicyTag: typeof import("./getPolicyTag").getPolicyTag = null as any;
 export const getPolicyTagOutput: typeof import("./getPolicyTag").getPolicyTagOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyTag","getPolicyTagOutput"], () => require("./getPolicyTag"));
 
 export { GetTagTemplateArgs, GetTagTemplateResult, GetTagTemplateOutputArgs } from "./getTagTemplate";
 export const getTagTemplate: typeof import("./getTagTemplate").getTagTemplate = null as any;
 export const getTagTemplateOutput: typeof import("./getTagTemplate").getTagTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getTagTemplate","getTagTemplateOutput"], () => require("./getTagTemplate"));
 
 export { GetTagTemplateIamPolicyArgs, GetTagTemplateIamPolicyResult, GetTagTemplateIamPolicyOutputArgs } from "./getTagTemplateIamPolicy";
 export const getTagTemplateIamPolicy: typeof import("./getTagTemplateIamPolicy").getTagTemplateIamPolicy = null as any;
 export const getTagTemplateIamPolicyOutput: typeof import("./getTagTemplateIamPolicy").getTagTemplateIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTagTemplateIamPolicy","getTagTemplateIamPolicyOutput"], () => require("./getTagTemplateIamPolicy"));
 
 export { GetTaxonomyArgs, GetTaxonomyResult, GetTaxonomyOutputArgs } from "./getTaxonomy";
 export const getTaxonomy: typeof import("./getTaxonomy").getTaxonomy = null as any;
 export const getTaxonomyOutput: typeof import("./getTaxonomy").getTaxonomyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaxonomy","getTaxonomyOutput"], () => require("./getTaxonomy"));
 
 export { GetTaxonomyIamPolicyArgs, GetTaxonomyIamPolicyResult, GetTaxonomyIamPolicyOutputArgs } from "./getTaxonomyIamPolicy";
 export const getTaxonomyIamPolicy: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicy = null as any;
 export const getTaxonomyIamPolicyOutput: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaxonomyIamPolicy","getTaxonomyIamPolicyOutput"], () => require("./getTaxonomyIamPolicy"));
 
 export { GetTaxonomyPolicyTagIamPolicyArgs, GetTaxonomyPolicyTagIamPolicyResult, GetTaxonomyPolicyTagIamPolicyOutputArgs } from "./getTaxonomyPolicyTagIamPolicy";
 export const getTaxonomyPolicyTagIamPolicy: typeof import("./getTaxonomyPolicyTagIamPolicy").getTaxonomyPolicyTagIamPolicy = null as any;
 export const getTaxonomyPolicyTagIamPolicyOutput: typeof import("./getTaxonomyPolicyTagIamPolicy").getTaxonomyPolicyTagIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaxonomyPolicyTagIamPolicy","getTaxonomyPolicyTagIamPolicyOutput"], () => require("./getTaxonomyPolicyTagIamPolicy"));
 
 export { PolicyTagArgs } from "./policyTag";
 export type PolicyTag = import("./policyTag").PolicyTag;
 export const PolicyTag: typeof import("./policyTag").PolicyTag = null as any;
+utilities.lazyLoad(exports, ["PolicyTag"], () => require("./policyTag"));
 
 export { TagTemplateArgs } from "./tagTemplate";
 export type TagTemplate = import("./tagTemplate").TagTemplate;
 export const TagTemplate: typeof import("./tagTemplate").TagTemplate = null as any;
+utilities.lazyLoad(exports, ["TagTemplate"], () => require("./tagTemplate"));
 
 export { TagTemplateIamBindingArgs } from "./tagTemplateIamBinding";
 export type TagTemplateIamBinding = import("./tagTemplateIamBinding").TagTemplateIamBinding;
 export const TagTemplateIamBinding: typeof import("./tagTemplateIamBinding").TagTemplateIamBinding = null as any;
+utilities.lazyLoad(exports, ["TagTemplateIamBinding"], () => require("./tagTemplateIamBinding"));
 
 export { TagTemplateIamMemberArgs } from "./tagTemplateIamMember";
 export type TagTemplateIamMember = import("./tagTemplateIamMember").TagTemplateIamMember;
 export const TagTemplateIamMember: typeof import("./tagTemplateIamMember").TagTemplateIamMember = null as any;
+utilities.lazyLoad(exports, ["TagTemplateIamMember"], () => require("./tagTemplateIamMember"));
 
 export { TagTemplateIamPolicyArgs } from "./tagTemplateIamPolicy";
 export type TagTemplateIamPolicy = import("./tagTemplateIamPolicy").TagTemplateIamPolicy;
 export const TagTemplateIamPolicy: typeof import("./tagTemplateIamPolicy").TagTemplateIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TagTemplateIamPolicy"], () => require("./tagTemplateIamPolicy"));
 
 export { TaxonomyArgs } from "./taxonomy";
 export type Taxonomy = import("./taxonomy").Taxonomy;
 export const Taxonomy: typeof import("./taxonomy").Taxonomy = null as any;
+utilities.lazyLoad(exports, ["Taxonomy"], () => require("./taxonomy"));
 
 export { TaxonomyIamBindingArgs } from "./taxonomyIamBinding";
 export type TaxonomyIamBinding = import("./taxonomyIamBinding").TaxonomyIamBinding;
 export const TaxonomyIamBinding: typeof import("./taxonomyIamBinding").TaxonomyIamBinding = null as any;
+utilities.lazyLoad(exports, ["TaxonomyIamBinding"], () => require("./taxonomyIamBinding"));
 
 export { TaxonomyIamMemberArgs } from "./taxonomyIamMember";
 export type TaxonomyIamMember = import("./taxonomyIamMember").TaxonomyIamMember;
 export const TaxonomyIamMember: typeof import("./taxonomyIamMember").TaxonomyIamMember = null as any;
+utilities.lazyLoad(exports, ["TaxonomyIamMember"], () => require("./taxonomyIamMember"));
 
 export { TaxonomyIamPolicyArgs } from "./taxonomyIamPolicy";
 export type TaxonomyIamPolicy = import("./taxonomyIamPolicy").TaxonomyIamPolicy;
 export const TaxonomyIamPolicy: typeof import("./taxonomyIamPolicy").TaxonomyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TaxonomyIamPolicy"], () => require("./taxonomyIamPolicy"));
 
 export { TaxonomyPolicyTagIamBindingArgs } from "./taxonomyPolicyTagIamBinding";
 export type TaxonomyPolicyTagIamBinding = import("./taxonomyPolicyTagIamBinding").TaxonomyPolicyTagIamBinding;
 export const TaxonomyPolicyTagIamBinding: typeof import("./taxonomyPolicyTagIamBinding").TaxonomyPolicyTagIamBinding = null as any;
+utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamBinding"], () => require("./taxonomyPolicyTagIamBinding"));
 
 export { TaxonomyPolicyTagIamMemberArgs } from "./taxonomyPolicyTagIamMember";
 export type TaxonomyPolicyTagIamMember = import("./taxonomyPolicyTagIamMember").TaxonomyPolicyTagIamMember;
 export const TaxonomyPolicyTagIamMember: typeof import("./taxonomyPolicyTagIamMember").TaxonomyPolicyTagIamMember = null as any;
+utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamMember"], () => require("./taxonomyPolicyTagIamMember"));
 
 export { TaxonomyPolicyTagIamPolicyArgs } from "./taxonomyPolicyTagIamPolicy";
 export type TaxonomyPolicyTagIamPolicy = import("./taxonomyPolicyTagIamPolicy").TaxonomyPolicyTagIamPolicy;
 export const TaxonomyPolicyTagIamPolicy: typeof import("./taxonomyPolicyTagIamPolicy").TaxonomyPolicyTagIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
-utilities.lazyLoad(exports, ["EntryGroup"], () => require("./entryGroup"));
-utilities.lazyLoad(exports, ["EntryGroupIamBinding"], () => require("./entryGroupIamBinding"));
-utilities.lazyLoad(exports, ["EntryGroupIamMember"], () => require("./entryGroupIamMember"));
-utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
-utilities.lazyLoad(exports, ["getEntry","getEntryOutput"], () => require("./getEntry"));
-utilities.lazyLoad(exports, ["getEntryGroup","getEntryGroupOutput"], () => require("./getEntryGroup"));
-utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
-utilities.lazyLoad(exports, ["getPolicyTag","getPolicyTagOutput"], () => require("./getPolicyTag"));
-utilities.lazyLoad(exports, ["getTagTemplate","getTagTemplateOutput"], () => require("./getTagTemplate"));
-utilities.lazyLoad(exports, ["getTagTemplateIamPolicy","getTagTemplateIamPolicyOutput"], () => require("./getTagTemplateIamPolicy"));
-utilities.lazyLoad(exports, ["getTaxonomy","getTaxonomyOutput"], () => require("./getTaxonomy"));
-utilities.lazyLoad(exports, ["getTaxonomyIamPolicy","getTaxonomyIamPolicyOutput"], () => require("./getTaxonomyIamPolicy"));
-utilities.lazyLoad(exports, ["getTaxonomyPolicyTagIamPolicy","getTaxonomyPolicyTagIamPolicyOutput"], () => require("./getTaxonomyPolicyTagIamPolicy"));
-utilities.lazyLoad(exports, ["PolicyTag"], () => require("./policyTag"));
-utilities.lazyLoad(exports, ["TagTemplate"], () => require("./tagTemplate"));
-utilities.lazyLoad(exports, ["TagTemplateIamBinding"], () => require("./tagTemplateIamBinding"));
-utilities.lazyLoad(exports, ["TagTemplateIamMember"], () => require("./tagTemplateIamMember"));
-utilities.lazyLoad(exports, ["TagTemplateIamPolicy"], () => require("./tagTemplateIamPolicy"));
-utilities.lazyLoad(exports, ["Taxonomy"], () => require("./taxonomy"));
-utilities.lazyLoad(exports, ["TaxonomyIamBinding"], () => require("./taxonomyIamBinding"));
-utilities.lazyLoad(exports, ["TaxonomyIamMember"], () => require("./taxonomyIamMember"));
-utilities.lazyLoad(exports, ["TaxonomyIamPolicy"], () => require("./taxonomyIamPolicy"));
-utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamBinding"], () => require("./taxonomyPolicyTagIamBinding"));
-utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamMember"], () => require("./taxonomyPolicyTagIamMember"));
 utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamPolicy"], () => require("./taxonomyPolicyTagIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/datacatalog/v1beta1";

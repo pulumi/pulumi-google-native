@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { DatabaseArgs } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
 export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
 export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
 export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
 
 export { GetIndexArgs, GetIndexResult, GetIndexOutputArgs } from "./getIndex";
 export const getIndex: typeof import("./getIndex").getIndex = null as any;
 export const getIndexOutput: typeof import("./getIndex").getIndexOutput = null as any;
+utilities.lazyLoad(exports, ["getIndex","getIndexOutput"], () => require("./getIndex"));
 
 export { IndexArgs } from "./index_";
 export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;
-
-utilities.lazyLoad(exports, ["Database"], () => require("./database"));
-utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
-utilities.lazyLoad(exports, ["getIndex","getIndexOutput"], () => require("./getIndex"));
 utilities.lazyLoad(exports, ["Index"], () => require("./index_"));
+
 
 // Export enums:
 export * from "../../types/enums/firestore/v1";

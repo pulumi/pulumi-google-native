@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { ExecutionArgs } from "./execution";
 export type Execution = import("./execution").Execution;
 export const Execution: typeof import("./execution").Execution = null as any;
+utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
 
 export { GetExecutionArgs, GetExecutionResult, GetExecutionOutputArgs } from "./getExecution";
 export const getExecution: typeof import("./getExecution").getExecution = null as any;
 export const getExecutionOutput: typeof import("./getExecution").getExecutionOutput = null as any;
-
-utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
 utilities.lazyLoad(exports, ["getExecution","getExecutionOutput"], () => require("./getExecution"));
+
 
 // Export enums:
 export * from "../../types/enums/workflowexecutions/v1beta";

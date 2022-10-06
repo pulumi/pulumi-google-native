@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { ConnectivityTestArgs } from "./connectivityTest";
 export type ConnectivityTest = import("./connectivityTest").ConnectivityTest;
 export const ConnectivityTest: typeof import("./connectivityTest").ConnectivityTest = null as any;
+utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
 
 export { ConnectivityTestIamBindingArgs } from "./connectivityTestIamBinding";
 export type ConnectivityTestIamBinding = import("./connectivityTestIamBinding").ConnectivityTestIamBinding;
 export const ConnectivityTestIamBinding: typeof import("./connectivityTestIamBinding").ConnectivityTestIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectivityTestIamBinding"], () => require("./connectivityTestIamBinding"));
 
 export { ConnectivityTestIamMemberArgs } from "./connectivityTestIamMember";
 export type ConnectivityTestIamMember = import("./connectivityTestIamMember").ConnectivityTestIamMember;
 export const ConnectivityTestIamMember: typeof import("./connectivityTestIamMember").ConnectivityTestIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectivityTestIamMember"], () => require("./connectivityTestIamMember"));
 
 export { ConnectivityTestIamPolicyArgs } from "./connectivityTestIamPolicy";
 export type ConnectivityTestIamPolicy = import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy;
 export const ConnectivityTestIamPolicy: typeof import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectivityTestIamPolicy"], () => require("./connectivityTestIamPolicy"));
 
 export { GetConnectivityTestArgs, GetConnectivityTestResult, GetConnectivityTestOutputArgs } from "./getConnectivityTest";
 export const getConnectivityTest: typeof import("./getConnectivityTest").getConnectivityTest = null as any;
 export const getConnectivityTestOutput: typeof import("./getConnectivityTest").getConnectivityTestOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectivityTest","getConnectivityTestOutput"], () => require("./getConnectivityTest"));
 
 export { GetConnectivityTestIamPolicyArgs, GetConnectivityTestIamPolicyResult, GetConnectivityTestIamPolicyOutputArgs } from "./getConnectivityTestIamPolicy";
 export const getConnectivityTestIamPolicy: typeof import("./getConnectivityTestIamPolicy").getConnectivityTestIamPolicy = null as any;
 export const getConnectivityTestIamPolicyOutput: typeof import("./getConnectivityTestIamPolicy").getConnectivityTestIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
-utilities.lazyLoad(exports, ["ConnectivityTestIamBinding"], () => require("./connectivityTestIamBinding"));
-utilities.lazyLoad(exports, ["ConnectivityTestIamMember"], () => require("./connectivityTestIamMember"));
-utilities.lazyLoad(exports, ["ConnectivityTestIamPolicy"], () => require("./connectivityTestIamPolicy"));
-utilities.lazyLoad(exports, ["getConnectivityTest","getConnectivityTestOutput"], () => require("./getConnectivityTest"));
 utilities.lazyLoad(exports, ["getConnectivityTestIamPolicy","getConnectivityTestIamPolicyOutput"], () => require("./getConnectivityTestIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/networkmanagement/v1";

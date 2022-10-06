@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { GetNoteArgs, GetNoteResult, GetNoteOutputArgs } from "./getNote";
 export const getNote: typeof import("./getNote").getNote = null as any;
 export const getNoteOutput: typeof import("./getNote").getNoteOutput = null as any;
+utilities.lazyLoad(exports, ["getNote","getNoteOutput"], () => require("./getNote"));
 
 export { GetNoteIamPolicyArgs, GetNoteIamPolicyResult, GetNoteIamPolicyOutputArgs } from "./getNoteIamPolicy";
 export const getNoteIamPolicy: typeof import("./getNoteIamPolicy").getNoteIamPolicy = null as any;
 export const getNoteIamPolicyOutput: typeof import("./getNoteIamPolicy").getNoteIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNoteIamPolicy","getNoteIamPolicyOutput"], () => require("./getNoteIamPolicy"));
 
 export { GetOccurrenceArgs, GetOccurrenceResult, GetOccurrenceOutputArgs } from "./getOccurrence";
 export const getOccurrence: typeof import("./getOccurrence").getOccurrence = null as any;
 export const getOccurrenceOutput: typeof import("./getOccurrence").getOccurrenceOutput = null as any;
+utilities.lazyLoad(exports, ["getOccurrence","getOccurrenceOutput"], () => require("./getOccurrence"));
 
 export { GetOccurrenceIamPolicyArgs, GetOccurrenceIamPolicyResult, GetOccurrenceIamPolicyOutputArgs } from "./getOccurrenceIamPolicy";
 export const getOccurrenceIamPolicy: typeof import("./getOccurrenceIamPolicy").getOccurrenceIamPolicy = null as any;
 export const getOccurrenceIamPolicyOutput: typeof import("./getOccurrenceIamPolicy").getOccurrenceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOccurrenceIamPolicy","getOccurrenceIamPolicyOutput"], () => require("./getOccurrenceIamPolicy"));
 
 export { NoteArgs } from "./note";
 export type Note = import("./note").Note;
 export const Note: typeof import("./note").Note = null as any;
+utilities.lazyLoad(exports, ["Note"], () => require("./note"));
 
 export { NoteIamBindingArgs } from "./noteIamBinding";
 export type NoteIamBinding = import("./noteIamBinding").NoteIamBinding;
 export const NoteIamBinding: typeof import("./noteIamBinding").NoteIamBinding = null as any;
+utilities.lazyLoad(exports, ["NoteIamBinding"], () => require("./noteIamBinding"));
 
 export { NoteIamMemberArgs } from "./noteIamMember";
 export type NoteIamMember = import("./noteIamMember").NoteIamMember;
 export const NoteIamMember: typeof import("./noteIamMember").NoteIamMember = null as any;
+utilities.lazyLoad(exports, ["NoteIamMember"], () => require("./noteIamMember"));
 
 export { NoteIamPolicyArgs } from "./noteIamPolicy";
 export type NoteIamPolicy = import("./noteIamPolicy").NoteIamPolicy;
 export const NoteIamPolicy: typeof import("./noteIamPolicy").NoteIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NoteIamPolicy"], () => require("./noteIamPolicy"));
 
 export { OccurrenceArgs } from "./occurrence";
 export type Occurrence = import("./occurrence").Occurrence;
 export const Occurrence: typeof import("./occurrence").Occurrence = null as any;
+utilities.lazyLoad(exports, ["Occurrence"], () => require("./occurrence"));
 
 export { OccurrenceIamBindingArgs } from "./occurrenceIamBinding";
 export type OccurrenceIamBinding = import("./occurrenceIamBinding").OccurrenceIamBinding;
 export const OccurrenceIamBinding: typeof import("./occurrenceIamBinding").OccurrenceIamBinding = null as any;
+utilities.lazyLoad(exports, ["OccurrenceIamBinding"], () => require("./occurrenceIamBinding"));
 
 export { OccurrenceIamMemberArgs } from "./occurrenceIamMember";
 export type OccurrenceIamMember = import("./occurrenceIamMember").OccurrenceIamMember;
 export const OccurrenceIamMember: typeof import("./occurrenceIamMember").OccurrenceIamMember = null as any;
+utilities.lazyLoad(exports, ["OccurrenceIamMember"], () => require("./occurrenceIamMember"));
 
 export { OccurrenceIamPolicyArgs } from "./occurrenceIamPolicy";
 export type OccurrenceIamPolicy = import("./occurrenceIamPolicy").OccurrenceIamPolicy;
 export const OccurrenceIamPolicy: typeof import("./occurrenceIamPolicy").OccurrenceIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getNote","getNoteOutput"], () => require("./getNote"));
-utilities.lazyLoad(exports, ["getNoteIamPolicy","getNoteIamPolicyOutput"], () => require("./getNoteIamPolicy"));
-utilities.lazyLoad(exports, ["getOccurrence","getOccurrenceOutput"], () => require("./getOccurrence"));
-utilities.lazyLoad(exports, ["getOccurrenceIamPolicy","getOccurrenceIamPolicyOutput"], () => require("./getOccurrenceIamPolicy"));
-utilities.lazyLoad(exports, ["Note"], () => require("./note"));
-utilities.lazyLoad(exports, ["NoteIamBinding"], () => require("./noteIamBinding"));
-utilities.lazyLoad(exports, ["NoteIamMember"], () => require("./noteIamMember"));
-utilities.lazyLoad(exports, ["NoteIamPolicy"], () => require("./noteIamPolicy"));
-utilities.lazyLoad(exports, ["Occurrence"], () => require("./occurrence"));
-utilities.lazyLoad(exports, ["OccurrenceIamBinding"], () => require("./occurrenceIamBinding"));
-utilities.lazyLoad(exports, ["OccurrenceIamMember"], () => require("./occurrenceIamMember"));
 utilities.lazyLoad(exports, ["OccurrenceIamPolicy"], () => require("./occurrenceIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/containeranalysis/v1";

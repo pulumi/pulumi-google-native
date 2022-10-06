@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { ChannelArgs } from "./channel";
 export type Channel = import("./channel").Channel;
 export const Channel: typeof import("./channel").Channel = null as any;
+utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
 
 export { DomainArgs } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
 
 export { GetChannelArgs, GetChannelResult, GetChannelOutputArgs } from "./getChannel";
 export const getChannel: typeof import("./getChannel").getChannel = null as any;
 export const getChannelOutput: typeof import("./getChannel").getChannelOutput = null as any;
+utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
 
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
 
 export { GetSiteArgs, GetSiteResult, GetSiteOutputArgs } from "./getSite";
 export const getSite: typeof import("./getSite").getSite = null as any;
 export const getSiteOutput: typeof import("./getSite").getSiteOutput = null as any;
+utilities.lazyLoad(exports, ["getSite","getSiteOutput"], () => require("./getSite"));
 
 export { SiteArgs } from "./site";
 export type Site = import("./site").Site;
 export const Site: typeof import("./site").Site = null as any;
-
-utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
-utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
-utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
-utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
-utilities.lazyLoad(exports, ["getSite","getSiteOutput"], () => require("./getSite"));
 utilities.lazyLoad(exports, ["Site"], () => require("./site"));
+
 
 // Export enums:
 export * from "../../types/enums/firebasehosting/v1beta1";

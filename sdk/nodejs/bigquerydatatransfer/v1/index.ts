@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetTransferConfigArgs, GetTransferConfigResult, GetTransferConfigOutputArgs } from "./getTransferConfig";
 export const getTransferConfig: typeof import("./getTransferConfig").getTransferConfig = null as any;
 export const getTransferConfigOutput: typeof import("./getTransferConfig").getTransferConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getTransferConfig","getTransferConfigOutput"], () => require("./getTransferConfig"));
 
 export { TransferConfigArgs } from "./transferConfig";
 export type TransferConfig = import("./transferConfig").TransferConfig;
 export const TransferConfig: typeof import("./transferConfig").TransferConfig = null as any;
-
-utilities.lazyLoad(exports, ["getTransferConfig","getTransferConfigOutput"], () => require("./getTransferConfig"));
 utilities.lazyLoad(exports, ["TransferConfig"], () => require("./transferConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),

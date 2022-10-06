@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetScanConfigArgs, GetScanConfigResult, GetScanConfigOutputArgs } from "./getScanConfig";
 export const getScanConfig: typeof import("./getScanConfig").getScanConfig = null as any;
 export const getScanConfigOutput: typeof import("./getScanConfig").getScanConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getScanConfig","getScanConfigOutput"], () => require("./getScanConfig"));
 
 export { ScanConfigArgs } from "./scanConfig";
 export type ScanConfig = import("./scanConfig").ScanConfig;
 export const ScanConfig: typeof import("./scanConfig").ScanConfig = null as any;
-
-utilities.lazyLoad(exports, ["getScanConfig","getScanConfigOutput"], () => require("./getScanConfig"));
 utilities.lazyLoad(exports, ["ScanConfig"], () => require("./scanConfig"));
+
 
 // Export enums:
 export * from "../../types/enums/websecurityscanner/v1beta";

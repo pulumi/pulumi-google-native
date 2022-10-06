@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { FunctionArgs } from "./function";
 export type Function = import("./function").Function;
 export const Function: typeof import("./function").Function = null as any;
+utilities.lazyLoad(exports, ["Function"], () => require("./function"));
 
 export { FunctionIamBindingArgs } from "./functionIamBinding";
 export type FunctionIamBinding = import("./functionIamBinding").FunctionIamBinding;
 export const FunctionIamBinding: typeof import("./functionIamBinding").FunctionIamBinding = null as any;
+utilities.lazyLoad(exports, ["FunctionIamBinding"], () => require("./functionIamBinding"));
 
 export { FunctionIamMemberArgs } from "./functionIamMember";
 export type FunctionIamMember = import("./functionIamMember").FunctionIamMember;
 export const FunctionIamMember: typeof import("./functionIamMember").FunctionIamMember = null as any;
+utilities.lazyLoad(exports, ["FunctionIamMember"], () => require("./functionIamMember"));
 
 export { FunctionIamPolicyArgs } from "./functionIamPolicy";
 export type FunctionIamPolicy = import("./functionIamPolicy").FunctionIamPolicy;
 export const FunctionIamPolicy: typeof import("./functionIamPolicy").FunctionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
 
 export { GetFunctionArgs, GetFunctionResult, GetFunctionOutputArgs } from "./getFunction";
 export const getFunction: typeof import("./getFunction").getFunction = null as any;
 export const getFunctionOutput: typeof import("./getFunction").getFunctionOutput = null as any;
+utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 
 export { GetFunctionIamPolicyArgs, GetFunctionIamPolicyResult, GetFunctionIamPolicyOutputArgs } from "./getFunctionIamPolicy";
 export const getFunctionIamPolicy: typeof import("./getFunctionIamPolicy").getFunctionIamPolicy = null as any;
 export const getFunctionIamPolicyOutput: typeof import("./getFunctionIamPolicy").getFunctionIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["Function"], () => require("./function"));
-utilities.lazyLoad(exports, ["FunctionIamBinding"], () => require("./functionIamBinding"));
-utilities.lazyLoad(exports, ["FunctionIamMember"], () => require("./functionIamMember"));
-utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
-utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 utilities.lazyLoad(exports, ["getFunctionIamPolicy","getFunctionIamPolicyOutput"], () => require("./getFunctionIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudfunctions/v1";

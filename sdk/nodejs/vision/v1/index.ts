@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetProductArgs, GetProductResult, GetProductOutputArgs } from "./getProduct";
 export const getProduct: typeof import("./getProduct").getProduct = null as any;
 export const getProductOutput: typeof import("./getProduct").getProductOutput = null as any;
+utilities.lazyLoad(exports, ["getProduct","getProductOutput"], () => require("./getProduct"));
 
 export { GetProductSetArgs, GetProductSetResult, GetProductSetOutputArgs } from "./getProductSet";
 export const getProductSet: typeof import("./getProductSet").getProductSet = null as any;
 export const getProductSetOutput: typeof import("./getProductSet").getProductSetOutput = null as any;
+utilities.lazyLoad(exports, ["getProductSet","getProductSetOutput"], () => require("./getProductSet"));
 
 export { GetReferenceImageArgs, GetReferenceImageResult, GetReferenceImageOutputArgs } from "./getReferenceImage";
 export const getReferenceImage: typeof import("./getReferenceImage").getReferenceImage = null as any;
 export const getReferenceImageOutput: typeof import("./getReferenceImage").getReferenceImageOutput = null as any;
+utilities.lazyLoad(exports, ["getReferenceImage","getReferenceImageOutput"], () => require("./getReferenceImage"));
 
 export { ProductArgs } from "./product";
 export type Product = import("./product").Product;
 export const Product: typeof import("./product").Product = null as any;
+utilities.lazyLoad(exports, ["Product"], () => require("./product"));
 
 export { ProductSetArgs } from "./productSet";
 export type ProductSet = import("./productSet").ProductSet;
 export const ProductSet: typeof import("./productSet").ProductSet = null as any;
+utilities.lazyLoad(exports, ["ProductSet"], () => require("./productSet"));
 
 export { ReferenceImageArgs } from "./referenceImage";
 export type ReferenceImage = import("./referenceImage").ReferenceImage;
 export const ReferenceImage: typeof import("./referenceImage").ReferenceImage = null as any;
-
-utilities.lazyLoad(exports, ["getProduct","getProductOutput"], () => require("./getProduct"));
-utilities.lazyLoad(exports, ["getProductSet","getProductSetOutput"], () => require("./getProductSet"));
-utilities.lazyLoad(exports, ["getReferenceImage","getReferenceImageOutput"], () => require("./getReferenceImage"));
-utilities.lazyLoad(exports, ["Product"], () => require("./product"));
-utilities.lazyLoad(exports, ["ProductSet"], () => require("./productSet"));
 utilities.lazyLoad(exports, ["ReferenceImage"], () => require("./referenceImage"));
+
 
 const _module = {
     version: utilities.getVersion(),

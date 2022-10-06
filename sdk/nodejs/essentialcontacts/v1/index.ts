@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { ContactArgs } from "./contact";
 export type Contact = import("./contact").Contact;
 export const Contact: typeof import("./contact").Contact = null as any;
+utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
 
 export { FolderContactArgs } from "./folderContact";
 export type FolderContact = import("./folderContact").FolderContact;
 export const FolderContact: typeof import("./folderContact").FolderContact = null as any;
+utilities.lazyLoad(exports, ["FolderContact"], () => require("./folderContact"));
 
 export { GetContactArgs, GetContactResult, GetContactOutputArgs } from "./getContact";
 export const getContact: typeof import("./getContact").getContact = null as any;
 export const getContactOutput: typeof import("./getContact").getContactOutput = null as any;
+utilities.lazyLoad(exports, ["getContact","getContactOutput"], () => require("./getContact"));
 
 export { GetFolderContactArgs, GetFolderContactResult, GetFolderContactOutputArgs } from "./getFolderContact";
 export const getFolderContact: typeof import("./getFolderContact").getFolderContact = null as any;
 export const getFolderContactOutput: typeof import("./getFolderContact").getFolderContactOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderContact","getFolderContactOutput"], () => require("./getFolderContact"));
 
 export { GetOrganizationContactArgs, GetOrganizationContactResult, GetOrganizationContactOutputArgs } from "./getOrganizationContact";
 export const getOrganizationContact: typeof import("./getOrganizationContact").getOrganizationContact = null as any;
 export const getOrganizationContactOutput: typeof import("./getOrganizationContact").getOrganizationContactOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationContact","getOrganizationContactOutput"], () => require("./getOrganizationContact"));
 
 export { OrganizationContactArgs } from "./organizationContact";
 export type OrganizationContact = import("./organizationContact").OrganizationContact;
 export const OrganizationContact: typeof import("./organizationContact").OrganizationContact = null as any;
-
-utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
-utilities.lazyLoad(exports, ["FolderContact"], () => require("./folderContact"));
-utilities.lazyLoad(exports, ["getContact","getContactOutput"], () => require("./getContact"));
-utilities.lazyLoad(exports, ["getFolderContact","getFolderContactOutput"], () => require("./getFolderContact"));
-utilities.lazyLoad(exports, ["getOrganizationContact","getOrganizationContactOutput"], () => require("./getOrganizationContact"));
 utilities.lazyLoad(exports, ["OrganizationContact"], () => require("./organizationContact"));
+
 
 // Export enums:
 export * from "../../types/enums/essentialcontacts/v1";

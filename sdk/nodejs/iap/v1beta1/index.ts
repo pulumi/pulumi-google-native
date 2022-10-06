@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GetV1beta1IamPolicyArgs, GetV1beta1IamPolicyResult, GetV1beta1IamPolicyOutputArgs } from "./getV1beta1IamPolicy";
 export const getV1beta1IamPolicy: typeof import("./getV1beta1IamPolicy").getV1beta1IamPolicy = null as any;
 export const getV1beta1IamPolicyOutput: typeof import("./getV1beta1IamPolicy").getV1beta1IamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getV1beta1IamPolicy","getV1beta1IamPolicyOutput"], () => require("./getV1beta1IamPolicy"));
 
 export { V1beta1IamBindingArgs } from "./v1beta1IamBinding";
 export type V1beta1IamBinding = import("./v1beta1IamBinding").V1beta1IamBinding;
 export const V1beta1IamBinding: typeof import("./v1beta1IamBinding").V1beta1IamBinding = null as any;
+utilities.lazyLoad(exports, ["V1beta1IamBinding"], () => require("./v1beta1IamBinding"));
 
 export { V1beta1IamMemberArgs } from "./v1beta1IamMember";
 export type V1beta1IamMember = import("./v1beta1IamMember").V1beta1IamMember;
 export const V1beta1IamMember: typeof import("./v1beta1IamMember").V1beta1IamMember = null as any;
+utilities.lazyLoad(exports, ["V1beta1IamMember"], () => require("./v1beta1IamMember"));
 
 export { V1beta1IamPolicyArgs } from "./v1beta1IamPolicy";
 export type V1beta1IamPolicy = import("./v1beta1IamPolicy").V1beta1IamPolicy;
 export const V1beta1IamPolicy: typeof import("./v1beta1IamPolicy").V1beta1IamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getV1beta1IamPolicy","getV1beta1IamPolicyOutput"], () => require("./getV1beta1IamPolicy"));
-utilities.lazyLoad(exports, ["V1beta1IamBinding"], () => require("./v1beta1IamBinding"));
-utilities.lazyLoad(exports, ["V1beta1IamMember"], () => require("./v1beta1IamMember"));
 utilities.lazyLoad(exports, ["V1beta1IamPolicy"], () => require("./v1beta1IamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

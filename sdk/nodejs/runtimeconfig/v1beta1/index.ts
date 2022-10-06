@@ -8,53 +8,53 @@ import * as utilities from "../../utilities";
 export { ConfigArgs } from "./config";
 export type Config = import("./config").Config;
 export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
 
 export { ConfigIamBindingArgs } from "./configIamBinding";
 export type ConfigIamBinding = import("./configIamBinding").ConfigIamBinding;
 export const ConfigIamBinding: typeof import("./configIamBinding").ConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
 
 export { ConfigIamMemberArgs } from "./configIamMember";
 export type ConfigIamMember = import("./configIamMember").ConfigIamMember;
 export const ConfigIamMember: typeof import("./configIamMember").ConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
 
 export { ConfigIamPolicyArgs } from "./configIamPolicy";
 export type ConfigIamPolicy = import("./configIamPolicy").ConfigIamPolicy;
 export const ConfigIamPolicy: typeof import("./configIamPolicy").ConfigIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
 
 export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
 export const getConfig: typeof import("./getConfig").getConfig = null as any;
 export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
 
 export { GetConfigIamPolicyArgs, GetConfigIamPolicyResult, GetConfigIamPolicyOutputArgs } from "./getConfigIamPolicy";
 export const getConfigIamPolicy: typeof import("./getConfigIamPolicy").getConfigIamPolicy = null as any;
 export const getConfigIamPolicyOutput: typeof import("./getConfigIamPolicy").getConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigIamPolicy","getConfigIamPolicyOutput"], () => require("./getConfigIamPolicy"));
 
 export { GetVariableArgs, GetVariableResult, GetVariableOutputArgs } from "./getVariable";
 export const getVariable: typeof import("./getVariable").getVariable = null as any;
 export const getVariableOutput: typeof import("./getVariable").getVariableOutput = null as any;
+utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
 
 export { GetWaiterArgs, GetWaiterResult, GetWaiterOutputArgs } from "./getWaiter";
 export const getWaiter: typeof import("./getWaiter").getWaiter = null as any;
 export const getWaiterOutput: typeof import("./getWaiter").getWaiterOutput = null as any;
+utilities.lazyLoad(exports, ["getWaiter","getWaiterOutput"], () => require("./getWaiter"));
 
 export { VariableArgs } from "./variable";
 export type Variable = import("./variable").Variable;
 export const Variable: typeof import("./variable").Variable = null as any;
+utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
 
 export { WaiterArgs } from "./waiter";
 export type Waiter = import("./waiter").Waiter;
 export const Waiter: typeof import("./waiter").Waiter = null as any;
-
-utilities.lazyLoad(exports, ["Config"], () => require("./config"));
-utilities.lazyLoad(exports, ["ConfigIamBinding"], () => require("./configIamBinding"));
-utilities.lazyLoad(exports, ["ConfigIamMember"], () => require("./configIamMember"));
-utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
-utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
-utilities.lazyLoad(exports, ["getConfigIamPolicy","getConfigIamPolicyOutput"], () => require("./getConfigIamPolicy"));
-utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
-utilities.lazyLoad(exports, ["getWaiter","getWaiterOutput"], () => require("./getWaiter"));
-utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
 utilities.lazyLoad(exports, ["Waiter"], () => require("./waiter"));
+
 
 const _module = {
     version: utilities.getVersion(),

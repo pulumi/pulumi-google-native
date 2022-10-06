@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetRegistrationArgs, GetRegistrationResult, GetRegistrationOutputArgs } from "./getRegistration";
 export const getRegistration: typeof import("./getRegistration").getRegistration = null as any;
 export const getRegistrationOutput: typeof import("./getRegistration").getRegistrationOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistration","getRegistrationOutput"], () => require("./getRegistration"));
 
 export { GetRegistrationIamPolicyArgs, GetRegistrationIamPolicyResult, GetRegistrationIamPolicyOutputArgs } from "./getRegistrationIamPolicy";
 export const getRegistrationIamPolicy: typeof import("./getRegistrationIamPolicy").getRegistrationIamPolicy = null as any;
 export const getRegistrationIamPolicyOutput: typeof import("./getRegistrationIamPolicy").getRegistrationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistrationIamPolicy","getRegistrationIamPolicyOutput"], () => require("./getRegistrationIamPolicy"));
 
 export { RegistrationArgs } from "./registration";
 export type Registration = import("./registration").Registration;
 export const Registration: typeof import("./registration").Registration = null as any;
+utilities.lazyLoad(exports, ["Registration"], () => require("./registration"));
 
 export { RegistrationIamBindingArgs } from "./registrationIamBinding";
 export type RegistrationIamBinding = import("./registrationIamBinding").RegistrationIamBinding;
 export const RegistrationIamBinding: typeof import("./registrationIamBinding").RegistrationIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegistrationIamBinding"], () => require("./registrationIamBinding"));
 
 export { RegistrationIamMemberArgs } from "./registrationIamMember";
 export type RegistrationIamMember = import("./registrationIamMember").RegistrationIamMember;
 export const RegistrationIamMember: typeof import("./registrationIamMember").RegistrationIamMember = null as any;
+utilities.lazyLoad(exports, ["RegistrationIamMember"], () => require("./registrationIamMember"));
 
 export { RegistrationIamPolicyArgs } from "./registrationIamPolicy";
 export type RegistrationIamPolicy = import("./registrationIamPolicy").RegistrationIamPolicy;
 export const RegistrationIamPolicy: typeof import("./registrationIamPolicy").RegistrationIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getRegistration","getRegistrationOutput"], () => require("./getRegistration"));
-utilities.lazyLoad(exports, ["getRegistrationIamPolicy","getRegistrationIamPolicyOutput"], () => require("./getRegistrationIamPolicy"));
-utilities.lazyLoad(exports, ["Registration"], () => require("./registration"));
-utilities.lazyLoad(exports, ["RegistrationIamBinding"], () => require("./registrationIamBinding"));
-utilities.lazyLoad(exports, ["RegistrationIamMember"], () => require("./registrationIamMember"));
 utilities.lazyLoad(exports, ["RegistrationIamPolicy"], () => require("./registrationIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/domains/v1";

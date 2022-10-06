@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { GetLienArgs, GetLienResult, GetLienOutputArgs } from "./getLien";
 export const getLien: typeof import("./getLien").getLien = null as any;
 export const getLienOutput: typeof import("./getLien").getLienOutput = null as any;
+utilities.lazyLoad(exports, ["getLien","getLienOutput"], () => require("./getLien"));
 
 export { GetOrganizationIamPolicyArgs, GetOrganizationIamPolicyResult, GetOrganizationIamPolicyOutputArgs } from "./getOrganizationIamPolicy";
 export const getOrganizationIamPolicy: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicy = null as any;
 export const getOrganizationIamPolicyOutput: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolicyOutput"], () => require("./getOrganizationIamPolicy"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
 export { GetProjectIamPolicyArgs, GetProjectIamPolicyResult, GetProjectIamPolicyOutputArgs } from "./getProjectIamPolicy";
 export const getProjectIamPolicy: typeof import("./getProjectIamPolicy").getProjectIamPolicy = null as any;
 export const getProjectIamPolicyOutput: typeof import("./getProjectIamPolicy").getProjectIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectIamPolicy","getProjectIamPolicyOutput"], () => require("./getProjectIamPolicy"));
 
 export { LienArgs } from "./lien";
 export type Lien = import("./lien").Lien;
 export const Lien: typeof import("./lien").Lien = null as any;
+utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
 
 export { OrganizationIamBindingArgs } from "./organizationIamBinding";
 export type OrganizationIamBinding = import("./organizationIamBinding").OrganizationIamBinding;
 export const OrganizationIamBinding: typeof import("./organizationIamBinding").OrganizationIamBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationIamBinding"], () => require("./organizationIamBinding"));
 
 export { OrganizationIamMemberArgs } from "./organizationIamMember";
 export type OrganizationIamMember = import("./organizationIamMember").OrganizationIamMember;
 export const OrganizationIamMember: typeof import("./organizationIamMember").OrganizationIamMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationIamMember"], () => require("./organizationIamMember"));
 
 export { OrganizationIamPolicyArgs } from "./organizationIamPolicy";
 export type OrganizationIamPolicy = import("./organizationIamPolicy").OrganizationIamPolicy;
 export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").OrganizationIamPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
 
 export { ProjectArgs } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
 export { ProjectIamBindingArgs } from "./projectIamBinding";
 export type ProjectIamBinding = import("./projectIamBinding").ProjectIamBinding;
 export const ProjectIamBinding: typeof import("./projectIamBinding").ProjectIamBinding = null as any;
+utilities.lazyLoad(exports, ["ProjectIamBinding"], () => require("./projectIamBinding"));
 
 export { ProjectIamMemberArgs } from "./projectIamMember";
 export type ProjectIamMember = import("./projectIamMember").ProjectIamMember;
 export const ProjectIamMember: typeof import("./projectIamMember").ProjectIamMember = null as any;
+utilities.lazyLoad(exports, ["ProjectIamMember"], () => require("./projectIamMember"));
 
 export { ProjectIamPolicyArgs } from "./projectIamPolicy";
 export type ProjectIamPolicy = import("./projectIamPolicy").ProjectIamPolicy;
 export const ProjectIamPolicy: typeof import("./projectIamPolicy").ProjectIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getLien","getLienOutput"], () => require("./getLien"));
-utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolicyOutput"], () => require("./getOrganizationIamPolicy"));
-utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
-utilities.lazyLoad(exports, ["getProjectIamPolicy","getProjectIamPolicyOutput"], () => require("./getProjectIamPolicy"));
-utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
-utilities.lazyLoad(exports, ["OrganizationIamBinding"], () => require("./organizationIamBinding"));
-utilities.lazyLoad(exports, ["OrganizationIamMember"], () => require("./organizationIamMember"));
-utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
-utilities.lazyLoad(exports, ["Project"], () => require("./project"));
-utilities.lazyLoad(exports, ["ProjectIamBinding"], () => require("./projectIamBinding"));
-utilities.lazyLoad(exports, ["ProjectIamMember"], () => require("./projectIamMember"));
 utilities.lazyLoad(exports, ["ProjectIamPolicy"], () => require("./projectIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudresourcemanager/v1";

@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
 export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
 export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
 export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
 export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
 export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
 export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
 export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
 
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 export { JobIamBindingArgs } from "./jobIamBinding";
 export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
 export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
+utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
 
 export { JobIamMemberArgs } from "./jobIamMember";
 export type JobIamMember = import("./jobIamMember").JobIamMember;
 export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
+utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
 
 export { JobIamPolicyArgs } from "./jobIamPolicy";
 export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
 export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
+utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 
 export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 export { ServiceIamBindingArgs } from "./serviceIamBinding";
 export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
 export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
 
 export { ServiceIamMemberArgs } from "./serviceIamMember";
 export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
 export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
 
 export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
 export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
 export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
-utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
-utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
-utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
-utilities.lazyLoad(exports, ["Job"], () => require("./job"));
-utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
-utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
-utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
-utilities.lazyLoad(exports, ["Service"], () => require("./service"));
-utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
-utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
 utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/run/v2";

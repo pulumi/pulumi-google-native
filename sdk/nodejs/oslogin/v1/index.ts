@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetSshPublicKeyArgs, GetSshPublicKeyResult, GetSshPublicKeyOutputArgs } from "./getSshPublicKey";
 export const getSshPublicKey: typeof import("./getSshPublicKey").getSshPublicKey = null as any;
 export const getSshPublicKeyOutput: typeof import("./getSshPublicKey").getSshPublicKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getSshPublicKey","getSshPublicKeyOutput"], () => require("./getSshPublicKey"));
 
 export { SshPublicKeyArgs } from "./sshPublicKey";
 export type SshPublicKey = import("./sshPublicKey").SshPublicKey;
 export const SshPublicKey: typeof import("./sshPublicKey").SshPublicKey = null as any;
-
-utilities.lazyLoad(exports, ["getSshPublicKey","getSshPublicKeyOutput"], () => require("./getSshPublicKey"));
 utilities.lazyLoad(exports, ["SshPublicKey"], () => require("./sshPublicKey"));
+
 
 const _module = {
     version: utilities.getVersion(),

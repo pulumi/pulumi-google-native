@@ -6,9 +6,9 @@ import * as utilities from "../utilities";
 // Export members:
 export { GetClientConfigResult } from "./getClientConfig";
 export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
+utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
 
 export { GetClientTokenResult } from "./getClientToken";
 export const getClientToken: typeof import("./getClientToken").getClientToken = null as any;
-
-utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
 utilities.lazyLoad(exports, ["getClientToken"], () => require("./getClientToken"));
+

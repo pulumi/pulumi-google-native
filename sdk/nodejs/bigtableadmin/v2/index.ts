@@ -8,113 +8,113 @@ import * as utilities from "../../utilities";
 export { AppProfileArgs } from "./appProfile";
 export type AppProfile = import("./appProfile").AppProfile;
 export const AppProfile: typeof import("./appProfile").AppProfile = null as any;
+utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
 
 export { BackupArgs } from "./backup";
 export type Backup = import("./backup").Backup;
 export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 
 export { ClusterArgs } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
 export { GetAppProfileArgs, GetAppProfileResult, GetAppProfileOutputArgs } from "./getAppProfile";
 export const getAppProfile: typeof import("./getAppProfile").getAppProfile = null as any;
 export const getAppProfileOutput: typeof import("./getAppProfile").getAppProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getAppProfile","getAppProfileOutput"], () => require("./getAppProfile"));
 
 export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
 export const getBackup: typeof import("./getBackup").getBackup = null as any;
 export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
 
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 
 export { GetInstanceClusterBackupIamPolicyArgs, GetInstanceClusterBackupIamPolicyResult, GetInstanceClusterBackupIamPolicyOutputArgs } from "./getInstanceClusterBackupIamPolicy";
 export const getInstanceClusterBackupIamPolicy: typeof import("./getInstanceClusterBackupIamPolicy").getInstanceClusterBackupIamPolicy = null as any;
 export const getInstanceClusterBackupIamPolicyOutput: typeof import("./getInstanceClusterBackupIamPolicy").getInstanceClusterBackupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceClusterBackupIamPolicy","getInstanceClusterBackupIamPolicyOutput"], () => require("./getInstanceClusterBackupIamPolicy"));
 
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 
 export { GetInstanceTableIamPolicyArgs, GetInstanceTableIamPolicyResult, GetInstanceTableIamPolicyOutputArgs } from "./getInstanceTableIamPolicy";
 export const getInstanceTableIamPolicy: typeof import("./getInstanceTableIamPolicy").getInstanceTableIamPolicy = null as any;
 export const getInstanceTableIamPolicyOutput: typeof import("./getInstanceTableIamPolicy").getInstanceTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTableIamPolicy","getInstanceTableIamPolicyOutput"], () => require("./getInstanceTableIamPolicy"));
 
 export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
 export const getTable: typeof import("./getTable").getTable = null as any;
 export const getTableOutput: typeof import("./getTable").getTableOutput = null as any;
+utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
 
 export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
 export { InstanceClusterBackupIamBindingArgs } from "./instanceClusterBackupIamBinding";
 export type InstanceClusterBackupIamBinding = import("./instanceClusterBackupIamBinding").InstanceClusterBackupIamBinding;
 export const InstanceClusterBackupIamBinding: typeof import("./instanceClusterBackupIamBinding").InstanceClusterBackupIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceClusterBackupIamBinding"], () => require("./instanceClusterBackupIamBinding"));
 
 export { InstanceClusterBackupIamMemberArgs } from "./instanceClusterBackupIamMember";
 export type InstanceClusterBackupIamMember = import("./instanceClusterBackupIamMember").InstanceClusterBackupIamMember;
 export const InstanceClusterBackupIamMember: typeof import("./instanceClusterBackupIamMember").InstanceClusterBackupIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceClusterBackupIamMember"], () => require("./instanceClusterBackupIamMember"));
 
 export { InstanceClusterBackupIamPolicyArgs } from "./instanceClusterBackupIamPolicy";
 export type InstanceClusterBackupIamPolicy = import("./instanceClusterBackupIamPolicy").InstanceClusterBackupIamPolicy;
 export const InstanceClusterBackupIamPolicy: typeof import("./instanceClusterBackupIamPolicy").InstanceClusterBackupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceClusterBackupIamPolicy"], () => require("./instanceClusterBackupIamPolicy"));
 
 export { InstanceIamBindingArgs } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
 export { InstanceIamMemberArgs } from "./instanceIamMember";
 export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
 export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 export { InstanceTableIamBindingArgs } from "./instanceTableIamBinding";
 export type InstanceTableIamBinding = import("./instanceTableIamBinding").InstanceTableIamBinding;
 export const InstanceTableIamBinding: typeof import("./instanceTableIamBinding").InstanceTableIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceTableIamBinding"], () => require("./instanceTableIamBinding"));
 
 export { InstanceTableIamMemberArgs } from "./instanceTableIamMember";
 export type InstanceTableIamMember = import("./instanceTableIamMember").InstanceTableIamMember;
 export const InstanceTableIamMember: typeof import("./instanceTableIamMember").InstanceTableIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceTableIamMember"], () => require("./instanceTableIamMember"));
 
 export { InstanceTableIamPolicyArgs } from "./instanceTableIamPolicy";
 export type InstanceTableIamPolicy = import("./instanceTableIamPolicy").InstanceTableIamPolicy;
 export const InstanceTableIamPolicy: typeof import("./instanceTableIamPolicy").InstanceTableIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceTableIamPolicy"], () => require("./instanceTableIamPolicy"));
 
 export { TableArgs } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
-
-utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
-utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
-utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
-utilities.lazyLoad(exports, ["getAppProfile","getAppProfileOutput"], () => require("./getAppProfile"));
-utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
-utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
-utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
-utilities.lazyLoad(exports, ["getInstanceClusterBackupIamPolicy","getInstanceClusterBackupIamPolicyOutput"], () => require("./getInstanceClusterBackupIamPolicy"));
-utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
-utilities.lazyLoad(exports, ["getInstanceTableIamPolicy","getInstanceTableIamPolicyOutput"], () => require("./getInstanceTableIamPolicy"));
-utilities.lazyLoad(exports, ["getTable","getTableOutput"], () => require("./getTable"));
-utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
-utilities.lazyLoad(exports, ["InstanceClusterBackupIamBinding"], () => require("./instanceClusterBackupIamBinding"));
-utilities.lazyLoad(exports, ["InstanceClusterBackupIamMember"], () => require("./instanceClusterBackupIamMember"));
-utilities.lazyLoad(exports, ["InstanceClusterBackupIamPolicy"], () => require("./instanceClusterBackupIamPolicy"));
-utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
-utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
-utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
-utilities.lazyLoad(exports, ["InstanceTableIamBinding"], () => require("./instanceTableIamBinding"));
-utilities.lazyLoad(exports, ["InstanceTableIamMember"], () => require("./instanceTableIamMember"));
-utilities.lazyLoad(exports, ["InstanceTableIamPolicy"], () => require("./instanceTableIamPolicy"));
 utilities.lazyLoad(exports, ["Table"], () => require("./table"));
+
 
 // Export enums:
 export * from "../../types/enums/bigtableadmin/v2";

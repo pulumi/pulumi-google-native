@@ -8,223 +8,223 @@ import * as utilities from "../../utilities";
 export { EdgeCacheKeysetIamBindingArgs } from "./edgeCacheKeysetIamBinding";
 export type EdgeCacheKeysetIamBinding = import("./edgeCacheKeysetIamBinding").EdgeCacheKeysetIamBinding;
 export const EdgeCacheKeysetIamBinding: typeof import("./edgeCacheKeysetIamBinding").EdgeCacheKeysetIamBinding = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheKeysetIamBinding"], () => require("./edgeCacheKeysetIamBinding"));
 
 export { EdgeCacheKeysetIamMemberArgs } from "./edgeCacheKeysetIamMember";
 export type EdgeCacheKeysetIamMember = import("./edgeCacheKeysetIamMember").EdgeCacheKeysetIamMember;
 export const EdgeCacheKeysetIamMember: typeof import("./edgeCacheKeysetIamMember").EdgeCacheKeysetIamMember = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheKeysetIamMember"], () => require("./edgeCacheKeysetIamMember"));
 
 export { EdgeCacheKeysetIamPolicyArgs } from "./edgeCacheKeysetIamPolicy";
 export type EdgeCacheKeysetIamPolicy = import("./edgeCacheKeysetIamPolicy").EdgeCacheKeysetIamPolicy;
 export const EdgeCacheKeysetIamPolicy: typeof import("./edgeCacheKeysetIamPolicy").EdgeCacheKeysetIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheKeysetIamPolicy"], () => require("./edgeCacheKeysetIamPolicy"));
 
 export { EdgeCacheOriginIamBindingArgs } from "./edgeCacheOriginIamBinding";
 export type EdgeCacheOriginIamBinding = import("./edgeCacheOriginIamBinding").EdgeCacheOriginIamBinding;
 export const EdgeCacheOriginIamBinding: typeof import("./edgeCacheOriginIamBinding").EdgeCacheOriginIamBinding = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheOriginIamBinding"], () => require("./edgeCacheOriginIamBinding"));
 
 export { EdgeCacheOriginIamMemberArgs } from "./edgeCacheOriginIamMember";
 export type EdgeCacheOriginIamMember = import("./edgeCacheOriginIamMember").EdgeCacheOriginIamMember;
 export const EdgeCacheOriginIamMember: typeof import("./edgeCacheOriginIamMember").EdgeCacheOriginIamMember = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheOriginIamMember"], () => require("./edgeCacheOriginIamMember"));
 
 export { EdgeCacheOriginIamPolicyArgs } from "./edgeCacheOriginIamPolicy";
 export type EdgeCacheOriginIamPolicy = import("./edgeCacheOriginIamPolicy").EdgeCacheOriginIamPolicy;
 export const EdgeCacheOriginIamPolicy: typeof import("./edgeCacheOriginIamPolicy").EdgeCacheOriginIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheOriginIamPolicy"], () => require("./edgeCacheOriginIamPolicy"));
 
 export { EdgeCacheServiceIamBindingArgs } from "./edgeCacheServiceIamBinding";
 export type EdgeCacheServiceIamBinding = import("./edgeCacheServiceIamBinding").EdgeCacheServiceIamBinding;
 export const EdgeCacheServiceIamBinding: typeof import("./edgeCacheServiceIamBinding").EdgeCacheServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheServiceIamBinding"], () => require("./edgeCacheServiceIamBinding"));
 
 export { EdgeCacheServiceIamMemberArgs } from "./edgeCacheServiceIamMember";
 export type EdgeCacheServiceIamMember = import("./edgeCacheServiceIamMember").EdgeCacheServiceIamMember;
 export const EdgeCacheServiceIamMember: typeof import("./edgeCacheServiceIamMember").EdgeCacheServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheServiceIamMember"], () => require("./edgeCacheServiceIamMember"));
 
 export { EdgeCacheServiceIamPolicyArgs } from "./edgeCacheServiceIamPolicy";
 export type EdgeCacheServiceIamPolicy = import("./edgeCacheServiceIamPolicy").EdgeCacheServiceIamPolicy;
 export const EdgeCacheServiceIamPolicy: typeof import("./edgeCacheServiceIamPolicy").EdgeCacheServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EdgeCacheServiceIamPolicy"], () => require("./edgeCacheServiceIamPolicy"));
 
 export { EndpointPolicyArgs } from "./endpointPolicy";
 export type EndpointPolicy = import("./endpointPolicy").EndpointPolicy;
 export const EndpointPolicy: typeof import("./endpointPolicy").EndpointPolicy = null as any;
+utilities.lazyLoad(exports, ["EndpointPolicy"], () => require("./endpointPolicy"));
 
 export { EndpointPolicyIamBindingArgs } from "./endpointPolicyIamBinding";
 export type EndpointPolicyIamBinding = import("./endpointPolicyIamBinding").EndpointPolicyIamBinding;
 export const EndpointPolicyIamBinding: typeof import("./endpointPolicyIamBinding").EndpointPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["EndpointPolicyIamBinding"], () => require("./endpointPolicyIamBinding"));
 
 export { EndpointPolicyIamMemberArgs } from "./endpointPolicyIamMember";
 export type EndpointPolicyIamMember = import("./endpointPolicyIamMember").EndpointPolicyIamMember;
 export const EndpointPolicyIamMember: typeof import("./endpointPolicyIamMember").EndpointPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["EndpointPolicyIamMember"], () => require("./endpointPolicyIamMember"));
 
 export { EndpointPolicyIamPolicyArgs } from "./endpointPolicyIamPolicy";
 export type EndpointPolicyIamPolicy = import("./endpointPolicyIamPolicy").EndpointPolicyIamPolicy;
 export const EndpointPolicyIamPolicy: typeof import("./endpointPolicyIamPolicy").EndpointPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["EndpointPolicyIamPolicy"], () => require("./endpointPolicyIamPolicy"));
 
 export { GatewayArgs } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
 export { GatewayIamBindingArgs } from "./gatewayIamBinding";
 export type GatewayIamBinding = import("./gatewayIamBinding").GatewayIamBinding;
 export const GatewayIamBinding: typeof import("./gatewayIamBinding").GatewayIamBinding = null as any;
+utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
 
 export { GatewayIamMemberArgs } from "./gatewayIamMember";
 export type GatewayIamMember = import("./gatewayIamMember").GatewayIamMember;
 export const GatewayIamMember: typeof import("./gatewayIamMember").GatewayIamMember = null as any;
+utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
 
 export { GatewayIamPolicyArgs } from "./gatewayIamPolicy";
 export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
 export const GatewayIamPolicy: typeof import("./gatewayIamPolicy").GatewayIamPolicy = null as any;
+utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
 
 export { GetEdgeCacheKeysetIamPolicyArgs, GetEdgeCacheKeysetIamPolicyResult, GetEdgeCacheKeysetIamPolicyOutputArgs } from "./getEdgeCacheKeysetIamPolicy";
 export const getEdgeCacheKeysetIamPolicy: typeof import("./getEdgeCacheKeysetIamPolicy").getEdgeCacheKeysetIamPolicy = null as any;
 export const getEdgeCacheKeysetIamPolicyOutput: typeof import("./getEdgeCacheKeysetIamPolicy").getEdgeCacheKeysetIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeCacheKeysetIamPolicy","getEdgeCacheKeysetIamPolicyOutput"], () => require("./getEdgeCacheKeysetIamPolicy"));
 
 export { GetEdgeCacheOriginIamPolicyArgs, GetEdgeCacheOriginIamPolicyResult, GetEdgeCacheOriginIamPolicyOutputArgs } from "./getEdgeCacheOriginIamPolicy";
 export const getEdgeCacheOriginIamPolicy: typeof import("./getEdgeCacheOriginIamPolicy").getEdgeCacheOriginIamPolicy = null as any;
 export const getEdgeCacheOriginIamPolicyOutput: typeof import("./getEdgeCacheOriginIamPolicy").getEdgeCacheOriginIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeCacheOriginIamPolicy","getEdgeCacheOriginIamPolicyOutput"], () => require("./getEdgeCacheOriginIamPolicy"));
 
 export { GetEdgeCacheServiceIamPolicyArgs, GetEdgeCacheServiceIamPolicyResult, GetEdgeCacheServiceIamPolicyOutputArgs } from "./getEdgeCacheServiceIamPolicy";
 export const getEdgeCacheServiceIamPolicy: typeof import("./getEdgeCacheServiceIamPolicy").getEdgeCacheServiceIamPolicy = null as any;
 export const getEdgeCacheServiceIamPolicyOutput: typeof import("./getEdgeCacheServiceIamPolicy").getEdgeCacheServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgeCacheServiceIamPolicy","getEdgeCacheServiceIamPolicyOutput"], () => require("./getEdgeCacheServiceIamPolicy"));
 
 export { GetEndpointPolicyArgs, GetEndpointPolicyResult, GetEndpointPolicyOutputArgs } from "./getEndpointPolicy";
 export const getEndpointPolicy: typeof import("./getEndpointPolicy").getEndpointPolicy = null as any;
 export const getEndpointPolicyOutput: typeof import("./getEndpointPolicy").getEndpointPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointPolicy","getEndpointPolicyOutput"], () => require("./getEndpointPolicy"));
 
 export { GetEndpointPolicyIamPolicyArgs, GetEndpointPolicyIamPolicyResult, GetEndpointPolicyIamPolicyOutputArgs } from "./getEndpointPolicyIamPolicy";
 export const getEndpointPolicyIamPolicy: typeof import("./getEndpointPolicyIamPolicy").getEndpointPolicyIamPolicy = null as any;
 export const getEndpointPolicyIamPolicyOutput: typeof import("./getEndpointPolicyIamPolicy").getEndpointPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointPolicyIamPolicy","getEndpointPolicyIamPolicyOutput"], () => require("./getEndpointPolicyIamPolicy"));
 
 export { GetGatewayArgs, GetGatewayResult, GetGatewayOutputArgs } from "./getGateway";
 export const getGateway: typeof import("./getGateway").getGateway = null as any;
 export const getGatewayOutput: typeof import("./getGateway").getGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getGateway","getGatewayOutput"], () => require("./getGateway"));
 
 export { GetGatewayIamPolicyArgs, GetGatewayIamPolicyResult, GetGatewayIamPolicyOutputArgs } from "./getGatewayIamPolicy";
 export const getGatewayIamPolicy: typeof import("./getGatewayIamPolicy").getGatewayIamPolicy = null as any;
 export const getGatewayIamPolicyOutput: typeof import("./getGatewayIamPolicy").getGatewayIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayIamPolicy","getGatewayIamPolicyOutput"], () => require("./getGatewayIamPolicy"));
 
 export { GetGrpcRouteArgs, GetGrpcRouteResult, GetGrpcRouteOutputArgs } from "./getGrpcRoute";
 export const getGrpcRoute: typeof import("./getGrpcRoute").getGrpcRoute = null as any;
 export const getGrpcRouteOutput: typeof import("./getGrpcRoute").getGrpcRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getGrpcRoute","getGrpcRouteOutput"], () => require("./getGrpcRoute"));
 
 export { GetHttpRouteArgs, GetHttpRouteResult, GetHttpRouteOutputArgs } from "./getHttpRoute";
 export const getHttpRoute: typeof import("./getHttpRoute").getHttpRoute = null as any;
 export const getHttpRouteOutput: typeof import("./getHttpRoute").getHttpRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getHttpRoute","getHttpRouteOutput"], () => require("./getHttpRoute"));
 
 export { GetMeshArgs, GetMeshResult, GetMeshOutputArgs } from "./getMesh";
 export const getMesh: typeof import("./getMesh").getMesh = null as any;
 export const getMeshOutput: typeof import("./getMesh").getMeshOutput = null as any;
+utilities.lazyLoad(exports, ["getMesh","getMeshOutput"], () => require("./getMesh"));
 
 export { GetMeshIamPolicyArgs, GetMeshIamPolicyResult, GetMeshIamPolicyOutputArgs } from "./getMeshIamPolicy";
 export const getMeshIamPolicy: typeof import("./getMeshIamPolicy").getMeshIamPolicy = null as any;
 export const getMeshIamPolicyOutput: typeof import("./getMeshIamPolicy").getMeshIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMeshIamPolicy","getMeshIamPolicyOutput"], () => require("./getMeshIamPolicy"));
 
 export { GetServiceBindingArgs, GetServiceBindingResult, GetServiceBindingOutputArgs } from "./getServiceBinding";
 export const getServiceBinding: typeof import("./getServiceBinding").getServiceBinding = null as any;
 export const getServiceBindingOutput: typeof import("./getServiceBinding").getServiceBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceBinding","getServiceBindingOutput"], () => require("./getServiceBinding"));
 
 export { GetServiceBindingIamPolicyArgs, GetServiceBindingIamPolicyResult, GetServiceBindingIamPolicyOutputArgs } from "./getServiceBindingIamPolicy";
 export const getServiceBindingIamPolicy: typeof import("./getServiceBindingIamPolicy").getServiceBindingIamPolicy = null as any;
 export const getServiceBindingIamPolicyOutput: typeof import("./getServiceBindingIamPolicy").getServiceBindingIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceBindingIamPolicy","getServiceBindingIamPolicyOutput"], () => require("./getServiceBindingIamPolicy"));
 
 export { GetTcpRouteArgs, GetTcpRouteResult, GetTcpRouteOutputArgs } from "./getTcpRoute";
 export const getTcpRoute: typeof import("./getTcpRoute").getTcpRoute = null as any;
 export const getTcpRouteOutput: typeof import("./getTcpRoute").getTcpRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getTcpRoute","getTcpRouteOutput"], () => require("./getTcpRoute"));
 
 export { GetTlsRouteArgs, GetTlsRouteResult, GetTlsRouteOutputArgs } from "./getTlsRoute";
 export const getTlsRoute: typeof import("./getTlsRoute").getTlsRoute = null as any;
 export const getTlsRouteOutput: typeof import("./getTlsRoute").getTlsRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getTlsRoute","getTlsRouteOutput"], () => require("./getTlsRoute"));
 
 export { GrpcRouteArgs } from "./grpcRoute";
 export type GrpcRoute = import("./grpcRoute").GrpcRoute;
 export const GrpcRoute: typeof import("./grpcRoute").GrpcRoute = null as any;
+utilities.lazyLoad(exports, ["GrpcRoute"], () => require("./grpcRoute"));
 
 export { HttpRouteArgs } from "./httpRoute";
 export type HttpRoute = import("./httpRoute").HttpRoute;
 export const HttpRoute: typeof import("./httpRoute").HttpRoute = null as any;
+utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
 
 export { MeshArgs } from "./mesh";
 export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
+utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
 
 export { MeshIamBindingArgs } from "./meshIamBinding";
 export type MeshIamBinding = import("./meshIamBinding").MeshIamBinding;
 export const MeshIamBinding: typeof import("./meshIamBinding").MeshIamBinding = null as any;
+utilities.lazyLoad(exports, ["MeshIamBinding"], () => require("./meshIamBinding"));
 
 export { MeshIamMemberArgs } from "./meshIamMember";
 export type MeshIamMember = import("./meshIamMember").MeshIamMember;
 export const MeshIamMember: typeof import("./meshIamMember").MeshIamMember = null as any;
+utilities.lazyLoad(exports, ["MeshIamMember"], () => require("./meshIamMember"));
 
 export { MeshIamPolicyArgs } from "./meshIamPolicy";
 export type MeshIamPolicy = import("./meshIamPolicy").MeshIamPolicy;
 export const MeshIamPolicy: typeof import("./meshIamPolicy").MeshIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MeshIamPolicy"], () => require("./meshIamPolicy"));
 
 export { ServiceBindingArgs } from "./serviceBinding";
 export type ServiceBinding = import("./serviceBinding").ServiceBinding;
 export const ServiceBinding: typeof import("./serviceBinding").ServiceBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceBinding"], () => require("./serviceBinding"));
 
 export { ServiceBindingIamBindingArgs } from "./serviceBindingIamBinding";
 export type ServiceBindingIamBinding = import("./serviceBindingIamBinding").ServiceBindingIamBinding;
 export const ServiceBindingIamBinding: typeof import("./serviceBindingIamBinding").ServiceBindingIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceBindingIamBinding"], () => require("./serviceBindingIamBinding"));
 
 export { ServiceBindingIamMemberArgs } from "./serviceBindingIamMember";
 export type ServiceBindingIamMember = import("./serviceBindingIamMember").ServiceBindingIamMember;
 export const ServiceBindingIamMember: typeof import("./serviceBindingIamMember").ServiceBindingIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceBindingIamMember"], () => require("./serviceBindingIamMember"));
 
 export { ServiceBindingIamPolicyArgs } from "./serviceBindingIamPolicy";
 export type ServiceBindingIamPolicy = import("./serviceBindingIamPolicy").ServiceBindingIamPolicy;
 export const ServiceBindingIamPolicy: typeof import("./serviceBindingIamPolicy").ServiceBindingIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceBindingIamPolicy"], () => require("./serviceBindingIamPolicy"));
 
 export { TcpRouteArgs } from "./tcpRoute";
 export type TcpRoute = import("./tcpRoute").TcpRoute;
 export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
+utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
 
 export { TlsRouteArgs } from "./tlsRoute";
 export type TlsRoute = import("./tlsRoute").TlsRoute;
 export const TlsRoute: typeof import("./tlsRoute").TlsRoute = null as any;
-
-utilities.lazyLoad(exports, ["EdgeCacheKeysetIamBinding"], () => require("./edgeCacheKeysetIamBinding"));
-utilities.lazyLoad(exports, ["EdgeCacheKeysetIamMember"], () => require("./edgeCacheKeysetIamMember"));
-utilities.lazyLoad(exports, ["EdgeCacheKeysetIamPolicy"], () => require("./edgeCacheKeysetIamPolicy"));
-utilities.lazyLoad(exports, ["EdgeCacheOriginIamBinding"], () => require("./edgeCacheOriginIamBinding"));
-utilities.lazyLoad(exports, ["EdgeCacheOriginIamMember"], () => require("./edgeCacheOriginIamMember"));
-utilities.lazyLoad(exports, ["EdgeCacheOriginIamPolicy"], () => require("./edgeCacheOriginIamPolicy"));
-utilities.lazyLoad(exports, ["EdgeCacheServiceIamBinding"], () => require("./edgeCacheServiceIamBinding"));
-utilities.lazyLoad(exports, ["EdgeCacheServiceIamMember"], () => require("./edgeCacheServiceIamMember"));
-utilities.lazyLoad(exports, ["EdgeCacheServiceIamPolicy"], () => require("./edgeCacheServiceIamPolicy"));
-utilities.lazyLoad(exports, ["EndpointPolicy"], () => require("./endpointPolicy"));
-utilities.lazyLoad(exports, ["EndpointPolicyIamBinding"], () => require("./endpointPolicyIamBinding"));
-utilities.lazyLoad(exports, ["EndpointPolicyIamMember"], () => require("./endpointPolicyIamMember"));
-utilities.lazyLoad(exports, ["EndpointPolicyIamPolicy"], () => require("./endpointPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
-utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
-utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
-utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
-utilities.lazyLoad(exports, ["getEdgeCacheKeysetIamPolicy","getEdgeCacheKeysetIamPolicyOutput"], () => require("./getEdgeCacheKeysetIamPolicy"));
-utilities.lazyLoad(exports, ["getEdgeCacheOriginIamPolicy","getEdgeCacheOriginIamPolicyOutput"], () => require("./getEdgeCacheOriginIamPolicy"));
-utilities.lazyLoad(exports, ["getEdgeCacheServiceIamPolicy","getEdgeCacheServiceIamPolicyOutput"], () => require("./getEdgeCacheServiceIamPolicy"));
-utilities.lazyLoad(exports, ["getEndpointPolicy","getEndpointPolicyOutput"], () => require("./getEndpointPolicy"));
-utilities.lazyLoad(exports, ["getEndpointPolicyIamPolicy","getEndpointPolicyIamPolicyOutput"], () => require("./getEndpointPolicyIamPolicy"));
-utilities.lazyLoad(exports, ["getGateway","getGatewayOutput"], () => require("./getGateway"));
-utilities.lazyLoad(exports, ["getGatewayIamPolicy","getGatewayIamPolicyOutput"], () => require("./getGatewayIamPolicy"));
-utilities.lazyLoad(exports, ["getGrpcRoute","getGrpcRouteOutput"], () => require("./getGrpcRoute"));
-utilities.lazyLoad(exports, ["getHttpRoute","getHttpRouteOutput"], () => require("./getHttpRoute"));
-utilities.lazyLoad(exports, ["getMesh","getMeshOutput"], () => require("./getMesh"));
-utilities.lazyLoad(exports, ["getMeshIamPolicy","getMeshIamPolicyOutput"], () => require("./getMeshIamPolicy"));
-utilities.lazyLoad(exports, ["getServiceBinding","getServiceBindingOutput"], () => require("./getServiceBinding"));
-utilities.lazyLoad(exports, ["getServiceBindingIamPolicy","getServiceBindingIamPolicyOutput"], () => require("./getServiceBindingIamPolicy"));
-utilities.lazyLoad(exports, ["getTcpRoute","getTcpRouteOutput"], () => require("./getTcpRoute"));
-utilities.lazyLoad(exports, ["getTlsRoute","getTlsRouteOutput"], () => require("./getTlsRoute"));
-utilities.lazyLoad(exports, ["GrpcRoute"], () => require("./grpcRoute"));
-utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
-utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
-utilities.lazyLoad(exports, ["MeshIamBinding"], () => require("./meshIamBinding"));
-utilities.lazyLoad(exports, ["MeshIamMember"], () => require("./meshIamMember"));
-utilities.lazyLoad(exports, ["MeshIamPolicy"], () => require("./meshIamPolicy"));
-utilities.lazyLoad(exports, ["ServiceBinding"], () => require("./serviceBinding"));
-utilities.lazyLoad(exports, ["ServiceBindingIamBinding"], () => require("./serviceBindingIamBinding"));
-utilities.lazyLoad(exports, ["ServiceBindingIamMember"], () => require("./serviceBindingIamMember"));
-utilities.lazyLoad(exports, ["ServiceBindingIamPolicy"], () => require("./serviceBindingIamPolicy"));
-utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
 utilities.lazyLoad(exports, ["TlsRoute"], () => require("./tlsRoute"));
+
 
 // Export enums:
 export * from "../../types/enums/networkservices/v1";

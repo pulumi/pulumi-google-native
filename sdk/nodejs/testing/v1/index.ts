@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetTestMatrixArgs, GetTestMatrixResult, GetTestMatrixOutputArgs } from "./getTestMatrix";
 export const getTestMatrix: typeof import("./getTestMatrix").getTestMatrix = null as any;
 export const getTestMatrixOutput: typeof import("./getTestMatrix").getTestMatrixOutput = null as any;
+utilities.lazyLoad(exports, ["getTestMatrix","getTestMatrixOutput"], () => require("./getTestMatrix"));
 
 export { TestMatrixArgs } from "./testMatrix";
 export type TestMatrix = import("./testMatrix").TestMatrix;
 export const TestMatrix: typeof import("./testMatrix").TestMatrix = null as any;
-
-utilities.lazyLoad(exports, ["getTestMatrix","getTestMatrixOutput"], () => require("./getTestMatrix"));
 utilities.lazyLoad(exports, ["TestMatrix"], () => require("./testMatrix"));
+
 
 // Export enums:
 export * from "../../types/enums/testing/v1";

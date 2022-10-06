@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { ConnectionProfileArgs } from "./connectionProfile";
 export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
 export { ConnectionProfileIamBindingArgs } from "./connectionProfileIamBinding";
 export type ConnectionProfileIamBinding = import("./connectionProfileIamBinding").ConnectionProfileIamBinding;
 export const ConnectionProfileIamBinding: typeof import("./connectionProfileIamBinding").ConnectionProfileIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfileIamBinding"], () => require("./connectionProfileIamBinding"));
 
 export { ConnectionProfileIamMemberArgs } from "./connectionProfileIamMember";
 export type ConnectionProfileIamMember = import("./connectionProfileIamMember").ConnectionProfileIamMember;
 export const ConnectionProfileIamMember: typeof import("./connectionProfileIamMember").ConnectionProfileIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfileIamMember"], () => require("./connectionProfileIamMember"));
 
 export { ConnectionProfileIamPolicyArgs } from "./connectionProfileIamPolicy";
 export type ConnectionProfileIamPolicy = import("./connectionProfileIamPolicy").ConnectionProfileIamPolicy;
 export const ConnectionProfileIamPolicy: typeof import("./connectionProfileIamPolicy").ConnectionProfileIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfileIamPolicy"], () => require("./connectionProfileIamPolicy"));
 
 export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
 export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
 export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
 
 export { GetConnectionProfileIamPolicyArgs, GetConnectionProfileIamPolicyResult, GetConnectionProfileIamPolicyOutputArgs } from "./getConnectionProfileIamPolicy";
 export const getConnectionProfileIamPolicy: typeof import("./getConnectionProfileIamPolicy").getConnectionProfileIamPolicy = null as any;
 export const getConnectionProfileIamPolicyOutput: typeof import("./getConnectionProfileIamPolicy").getConnectionProfileIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionProfileIamPolicy","getConnectionProfileIamPolicyOutput"], () => require("./getConnectionProfileIamPolicy"));
 
 export { GetMigrationJobArgs, GetMigrationJobResult, GetMigrationJobOutputArgs } from "./getMigrationJob";
 export const getMigrationJob: typeof import("./getMigrationJob").getMigrationJob = null as any;
 export const getMigrationJobOutput: typeof import("./getMigrationJob").getMigrationJobOutput = null as any;
+utilities.lazyLoad(exports, ["getMigrationJob","getMigrationJobOutput"], () => require("./getMigrationJob"));
 
 export { GetMigrationJobIamPolicyArgs, GetMigrationJobIamPolicyResult, GetMigrationJobIamPolicyOutputArgs } from "./getMigrationJobIamPolicy";
 export const getMigrationJobIamPolicy: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicy = null as any;
 export const getMigrationJobIamPolicyOutput: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMigrationJobIamPolicy","getMigrationJobIamPolicyOutput"], () => require("./getMigrationJobIamPolicy"));
 
 export { MigrationJobArgs } from "./migrationJob";
 export type MigrationJob = import("./migrationJob").MigrationJob;
 export const MigrationJob: typeof import("./migrationJob").MigrationJob = null as any;
+utilities.lazyLoad(exports, ["MigrationJob"], () => require("./migrationJob"));
 
 export { MigrationJobIamBindingArgs } from "./migrationJobIamBinding";
 export type MigrationJobIamBinding = import("./migrationJobIamBinding").MigrationJobIamBinding;
 export const MigrationJobIamBinding: typeof import("./migrationJobIamBinding").MigrationJobIamBinding = null as any;
+utilities.lazyLoad(exports, ["MigrationJobIamBinding"], () => require("./migrationJobIamBinding"));
 
 export { MigrationJobIamMemberArgs } from "./migrationJobIamMember";
 export type MigrationJobIamMember = import("./migrationJobIamMember").MigrationJobIamMember;
 export const MigrationJobIamMember: typeof import("./migrationJobIamMember").MigrationJobIamMember = null as any;
+utilities.lazyLoad(exports, ["MigrationJobIamMember"], () => require("./migrationJobIamMember"));
 
 export { MigrationJobIamPolicyArgs } from "./migrationJobIamPolicy";
 export type MigrationJobIamPolicy = import("./migrationJobIamPolicy").MigrationJobIamPolicy;
 export const MigrationJobIamPolicy: typeof import("./migrationJobIamPolicy").MigrationJobIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
-utilities.lazyLoad(exports, ["ConnectionProfileIamBinding"], () => require("./connectionProfileIamBinding"));
-utilities.lazyLoad(exports, ["ConnectionProfileIamMember"], () => require("./connectionProfileIamMember"));
-utilities.lazyLoad(exports, ["ConnectionProfileIamPolicy"], () => require("./connectionProfileIamPolicy"));
-utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
-utilities.lazyLoad(exports, ["getConnectionProfileIamPolicy","getConnectionProfileIamPolicyOutput"], () => require("./getConnectionProfileIamPolicy"));
-utilities.lazyLoad(exports, ["getMigrationJob","getMigrationJobOutput"], () => require("./getMigrationJob"));
-utilities.lazyLoad(exports, ["getMigrationJobIamPolicy","getMigrationJobIamPolicyOutput"], () => require("./getMigrationJobIamPolicy"));
-utilities.lazyLoad(exports, ["MigrationJob"], () => require("./migrationJob"));
-utilities.lazyLoad(exports, ["MigrationJobIamBinding"], () => require("./migrationJobIamBinding"));
-utilities.lazyLoad(exports, ["MigrationJobIamMember"], () => require("./migrationJobIamMember"));
 utilities.lazyLoad(exports, ["MigrationJobIamPolicy"], () => require("./migrationJobIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/datamigration/v1";

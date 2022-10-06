@@ -8,63 +8,63 @@ import * as utilities from "../../utilities";
 export { DataExchangeArgs } from "./dataExchange";
 export type DataExchange = import("./dataExchange").DataExchange;
 export const DataExchange: typeof import("./dataExchange").DataExchange = null as any;
+utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
 
 export { DataExchangeIamBindingArgs } from "./dataExchangeIamBinding";
 export type DataExchangeIamBinding = import("./dataExchangeIamBinding").DataExchangeIamBinding;
 export const DataExchangeIamBinding: typeof import("./dataExchangeIamBinding").DataExchangeIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataExchangeIamBinding"], () => require("./dataExchangeIamBinding"));
 
 export { DataExchangeIamMemberArgs } from "./dataExchangeIamMember";
 export type DataExchangeIamMember = import("./dataExchangeIamMember").DataExchangeIamMember;
 export const DataExchangeIamMember: typeof import("./dataExchangeIamMember").DataExchangeIamMember = null as any;
+utilities.lazyLoad(exports, ["DataExchangeIamMember"], () => require("./dataExchangeIamMember"));
 
 export { DataExchangeIamPolicyArgs } from "./dataExchangeIamPolicy";
 export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchangeIamPolicy;
 export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
 
 export { DataExchangeListingIamBindingArgs } from "./dataExchangeListingIamBinding";
 export type DataExchangeListingIamBinding = import("./dataExchangeListingIamBinding").DataExchangeListingIamBinding;
 export const DataExchangeListingIamBinding: typeof import("./dataExchangeListingIamBinding").DataExchangeListingIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataExchangeListingIamBinding"], () => require("./dataExchangeListingIamBinding"));
 
 export { DataExchangeListingIamMemberArgs } from "./dataExchangeListingIamMember";
 export type DataExchangeListingIamMember = import("./dataExchangeListingIamMember").DataExchangeListingIamMember;
 export const DataExchangeListingIamMember: typeof import("./dataExchangeListingIamMember").DataExchangeListingIamMember = null as any;
+utilities.lazyLoad(exports, ["DataExchangeListingIamMember"], () => require("./dataExchangeListingIamMember"));
 
 export { DataExchangeListingIamPolicyArgs } from "./dataExchangeListingIamPolicy";
 export type DataExchangeListingIamPolicy = import("./dataExchangeListingIamPolicy").DataExchangeListingIamPolicy;
 export const DataExchangeListingIamPolicy: typeof import("./dataExchangeListingIamPolicy").DataExchangeListingIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataExchangeListingIamPolicy"], () => require("./dataExchangeListingIamPolicy"));
 
 export { GetDataExchangeArgs, GetDataExchangeResult, GetDataExchangeOutputArgs } from "./getDataExchange";
 export const getDataExchange: typeof import("./getDataExchange").getDataExchange = null as any;
 export const getDataExchangeOutput: typeof import("./getDataExchange").getDataExchangeOutput = null as any;
+utilities.lazyLoad(exports, ["getDataExchange","getDataExchangeOutput"], () => require("./getDataExchange"));
 
 export { GetDataExchangeIamPolicyArgs, GetDataExchangeIamPolicyResult, GetDataExchangeIamPolicyOutputArgs } from "./getDataExchangeIamPolicy";
 export const getDataExchangeIamPolicy: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicy = null as any;
 export const getDataExchangeIamPolicyOutput: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataExchangeIamPolicy","getDataExchangeIamPolicyOutput"], () => require("./getDataExchangeIamPolicy"));
 
 export { GetDataExchangeListingIamPolicyArgs, GetDataExchangeListingIamPolicyResult, GetDataExchangeListingIamPolicyOutputArgs } from "./getDataExchangeListingIamPolicy";
 export const getDataExchangeListingIamPolicy: typeof import("./getDataExchangeListingIamPolicy").getDataExchangeListingIamPolicy = null as any;
 export const getDataExchangeListingIamPolicyOutput: typeof import("./getDataExchangeListingIamPolicy").getDataExchangeListingIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataExchangeListingIamPolicy","getDataExchangeListingIamPolicyOutput"], () => require("./getDataExchangeListingIamPolicy"));
 
 export { GetListingArgs, GetListingResult, GetListingOutputArgs } from "./getListing";
 export const getListing: typeof import("./getListing").getListing = null as any;
 export const getListingOutput: typeof import("./getListing").getListingOutput = null as any;
+utilities.lazyLoad(exports, ["getListing","getListingOutput"], () => require("./getListing"));
 
 export { ListingArgs } from "./listing";
 export type Listing = import("./listing").Listing;
 export const Listing: typeof import("./listing").Listing = null as any;
-
-utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
-utilities.lazyLoad(exports, ["DataExchangeIamBinding"], () => require("./dataExchangeIamBinding"));
-utilities.lazyLoad(exports, ["DataExchangeIamMember"], () => require("./dataExchangeIamMember"));
-utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
-utilities.lazyLoad(exports, ["DataExchangeListingIamBinding"], () => require("./dataExchangeListingIamBinding"));
-utilities.lazyLoad(exports, ["DataExchangeListingIamMember"], () => require("./dataExchangeListingIamMember"));
-utilities.lazyLoad(exports, ["DataExchangeListingIamPolicy"], () => require("./dataExchangeListingIamPolicy"));
-utilities.lazyLoad(exports, ["getDataExchange","getDataExchangeOutput"], () => require("./getDataExchange"));
-utilities.lazyLoad(exports, ["getDataExchangeIamPolicy","getDataExchangeIamPolicyOutput"], () => require("./getDataExchangeIamPolicy"));
-utilities.lazyLoad(exports, ["getDataExchangeListingIamPolicy","getDataExchangeListingIamPolicyOutput"], () => require("./getDataExchangeListingIamPolicy"));
-utilities.lazyLoad(exports, ["getListing","getListingOutput"], () => require("./getListing"));
 utilities.lazyLoad(exports, ["Listing"], () => require("./listing"));
+
 
 // Export enums:
 export * from "../../types/enums/analyticshub/v1beta1";

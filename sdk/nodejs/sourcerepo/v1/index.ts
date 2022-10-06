@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetRepoArgs, GetRepoResult, GetRepoOutputArgs } from "./getRepo";
 export const getRepo: typeof import("./getRepo").getRepo = null as any;
 export const getRepoOutput: typeof import("./getRepo").getRepoOutput = null as any;
+utilities.lazyLoad(exports, ["getRepo","getRepoOutput"], () => require("./getRepo"));
 
 export { GetRepoIamPolicyArgs, GetRepoIamPolicyResult, GetRepoIamPolicyOutputArgs } from "./getRepoIamPolicy";
 export const getRepoIamPolicy: typeof import("./getRepoIamPolicy").getRepoIamPolicy = null as any;
 export const getRepoIamPolicyOutput: typeof import("./getRepoIamPolicy").getRepoIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepoIamPolicy","getRepoIamPolicyOutput"], () => require("./getRepoIamPolicy"));
 
 export { RepoArgs } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
+utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
 
 export { RepoIamBindingArgs } from "./repoIamBinding";
 export type RepoIamBinding = import("./repoIamBinding").RepoIamBinding;
 export const RepoIamBinding: typeof import("./repoIamBinding").RepoIamBinding = null as any;
+utilities.lazyLoad(exports, ["RepoIamBinding"], () => require("./repoIamBinding"));
 
 export { RepoIamMemberArgs } from "./repoIamMember";
 export type RepoIamMember = import("./repoIamMember").RepoIamMember;
 export const RepoIamMember: typeof import("./repoIamMember").RepoIamMember = null as any;
+utilities.lazyLoad(exports, ["RepoIamMember"], () => require("./repoIamMember"));
 
 export { RepoIamPolicyArgs } from "./repoIamPolicy";
 export type RepoIamPolicy = import("./repoIamPolicy").RepoIamPolicy;
 export const RepoIamPolicy: typeof import("./repoIamPolicy").RepoIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getRepo","getRepoOutput"], () => require("./getRepo"));
-utilities.lazyLoad(exports, ["getRepoIamPolicy","getRepoIamPolicyOutput"], () => require("./getRepoIamPolicy"));
-utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
-utilities.lazyLoad(exports, ["RepoIamBinding"], () => require("./repoIamBinding"));
-utilities.lazyLoad(exports, ["RepoIamMember"], () => require("./repoIamMember"));
 utilities.lazyLoad(exports, ["RepoIamPolicy"], () => require("./repoIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/sourcerepo/v1";

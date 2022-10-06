@@ -8,83 +8,83 @@ import * as utilities from "../../utilities";
 export { GetHubArgs, GetHubResult, GetHubOutputArgs } from "./getHub";
 export const getHub: typeof import("./getHub").getHub = null as any;
 export const getHubOutput: typeof import("./getHub").getHubOutput = null as any;
+utilities.lazyLoad(exports, ["getHub","getHubOutput"], () => require("./getHub"));
 
 export { GetHubIamPolicyArgs, GetHubIamPolicyResult, GetHubIamPolicyOutputArgs } from "./getHubIamPolicy";
 export const getHubIamPolicy: typeof import("./getHubIamPolicy").getHubIamPolicy = null as any;
 export const getHubIamPolicyOutput: typeof import("./getHubIamPolicy").getHubIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getHubIamPolicy","getHubIamPolicyOutput"], () => require("./getHubIamPolicy"));
 
 export { GetPolicyBasedRouteIamPolicyArgs, GetPolicyBasedRouteIamPolicyResult, GetPolicyBasedRouteIamPolicyOutputArgs } from "./getPolicyBasedRouteIamPolicy";
 export const getPolicyBasedRouteIamPolicy: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicy = null as any;
 export const getPolicyBasedRouteIamPolicyOutput: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyBasedRouteIamPolicy","getPolicyBasedRouteIamPolicyOutput"], () => require("./getPolicyBasedRouteIamPolicy"));
 
 export { GetSpokeArgs, GetSpokeResult, GetSpokeOutputArgs } from "./getSpoke";
 export const getSpoke: typeof import("./getSpoke").getSpoke = null as any;
 export const getSpokeOutput: typeof import("./getSpoke").getSpokeOutput = null as any;
+utilities.lazyLoad(exports, ["getSpoke","getSpokeOutput"], () => require("./getSpoke"));
 
 export { GetSpokeIamPolicyArgs, GetSpokeIamPolicyResult, GetSpokeIamPolicyOutputArgs } from "./getSpokeIamPolicy";
 export const getSpokeIamPolicy: typeof import("./getSpokeIamPolicy").getSpokeIamPolicy = null as any;
 export const getSpokeIamPolicyOutput: typeof import("./getSpokeIamPolicy").getSpokeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSpokeIamPolicy","getSpokeIamPolicyOutput"], () => require("./getSpokeIamPolicy"));
 
 export { HubArgs } from "./hub";
 export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
+utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
 
 export { HubIamBindingArgs } from "./hubIamBinding";
 export type HubIamBinding = import("./hubIamBinding").HubIamBinding;
 export const HubIamBinding: typeof import("./hubIamBinding").HubIamBinding = null as any;
+utilities.lazyLoad(exports, ["HubIamBinding"], () => require("./hubIamBinding"));
 
 export { HubIamMemberArgs } from "./hubIamMember";
 export type HubIamMember = import("./hubIamMember").HubIamMember;
 export const HubIamMember: typeof import("./hubIamMember").HubIamMember = null as any;
+utilities.lazyLoad(exports, ["HubIamMember"], () => require("./hubIamMember"));
 
 export { HubIamPolicyArgs } from "./hubIamPolicy";
 export type HubIamPolicy = import("./hubIamPolicy").HubIamPolicy;
 export const HubIamPolicy: typeof import("./hubIamPolicy").HubIamPolicy = null as any;
+utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
 
 export { PolicyBasedRouteIamBindingArgs } from "./policyBasedRouteIamBinding";
 export type PolicyBasedRouteIamBinding = import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding;
 export const PolicyBasedRouteIamBinding: typeof import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding = null as any;
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamBinding"], () => require("./policyBasedRouteIamBinding"));
 
 export { PolicyBasedRouteIamMemberArgs } from "./policyBasedRouteIamMember";
 export type PolicyBasedRouteIamMember = import("./policyBasedRouteIamMember").PolicyBasedRouteIamMember;
 export const PolicyBasedRouteIamMember: typeof import("./policyBasedRouteIamMember").PolicyBasedRouteIamMember = null as any;
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamMember"], () => require("./policyBasedRouteIamMember"));
 
 export { PolicyBasedRouteIamPolicyArgs } from "./policyBasedRouteIamPolicy";
 export type PolicyBasedRouteIamPolicy = import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy;
 export const PolicyBasedRouteIamPolicy: typeof import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy = null as any;
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamPolicy"], () => require("./policyBasedRouteIamPolicy"));
 
 export { SpokeArgs } from "./spoke";
 export type Spoke = import("./spoke").Spoke;
 export const Spoke: typeof import("./spoke").Spoke = null as any;
+utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
 
 export { SpokeIamBindingArgs } from "./spokeIamBinding";
 export type SpokeIamBinding = import("./spokeIamBinding").SpokeIamBinding;
 export const SpokeIamBinding: typeof import("./spokeIamBinding").SpokeIamBinding = null as any;
+utilities.lazyLoad(exports, ["SpokeIamBinding"], () => require("./spokeIamBinding"));
 
 export { SpokeIamMemberArgs } from "./spokeIamMember";
 export type SpokeIamMember = import("./spokeIamMember").SpokeIamMember;
 export const SpokeIamMember: typeof import("./spokeIamMember").SpokeIamMember = null as any;
+utilities.lazyLoad(exports, ["SpokeIamMember"], () => require("./spokeIamMember"));
 
 export { SpokeIamPolicyArgs } from "./spokeIamPolicy";
 export type SpokeIamPolicy = import("./spokeIamPolicy").SpokeIamPolicy;
 export const SpokeIamPolicy: typeof import("./spokeIamPolicy").SpokeIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getHub","getHubOutput"], () => require("./getHub"));
-utilities.lazyLoad(exports, ["getHubIamPolicy","getHubIamPolicyOutput"], () => require("./getHubIamPolicy"));
-utilities.lazyLoad(exports, ["getPolicyBasedRouteIamPolicy","getPolicyBasedRouteIamPolicyOutput"], () => require("./getPolicyBasedRouteIamPolicy"));
-utilities.lazyLoad(exports, ["getSpoke","getSpokeOutput"], () => require("./getSpoke"));
-utilities.lazyLoad(exports, ["getSpokeIamPolicy","getSpokeIamPolicyOutput"], () => require("./getSpokeIamPolicy"));
-utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
-utilities.lazyLoad(exports, ["HubIamBinding"], () => require("./hubIamBinding"));
-utilities.lazyLoad(exports, ["HubIamMember"], () => require("./hubIamMember"));
-utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
-utilities.lazyLoad(exports, ["PolicyBasedRouteIamBinding"], () => require("./policyBasedRouteIamBinding"));
-utilities.lazyLoad(exports, ["PolicyBasedRouteIamMember"], () => require("./policyBasedRouteIamMember"));
-utilities.lazyLoad(exports, ["PolicyBasedRouteIamPolicy"], () => require("./policyBasedRouteIamPolicy"));
-utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
-utilities.lazyLoad(exports, ["SpokeIamBinding"], () => require("./spokeIamBinding"));
-utilities.lazyLoad(exports, ["SpokeIamMember"], () => require("./spokeIamMember"));
 utilities.lazyLoad(exports, ["SpokeIamPolicy"], () => require("./spokeIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/networkconnectivity/v1";

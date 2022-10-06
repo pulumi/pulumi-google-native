@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
 export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
 export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 
 export { GetTriggerIamPolicyArgs, GetTriggerIamPolicyResult, GetTriggerIamPolicyOutputArgs } from "./getTriggerIamPolicy";
 export const getTriggerIamPolicy: typeof import("./getTriggerIamPolicy").getTriggerIamPolicy = null as any;
 export const getTriggerIamPolicyOutput: typeof import("./getTriggerIamPolicy").getTriggerIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
 
 export { TriggerArgs } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 
 export { TriggerIamBindingArgs } from "./triggerIamBinding";
 export type TriggerIamBinding = import("./triggerIamBinding").TriggerIamBinding;
 export const TriggerIamBinding: typeof import("./triggerIamBinding").TriggerIamBinding = null as any;
+utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
 
 export { TriggerIamMemberArgs } from "./triggerIamMember";
 export type TriggerIamMember = import("./triggerIamMember").TriggerIamMember;
 export const TriggerIamMember: typeof import("./triggerIamMember").TriggerIamMember = null as any;
+utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 
 export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
 export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
 export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
-
-utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
-utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
-utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
-utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
-utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/eventarc/v1beta1";

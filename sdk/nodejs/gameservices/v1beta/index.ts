@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { GameServerDeploymentIamBindingArgs } from "./gameServerDeploymentIamBinding";
 export type GameServerDeploymentIamBinding = import("./gameServerDeploymentIamBinding").GameServerDeploymentIamBinding;
 export const GameServerDeploymentIamBinding: typeof import("./gameServerDeploymentIamBinding").GameServerDeploymentIamBinding = null as any;
+utilities.lazyLoad(exports, ["GameServerDeploymentIamBinding"], () => require("./gameServerDeploymentIamBinding"));
 
 export { GameServerDeploymentIamMemberArgs } from "./gameServerDeploymentIamMember";
 export type GameServerDeploymentIamMember = import("./gameServerDeploymentIamMember").GameServerDeploymentIamMember;
 export const GameServerDeploymentIamMember: typeof import("./gameServerDeploymentIamMember").GameServerDeploymentIamMember = null as any;
+utilities.lazyLoad(exports, ["GameServerDeploymentIamMember"], () => require("./gameServerDeploymentIamMember"));
 
 export { GameServerDeploymentIamPolicyArgs } from "./gameServerDeploymentIamPolicy";
 export type GameServerDeploymentIamPolicy = import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy;
 export const GameServerDeploymentIamPolicy: typeof import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["GameServerDeploymentIamPolicy"], () => require("./gameServerDeploymentIamPolicy"));
 
 export { GetGameServerDeploymentIamPolicyArgs, GetGameServerDeploymentIamPolicyResult, GetGameServerDeploymentIamPolicyOutputArgs } from "./getGameServerDeploymentIamPolicy";
 export const getGameServerDeploymentIamPolicy: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicy = null as any;
 export const getGameServerDeploymentIamPolicyOutput: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["GameServerDeploymentIamBinding"], () => require("./gameServerDeploymentIamBinding"));
-utilities.lazyLoad(exports, ["GameServerDeploymentIamMember"], () => require("./gameServerDeploymentIamMember"));
-utilities.lazyLoad(exports, ["GameServerDeploymentIamPolicy"], () => require("./gameServerDeploymentIamPolicy"));
 utilities.lazyLoad(exports, ["getGameServerDeploymentIamPolicy","getGameServerDeploymentIamPolicyOutput"], () => require("./getGameServerDeploymentIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/gameservices/v1beta";

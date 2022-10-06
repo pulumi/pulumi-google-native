@@ -8,143 +8,143 @@ import * as utilities from "../../utilities";
 export { ContextArgs } from "./context";
 export type Context = import("./context").Context;
 export const Context: typeof import("./context").Context = null as any;
+utilities.lazyLoad(exports, ["Context"], () => require("./context"));
 
 export { ConversationArgs } from "./conversation";
 export type Conversation = import("./conversation").Conversation;
 export const Conversation: typeof import("./conversation").Conversation = null as any;
+utilities.lazyLoad(exports, ["Conversation"], () => require("./conversation"));
 
 export { ConversationDatasetArgs } from "./conversationDataset";
 export type ConversationDataset = import("./conversationDataset").ConversationDataset;
 export const ConversationDataset: typeof import("./conversationDataset").ConversationDataset = null as any;
+utilities.lazyLoad(exports, ["ConversationDataset"], () => require("./conversationDataset"));
 
 export { ConversationModelArgs } from "./conversationModel";
 export type ConversationModel = import("./conversationModel").ConversationModel;
 export const ConversationModel: typeof import("./conversationModel").ConversationModel = null as any;
+utilities.lazyLoad(exports, ["ConversationModel"], () => require("./conversationModel"));
 
 export { ConversationProfileArgs } from "./conversationProfile";
 export type ConversationProfile = import("./conversationProfile").ConversationProfile;
 export const ConversationProfile: typeof import("./conversationProfile").ConversationProfile = null as any;
+utilities.lazyLoad(exports, ["ConversationProfile"], () => require("./conversationProfile"));
 
 export { DocumentArgs } from "./document";
 export type Document = import("./document").Document;
 export const Document: typeof import("./document").Document = null as any;
+utilities.lazyLoad(exports, ["Document"], () => require("./document"));
 
 export { EntityTypeArgs } from "./entityType";
 export type EntityType = import("./entityType").EntityType;
 export const EntityType: typeof import("./entityType").EntityType = null as any;
+utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
 
 export { EnvironmentArgs } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { EvaluationArgs } from "./evaluation";
 export type Evaluation = import("./evaluation").Evaluation;
 export const Evaluation: typeof import("./evaluation").Evaluation = null as any;
+utilities.lazyLoad(exports, ["Evaluation"], () => require("./evaluation"));
 
 export { GetContextArgs, GetContextResult, GetContextOutputArgs } from "./getContext";
 export const getContext: typeof import("./getContext").getContext = null as any;
 export const getContextOutput: typeof import("./getContext").getContextOutput = null as any;
+utilities.lazyLoad(exports, ["getContext","getContextOutput"], () => require("./getContext"));
 
 export { GetConversationArgs, GetConversationResult, GetConversationOutputArgs } from "./getConversation";
 export const getConversation: typeof import("./getConversation").getConversation = null as any;
 export const getConversationOutput: typeof import("./getConversation").getConversationOutput = null as any;
+utilities.lazyLoad(exports, ["getConversation","getConversationOutput"], () => require("./getConversation"));
 
 export { GetConversationDatasetArgs, GetConversationDatasetResult, GetConversationDatasetOutputArgs } from "./getConversationDataset";
 export const getConversationDataset: typeof import("./getConversationDataset").getConversationDataset = null as any;
 export const getConversationDatasetOutput: typeof import("./getConversationDataset").getConversationDatasetOutput = null as any;
+utilities.lazyLoad(exports, ["getConversationDataset","getConversationDatasetOutput"], () => require("./getConversationDataset"));
 
 export { GetConversationModelArgs, GetConversationModelResult, GetConversationModelOutputArgs } from "./getConversationModel";
 export const getConversationModel: typeof import("./getConversationModel").getConversationModel = null as any;
 export const getConversationModelOutput: typeof import("./getConversationModel").getConversationModelOutput = null as any;
+utilities.lazyLoad(exports, ["getConversationModel","getConversationModelOutput"], () => require("./getConversationModel"));
 
 export { GetConversationProfileArgs, GetConversationProfileResult, GetConversationProfileOutputArgs } from "./getConversationProfile";
 export const getConversationProfile: typeof import("./getConversationProfile").getConversationProfile = null as any;
 export const getConversationProfileOutput: typeof import("./getConversationProfile").getConversationProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getConversationProfile","getConversationProfileOutput"], () => require("./getConversationProfile"));
 
 export { GetDocumentArgs, GetDocumentResult, GetDocumentOutputArgs } from "./getDocument";
 export const getDocument: typeof import("./getDocument").getDocument = null as any;
 export const getDocumentOutput: typeof import("./getDocument").getDocumentOutput = null as any;
+utilities.lazyLoad(exports, ["getDocument","getDocumentOutput"], () => require("./getDocument"));
 
 export { GetEntityTypeArgs, GetEntityTypeResult, GetEntityTypeOutputArgs } from "./getEntityType";
 export const getEntityType: typeof import("./getEntityType").getEntityType = null as any;
 export const getEntityTypeOutput: typeof import("./getEntityType").getEntityTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getEntityType","getEntityTypeOutput"], () => require("./getEntityType"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetEvaluationArgs, GetEvaluationResult, GetEvaluationOutputArgs } from "./getEvaluation";
 export const getEvaluation: typeof import("./getEvaluation").getEvaluation = null as any;
 export const getEvaluationOutput: typeof import("./getEvaluation").getEvaluationOutput = null as any;
+utilities.lazyLoad(exports, ["getEvaluation","getEvaluationOutput"], () => require("./getEvaluation"));
 
 export { GetIntentArgs, GetIntentResult, GetIntentOutputArgs } from "./getIntent";
 export const getIntent: typeof import("./getIntent").getIntent = null as any;
 export const getIntentOutput: typeof import("./getIntent").getIntentOutput = null as any;
+utilities.lazyLoad(exports, ["getIntent","getIntentOutput"], () => require("./getIntent"));
 
 export { GetKnowledgeBaseArgs, GetKnowledgeBaseResult, GetKnowledgeBaseOutputArgs } from "./getKnowledgeBase";
 export const getKnowledgeBase: typeof import("./getKnowledgeBase").getKnowledgeBase = null as any;
 export const getKnowledgeBaseOutput: typeof import("./getKnowledgeBase").getKnowledgeBaseOutput = null as any;
+utilities.lazyLoad(exports, ["getKnowledgeBase","getKnowledgeBaseOutput"], () => require("./getKnowledgeBase"));
 
 export { GetParticipantArgs, GetParticipantResult, GetParticipantOutputArgs } from "./getParticipant";
 export const getParticipant: typeof import("./getParticipant").getParticipant = null as any;
 export const getParticipantOutput: typeof import("./getParticipant").getParticipantOutput = null as any;
+utilities.lazyLoad(exports, ["getParticipant","getParticipantOutput"], () => require("./getParticipant"));
 
 export { GetSessionEntityTypeArgs, GetSessionEntityTypeResult, GetSessionEntityTypeOutputArgs } from "./getSessionEntityType";
 export const getSessionEntityType: typeof import("./getSessionEntityType").getSessionEntityType = null as any;
 export const getSessionEntityTypeOutput: typeof import("./getSessionEntityType").getSessionEntityTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getSessionEntityType","getSessionEntityTypeOutput"], () => require("./getSessionEntityType"));
 
 export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
 export const getVersion: typeof import("./getVersion").getVersion = null as any;
 export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 
 export { IntentArgs } from "./intent";
 export type Intent = import("./intent").Intent;
 export const Intent: typeof import("./intent").Intent = null as any;
+utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
 
 export { KnowledgeBaseArgs } from "./knowledgeBase";
 export type KnowledgeBase = import("./knowledgeBase").KnowledgeBase;
 export const KnowledgeBase: typeof import("./knowledgeBase").KnowledgeBase = null as any;
+utilities.lazyLoad(exports, ["KnowledgeBase"], () => require("./knowledgeBase"));
 
 export { ParticipantArgs } from "./participant";
 export type Participant = import("./participant").Participant;
 export const Participant: typeof import("./participant").Participant = null as any;
+utilities.lazyLoad(exports, ["Participant"], () => require("./participant"));
 
 export { SessionEntityTypeArgs } from "./sessionEntityType";
 export type SessionEntityType = import("./sessionEntityType").SessionEntityType;
 export const SessionEntityType: typeof import("./sessionEntityType").SessionEntityType = null as any;
+utilities.lazyLoad(exports, ["SessionEntityType"], () => require("./sessionEntityType"));
 
 export { VersionArgs } from "./version";
 export type Version = import("./version").Version;
 export const Version: typeof import("./version").Version = null as any;
-
-utilities.lazyLoad(exports, ["Context"], () => require("./context"));
-utilities.lazyLoad(exports, ["Conversation"], () => require("./conversation"));
-utilities.lazyLoad(exports, ["ConversationDataset"], () => require("./conversationDataset"));
-utilities.lazyLoad(exports, ["ConversationModel"], () => require("./conversationModel"));
-utilities.lazyLoad(exports, ["ConversationProfile"], () => require("./conversationProfile"));
-utilities.lazyLoad(exports, ["Document"], () => require("./document"));
-utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["Evaluation"], () => require("./evaluation"));
-utilities.lazyLoad(exports, ["getContext","getContextOutput"], () => require("./getContext"));
-utilities.lazyLoad(exports, ["getConversation","getConversationOutput"], () => require("./getConversation"));
-utilities.lazyLoad(exports, ["getConversationDataset","getConversationDatasetOutput"], () => require("./getConversationDataset"));
-utilities.lazyLoad(exports, ["getConversationModel","getConversationModelOutput"], () => require("./getConversationModel"));
-utilities.lazyLoad(exports, ["getConversationProfile","getConversationProfileOutput"], () => require("./getConversationProfile"));
-utilities.lazyLoad(exports, ["getDocument","getDocumentOutput"], () => require("./getDocument"));
-utilities.lazyLoad(exports, ["getEntityType","getEntityTypeOutput"], () => require("./getEntityType"));
-utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
-utilities.lazyLoad(exports, ["getEvaluation","getEvaluationOutput"], () => require("./getEvaluation"));
-utilities.lazyLoad(exports, ["getIntent","getIntentOutput"], () => require("./getIntent"));
-utilities.lazyLoad(exports, ["getKnowledgeBase","getKnowledgeBaseOutput"], () => require("./getKnowledgeBase"));
-utilities.lazyLoad(exports, ["getParticipant","getParticipantOutput"], () => require("./getParticipant"));
-utilities.lazyLoad(exports, ["getSessionEntityType","getSessionEntityTypeOutput"], () => require("./getSessionEntityType"));
-utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
-utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
-utilities.lazyLoad(exports, ["KnowledgeBase"], () => require("./knowledgeBase"));
-utilities.lazyLoad(exports, ["Participant"], () => require("./participant"));
-utilities.lazyLoad(exports, ["SessionEntityType"], () => require("./sessionEntityType"));
 utilities.lazyLoad(exports, ["Version"], () => require("./version"));
+
 
 // Export enums:
 export * from "../../types/enums/dialogflow/v2";

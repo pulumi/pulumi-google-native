@@ -8,83 +8,83 @@ import * as utilities from "../../utilities";
 export { DeidentifyTemplateArgs } from "./deidentifyTemplate";
 export type DeidentifyTemplate = import("./deidentifyTemplate").DeidentifyTemplate;
 export const DeidentifyTemplate: typeof import("./deidentifyTemplate").DeidentifyTemplate = null as any;
+utilities.lazyLoad(exports, ["DeidentifyTemplate"], () => require("./deidentifyTemplate"));
 
 export { DlpJobArgs } from "./dlpJob";
 export type DlpJob = import("./dlpJob").DlpJob;
 export const DlpJob: typeof import("./dlpJob").DlpJob = null as any;
+utilities.lazyLoad(exports, ["DlpJob"], () => require("./dlpJob"));
 
 export { GetDeidentifyTemplateArgs, GetDeidentifyTemplateResult, GetDeidentifyTemplateOutputArgs } from "./getDeidentifyTemplate";
 export const getDeidentifyTemplate: typeof import("./getDeidentifyTemplate").getDeidentifyTemplate = null as any;
 export const getDeidentifyTemplateOutput: typeof import("./getDeidentifyTemplate").getDeidentifyTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getDeidentifyTemplate","getDeidentifyTemplateOutput"], () => require("./getDeidentifyTemplate"));
 
 export { GetDlpJobArgs, GetDlpJobResult, GetDlpJobOutputArgs } from "./getDlpJob";
 export const getDlpJob: typeof import("./getDlpJob").getDlpJob = null as any;
 export const getDlpJobOutput: typeof import("./getDlpJob").getDlpJobOutput = null as any;
+utilities.lazyLoad(exports, ["getDlpJob","getDlpJobOutput"], () => require("./getDlpJob"));
 
 export { GetInspectTemplateArgs, GetInspectTemplateResult, GetInspectTemplateOutputArgs } from "./getInspectTemplate";
 export const getInspectTemplate: typeof import("./getInspectTemplate").getInspectTemplate = null as any;
 export const getInspectTemplateOutput: typeof import("./getInspectTemplate").getInspectTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getInspectTemplate","getInspectTemplateOutput"], () => require("./getInspectTemplate"));
 
 export { GetJobTriggerArgs, GetJobTriggerResult, GetJobTriggerOutputArgs } from "./getJobTrigger";
 export const getJobTrigger: typeof import("./getJobTrigger").getJobTrigger = null as any;
 export const getJobTriggerOutput: typeof import("./getJobTrigger").getJobTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getJobTrigger","getJobTriggerOutput"], () => require("./getJobTrigger"));
 
 export { GetOrganizationInspectTemplateArgs, GetOrganizationInspectTemplateResult, GetOrganizationInspectTemplateOutputArgs } from "./getOrganizationInspectTemplate";
 export const getOrganizationInspectTemplate: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplate = null as any;
 export const getOrganizationInspectTemplateOutput: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationInspectTemplate","getOrganizationInspectTemplateOutput"], () => require("./getOrganizationInspectTemplate"));
 
 export { GetOrganizationJobTriggerArgs, GetOrganizationJobTriggerResult, GetOrganizationJobTriggerOutputArgs } from "./getOrganizationJobTrigger";
 export const getOrganizationJobTrigger: typeof import("./getOrganizationJobTrigger").getOrganizationJobTrigger = null as any;
 export const getOrganizationJobTriggerOutput: typeof import("./getOrganizationJobTrigger").getOrganizationJobTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationJobTrigger","getOrganizationJobTriggerOutput"], () => require("./getOrganizationJobTrigger"));
 
 export { GetOrganizationsDeidentifyTemplateArgs, GetOrganizationsDeidentifyTemplateResult, GetOrganizationsDeidentifyTemplateOutputArgs } from "./getOrganizationsDeidentifyTemplate";
 export const getOrganizationsDeidentifyTemplate: typeof import("./getOrganizationsDeidentifyTemplate").getOrganizationsDeidentifyTemplate = null as any;
 export const getOrganizationsDeidentifyTemplateOutput: typeof import("./getOrganizationsDeidentifyTemplate").getOrganizationsDeidentifyTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationsDeidentifyTemplate","getOrganizationsDeidentifyTemplateOutput"], () => require("./getOrganizationsDeidentifyTemplate"));
 
 export { GetStoredInfoTypeArgs, GetStoredInfoTypeResult, GetStoredInfoTypeOutputArgs } from "./getStoredInfoType";
 export const getStoredInfoType: typeof import("./getStoredInfoType").getStoredInfoType = null as any;
 export const getStoredInfoTypeOutput: typeof import("./getStoredInfoType").getStoredInfoTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getStoredInfoType","getStoredInfoTypeOutput"], () => require("./getStoredInfoType"));
 
 export { InspectTemplateArgs } from "./inspectTemplate";
 export type InspectTemplate = import("./inspectTemplate").InspectTemplate;
 export const InspectTemplate: typeof import("./inspectTemplate").InspectTemplate = null as any;
+utilities.lazyLoad(exports, ["InspectTemplate"], () => require("./inspectTemplate"));
 
 export { JobTriggerArgs } from "./jobTrigger";
 export type JobTrigger = import("./jobTrigger").JobTrigger;
 export const JobTrigger: typeof import("./jobTrigger").JobTrigger = null as any;
+utilities.lazyLoad(exports, ["JobTrigger"], () => require("./jobTrigger"));
 
 export { OrganizationInspectTemplateArgs } from "./organizationInspectTemplate";
 export type OrganizationInspectTemplate = import("./organizationInspectTemplate").OrganizationInspectTemplate;
 export const OrganizationInspectTemplate: typeof import("./organizationInspectTemplate").OrganizationInspectTemplate = null as any;
+utilities.lazyLoad(exports, ["OrganizationInspectTemplate"], () => require("./organizationInspectTemplate"));
 
 export { OrganizationJobTriggerArgs } from "./organizationJobTrigger";
 export type OrganizationJobTrigger = import("./organizationJobTrigger").OrganizationJobTrigger;
 export const OrganizationJobTrigger: typeof import("./organizationJobTrigger").OrganizationJobTrigger = null as any;
+utilities.lazyLoad(exports, ["OrganizationJobTrigger"], () => require("./organizationJobTrigger"));
 
 export { OrganizationsDeidentifyTemplateArgs } from "./organizationsDeidentifyTemplate";
 export type OrganizationsDeidentifyTemplate = import("./organizationsDeidentifyTemplate").OrganizationsDeidentifyTemplate;
 export const OrganizationsDeidentifyTemplate: typeof import("./organizationsDeidentifyTemplate").OrganizationsDeidentifyTemplate = null as any;
+utilities.lazyLoad(exports, ["OrganizationsDeidentifyTemplate"], () => require("./organizationsDeidentifyTemplate"));
 
 export { StoredInfoTypeArgs } from "./storedInfoType";
 export type StoredInfoType = import("./storedInfoType").StoredInfoType;
 export const StoredInfoType: typeof import("./storedInfoType").StoredInfoType = null as any;
-
-utilities.lazyLoad(exports, ["DeidentifyTemplate"], () => require("./deidentifyTemplate"));
-utilities.lazyLoad(exports, ["DlpJob"], () => require("./dlpJob"));
-utilities.lazyLoad(exports, ["getDeidentifyTemplate","getDeidentifyTemplateOutput"], () => require("./getDeidentifyTemplate"));
-utilities.lazyLoad(exports, ["getDlpJob","getDlpJobOutput"], () => require("./getDlpJob"));
-utilities.lazyLoad(exports, ["getInspectTemplate","getInspectTemplateOutput"], () => require("./getInspectTemplate"));
-utilities.lazyLoad(exports, ["getJobTrigger","getJobTriggerOutput"], () => require("./getJobTrigger"));
-utilities.lazyLoad(exports, ["getOrganizationInspectTemplate","getOrganizationInspectTemplateOutput"], () => require("./getOrganizationInspectTemplate"));
-utilities.lazyLoad(exports, ["getOrganizationJobTrigger","getOrganizationJobTriggerOutput"], () => require("./getOrganizationJobTrigger"));
-utilities.lazyLoad(exports, ["getOrganizationsDeidentifyTemplate","getOrganizationsDeidentifyTemplateOutput"], () => require("./getOrganizationsDeidentifyTemplate"));
-utilities.lazyLoad(exports, ["getStoredInfoType","getStoredInfoTypeOutput"], () => require("./getStoredInfoType"));
-utilities.lazyLoad(exports, ["InspectTemplate"], () => require("./inspectTemplate"));
-utilities.lazyLoad(exports, ["JobTrigger"], () => require("./jobTrigger"));
-utilities.lazyLoad(exports, ["OrganizationInspectTemplate"], () => require("./organizationInspectTemplate"));
-utilities.lazyLoad(exports, ["OrganizationJobTrigger"], () => require("./organizationJobTrigger"));
-utilities.lazyLoad(exports, ["OrganizationsDeidentifyTemplate"], () => require("./organizationsDeidentifyTemplate"));
 utilities.lazyLoad(exports, ["StoredInfoType"], () => require("./storedInfoType"));
+
 
 // Export enums:
 export * from "../../types/enums/dlp/v2";

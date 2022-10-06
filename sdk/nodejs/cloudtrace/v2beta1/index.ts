@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetTraceSinkArgs, GetTraceSinkResult, GetTraceSinkOutputArgs } from "./getTraceSink";
 export const getTraceSink: typeof import("./getTraceSink").getTraceSink = null as any;
 export const getTraceSinkOutput: typeof import("./getTraceSink").getTraceSinkOutput = null as any;
+utilities.lazyLoad(exports, ["getTraceSink","getTraceSinkOutput"], () => require("./getTraceSink"));
 
 export { TraceSinkArgs } from "./traceSink";
 export type TraceSink = import("./traceSink").TraceSink;
 export const TraceSink: typeof import("./traceSink").TraceSink = null as any;
-
-utilities.lazyLoad(exports, ["getTraceSink","getTraceSinkOutput"], () => require("./getTraceSink"));
 utilities.lazyLoad(exports, ["TraceSink"], () => require("./traceSink"));
+
 
 const _module = {
     version: utilities.getVersion(),

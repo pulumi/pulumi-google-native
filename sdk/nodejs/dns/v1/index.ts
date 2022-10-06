@@ -8,73 +8,73 @@ import * as utilities from "../../utilities";
 export { ChangeArgs } from "./change";
 export type Change = import("./change").Change;
 export const Change: typeof import("./change").Change = null as any;
+utilities.lazyLoad(exports, ["Change"], () => require("./change"));
 
 export { GetChangeArgs, GetChangeResult, GetChangeOutputArgs } from "./getChange";
 export const getChange: typeof import("./getChange").getChange = null as any;
 export const getChangeOutput: typeof import("./getChange").getChangeOutput = null as any;
+utilities.lazyLoad(exports, ["getChange","getChangeOutput"], () => require("./getChange"));
 
 export { GetManagedZoneArgs, GetManagedZoneResult, GetManagedZoneOutputArgs } from "./getManagedZone";
 export const getManagedZone: typeof import("./getManagedZone").getManagedZone = null as any;
 export const getManagedZoneOutput: typeof import("./getManagedZone").getManagedZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedZone","getManagedZoneOutput"], () => require("./getManagedZone"));
 
 export { GetManagedZoneIamPolicyArgs, GetManagedZoneIamPolicyResult, GetManagedZoneIamPolicyOutputArgs } from "./getManagedZoneIamPolicy";
 export const getManagedZoneIamPolicy: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicy = null as any;
 export const getManagedZoneIamPolicyOutput: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedZoneIamPolicy","getManagedZoneIamPolicyOutput"], () => require("./getManagedZoneIamPolicy"));
 
 export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
 export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
 
 export { GetResourceRecordSetArgs, GetResourceRecordSetResult, GetResourceRecordSetOutputArgs } from "./getResourceRecordSet";
 export const getResourceRecordSet: typeof import("./getResourceRecordSet").getResourceRecordSet = null as any;
 export const getResourceRecordSetOutput: typeof import("./getResourceRecordSet").getResourceRecordSetOutput = null as any;
+utilities.lazyLoad(exports, ["getResourceRecordSet","getResourceRecordSetOutput"], () => require("./getResourceRecordSet"));
 
 export { GetResponsePolicyArgs, GetResponsePolicyResult, GetResponsePolicyOutputArgs } from "./getResponsePolicy";
 export const getResponsePolicy: typeof import("./getResponsePolicy").getResponsePolicy = null as any;
 export const getResponsePolicyOutput: typeof import("./getResponsePolicy").getResponsePolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getResponsePolicy","getResponsePolicyOutput"], () => require("./getResponsePolicy"));
 
 export { GetResponsePolicyRuleArgs, GetResponsePolicyRuleResult, GetResponsePolicyRuleOutputArgs } from "./getResponsePolicyRule";
 export const getResponsePolicyRule: typeof import("./getResponsePolicyRule").getResponsePolicyRule = null as any;
 export const getResponsePolicyRuleOutput: typeof import("./getResponsePolicyRule").getResponsePolicyRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getResponsePolicyRule","getResponsePolicyRuleOutput"], () => require("./getResponsePolicyRule"));
 
 export { ManagedZoneArgs } from "./managedZone";
 export type ManagedZone = import("./managedZone").ManagedZone;
 export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;
+utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
 
 export { ManagedZoneIamBindingArgs } from "./managedZoneIamBinding";
 export type ManagedZoneIamBinding = import("./managedZoneIamBinding").ManagedZoneIamBinding;
 export const ManagedZoneIamBinding: typeof import("./managedZoneIamBinding").ManagedZoneIamBinding = null as any;
+utilities.lazyLoad(exports, ["ManagedZoneIamBinding"], () => require("./managedZoneIamBinding"));
 
 export { ManagedZoneIamMemberArgs } from "./managedZoneIamMember";
 export type ManagedZoneIamMember = import("./managedZoneIamMember").ManagedZoneIamMember;
 export const ManagedZoneIamMember: typeof import("./managedZoneIamMember").ManagedZoneIamMember = null as any;
+utilities.lazyLoad(exports, ["ManagedZoneIamMember"], () => require("./managedZoneIamMember"));
 
 export { ManagedZoneIamPolicyArgs } from "./managedZoneIamPolicy";
 export type ManagedZoneIamPolicy = import("./managedZoneIamPolicy").ManagedZoneIamPolicy;
 export const ManagedZoneIamPolicy: typeof import("./managedZoneIamPolicy").ManagedZoneIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ManagedZoneIamPolicy"], () => require("./managedZoneIamPolicy"));
 
 export { PolicyArgs } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 
 export { ResourceRecordSetArgs } from "./resourceRecordSet";
 export type ResourceRecordSet = import("./resourceRecordSet").ResourceRecordSet;
 export const ResourceRecordSet: typeof import("./resourceRecordSet").ResourceRecordSet = null as any;
-
-utilities.lazyLoad(exports, ["Change"], () => require("./change"));
-utilities.lazyLoad(exports, ["getChange","getChangeOutput"], () => require("./getChange"));
-utilities.lazyLoad(exports, ["getManagedZone","getManagedZoneOutput"], () => require("./getManagedZone"));
-utilities.lazyLoad(exports, ["getManagedZoneIamPolicy","getManagedZoneIamPolicyOutput"], () => require("./getManagedZoneIamPolicy"));
-utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
-utilities.lazyLoad(exports, ["getResourceRecordSet","getResourceRecordSetOutput"], () => require("./getResourceRecordSet"));
-utilities.lazyLoad(exports, ["getResponsePolicy","getResponsePolicyOutput"], () => require("./getResponsePolicy"));
-utilities.lazyLoad(exports, ["getResponsePolicyRule","getResponsePolicyRuleOutput"], () => require("./getResponsePolicyRule"));
-utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
-utilities.lazyLoad(exports, ["ManagedZoneIamBinding"], () => require("./managedZoneIamBinding"));
-utilities.lazyLoad(exports, ["ManagedZoneIamMember"], () => require("./managedZoneIamMember"));
-utilities.lazyLoad(exports, ["ManagedZoneIamPolicy"], () => require("./managedZoneIamPolicy"));
-utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 utilities.lazyLoad(exports, ["ResourceRecordSet"], () => require("./resourceRecordSet"));
+
 
 // Export enums:
 export * from "../../types/enums/dns/v1";

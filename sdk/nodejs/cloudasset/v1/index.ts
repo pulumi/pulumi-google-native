@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { FeedArgs } from "./feed";
 export type Feed = import("./feed").Feed;
 export const Feed: typeof import("./feed").Feed = null as any;
+utilities.lazyLoad(exports, ["Feed"], () => require("./feed"));
 
 export { GetFeedArgs, GetFeedResult, GetFeedOutputArgs } from "./getFeed";
 export const getFeed: typeof import("./getFeed").getFeed = null as any;
 export const getFeedOutput: typeof import("./getFeed").getFeedOutput = null as any;
+utilities.lazyLoad(exports, ["getFeed","getFeedOutput"], () => require("./getFeed"));
 
 export { GetSavedQueryArgs, GetSavedQueryResult, GetSavedQueryOutputArgs } from "./getSavedQuery";
 export const getSavedQuery: typeof import("./getSavedQuery").getSavedQuery = null as any;
 export const getSavedQueryOutput: typeof import("./getSavedQuery").getSavedQueryOutput = null as any;
+utilities.lazyLoad(exports, ["getSavedQuery","getSavedQueryOutput"], () => require("./getSavedQuery"));
 
 export { SavedQueryArgs } from "./savedQuery";
 export type SavedQuery = import("./savedQuery").SavedQuery;
 export const SavedQuery: typeof import("./savedQuery").SavedQuery = null as any;
-
-utilities.lazyLoad(exports, ["Feed"], () => require("./feed"));
-utilities.lazyLoad(exports, ["getFeed","getFeedOutput"], () => require("./getFeed"));
-utilities.lazyLoad(exports, ["getSavedQuery","getSavedQueryOutput"], () => require("./getSavedQuery"));
 utilities.lazyLoad(exports, ["SavedQuery"], () => require("./savedQuery"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudasset/v1";

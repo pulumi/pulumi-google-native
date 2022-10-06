@@ -8,23 +8,23 @@ import * as utilities from "../../utilities";
 export { CapacityCommitmentArgs } from "./capacityCommitment";
 export type CapacityCommitment = import("./capacityCommitment").CapacityCommitment;
 export const CapacityCommitment: typeof import("./capacityCommitment").CapacityCommitment = null as any;
+utilities.lazyLoad(exports, ["CapacityCommitment"], () => require("./capacityCommitment"));
 
 export { GetCapacityCommitmentArgs, GetCapacityCommitmentResult, GetCapacityCommitmentOutputArgs } from "./getCapacityCommitment";
 export const getCapacityCommitment: typeof import("./getCapacityCommitment").getCapacityCommitment = null as any;
 export const getCapacityCommitmentOutput: typeof import("./getCapacityCommitment").getCapacityCommitmentOutput = null as any;
+utilities.lazyLoad(exports, ["getCapacityCommitment","getCapacityCommitmentOutput"], () => require("./getCapacityCommitment"));
 
 export { GetReservationArgs, GetReservationResult, GetReservationOutputArgs } from "./getReservation";
 export const getReservation: typeof import("./getReservation").getReservation = null as any;
 export const getReservationOutput: typeof import("./getReservation").getReservationOutput = null as any;
+utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
 
 export { ReservationArgs } from "./reservation";
 export type Reservation = import("./reservation").Reservation;
 export const Reservation: typeof import("./reservation").Reservation = null as any;
-
-utilities.lazyLoad(exports, ["CapacityCommitment"], () => require("./capacityCommitment"));
-utilities.lazyLoad(exports, ["getCapacityCommitment","getCapacityCommitmentOutput"], () => require("./getCapacityCommitment"));
-utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
 utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
+
 
 // Export enums:
 export * from "../../types/enums/bigqueryreservation/v1";

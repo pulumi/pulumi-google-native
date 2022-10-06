@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
 export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
 export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
 
 export { WorkerPoolArgs } from "./workerPool";
 export type WorkerPool = import("./workerPool").WorkerPool;
 export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
-
-utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
 utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
+
 
 const _module = {
     version: utilities.getVersion(),

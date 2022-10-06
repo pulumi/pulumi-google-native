@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { EntityArgs } from "./entity";
 export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
+utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
 export { GetEntityArgs, GetEntityResult, GetEntityOutputArgs } from "./getEntity";
 export const getEntity: typeof import("./getEntity").getEntity = null as any;
 export const getEntityOutput: typeof import("./getEntity").getEntityOutput = null as any;
-
-utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 utilities.lazyLoad(exports, ["getEntity","getEntityOutput"], () => require("./getEntity"));
+
 
 const _module = {
     version: utilities.getVersion(),

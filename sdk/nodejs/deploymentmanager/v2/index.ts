@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { DeploymentArgs } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
+utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
 
 export { DeploymentIamBindingArgs } from "./deploymentIamBinding";
 export type DeploymentIamBinding = import("./deploymentIamBinding").DeploymentIamBinding;
 export const DeploymentIamBinding: typeof import("./deploymentIamBinding").DeploymentIamBinding = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamBinding"], () => require("./deploymentIamBinding"));
 
 export { DeploymentIamMemberArgs } from "./deploymentIamMember";
 export type DeploymentIamMember = import("./deploymentIamMember").DeploymentIamMember;
 export const DeploymentIamMember: typeof import("./deploymentIamMember").DeploymentIamMember = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamMember"], () => require("./deploymentIamMember"));
 
 export { DeploymentIamPolicyArgs } from "./deploymentIamPolicy";
 export type DeploymentIamPolicy = import("./deploymentIamPolicy").DeploymentIamPolicy;
 export const DeploymentIamPolicy: typeof import("./deploymentIamPolicy").DeploymentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DeploymentIamPolicy"], () => require("./deploymentIamPolicy"));
 
 export { GetDeploymentArgs, GetDeploymentResult, GetDeploymentOutputArgs } from "./getDeployment";
 export const getDeployment: typeof import("./getDeployment").getDeployment = null as any;
 export const getDeploymentOutput: typeof import("./getDeployment").getDeploymentOutput = null as any;
+utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
 
 export { GetDeploymentIamPolicyArgs, GetDeploymentIamPolicyResult, GetDeploymentIamPolicyOutputArgs } from "./getDeploymentIamPolicy";
 export const getDeploymentIamPolicy: typeof import("./getDeploymentIamPolicy").getDeploymentIamPolicy = null as any;
 export const getDeploymentIamPolicyOutput: typeof import("./getDeploymentIamPolicy").getDeploymentIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
-utilities.lazyLoad(exports, ["DeploymentIamBinding"], () => require("./deploymentIamBinding"));
-utilities.lazyLoad(exports, ["DeploymentIamMember"], () => require("./deploymentIamMember"));
-utilities.lazyLoad(exports, ["DeploymentIamPolicy"], () => require("./deploymentIamPolicy"));
-utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
 utilities.lazyLoad(exports, ["getDeploymentIamPolicy","getDeploymentIamPolicyOutput"], () => require("./getDeploymentIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/deploymentmanager/v2";

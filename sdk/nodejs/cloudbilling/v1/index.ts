@@ -8,33 +8,33 @@ import * as utilities from "../../utilities";
 export { BillingAccountArgs } from "./billingAccount";
 export type BillingAccount = import("./billingAccount").BillingAccount;
 export const BillingAccount: typeof import("./billingAccount").BillingAccount = null as any;
+utilities.lazyLoad(exports, ["BillingAccount"], () => require("./billingAccount"));
 
 export { BillingAccountIamBindingArgs } from "./billingAccountIamBinding";
 export type BillingAccountIamBinding = import("./billingAccountIamBinding").BillingAccountIamBinding;
 export const BillingAccountIamBinding: typeof import("./billingAccountIamBinding").BillingAccountIamBinding = null as any;
+utilities.lazyLoad(exports, ["BillingAccountIamBinding"], () => require("./billingAccountIamBinding"));
 
 export { BillingAccountIamMemberArgs } from "./billingAccountIamMember";
 export type BillingAccountIamMember = import("./billingAccountIamMember").BillingAccountIamMember;
 export const BillingAccountIamMember: typeof import("./billingAccountIamMember").BillingAccountIamMember = null as any;
+utilities.lazyLoad(exports, ["BillingAccountIamMember"], () => require("./billingAccountIamMember"));
 
 export { BillingAccountIamPolicyArgs } from "./billingAccountIamPolicy";
 export type BillingAccountIamPolicy = import("./billingAccountIamPolicy").BillingAccountIamPolicy;
 export const BillingAccountIamPolicy: typeof import("./billingAccountIamPolicy").BillingAccountIamPolicy = null as any;
+utilities.lazyLoad(exports, ["BillingAccountIamPolicy"], () => require("./billingAccountIamPolicy"));
 
 export { GetBillingAccountArgs, GetBillingAccountResult, GetBillingAccountOutputArgs } from "./getBillingAccount";
 export const getBillingAccount: typeof import("./getBillingAccount").getBillingAccount = null as any;
 export const getBillingAccountOutput: typeof import("./getBillingAccount").getBillingAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getBillingAccount","getBillingAccountOutput"], () => require("./getBillingAccount"));
 
 export { GetBillingAccountIamPolicyArgs, GetBillingAccountIamPolicyResult, GetBillingAccountIamPolicyOutputArgs } from "./getBillingAccountIamPolicy";
 export const getBillingAccountIamPolicy: typeof import("./getBillingAccountIamPolicy").getBillingAccountIamPolicy = null as any;
 export const getBillingAccountIamPolicyOutput: typeof import("./getBillingAccountIamPolicy").getBillingAccountIamPolicyOutput = null as any;
-
-utilities.lazyLoad(exports, ["BillingAccount"], () => require("./billingAccount"));
-utilities.lazyLoad(exports, ["BillingAccountIamBinding"], () => require("./billingAccountIamBinding"));
-utilities.lazyLoad(exports, ["BillingAccountIamMember"], () => require("./billingAccountIamMember"));
-utilities.lazyLoad(exports, ["BillingAccountIamPolicy"], () => require("./billingAccountIamPolicy"));
-utilities.lazyLoad(exports, ["getBillingAccount","getBillingAccountOutput"], () => require("./getBillingAccount"));
 utilities.lazyLoad(exports, ["getBillingAccountIamPolicy","getBillingAccountIamPolicyOutput"], () => require("./getBillingAccountIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/cloudbilling/v1";

@@ -8,13 +8,13 @@ import * as utilities from "../../utilities";
 export { GetKeyArgs, GetKeyResult, GetKeyOutputArgs } from "./getKey";
 export const getKey: typeof import("./getKey").getKey = null as any;
 export const getKeyOutput: typeof import("./getKey").getKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getKey","getKeyOutput"], () => require("./getKey"));
 
 export { KeyArgs } from "./key";
 export type Key = import("./key").Key;
 export const Key: typeof import("./key").Key = null as any;
-
-utilities.lazyLoad(exports, ["getKey","getKeyOutput"], () => require("./getKey"));
 utilities.lazyLoad(exports, ["Key"], () => require("./key"));
+
 
 // Export enums:
 export * from "../../types/enums/recaptchaenterprise/v1";
