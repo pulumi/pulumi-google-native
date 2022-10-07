@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:secretmanager/v1:SecretIamBinding")]
     public partial class SecretIamBinding : global::Pulumi.CustomResource

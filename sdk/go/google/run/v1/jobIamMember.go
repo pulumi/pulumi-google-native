@@ -13,8 +13,6 @@ import (
 )
 
 // Sets the IAM Access control policy for the specified job. Overwrites any existing policy.
-// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-// on Google Cloud even though it will be deleted from Pulumi state.
 type JobIamMember struct {
 	pulumi.CustomResourceState
 

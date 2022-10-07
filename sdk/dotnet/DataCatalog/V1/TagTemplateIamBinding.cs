@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 {
     /// <summary>
     /// Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates - Entry groups Note: This method sets policies only within Data Catalog and can't be used to manage policies in BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources synced with the Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:TagTemplateIamBinding")]
     public partial class TagTemplateIamBinding : global::Pulumi.CustomResource

@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
 {
     /// <summary>
     /// Sets the IAM policy.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:analyticshub/v1beta1:DataExchangeListingIamBinding")]
     public partial class DataExchangeListingIamBinding : global::Pulumi.CustomResource

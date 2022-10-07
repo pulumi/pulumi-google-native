@@ -103,8 +103,6 @@ class QueueIamBinding(pulumi.CustomResource):
                  __props__=None):
         """
         Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,8 +124,6 @@ class QueueIamBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param QueueIamBindingArgs args: The arguments to use to populate this resource's properties.

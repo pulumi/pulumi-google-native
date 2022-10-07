@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v1beta1:OrganizationIamMember")]
     public partial class OrganizationIamMember : global::Pulumi.CustomResource

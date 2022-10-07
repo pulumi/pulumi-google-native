@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudiot/v1:RegistryGroupIamBinding")]
     public partial class RegistryGroupIamBinding : global::Pulumi.CustomResource

@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Updates an IAM policy for the specified bucket.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:BucketIamMember")]
     public partial class BucketIamMember : global::Pulumi.CustomResource

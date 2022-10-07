@@ -103,8 +103,6 @@ class BillingAccountIamBinding(pulumi.CustomResource):
                  __props__=None):
         """
         Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -126,8 +124,6 @@ class BillingAccountIamBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param BillingAccountIamBindingArgs args: The arguments to use to populate this resource's properties.

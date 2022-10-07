@@ -13,8 +13,6 @@ import (
 )
 
 // Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
-// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-// on Google Cloud even though it will be deleted from Pulumi state.
 type QueueIamMember struct {
 	pulumi.CustomResourceState
 
