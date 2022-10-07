@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.26.1 (2022-10-07)
+
 ### BUG FIXES/ENHANCEMENTS
 - Fix Conditions handling for IAM policy updates [#696](https://github.com/pulumi/pulumi-google-native/pull/696)
 - Improve error handling for getClientToken method [#705](https://github.com/pulumi/pulumi-google-native/pull/705)
