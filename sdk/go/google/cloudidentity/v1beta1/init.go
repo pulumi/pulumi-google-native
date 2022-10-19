@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Device{}
 	case "google-native:cloudidentity/v1beta1:Group":
 		r = &Group{}
+	case "google-native:cloudidentity/v1beta1:InboundSamlSsoProfile":
+		r = &InboundSamlSsoProfile{}
+	case "google-native:cloudidentity/v1beta1:InboundSsoAssignment":
+		r = &InboundSsoAssignment{}
 	case "google-native:cloudidentity/v1beta1:Membership":
 		r = &Membership{}
 	default:

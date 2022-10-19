@@ -62,15 +62,15 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public readonly string ActionType;
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         public readonly string Condition;
         /// <summary>
-        /// Detailed information about this custom policy constraint.
+        /// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// One line display name for the UI.
+        /// One line display name for the UI. The max length of the display_name is 200 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public readonly ImmutableArray<string> MethodTypes;
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
         /// </summary>
         public readonly string Name;
         /// <summary>

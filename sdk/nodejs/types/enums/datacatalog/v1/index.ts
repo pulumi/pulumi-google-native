@@ -58,38 +58,6 @@ export const EntryType = {
  */
 export type EntryType = (typeof EntryType)[keyof typeof EntryType];
 
-export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = {
-    /**
-     * Unspecified.
-     */
-    LookerColumnTypeUnspecified: "LOOKER_COLUMN_TYPE_UNSPECIFIED",
-    /**
-     * Dimension.
-     */
-    Dimension: "DIMENSION",
-    /**
-     * Dimension group - parent for Dimension.
-     */
-    DimensionGroup: "DIMENSION_GROUP",
-    /**
-     * Filter.
-     */
-    Filter: "FILTER",
-    /**
-     * Measure.
-     */
-    Measure: "MEASURE",
-    /**
-     * Parameter.
-     */
-    Paremeter: "PAREMETER",
-} as const;
-
-/**
- * Looker specific column type of this column.
- */
-export type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = (typeof GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)[keyof typeof GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType];
-
 export const GoogleCloudDatacatalogV1DatabaseTableSpecType = {
     /**
      * Default unknown table type.

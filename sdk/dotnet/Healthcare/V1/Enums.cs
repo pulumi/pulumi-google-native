@@ -479,7 +479,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static SchemaConfigSchemaType Analytics { get; } = new SchemaConfigSchemaType("ANALYTICS");
         /// <summary>
-        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
         /// </summary>
         public static SchemaConfigSchemaType AnalyticsV2 { get; } = new SchemaConfigSchemaType("ANALYTICS_V2");
 

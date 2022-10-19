@@ -32,6 +32,7 @@ __all__ = [
     'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
     'PlacementPolicyType',
+    'ProtectConfigWorkloadVulnerabilityMode',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
@@ -529,6 +530,24 @@ class PlacementPolicyType(str, Enum):
     """
 
 
+class ProtectConfigWorkloadVulnerabilityMode(str, Enum):
+    """
+    Sets which mode to use for Protect workload vulnerability scanning feature.
+    """
+    WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED = "WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED"
+    """
+    Default value not specified.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disables Workload Vulnerability Scanning feature on the cluster.
+    """
+    BASIC = "BASIC"
+    """
+    Applies basic vulnerability scanning settings for cluster workloads.
+    """
+
+
 class ReleaseChannelChannel(str, Enum):
     """
     channel specifies which release channel the cluster is subscribed to.
@@ -593,7 +612,7 @@ class StatusConditionCanonicalCode(str, Enum):
     """
     OK = "OK"
     """
-    Not an error; returned on success HTTP Mapping: 200 OK
+    Not an error; returned on success. HTTP Mapping: 200 OK
     """
     CANCELLED = "CANCELLED"
     """

@@ -680,6 +680,8 @@ class IpConfigurationResponse(dict):
             suggest = "allocated_ip_range"
         elif key == "authorizedNetworks":
             suggest = "authorized_networks"
+        elif key == "enablePrivatePathForGoogleCloudServices":
+            suggest = "enable_private_path_for_google_cloud_services"
         elif key == "ipv4Enabled":
             suggest = "ipv4_enabled"
         elif key == "privateNetwork":
@@ -701,19 +703,22 @@ class IpConfigurationResponse(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
                  authorized_networks: Sequence['outputs.AclEntryResponse'],
+                 enable_private_path_for_google_cloud_services: bool,
                  ipv4_enabled: bool,
                  private_network: str,
                  require_ssl: bool):
         """
         IP Management configuration.
-        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         :param Sequence['AclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
+        :param bool enable_private_path_for_google_cloud_services: Controls connectivity to private IP instances from Google services, such as BigQuery.
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
+        pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "require_ssl", require_ssl)
@@ -722,7 +727,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
         """
-        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         """
         return pulumi.get(self, "allocated_ip_range")
 
@@ -733,6 +738,14 @@ class IpConfigurationResponse(dict):
         The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
         """
         return pulumi.get(self, "authorized_networks")
+
+    @property
+    @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
+    def enable_private_path_for_google_cloud_services(self) -> bool:
+        """
+        Controls connectivity to private IP instances from Google services, such as BigQuery.
+        """
+        return pulumi.get(self, "enable_private_path_for_google_cloud_services")
 
     @property
     @pulumi.getter(name="ipv4Enabled")

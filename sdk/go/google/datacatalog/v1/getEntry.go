@@ -64,7 +64,7 @@ type LookupEntryResult struct {
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponse `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1SchemaResponse `pulumi:"schema"`
-	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponse `pulumi:"sourceSystemTimestamps"`
 	// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
 	Type string `pulumi:"type"`
@@ -212,7 +212,7 @@ func (o LookupEntryResultOutput) Schema() GoogleCloudDatacatalogV1SchemaResponse
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1SchemaResponse { return v.Schema }).(GoogleCloudDatacatalogV1SchemaResponseOutput)
 }
 
-// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 func (o LookupEntryResultOutput) SourceSystemTimestamps() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1SystemTimestampsResponse {
 		return v.SourceSystemTimestamps

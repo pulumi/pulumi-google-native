@@ -118,7 +118,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SchemaResponse>;
     /**
-     * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+     * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */
     public readonly sourceSystemTimestamps!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsResponse>;
     /**
@@ -278,7 +278,7 @@ export interface EntryArgs {
      */
     schema?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SchemaArgs>;
     /**
-     * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+     * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */
     sourceSystemTimestamps?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsArgs>;
     /**

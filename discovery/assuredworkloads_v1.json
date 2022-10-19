@@ -14,7 +14,7 @@
   "canonicalName": "Assuredworkloads",
   "description": "",
   "discoveryVersion": "v1",
-  "documentationLink": "https://cloud.google.com",
+  "documentationLink": "https://cloud.google.com/learnmoreurl",
   "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
@@ -254,7 +254,7 @@
                   ],
                   "parameters": {
                     "name": {
-                      "description": "Required. The resource name of the Workload to fetch. This is the workloads's relative path in the API, formatted as \"organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}\". For example, \"organizations/123/locations/us-east1/workloads/assured-workload-1\".",
+                      "description": "Required. The resource name of the Workload to fetch. This is the workload's relative path in the API, formatted as \"organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}\". For example, \"organizations/123/locations/us-east1/workloads/assured-workload-1\".",
                       "location": "path",
                       "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
                       "required": true,
@@ -491,7 +491,7 @@
       }
     }
   },
-  "revision": "20220915",
+  "revision": "20221014",
   "rootUrl": "https://assuredworkloads.googleapis.com/",
   "schemas": {
     "GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest": {
@@ -503,7 +503,7 @@
           "type": "string"
         },
         "nonCompliantOrgPolicy": {
-          "description": "Optional. Name of the OrgPolicy which was modified with non-compliant change and resulted in this violation. Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}",
+          "description": "Optional. This field is deprecated and will be removed in future version of the API. Name of the OrgPolicy which was modified with non-compliant change and resulted in this violation. Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}",
           "type": "string"
         }
       },
@@ -532,7 +532,9 @@
             "HITRUST",
             "EU_REGIONS_AND_SUPPORT",
             "CA_REGIONS_AND_SUPPORT",
-            "ITAR"
+            "ITAR",
+            "AU_REGIONS_AND_US_SUPPORT",
+            "ASSURED_WORKLOADS_FOR_PARTNERS"
           ],
           "enumDescriptions": [
             "Unknown compliance regime.",
@@ -545,7 +547,9 @@
             "Health Information Trust Alliance controls",
             "Assured Workloads For EU Regions and Support controls",
             "Assured Workloads For Canada Regions and Support controls",
-            "International Traffic in Arms Regulations"
+            "International Traffic in Arms Regulations",
+            "Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.",
+            "Assured Workloads for Partners"
           ],
           "type": "string"
         },
@@ -662,6 +666,11 @@
           "readOnly": true,
           "type": "string"
         },
+        "exceptionAuditLogLink": {
+          "description": "Output only. Immutable. Audit Log link to find business justification provided for violation exception. Format: https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}",
+          "readOnly": true,
+          "type": "string"
+        },
         "name": {
           "description": "Output only. Immutable. Name of the Violation. Format: organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}",
           "readOnly": true,
@@ -692,14 +701,12 @@
           "description": "Output only. State of the violation",
           "enum": [
             "STATE_UNSPECIFIED",
-            "ACTIVE",
             "RESOLVED",
             "UNRESOLVED",
             "EXCEPTION"
           ],
           "enumDescriptions": [
             "Unspecified state.",
-            "Violation currently active. ",
             "Violation is resolved.",
             "Violation is Unresolved",
             "Violation is Exception"
@@ -825,7 +832,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1Workload": {
-      "description": "An Workload object for managing highly regulated workloads of cloud customers.",
+      "description": "A Workload object for managing highly regulated workloads of cloud customers.",
       "id": "GoogleCloudAssuredworkloadsV1Workload",
       "properties": {
         "billingAccount": {
@@ -845,7 +852,9 @@
             "HITRUST",
             "EU_REGIONS_AND_SUPPORT",
             "CA_REGIONS_AND_SUPPORT",
-            "ITAR"
+            "ITAR",
+            "AU_REGIONS_AND_US_SUPPORT",
+            "ASSURED_WORKLOADS_FOR_PARTNERS"
           ],
           "enumDescriptions": [
             "Unknown compliance regime.",
@@ -858,7 +867,9 @@
             "Health Information Trust Alliance controls",
             "Assured Workloads For EU Regions and Support controls",
             "Assured Workloads For Canada Regions and Support controls",
-            "International Traffic in Arms Regulations"
+            "International Traffic in Arms Regulations",
+            "Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.",
+            "Assured Workloads for Partners"
           ],
           "type": "string"
         },
@@ -918,6 +929,18 @@
           "description": "Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.",
           "type": "string"
         },
+        "partner": {
+          "description": "Optional. Compliance Regime associated with this workload.",
+          "enum": [
+            "PARTNER_UNSPECIFIED",
+            "LOCAL_CONTROLS_BY_S3NS"
+          ],
+          "enumDescriptions": [
+            "Unknown partner regime/controls.",
+            "S3NS regime/controls."
+          ],
+          "type": "string"
+        },
         "provisionedResourcesParent": {
           "description": "Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}",
           "type": "string"
@@ -946,7 +969,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1WorkloadKMSSettings": {
-      "description": "Settings specific to the Key Management Service.",
+      "description": "Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.",
       "id": "GoogleCloudAssuredworkloadsV1WorkloadKMSSettings",
       "properties": {
         "nextRotationTime": {
@@ -1005,7 +1028,7 @@
           "type": "string"
         },
         "resourceType": {
-          "description": "Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)",
+          "description": "Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)",
           "enum": [
             "RESOURCE_TYPE_UNSPECIFIED",
             "CONSUMER_PROJECT",

@@ -34,8 +34,8 @@ class ApiArgs:
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
-        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         """
         pulumi.set(__self__, "api_id", api_id)
         if annotations is not None:
@@ -165,7 +165,7 @@ class ApiArgs:
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> Optional[pulumi.Input[str]]:
         """
-        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -177,7 +177,7 @@ class ApiArgs:
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 
@@ -215,8 +215,8 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
-        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         """
         ...
     @overload
@@ -394,7 +394,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> pulumi.Output[str]:
         """
-        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -402,7 +402,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> pulumi.Output[str]:
         """
-        The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 

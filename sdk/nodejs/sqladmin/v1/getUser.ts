@@ -17,6 +17,7 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:sqladmin/v1:getUser", {
+        "host": args.host,
         "instance": args.instance,
         "name": args.name,
         "project": args.project,
@@ -24,6 +25,7 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
 }
 
 export interface GetUserArgs {
+    host?: string;
     instance: string;
     name: string;
     project?: string;
@@ -80,6 +82,7 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptio
 }
 
 export interface GetUserOutputArgs {
+    host?: pulumi.Input<string>;
     instance: pulumi.Input<string>;
     name: pulumi.Input<string>;
     project?: pulumi.Input<string>;

@@ -7,12 +7,13 @@ from enum import Enum
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType',
     'WorkloadComplianceRegime',
+    'WorkloadPartner',
 ]
 
 
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enum):
     """
-    Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+    Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
     """
     RESOURCE_TYPE_UNSPECIFIED = "RESOURCE_TYPE_UNSPECIFIED"
     """
@@ -83,4 +84,26 @@ class WorkloadComplianceRegime(str, Enum):
     ITAR = "ITAR"
     """
     International Traffic in Arms Regulations
+    """
+    AU_REGIONS_AND_US_SUPPORT = "AU_REGIONS_AND_US_SUPPORT"
+    """
+    Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+    """
+    ASSURED_WORKLOADS_FOR_PARTNERS = "ASSURED_WORKLOADS_FOR_PARTNERS"
+    """
+    Assured Workloads for Partners
+    """
+
+
+class WorkloadPartner(str, Enum):
+    """
+    Optional. Compliance Regime associated with this workload.
+    """
+    PARTNER_UNSPECIFIED = "PARTNER_UNSPECIFIED"
+    """
+    Unknown partner regime/controls.
+    """
+    LOCAL_CONTROLS_BY_S3NS = "LOCAL_CONTROLS_BY_S3NS"
+    """
+    S3NS regime/controls.
     """

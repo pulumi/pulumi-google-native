@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("notificationConfigId", required: true)]
         public string NotificationConfigId { get; set; } = null!;
 
-        [Input("organizationId", required: true)]
-        public string OrganizationId { get; set; } = null!;
+        [Input("project")]
+        public string? Project { get; set; }
 
         public GetNotificationConfigArgs()
         {
@@ -44,8 +44,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("notificationConfigId", required: true)]
         public Input<string> NotificationConfigId { get; set; } = null!;
 
-        [Input("organizationId", required: true)]
-        public Input<string> OrganizationId { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public GetNotificationConfigInvokeArgs()
         {

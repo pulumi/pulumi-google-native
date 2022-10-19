@@ -152,14 +152,6 @@ export const InstanceDatabaseVersion = {
      */
     Mysql57: "MYSQL_5_7",
     /**
-     * The database version is PostgreSQL 9.6.
-     */
-    Postgres96: "POSTGRES_9_6",
-    /**
-     * The database version is PostgreSQL 11.
-     */
-    Postgres11: "POSTGRES_11",
-    /**
      * The database version is SQL Server 2017 Standard.
      */
     Sqlserver2017Standard: "SQLSERVER_2017_STANDARD",
@@ -176,13 +168,29 @@ export const InstanceDatabaseVersion = {
      */
     Sqlserver2017Web: "SQLSERVER_2017_WEB",
     /**
+     * The database version is PostgreSQL 9.6.
+     */
+    Postgres96: "POSTGRES_9_6",
+    /**
      * The database version is PostgreSQL 10.
      */
     Postgres10: "POSTGRES_10",
     /**
+     * The database version is PostgreSQL 11.
+     */
+    Postgres11: "POSTGRES_11",
+    /**
      * The database version is PostgreSQL 12.
      */
     Postgres12: "POSTGRES_12",
+    /**
+     * The database version is PostgreSQL 13.
+     */
+    Postgres13: "POSTGRES_13",
+    /**
+     * The database version is PostgreSQL 14.
+     */
+    Postgres14: "POSTGRES_14",
     /**
      * The database version is MySQL 8.
      */
@@ -211,14 +219,6 @@ export const InstanceDatabaseVersion = {
      * The database major version is MySQL 8.0 and the minor version is 30.
      */
     Mysql8030: "MYSQL_8_0_30",
-    /**
-     * The database version is PostgreSQL 13.
-     */
-    Postgres13: "POSTGRES_13",
-    /**
-     * The database version is PostgreSQL 14.
-     */
-    Postgres14: "POSTGRES_14",
     /**
      * The database version is SQL Server 2019 Standard.
      */

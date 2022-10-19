@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+        /// </summary>
+        [Output("ipv6EndpointType")]
+        public Output<string> Ipv6EndpointType { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#address for addresses.
         /// </summary>
         [Output("kind")]
@@ -192,6 +198,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("ipVersion")]
         public Input<Pulumi.GoogleNative.Compute.V1.GlobalAddressIpVersion>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+        /// </summary>
+        [Input("ipv6EndpointType")]
+        public Input<Pulumi.GoogleNative.Compute.V1.GlobalAddressIpv6EndpointType>? Ipv6EndpointType { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.

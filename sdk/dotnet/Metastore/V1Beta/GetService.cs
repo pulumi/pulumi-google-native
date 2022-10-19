@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
         /// </summary>
         public readonly Outputs.NetworkConfigResponse NetworkConfig;
         /// <summary>

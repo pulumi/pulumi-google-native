@@ -164,7 +164,7 @@ class GoogleCloudRunV2ContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
-        :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] liveness_probe: Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -246,7 +246,7 @@ class GoogleCloudRunV2ContainerArgs:
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']]:
         """
-        Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "liveness_probe")
 

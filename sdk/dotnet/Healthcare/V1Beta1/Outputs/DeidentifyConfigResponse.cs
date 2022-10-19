@@ -21,15 +21,15 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.AnnotationConfigResponse Annotation;
         /// <summary>
-        /// Configures de-id of application/DICOM content.
+        /// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         /// </summary>
         public readonly Outputs.DicomConfigResponse Dicom;
         /// <summary>
-        /// Configures de-id of application/FHIR content.
+        /// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         /// </summary>
         public readonly Outputs.FhirConfigResponse Fhir;
         /// <summary>
-        /// Configures de-identification of image pixels wherever they are found in the source_dataset.
+        /// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         /// </summary>
         public readonly Outputs.ImageConfigResponse Image;
         /// <summary>

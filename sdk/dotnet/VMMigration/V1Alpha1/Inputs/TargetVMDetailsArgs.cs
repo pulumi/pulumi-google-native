@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
+namespace Pulumi.GoogleNative.Vmmigration.V1Alpha1.Inputs
 {
 
     /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         /// The disk type to use in the VM.
         /// </summary>
         [Input("diskType")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.TargetVMDetailsDiskType>? DiskType { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1Alpha1.TargetVMDetailsDiskType>? DiskType { get; set; }
 
         /// <summary>
         /// The external IP to define in the VM.
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         /// The license type to use in OS adaptation.
         /// </summary>
         [Input("licenseType")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.TargetVMDetailsLicenseType>? LicenseType { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1Alpha1.TargetVMDetailsLicenseType>? LicenseType { get; set; }
 
         /// <summary>
         /// The machine type to create the VM with.

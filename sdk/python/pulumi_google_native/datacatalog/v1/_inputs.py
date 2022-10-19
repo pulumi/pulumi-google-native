@@ -15,7 +15,6 @@ __all__ = [
     'ExprArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
     'GoogleCloudDatacatalogV1BusinessContextArgs',
-    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
     'GoogleCloudDatacatalogV1ContactsPersonArgs',
     'GoogleCloudDatacatalogV1ContactsArgs',
@@ -233,36 +232,11 @@ class GoogleCloudDatacatalogV1BusinessContextArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs:
-    def __init__(__self__, *,
-                 type: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']] = None):
-        """
-        Column info specific to Looker System.
-        :param pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType'] type: Looker specific column type of this column.
-        """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']]:
-        """
-        Looker specific column type of this column.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class GoogleCloudDatacatalogV1ColumnSchemaArgs:
     def __init__(__self__, *,
                  column: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 looker_column_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  subcolumns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaArgs']]]] = None):
         """
@@ -270,7 +244,6 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
         :param pulumi.Input[str] column: Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
         :param pulumi.Input[str] type: Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
         :param pulumi.Input[str] description: Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
-        :param pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs'] looker_column_spec: Looker specific column info of this column.
         :param pulumi.Input[str] mode: Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaArgs']]] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         """
@@ -278,8 +251,6 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if looker_column_spec is not None:
-            pulumi.set(__self__, "looker_column_spec", looker_column_spec)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if subcolumns is not None:
@@ -320,18 +291,6 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="lookerColumnSpec")
-    def looker_column_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']]:
-        """
-        Looker specific column info of this column.
-        """
-        return pulumi.get(self, "looker_column_spec")
-
-    @looker_column_spec.setter
-    def looker_column_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']]):
-        pulumi.set(self, "looker_column_spec", value)
 
     @property
     @pulumi.getter
@@ -1052,29 +1011,13 @@ class GoogleCloudDatacatalogV1SystemTimestampsArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1UsageSignalArgs:
     def __init__(__self__, *,
-                 favorite_count: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-        :param pulumi.Input[str] favorite_count: Favorite count in the source system.
         :param pulumi.Input[str] update_time: The end timestamp of the duration of usage statistics.
         """
-        if favorite_count is not None:
-            pulumi.set(__self__, "favorite_count", favorite_count)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="favoriteCount")
-    def favorite_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Favorite count in the source system.
-        """
-        return pulumi.get(self, "favorite_count")
-
-    @favorite_count.setter
-    def favorite_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "favorite_count", value)
 
     @property
     @pulumi.getter(name="updateTime")

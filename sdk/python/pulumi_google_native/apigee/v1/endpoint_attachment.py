@@ -21,7 +21,7 @@ class EndpointAttachmentArgs:
                  service_attachment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EndpointAttachment resource.
-        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
@@ -49,7 +49,7 @@ class EndpointAttachmentArgs:
     @pulumi.getter(name="endpointAttachmentId")
     def endpoint_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         """
         return pulumi.get(self, "endpoint_attachment_id")
 
@@ -111,7 +111,7 @@ class EndpointAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
@@ -211,7 +211,7 @@ class EndpointAttachment(pulumi.CustomResource):
     @pulumi.getter(name="endpointAttachmentId")
     def endpoint_attachment_id(self) -> pulumi.Output[Optional[str]]:
         """
-        ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         """
         return pulumi.get(self, "endpoint_attachment_id")
 

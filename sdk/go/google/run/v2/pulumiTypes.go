@@ -473,7 +473,7 @@ type GoogleCloudRunV2Container struct {
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
-	// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe *GoogleCloudRunV2Probe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
@@ -510,7 +510,7 @@ type GoogleCloudRunV2ContainerArgs struct {
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
-	// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe GoogleCloudRunV2ProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -598,7 +598,7 @@ func (o GoogleCloudRunV2ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GoogleCloudRunV2ContainerOutput) LivenessProbe() GoogleCloudRunV2ProbePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *GoogleCloudRunV2Probe { return v.LivenessProbe }).(GoogleCloudRunV2ProbePtrOutput)
 }
@@ -825,7 +825,7 @@ type GoogleCloudRunV2ContainerResponse struct {
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
 	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
-	// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe GoogleCloudRunV2ProbeResponse `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name string `pulumi:"name"`
@@ -876,7 +876,7 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GoogleCloudRunV2ContainerResponseOutput) LivenessProbe() GoogleCloudRunV2ProbeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) GoogleCloudRunV2ProbeResponse { return v.LivenessProbe }).(GoogleCloudRunV2ProbeResponseOutput)
 }

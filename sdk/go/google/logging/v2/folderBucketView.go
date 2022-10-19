@@ -29,7 +29,7 @@ type FolderBucketView struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The last update timestamp of the view.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringOutput `pulumi:"viewId"`
 }
 
@@ -97,7 +97,7 @@ type folderBucketViewArgs struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name *string `pulumi:"name"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId string `pulumi:"viewId"`
 }
 
@@ -112,7 +112,7 @@ type FolderBucketViewArgs struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name pulumi.StringPtrInput
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringInput
 }
 
@@ -190,7 +190,7 @@ func (o FolderBucketViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Required. The id to use for this view.
+// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 func (o FolderBucketViewOutput) ViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBucketView) pulumi.StringOutput { return v.ViewId }).(pulumi.StringOutput)
 }

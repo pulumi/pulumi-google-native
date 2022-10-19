@@ -207,10 +207,6 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 		methods := candidateResources[typeName]
 		switch {
 		case methods.createMethod != nil && methods.getMethod != nil:
-			if methods.getMethod.HttpMethod != "GET" {
-				return errors.Errorf(
-					"get method %q is not supported: %s (%s)", methods.getMethod.HttpMethod, typeName, docName)
-			}
 			path := methods.createMethod.FlatPath
 			if path == "" {
 				path = methods.createMethod.Path

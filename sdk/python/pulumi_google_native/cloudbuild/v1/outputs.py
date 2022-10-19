@@ -26,6 +26,7 @@ __all__ = [
     'BuildStepResponse',
     'BuiltImageResponse',
     'FailureInfoResponse',
+    'FileHashesResponse',
     'GitFileSourceResponse',
     'GitHubEnterpriseSecretsResponse',
     'GitHubEventsConfigResponse',
@@ -35,13 +36,16 @@ __all__ = [
     'GitLabRepositoryIdResponse',
     'GitLabSecretsResponse',
     'GitRepoSourceResponse',
+    'HashResponse',
     'InlineSecretResponse',
+    'MavenArtifactResponse',
     'NetworkConfigResponse',
     'PoolOptionResponse',
     'PrivatePoolV1ConfigResponse',
     'PubsubConfigResponse',
     'PullRequestFilterResponse',
     'PushFilterResponse',
+    'PythonPackageResponse',
     'RepoSourceResponse',
     'ResultsResponse',
     'SecretManagerSecretResponse',
@@ -53,6 +57,8 @@ __all__ = [
     'StorageSourceManifestResponse',
     'StorageSourceResponse',
     'TimeSpanResponse',
+    'UploadedMavenArtifactResponse',
+    'UploadedPythonPackageResponse',
     'VolumeResponse',
     'WarningResponse',
     'WebhookConfigResponse',
@@ -232,16 +238,41 @@ class ArtifactsResponse(dict):
     """
     Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mavenArtifacts":
+            suggest = "maven_artifacts"
+        elif key == "pythonPackages":
+            suggest = "python_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArtifactsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArtifactsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArtifactsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  images: Sequence[str],
-                 objects: 'outputs.ArtifactObjectsResponse'):
+                 maven_artifacts: Sequence['outputs.MavenArtifactResponse'],
+                 objects: 'outputs.ArtifactObjectsResponse',
+                 python_packages: Sequence['outputs.PythonPackageResponse']):
         """
         Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+        :param Sequence['MavenArtifactResponse'] maven_artifacts: A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
         :param 'ArtifactObjectsResponse' objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+        :param Sequence['PythonPackageResponse'] python_packages: A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
         """
         pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "maven_artifacts", maven_artifacts)
         pulumi.set(__self__, "objects", objects)
+        pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -252,12 +283,28 @@ class ArtifactsResponse(dict):
         return pulumi.get(self, "images")
 
     @property
+    @pulumi.getter(name="mavenArtifacts")
+    def maven_artifacts(self) -> Sequence['outputs.MavenArtifactResponse']:
+        """
+        A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "maven_artifacts")
+
+    @property
     @pulumi.getter
     def objects(self) -> 'outputs.ArtifactObjectsResponse':
         """
         A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         """
         return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Sequence['outputs.PythonPackageResponse']:
+        """
+        A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "python_packages")
 
 
 @pulumi.output_type
@@ -1540,6 +1587,45 @@ class FailureInfoResponse(dict):
 
 
 @pulumi.output_type
+class FileHashesResponse(dict):
+    """
+    Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHash":
+            suggest = "file_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileHashesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hash: Sequence['outputs.HashResponse']):
+        """
+        Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.
+        :param Sequence['HashResponse'] file_hash: Collection of file hashes.
+        """
+        pulumi.set(__self__, "file_hash", file_hash)
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Sequence['outputs.HashResponse']:
+        """
+        Collection of file hashes.
+        """
+        return pulumi.get(self, "file_hash")
+
+
+@pulumi.output_type
 class GitFileSourceResponse(dict):
     """
     GitFileSource describes a file within a (possibly remote) code repository.
@@ -2335,6 +2421,39 @@ class GitRepoSourceResponse(dict):
 
 
 @pulumi.output_type
+class HashResponse(dict):
+    """
+    Container message for hash values.
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 value: str):
+        """
+        Container message for hash values.
+        :param str type: The type of hash that was performed.
+        :param str value: The hash value.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of hash that was performed.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The hash value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class InlineSecretResponse(dict):
     """
     Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
@@ -2384,6 +2503,91 @@ class InlineSecretResponse(dict):
         Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class MavenArtifactResponse(dict):
+    """
+    A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MavenArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MavenArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MavenArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_id: str,
+                 group_id: str,
+                 path: str,
+                 repository: str,
+                 version: str):
+        """
+        A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+        :param str artifact_id: Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+        :param str group_id: Maven `groupId` value used when uploading the artifact to Artifact Registry.
+        :param str path: Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        :param str version: Maven `version` value used when uploading the artifact to Artifact Registry.
+        """
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> str:
+        """
+        Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        Maven `groupId` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Maven `version` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -2709,6 +2913,39 @@ class PushFilterResponse(dict):
 
 
 @pulumi.output_type
+class PythonPackageResponse(dict):
+    """
+    Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+    """
+    def __init__(__self__, *,
+                 paths: Sequence[str],
+                 repository: str):
+        """
+        Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+        :param Sequence[str] paths: Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        """
+        Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
 class RepoSourceResponse(dict):
     """
     Location of the source in a Google Cloud Source Repository.
@@ -2848,8 +3085,12 @@ class ResultsResponse(dict):
             suggest = "build_step_images"
         elif key == "buildStepOutputs":
             suggest = "build_step_outputs"
+        elif key == "mavenArtifacts":
+            suggest = "maven_artifacts"
         elif key == "numArtifacts":
             suggest = "num_artifacts"
+        elif key == "pythonPackages":
+            suggest = "python_packages"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ResultsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2868,7 +3109,9 @@ class ResultsResponse(dict):
                  build_step_images: Sequence[str],
                  build_step_outputs: Sequence[str],
                  images: Sequence['outputs.BuiltImageResponse'],
-                 num_artifacts: str):
+                 maven_artifacts: Sequence['outputs.UploadedMavenArtifactResponse'],
+                 num_artifacts: str,
+                 python_packages: Sequence['outputs.UploadedPythonPackageResponse']):
         """
         Artifacts created by the build pipeline.
         :param str artifact_manifest: Path to the artifact manifest. Only populated when artifacts are uploaded.
@@ -2876,14 +3119,18 @@ class ResultsResponse(dict):
         :param Sequence[str] build_step_images: List of build step digests, in the order corresponding to build step indices.
         :param Sequence[str] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
         :param Sequence['BuiltImageResponse'] images: Container images that were built as a part of the build.
+        :param Sequence['UploadedMavenArtifactResponse'] maven_artifacts: Maven artifacts uploaded to Artifact Registry at the end of the build.
         :param str num_artifacts: Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        :param Sequence['UploadedPythonPackageResponse'] python_packages: Python artifacts uploaded to Artifact Registry at the end of the build.
         """
         pulumi.set(__self__, "artifact_manifest", artifact_manifest)
         pulumi.set(__self__, "artifact_timing", artifact_timing)
         pulumi.set(__self__, "build_step_images", build_step_images)
         pulumi.set(__self__, "build_step_outputs", build_step_outputs)
         pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "maven_artifacts", maven_artifacts)
         pulumi.set(__self__, "num_artifacts", num_artifacts)
+        pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter(name="artifactManifest")
@@ -2926,12 +3173,28 @@ class ResultsResponse(dict):
         return pulumi.get(self, "images")
 
     @property
+    @pulumi.getter(name="mavenArtifacts")
+    def maven_artifacts(self) -> Sequence['outputs.UploadedMavenArtifactResponse']:
+        """
+        Maven artifacts uploaded to Artifact Registry at the end of the build.
+        """
+        return pulumi.get(self, "maven_artifacts")
+
+    @property
     @pulumi.getter(name="numArtifacts")
     def num_artifacts(self) -> str:
         """
         Number of artifacts uploaded. Only populated when artifacts are uploaded.
         """
         return pulumi.get(self, "num_artifacts")
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Sequence['outputs.UploadedPythonPackageResponse']:
+        """
+        Python artifacts uploaded to Artifact Registry at the end of the build.
+        """
+        return pulumi.get(self, "python_packages")
 
 
 @pulumi.output_type
@@ -3389,6 +3652,132 @@ class TimeSpanResponse(dict):
         Start of time span.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class UploadedMavenArtifactResponse(dict):
+    """
+    A Maven artifact uploaded using the MavenArtifact directive.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHashes":
+            suggest = "file_hashes"
+        elif key == "pushTiming":
+            suggest = "push_timing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UploadedMavenArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UploadedMavenArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UploadedMavenArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hashes: 'outputs.FileHashesResponse',
+                 push_timing: 'outputs.TimeSpanResponse',
+                 uri: str):
+        """
+        A Maven artifact uploaded using the MavenArtifact directive.
+        :param 'FileHashesResponse' file_hashes: Hash types and values of the Maven Artifact.
+        :param 'TimeSpanResponse' push_timing: Stores timing information for pushing the specified artifact.
+        :param str uri: URI of the uploaded artifact.
+        """
+        pulumi.set(__self__, "file_hashes", file_hashes)
+        pulumi.set(__self__, "push_timing", push_timing)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="fileHashes")
+    def file_hashes(self) -> 'outputs.FileHashesResponse':
+        """
+        Hash types and values of the Maven Artifact.
+        """
+        return pulumi.get(self, "file_hashes")
+
+    @property
+    @pulumi.getter(name="pushTiming")
+    def push_timing(self) -> 'outputs.TimeSpanResponse':
+        """
+        Stores timing information for pushing the specified artifact.
+        """
+        return pulumi.get(self, "push_timing")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of the uploaded artifact.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class UploadedPythonPackageResponse(dict):
+    """
+    Artifact uploaded using the PythonPackage directive.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHashes":
+            suggest = "file_hashes"
+        elif key == "pushTiming":
+            suggest = "push_timing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UploadedPythonPackageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UploadedPythonPackageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UploadedPythonPackageResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hashes: 'outputs.FileHashesResponse',
+                 push_timing: 'outputs.TimeSpanResponse',
+                 uri: str):
+        """
+        Artifact uploaded using the PythonPackage directive.
+        :param 'FileHashesResponse' file_hashes: Hash types and values of the Python Artifact.
+        :param 'TimeSpanResponse' push_timing: Stores timing information for pushing the specified artifact.
+        :param str uri: URI of the uploaded artifact.
+        """
+        pulumi.set(__self__, "file_hashes", file_hashes)
+        pulumi.set(__self__, "push_timing", push_timing)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="fileHashes")
+    def file_hashes(self) -> 'outputs.FileHashesResponse':
+        """
+        Hash types and values of the Python Artifact.
+        """
+        return pulumi.get(self, "file_hashes")
+
+    @property
+    @pulumi.getter(name="pushTiming")
+    def push_timing(self) -> 'outputs.TimeSpanResponse':
+        """
+        Stores timing information for pushing the specified artifact.
+        """
+        return pulumi.get(self, "push_timing")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of the uploaded artifact.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

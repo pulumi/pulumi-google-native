@@ -62,6 +62,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> SizeBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// </summary>
+        [Output("sourceBackup")]
+        public Output<string> SourceBackup { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         /// </summary>
         [Output("sourceTable")]

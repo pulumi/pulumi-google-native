@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestAddressGroups;
         /// <summary>
-        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         /// </summary>
         public readonly ImmutableArray<string> DestFqdns;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcAddressGroups;
         /// <summary>
-        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         /// </summary>
         public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>

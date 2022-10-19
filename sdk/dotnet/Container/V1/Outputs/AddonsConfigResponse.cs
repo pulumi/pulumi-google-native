@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.GcpFilestoreCsiDriverConfigResponse GcpFilestoreCsiDriverConfig;
         /// <summary>
+        /// Configuration for the Backup for GKE agent addon.
+        /// </summary>
+        public readonly Outputs.GkeBackupAgentConfigResponse GkeBackupAgentConfig;
+        /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         /// </summary>
         public readonly Outputs.HorizontalPodAutoscalingResponse HorizontalPodAutoscaling;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.GcpFilestoreCsiDriverConfigResponse gcpFilestoreCsiDriverConfig,
 
+            Outputs.GkeBackupAgentConfigResponse gkeBackupAgentConfig,
+
             Outputs.HorizontalPodAutoscalingResponse horizontalPodAutoscaling,
 
             Outputs.HttpLoadBalancingResponse httpLoadBalancing,
@@ -78,6 +84,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            GkeBackupAgentConfig = gkeBackupAgentConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             KubernetesDashboard = kubernetesDashboard;

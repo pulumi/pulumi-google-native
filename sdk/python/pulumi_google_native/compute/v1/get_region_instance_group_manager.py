@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstanceGroupManagerResult:
-    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, fingerprint=None, instance_group=None, instance_template=None, kind=None, name=None, named_ports=None, region=None, self_link=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, fingerprint=None, instance_group=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
         if auto_healing_policies and not isinstance(auto_healing_policies, list):
             raise TypeError("Expected argument 'auto_healing_policies' to be a list")
         pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
@@ -50,6 +50,9 @@ class GetRegionInstanceGroupManagerResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if list_managed_instances_results and not isinstance(list_managed_instances_results, str):
+            raise TypeError("Expected argument 'list_managed_instances_results' to be a str")
+        pulumi.set(__self__, "list_managed_instances_results", list_managed_instances_results)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -165,6 +168,14 @@ class GetRegionInstanceGroupManagerResult:
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="listManagedInstancesResults")
+    def list_managed_instances_results(self) -> str:
+        """
+        Pagination behavior of the listManagedInstances API method for this managed instance group.
+        """
+        return pulumi.get(self, "list_managed_instances_results")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -269,6 +280,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             instance_group=self.instance_group,
             instance_template=self.instance_template,
             kind=self.kind,
+            list_managed_instances_results=self.list_managed_instances_results,
             name=self.name,
             named_ports=self.named_ports,
             region=self.region,
@@ -307,6 +319,7 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         instance_group=__ret__.instance_group,
         instance_template=__ret__.instance_template,
         kind=__ret__.kind,
+        list_managed_instances_results=__ret__.list_managed_instances_results,
         name=__ret__.name,
         named_ports=__ret__.named_ports,
         region=__ret__.region,

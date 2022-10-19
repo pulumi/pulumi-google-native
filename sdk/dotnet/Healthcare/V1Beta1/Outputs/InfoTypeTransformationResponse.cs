@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.DateShiftConfigResponse DateShiftConfig;
         /// <summary>
-        /// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        /// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         /// </summary>
         public readonly ImmutableArray<string> InfoTypes;
         /// <summary>

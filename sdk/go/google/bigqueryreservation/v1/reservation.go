@@ -14,7 +14,7 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
-	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency pulumi.StringOutput `pulumi:"concurrency"`
 	// Creation time of the reservation.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
@@ -78,7 +78,7 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
-	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency *string `pulumi:"concurrency"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots *bool   `pulumi:"ignoreIdleSlots"`
@@ -96,7 +96,7 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
-	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency pulumi.StringPtrInput
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
@@ -149,7 +149,7 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 func (o ReservationOutput) Concurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Concurrency }).(pulumi.StringOutput)
 }

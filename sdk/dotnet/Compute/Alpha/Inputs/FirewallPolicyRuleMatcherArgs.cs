@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _destFqdns;
 
         /// <summary>
-        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         /// </summary>
         public InputList<string> DestFqdns
         {
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _srcFqdns;
 
         /// <summary>
-        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         /// </summary>
         public InputList<string> SrcFqdns
         {

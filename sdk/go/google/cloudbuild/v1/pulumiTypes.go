@@ -433,8 +433,12 @@ func (o ArtifactObjectsResponseOutput) Timing() TimeSpanResponseOutput {
 type Artifacts struct {
 	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
 	Images []string `pulumi:"images"`
+	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+	MavenArtifacts []MavenArtifact `pulumi:"mavenArtifacts"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects *ArtifactObjects `pulumi:"objects"`
+	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+	PythonPackages []PythonPackage `pulumi:"pythonPackages"`
 }
 
 // ArtifactsInput is an input type that accepts ArtifactsArgs and ArtifactsOutput values.
@@ -452,8 +456,12 @@ type ArtifactsInput interface {
 type ArtifactsArgs struct {
 	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
+	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+	MavenArtifacts MavenArtifactArrayInput `pulumi:"mavenArtifacts"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects ArtifactObjectsPtrInput `pulumi:"objects"`
+	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+	PythonPackages PythonPackageArrayInput `pulumi:"pythonPackages"`
 }
 
 func (ArtifactsArgs) ElementType() reflect.Type {
@@ -539,9 +547,19 @@ func (o ArtifactsOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Artifacts) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsOutput) MavenArtifacts() MavenArtifactArrayOutput {
+	return o.ApplyT(func(v Artifacts) []MavenArtifact { return v.MavenArtifacts }).(MavenArtifactArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsOutput) Objects() ArtifactObjectsPtrOutput {
 	return o.ApplyT(func(v Artifacts) *ArtifactObjects { return v.Objects }).(ArtifactObjectsPtrOutput)
+}
+
+// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsOutput) PythonPackages() PythonPackageArrayOutput {
+	return o.ApplyT(func(v Artifacts) []PythonPackage { return v.PythonPackages }).(PythonPackageArrayOutput)
 }
 
 type ArtifactsPtrOutput struct{ *pulumi.OutputState }
@@ -578,6 +596,16 @@ func (o ArtifactsPtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsPtrOutput) MavenArtifacts() MavenArtifactArrayOutput {
+	return o.ApplyT(func(v *Artifacts) []MavenArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.MavenArtifacts
+	}).(MavenArtifactArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsPtrOutput) Objects() ArtifactObjectsPtrOutput {
 	return o.ApplyT(func(v *Artifacts) *ArtifactObjects {
@@ -588,12 +616,26 @@ func (o ArtifactsPtrOutput) Objects() ArtifactObjectsPtrOutput {
 	}).(ArtifactObjectsPtrOutput)
 }
 
+// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsPtrOutput) PythonPackages() PythonPackageArrayOutput {
+	return o.ApplyT(func(v *Artifacts) []PythonPackage {
+		if v == nil {
+			return nil
+		}
+		return v.PythonPackages
+	}).(PythonPackageArrayOutput)
+}
+
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
 type ArtifactsResponse struct {
 	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
 	Images []string `pulumi:"images"`
+	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+	MavenArtifacts []MavenArtifactResponse `pulumi:"mavenArtifacts"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects ArtifactObjectsResponse `pulumi:"objects"`
+	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+	PythonPackages []PythonPackageResponse `pulumi:"pythonPackages"`
 }
 
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
@@ -616,9 +658,19 @@ func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ArtifactsResponse) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponseOutput) MavenArtifacts() MavenArtifactResponseArrayOutput {
+	return o.ApplyT(func(v ArtifactsResponse) []MavenArtifactResponse { return v.MavenArtifacts }).(MavenArtifactResponseArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsResponseOutput) Objects() ArtifactObjectsResponseOutput {
 	return o.ApplyT(func(v ArtifactsResponse) ArtifactObjectsResponse { return v.Objects }).(ArtifactObjectsResponseOutput)
+}
+
+// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponseOutput) PythonPackages() PythonPackageResponseArrayOutput {
+	return o.ApplyT(func(v ArtifactsResponse) []PythonPackageResponse { return v.PythonPackages }).(PythonPackageResponseArrayOutput)
 }
 
 // BitbucketServerConfig represents the configuration for a Bitbucket Server.
@@ -2717,6 +2769,32 @@ func (o FailureInfoResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FailureInfoResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.
+type FileHashesResponse struct {
+	// Collection of file hashes.
+	FileHash []HashResponse `pulumi:"fileHash"`
+}
+
+// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.
+type FileHashesResponseOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutput() FileHashesResponseOutput {
+	return o
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx context.Context) FileHashesResponseOutput {
+	return o
+}
+
+// Collection of file hashes.
+func (o FileHashesResponseOutput) FileHash() HashResponseArrayOutput {
+	return o.ApplyT(func(v FileHashesResponse) []HashResponse { return v.FileHash }).(HashResponseArrayOutput)
+}
+
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSource struct {
 	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -4739,6 +4817,59 @@ func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
+// Container message for hash values.
+type HashResponse struct {
+	// The type of hash that was performed.
+	Type string `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// Container message for hash values.
+type HashResponseOutput struct{ *pulumi.OutputState }
+
+func (HashResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseOutput) ToHashResponseOutput() HashResponseOutput {
+	return o
+}
+
+func (o HashResponseOutput) ToHashResponseOutputWithContext(ctx context.Context) HashResponseOutput {
+	return o
+}
+
+// The type of hash that was performed.
+func (o HashResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The hash value.
+func (o HashResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HashResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutput() HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutputWithContext(ctx context.Context) HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) Index(i pulumi.IntInput) HashResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HashResponse {
+		return vs[0].([]HashResponse)[vs[1].(int)]
+	}).(HashResponseOutput)
+}
+
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
 type InlineSecret struct {
 	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
@@ -4899,6 +5030,216 @@ func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InlineSecretResponse {
 		return vs[0].([]InlineSecretResponse)[vs[1].(int)]
 	}).(InlineSecretResponseOutput)
+}
+
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+type MavenArtifact struct {
+	// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+	ArtifactId *string `pulumi:"artifactId"`
+	// Maven `groupId` value used when uploading the artifact to Artifact Registry.
+	GroupId *string `pulumi:"groupId"`
+	// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+	Path *string `pulumi:"path"`
+	// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+	// Maven `version` value used when uploading the artifact to Artifact Registry.
+	Version *string `pulumi:"version"`
+}
+
+// MavenArtifactInput is an input type that accepts MavenArtifactArgs and MavenArtifactOutput values.
+// You can construct a concrete instance of `MavenArtifactInput` via:
+//
+//	MavenArtifactArgs{...}
+type MavenArtifactInput interface {
+	pulumi.Input
+
+	ToMavenArtifactOutput() MavenArtifactOutput
+	ToMavenArtifactOutputWithContext(context.Context) MavenArtifactOutput
+}
+
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+type MavenArtifactArgs struct {
+	// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// Maven `groupId` value used when uploading the artifact to Artifact Registry.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// Maven `version` value used when uploading the artifact to Artifact Registry.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (MavenArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenArtifact)(nil)).Elem()
+}
+
+func (i MavenArtifactArgs) ToMavenArtifactOutput() MavenArtifactOutput {
+	return i.ToMavenArtifactOutputWithContext(context.Background())
+}
+
+func (i MavenArtifactArgs) ToMavenArtifactOutputWithContext(ctx context.Context) MavenArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenArtifactOutput)
+}
+
+// MavenArtifactArrayInput is an input type that accepts MavenArtifactArray and MavenArtifactArrayOutput values.
+// You can construct a concrete instance of `MavenArtifactArrayInput` via:
+//
+//	MavenArtifactArray{ MavenArtifactArgs{...} }
+type MavenArtifactArrayInput interface {
+	pulumi.Input
+
+	ToMavenArtifactArrayOutput() MavenArtifactArrayOutput
+	ToMavenArtifactArrayOutputWithContext(context.Context) MavenArtifactArrayOutput
+}
+
+type MavenArtifactArray []MavenArtifactInput
+
+func (MavenArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MavenArtifact)(nil)).Elem()
+}
+
+func (i MavenArtifactArray) ToMavenArtifactArrayOutput() MavenArtifactArrayOutput {
+	return i.ToMavenArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i MavenArtifactArray) ToMavenArtifactArrayOutputWithContext(ctx context.Context) MavenArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenArtifactArrayOutput)
+}
+
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+type MavenArtifactOutput struct{ *pulumi.OutputState }
+
+func (MavenArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenArtifact)(nil)).Elem()
+}
+
+func (o MavenArtifactOutput) ToMavenArtifactOutput() MavenArtifactOutput {
+	return o
+}
+
+func (o MavenArtifactOutput) ToMavenArtifactOutputWithContext(ctx context.Context) MavenArtifactOutput {
+	return o
+}
+
+// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MavenArtifact) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
+// Maven `groupId` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MavenArtifact) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+func (o MavenArtifactOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MavenArtifact) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+func (o MavenArtifactOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MavenArtifact) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// Maven `version` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MavenArtifact) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type MavenArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (MavenArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MavenArtifact)(nil)).Elem()
+}
+
+func (o MavenArtifactArrayOutput) ToMavenArtifactArrayOutput() MavenArtifactArrayOutput {
+	return o
+}
+
+func (o MavenArtifactArrayOutput) ToMavenArtifactArrayOutputWithContext(ctx context.Context) MavenArtifactArrayOutput {
+	return o
+}
+
+func (o MavenArtifactArrayOutput) Index(i pulumi.IntInput) MavenArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MavenArtifact {
+		return vs[0].([]MavenArtifact)[vs[1].(int)]
+	}).(MavenArtifactOutput)
+}
+
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+type MavenArtifactResponse struct {
+	// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+	ArtifactId string `pulumi:"artifactId"`
+	// Maven `groupId` value used when uploading the artifact to Artifact Registry.
+	GroupId string `pulumi:"groupId"`
+	// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+	Path string `pulumi:"path"`
+	// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+	Repository string `pulumi:"repository"`
+	// Maven `version` value used when uploading the artifact to Artifact Registry.
+	Version string `pulumi:"version"`
+}
+
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+type MavenArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (MavenArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenArtifactResponse)(nil)).Elem()
+}
+
+func (o MavenArtifactResponseOutput) ToMavenArtifactResponseOutput() MavenArtifactResponseOutput {
+	return o
+}
+
+func (o MavenArtifactResponseOutput) ToMavenArtifactResponseOutputWithContext(ctx context.Context) MavenArtifactResponseOutput {
+	return o
+}
+
+// Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenArtifactResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Maven `groupId` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactResponseOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenArtifactResponse) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+func (o MavenArtifactResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenArtifactResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+func (o MavenArtifactResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenArtifactResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// Maven `version` value used when uploading the artifact to Artifact Registry.
+func (o MavenArtifactResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenArtifactResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type MavenArtifactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MavenArtifactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MavenArtifactResponse)(nil)).Elem()
+}
+
+func (o MavenArtifactResponseArrayOutput) ToMavenArtifactResponseArrayOutput() MavenArtifactResponseArrayOutput {
+	return o
+}
+
+func (o MavenArtifactResponseArrayOutput) ToMavenArtifactResponseArrayOutputWithContext(ctx context.Context) MavenArtifactResponseArrayOutput {
+	return o
+}
+
+func (o MavenArtifactResponseArrayOutput) Index(i pulumi.IntInput) MavenArtifactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MavenArtifactResponse {
+		return vs[0].([]MavenArtifactResponse)[vs[1].(int)]
+	}).(MavenArtifactResponseOutput)
 }
 
 // Defines the network configuration for the pool.
@@ -6112,6 +6453,168 @@ func (o PushFilterResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v PushFilterResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+type PythonPackage struct {
+	// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+	Paths []string `pulumi:"paths"`
+	// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+}
+
+// PythonPackageInput is an input type that accepts PythonPackageArgs and PythonPackageOutput values.
+// You can construct a concrete instance of `PythonPackageInput` via:
+//
+//	PythonPackageArgs{...}
+type PythonPackageInput interface {
+	pulumi.Input
+
+	ToPythonPackageOutput() PythonPackageOutput
+	ToPythonPackageOutputWithContext(context.Context) PythonPackageOutput
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+type PythonPackageArgs struct {
+	// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (PythonPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonPackage)(nil)).Elem()
+}
+
+func (i PythonPackageArgs) ToPythonPackageOutput() PythonPackageOutput {
+	return i.ToPythonPackageOutputWithContext(context.Background())
+}
+
+func (i PythonPackageArgs) ToPythonPackageOutputWithContext(ctx context.Context) PythonPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonPackageOutput)
+}
+
+// PythonPackageArrayInput is an input type that accepts PythonPackageArray and PythonPackageArrayOutput values.
+// You can construct a concrete instance of `PythonPackageArrayInput` via:
+//
+//	PythonPackageArray{ PythonPackageArgs{...} }
+type PythonPackageArrayInput interface {
+	pulumi.Input
+
+	ToPythonPackageArrayOutput() PythonPackageArrayOutput
+	ToPythonPackageArrayOutputWithContext(context.Context) PythonPackageArrayOutput
+}
+
+type PythonPackageArray []PythonPackageInput
+
+func (PythonPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PythonPackage)(nil)).Elem()
+}
+
+func (i PythonPackageArray) ToPythonPackageArrayOutput() PythonPackageArrayOutput {
+	return i.ToPythonPackageArrayOutputWithContext(context.Background())
+}
+
+func (i PythonPackageArray) ToPythonPackageArrayOutputWithContext(ctx context.Context) PythonPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonPackageArrayOutput)
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+type PythonPackageOutput struct{ *pulumi.OutputState }
+
+func (PythonPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonPackage)(nil)).Elem()
+}
+
+func (o PythonPackageOutput) ToPythonPackageOutput() PythonPackageOutput {
+	return o
+}
+
+func (o PythonPackageOutput) ToPythonPackageOutputWithContext(ctx context.Context) PythonPackageOutput {
+	return o
+}
+
+// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+func (o PythonPackageOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PythonPackage) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+func (o PythonPackageOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PythonPackage) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type PythonPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (PythonPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PythonPackage)(nil)).Elem()
+}
+
+func (o PythonPackageArrayOutput) ToPythonPackageArrayOutput() PythonPackageArrayOutput {
+	return o
+}
+
+func (o PythonPackageArrayOutput) ToPythonPackageArrayOutputWithContext(ctx context.Context) PythonPackageArrayOutput {
+	return o
+}
+
+func (o PythonPackageArrayOutput) Index(i pulumi.IntInput) PythonPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PythonPackage {
+		return vs[0].([]PythonPackage)[vs[1].(int)]
+	}).(PythonPackageOutput)
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+type PythonPackageResponse struct {
+	// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+	Paths []string `pulumi:"paths"`
+	// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+	Repository string `pulumi:"repository"`
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+type PythonPackageResponseOutput struct{ *pulumi.OutputState }
+
+func (PythonPackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonPackageResponse)(nil)).Elem()
+}
+
+func (o PythonPackageResponseOutput) ToPythonPackageResponseOutput() PythonPackageResponseOutput {
+	return o
+}
+
+func (o PythonPackageResponseOutput) ToPythonPackageResponseOutputWithContext(ctx context.Context) PythonPackageResponseOutput {
+	return o
+}
+
+// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+func (o PythonPackageResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PythonPackageResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+func (o PythonPackageResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v PythonPackageResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type PythonPackageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PythonPackageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PythonPackageResponse)(nil)).Elem()
+}
+
+func (o PythonPackageResponseArrayOutput) ToPythonPackageResponseArrayOutput() PythonPackageResponseArrayOutput {
+	return o
+}
+
+func (o PythonPackageResponseArrayOutput) ToPythonPackageResponseArrayOutputWithContext(ctx context.Context) PythonPackageResponseArrayOutput {
+	return o
+}
+
+func (o PythonPackageResponseArrayOutput) Index(i pulumi.IntInput) PythonPackageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PythonPackageResponse {
+		return vs[0].([]PythonPackageResponse)[vs[1].(int)]
+	}).(PythonPackageResponseOutput)
+}
+
 // Location of the source in a Google Cloud Source Repository.
 type RepoSource struct {
 	// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -6472,8 +6975,12 @@ type ResultsResponse struct {
 	BuildStepOutputs []string `pulumi:"buildStepOutputs"`
 	// Container images that were built as a part of the build.
 	Images []BuiltImageResponse `pulumi:"images"`
+	// Maven artifacts uploaded to Artifact Registry at the end of the build.
+	MavenArtifacts []UploadedMavenArtifactResponse `pulumi:"mavenArtifacts"`
 	// Number of artifacts uploaded. Only populated when artifacts are uploaded.
 	NumArtifacts string `pulumi:"numArtifacts"`
+	// Python artifacts uploaded to Artifact Registry at the end of the build.
+	PythonPackages []UploadedPythonPackageResponse `pulumi:"pythonPackages"`
 }
 
 // Artifacts created by the build pipeline.
@@ -6516,9 +7023,19 @@ func (o ResultsResponseOutput) Images() BuiltImageResponseArrayOutput {
 	return o.ApplyT(func(v ResultsResponse) []BuiltImageResponse { return v.Images }).(BuiltImageResponseArrayOutput)
 }
 
+// Maven artifacts uploaded to Artifact Registry at the end of the build.
+func (o ResultsResponseOutput) MavenArtifacts() UploadedMavenArtifactResponseArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []UploadedMavenArtifactResponse { return v.MavenArtifacts }).(UploadedMavenArtifactResponseArrayOutput)
+}
+
 // Number of artifacts uploaded. Only populated when artifacts are uploaded.
 func (o ResultsResponseOutput) NumArtifacts() pulumi.StringOutput {
 	return o.ApplyT(func(v ResultsResponse) string { return v.NumArtifacts }).(pulumi.StringOutput)
+}
+
+// Python artifacts uploaded to Artifact Registry at the end of the build.
+func (o ResultsResponseOutput) PythonPackages() UploadedPythonPackageResponseArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []UploadedPythonPackageResponse { return v.PythonPackages }).(UploadedPythonPackageResponseArrayOutput)
 }
 
 // Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
@@ -7937,6 +8454,126 @@ func (o TimeSpanResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSpanResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// A Maven artifact uploaded using the MavenArtifact directive.
+type UploadedMavenArtifactResponse struct {
+	// Hash types and values of the Maven Artifact.
+	FileHashes FileHashesResponse `pulumi:"fileHashes"`
+	// Stores timing information for pushing the specified artifact.
+	PushTiming TimeSpanResponse `pulumi:"pushTiming"`
+	// URI of the uploaded artifact.
+	Uri string `pulumi:"uri"`
+}
+
+// A Maven artifact uploaded using the MavenArtifact directive.
+type UploadedMavenArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (UploadedMavenArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedMavenArtifactResponse)(nil)).Elem()
+}
+
+func (o UploadedMavenArtifactResponseOutput) ToUploadedMavenArtifactResponseOutput() UploadedMavenArtifactResponseOutput {
+	return o
+}
+
+func (o UploadedMavenArtifactResponseOutput) ToUploadedMavenArtifactResponseOutputWithContext(ctx context.Context) UploadedMavenArtifactResponseOutput {
+	return o
+}
+
+// Hash types and values of the Maven Artifact.
+func (o UploadedMavenArtifactResponseOutput) FileHashes() FileHashesResponseOutput {
+	return o.ApplyT(func(v UploadedMavenArtifactResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
+}
+
+// Stores timing information for pushing the specified artifact.
+func (o UploadedMavenArtifactResponseOutput) PushTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v UploadedMavenArtifactResponse) TimeSpanResponse { return v.PushTiming }).(TimeSpanResponseOutput)
+}
+
+// URI of the uploaded artifact.
+func (o UploadedMavenArtifactResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadedMavenArtifactResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type UploadedMavenArtifactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UploadedMavenArtifactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UploadedMavenArtifactResponse)(nil)).Elem()
+}
+
+func (o UploadedMavenArtifactResponseArrayOutput) ToUploadedMavenArtifactResponseArrayOutput() UploadedMavenArtifactResponseArrayOutput {
+	return o
+}
+
+func (o UploadedMavenArtifactResponseArrayOutput) ToUploadedMavenArtifactResponseArrayOutputWithContext(ctx context.Context) UploadedMavenArtifactResponseArrayOutput {
+	return o
+}
+
+func (o UploadedMavenArtifactResponseArrayOutput) Index(i pulumi.IntInput) UploadedMavenArtifactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UploadedMavenArtifactResponse {
+		return vs[0].([]UploadedMavenArtifactResponse)[vs[1].(int)]
+	}).(UploadedMavenArtifactResponseOutput)
+}
+
+// Artifact uploaded using the PythonPackage directive.
+type UploadedPythonPackageResponse struct {
+	// Hash types and values of the Python Artifact.
+	FileHashes FileHashesResponse `pulumi:"fileHashes"`
+	// Stores timing information for pushing the specified artifact.
+	PushTiming TimeSpanResponse `pulumi:"pushTiming"`
+	// URI of the uploaded artifact.
+	Uri string `pulumi:"uri"`
+}
+
+// Artifact uploaded using the PythonPackage directive.
+type UploadedPythonPackageResponseOutput struct{ *pulumi.OutputState }
+
+func (UploadedPythonPackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedPythonPackageResponse)(nil)).Elem()
+}
+
+func (o UploadedPythonPackageResponseOutput) ToUploadedPythonPackageResponseOutput() UploadedPythonPackageResponseOutput {
+	return o
+}
+
+func (o UploadedPythonPackageResponseOutput) ToUploadedPythonPackageResponseOutputWithContext(ctx context.Context) UploadedPythonPackageResponseOutput {
+	return o
+}
+
+// Hash types and values of the Python Artifact.
+func (o UploadedPythonPackageResponseOutput) FileHashes() FileHashesResponseOutput {
+	return o.ApplyT(func(v UploadedPythonPackageResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
+}
+
+// Stores timing information for pushing the specified artifact.
+func (o UploadedPythonPackageResponseOutput) PushTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v UploadedPythonPackageResponse) TimeSpanResponse { return v.PushTiming }).(TimeSpanResponseOutput)
+}
+
+// URI of the uploaded artifact.
+func (o UploadedPythonPackageResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadedPythonPackageResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type UploadedPythonPackageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UploadedPythonPackageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UploadedPythonPackageResponse)(nil)).Elem()
+}
+
+func (o UploadedPythonPackageResponseArrayOutput) ToUploadedPythonPackageResponseArrayOutput() UploadedPythonPackageResponseArrayOutput {
+	return o
+}
+
+func (o UploadedPythonPackageResponseArrayOutput) ToUploadedPythonPackageResponseArrayOutputWithContext(ctx context.Context) UploadedPythonPackageResponseArrayOutput {
+	return o
+}
+
+func (o UploadedPythonPackageResponseArrayOutput) Index(i pulumi.IntInput) UploadedPythonPackageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UploadedPythonPackageResponse {
+		return vs[0].([]UploadedPythonPackageResponse)[vs[1].(int)]
+	}).(UploadedPythonPackageResponseOutput)
+}
+
 // Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
 type Volume struct {
 	// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
@@ -8569,6 +9206,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourcePtrInput)(nil)).Elem(), GitRepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretInput)(nil)).Elem(), InlineSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretArrayInput)(nil)).Elem(), InlineSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenArtifactInput)(nil)).Elem(), MavenArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenArtifactArrayInput)(nil)).Elem(), MavenArtifactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionInput)(nil)).Elem(), PoolOptionArgs{})
@@ -8581,6 +9220,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PullRequestFilterPtrInput)(nil)).Elem(), PullRequestFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterInput)(nil)).Elem(), PushFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PushFilterPtrInput)(nil)).Elem(), PushFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonPackageInput)(nil)).Elem(), PythonPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonPackageArrayInput)(nil)).Elem(), PythonPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
@@ -8635,6 +9276,7 @@ func init() {
 	pulumi.RegisterOutputType(BuiltImageResponseOutput{})
 	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseOutput{})
 	pulumi.RegisterOutputType(GitFileSourceOutput{})
 	pulumi.RegisterOutputType(GitFileSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitFileSourceResponseOutput{})
@@ -8660,10 +9302,16 @@ func init() {
 	pulumi.RegisterOutputType(GitRepoSourceOutput{})
 	pulumi.RegisterOutputType(GitRepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(HashResponseOutput{})
+	pulumi.RegisterOutputType(HashResponseArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretOutput{})
 	pulumi.RegisterOutputType(InlineSecretArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(MavenArtifactOutput{})
+	pulumi.RegisterOutputType(MavenArtifactArrayOutput{})
+	pulumi.RegisterOutputType(MavenArtifactResponseOutput{})
+	pulumi.RegisterOutputType(MavenArtifactResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
@@ -8682,6 +9330,10 @@ func init() {
 	pulumi.RegisterOutputType(PushFilterOutput{})
 	pulumi.RegisterOutputType(PushFilterPtrOutput{})
 	pulumi.RegisterOutputType(PushFilterResponseOutput{})
+	pulumi.RegisterOutputType(PythonPackageOutput{})
+	pulumi.RegisterOutputType(PythonPackageArrayOutput{})
+	pulumi.RegisterOutputType(PythonPackageResponseOutput{})
+	pulumi.RegisterOutputType(PythonPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
@@ -8711,6 +9363,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageSourceManifestResponseOutput{})
 	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
 	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
+	pulumi.RegisterOutputType(UploadedMavenArtifactResponseOutput{})
+	pulumi.RegisterOutputType(UploadedMavenArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(UploadedPythonPackageResponseOutput{})
+	pulumi.RegisterOutputType(UploadedPythonPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeResponseOutput{})

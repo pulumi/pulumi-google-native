@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
+namespace Pulumi.GoogleNative.Vmmigration.V1Alpha1.Inputs
 {
 
     /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         /// The operator to use for the node resources specified in the `values` parameter.
         /// </summary>
         [Input("operator")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.SchedulingNodeAffinityOperator>? Operator { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1Alpha1.SchedulingNodeAffinityOperator>? Operator { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;

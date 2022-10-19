@@ -25,7 +25,7 @@ type Address struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
-	// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType pulumi.StringOutput `pulumi:"ipv6EndpointType"`
 	// Type of the resource. Always compute#address for addresses.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -114,7 +114,7 @@ type addressArgs struct {
 	Description *string `pulumi:"description"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion *AddressIpVersion `pulumi:"ipVersion"`
-	// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType *AddressIpv6EndpointType `pulumi:"ipv6EndpointType"`
 	// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
@@ -146,7 +146,7 @@ type AddressArgs struct {
 	Description pulumi.StringPtrInput
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion AddressIpVersionPtrInput
-	// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType AddressIpv6EndpointTypePtrInput
 	// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
 	Labels pulumi.StringMapInput
@@ -230,7 +230,7 @@ func (o AddressOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 func (o AddressOutput) Ipv6EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Ipv6EndpointType }).(pulumi.StringOutput)
 }

@@ -77,6 +77,257 @@ func (o AuthorizationAttemptInfoResponseArrayOutput) Index(i pulumi.IntInput) Au
 	}).(AuthorizationAttemptInfoResponseOutput)
 }
 
+// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+type CertificateAuthorityConfig struct {
+	// Defines a CertificateAuthorityServiceConfig.
+	CertificateAuthorityServiceConfig *CertificateAuthorityServiceConfig `pulumi:"certificateAuthorityServiceConfig"`
+}
+
+// CertificateAuthorityConfigInput is an input type that accepts CertificateAuthorityConfigArgs and CertificateAuthorityConfigOutput values.
+// You can construct a concrete instance of `CertificateAuthorityConfigInput` via:
+//
+//	CertificateAuthorityConfigArgs{...}
+type CertificateAuthorityConfigInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityConfigOutput() CertificateAuthorityConfigOutput
+	ToCertificateAuthorityConfigOutputWithContext(context.Context) CertificateAuthorityConfigOutput
+}
+
+// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+type CertificateAuthorityConfigArgs struct {
+	// Defines a CertificateAuthorityServiceConfig.
+	CertificateAuthorityServiceConfig CertificateAuthorityServiceConfigPtrInput `pulumi:"certificateAuthorityServiceConfig"`
+}
+
+func (CertificateAuthorityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (i CertificateAuthorityConfigArgs) ToCertificateAuthorityConfigOutput() CertificateAuthorityConfigOutput {
+	return i.ToCertificateAuthorityConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthorityConfigArgs) ToCertificateAuthorityConfigOutputWithContext(ctx context.Context) CertificateAuthorityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityConfigOutput)
+}
+
+// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+type CertificateAuthorityConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigOutput) ToCertificateAuthorityConfigOutput() CertificateAuthorityConfigOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigOutput) ToCertificateAuthorityConfigOutputWithContext(ctx context.Context) CertificateAuthorityConfigOutput {
+	return o
+}
+
+// Defines a CertificateAuthorityServiceConfig.
+func (o CertificateAuthorityConfigOutput) CertificateAuthorityServiceConfig() CertificateAuthorityServiceConfigPtrOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfig) *CertificateAuthorityServiceConfig {
+		return v.CertificateAuthorityServiceConfig
+	}).(CertificateAuthorityServiceConfigPtrOutput)
+}
+
+// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+type CertificateAuthorityConfigResponse struct {
+	// Defines a CertificateAuthorityServiceConfig.
+	CertificateAuthorityServiceConfig CertificateAuthorityServiceConfigResponse `pulumi:"certificateAuthorityServiceConfig"`
+}
+
+// The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+type CertificateAuthorityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityConfigResponse)(nil)).Elem()
+}
+
+func (o CertificateAuthorityConfigResponseOutput) ToCertificateAuthorityConfigResponseOutput() CertificateAuthorityConfigResponseOutput {
+	return o
+}
+
+func (o CertificateAuthorityConfigResponseOutput) ToCertificateAuthorityConfigResponseOutputWithContext(ctx context.Context) CertificateAuthorityConfigResponseOutput {
+	return o
+}
+
+// Defines a CertificateAuthorityServiceConfig.
+func (o CertificateAuthorityConfigResponseOutput) CertificateAuthorityServiceConfig() CertificateAuthorityServiceConfigResponseOutput {
+	return o.ApplyT(func(v CertificateAuthorityConfigResponse) CertificateAuthorityServiceConfigResponse {
+		return v.CertificateAuthorityServiceConfig
+	}).(CertificateAuthorityServiceConfigResponseOutput)
+}
+
+// Contains information required to contact CA service.
+type CertificateAuthorityServiceConfig struct {
+	// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+	CaPool string `pulumi:"caPool"`
+}
+
+// CertificateAuthorityServiceConfigInput is an input type that accepts CertificateAuthorityServiceConfigArgs and CertificateAuthorityServiceConfigOutput values.
+// You can construct a concrete instance of `CertificateAuthorityServiceConfigInput` via:
+//
+//	CertificateAuthorityServiceConfigArgs{...}
+type CertificateAuthorityServiceConfigInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityServiceConfigOutput() CertificateAuthorityServiceConfigOutput
+	ToCertificateAuthorityServiceConfigOutputWithContext(context.Context) CertificateAuthorityServiceConfigOutput
+}
+
+// Contains information required to contact CA service.
+type CertificateAuthorityServiceConfigArgs struct {
+	// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+	CaPool pulumi.StringInput `pulumi:"caPool"`
+}
+
+func (CertificateAuthorityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConfigOutput() CertificateAuthorityServiceConfigOutput {
+	return i.ToCertificateAuthorityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConfigOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityServiceConfigOutput)
+}
+
+func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput {
+	return i.ToCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateAuthorityServiceConfigArgs) ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityServiceConfigOutput).ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateAuthorityServiceConfigPtrInput is an input type that accepts CertificateAuthorityServiceConfigArgs, CertificateAuthorityServiceConfigPtr and CertificateAuthorityServiceConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateAuthorityServiceConfigPtrInput` via:
+//
+//	        CertificateAuthorityServiceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateAuthorityServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput
+	ToCertificateAuthorityServiceConfigPtrOutputWithContext(context.Context) CertificateAuthorityServiceConfigPtrOutput
+}
+
+type certificateAuthorityServiceConfigPtrType CertificateAuthorityServiceConfigArgs
+
+func CertificateAuthorityServiceConfigPtr(v *CertificateAuthorityServiceConfigArgs) CertificateAuthorityServiceConfigPtrInput {
+	return (*certificateAuthorityServiceConfigPtrType)(v)
+}
+
+func (*certificateAuthorityServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (i *certificateAuthorityServiceConfigPtrType) ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput {
+	return i.ToCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateAuthorityServiceConfigPtrType) ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateAuthorityServiceConfigPtrOutput)
+}
+
+// Contains information required to contact CA service.
+type CertificateAuthorityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (o CertificateAuthorityServiceConfigOutput) ToCertificateAuthorityServiceConfigOutput() CertificateAuthorityServiceConfigOutput {
+	return o
+}
+
+func (o CertificateAuthorityServiceConfigOutput) ToCertificateAuthorityServiceConfigOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigOutput {
+	return o
+}
+
+func (o CertificateAuthorityServiceConfigOutput) ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput {
+	return o.ToCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityServiceConfigOutput) ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityServiceConfig) *CertificateAuthorityServiceConfig {
+		return &v
+	}).(CertificateAuthorityServiceConfigPtrOutput)
+}
+
+// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+func (o CertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityServiceConfig) string { return v.CaPool }).(pulumi.StringOutput)
+}
+
+type CertificateAuthorityServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (o CertificateAuthorityServiceConfigPtrOutput) ToCertificateAuthorityServiceConfigPtrOutput() CertificateAuthorityServiceConfigPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityServiceConfigPtrOutput) ToCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityServiceConfigPtrOutput) Elem() CertificateAuthorityServiceConfigOutput {
+	return o.ApplyT(func(v *CertificateAuthorityServiceConfig) CertificateAuthorityServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateAuthorityServiceConfig
+		return ret
+	}).(CertificateAuthorityServiceConfigOutput)
+}
+
+// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+func (o CertificateAuthorityServiceConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateAuthorityServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaPool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information required to contact CA service.
+type CertificateAuthorityServiceConfigResponse struct {
+	// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+	CaPool string `pulumi:"caPool"`
+}
+
+// Contains information required to contact CA service.
+type CertificateAuthorityServiceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityServiceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityServiceConfigResponse)(nil)).Elem()
+}
+
+func (o CertificateAuthorityServiceConfigResponseOutput) ToCertificateAuthorityServiceConfigResponseOutput() CertificateAuthorityServiceConfigResponseOutput {
+	return o
+}
+
+func (o CertificateAuthorityServiceConfigResponseOutput) ToCertificateAuthorityServiceConfigResponseOutputWithContext(ctx context.Context) CertificateAuthorityServiceConfigResponseOutput {
+	return o
+}
+
+// A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+func (o CertificateAuthorityServiceConfigResponseOutput) CaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateAuthorityServiceConfigResponse) string { return v.CaPool }).(pulumi.StringOutput)
+}
+
 // The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate.
 type DnsResourceRecordResponse struct {
 	// Data of the DNS Resource Record.
@@ -236,6 +487,8 @@ type ManagedCertificate struct {
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
 	// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 	Domains []string `pulumi:"domains"`
+	// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	IssuanceConfig *string `pulumi:"issuanceConfig"`
 }
 
 // ManagedCertificateInput is an input type that accepts ManagedCertificateArgs and ManagedCertificateOutput values.
@@ -255,6 +508,8 @@ type ManagedCertificateArgs struct {
 	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
 	// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	IssuanceConfig pulumi.StringPtrInput `pulumi:"issuanceConfig"`
 }
 
 func (ManagedCertificateArgs) ElementType() reflect.Type {
@@ -345,6 +600,11 @@ func (o ManagedCertificateOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedCertificate) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
+// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+func (o ManagedCertificateOutput) IssuanceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedCertificate) *string { return v.IssuanceConfig }).(pulumi.StringPtrOutput)
+}
+
 type ManagedCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedCertificatePtrOutput) ElementType() reflect.Type {
@@ -389,6 +649,16 @@ func (o ManagedCertificatePtrOutput) Domains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+func (o ManagedCertificatePtrOutput) IssuanceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IssuanceConfig
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
 type ManagedCertificateResponse struct {
 	// Detailed state of the latest authorization attempt for each domain specified for managed certificate resource.
@@ -397,6 +667,8 @@ type ManagedCertificateResponse struct {
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
 	// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 	Domains []string `pulumi:"domains"`
+	// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	IssuanceConfig string `pulumi:"issuanceConfig"`
 	// Information about issues with provisioning a Managed Certificate.
 	ProvisioningIssue ProvisioningIssueResponse `pulumi:"provisioningIssue"`
 	// State of the managed certificate resource.
@@ -433,6 +705,11 @@ func (o ManagedCertificateResponseOutput) DnsAuthorizations() pulumi.StringArray
 // Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 func (o ManagedCertificateResponseOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedCertificateResponse) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+func (o ManagedCertificateResponseOutput) IssuanceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.IssuanceConfig }).(pulumi.StringOutput)
 }
 
 // Information about issues with provisioning a Managed Certificate.
@@ -671,12 +948,20 @@ func (o SelfManagedCertificateResponseOutput) PemPrivateKey() pulumi.StringOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityConfigInput)(nil)).Elem(), CertificateAuthorityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigPtrInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificateInput)(nil)).Elem(), ManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificatePtrInput)(nil)).Elem(), ManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificateInput)(nil)).Elem(), SelfManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificatePtrInput)(nil)).Elem(), SelfManagedCertificateArgs{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityConfigResponseOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityServiceConfigOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityServiceConfigResponseOutput{})
 	pulumi.RegisterOutputType(DnsResourceRecordResponseOutput{})
 	pulumi.RegisterOutputType(GclbTargetResponseOutput{})
 	pulumi.RegisterOutputType(GclbTargetResponseArrayOutput{})

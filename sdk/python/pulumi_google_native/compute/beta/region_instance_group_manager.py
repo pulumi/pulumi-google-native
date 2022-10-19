@@ -24,6 +24,7 @@ class RegionInstanceGroupManagerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
@@ -69,6 +71,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "distribution_policy", distribution_policy)
         if failover_action is not None:
             pulumi.set(__self__, "failover_action", failover_action)
+        if instance_lifecycle_policy is not None:
+            pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template is not None:
             pulumi.set(__self__, "instance_template", instance_template)
         if list_managed_instances_results is not None:
@@ -174,6 +178,18 @@ class RegionInstanceGroupManagerArgs:
     @failover_action.setter
     def failover_action(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']]):
         pulumi.set(self, "failover_action", value)
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+        """
+        The repair policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @instance_lifecycle_policy.setter
+    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+        pulumi.set(self, "instance_lifecycle_policy", value)
 
     @property
     @pulumi.getter(name="instanceTemplate")
@@ -328,6 +344,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -353,6 +370,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
@@ -395,6 +413,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -423,6 +442,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy"] = distribution_policy
             __props__.__dict__["failover_action"] = failover_action
+            __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
@@ -480,6 +500,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["failover_action"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["instance_group"] = None
+        __props__.__dict__["instance_lifecycle_policy"] = None
         __props__.__dict__["instance_template"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["list_managed_instances_results"] = None
@@ -578,6 +599,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse']:
+        """
+        The repair policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
 
     @property
     @pulumi.getter(name="instanceTemplate")

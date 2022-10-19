@@ -28,7 +28,7 @@ type BucketView struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The last update timestamp of the view.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringOutput `pulumi:"viewId"`
 }
 
@@ -93,7 +93,7 @@ type bucketViewArgs struct {
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId string `pulumi:"viewId"`
 }
 
@@ -108,7 +108,7 @@ type BucketViewArgs struct {
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringInput
 }
 
@@ -186,7 +186,7 @@ func (o BucketViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketView) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Required. The id to use for this view.
+// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 func (o BucketViewOutput) ViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketView) pulumi.StringOutput { return v.ViewId }).(pulumi.StringOutput)
 }

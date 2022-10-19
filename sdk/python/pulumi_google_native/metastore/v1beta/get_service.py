@@ -181,7 +181,7 @@ class GetServiceResult:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> 'outputs.NetworkConfigResponse':
         """
-        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        The configuration specifying the network settings for the Dataproc Metastore service.
         """
         return pulumi.get(self, "network_config")
 

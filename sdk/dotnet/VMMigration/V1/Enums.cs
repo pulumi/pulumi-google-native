@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using Pulumi;
 
-namespace Pulumi.GoogleNative.VMMigration.V1
+namespace Pulumi.GoogleNative.Vmmigration.V1
 {
     /// <summary>
     /// The disk type to use in the VM.

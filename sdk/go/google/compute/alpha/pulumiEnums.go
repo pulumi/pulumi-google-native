@@ -684,11 +684,13 @@ func (in *addressIpVersionPtr) ToAddressIpVersionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AddressIpVersionPtrOutput)
 }
 
-// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 type AddressIpv6EndpointType string
 
 const (
-	// Reserved IPv6 address will be assigned to VM.
+	// Reserved IPv6 address can be used on network load balancer.
+	AddressIpv6EndpointTypeNetlb = AddressIpv6EndpointType("NETLB")
+	// Reserved IPv6 address can be used on VM.
 	AddressIpv6EndpointTypeVm = AddressIpv6EndpointType("VM")
 )
 
@@ -10864,11 +10866,13 @@ func (in *globalAddressIpVersionPtr) ToGlobalAddressIpVersionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressIpVersionPtrOutput)
 }
 
-// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 type GlobalAddressIpv6EndpointType string
 
 const (
-	// Reserved IPv6 address will be assigned to VM.
+	// Reserved IPv6 address can be used on network load balancer.
+	GlobalAddressIpv6EndpointTypeNetlb = GlobalAddressIpv6EndpointType("NETLB")
+	// Reserved IPv6 address can be used on VM.
 	GlobalAddressIpv6EndpointTypeVm = GlobalAddressIpv6EndpointType("VM")
 )
 
@@ -30363,6 +30367,179 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerEnablePtrOutput)
 }
 
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+type RouterNatAutoNetworkTier string
+
+const (
+	// Public internet quality with fixed bandwidth.
+	RouterNatAutoNetworkTierFixedStandard = RouterNatAutoNetworkTier("FIXED_STANDARD")
+	// High quality, Google-grade network tier, support for all networking products.
+	RouterNatAutoNetworkTierPremium = RouterNatAutoNetworkTier("PREMIUM")
+	// Price competitive network tier, support for all networking products.
+	RouterNatAutoNetworkTierSelect = RouterNatAutoNetworkTier("SELECT")
+	// Public internet quality, only limited support for other networking products.
+	RouterNatAutoNetworkTierStandard = RouterNatAutoNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	RouterNatAutoNetworkTierStandardOverridesFixedStandard = RouterNatAutoNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
+)
+
+func (RouterNatAutoNetworkTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput {
+	return pulumi.ToOutput(e).(RouterNatAutoNetworkTierOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RouterNatAutoNetworkTierOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return e.ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return RouterNatAutoNetworkTier(e).ToRouterNatAutoNetworkTierOutputWithContext(ctx).ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatAutoNetworkTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RouterNatAutoNetworkTierOutput struct{ *pulumi.OutputState }
+
+func (RouterNatAutoNetworkTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return o.ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatAutoNetworkTier) *RouterNatAutoNetworkTier {
+		return &v
+	}).(RouterNatAutoNetworkTierPtrOutput)
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatAutoNetworkTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatAutoNetworkTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterNatAutoNetworkTierPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatAutoNetworkTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) Elem() RouterNatAutoNetworkTierOutput {
+	return o.ApplyT(func(v *RouterNatAutoNetworkTier) RouterNatAutoNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatAutoNetworkTier
+		return ret
+	}).(RouterNatAutoNetworkTierOutput)
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RouterNatAutoNetworkTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RouterNatAutoNetworkTierInput is an input type that accepts RouterNatAutoNetworkTierArgs and RouterNatAutoNetworkTierOutput values.
+// You can construct a concrete instance of `RouterNatAutoNetworkTierInput` via:
+//
+//	RouterNatAutoNetworkTierArgs{...}
+type RouterNatAutoNetworkTierInput interface {
+	pulumi.Input
+
+	ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput
+	ToRouterNatAutoNetworkTierOutputWithContext(context.Context) RouterNatAutoNetworkTierOutput
+}
+
+var routerNatAutoNetworkTierPtrType = reflect.TypeOf((**RouterNatAutoNetworkTier)(nil)).Elem()
+
+type RouterNatAutoNetworkTierPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput
+	ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Context) RouterNatAutoNetworkTierPtrOutput
+}
+
+type routerNatAutoNetworkTierPtr string
+
+func RouterNatAutoNetworkTierPtr(v string) RouterNatAutoNetworkTierPtrInput {
+	return (*routerNatAutoNetworkTierPtr)(&v)
+}
+
+func (*routerNatAutoNetworkTierPtr) ElementType() reflect.Type {
+	return routerNatAutoNetworkTierPtrType
+}
+
+func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return pulumi.ToOutput(in).(RouterNatAutoNetworkTierPtrOutput)
+}
+
+func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RouterNatAutoNetworkTierPtrOutput)
+}
+
 type RouterNatEndpointTypesItem string
 
 const (
@@ -39522,8 +39699,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressAddressTypePtrInput)(nil)).Elem(), AddressAddressType("DNS_FORWARDING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpVersionInput)(nil)).Elem(), AddressIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpVersionPtrInput)(nil)).Elem(), AddressIpVersion("IPV4"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpv6EndpointTypeInput)(nil)).Elem(), AddressIpv6EndpointType("VM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpv6EndpointTypePtrInput)(nil)).Elem(), AddressIpv6EndpointType("VM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpv6EndpointTypeInput)(nil)).Elem(), AddressIpv6EndpointType("NETLB"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressIpv6EndpointTypePtrInput)(nil)).Elem(), AddressIpv6EndpointType("NETLB"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierInput)(nil)).Elem(), AddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressNetworkTierPtrInput)(nil)).Elem(), AddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressPurposeInput)(nil)).Elem(), AddressPurpose("DNS_RESOLVER"))
@@ -39642,8 +39819,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressAddressTypePtrInput)(nil)).Elem(), GlobalAddressAddressType("DNS_FORWARDING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpVersionInput)(nil)).Elem(), GlobalAddressIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpVersionPtrInput)(nil)).Elem(), GlobalAddressIpVersion("IPV4"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpv6EndpointTypeInput)(nil)).Elem(), GlobalAddressIpv6EndpointType("VM"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpv6EndpointTypePtrInput)(nil)).Elem(), GlobalAddressIpv6EndpointType("VM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpv6EndpointTypeInput)(nil)).Elem(), GlobalAddressIpv6EndpointType("NETLB"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressIpv6EndpointTypePtrInput)(nil)).Elem(), GlobalAddressIpv6EndpointType("NETLB"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierInput)(nil)).Elem(), GlobalAddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressNetworkTierPtrInput)(nil)).Elem(), GlobalAddressNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressPurposeInput)(nil)).Elem(), GlobalAddressPurpose("DNS_RESOLVER"))
@@ -39874,6 +40051,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationModePtrInput)(nil)).Elem(), RouterBgpPeerBfdSessionInitializationMode("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnableInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnablePtrInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierPtrInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemPtrInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemArrayInput)(nil)).Elem(), RouterNatEndpointTypesItemArray{})
@@ -40344,6 +40523,8 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModePtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnableOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnablePtrOutput{})
+	pulumi.RegisterOutputType(RouterNatAutoNetworkTierOutput{})
+	pulumi.RegisterOutputType(RouterNatAutoNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemArrayOutput{})

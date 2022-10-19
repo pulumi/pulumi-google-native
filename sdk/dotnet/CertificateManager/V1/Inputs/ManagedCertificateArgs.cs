@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
             set => _domains = value;
         }
 
+        /// <summary>
+        /// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        /// </summary>
+        [Input("issuanceConfig")]
+        public Input<string>? IssuanceConfig { get; set; }
+
         public ManagedCertificateArgs()
         {
         }

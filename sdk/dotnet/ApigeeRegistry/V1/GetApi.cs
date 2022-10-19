@@ -92,11 +92,11 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        /// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         /// </summary>
         public readonly string RecommendedDeployment;
         /// <summary>
-        /// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        /// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         /// </summary>
         public readonly string RecommendedVersion;
         /// <summary>

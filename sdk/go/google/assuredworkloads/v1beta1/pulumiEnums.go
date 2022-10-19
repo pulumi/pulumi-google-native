@@ -209,6 +209,10 @@ const (
 	WorkloadComplianceRegimeCaRegionsAndSupport = WorkloadComplianceRegime("CA_REGIONS_AND_SUPPORT")
 	// International Traffic in Arms Regulations
 	WorkloadComplianceRegimeItar = WorkloadComplianceRegime("ITAR")
+	// Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+	WorkloadComplianceRegimeAuRegionsAndUsSupport = WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT")
+	// Assured Workloads for Partners;
+	WorkloadComplianceRegimeAssuredWorkloadsForPartners = WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {
@@ -368,13 +372,184 @@ func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadComplianceRegimePtrOutput)
 }
 
+// Optional. Compliance Regime associated with this workload.
+type WorkloadPartner string
+
+const (
+	// Unknown partner regime/controls.
+	WorkloadPartnerPartnerUnspecified = WorkloadPartner("PARTNER_UNSPECIFIED")
+	// S3NS regime/controls.
+	WorkloadPartnerLocalControlsByS3ns = WorkloadPartner("LOCAL_CONTROLS_BY_S3NS")
+)
+
+func (WorkloadPartner) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPartner)(nil)).Elem()
+}
+
+func (e WorkloadPartner) ToWorkloadPartnerOutput() WorkloadPartnerOutput {
+	return pulumi.ToOutput(e).(WorkloadPartnerOutput)
+}
+
+func (e WorkloadPartner) ToWorkloadPartnerOutputWithContext(ctx context.Context) WorkloadPartnerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkloadPartnerOutput)
+}
+
+func (e WorkloadPartner) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOutput {
+	return e.ToWorkloadPartnerPtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadPartner) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
+	return WorkloadPartner(e).ToWorkloadPartnerOutputWithContext(ctx).ToWorkloadPartnerPtrOutputWithContext(ctx)
+}
+
+func (e WorkloadPartner) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadPartner) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadPartner) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadPartner) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkloadPartnerOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPartnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadPartner)(nil)).Elem()
+}
+
+func (o WorkloadPartnerOutput) ToWorkloadPartnerOutput() WorkloadPartnerOutput {
+	return o
+}
+
+func (o WorkloadPartnerOutput) ToWorkloadPartnerOutputWithContext(ctx context.Context) WorkloadPartnerOutput {
+	return o
+}
+
+func (o WorkloadPartnerOutput) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOutput {
+	return o.ToWorkloadPartnerPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadPartnerOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadPartner) *WorkloadPartner {
+		return &v
+	}).(WorkloadPartnerPtrOutput)
+}
+
+func (o WorkloadPartnerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkloadPartnerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadPartner) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkloadPartnerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadPartnerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadPartner) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkloadPartnerPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadPartnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadPartner)(nil)).Elem()
+}
+
+func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOutput {
+	return o
+}
+
+func (o WorkloadPartnerPtrOutput) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
+	return o
+}
+
+func (o WorkloadPartnerPtrOutput) Elem() WorkloadPartnerOutput {
+	return o.ApplyT(func(v *WorkloadPartner) WorkloadPartner {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadPartner
+		return ret
+	}).(WorkloadPartnerOutput)
+}
+
+func (o WorkloadPartnerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadPartnerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkloadPartner) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WorkloadPartnerInput is an input type that accepts WorkloadPartnerArgs and WorkloadPartnerOutput values.
+// You can construct a concrete instance of `WorkloadPartnerInput` via:
+//
+//	WorkloadPartnerArgs{...}
+type WorkloadPartnerInput interface {
+	pulumi.Input
+
+	ToWorkloadPartnerOutput() WorkloadPartnerOutput
+	ToWorkloadPartnerOutputWithContext(context.Context) WorkloadPartnerOutput
+}
+
+var workloadPartnerPtrType = reflect.TypeOf((**WorkloadPartner)(nil)).Elem()
+
+type WorkloadPartnerPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOutput
+	ToWorkloadPartnerPtrOutputWithContext(context.Context) WorkloadPartnerPtrOutput
+}
+
+type workloadPartnerPtr string
+
+func WorkloadPartnerPtr(v string) WorkloadPartnerPtrInput {
+	return (*workloadPartnerPtr)(&v)
+}
+
+func (*workloadPartnerPtr) ElementType() reflect.Type {
+	return workloadPartnerPtrType
+}
+
+func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutput() WorkloadPartnerPtrOutput {
+	return pulumi.ToOutput(in).(WorkloadPartnerPtrOutput)
+}
+
+func (in *workloadPartnerPtr) ToWorkloadPartnerPtrOutputWithContext(ctx context.Context) WorkloadPartnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkloadPartnerPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceRegimeInput)(nil)).Elem(), WorkloadComplianceRegime("COMPLIANCE_REGIME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceRegimePtrInput)(nil)).Elem(), WorkloadComplianceRegime("COMPLIANCE_REGIME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPartnerInput)(nil)).Elem(), WorkloadPartner("PARTNER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadPartnerPtrInput)(nil)).Elem(), WorkloadPartner("PARTNER_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceTypePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadComplianceRegimeOutput{})
 	pulumi.RegisterOutputType(WorkloadComplianceRegimePtrOutput{})
+	pulumi.RegisterOutputType(WorkloadPartnerOutput{})
+	pulumi.RegisterOutputType(WorkloadPartnerPtrOutput{})
 }

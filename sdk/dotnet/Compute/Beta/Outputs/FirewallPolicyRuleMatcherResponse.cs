@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestAddressGroups;
         /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
+        /// </summary>
+        public readonly ImmutableArray<string> DestFqdns;
+        /// <summary>
         /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
@@ -40,6 +44,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         /// </summary>
         public readonly ImmutableArray<string> SrcAddressGroups;
+        /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
@@ -61,6 +69,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         private FirewallPolicyRuleMatcherResponse(
             ImmutableArray<string> destAddressGroups,
 
+            ImmutableArray<string> destFqdns,
+
             ImmutableArray<string> destIpRanges,
 
             ImmutableArray<string> destRegionCodes,
@@ -71,6 +81,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             ImmutableArray<string> srcAddressGroups,
 
+            ImmutableArray<string> srcFqdns,
+
             ImmutableArray<string> srcIpRanges,
 
             ImmutableArray<string> srcRegionCodes,
@@ -80,11 +92,13 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             ImmutableArray<string> srcThreatIntelligences)
         {
             DestAddressGroups = destAddressGroups;
+            DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
             DestRegionCodes = destRegionCodes;
             DestThreatIntelligences = destThreatIntelligences;
             Layer4Configs = layer4Configs;
             SrcAddressGroups = srcAddressGroups;
+            SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
             SrcRegionCodes = srcRegionCodes;
             SrcSecureTags = srcSecureTags;

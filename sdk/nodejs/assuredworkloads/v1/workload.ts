@@ -90,6 +90,10 @@ export class Workload extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
+     * Optional. Compliance Regime associated with this workload.
+     */
+    public readonly partner!: pulumi.Output<string>;
+    /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string>;
@@ -137,6 +141,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["partner"] = args ? args.partner : undefined;
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
@@ -159,6 +164,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["partner"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
@@ -215,6 +221,10 @@ export interface WorkloadArgs {
      */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
+    /**
+     * Optional. Compliance Regime associated with this workload.
+     */
+    partner?: pulumi.Input<enums.assuredworkloads.v1.WorkloadPartner>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */

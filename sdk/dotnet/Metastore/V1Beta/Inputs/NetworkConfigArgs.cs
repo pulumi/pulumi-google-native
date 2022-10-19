@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
 {
 
     /// <summary>
-    /// Network configuration for the Dataproc Metastore service.
+    /// Network configuration for the Dataproc Metastore service.Next available ID: 3
     /// </summary>
     public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {

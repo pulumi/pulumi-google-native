@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -44,6 +44,9 @@ class GetClusterResult:
         if confidential_nodes and not isinstance(confidential_nodes, dict):
             raise TypeError("Expected argument 'confidential_nodes' to be a dict")
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if cost_management_config and not isinstance(cost_management_config, dict):
+            raise TypeError("Expected argument 'cost_management_config' to be a dict")
+        pulumi.set(__self__, "cost_management_config", cost_management_config)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -288,6 +291,14 @@ class GetClusterResult:
         Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="costManagementConfig")
+    def cost_management_config(self) -> 'outputs.CostManagementConfigResponse':
+        """
+        Configuration for the fine-grained cost management feature.
+        """
+        return pulumi.get(self, "cost_management_config")
 
     @property
     @pulumi.getter(name="createTime")
@@ -720,6 +731,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             cluster_ipv4_cidr=self.cluster_ipv4_cidr,
             conditions=self.conditions,
             confidential_nodes=self.confidential_nodes,
+            cost_management_config=self.cost_management_config,
             create_time=self.create_time,
             current_master_version=self.current_master_version,
             current_node_count=self.current_node_count,
@@ -801,6 +813,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         cluster_ipv4_cidr=__ret__.cluster_ipv4_cidr,
         conditions=__ret__.conditions,
         confidential_nodes=__ret__.confidential_nodes,
+        cost_management_config=__ret__.cost_management_config,
         create_time=__ret__.create_time,
         current_master_version=__ret__.current_master_version,
         current_node_count=__ret__.current_node_count,

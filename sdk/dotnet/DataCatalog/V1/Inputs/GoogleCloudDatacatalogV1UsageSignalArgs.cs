@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     public sealed class GoogleCloudDatacatalogV1UsageSignalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Favorite count in the source system.
-        /// </summary>
-        [Input("favoriteCount")]
-        public Input<string>? FavoriteCount { get; set; }
-
-        /// <summary>
         /// The end timestamp of the duration of usage statistics.
         /// </summary>
         [Input("updateTime")]

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
+namespace Pulumi.GoogleNative.Vmmigration.V1.Inputs
 {
 
     /// <summary>
@@ -37,13 +37,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         /// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
         /// </summary>
         [Input("onHostMaintenance")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1.ComputeSchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1.ComputeSchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }
 
         /// <summary>
         /// Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
         /// </summary>
         [Input("restartType")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1.ComputeSchedulingRestartType>? RestartType { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1.ComputeSchedulingRestartType>? RestartType { get; set; }
 
         public ComputeSchedulingArgs()
         {

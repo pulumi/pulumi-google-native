@@ -176,9 +176,355 @@ func (in *dynamicGroupQueryResourceTypePtr) ToDynamicGroupQueryResourceTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicGroupQueryResourceTypePtrOutput)
 }
 
+// Inbound SSO behavior.
+type InboundSsoAssignmentSsoMode string
+
+const (
+	// Not allowed.
+	InboundSsoAssignmentSsoModeSsoModeUnspecified = InboundSsoAssignmentSsoMode("SSO_MODE_UNSPECIFIED")
+	// Disable SSO for the targeted users.
+	InboundSsoAssignmentSsoModeSsoOff = InboundSsoAssignmentSsoMode("SSO_OFF")
+	// Use an external SAML Identity Provider for SSO for the targeted users.
+	InboundSsoAssignmentSsoModeSamlSso = InboundSsoAssignmentSsoMode("SAML_SSO")
+	// Use the domain-wide SAML Identity Provider for the targeted users if one is configured; otherwise, this is equivalent to `SSO_OFF`. Note that this will also be equivalent to `SSO_OFF` if/when support for domain-wide SAML is removed. Google may disallow this mode at that point and existing assignments with this mode may be automatically changed to `SSO_OFF`.
+	InboundSsoAssignmentSsoModeDomainWideSamlIfEnabled = InboundSsoAssignmentSsoMode("DOMAIN_WIDE_SAML_IF_ENABLED")
+)
+
+func (InboundSsoAssignmentSsoMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSsoAssignmentSsoMode)(nil)).Elem()
+}
+
+func (e InboundSsoAssignmentSsoMode) ToInboundSsoAssignmentSsoModeOutput() InboundSsoAssignmentSsoModeOutput {
+	return pulumi.ToOutput(e).(InboundSsoAssignmentSsoModeOutput)
+}
+
+func (e InboundSsoAssignmentSsoMode) ToInboundSsoAssignmentSsoModeOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InboundSsoAssignmentSsoModeOutput)
+}
+
+func (e InboundSsoAssignmentSsoMode) ToInboundSsoAssignmentSsoModePtrOutput() InboundSsoAssignmentSsoModePtrOutput {
+	return e.ToInboundSsoAssignmentSsoModePtrOutputWithContext(context.Background())
+}
+
+func (e InboundSsoAssignmentSsoMode) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
+	return InboundSsoAssignmentSsoMode(e).ToInboundSsoAssignmentSsoModeOutputWithContext(ctx).ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx)
+}
+
+func (e InboundSsoAssignmentSsoMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InboundSsoAssignmentSsoMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InboundSsoAssignmentSsoMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InboundSsoAssignmentSsoMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InboundSsoAssignmentSsoModeOutput struct{ *pulumi.OutputState }
+
+func (InboundSsoAssignmentSsoModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InboundSsoAssignmentSsoMode)(nil)).Elem()
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModeOutput() InboundSsoAssignmentSsoModeOutput {
+	return o
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModeOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModeOutput {
+	return o
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModePtrOutput() InboundSsoAssignmentSsoModePtrOutput {
+	return o.ToInboundSsoAssignmentSsoModePtrOutputWithContext(context.Background())
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InboundSsoAssignmentSsoMode) *InboundSsoAssignmentSsoMode {
+		return &v
+	}).(InboundSsoAssignmentSsoModePtrOutput)
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InboundSsoAssignmentSsoMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InboundSsoAssignmentSsoModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InboundSsoAssignmentSsoMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InboundSsoAssignmentSsoModePtrOutput struct{ *pulumi.OutputState }
+
+func (InboundSsoAssignmentSsoModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InboundSsoAssignmentSsoMode)(nil)).Elem()
+}
+
+func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOutput() InboundSsoAssignmentSsoModePtrOutput {
+	return o
+}
+
+func (o InboundSsoAssignmentSsoModePtrOutput) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
+	return o
+}
+
+func (o InboundSsoAssignmentSsoModePtrOutput) Elem() InboundSsoAssignmentSsoModeOutput {
+	return o.ApplyT(func(v *InboundSsoAssignmentSsoMode) InboundSsoAssignmentSsoMode {
+		if v != nil {
+			return *v
+		}
+		var ret InboundSsoAssignmentSsoMode
+		return ret
+	}).(InboundSsoAssignmentSsoModeOutput)
+}
+
+func (o InboundSsoAssignmentSsoModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InboundSsoAssignmentSsoModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InboundSsoAssignmentSsoMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InboundSsoAssignmentSsoModeInput is an input type that accepts InboundSsoAssignmentSsoModeArgs and InboundSsoAssignmentSsoModeOutput values.
+// You can construct a concrete instance of `InboundSsoAssignmentSsoModeInput` via:
+//
+//	InboundSsoAssignmentSsoModeArgs{...}
+type InboundSsoAssignmentSsoModeInput interface {
+	pulumi.Input
+
+	ToInboundSsoAssignmentSsoModeOutput() InboundSsoAssignmentSsoModeOutput
+	ToInboundSsoAssignmentSsoModeOutputWithContext(context.Context) InboundSsoAssignmentSsoModeOutput
+}
+
+var inboundSsoAssignmentSsoModePtrType = reflect.TypeOf((**InboundSsoAssignmentSsoMode)(nil)).Elem()
+
+type InboundSsoAssignmentSsoModePtrInput interface {
+	pulumi.Input
+
+	ToInboundSsoAssignmentSsoModePtrOutput() InboundSsoAssignmentSsoModePtrOutput
+	ToInboundSsoAssignmentSsoModePtrOutputWithContext(context.Context) InboundSsoAssignmentSsoModePtrOutput
+}
+
+type inboundSsoAssignmentSsoModePtr string
+
+func InboundSsoAssignmentSsoModePtr(v string) InboundSsoAssignmentSsoModePtrInput {
+	return (*inboundSsoAssignmentSsoModePtr)(&v)
+}
+
+func (*inboundSsoAssignmentSsoModePtr) ElementType() reflect.Type {
+	return inboundSsoAssignmentSsoModePtrType
+}
+
+func (in *inboundSsoAssignmentSsoModePtr) ToInboundSsoAssignmentSsoModePtrOutput() InboundSsoAssignmentSsoModePtrOutput {
+	return pulumi.ToOutput(in).(InboundSsoAssignmentSsoModePtrOutput)
+}
+
+func (in *inboundSsoAssignmentSsoModePtr) ToInboundSsoAssignmentSsoModePtrOutputWithContext(ctx context.Context) InboundSsoAssignmentSsoModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InboundSsoAssignmentSsoModePtrOutput)
+}
+
+// When to redirect sign-ins to the IdP.
+type SignInBehaviorRedirectCondition string
+
+const (
+	// Default and means "always"
+	SignInBehaviorRedirectConditionRedirectConditionUnspecified = SignInBehaviorRedirectCondition("REDIRECT_CONDITION_UNSPECIFIED")
+	// Sign-in flows where the user is prompted for their identity will not redirect to the IdP (so the user will most likely be prompted by Google for a password), but special flows like IdP-initiated SAML and sign-in following automatic redirection to the IdP by domain-specific service URLs will accept the IdP's assertion of the user's identity.
+	SignInBehaviorRedirectConditionNever = SignInBehaviorRedirectCondition("NEVER")
+)
+
+func (SignInBehaviorRedirectCondition) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignInBehaviorRedirectCondition)(nil)).Elem()
+}
+
+func (e SignInBehaviorRedirectCondition) ToSignInBehaviorRedirectConditionOutput() SignInBehaviorRedirectConditionOutput {
+	return pulumi.ToOutput(e).(SignInBehaviorRedirectConditionOutput)
+}
+
+func (e SignInBehaviorRedirectCondition) ToSignInBehaviorRedirectConditionOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SignInBehaviorRedirectConditionOutput)
+}
+
+func (e SignInBehaviorRedirectCondition) ToSignInBehaviorRedirectConditionPtrOutput() SignInBehaviorRedirectConditionPtrOutput {
+	return e.ToSignInBehaviorRedirectConditionPtrOutputWithContext(context.Background())
+}
+
+func (e SignInBehaviorRedirectCondition) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
+	return SignInBehaviorRedirectCondition(e).ToSignInBehaviorRedirectConditionOutputWithContext(ctx).ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx)
+}
+
+func (e SignInBehaviorRedirectCondition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SignInBehaviorRedirectCondition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SignInBehaviorRedirectCondition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SignInBehaviorRedirectCondition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SignInBehaviorRedirectConditionOutput struct{ *pulumi.OutputState }
+
+func (SignInBehaviorRedirectConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignInBehaviorRedirectCondition)(nil)).Elem()
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectConditionOutput() SignInBehaviorRedirectConditionOutput {
+	return o
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectConditionOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionOutput {
+	return o
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectConditionPtrOutput() SignInBehaviorRedirectConditionPtrOutput {
+	return o.ToSignInBehaviorRedirectConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignInBehaviorRedirectCondition) *SignInBehaviorRedirectCondition {
+		return &v
+	}).(SignInBehaviorRedirectConditionPtrOutput)
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SignInBehaviorRedirectCondition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SignInBehaviorRedirectConditionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SignInBehaviorRedirectCondition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SignInBehaviorRedirectConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SignInBehaviorRedirectConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignInBehaviorRedirectCondition)(nil)).Elem()
+}
+
+func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectConditionPtrOutput() SignInBehaviorRedirectConditionPtrOutput {
+	return o
+}
+
+func (o SignInBehaviorRedirectConditionPtrOutput) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
+	return o
+}
+
+func (o SignInBehaviorRedirectConditionPtrOutput) Elem() SignInBehaviorRedirectConditionOutput {
+	return o.ApplyT(func(v *SignInBehaviorRedirectCondition) SignInBehaviorRedirectCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SignInBehaviorRedirectCondition
+		return ret
+	}).(SignInBehaviorRedirectConditionOutput)
+}
+
+func (o SignInBehaviorRedirectConditionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SignInBehaviorRedirectConditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SignInBehaviorRedirectCondition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SignInBehaviorRedirectConditionInput is an input type that accepts SignInBehaviorRedirectConditionArgs and SignInBehaviorRedirectConditionOutput values.
+// You can construct a concrete instance of `SignInBehaviorRedirectConditionInput` via:
+//
+//	SignInBehaviorRedirectConditionArgs{...}
+type SignInBehaviorRedirectConditionInput interface {
+	pulumi.Input
+
+	ToSignInBehaviorRedirectConditionOutput() SignInBehaviorRedirectConditionOutput
+	ToSignInBehaviorRedirectConditionOutputWithContext(context.Context) SignInBehaviorRedirectConditionOutput
+}
+
+var signInBehaviorRedirectConditionPtrType = reflect.TypeOf((**SignInBehaviorRedirectCondition)(nil)).Elem()
+
+type SignInBehaviorRedirectConditionPtrInput interface {
+	pulumi.Input
+
+	ToSignInBehaviorRedirectConditionPtrOutput() SignInBehaviorRedirectConditionPtrOutput
+	ToSignInBehaviorRedirectConditionPtrOutputWithContext(context.Context) SignInBehaviorRedirectConditionPtrOutput
+}
+
+type signInBehaviorRedirectConditionPtr string
+
+func SignInBehaviorRedirectConditionPtr(v string) SignInBehaviorRedirectConditionPtrInput {
+	return (*signInBehaviorRedirectConditionPtr)(&v)
+}
+
+func (*signInBehaviorRedirectConditionPtr) ElementType() reflect.Type {
+	return signInBehaviorRedirectConditionPtrType
+}
+
+func (in *signInBehaviorRedirectConditionPtr) ToSignInBehaviorRedirectConditionPtrOutput() SignInBehaviorRedirectConditionPtrOutput {
+	return pulumi.ToOutput(in).(SignInBehaviorRedirectConditionPtrOutput)
+}
+
+func (in *signInBehaviorRedirectConditionPtr) ToSignInBehaviorRedirectConditionPtrOutputWithContext(ctx context.Context) SignInBehaviorRedirectConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SignInBehaviorRedirectConditionPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypeInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypePtrInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSsoAssignmentSsoModeInput)(nil)).Elem(), InboundSsoAssignmentSsoMode("SSO_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InboundSsoAssignmentSsoModePtrInput)(nil)).Elem(), InboundSsoAssignmentSsoMode("SSO_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorRedirectConditionInput)(nil)).Elem(), SignInBehaviorRedirectCondition("REDIRECT_CONDITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorRedirectConditionPtrInput)(nil)).Elem(), SignInBehaviorRedirectCondition("REDIRECT_CONDITION_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypeOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypePtrOutput{})
+	pulumi.RegisterOutputType(InboundSsoAssignmentSsoModeOutput{})
+	pulumi.RegisterOutputType(InboundSsoAssignmentSsoModePtrOutput{})
+	pulumi.RegisterOutputType(SignInBehaviorRedirectConditionOutput{})
+	pulumi.RegisterOutputType(SignInBehaviorRedirectConditionPtrOutput{})
 }

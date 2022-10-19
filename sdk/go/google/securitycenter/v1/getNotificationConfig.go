@@ -21,8 +21,8 @@ func LookupNotificationConfig(ctx *pulumi.Context, args *LookupNotificationConfi
 }
 
 type LookupNotificationConfigArgs struct {
-	NotificationConfigId string `pulumi:"notificationConfigId"`
-	OrganizationId       string `pulumi:"organizationId"`
+	NotificationConfigId string  `pulumi:"notificationConfigId"`
+	Project              *string `pulumi:"project"`
 }
 
 type LookupNotificationConfigResult struct {
@@ -52,8 +52,8 @@ func LookupNotificationConfigOutput(ctx *pulumi.Context, args LookupNotification
 }
 
 type LookupNotificationConfigOutputArgs struct {
-	NotificationConfigId pulumi.StringInput `pulumi:"notificationConfigId"`
-	OrganizationId       pulumi.StringInput `pulumi:"organizationId"`
+	NotificationConfigId pulumi.StringInput    `pulumi:"notificationConfigId"`
+	Project              pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupNotificationConfigOutputArgs) ElementType() reflect.Type {

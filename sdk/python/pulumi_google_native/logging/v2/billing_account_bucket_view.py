@@ -23,7 +23,7 @@ class BillingAccountBucketViewArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingAccountBucketView resource.
-        :param pulumi.Input[str] view_id: Required. The id to use for this view.
+        :param pulumi.Input[str] view_id: Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] name: The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
@@ -62,7 +62,7 @@ class BillingAccountBucketViewArgs:
     @pulumi.getter(name="viewId")
     def view_id(self) -> pulumi.Input[str]:
         """
-        Required. The id to use for this view.
+        Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         """
         return pulumi.get(self, "view_id")
 
@@ -138,7 +138,7 @@ class BillingAccountBucketView(pulumi.CustomResource):
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] name: The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-        :param pulumi.Input[str] view_id: Required. The id to use for this view.
+        :param pulumi.Input[str] view_id: Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         """
         ...
     @overload
@@ -290,7 +290,7 @@ class BillingAccountBucketView(pulumi.CustomResource):
     @pulumi.getter(name="viewId")
     def view_id(self) -> pulumi.Output[str]:
         """
-        Required. The id to use for this view.
+        Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         """
         return pulumi.get(self, "view_id")
 

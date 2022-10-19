@@ -707,11 +707,11 @@ class ContentMatcherResponse(dict):
 @pulumi.output_type
 class CustomResponse(dict):
     """
-    Custom view of service telemetry. Currently a place-holder pending final design.
+    Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
     """
     def __init__(__self__):
         """
-        Custom view of service telemetry. Currently a place-holder pending final design.
+        Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
         """
         pass
 

@@ -27,11 +27,35 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
             set => _images = value;
         }
 
+        [Input("mavenArtifacts")]
+        private InputList<Inputs.MavenArtifactArgs>? _mavenArtifacts;
+
+        /// <summary>
+        /// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        public InputList<Inputs.MavenArtifactArgs> MavenArtifacts
+        {
+            get => _mavenArtifacts ?? (_mavenArtifacts = new InputList<Inputs.MavenArtifactArgs>());
+            set => _mavenArtifacts = value;
+        }
+
         /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         /// </summary>
         [Input("objects")]
         public Input<Inputs.ArtifactObjectsArgs>? Objects { get; set; }
+
+        [Input("pythonPackages")]
+        private InputList<Inputs.PythonPackageArgs>? _pythonPackages;
+
+        /// <summary>
+        /// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        public InputList<Inputs.PythonPackageArgs> PythonPackages
+        {
+            get => _pythonPackages ?? (_pythonPackages = new InputList<Inputs.PythonPackageArgs>());
+            set => _pythonPackages = value;
+        }
 
         public ArtifactsArgs()
         {

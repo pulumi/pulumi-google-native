@@ -75,9 +75,33 @@ export const WorkloadComplianceRegime = {
      * International Traffic in Arms Regulations
      */
     Itar: "ITAR",
+    /**
+     * Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+     */
+    AuRegionsAndUsSupport: "AU_REGIONS_AND_US_SUPPORT",
+    /**
+     * Assured Workloads for Partners;
+     */
+    AssuredWorkloadsForPartners: "ASSURED_WORKLOADS_FOR_PARTNERS",
 } as const;
 
 /**
  * Required. Immutable. Compliance Regime associated with this workload.
  */
 export type WorkloadComplianceRegime = (typeof WorkloadComplianceRegime)[keyof typeof WorkloadComplianceRegime];
+
+export const WorkloadPartner = {
+    /**
+     * Unknown partner regime/controls.
+     */
+    PartnerUnspecified: "PARTNER_UNSPECIFIED",
+    /**
+     * S3NS regime/controls.
+     */
+    LocalControlsByS3ns: "LOCAL_CONTROLS_BY_S3NS",
+} as const;
+
+/**
+ * Optional. Compliance Regime associated with this workload.
+ */
+export type WorkloadPartner = (typeof WorkloadPartner)[keyof typeof WorkloadPartner];

@@ -47,6 +47,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
+	// The repair policy for this managed instance group.
+	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyResponse `pulumi:"instanceLifecyclePolicy"`
 	// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
 	InstanceTemplate string `pulumi:"instanceTemplate"`
 	// The resource type, which is always compute#instanceGroupManager for managed instance groups.
@@ -170,6 +172,13 @@ func (o LookupRegionInstanceGroupManagerResultOutput) Fingerprint() pulumi.Strin
 // The URL of the Instance Group resource.
 func (o LookupRegionInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The repair policy for this managed instance group.
+func (o LookupRegionInstanceGroupManagerResultOutput) InstanceLifecyclePolicy() InstanceGroupManagerInstanceLifecyclePolicyResponseOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) InstanceGroupManagerInstanceLifecyclePolicyResponse {
+		return v.InstanceLifecyclePolicy
+	}).(InstanceGroupManagerInstanceLifecyclePolicyResponseOutput)
 }
 
 // The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.

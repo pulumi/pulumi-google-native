@@ -79,7 +79,7 @@ export interface GetServiceResult {
      */
     readonly network: string;
     /**
-     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     * The configuration specifying the network settings for the Dataproc Metastore service.
      */
     readonly networkConfig: outputs.metastore.v1beta.NetworkConfigResponse;
     /**

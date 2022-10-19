@@ -292,7 +292,7 @@
       }
     }
   },
-  "revision": "20220919",
+  "revision": "20221017",
   "rootUrl": "https://documentai.googleapis.com/",
   "schemas": {
     "GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata": {
@@ -1673,6 +1673,10 @@
           "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageImage",
           "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned."
         },
+        "imageQualityScores": {
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores",
+          "description": "Image Quality Scores."
+        },
         "layout": {
           "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
           "description": "Layout for the page."
@@ -1946,6 +1950,41 @@
       },
       "type": "object"
     },
+    "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores": {
+      "description": "Image Quality Scores for the page image",
+      "id": "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores",
+      "properties": {
+        "detectedDefects": {
+          "description": "A list of detected defects.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect"
+          },
+          "type": "array"
+        },
+        "qualityScore": {
+          "description": "The overall quality score. Range [0, 1] where 1 is perfect quality.",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect": {
+      "description": "Image Quality Defects",
+      "id": "GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect",
+      "properties": {
+        "confidence": {
+          "description": "Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.",
+          "format": "float",
+          "type": "number"
+        },
+        "type": {
+          "description": "Name of the defect type. Supported values are \"quality/defect_blurry\", \"quality/defect_noisy\", \"quality/defect_dark\", \"quality/defect_faint\", \"quality/defect_text_too_small\", \"quality/defect_document_cutoff\", \"quality/defect_text_cutoff\", \"quality/defect_glare\"",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDocumentaiV1beta1DocumentPageLayout": {
       "description": "Visual element describing a layout unit on a page.",
       "id": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
@@ -2101,6 +2140,10 @@
         "layout": {
           "$ref": "GoogleCloudDocumentaiV1beta1DocumentPageLayout",
           "description": "Layout for Table."
+        },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta1DocumentProvenance",
+          "description": "The history of this table."
         }
       },
       "type": "object"
@@ -2956,6 +2999,10 @@
           "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageImage",
           "description": "Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned."
         },
+        "imageQualityScores": {
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores",
+          "description": "Image Quality Scores."
+        },
         "layout": {
           "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
           "description": "Layout for the page."
@@ -3229,6 +3276,41 @@
       },
       "type": "object"
     },
+    "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores": {
+      "description": "Image Quality Scores for the page image",
+      "id": "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores",
+      "properties": {
+        "detectedDefects": {
+          "description": "A list of detected defects.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect"
+          },
+          "type": "array"
+        },
+        "qualityScore": {
+          "description": "The overall quality score. Range [0, 1] where 1 is perfect quality.",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect": {
+      "description": "Image Quality Defects",
+      "id": "GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect",
+      "properties": {
+        "confidence": {
+          "description": "Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.",
+          "format": "float",
+          "type": "number"
+        },
+        "type": {
+          "description": "Name of the defect type. Supported values are \"quality/defect_blurry\", \"quality/defect_noisy\", \"quality/defect_dark\", \"quality/defect_faint\", \"quality/defect_text_too_small\", \"quality/defect_document_cutoff\", \"quality/defect_text_cutoff\", \"quality/defect_glare\"",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDocumentaiV1beta2DocumentPageLayout": {
       "description": "Visual element describing a layout unit on a page.",
       "id": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
@@ -3384,6 +3466,10 @@
         "layout": {
           "$ref": "GoogleCloudDocumentaiV1beta2DocumentPageLayout",
           "description": "Layout for Table."
+        },
+        "provenance": {
+          "$ref": "GoogleCloudDocumentaiV1beta2DocumentProvenance",
+          "description": "The history of this table."
         }
       },
       "type": "object"

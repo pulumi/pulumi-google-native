@@ -44,7 +44,7 @@ class ServiceArgs:
         :param pulumi.Input['MetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-        :param pulumi.Input['NetworkConfigArgs'] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input['NetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
@@ -203,7 +203,7 @@ class ServiceArgs:
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> Optional[pulumi.Input['NetworkConfigArgs']]:
         """
-        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        The configuration specifying the network settings for the Dataproc Metastore service.
         """
         return pulumi.get(self, "network_config")
 
@@ -304,7 +304,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
@@ -541,7 +541,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> pulumi.Output['outputs.NetworkConfigResponse']:
         """
-        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        The configuration specifying the network settings for the Dataproc Metastore service.
         """
         return pulumi.get(self, "network_config")
 

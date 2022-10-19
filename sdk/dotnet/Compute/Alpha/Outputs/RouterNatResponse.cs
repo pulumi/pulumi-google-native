@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class RouterNatResponse
     {
         /// <summary>
+        /// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        /// </summary>
+        public readonly string AutoNetworkTier;
+        /// <summary>
         /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         /// </summary>
         public readonly ImmutableArray<string> DrainNatIps;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private RouterNatResponse(
+            string autoNetworkTier,
+
             ImmutableArray<string> drainNatIps,
 
             bool enableDynamicPortAllocation,
@@ -130,6 +136,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int udpIdleTimeoutSec)
         {
+            AutoNetworkTier = autoNetworkTier;
             DrainNatIps = drainNatIps;
             EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;

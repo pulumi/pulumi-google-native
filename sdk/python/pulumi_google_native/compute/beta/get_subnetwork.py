@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
+    def __init__(__self__, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
         if allow_subnet_cidr_routes_overlap and not isinstance(allow_subnet_cidr_routes_overlap, bool):
             raise TypeError("Expected argument 'allow_subnet_cidr_routes_overlap' to be a bool")
         pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
@@ -77,6 +77,9 @@ class GetSubnetworkResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if reserved_internal_range and not isinstance(reserved_internal_range, str):
+            raise TypeError("Expected argument 'reserved_internal_range' to be a str")
+        pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
@@ -246,6 +249,14 @@ class GetSubnetworkResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> str:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @property
     @pulumi.getter
     def role(self) -> str:
         """
@@ -311,6 +322,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             private_ipv6_google_access=self.private_ipv6_google_access,
             purpose=self.purpose,
             region=self.region,
+            reserved_internal_range=self.reserved_internal_range,
             role=self.role,
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link,
@@ -352,6 +364,7 @@ def get_subnetwork(project: Optional[str] = None,
         private_ipv6_google_access=__ret__.private_ipv6_google_access,
         purpose=__ret__.purpose,
         region=__ret__.region,
+        reserved_internal_range=__ret__.reserved_internal_range,
         role=__ret__.role,
         secondary_ip_ranges=__ret__.secondary_ip_ranges,
         self_link=__ret__.self_link,

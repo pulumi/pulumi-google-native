@@ -93,6 +93,8 @@ if typing.TYPE_CHECKING:
     container = __container
     import pulumi_google_native.containeranalysis as __containeranalysis
     containeranalysis = __containeranalysis
+    import pulumi_google_native.contentwarehouse as __contentwarehouse
+    contentwarehouse = __contentwarehouse
     import pulumi_google_native.datacatalog as __datacatalog
     datacatalog = __datacatalog
     import pulumi_google_native.dataflow as __dataflow
@@ -300,6 +302,7 @@ else:
     contactcenterinsights = _utilities.lazy_import('pulumi_google_native.contactcenterinsights')
     container = _utilities.lazy_import('pulumi_google_native.container')
     containeranalysis = _utilities.lazy_import('pulumi_google_native.containeranalysis')
+    contentwarehouse = _utilities.lazy_import('pulumi_google_native.contentwarehouse')
     datacatalog = _utilities.lazy_import('pulumi_google_native.datacatalog')
     dataflow = _utilities.lazy_import('pulumi_google_native.dataflow')
     datafusion = _utilities.lazy_import('pulumi_google_native.datafusion')
@@ -732,7 +735,11 @@ _utilities.register(
    "google-native:beyondcorp/v1alpha:Connector": "Connector",
    "google-native:beyondcorp/v1alpha:ConnectorIamBinding": "ConnectorIamBinding",
    "google-native:beyondcorp/v1alpha:ConnectorIamMember": "ConnectorIamMember",
-   "google-native:beyondcorp/v1alpha:ConnectorIamPolicy": "ConnectorIamPolicy"
+   "google-native:beyondcorp/v1alpha:ConnectorIamPolicy": "ConnectorIamPolicy",
+   "google-native:beyondcorp/v1alpha:NetConnection": "NetConnection",
+   "google-native:beyondcorp/v1alpha:NetConnectionIamBinding": "NetConnectionIamBinding",
+   "google-native:beyondcorp/v1alpha:NetConnectionIamMember": "NetConnectionIamMember",
+   "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy": "NetConnectionIamPolicy"
   }
  },
  {
@@ -860,6 +867,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.certificatemanager.v1",
   "classes": {
    "google-native:certificatemanager/v1:Certificate": "Certificate",
+   "google-native:certificatemanager/v1:CertificateIssuanceConfig": "CertificateIssuanceConfig",
    "google-native:certificatemanager/v1:CertificateMap": "CertificateMap",
    "google-native:certificatemanager/v1:CertificateMapEntry": "CertificateMapEntry",
    "google-native:certificatemanager/v1:DnsAuthorization": "DnsAuthorization"
@@ -1012,6 +1020,8 @@ _utilities.register(
   "classes": {
    "google-native:cloudidentity/v1beta1:Device": "Device",
    "google-native:cloudidentity/v1beta1:Group": "Group",
+   "google-native:cloudidentity/v1beta1:InboundSamlSsoProfile": "InboundSamlSsoProfile",
+   "google-native:cloudidentity/v1beta1:InboundSsoAssignment": "InboundSsoAssignment",
    "google-native:cloudidentity/v1beta1:Membership": "Membership"
   }
  },
@@ -1767,6 +1777,17 @@ _utilities.register(
    "google-native:containeranalysis/v1beta1:OccurrenceIamBinding": "OccurrenceIamBinding",
    "google-native:containeranalysis/v1beta1:OccurrenceIamMember": "OccurrenceIamMember",
    "google-native:containeranalysis/v1beta1:OccurrenceIamPolicy": "OccurrenceIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "contentwarehouse/v1",
+  "fqn": "pulumi_google_native.contentwarehouse.v1",
+  "classes": {
+   "google-native:contentwarehouse/v1:Document": "Document",
+   "google-native:contentwarehouse/v1:DocumentSchema": "DocumentSchema",
+   "google-native:contentwarehouse/v1:RuleSet": "RuleSet",
+   "google-native:contentwarehouse/v1:SynonymSet": "SynonymSet"
   }
  },
  {
@@ -3359,10 +3380,12 @@ _utilities.register(
   "fqn": "pulumi_google_native.securitycenter.v1",
   "classes": {
    "google-native:securitycenter/v1:FolderBigQueryExport": "FolderBigQueryExport",
+   "google-native:securitycenter/v1:FolderNotificationConfig": "FolderNotificationConfig",
    "google-native:securitycenter/v1:MuteConfig": "MuteConfig",
    "google-native:securitycenter/v1:NotificationConfig": "NotificationConfig",
    "google-native:securitycenter/v1:OrganizationBigQueryExport": "OrganizationBigQueryExport",
    "google-native:securitycenter/v1:OrganizationMuteConfig": "OrganizationMuteConfig",
+   "google-native:securitycenter/v1:OrganizationNotificationConfig": "OrganizationNotificationConfig",
    "google-native:securitycenter/v1:OrganizationSourceIamBinding": "OrganizationSourceIamBinding",
    "google-native:securitycenter/v1:OrganizationSourceIamMember": "OrganizationSourceIamMember",
    "google-native:securitycenter/v1:OrganizationSourceIamPolicy": "OrganizationSourceIamPolicy",

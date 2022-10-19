@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     public sealed class IpConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        /// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         /// </summary>
         [Input("allocatedIpRange")]
         public Input<string>? AllocatedIpRange { get; set; }
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
             get => _authorizedNetworks ?? (_authorizedNetworks = new InputList<Inputs.AclEntryArgs>());
             set => _authorizedNetworks = value;
         }
+
+        /// <summary>
+        /// Controls connectivity to private IP instances from Google services, such as BigQuery.
+        /// </summary>
+        [Input("enablePrivatePathForGoogleCloudServices")]
+        public Input<bool>? EnablePrivatePathForGoogleCloudServices { get; set; }
 
         /// <summary>
         /// Whether the instance is assigned a public IP address or not.

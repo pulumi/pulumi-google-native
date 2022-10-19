@@ -163,7 +163,8 @@ class AwaitableGetUserResult(GetUserResult):
             type=self.type)
 
 
-def get_user(instance: Optional[str] = None,
+def get_user(host: Optional[str] = None,
+             instance: Optional[str] = None,
              name: Optional[str] = None,
              project: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
@@ -171,6 +172,7 @@ def get_user(instance: Optional[str] = None,
     Retrieves a resource containing information about a user.
     """
     __args__ = dict()
+    __args__['host'] = host
     __args__['instance'] = instance
     __args__['name'] = name
     __args__['project'] = project
@@ -192,7 +194,8 @@ def get_user(instance: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_user)
-def get_user_output(instance: Optional[pulumi.Input[str]] = None,
+def get_user_output(host: Optional[pulumi.Input[Optional[str]]] = None,
+                    instance: Optional[pulumi.Input[str]] = None,
                     name: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:

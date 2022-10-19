@@ -245,6 +245,8 @@ class BackupInfoResponse(dict):
         suggest = None
         if key == "endTime":
             suggest = "end_time"
+        elif key == "sourceBackup":
+            suggest = "source_backup"
         elif key == "sourceTable":
             suggest = "source_table"
         elif key == "startTime":
@@ -264,17 +266,20 @@ class BackupInfoResponse(dict):
     def __init__(__self__, *,
                  backup: str,
                  end_time: str,
+                 source_backup: str,
                  source_table: str,
                  start_time: str):
         """
         Information about a backup.
         :param str backup: Name of the backup.
         :param str end_time: This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
+        :param str source_backup: Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
         :param str source_table: Name of the table the backup was created from.
         :param str start_time: The time that the backup was started. Row data in the backup will be no older than this timestamp.
         """
         pulumi.set(__self__, "backup", backup)
         pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "source_backup", source_backup)
         pulumi.set(__self__, "source_table", source_table)
         pulumi.set(__self__, "start_time", start_time)
 
@@ -293,6 +298,14 @@ class BackupInfoResponse(dict):
         This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> str:
+        """
+        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        """
+        return pulumi.get(self, "source_backup")
 
     @property
     @pulumi.getter(name="sourceTable")

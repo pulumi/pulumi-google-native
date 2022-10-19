@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, encryption_info=None, end_time=None, expire_time=None, name=None, size_bytes=None, source_table=None, start_time=None, state=None):
+    def __init__(__self__, encryption_info=None, end_time=None, expire_time=None, name=None, size_bytes=None, source_backup=None, source_table=None, start_time=None, state=None):
         if encryption_info and not isinstance(encryption_info, dict):
             raise TypeError("Expected argument 'encryption_info' to be a dict")
         pulumi.set(__self__, "encryption_info", encryption_info)
@@ -35,6 +35,9 @@ class GetBackupResult:
         if size_bytes and not isinstance(size_bytes, str):
             raise TypeError("Expected argument 'size_bytes' to be a str")
         pulumi.set(__self__, "size_bytes", size_bytes)
+        if source_backup and not isinstance(source_backup, str):
+            raise TypeError("Expected argument 'source_backup' to be a str")
+        pulumi.set(__self__, "source_backup", source_backup)
         if source_table and not isinstance(source_table, str):
             raise TypeError("Expected argument 'source_table' to be a str")
         pulumi.set(__self__, "source_table", source_table)
@@ -86,6 +89,14 @@ class GetBackupResult:
         return pulumi.get(self, "size_bytes")
 
     @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> str:
+        """
+        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        """
+        return pulumi.get(self, "source_backup")
+
+    @property
     @pulumi.getter(name="sourceTable")
     def source_table(self) -> str:
         """
@@ -121,6 +132,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             expire_time=self.expire_time,
             name=self.name,
             size_bytes=self.size_bytes,
+            source_backup=self.source_backup,
             source_table=self.source_table,
             start_time=self.start_time,
             state=self.state)
@@ -148,6 +160,7 @@ def get_backup(backup_id: Optional[str] = None,
         expire_time=__ret__.expire_time,
         name=__ret__.name,
         size_bytes=__ret__.size_bytes,
+        source_backup=__ret__.source_backup,
         source_table=__ret__.source_table,
         start_time=__ret__.start_time,
         state=__ret__.state)

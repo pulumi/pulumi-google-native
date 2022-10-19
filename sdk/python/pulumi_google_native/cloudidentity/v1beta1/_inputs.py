@@ -19,6 +19,10 @@ __all__ = [
     'MembershipRoleArgs',
     'PosixGroupArgs',
     'RestrictionEvaluationsArgs',
+    'SamlIdpConfigArgs',
+    'SamlSpConfigArgs',
+    'SamlSsoInfoArgs',
+    'SignInBehaviorArgs',
 ]
 
 @pulumi.input_type
@@ -288,5 +292,131 @@ class RestrictionEvaluationsArgs:
     @member_restriction_evaluation.setter
     def member_restriction_evaluation(self, value: Optional[pulumi.Input['MembershipRoleRestrictionEvaluationArgs']]):
         pulumi.set(self, "member_restriction_evaluation", value)
+
+
+@pulumi.input_type
+class SamlIdpConfigArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[str],
+                 single_sign_on_service_uri: pulumi.Input[str],
+                 change_password_uri: Optional[pulumi.Input[str]] = None,
+                 logout_redirect_uri: Optional[pulumi.Input[str]] = None):
+        """
+        SAML IDP (identity provider) configuration.
+        :param pulumi.Input[str] entity_id: The SAML **Entity ID** of the identity provider.
+        :param pulumi.Input[str] single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        :param pulumi.Input[str] change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+        :param pulumi.Input[str] logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "single_sign_on_service_uri", single_sign_on_service_uri)
+        if change_password_uri is not None:
+            pulumi.set(__self__, "change_password_uri", change_password_uri)
+        if logout_redirect_uri is not None:
+            pulumi.set(__self__, "logout_redirect_uri", logout_redirect_uri)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[str]:
+        """
+        The SAML **Entity ID** of the identity provider.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter(name="singleSignOnServiceUri")
+    def single_sign_on_service_uri(self) -> pulumi.Input[str]:
+        """
+        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        """
+        return pulumi.get(self, "single_sign_on_service_uri")
+
+    @single_sign_on_service_uri.setter
+    def single_sign_on_service_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "single_sign_on_service_uri", value)
+
+    @property
+    @pulumi.getter(name="changePasswordUri")
+    def change_password_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "change_password_uri")
+
+    @change_password_uri.setter
+    def change_password_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_password_uri", value)
+
+    @property
+    @pulumi.getter(name="logoutRedirectUri")
+    def logout_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "logout_redirect_uri")
+
+    @logout_redirect_uri.setter
+    def logout_redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logout_redirect_uri", value)
+
+
+@pulumi.input_type
+class SamlSpConfigArgs:
+    def __init__(__self__):
+        """
+        SAML SP (service provider) configuration.
+        """
+        pass
+
+
+@pulumi.input_type
+class SamlSsoInfoArgs:
+    def __init__(__self__, *,
+                 inbound_saml_sso_profile: pulumi.Input[str]):
+        """
+        Details that are applicable when `sso_mode` == `SAML_SSO`.
+        :param pulumi.Input[str] inbound_saml_sso_profile: Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. 
+        """
+        pulumi.set(__self__, "inbound_saml_sso_profile", inbound_saml_sso_profile)
+
+    @property
+    @pulumi.getter(name="inboundSamlSsoProfile")
+    def inbound_saml_sso_profile(self) -> pulumi.Input[str]:
+        """
+        Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. 
+        """
+        return pulumi.get(self, "inbound_saml_sso_profile")
+
+    @inbound_saml_sso_profile.setter
+    def inbound_saml_sso_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "inbound_saml_sso_profile", value)
+
+
+@pulumi.input_type
+class SignInBehaviorArgs:
+    def __init__(__self__, *,
+                 redirect_condition: Optional[pulumi.Input['SignInBehaviorRedirectCondition']] = None):
+        """
+        Controls sign-in behavior.
+        :param pulumi.Input['SignInBehaviorRedirectCondition'] redirect_condition: When to redirect sign-ins to the IdP.
+        """
+        if redirect_condition is not None:
+            pulumi.set(__self__, "redirect_condition", redirect_condition)
+
+    @property
+    @pulumi.getter(name="redirectCondition")
+    def redirect_condition(self) -> Optional[pulumi.Input['SignInBehaviorRedirectCondition']]:
+        """
+        When to redirect sign-ins to the IdP.
+        """
+        return pulumi.get(self, "redirect_condition")
+
+    @redirect_condition.setter
+    def redirect_condition(self, value: Optional[pulumi.Input['SignInBehaviorRedirectCondition']]):
+        pulumi.set(self, "redirect_condition", value)
 
 

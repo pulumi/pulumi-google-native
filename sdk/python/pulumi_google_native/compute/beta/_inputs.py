@@ -98,6 +98,7 @@ __all__ = [
     'InitialStateConfigArgs',
     'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPolicyArgs',
+    'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
     'InstanceParamsArgs',
@@ -564,7 +565,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] machine_type: Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
         :param pulumi.Input[int] maintenance_freeze_duration_hours: Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
-        :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval'] maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
+        :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval'] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param pulumi.Input[str] min_cpu_platform: Minimum cpu platform the reservation.
         """
         if guest_accelerators is not None:
@@ -646,7 +647,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval']]:
         """
-        For more information about maintenance intervals, see Setting maintenance intervals.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -4199,11 +4200,13 @@ class FirewallPolicyRuleMatcherLayer4ConfigArgs:
 class FirewallPolicyRuleMatcherArgs:
     def __init__(__self__, *,
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
@@ -4211,11 +4214,13 @@ class FirewallPolicyRuleMatcherArgs:
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
@@ -4223,6 +4228,8 @@ class FirewallPolicyRuleMatcherArgs:
         """
         if dest_address_groups is not None:
             pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
         if dest_region_codes is not None:
@@ -4233,6 +4240,8 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
         if src_address_groups is not None:
             pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
         if src_region_codes is not None:
@@ -4253,6 +4262,18 @@ class FirewallPolicyRuleMatcherArgs:
     @dest_address_groups.setter
     def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4313,6 +4334,18 @@ class FirewallPolicyRuleMatcherArgs:
     @src_address_groups.setter
     def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -6471,6 +6504,29 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerInstanceLifecyclePolicyArgs:
+    def __init__(__self__, *,
+                 force_update_on_repair: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair']] = None):
+        """
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair'] force_update_on_repair: A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+        """
+        if force_update_on_repair is not None:
+            pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair']]:
+        """
+        A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+        """
+        return pulumi.get(self, "force_update_on_repair")
+
+    @force_update_on_repair.setter
+    def force_update_on_repair(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair']]):
+        pulumi.set(self, "force_update_on_repair", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerUpdatePolicyArgs:
     def __init__(__self__, *,
                  instance_redistribution_type: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyInstanceRedistributionType']] = None,
@@ -8509,10 +8565,10 @@ class OutlierDetectionArgs:
         """
         Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
         :param pulumi.Input['DurationArgs'] base_ejection_time: The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
-        :param pulumi.Input[int] consecutive_errors: Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
-        :param pulumi.Input[int] consecutive_gateway_failure: The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
-        :param pulumi.Input[int] enforcing_consecutive_errors: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
-        :param pulumi.Input[int] enforcing_consecutive_gateway_failure: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+        :param pulumi.Input[int] consecutive_errors: Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] consecutive_gateway_failure: The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] enforcing_consecutive_errors: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] enforcing_consecutive_gateway_failure: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[int] enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
         :param pulumi.Input['DurationArgs'] interval: Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
         :param pulumi.Input[int] max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
@@ -8559,7 +8615,7 @@ class OutlierDetectionArgs:
     @pulumi.getter(name="consecutiveErrors")
     def consecutive_errors(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+        Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consecutive_errors")
 
@@ -8571,7 +8627,7 @@ class OutlierDetectionArgs:
     @pulumi.getter(name="consecutiveGatewayFailure")
     def consecutive_gateway_failure(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+        The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consecutive_gateway_failure")
 
@@ -8583,7 +8639,7 @@ class OutlierDetectionArgs:
     @pulumi.getter(name="enforcingConsecutiveErrors")
     def enforcing_consecutive_errors(self) -> Optional[pulumi.Input[int]]:
         """
-        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "enforcing_consecutive_errors")
 
@@ -8595,7 +8651,7 @@ class OutlierDetectionArgs:
     @pulumi.getter(name="enforcingConsecutiveGatewayFailure")
     def enforcing_consecutive_gateway_failure(self) -> Optional[pulumi.Input[int]]:
         """
-        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "enforcing_consecutive_gateway_failure")
 
@@ -11422,11 +11478,13 @@ class SchedulingArgs:
                  location_hint: Optional[pulumi.Input[str]] = None,
                  maintenance_freeze_duration_hours: Optional[pulumi.Input[int]] = None,
                  maintenance_interval: Optional[pulumi.Input['SchedulingMaintenanceInterval']] = None,
+                 max_run_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input['SchedulingOnHostMaintenance']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 provisioning_model: Optional[pulumi.Input['SchedulingProvisioningModel']] = None):
+                 provisioning_model: Optional[pulumi.Input['SchedulingProvisioningModel']] = None,
+                 termination_time: Optional[pulumi.Input[str]] = None):
         """
         Sets the scheduling options for an Instance.
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -11434,12 +11492,14 @@ class SchedulingArgs:
         :param pulumi.Input['SchedulingInstanceTerminationAction'] instance_termination_action: Specifies the termination action for the instance.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[int] maintenance_freeze_duration_hours: Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
-        :param pulumi.Input['SchedulingMaintenanceInterval'] maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
+        :param pulumi.Input['SchedulingMaintenanceInterval'] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param pulumi.Input['DurationArgs'] max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['SchedulingNodeAffinityArgs']]] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
         :param pulumi.Input['SchedulingOnHostMaintenance'] on_host_maintenance: Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         :param pulumi.Input[bool] preemptible: Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         :param pulumi.Input['SchedulingProvisioningModel'] provisioning_model: Specifies the provisioning model of the instance.
+        :param pulumi.Input[str] termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
@@ -11453,6 +11513,8 @@ class SchedulingArgs:
             pulumi.set(__self__, "maintenance_freeze_duration_hours", maintenance_freeze_duration_hours)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
         if min_node_cpus is not None:
             pulumi.set(__self__, "min_node_cpus", min_node_cpus)
         if node_affinities is not None:
@@ -11463,6 +11525,8 @@ class SchedulingArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
             pulumi.set(__self__, "provisioning_model", provisioning_model)
+        if termination_time is not None:
+            pulumi.set(__self__, "termination_time", termination_time)
 
     @property
     @pulumi.getter(name="automaticRestart")
@@ -11528,13 +11592,25 @@ class SchedulingArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input['SchedulingMaintenanceInterval']]:
         """
-        For more information about maintenance intervals, see Setting maintenance intervals.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
     def maintenance_interval(self, value: Optional[pulumi.Input['SchedulingMaintenanceInterval']]):
         pulumi.set(self, "maintenance_interval", value)
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
+        """
+        Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @max_run_duration.setter
+    def max_run_duration(self, value: Optional[pulumi.Input['DurationArgs']]):
+        pulumi.set(self, "max_run_duration", value)
 
     @property
     @pulumi.getter(name="minNodeCpus")
@@ -11595,6 +11671,18 @@ class SchedulingArgs:
     @provisioning_model.setter
     def provisioning_model(self, value: Optional[pulumi.Input['SchedulingProvisioningModel']]):
         pulumi.set(self, "provisioning_model", value)
+
+    @property
+    @pulumi.getter(name="terminationTime")
+    def termination_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        """
+        return pulumi.get(self, "termination_time")
+
+    @termination_time.setter
+    def termination_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "termination_time", value)
 
 
 @pulumi.input_type
@@ -12309,7 +12397,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
@@ -12372,7 +12460,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -13379,16 +13467,20 @@ class SubnetworkLogConfigArgs:
 class SubnetworkSecondaryRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
-                 range_name: Optional[pulumi.Input[str]] = None):
+                 range_name: Optional[pulumi.Input[str]] = None,
+                 reserved_internal_range: Optional[pulumi.Input[str]] = None):
         """
         Represents a secondary IP range of a subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
         :param pulumi.Input[str] range_name: The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+        :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
         """
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if range_name is not None:
             pulumi.set(__self__, "range_name", range_name)
+        if reserved_internal_range is not None:
+            pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -13413,6 +13505,18 @@ class SubnetworkSecondaryRangeArgs:
     @range_name.setter
     def range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "range_name", value)
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @reserved_internal_range.setter
+    def reserved_internal_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_internal_range", value)
 
 
 @pulumi.input_type

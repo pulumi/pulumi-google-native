@@ -77,6 +77,10 @@ export interface GetWorkloadResult {
      */
     readonly name: string;
     /**
+     * Optional. Compliance Regime associated with this workload.
+     */
+    readonly partner: string;
+    /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
     readonly provisionedResourcesParent: string;

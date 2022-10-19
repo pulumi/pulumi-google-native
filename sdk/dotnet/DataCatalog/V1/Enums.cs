@@ -85,59 +85,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     }
 
     /// <summary>
-    /// Looker specific column type of this column.
-    /// </summary>
-    [EnumType]
-    public readonly struct GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType : IEquatable<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType>
-    {
-        private readonly string _value;
-
-        private GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Unspecified.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType LookerColumnTypeUnspecified { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("LOOKER_COLUMN_TYPE_UNSPECIFIED");
-        /// <summary>
-        /// Dimension.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Dimension { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION");
-        /// <summary>
-        /// Dimension group - parent for Dimension.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType DimensionGroup { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION_GROUP");
-        /// <summary>
-        /// Filter.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Filter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("FILTER");
-        /// <summary>
-        /// Measure.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Measure { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("MEASURE");
-        /// <summary>
-        /// Parameter.
-        /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Paremeter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PAREMETER");
-
-        public static bool operator ==(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => left.Equals(right);
-        public static bool operator !=(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => !left.Equals(right);
-
-        public static explicit operator string(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType other && Equals(other);
-        public bool Equals(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Type of this table.
     /// </summary>
     [EnumType]

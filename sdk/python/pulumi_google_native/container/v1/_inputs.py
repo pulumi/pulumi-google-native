@@ -28,6 +28,7 @@ __all__ = [
     'ConfidentialNodesArgs',
     'ConfigConnectorConfigArgs',
     'ConsumptionMeteringConfigArgs',
+    'CostManagementConfigArgs',
     'DNSConfigArgs',
     'DailyMaintenanceWindowArgs',
     'DatabaseEncryptionArgs',
@@ -38,6 +39,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
+    'GkeBackupAgentConfigArgs',
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
     'IPAllocationPolicyArgs',
@@ -177,6 +179,7 @@ class AddonsConfigArgs:
                  dns_cache_config: Optional[pulumi.Input['DnsCacheConfigArgs']] = None,
                  gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['GcePersistentDiskCsiDriverConfigArgs']] = None,
                  gcp_filestore_csi_driver_config: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']] = None,
+                 gke_backup_agent_config: Optional[pulumi.Input['GkeBackupAgentConfigArgs']] = None,
                  horizontal_pod_autoscaling: Optional[pulumi.Input['HorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['HttpLoadBalancingArgs']] = None,
                  kubernetes_dashboard: Optional[pulumi.Input['KubernetesDashboardArgs']] = None,
@@ -188,6 +191,7 @@ class AddonsConfigArgs:
         :param pulumi.Input['DnsCacheConfigArgs'] dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param pulumi.Input['GcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param pulumi.Input['GcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param pulumi.Input['GkeBackupAgentConfigArgs'] gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param pulumi.Input['HorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param pulumi.Input['HttpLoadBalancingArgs'] http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param pulumi.Input['KubernetesDashboardArgs'] kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
@@ -203,6 +207,8 @@ class AddonsConfigArgs:
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gke_backup_agent_config is not None:
+            pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -271,6 +277,18 @@ class AddonsConfigArgs:
     @gcp_filestore_csi_driver_config.setter
     def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']]):
         pulumi.set(self, "gcp_filestore_csi_driver_config", value)
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> Optional[pulumi.Input['GkeBackupAgentConfigArgs']]:
+        """
+        Configuration for the Backup for GKE agent addon.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
+
+    @gke_backup_agent_config.setter
+    def gke_backup_agent_config(self, value: Optional[pulumi.Input['GkeBackupAgentConfigArgs']]):
+        pulumi.set(self, "gke_backup_agent_config", value)
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -961,6 +979,30 @@ class ConsumptionMeteringConfigArgs:
 
 
 @pulumi.input_type
+class CostManagementConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for fine-grained cost management feature.
+        :param pulumi.Input[bool] enabled: Whether the feature is enabled or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the feature is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class DNSConfigArgs:
     def __init__(__self__, *,
                  cluster_dns: Optional[pulumi.Input['DNSConfigClusterDns']] = None,
@@ -1265,6 +1307,30 @@ class GcpFilestoreCsiDriverConfigArgs:
 
 
 @pulumi.input_type
+class GkeBackupAgentConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Backup for GKE Agent.
+        :param pulumi.Input[bool] enabled: Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class HorizontalPodAutoscalingArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None):
@@ -1319,11 +1385,13 @@ class IPAllocationPolicyArgs:
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  create_subnetwork: Optional[pulumi.Input[bool]] = None,
+                 ipv6_access_type: Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']] = None,
                  node_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['IPAllocationPolicyStackType']] = None,
                  subnetwork_name: Optional[pulumi.Input[str]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None,
@@ -1334,11 +1402,13 @@ class IPAllocationPolicyArgs:
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param pulumi.Input[bool] create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param pulumi.Input['IPAllocationPolicyIpv6AccessType'] ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param pulumi.Input[str] node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param pulumi.Input[str] node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param pulumi.Input[str] services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
+        :param pulumi.Input['IPAllocationPolicyStackType'] stack_type: The IP stack type of the cluster
         :param pulumi.Input[str] subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1355,6 +1425,8 @@ class IPAllocationPolicyArgs:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         if create_subnetwork is not None:
             pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if node_ipv4_cidr is not None:
             warnings.warn("""This field is deprecated, use node_ipv4_cidr_block.""", DeprecationWarning)
             pulumi.log.warn("""node_ipv4_cidr is deprecated: This field is deprecated, use node_ipv4_cidr_block.""")
@@ -1371,6 +1443,8 @@ class IPAllocationPolicyArgs:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork_name is not None:
             pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         if tpu_ipv4_cidr_block is not None:
@@ -1427,6 +1501,18 @@ class IPAllocationPolicyArgs:
     @create_subnetwork.setter
     def create_subnetwork(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_subnetwork", value)
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']]:
+        """
+        The ipv6 access type (internal or external) when create_subnetwork is true
+        """
+        return pulumi.get(self, "ipv6_access_type")
+
+    @ipv6_access_type.setter
+    def ipv6_access_type(self, value: Optional[pulumi.Input['IPAllocationPolicyIpv6AccessType']]):
+        pulumi.set(self, "ipv6_access_type", value)
 
     @property
     @pulumi.getter(name="nodeIpv4Cidr")
@@ -1487,6 +1573,18 @@ class IPAllocationPolicyArgs:
     @services_secondary_range_name.setter
     def services_secondary_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "services_secondary_range_name", value)
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input['IPAllocationPolicyStackType']]:
+        """
+        The IP stack type of the cluster
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input['IPAllocationPolicyStackType']]):
+        pulumi.set(self, "stack_type", value)
 
     @property
     @pulumi.getter(name="subnetworkName")

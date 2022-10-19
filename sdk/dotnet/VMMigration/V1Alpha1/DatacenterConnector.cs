@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
+namespace Pulumi.GoogleNative.Vmmigration.V1Alpha1
 {
     /// <summary>
     /// Creates a new DatacenterConnector in a given Source.

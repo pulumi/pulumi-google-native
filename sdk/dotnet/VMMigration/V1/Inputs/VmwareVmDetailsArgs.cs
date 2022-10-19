@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
+namespace Pulumi.GoogleNative.Vmmigration.V1.Inputs
 {
 
     /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         /// The power state of the VM at the moment list was taken.
         /// </summary>
         [Input("powerState")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1.VmwareVmDetailsPowerState>? PowerState { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1.VmwareVmDetailsPowerState>? PowerState { get; set; }
 
         /// <summary>
         /// The unique identifier of the VM in vCenter.

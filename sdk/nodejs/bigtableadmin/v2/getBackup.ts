@@ -53,6 +53,10 @@ export interface GetBackupResult {
      */
     readonly sizeBytes: string;
     /**
+     * Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+     */
+    readonly sourceBackup: string;
+    /**
      * Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
     readonly sourceTable: string;

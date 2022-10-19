@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public Input<Pulumi.GoogleNative.DNS.V1Beta2.PolicyAlternativeNameServerConfigTargetNameServerForwardingPath>? ForwardingPath { get; set; }
 
         /// <summary>
-        /// IPv4 address to forward to.
+        /// IPv4 address to forward queries to.
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }

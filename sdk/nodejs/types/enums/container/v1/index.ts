@@ -199,6 +199,46 @@ export const GPUSharingConfigGpuSharingStrategy = {
  */
 export type GPUSharingConfigGpuSharingStrategy = (typeof GPUSharingConfigGpuSharingStrategy)[keyof typeof GPUSharingConfigGpuSharingStrategy];
 
+export const IPAllocationPolicyIpv6AccessType = {
+    /**
+     * Default value, will be defaulted as type external.
+     */
+    Ipv6AccessTypeUnspecified: "IPV6_ACCESS_TYPE_UNSPECIFIED",
+    /**
+     * Access type internal (all v6 addresses are internal IPs)
+     */
+    Internal: "INTERNAL",
+    /**
+     * Access type external (all v6 addresses are external IPs)
+     */
+    External: "EXTERNAL",
+} as const;
+
+/**
+ * The ipv6 access type (internal or external) when create_subnetwork is true
+ */
+export type IPAllocationPolicyIpv6AccessType = (typeof IPAllocationPolicyIpv6AccessType)[keyof typeof IPAllocationPolicyIpv6AccessType];
+
+export const IPAllocationPolicyStackType = {
+    /**
+     * Default value, will be defaulted as IPV4 only
+     */
+    StackTypeUnspecified: "STACK_TYPE_UNSPECIFIED",
+    /**
+     * Cluster is IPV4 only
+     */
+    Ipv4: "IPV4",
+    /**
+     * Cluster can use both IPv4 and IPv6
+     */
+    Ipv4Ipv6: "IPV4_IPV6",
+} as const;
+
+/**
+ * The IP stack type of the cluster
+ */
+export type IPAllocationPolicyStackType = (typeof IPAllocationPolicyStackType)[keyof typeof IPAllocationPolicyStackType];
+
 export const LoggingComponentConfigEnableComponentsItem = {
     /**
      * Default value. This shouldn't be used.
@@ -467,7 +507,7 @@ export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxC
 
 export const StatusConditionCanonicalCode = {
     /**
-     * Not an error; returned on success HTTP Mapping: 200 OK
+     * Not an error; returned on success. HTTP Mapping: 200 OK
      */
     Ok: "OK",
     /**

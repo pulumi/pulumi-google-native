@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 {
 
+    /// <summary>
+    /// Configures how to transform sensitive text `InfoTypes`.
+    /// </summary>
     [OutputType]
     public sealed class TextConfigResponse
     {
         /// <summary>
-        /// The transformations to apply to the detected data.
+        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.InfoTypeTransformationResponse> Transformations;
 

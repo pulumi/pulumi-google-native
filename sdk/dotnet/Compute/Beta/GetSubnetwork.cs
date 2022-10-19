@@ -140,6 +140,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        public readonly string ReservedInternalRange;
+        /// <summary>
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         /// </summary>
         public readonly string Role;
@@ -200,6 +204,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string region,
 
+            string reservedInternalRange,
+
             string role,
 
             ImmutableArray<Outputs.SubnetworkSecondaryRangeResponse> secondaryIpRanges,
@@ -229,6 +235,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             Purpose = purpose;
             Region = region;
+            ReservedInternalRange = reservedInternalRange;
             Role = role;
             SecondaryIpRanges = secondaryIpRanges;
             SelfLink = selfLink;

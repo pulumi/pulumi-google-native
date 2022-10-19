@@ -9159,6 +9159,8 @@ type JobStatistics2Response struct {
 	TotalPartitionsProcessed string `pulumi:"totalPartitionsProcessed"`
 	// [Output only] Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
+	// Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+	TransferredBytes string `pulumi:"transferredBytes"`
 	// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
 	UndeclaredQueryParameters []QueryParameterResponse `pulumi:"undeclaredQueryParameters"`
 }
@@ -9334,6 +9336,11 @@ func (o JobStatistics2ResponseOutput) TotalPartitionsProcessed() pulumi.StringOu
 // [Output only] Slot-milliseconds for the job.
 func (o JobStatistics2ResponseOutput) TotalSlotMs() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics2Response) string { return v.TotalSlotMs }).(pulumi.StringOutput)
+}
+
+// Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+func (o JobStatistics2ResponseOutput) TransferredBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics2Response) string { return v.TransferredBytes }).(pulumi.StringOutput)
 }
 
 // Standard SQL only: list of undeclared query parameters detected during a dry run validation.

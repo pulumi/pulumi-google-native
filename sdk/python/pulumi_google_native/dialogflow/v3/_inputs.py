@@ -2575,7 +2575,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs:
         :param pulumi.Input[str] audio_export_pattern: Filename pattern for exported audio.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat'] audio_format: File format for exported audio file. Currently only in telephony recordings.
         :param pulumi.Input[bool] enable_audio_redaction: Enable audio redaction if it is true.
-        :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
         """
         if audio_export_pattern is not None:
             pulumi.set(__self__, "audio_export_pattern", audio_export_pattern)
@@ -2626,7 +2626,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs:
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
         """
         return pulumi.get(self, "gcs_bucket")
 

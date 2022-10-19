@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
+        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// </summary>
+        public readonly string SourceBackup;
+        /// <summary>
         /// Name of the table the backup was created from.
         /// </summary>
         public readonly string SourceTable;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
 
             string endTime,
 
+            string sourceBackup,
+
             string sourceTable,
 
             string startTime)
         {
             Backup = backup;
             EndTime = endTime;
+            SourceBackup = sourceBackup;
             SourceTable = sourceTable;
             StartTime = startTime;
         }

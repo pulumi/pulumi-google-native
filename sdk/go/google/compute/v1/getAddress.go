@@ -37,6 +37,8 @@ type LookupAddressResult struct {
 	Description string `pulumi:"description"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion string `pulumi:"ipVersion"`
+	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+	Ipv6EndpointType string `pulumi:"ipv6EndpointType"`
 	// Type of the resource. Always compute#address for addresses.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -121,6 +123,11 @@ func (o LookupAddressResultOutput) Description() pulumi.StringOutput {
 // The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 func (o LookupAddressResultOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+func (o LookupAddressResultOutput) Ipv6EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAddressResult) string { return v.Ipv6EndpointType }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#address for addresses.

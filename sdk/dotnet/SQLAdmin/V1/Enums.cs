@@ -274,14 +274,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static InstanceDatabaseVersion Mysql57 { get; } = new InstanceDatabaseVersion("MYSQL_5_7");
         /// <summary>
-        /// The database version is PostgreSQL 9.6.
-        /// </summary>
-        public static InstanceDatabaseVersion Postgres96 { get; } = new InstanceDatabaseVersion("POSTGRES_9_6");
-        /// <summary>
-        /// The database version is PostgreSQL 11.
-        /// </summary>
-        public static InstanceDatabaseVersion Postgres11 { get; } = new InstanceDatabaseVersion("POSTGRES_11");
-        /// <summary>
         /// The database version is SQL Server 2017 Standard.
         /// </summary>
         public static InstanceDatabaseVersion Sqlserver2017Standard { get; } = new InstanceDatabaseVersion("SQLSERVER_2017_STANDARD");
@@ -298,13 +290,29 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static InstanceDatabaseVersion Sqlserver2017Web { get; } = new InstanceDatabaseVersion("SQLSERVER_2017_WEB");
         /// <summary>
+        /// The database version is PostgreSQL 9.6.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres96 { get; } = new InstanceDatabaseVersion("POSTGRES_9_6");
+        /// <summary>
         /// The database version is PostgreSQL 10.
         /// </summary>
         public static InstanceDatabaseVersion Postgres10 { get; } = new InstanceDatabaseVersion("POSTGRES_10");
         /// <summary>
+        /// The database version is PostgreSQL 11.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres11 { get; } = new InstanceDatabaseVersion("POSTGRES_11");
+        /// <summary>
         /// The database version is PostgreSQL 12.
         /// </summary>
         public static InstanceDatabaseVersion Postgres12 { get; } = new InstanceDatabaseVersion("POSTGRES_12");
+        /// <summary>
+        /// The database version is PostgreSQL 13.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres13 { get; } = new InstanceDatabaseVersion("POSTGRES_13");
+        /// <summary>
+        /// The database version is PostgreSQL 14.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres14 { get; } = new InstanceDatabaseVersion("POSTGRES_14");
         /// <summary>
         /// The database version is MySQL 8.
         /// </summary>
@@ -333,14 +341,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// The database major version is MySQL 8.0 and the minor version is 30.
         /// </summary>
         public static InstanceDatabaseVersion Mysql8030 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_30");
-        /// <summary>
-        /// The database version is PostgreSQL 13.
-        /// </summary>
-        public static InstanceDatabaseVersion Postgres13 { get; } = new InstanceDatabaseVersion("POSTGRES_13");
-        /// <summary>
-        /// The database version is PostgreSQL 14.
-        /// </summary>
-        public static InstanceDatabaseVersion Postgres14 { get; } = new InstanceDatabaseVersion("POSTGRES_14");
         /// <summary>
         /// The database version is SQL Server 2019 Standard.
         /// </summary>

@@ -37,7 +37,7 @@ type LookupAddressResult struct {
 	Description string `pulumi:"description"`
 	// The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
 	IpVersion string `pulumi:"ipVersion"`
-	// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+	// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 	Ipv6EndpointType string `pulumi:"ipv6EndpointType"`
 	// Type of the resource. Always compute#address for addresses.
 	Kind string `pulumi:"kind"`
@@ -131,7 +131,7 @@ func (o LookupAddressResultOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
-// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
 func (o LookupAddressResultOutput) Ipv6EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAddressResult) string { return v.Ipv6EndpointType }).(pulumi.StringOutput)
 }

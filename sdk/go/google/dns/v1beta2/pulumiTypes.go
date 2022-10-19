@@ -3384,7 +3384,7 @@ func (o PolicyAlternativeNameServerConfigResponseOutput) TargetNameServers() Pol
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath *PolicyAlternativeNameServerConfigTargetNameServerForwardingPath `pulumi:"forwardingPath"`
-	// IPv4 address to forward to.
+	// IPv4 address to forward queries to.
 	Ipv4Address *string `pulumi:"ipv4Address"`
 	// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -3405,7 +3405,7 @@ type PolicyAlternativeNameServerConfigTargetNameServerInput interface {
 type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
 	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrInput `pulumi:"forwardingPath"`
-	// IPv4 address to forward to.
+	// IPv4 address to forward queries to.
 	Ipv4Address pulumi.StringPtrInput `pulumi:"ipv4Address"`
 	// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
@@ -3470,7 +3470,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ForwardingPath(
 	}).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput)
 }
 
-// IPv4 address to forward to.
+// IPv4 address to forward queries to.
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) Ipv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) *string { return v.Ipv4Address }).(pulumi.StringPtrOutput)
 }
@@ -3507,7 +3507,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) Index(i pu
 type PolicyAlternativeNameServerConfigTargetNameServerResponse struct {
 	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath string `pulumi:"forwardingPath"`
-	// IPv4 address to forward to.
+	// IPv4 address to forward queries to.
 	Ipv4Address string `pulumi:"ipv4Address"`
 	// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
 	Ipv6Address string `pulumi:"ipv6Address"`
@@ -3533,7 +3533,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) Forward
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.ForwardingPath }).(pulumi.StringOutput)
 }
 
-// IPv4 address to forward to.
+// IPv4 address to forward queries to.
 func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
 }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:securitycenter/v1:FolderBigQueryExport":
 		r = &FolderBigQueryExport{}
+	case "google-native:securitycenter/v1:FolderNotificationConfig":
+		r = &FolderNotificationConfig{}
 	case "google-native:securitycenter/v1:MuteConfig":
 		r = &MuteConfig{}
 	case "google-native:securitycenter/v1:NotificationConfig":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationBigQueryExport{}
 	case "google-native:securitycenter/v1:OrganizationMuteConfig":
 		r = &OrganizationMuteConfig{}
+	case "google-native:securitycenter/v1:OrganizationNotificationConfig":
+		r = &OrganizationNotificationConfig{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
 		r = &OrganizationSourceIamBinding{}
 	case "google-native:securitycenter/v1:OrganizationSourceIamMember":

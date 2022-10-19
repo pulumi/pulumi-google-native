@@ -91,14 +91,14 @@ class AwaitableGetNotificationConfigResult(GetNotificationConfigResult):
 
 
 def get_notification_config(notification_config_id: Optional[str] = None,
-                            organization_id: Optional[str] = None,
+                            project: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationConfigResult:
     """
     Gets a notification config.
     """
     __args__ = dict()
     __args__['notificationConfigId'] = notification_config_id
-    __args__['organizationId'] = organization_id
+    __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getNotificationConfig', __args__, opts=opts, typ=GetNotificationConfigResult).value
 
@@ -112,7 +112,7 @@ def get_notification_config(notification_config_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_notification_config)
 def get_notification_config_output(notification_config_id: Optional[pulumi.Input[str]] = None,
-                                   organization_id: Optional[pulumi.Input[str]] = None,
+                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationConfigResult]:
     """
     Gets a notification config.

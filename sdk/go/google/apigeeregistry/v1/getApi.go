@@ -41,9 +41,9 @@ type LookupApiResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+	// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 	RecommendedDeployment string `pulumi:"recommendedDeployment"`
-	// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+	// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 	RecommendedVersion string `pulumi:"recommendedVersion"`
 	// Last update timestamp.
 	UpdateTime string `pulumi:"updateTime"`
@@ -121,12 +121,12 @@ func (o LookupApiResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 func (o LookupApiResultOutput) RecommendedDeployment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.RecommendedDeployment }).(pulumi.StringOutput)
 }
 
-// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 func (o LookupApiResultOutput) RecommendedVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.RecommendedVersion }).(pulumi.StringOutput)
 }

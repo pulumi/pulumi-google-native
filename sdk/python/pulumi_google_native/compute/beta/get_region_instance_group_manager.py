@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionInstanceGroupManagerResult:
-    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, service_account=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, service_account=None, stateful_policy=None, status=None, target_pools=None, target_size=None, update_policy=None, versions=None, zone=None):
         if all_instances_config and not isinstance(all_instances_config, dict):
             raise TypeError("Expected argument 'all_instances_config' to be a dict")
         pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -50,6 +50,9 @@ class GetRegionInstanceGroupManagerResult:
         if instance_group and not isinstance(instance_group, str):
             raise TypeError("Expected argument 'instance_group' to be a str")
         pulumi.set(__self__, "instance_group", instance_group)
+        if instance_lifecycle_policy and not isinstance(instance_lifecycle_policy, dict):
+            raise TypeError("Expected argument 'instance_lifecycle_policy' to be a dict")
+        pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template and not isinstance(instance_template, str):
             raise TypeError("Expected argument 'instance_template' to be a str")
         pulumi.set(__self__, "instance_template", instance_template)
@@ -175,6 +178,14 @@ class GetRegionInstanceGroupManagerResult:
         The URL of the Instance Group resource.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> 'outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse':
+        """
+        The repair policy for this managed instance group.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
 
     @property
     @pulumi.getter(name="instanceTemplate")
@@ -313,6 +324,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             failover_action=self.failover_action,
             fingerprint=self.fingerprint,
             instance_group=self.instance_group,
+            instance_lifecycle_policy=self.instance_lifecycle_policy,
             instance_template=self.instance_template,
             kind=self.kind,
             list_managed_instances_results=self.list_managed_instances_results,
@@ -355,6 +367,7 @@ def get_region_instance_group_manager(instance_group_manager: Optional[str] = No
         failover_action=__ret__.failover_action,
         fingerprint=__ret__.fingerprint,
         instance_group=__ret__.instance_group,
+        instance_lifecycle_policy=__ret__.instance_lifecycle_policy,
         instance_template=__ret__.instance_template,
         kind=__ret__.kind,
         list_managed_instances_results=__ret__.list_managed_instances_results,

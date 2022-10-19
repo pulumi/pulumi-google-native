@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2DeidentifyArgs>? Deidentify { get; set; }
 
         /// <summary>
-        /// Enable email notification for project owners and editors on job's completion/failure.
+        /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         /// </summary>
         [Input("jobNotificationEmails")]
         public Input<Inputs.GooglePrivacyDlpV2JobNotificationEmailsArgs>? JobNotificationEmails { get; set; }

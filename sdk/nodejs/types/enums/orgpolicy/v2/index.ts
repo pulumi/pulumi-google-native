@@ -36,7 +36,7 @@ export const CustomConstraintMethodTypesItem = {
      */
     Update: "UPDATE",
     /**
-     * Constraint applied when deleting the resource.
+     * Constraint applied when deleting the resource. Not supported yet.
      */
     Delete: "DELETE",
 } as const;

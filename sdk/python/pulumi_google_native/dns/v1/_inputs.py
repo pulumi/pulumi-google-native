@@ -826,7 +826,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
                  kind: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerForwardingPath'] forwarding_path: Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
-        :param pulumi.Input[str] ipv4_address: IPv4 address to forward to.
+        :param pulumi.Input[str] ipv4_address: IPv4 address to forward queries to.
         """
         if forwarding_path is not None:
             pulumi.set(__self__, "forwarding_path", forwarding_path)
@@ -851,7 +851,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address to forward to.
+        IPv4 address to forward queries to.
         """
         return pulumi.get(self, "ipv4_address")
 

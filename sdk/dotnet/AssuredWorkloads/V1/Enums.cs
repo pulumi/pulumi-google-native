@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 {
     /// <summary>
-    /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+    /// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType : IEquatable<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType>
@@ -113,6 +113,14 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// International Traffic in Arms Regulations
         /// </summary>
         public static WorkloadComplianceRegime Itar { get; } = new WorkloadComplianceRegime("ITAR");
+        /// <summary>
+        /// Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
+        /// </summary>
+        public static WorkloadComplianceRegime AuRegionsAndUsSupport { get; } = new WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT");
+        /// <summary>
+        /// Assured Workloads for Partners
+        /// </summary>
+        public static WorkloadComplianceRegime AssuredWorkloadsForPartners { get; } = new WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);
@@ -122,6 +130,43 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is WorkloadComplianceRegime other && Equals(other);
         public bool Equals(WorkloadComplianceRegime other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Compliance Regime associated with this workload.
+    /// </summary>
+    [EnumType]
+    public readonly struct WorkloadPartner : IEquatable<WorkloadPartner>
+    {
+        private readonly string _value;
+
+        private WorkloadPartner(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown partner regime/controls.
+        /// </summary>
+        public static WorkloadPartner PartnerUnspecified { get; } = new WorkloadPartner("PARTNER_UNSPECIFIED");
+        /// <summary>
+        /// S3NS regime/controls.
+        /// </summary>
+        public static WorkloadPartner LocalControlsByS3ns { get; } = new WorkloadPartner("LOCAL_CONTROLS_BY_S3NS");
+
+        public static bool operator ==(WorkloadPartner left, WorkloadPartner right) => left.Equals(right);
+        public static bool operator !=(WorkloadPartner left, WorkloadPartner right) => !left.Equals(right);
+
+        public static explicit operator string(WorkloadPartner value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WorkloadPartner other && Equals(other);
+        public bool Equals(WorkloadPartner other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

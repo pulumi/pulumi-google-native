@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     public sealed class TimeSeriesQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A query used to fetch time series with PromQL.
+        /// </summary>
+        [Input("prometheusQuery")]
+        public Input<string>? PrometheusQuery { get; set; }
+
+        /// <summary>
         /// Filter parameters to fetch time series.
         /// </summary>
         [Input("timeSeriesFilter")]

@@ -531,13 +531,13 @@ type DicomConfigFilterProfile string
 const (
 	// No tag filtration profile provided. Same as KEEP_ALL_PROFILE.
 	DicomConfigFilterProfileTagFilterProfileUnspecified = DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED")
-	// Keep only tags required to produce valid DICOM.
+	// Keep only the tags required to produce valid DICOM objects.
 	DicomConfigFilterProfileMinimalKeepListProfile = DicomConfigFilterProfile("MINIMAL_KEEP_LIST_PROFILE")
 	// Remove tags based on DICOM Standard's Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e) http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html.
 	DicomConfigFilterProfileAttributeConfidentialityBasicProfile = DicomConfigFilterProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE")
 	// Keep all tags.
 	DicomConfigFilterProfileKeepAllProfile = DicomConfigFilterProfile("KEEP_ALL_PROFILE")
-	// Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+	// Inspect within tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
 	DicomConfigFilterProfileDeidentifyTagContents = DicomConfigFilterProfile("DEIDENTIFY_TAG_CONTENTS")
 )
 
@@ -1903,7 +1903,7 @@ const (
 	SchemaConfigSchemaTypeLossless = SchemaConfigSchemaType("LOSSLESS")
 	// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`.
 	SchemaConfigSchemaTypeAnalytics = SchemaConfigSchemaType("ANALYTICS")
-	// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+	// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
 	SchemaConfigSchemaTypeAnalyticsV2 = SchemaConfigSchemaType("ANALYTICS_V2")
 )
 

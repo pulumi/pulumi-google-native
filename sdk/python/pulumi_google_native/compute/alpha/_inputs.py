@@ -5036,13 +5036,13 @@ class FirewallPolicyRuleMatcherArgs:
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
@@ -5089,7 +5089,7 @@ class FirewallPolicyRuleMatcherArgs:
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         return pulumi.get(self, "dest_fqdns")
 
@@ -5161,7 +5161,7 @@ class FirewallPolicyRuleMatcherArgs:
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         return pulumi.get(self, "src_fqdns")
 
@@ -13795,6 +13795,7 @@ class RouterNatSubnetworkToNatArgs:
 @pulumi.input_type
 class RouterNatArgs:
     def __init__(__self__, *,
+                 auto_network_tier: Optional[pulumi.Input['RouterNatAutoNetworkTier']] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -13816,6 +13817,7 @@ class RouterNatArgs:
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
+        :param pulumi.Input['RouterNatAutoNetworkTier'] auto_network_tier: The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]] endpoint_types: List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
@@ -13835,6 +13837,8 @@ class RouterNatArgs:
         :param pulumi.Input['RouterNatType'] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
+        if auto_network_tier is not None:
+            pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -13873,6 +13877,18 @@ class RouterNatArgs:
             pulumi.set(__self__, "type", type)
         if udp_idle_timeout_sec is not None:
             pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> Optional[pulumi.Input['RouterNatAutoNetworkTier']]:
+        """
+        The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        """
+        return pulumi.get(self, "auto_network_tier")
+
+    @auto_network_tier.setter
+    def auto_network_tier(self, value: Optional[pulumi.Input['RouterNatAutoNetworkTier']]):
+        pulumi.set(self, "auto_network_tier", value)
 
     @property
     @pulumi.getter(name="drainNatIps")

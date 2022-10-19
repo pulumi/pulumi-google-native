@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Compliance Regime associated with this workload.
+        /// </summary>
+        [Output("partner")]
+        public Output<string> Partner { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Output("provisionedResourcesParent")]
@@ -232,6 +238,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Compliance Regime associated with this workload.
+        /// </summary>
+        [Input("partner")]
+        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadPartner>? Partner { get; set; }
 
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}

@@ -43,5 +43,5 @@ class CustomConstraintMethodTypesItem(str, Enum):
     """
     DELETE = "DELETE"
     """
-    Constraint applied when deleting the resource.
+    Constraint applied when deleting the resource. Not supported yet.
     """

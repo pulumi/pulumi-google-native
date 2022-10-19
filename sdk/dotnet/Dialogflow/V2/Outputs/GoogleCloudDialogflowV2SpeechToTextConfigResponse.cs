@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2SpeechToTextConfigResponse
     {
         /// <summary>
+        /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        /// </summary>
+        public readonly string Model;
+        /// <summary>
         /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         /// </summary>
         public readonly string SpeechModelVariant;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowV2SpeechToTextConfigResponse(string speechModelVariant)
+        private GoogleCloudDialogflowV2SpeechToTextConfigResponse(
+            string model,
+
+            string speechModelVariant)
         {
+            Model = model;
             SpeechModelVariant = speechModelVariant;
         }
     }

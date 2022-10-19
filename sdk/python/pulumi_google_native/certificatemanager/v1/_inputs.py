@@ -11,24 +11,77 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'CertificateAuthorityConfigArgs',
+    'CertificateAuthorityServiceConfigArgs',
     'ManagedCertificateArgs',
     'SelfManagedCertificateArgs',
 ]
 
 @pulumi.input_type
+class CertificateAuthorityConfigArgs:
+    def __init__(__self__, *,
+                 certificate_authority_service_config: Optional[pulumi.Input['CertificateAuthorityServiceConfigArgs']] = None):
+        """
+        The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+        :param pulumi.Input['CertificateAuthorityServiceConfigArgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+        """
+        if certificate_authority_service_config is not None:
+            pulumi.set(__self__, "certificate_authority_service_config", certificate_authority_service_config)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityServiceConfig")
+    def certificate_authority_service_config(self) -> Optional[pulumi.Input['CertificateAuthorityServiceConfigArgs']]:
+        """
+        Defines a CertificateAuthorityServiceConfig.
+        """
+        return pulumi.get(self, "certificate_authority_service_config")
+
+    @certificate_authority_service_config.setter
+    def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateAuthorityServiceConfigArgs']]):
+        pulumi.set(self, "certificate_authority_service_config", value)
+
+
+@pulumi.input_type
+class CertificateAuthorityServiceConfigArgs:
+    def __init__(__self__, *,
+                 ca_pool: pulumi.Input[str]):
+        """
+        Contains information required to contact CA service.
+        :param pulumi.Input[str] ca_pool: A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> pulumi.Input[str]:
+        """
+        A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ca_pool", value)
+
+
+@pulumi.input_type
 class ManagedCertificateArgs:
     def __init__(__self__, *,
                  dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 issuance_config: Optional[pulumi.Input[str]] = None):
         """
         Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Immutable. Authorizations that will be used for performing domain authorization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
+        :param pulumi.Input[str] issuance_config: Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
         """
         if dns_authorizations is not None:
             pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if issuance_config is not None:
+            pulumi.set(__self__, "issuance_config", issuance_config)
 
     @property
     @pulumi.getter(name="dnsAuthorizations")
@@ -53,6 +106,18 @@ class ManagedCertificateArgs:
     @domains.setter
     def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter(name="issuanceConfig")
+    def issuance_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        """
+        return pulumi.get(self, "issuance_config")
+
+    @issuance_config.setter
+    def issuance_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuance_config", value)
 
 
 @pulumi.input_type

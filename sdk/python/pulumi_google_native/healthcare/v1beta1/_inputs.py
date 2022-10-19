@@ -526,18 +526,27 @@ class DeidentifyConfigArgs:
         """
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param pulumi.Input['AnnotationConfigArgs'] annotation: Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
-        :param pulumi.Input['DicomConfigArgs'] dicom: Configures de-id of application/DICOM content.
-        :param pulumi.Input['FhirConfigArgs'] fhir: Configures de-id of application/FHIR content.
-        :param pulumi.Input['ImageConfigArgs'] image: Configures de-identification of image pixels wherever they are found in the source_dataset.
+        :param pulumi.Input['DicomConfigArgs'] dicom: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+        :param pulumi.Input['FhirConfigArgs'] fhir: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+        :param pulumi.Input['ImageConfigArgs'] image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param pulumi.Input['DeidentifyOperationMetadataArgs'] operation_metadata: Details about the work the de-identify operation performed.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
         """
         if annotation is not None:
             pulumi.set(__self__, "annotation", annotation)
         if dicom is not None:
+            warnings.warn("""Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""", DeprecationWarning)
+            pulumi.log.warn("""dicom is deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""")
+        if dicom is not None:
             pulumi.set(__self__, "dicom", dicom)
         if fhir is not None:
+            warnings.warn("""Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""", DeprecationWarning)
+            pulumi.log.warn("""fhir is deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""")
+        if fhir is not None:
             pulumi.set(__self__, "fhir", fhir)
+        if image is not None:
+            warnings.warn("""Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""", DeprecationWarning)
+            pulumi.log.warn("""image is deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""")
         if image is not None:
             pulumi.set(__self__, "image", image)
         if operation_metadata is not None:
@@ -561,7 +570,7 @@ class DeidentifyConfigArgs:
     @pulumi.getter
     def dicom(self) -> Optional[pulumi.Input['DicomConfigArgs']]:
         """
-        Configures de-id of application/DICOM content.
+        Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         """
         return pulumi.get(self, "dicom")
 
@@ -573,7 +582,7 @@ class DeidentifyConfigArgs:
     @pulumi.getter
     def fhir(self) -> Optional[pulumi.Input['FhirConfigArgs']]:
         """
-        Configures de-id of application/FHIR content.
+        Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         """
         return pulumi.get(self, "fhir")
 
@@ -585,7 +594,7 @@ class DeidentifyConfigArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
         """
-        Configures de-identification of image pixels wherever they are found in the source_dataset.
+        Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         """
         return pulumi.get(self, "image")
 
@@ -1447,7 +1456,7 @@ class InfoTypeTransformationArgs:
         :param pulumi.Input['CharacterMaskConfigArgs'] character_mask_config: Config for character mask.
         :param pulumi.Input['CryptoHashConfigArgs'] crypto_hash_config: Config for crypto hash.
         :param pulumi.Input['DateShiftConfigArgs'] date_shift_config: Config for date shift.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] info_types: InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] info_types: `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         :param pulumi.Input['RedactConfigArgs'] redact_config: Config for text redaction.
         :param pulumi.Input['ReplaceWithInfoTypeConfigArgs'] replace_with_info_type_config: Config for replace with InfoType.
         """
@@ -1504,7 +1513,7 @@ class InfoTypeTransformationArgs:
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         """
         return pulumi.get(self, "info_types")
 
@@ -2181,8 +2190,12 @@ class TextConfigArgs:
     def __init__(__self__, *,
                  transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data.
+        Configures how to transform sensitive text `InfoTypes`.
+        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        if transformations is not None:
+            warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
         if transformations is not None:
             pulumi.set(__self__, "transformations", transformations)
 
@@ -2190,7 +2203,7 @@ class TextConfigArgs:
     @pulumi.getter
     def transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]:
         """
-        The transformations to apply to the detected data.
+        The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         return pulumi.get(self, "transformations")
 

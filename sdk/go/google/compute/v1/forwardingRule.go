@@ -74,7 +74,8 @@ type ForwardingRule struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	Target     pulumi.StringOutput `pulumi:"target"`
+	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs.
+	Target pulumi.StringOutput `pulumi:"target"`
 }
 
 // NewForwardingRule registers a new resource with the given unique name, arguments, and options.
@@ -169,7 +170,8 @@ type forwardingRuleArgs struct {
 	ServiceLabel *string `pulumi:"serviceLabel"`
 	// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 	Subnetwork *string `pulumi:"subnetwork"`
-	Target     *string `pulumi:"target"`
+	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs.
+	Target *string `pulumi:"target"`
 }
 
 // The set of arguments for constructing a ForwardingRule resource.
@@ -219,7 +221,8 @@ type ForwardingRuleArgs struct {
 	ServiceLabel pulumi.StringPtrInput
 	// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 	Subnetwork pulumi.StringPtrInput
-	Target     pulumi.StringPtrInput
+	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs.
+	Target pulumi.StringPtrInput
 }
 
 func (ForwardingRuleArgs) ElementType() reflect.Type {
@@ -413,6 +416,7 @@ func (o ForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
+// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. For more information, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs.
 func (o ForwardingRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

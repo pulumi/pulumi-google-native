@@ -2176,10 +2176,12 @@ func (o InstanceReferenceResponseOutput) Region() pulumi.StringOutput {
 
 // IP Management configuration.
 type IpConfiguration struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+	// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks []AclEntry `pulumi:"authorizedNetworks"`
+	// Controls connectivity to private IP instances from Google services, such as BigQuery.
+	EnablePrivatePathForGoogleCloudServices *bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled *bool `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
@@ -2201,10 +2203,12 @@ type IpConfigurationInput interface {
 
 // IP Management configuration.
 type IpConfigurationArgs struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+	// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks AclEntryArrayInput `pulumi:"authorizedNetworks"`
+	// Controls connectivity to private IP instances from Google services, such as BigQuery.
+	EnablePrivatePathForGoogleCloudServices pulumi.BoolPtrInput `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled pulumi.BoolPtrInput `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
@@ -2291,7 +2295,7 @@ func (o IpConfigurationOutput) ToIpConfigurationPtrOutputWithContext(ctx context
 	}).(IpConfigurationPtrOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -2299,6 +2303,11 @@ func (o IpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 func (o IpConfigurationOutput) AuthorizedNetworks() AclEntryArrayOutput {
 	return o.ApplyT(func(v IpConfiguration) []AclEntry { return v.AuthorizedNetworks }).(AclEntryArrayOutput)
+}
+
+// Controls connectivity to private IP instances from Google services, such as BigQuery.
+func (o IpConfigurationOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IpConfiguration) *bool { return v.EnablePrivatePathForGoogleCloudServices }).(pulumi.BoolPtrOutput)
 }
 
 // Whether the instance is assigned a public IP address or not.
@@ -2340,7 +2349,7 @@ func (o IpConfigurationPtrOutput) Elem() IpConfigurationOutput {
 	}).(IpConfigurationOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *string {
 		if v == nil {
@@ -2358,6 +2367,16 @@ func (o IpConfigurationPtrOutput) AuthorizedNetworks() AclEntryArrayOutput {
 		}
 		return v.AuthorizedNetworks
 	}).(AclEntryArrayOutput)
+}
+
+// Controls connectivity to private IP instances from Google services, such as BigQuery.
+func (o IpConfigurationPtrOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivatePathForGoogleCloudServices
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether the instance is assigned a public IP address or not.
@@ -2392,10 +2411,12 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 
 // IP Management configuration.
 type IpConfigurationResponse struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+	// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
+	// Controls connectivity to private IP instances from Google services, such as BigQuery.
+	EnablePrivatePathForGoogleCloudServices bool `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	// Whether the instance is assigned a public IP address or not.
 	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
@@ -2419,7 +2440,7 @@ func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutputWithContex
 	return o
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
 func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
@@ -2427,6 +2448,11 @@ func (o IpConfigurationResponseOutput) AllocatedIpRange() pulumi.StringOutput {
 // The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
 func (o IpConfigurationResponseOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) []AclEntryResponse { return v.AuthorizedNetworks }).(AclEntryResponseArrayOutput)
+}
+
+// Controls connectivity to private IP instances from Google services, such as BigQuery.
+func (o IpConfigurationResponseOutput) EnablePrivatePathForGoogleCloudServices() pulumi.BoolOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.EnablePrivatePathForGoogleCloudServices }).(pulumi.BoolOutput)
 }
 
 // Whether the instance is assigned a public IP address or not.

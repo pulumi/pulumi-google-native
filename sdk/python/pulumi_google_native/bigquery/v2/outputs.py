@@ -4019,6 +4019,8 @@ class JobStatistics2Response(dict):
             suggest = "total_partitions_processed"
         elif key == "totalSlotMs":
             suggest = "total_slot_ms"
+        elif key == "transferredBytes":
+            suggest = "transferred_bytes"
         elif key == "undeclaredQueryParameters":
             suggest = "undeclared_query_parameters"
 
@@ -4065,6 +4067,7 @@ class JobStatistics2Response(dict):
                  total_bytes_processed_accuracy: str,
                  total_partitions_processed: str,
                  total_slot_ms: str,
+                 transferred_bytes: str,
                  undeclared_query_parameters: Sequence['outputs.QueryParameterResponse']):
         """
         :param 'BiEngineStatisticsResponse' bi_engine_statistics: BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
@@ -4098,6 +4101,7 @@ class JobStatistics2Response(dict):
         :param str total_bytes_processed_accuracy: [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
         :param str total_partitions_processed: [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
         :param str total_slot_ms: [Output only] Slot-milliseconds for the job.
+        :param str transferred_bytes: Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
         :param Sequence['QueryParameterResponse'] undeclared_query_parameters: Standard SQL only: list of undeclared query parameters detected during a dry run validation.
         """
         pulumi.set(__self__, "bi_engine_statistics", bi_engine_statistics)
@@ -4131,6 +4135,7 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "total_bytes_processed_accuracy", total_bytes_processed_accuracy)
         pulumi.set(__self__, "total_partitions_processed", total_partitions_processed)
         pulumi.set(__self__, "total_slot_ms", total_slot_ms)
+        pulumi.set(__self__, "transferred_bytes", transferred_bytes)
         pulumi.set(__self__, "undeclared_query_parameters", undeclared_query_parameters)
 
     @property
@@ -4380,6 +4385,14 @@ class JobStatistics2Response(dict):
         [Output only] Slot-milliseconds for the job.
         """
         return pulumi.get(self, "total_slot_ms")
+
+    @property
+    @pulumi.getter(name="transferredBytes")
+    def transferred_bytes(self) -> str:
+        """
+        Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+        """
+        return pulumi.get(self, "transferred_bytes")
 
     @property
     @pulumi.getter(name="undeclaredQueryParameters")

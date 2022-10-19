@@ -5653,13 +5653,13 @@ class FirewallPolicyRuleMatcherResponse(dict):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
-        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence['FirewallPolicyRuleMatcherLayer4ConfigResponse'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
-        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
@@ -5690,7 +5690,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Sequence[str]:
         """
-        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         return pulumi.get(self, "dest_fqdns")
 
@@ -5738,7 +5738,7 @@ class FirewallPolicyRuleMatcherResponse(dict):
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Sequence[str]:
         """
-        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         return pulumi.get(self, "src_fqdns")
 
@@ -16996,7 +16996,9 @@ class RouterNatResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "drainNatIps":
+        if key == "autoNetworkTier":
+            suggest = "auto_network_tier"
+        elif key == "drainNatIps":
             suggest = "drain_nat_ips"
         elif key == "enableDynamicPortAllocation":
             suggest = "enable_dynamic_port_allocation"
@@ -17039,6 +17041,7 @@ class RouterNatResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_network_tier: str,
                  drain_nat_ips: Sequence[str],
                  enable_dynamic_port_allocation: bool,
                  enable_endpoint_independent_mapping: bool,
@@ -17060,6 +17063,7 @@ class RouterNatResponse(dict):
                  udp_idle_timeout_sec: int):
         """
         Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
+        :param str auto_network_tier: The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
         :param Sequence[str] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         :param bool enable_dynamic_port_allocation: Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
         :param Sequence[str] endpoint_types: List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
@@ -17079,6 +17083,7 @@ class RouterNatResponse(dict):
         :param str type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
         :param int udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
+        pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         pulumi.set(__self__, "enable_dynamic_port_allocation", enable_dynamic_port_allocation)
         pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
@@ -17098,6 +17103,14 @@ class RouterNatResponse(dict):
         pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> str:
+        """
+        The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        """
+        return pulumi.get(self, "auto_network_tier")
 
     @property
     @pulumi.getter(name="drainNatIps")

@@ -154,6 +154,43 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct AddressIpv6EndpointType : IEquatable<AddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private AddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static AddressIpv6EndpointType Netlb { get; } = new AddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
+        /// </summary>
+        public static AddressIpv6EndpointType Vm { get; } = new AddressIpv6EndpointType("VM");
+
+        public static bool operator ==(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(AddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AddressIpv6EndpointType other && Equals(other);
+        public bool Equals(AddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
@@ -2039,6 +2076,43 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct GlobalAddressIpv6EndpointType : IEquatable<GlobalAddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private GlobalAddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Netlb { get; } = new GlobalAddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Vm { get; } = new GlobalAddressIpv6EndpointType("VM");
+
+        public static bool operator ==(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalAddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalAddressIpv6EndpointType other && Equals(other);
+        public bool Equals(GlobalAddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
@@ -2828,6 +2902,43 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ImageSourceType other && Equals(other);
         public bool Equals(ImageSourceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerListManagedInstancesResults : IEquatable<InstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Pageless { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Paginated { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(InstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4597,6 +4708,43 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionInstanceGroupManagerListManagedInstancesResults : IEquatable<RegionInstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private RegionInstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Pageless { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Paginated { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(RegionInstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionInstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(RegionInstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
@@ -5860,7 +6008,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -5875,7 +6023,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey All { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP");
 
         public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKey left, SecurityPolicyRuleRateLimitOptionsEnforceOnKey right) => left.Equals(right);

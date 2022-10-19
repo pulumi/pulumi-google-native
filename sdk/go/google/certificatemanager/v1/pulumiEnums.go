@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Required. The key algorithm to use when generating the private key.
+type CertificateIssuanceConfigKeyAlgorithm string
+
+const (
+	// Unspecified key algorithm.
+	CertificateIssuanceConfigKeyAlgorithmKeyAlgorithmUnspecified = CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED")
+	// Specifies RSA with a 2048-bit modulus.
+	CertificateIssuanceConfigKeyAlgorithmRsa2048 = CertificateIssuanceConfigKeyAlgorithm("RSA_2048")
+	// Specifies ECDSA with curve P256.
+	CertificateIssuanceConfigKeyAlgorithmEcdsaP256 = CertificateIssuanceConfigKeyAlgorithm("ECDSA_P256")
+)
+
+func (CertificateIssuanceConfigKeyAlgorithm) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithm)(nil)).Elem()
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToCertificateIssuanceConfigKeyAlgorithmOutput() CertificateIssuanceConfigKeyAlgorithmOutput {
+	return pulumi.ToOutput(e).(CertificateIssuanceConfigKeyAlgorithmOutput)
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToCertificateIssuanceConfigKeyAlgorithmOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CertificateIssuanceConfigKeyAlgorithmOutput)
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToCertificateIssuanceConfigKeyAlgorithmPtrOutput() CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return e.ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return CertificateIssuanceConfigKeyAlgorithm(e).ToCertificateIssuanceConfigKeyAlgorithmOutputWithContext(ctx).ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx)
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CertificateIssuanceConfigKeyAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CertificateIssuanceConfigKeyAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigKeyAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithm)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToCertificateIssuanceConfigKeyAlgorithmOutput() CertificateIssuanceConfigKeyAlgorithmOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToCertificateIssuanceConfigKeyAlgorithmOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToCertificateIssuanceConfigKeyAlgorithmPtrOutput() CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return o.ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateIssuanceConfigKeyAlgorithm) *CertificateIssuanceConfigKeyAlgorithm {
+		return &v
+	}).(CertificateIssuanceConfigKeyAlgorithmPtrOutput)
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateIssuanceConfigKeyAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateIssuanceConfigKeyAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateIssuanceConfigKeyAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigKeyAlgorithmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateIssuanceConfigKeyAlgorithm)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToCertificateIssuanceConfigKeyAlgorithmPtrOutput() CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) Elem() CertificateIssuanceConfigKeyAlgorithmOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfigKeyAlgorithm) CertificateIssuanceConfigKeyAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateIssuanceConfigKeyAlgorithm
+		return ret
+	}).(CertificateIssuanceConfigKeyAlgorithmOutput)
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigKeyAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CertificateIssuanceConfigKeyAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CertificateIssuanceConfigKeyAlgorithmInput is an input type that accepts CertificateIssuanceConfigKeyAlgorithmArgs and CertificateIssuanceConfigKeyAlgorithmOutput values.
+// You can construct a concrete instance of `CertificateIssuanceConfigKeyAlgorithmInput` via:
+//
+//	CertificateIssuanceConfigKeyAlgorithmArgs{...}
+type CertificateIssuanceConfigKeyAlgorithmInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigKeyAlgorithmOutput() CertificateIssuanceConfigKeyAlgorithmOutput
+	ToCertificateIssuanceConfigKeyAlgorithmOutputWithContext(context.Context) CertificateIssuanceConfigKeyAlgorithmOutput
+}
+
+var certificateIssuanceConfigKeyAlgorithmPtrType = reflect.TypeOf((**CertificateIssuanceConfigKeyAlgorithm)(nil)).Elem()
+
+type CertificateIssuanceConfigKeyAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigKeyAlgorithmPtrOutput() CertificateIssuanceConfigKeyAlgorithmPtrOutput
+	ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput
+}
+
+type certificateIssuanceConfigKeyAlgorithmPtr string
+
+func CertificateIssuanceConfigKeyAlgorithmPtr(v string) CertificateIssuanceConfigKeyAlgorithmPtrInput {
+	return (*certificateIssuanceConfigKeyAlgorithmPtr)(&v)
+}
+
+func (*certificateIssuanceConfigKeyAlgorithmPtr) ElementType() reflect.Type {
+	return certificateIssuanceConfigKeyAlgorithmPtrType
+}
+
+func (in *certificateIssuanceConfigKeyAlgorithmPtr) ToCertificateIssuanceConfigKeyAlgorithmPtrOutput() CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(CertificateIssuanceConfigKeyAlgorithmPtrOutput)
+}
+
+func (in *certificateIssuanceConfigKeyAlgorithmPtr) ToCertificateIssuanceConfigKeyAlgorithmPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigKeyAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CertificateIssuanceConfigKeyAlgorithmPtrOutput)
+}
+
 // A predefined matcher for particular cases, other than SNI selection.
 type CertificateMapEntryMatcher string
 
@@ -345,10 +514,14 @@ func (in *certificateScopePtr) ToCertificateScopePtrOutputWithContext(ctx contex
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithmInput)(nil)).Elem(), CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigKeyAlgorithmPtrInput)(nil)).Elem(), CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapEntryMatcherInput)(nil)).Elem(), CertificateMapEntryMatcher("MATCHER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapEntryMatcherPtrInput)(nil)).Elem(), CertificateMapEntryMatcher("MATCHER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateScopeInput)(nil)).Elem(), CertificateScope("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateScopePtrInput)(nil)).Elem(), CertificateScope("DEFAULT"))
+	pulumi.RegisterOutputType(CertificateIssuanceConfigKeyAlgorithmOutput{})
+	pulumi.RegisterOutputType(CertificateIssuanceConfigKeyAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(CertificateMapEntryMatcherOutput{})
 	pulumi.RegisterOutputType(CertificateMapEntryMatcherPtrOutput{})
 	pulumi.RegisterOutputType(CertificateScopeOutput{})

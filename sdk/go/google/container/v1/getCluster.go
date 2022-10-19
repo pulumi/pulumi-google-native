@@ -45,6 +45,8 @@ type LookupClusterResult struct {
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
 	// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 	ConfidentialNodes ConfidentialNodesResponse `pulumi:"confidentialNodes"`
+	// Configuration for the fine-grained cost management feature.
+	CostManagementConfig CostManagementConfigResponse `pulumi:"costManagementConfig"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
@@ -240,6 +242,11 @@ func (o LookupClusterResultOutput) Conditions() StatusConditionResponseArrayOutp
 // Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
 func (o LookupClusterResultOutput) ConfidentialNodes() ConfidentialNodesResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ConfidentialNodesResponse { return v.ConfidentialNodes }).(ConfidentialNodesResponseOutput)
+}
+
+// Configuration for the fine-grained cost management feature.
+func (o LookupClusterResultOutput) CostManagementConfig() CostManagementConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) CostManagementConfigResponse { return v.CostManagementConfig }).(CostManagementConfigResponseOutput)
 }
 
 // [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

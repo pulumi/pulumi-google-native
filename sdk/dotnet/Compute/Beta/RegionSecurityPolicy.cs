@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        /// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SecurityPolicyRuleResponse>> Rules { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<Inputs.SecurityPolicyRuleArgs>? _rules;
 
         /// <summary>
-        /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        /// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleArgs> Rules
         {

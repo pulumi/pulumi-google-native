@@ -110,7 +110,7 @@ class GetApiResult:
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> str:
         """
-        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -118,7 +118,7 @@ class GetApiResult:
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> str:
         """
-        The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 

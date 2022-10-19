@@ -15783,7 +15783,7 @@ func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRu
 type FirewallPolicyRuleMatcher struct {
 	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
 	DestAddressGroups []string `pulumi:"destAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 	DestFqdns []string `pulumi:"destFqdns"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
@@ -15795,7 +15795,7 @@ type FirewallPolicyRuleMatcher struct {
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
 	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
 	SrcAddressGroups []string `pulumi:"srcAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 	SrcFqdns []string `pulumi:"srcFqdns"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
@@ -15822,7 +15822,7 @@ type FirewallPolicyRuleMatcherInput interface {
 type FirewallPolicyRuleMatcherArgs struct {
 	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
 	DestAddressGroups pulumi.StringArrayInput `pulumi:"destAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 	DestFqdns pulumi.StringArrayInput `pulumi:"destFqdns"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
@@ -15834,7 +15834,7 @@ type FirewallPolicyRuleMatcherArgs struct {
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
 	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
 	SrcAddressGroups pulumi.StringArrayInput `pulumi:"srcAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 	SrcFqdns pulumi.StringArrayInput `pulumi:"srcFqdns"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
@@ -15929,7 +15929,7 @@ func (o FirewallPolicyRuleMatcherOutput) DestAddressGroups() pulumi.StringArrayO
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestAddressGroups }).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherOutput) DestFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestFqdns }).(pulumi.StringArrayOutput)
 }
@@ -15959,7 +15959,7 @@ func (o FirewallPolicyRuleMatcherOutput) SrcAddressGroups() pulumi.StringArrayOu
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcAddressGroups }).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherOutput) SrcFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcFqdns }).(pulumi.StringArrayOutput)
 }
@@ -16018,7 +16018,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) DestAddressGroups() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherPtrOutput) DestFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -16078,7 +16078,7 @@ func (o FirewallPolicyRuleMatcherPtrOutput) SrcAddressGroups() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherPtrOutput) SrcFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
 		if v == nil {
@@ -16289,7 +16289,7 @@ func (o FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput) Index(i pulumi
 type FirewallPolicyRuleMatcherResponse struct {
 	// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
 	DestAddressGroups []string `pulumi:"destAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 	DestFqdns []string `pulumi:"destFqdns"`
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
@@ -16301,7 +16301,7 @@ type FirewallPolicyRuleMatcherResponse struct {
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4ConfigResponse `pulumi:"layer4Configs"`
 	// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
 	SrcAddressGroups []string `pulumi:"srcAddressGroups"`
-	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+	// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 	SrcFqdns []string `pulumi:"srcFqdns"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
@@ -16333,7 +16333,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) DestAddressGroups() pulumi.Stri
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestAddressGroups }).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherResponseOutput) DestFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestFqdns }).(pulumi.StringArrayOutput)
 }
@@ -16365,7 +16365,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) SrcAddressGroups() pulumi.Strin
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcAddressGroups }).(pulumi.StringArrayOutput)
 }
 
-// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 1000.
+// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
 func (o FirewallPolicyRuleMatcherResponseOutput) SrcFqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcFqdns }).(pulumi.StringArrayOutput)
 }
@@ -45094,6 +45094,8 @@ func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNat struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier *RouterNatAutoNetworkTier `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -45146,6 +45148,8 @@ type RouterNatInput interface {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatArgs struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier RouterNatAutoNetworkTierPtrInput `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps pulumi.StringArrayInput `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -45235,6 +45239,11 @@ func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
 
 func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return o
+}
+
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+func (o RouterNatOutput) AutoNetworkTier() RouterNatAutoNetworkTierPtrOutput {
+	return o.ApplyT(func(v RouterNat) *RouterNatAutoNetworkTier { return v.AutoNetworkTier }).(RouterNatAutoNetworkTierPtrOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
@@ -45545,6 +45554,8 @@ func (o RouterNatLogConfigResponseOutput) Filter() pulumi.StringOutput {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatResponse struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier string `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -45597,6 +45608,11 @@ func (o RouterNatResponseOutput) ToRouterNatResponseOutput() RouterNatResponseOu
 
 func (o RouterNatResponseOutput) ToRouterNatResponseOutputWithContext(ctx context.Context) RouterNatResponseOutput {
 	return o
+}
+
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+func (o RouterNatResponseOutput) AutoNetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatResponse) string { return v.AutoNetworkTier }).(pulumi.StringOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.

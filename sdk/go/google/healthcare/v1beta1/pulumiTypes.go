@@ -2106,11 +2106,17 @@ func (o DeidentifiedStoreDestinationResponseOutput) Store() pulumi.StringOutput 
 type DeidentifyConfig struct {
 	// Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
 	Annotation *AnnotationConfig `pulumi:"annotation"`
-	// Configures de-id of application/DICOM content.
+	// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+	//
+	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom *DicomConfig `pulumi:"dicom"`
-	// Configures de-id of application/FHIR content.
+	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+	//
+	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir *FhirConfig `pulumi:"fhir"`
-	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+	//
+	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	Image *ImageConfig `pulumi:"image"`
 	// Details about the work the de-identify operation performed.
 	OperationMetadata *DeidentifyOperationMetadata `pulumi:"operationMetadata"`
@@ -2133,11 +2139,17 @@ type DeidentifyConfigInput interface {
 type DeidentifyConfigArgs struct {
 	// Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
 	Annotation AnnotationConfigPtrInput `pulumi:"annotation"`
-	// Configures de-id of application/DICOM content.
+	// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+	//
+	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom DicomConfigPtrInput `pulumi:"dicom"`
-	// Configures de-id of application/FHIR content.
+	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+	//
+	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir FhirConfigPtrInput `pulumi:"fhir"`
-	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+	//
+	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	Image ImageConfigPtrInput `pulumi:"image"`
 	// Details about the work the de-identify operation performed.
 	OperationMetadata DeidentifyOperationMetadataPtrInput `pulumi:"operationMetadata"`
@@ -2228,17 +2240,23 @@ func (o DeidentifyConfigOutput) Annotation() AnnotationConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *AnnotationConfig { return v.Annotation }).(AnnotationConfigPtrOutput)
 }
 
-// Configures de-id of application/DICOM content.
+// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+//
+// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 func (o DeidentifyConfigOutput) Dicom() DicomConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *DicomConfig { return v.Dicom }).(DicomConfigPtrOutput)
 }
 
-// Configures de-id of application/FHIR content.
+// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+//
+// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 func (o DeidentifyConfigOutput) Fhir() FhirConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *FhirConfig { return v.Fhir }).(FhirConfigPtrOutput)
 }
 
-// Configures de-identification of image pixels wherever they are found in the source_dataset.
+// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+//
+// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 func (o DeidentifyConfigOutput) Image() ImageConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *ImageConfig { return v.Image }).(ImageConfigPtrOutput)
 }
@@ -2287,7 +2305,9 @@ func (o DeidentifyConfigPtrOutput) Annotation() AnnotationConfigPtrOutput {
 	}).(AnnotationConfigPtrOutput)
 }
 
-// Configures de-id of application/DICOM content.
+// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+//
+// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 func (o DeidentifyConfigPtrOutput) Dicom() DicomConfigPtrOutput {
 	return o.ApplyT(func(v *DeidentifyConfig) *DicomConfig {
 		if v == nil {
@@ -2297,7 +2317,9 @@ func (o DeidentifyConfigPtrOutput) Dicom() DicomConfigPtrOutput {
 	}).(DicomConfigPtrOutput)
 }
 
-// Configures de-id of application/FHIR content.
+// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+//
+// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 func (o DeidentifyConfigPtrOutput) Fhir() FhirConfigPtrOutput {
 	return o.ApplyT(func(v *DeidentifyConfig) *FhirConfig {
 		if v == nil {
@@ -2307,7 +2329,9 @@ func (o DeidentifyConfigPtrOutput) Fhir() FhirConfigPtrOutput {
 	}).(FhirConfigPtrOutput)
 }
 
-// Configures de-identification of image pixels wherever they are found in the source_dataset.
+// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+//
+// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 func (o DeidentifyConfigPtrOutput) Image() ImageConfigPtrOutput {
 	return o.ApplyT(func(v *DeidentifyConfig) *ImageConfig {
 		if v == nil {
@@ -2341,11 +2365,17 @@ func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
 type DeidentifyConfigResponse struct {
 	// Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
 	Annotation AnnotationConfigResponse `pulumi:"annotation"`
-	// Configures de-id of application/DICOM content.
+	// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+	//
+	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom DicomConfigResponse `pulumi:"dicom"`
-	// Configures de-id of application/FHIR content.
+	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+	//
+	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir FhirConfigResponse `pulumi:"fhir"`
-	// Configures de-identification of image pixels wherever they are found in the source_dataset.
+	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+	//
+	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	Image ImageConfigResponse `pulumi:"image"`
 	// Details about the work the de-identify operation performed.
 	OperationMetadata DeidentifyOperationMetadataResponse `pulumi:"operationMetadata"`
@@ -2373,17 +2403,23 @@ func (o DeidentifyConfigResponseOutput) Annotation() AnnotationConfigResponseOut
 	return o.ApplyT(func(v DeidentifyConfigResponse) AnnotationConfigResponse { return v.Annotation }).(AnnotationConfigResponseOutput)
 }
 
-// Configures de-id of application/DICOM content.
+// Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+//
+// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 func (o DeidentifyConfigResponseOutput) Dicom() DicomConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) DicomConfigResponse { return v.Dicom }).(DicomConfigResponseOutput)
 }
 
-// Configures de-id of application/FHIR content.
+// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+//
+// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 func (o DeidentifyConfigResponseOutput) Fhir() FhirConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) FhirConfigResponse { return v.Fhir }).(FhirConfigResponseOutput)
 }
 
-// Configures de-identification of image pixels wherever they are found in the source_dataset.
+// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
+//
+// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 func (o DeidentifyConfigResponseOutput) Image() ImageConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) ImageConfigResponse { return v.Image }).(ImageConfigResponseOutput)
 }
@@ -5835,7 +5871,7 @@ type InfoTypeTransformation struct {
 	CryptoHashConfig *CryptoHashConfig `pulumi:"cryptoHashConfig"`
 	// Config for date shift.
 	DateShiftConfig *DateShiftConfig `pulumi:"dateShiftConfig"`
-	// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+	// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
 	InfoTypes []string `pulumi:"infoTypes"`
 	// Config for text redaction.
 	RedactConfig *RedactConfig `pulumi:"redactConfig"`
@@ -5862,7 +5898,7 @@ type InfoTypeTransformationArgs struct {
 	CryptoHashConfig CryptoHashConfigPtrInput `pulumi:"cryptoHashConfig"`
 	// Config for date shift.
 	DateShiftConfig DateShiftConfigPtrInput `pulumi:"dateShiftConfig"`
-	// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+	// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
 	InfoTypes pulumi.StringArrayInput `pulumi:"infoTypes"`
 	// Config for text redaction.
 	RedactConfig RedactConfigPtrInput `pulumi:"redactConfig"`
@@ -5937,7 +5973,7 @@ func (o InfoTypeTransformationOutput) DateShiftConfig() DateShiftConfigPtrOutput
 	return o.ApplyT(func(v InfoTypeTransformation) *DateShiftConfig { return v.DateShiftConfig }).(DateShiftConfigPtrOutput)
 }
 
-// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
 func (o InfoTypeTransformationOutput) InfoTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfoTypeTransformation) []string { return v.InfoTypes }).(pulumi.StringArrayOutput)
 }
@@ -5980,7 +6016,7 @@ type InfoTypeTransformationResponse struct {
 	CryptoHashConfig CryptoHashConfigResponse `pulumi:"cryptoHashConfig"`
 	// Config for date shift.
 	DateShiftConfig DateShiftConfigResponse `pulumi:"dateShiftConfig"`
-	// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+	// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
 	InfoTypes []string `pulumi:"infoTypes"`
 	// Config for text redaction.
 	RedactConfig RedactConfigResponse `pulumi:"redactConfig"`
@@ -6018,7 +6054,7 @@ func (o InfoTypeTransformationResponseOutput) DateShiftConfig() DateShiftConfigR
 	return o.ApplyT(func(v InfoTypeTransformationResponse) DateShiftConfigResponse { return v.DateShiftConfig }).(DateShiftConfigResponseOutput)
 }
 
-// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
 func (o InfoTypeTransformationResponseOutput) InfoTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InfoTypeTransformationResponse) []string { return v.InfoTypes }).(pulumi.StringArrayOutput)
 }
@@ -9117,8 +9153,11 @@ func (o TagFilterListResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TagFilterListResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Configures how to transform sensitive text `InfoTypes`.
 type TextConfig struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations []InfoTypeTransformation `pulumi:"transformations"`
 }
 
@@ -9133,8 +9172,11 @@ type TextConfigInput interface {
 	ToTextConfigOutputWithContext(context.Context) TextConfigOutput
 }
 
+// Configures how to transform sensitive text `InfoTypes`.
 type TextConfigArgs struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations InfoTypeTransformationArrayInput `pulumi:"transformations"`
 }
 
@@ -9191,6 +9233,7 @@ func (i *textConfigPtrType) ToTextConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TextConfigPtrOutput)
 }
 
+// Configures how to transform sensitive text `InfoTypes`.
 type TextConfigOutput struct{ *pulumi.OutputState }
 
 func (TextConfigOutput) ElementType() reflect.Type {
@@ -9215,7 +9258,9 @@ func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) 
 	}).(TextConfigPtrOutput)
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigOutput) Transformations() InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v TextConfig) []InfoTypeTransformation { return v.Transformations }).(InfoTypeTransformationArrayOutput)
 }
@@ -9244,7 +9289,9 @@ func (o TextConfigPtrOutput) Elem() TextConfigOutput {
 	}).(TextConfigOutput)
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v *TextConfig) []InfoTypeTransformation {
 		if v == nil {
@@ -9254,11 +9301,15 @@ func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput
 	}).(InfoTypeTransformationArrayOutput)
 }
 
+// Configures how to transform sensitive text `InfoTypes`.
 type TextConfigResponse struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations []InfoTypeTransformationResponse `pulumi:"transformations"`
 }
 
+// Configures how to transform sensitive text `InfoTypes`.
 type TextConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (TextConfigResponseOutput) ElementType() reflect.Type {
@@ -9273,7 +9324,9 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigResponseOutput) Transformations() InfoTypeTransformationResponseArrayOutput {
 	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.Transformations }).(InfoTypeTransformationResponseArrayOutput)
 }
