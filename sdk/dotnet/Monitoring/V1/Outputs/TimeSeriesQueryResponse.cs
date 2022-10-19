@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class TimeSeriesQueryResponse
     {
         /// <summary>
+        /// A query used to fetch time series with PromQL.
+        /// </summary>
+        public readonly string PrometheusQuery;
+        /// <summary>
         /// Filter parameters to fetch time series.
         /// </summary>
         public readonly Outputs.TimeSeriesFilterResponse TimeSeriesFilter;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private TimeSeriesQueryResponse(
+            string prometheusQuery,
+
             Outputs.TimeSeriesFilterResponse timeSeriesFilter,
 
             Outputs.TimeSeriesFilterRatioResponse timeSeriesFilterRatio,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             string unitOverride)
         {
+            PrometheusQuery = prometheusQuery;
             TimeSeriesFilter = timeSeriesFilter;
             TimeSeriesFilterRatio = timeSeriesFilterRatio;
             TimeSeriesQueryLanguage = timeSeriesQueryLanguage;

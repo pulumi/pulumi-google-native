@@ -15941,6 +15941,8 @@ func (o PrivateClusterMasterGlobalAccessConfigResponseOutput) Enabled() pulumi.B
 type ProtectConfig struct {
 	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
 	WorkloadConfig *WorkloadConfig `pulumi:"workloadConfig"`
+	// Sets which mode to use for Protect workload vulnerability scanning feature.
+	WorkloadVulnerabilityMode *ProtectConfigWorkloadVulnerabilityMode `pulumi:"workloadVulnerabilityMode"`
 }
 
 // ProtectConfigInput is an input type that accepts ProtectConfigArgs and ProtectConfigOutput values.
@@ -15958,6 +15960,8 @@ type ProtectConfigInput interface {
 type ProtectConfigArgs struct {
 	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
 	WorkloadConfig WorkloadConfigPtrInput `pulumi:"workloadConfig"`
+	// Sets which mode to use for Protect workload vulnerability scanning feature.
+	WorkloadVulnerabilityMode ProtectConfigWorkloadVulnerabilityModePtrInput `pulumi:"workloadVulnerabilityMode"`
 }
 
 func (ProtectConfigArgs) ElementType() reflect.Type {
@@ -16043,6 +16047,11 @@ func (o ProtectConfigOutput) WorkloadConfig() WorkloadConfigPtrOutput {
 	return o.ApplyT(func(v ProtectConfig) *WorkloadConfig { return v.WorkloadConfig }).(WorkloadConfigPtrOutput)
 }
 
+// Sets which mode to use for Protect workload vulnerability scanning feature.
+func (o ProtectConfigOutput) WorkloadVulnerabilityMode() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o.ApplyT(func(v ProtectConfig) *ProtectConfigWorkloadVulnerabilityMode { return v.WorkloadVulnerabilityMode }).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
+}
+
 type ProtectConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ProtectConfigPtrOutput) ElementType() reflect.Type {
@@ -16077,10 +16086,22 @@ func (o ProtectConfigPtrOutput) WorkloadConfig() WorkloadConfigPtrOutput {
 	}).(WorkloadConfigPtrOutput)
 }
 
+// Sets which mode to use for Protect workload vulnerability scanning feature.
+func (o ProtectConfigPtrOutput) WorkloadVulnerabilityMode() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o.ApplyT(func(v *ProtectConfig) *ProtectConfigWorkloadVulnerabilityMode {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadVulnerabilityMode
+	}).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
+}
+
 // ProtectConfig defines the flags needed to enable/disable features for the Protect API.
 type ProtectConfigResponse struct {
 	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
 	WorkloadConfig WorkloadConfigResponse `pulumi:"workloadConfig"`
+	// Sets which mode to use for Protect workload vulnerability scanning feature.
+	WorkloadVulnerabilityMode string `pulumi:"workloadVulnerabilityMode"`
 }
 
 // ProtectConfig defines the flags needed to enable/disable features for the Protect API.
@@ -16101,6 +16122,11 @@ func (o ProtectConfigResponseOutput) ToProtectConfigResponseOutputWithContext(ct
 // WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
 func (o ProtectConfigResponseOutput) WorkloadConfig() WorkloadConfigResponseOutput {
 	return o.ApplyT(func(v ProtectConfigResponse) WorkloadConfigResponse { return v.WorkloadConfig }).(WorkloadConfigResponseOutput)
+}
+
+// Sets which mode to use for Protect workload vulnerability scanning feature.
+func (o ProtectConfigResponseOutput) WorkloadVulnerabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ProtectConfigResponse) string { return v.WorkloadVulnerabilityMode }).(pulumi.StringOutput)
 }
 
 // Pub/Sub specific notification config.

@@ -18,13 +18,13 @@ export function getNotificationConfig(args: GetNotificationConfigArgs, opts?: pu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getNotificationConfig", {
         "notificationConfigId": args.notificationConfigId,
-        "organizationId": args.organizationId,
+        "project": args.project,
     }, opts);
 }
 
 export interface GetNotificationConfigArgs {
     notificationConfigId: string;
-    organizationId: string;
+    project?: string;
 }
 
 export interface GetNotificationConfigResult {
@@ -56,5 +56,5 @@ export function getNotificationConfigOutput(args: GetNotificationConfigOutputArg
 
 export interface GetNotificationConfigOutputArgs {
     notificationConfigId: pulumi.Input<string>;
-    organizationId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
 }

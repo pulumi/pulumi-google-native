@@ -138,6 +138,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string TotalSlotMs;
         /// <summary>
+        /// Total bytes transferred for cross-cloud queries such as Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+        /// </summary>
+        public readonly string TransferredBytes;
+        /// <summary>
         /// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryParameterResponse> UndeclaredQueryParameters;
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string totalSlotMs,
 
+            string transferredBytes,
+
             ImmutableArray<Outputs.QueryParameterResponse> undeclaredQueryParameters)
         {
             BiEngineStatistics = biEngineStatistics;
@@ -239,6 +245,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             TotalBytesProcessedAccuracy = totalBytesProcessedAccuracy;
             TotalPartitionsProcessed = totalPartitionsProcessed;
             TotalSlotMs = totalSlotMs;
+            TransferredBytes = transferredBytes;
             UndeclaredQueryParameters = undeclaredQueryParameters;
         }
     }

@@ -2364,7 +2364,7 @@ func (o ContentMatcherResponseArrayOutput) Index(i pulumi.IntInput) ContentMatch
 	}).(ContentMatcherResponseOutput)
 }
 
-// Custom view of service telemetry. Currently a place-holder pending final design.
+// Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type Custom struct {
 }
 
@@ -2379,7 +2379,7 @@ type CustomInput interface {
 	ToCustomOutputWithContext(context.Context) CustomOutput
 }
 
-// Custom view of service telemetry. Currently a place-holder pending final design.
+// Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type CustomArgs struct {
 }
 
@@ -2436,7 +2436,7 @@ func (i *customPtrType) ToCustomPtrOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPtrOutput)
 }
 
-// Custom view of service telemetry. Currently a place-holder pending final design.
+// Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type CustomOutput struct{ *pulumi.OutputState }
 
 func (CustomOutput) ElementType() reflect.Type {
@@ -2485,11 +2485,11 @@ func (o CustomPtrOutput) Elem() CustomOutput {
 	}).(CustomOutput)
 }
 
-// Custom view of service telemetry. Currently a place-holder pending final design.
+// Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type CustomResponse struct {
 }
 
-// Custom view of service telemetry. Currently a place-holder pending final design.
+// Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type CustomResponseOutput struct{ *pulumi.OutputState }
 
 func (CustomResponseOutput) ElementType() reflect.Type {

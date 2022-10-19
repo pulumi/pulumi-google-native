@@ -975,8 +975,6 @@ type GoogleCloudDatacatalogV1ColumnSchema struct {
 	Column string `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
 	Description *string `pulumi:"description"`
-	// Looker specific column info of this column.
-	LookerColumnSpec *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec `pulumi:"lookerColumnSpec"`
 	// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
 	Mode *string `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
@@ -1002,8 +1000,6 @@ type GoogleCloudDatacatalogV1ColumnSchemaArgs struct {
 	Column pulumi.StringInput `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Looker specific column info of this column.
-	LookerColumnSpec GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput `pulumi:"lookerColumnSpec"`
 	// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
@@ -1074,13 +1070,6 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) Description() pulumi.StringP
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchema) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Looker specific column info of this column.
-func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) LookerColumnSpec() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchema) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
-		return v.LookerColumnSpec
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput)
-}
-
 // Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
 func (o GoogleCloudDatacatalogV1ColumnSchemaOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchema) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -1118,182 +1107,12 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaArrayOutput) Index(i pulumi.IntInput
 	}).(GoogleCloudDatacatalogV1ColumnSchemaOutput)
 }
 
-// Column info specific to Looker System.
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec struct {
-	// Looker specific column type of this column.
-	Type *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType `pulumi:"type"`
-}
-
-// GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput` via:
-//
-//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput
-	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput
-}
-
-// Column info specific to Looker System.
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs struct {
-	// Looker specific column type of this column.
-	Type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput).ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtr and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput` via:
-//
-//	        GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput
-	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs
-
-func GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtr(v *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput {
-	return (*googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput)
-}
-
-// Column info specific to Looker System.
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput)
-}
-
-// Looker specific column type of this column.
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput) Type() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
-		return v.Type
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
-}
-
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput)
-}
-
-// Looker specific column type of this column.
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput) Type() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
-}
-
-// Column info specific to Looker System.
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse struct {
-	// Looker specific column type of this column.
-	Type string `pulumi:"type"`
-}
-
-// Column info specific to Looker System.
-type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput {
-	return o
-}
-
-// Looker specific column type of this column.
-func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // A column within a schema. Columns can be nested inside other columns.
 type GoogleCloudDatacatalogV1ColumnSchemaResponse struct {
 	// Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
 	Column string `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
 	Description string `pulumi:"description"`
-	// Looker specific column info of this column.
-	LookerColumnSpec GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse `pulumi:"lookerColumnSpec"`
 	// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
 	Mode string `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
@@ -1325,13 +1144,6 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) Column() pulumi.Stri
 // Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
 func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchemaResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Looker specific column info of this column.
-func (o GoogleCloudDatacatalogV1ColumnSchemaResponseOutput) LookerColumnSpec() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1ColumnSchemaResponse) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
-		return v.LookerColumnSpec
-	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput)
 }
 
 // Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
@@ -5363,8 +5175,6 @@ func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) GroupedEntry() pulumi.S
 
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
 type GoogleCloudDatacatalogV1UsageSignal struct {
-	// Favorite count in the source system.
-	FavoriteCount *string `pulumi:"favoriteCount"`
 	// The end timestamp of the duration of usage statistics.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -5382,8 +5192,6 @@ type GoogleCloudDatacatalogV1UsageSignalInput interface {
 
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
 type GoogleCloudDatacatalogV1UsageSignalArgs struct {
-	// Favorite count in the source system.
-	FavoriteCount pulumi.StringPtrInput `pulumi:"favoriteCount"`
 	// The end timestamp of the duration of usage statistics.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
@@ -5466,11 +5274,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalOutput) ToGoogleCloudDatacatalogV1Usa
 	}).(GoogleCloudDatacatalogV1UsageSignalPtrOutput)
 }
 
-// Favorite count in the source system.
-func (o GoogleCloudDatacatalogV1UsageSignalOutput) FavoriteCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignal) *string { return v.FavoriteCount }).(pulumi.StringPtrOutput)
-}
-
 // The end timestamp of the duration of usage statistics.
 func (o GoogleCloudDatacatalogV1UsageSignalOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignal) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
@@ -5500,16 +5303,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) Elem() GoogleCloudDatacata
 	}).(GoogleCloudDatacatalogV1UsageSignalOutput)
 }
 
-// Favorite count in the source system.
-func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) FavoriteCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1UsageSignal) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FavoriteCount
-	}).(pulumi.StringPtrOutput)
-}
-
 // The end timestamp of the duration of usage statistics.
 func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1UsageSignal) *string {
@@ -5522,8 +5315,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalPtrOutput) UpdateTime() pulumi.String
 
 // The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
 type GoogleCloudDatacatalogV1UsageSignalResponse struct {
-	// Favorite count in the source system.
-	FavoriteCount string `pulumi:"favoriteCount"`
 	// The end timestamp of the duration of usage statistics.
 	UpdateTime string `pulumi:"updateTime"`
 	// BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
@@ -5543,11 +5334,6 @@ func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacata
 
 func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1UsageSignalResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1UsageSignalResponseOutput {
 	return o
-}
-
-// Favorite count in the source system.
-func (o GoogleCloudDatacatalogV1UsageSignalResponseOutput) FavoriteCount() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1UsageSignalResponse) string { return v.FavoriteCount }).(pulumi.StringOutput)
 }
 
 // The end timestamp of the duration of usage statistics.
@@ -5597,8 +5383,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ContactsPersonInput)(nil)).Elem(), GoogleCloudDatacatalogV1ContactsPersonArgs{})
@@ -5660,9 +5444,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ContactsOutput{})

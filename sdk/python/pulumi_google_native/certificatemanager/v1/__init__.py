@@ -7,10 +7,12 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .certificate import *
+from .certificate_issuance_config import *
 from .certificate_map import *
 from .certificate_map_entry import *
 from .dns_authorization import *
 from .get_certificate import *
+from .get_certificate_issuance_config import *
 from .get_certificate_map import *
 from .get_certificate_map_entry import *
 from .get_dns_authorization import *

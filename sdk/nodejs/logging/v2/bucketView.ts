@@ -58,7 +58,7 @@ export class BucketView extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Required. The id to use for this view.
+     * Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
      */
     public readonly viewId!: pulumi.Output<string>;
 
@@ -126,7 +126,7 @@ export interface BucketViewArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. The id to use for this view.
+     * Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
      */
     viewId: pulumi.Input<string>;
 }

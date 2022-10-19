@@ -53,7 +53,7 @@ class EntryArgs:
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
         :param pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgs'] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
-        :param pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs'] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+        :param pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs'] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
         :param pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs'] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
@@ -287,7 +287,7 @@ class EntryArgs:
     @pulumi.getter(name="sourceSystemTimestamps")
     def source_system_timestamps(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs']]:
         """
-        Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+        Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         """
         return pulumi.get(self, "source_system_timestamps")
 
@@ -390,7 +390,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
@@ -706,7 +706,7 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter(name="sourceSystemTimestamps")
     def source_system_timestamps(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse']:
         """
-        Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+        Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         """
         return pulumi.get(self, "source_system_timestamps")
 

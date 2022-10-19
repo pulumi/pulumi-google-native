@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
+        /// Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        /// </summary>
+        public readonly string IssuanceConfig;
+        /// <summary>
         /// Information about issues with provisioning a Managed Certificate.
         /// </summary>
         public readonly Outputs.ProvisioningIssueResponse ProvisioningIssue;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
 
             ImmutableArray<string> domains,
 
+            string issuanceConfig,
+
             Outputs.ProvisioningIssueResponse provisioningIssue,
 
             string state)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
             AuthorizationAttemptInfo = authorizationAttemptInfo;
             DnsAuthorizations = dnsAuthorizations;
             Domains = domains;
+            IssuanceConfig = issuanceConfig;
             ProvisioningIssue = provisioningIssue;
             State = state;
         }

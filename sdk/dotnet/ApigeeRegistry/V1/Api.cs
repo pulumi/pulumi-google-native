@@ -70,13 +70,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        /// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         /// </summary>
         [Output("recommendedDeployment")]
         public Output<string> RecommendedDeployment { get; private set; } = null!;
 
         /// <summary>
-        /// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        /// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         /// </summary>
         [Output("recommendedVersion")]
         public Output<string> RecommendedVersion { get; private set; } = null!;
@@ -199,13 +199,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        /// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
         /// </summary>
         [Input("recommendedDeployment")]
         public Input<string>? RecommendedDeployment { get; set; }
 
         /// <summary>
-        /// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+        /// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
         /// </summary>
         [Input("recommendedVersion")]
         public Input<string>? RecommendedVersion { get; set; }

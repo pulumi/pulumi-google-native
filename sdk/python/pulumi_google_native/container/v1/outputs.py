@@ -30,6 +30,7 @@ __all__ = [
     'ConfidentialNodesResponse',
     'ConfigConnectorConfigResponse',
     'ConsumptionMeteringConfigResponse',
+    'CostManagementConfigResponse',
     'DNSConfigResponse',
     'DailyMaintenanceWindowResponse',
     'DatabaseEncryptionResponse',
@@ -40,6 +41,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
+    'GkeBackupAgentConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
     'IPAllocationPolicyResponse',
@@ -197,6 +199,8 @@ class AddonsConfigResponse(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gkeBackupAgentConfig":
+            suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -223,6 +227,7 @@ class AddonsConfigResponse(dict):
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
                  gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
+                 gke_backup_agent_config: 'outputs.GkeBackupAgentConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
                  kubernetes_dashboard: 'outputs.KubernetesDashboardResponse',
@@ -234,6 +239,7 @@ class AddonsConfigResponse(dict):
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param 'GkeBackupAgentConfigResponse' gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param 'KubernetesDashboardResponse' kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
@@ -244,6 +250,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
         pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
@@ -288,6 +295,14 @@ class AddonsConfigResponse(dict):
         Configuration for the GCP Filestore CSI driver.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gkeBackupAgentConfig")
+    def gke_backup_agent_config(self) -> 'outputs.GkeBackupAgentConfigResponse':
+        """
+        Configuration for the Backup for GKE agent addon.
+        """
+        return pulumi.get(self, "gke_backup_agent_config")
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -1166,6 +1181,28 @@ class ConsumptionMeteringConfigResponse(dict):
 
 
 @pulumi.output_type
+class CostManagementConfigResponse(dict):
+    """
+    Configuration for fine-grained cost management feature.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for fine-grained cost management feature.
+        :param bool enabled: Whether the feature is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the feature is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class DNSConfigResponse(dict):
     """
     DNSConfig contains the desired set of options for configuring clusterDNS.
@@ -1532,6 +1569,28 @@ class GcpFilestoreCsiDriverConfigResponse(dict):
 
 
 @pulumi.output_type
+class GkeBackupAgentConfigResponse(dict):
+    """
+    Configuration for the Backup for GKE Agent.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Backup for GKE Agent.
+        :param bool enabled: Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Backup for GKE agent is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class HorizontalPodAutoscalingResponse(dict):
     """
     Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -1591,6 +1650,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "cluster_secondary_range_name"
         elif key == "createSubnetwork":
             suggest = "create_subnetwork"
+        elif key == "ipv6AccessType":
+            suggest = "ipv6_access_type"
         elif key == "nodeIpv4Cidr":
             suggest = "node_ipv4_cidr"
         elif key == "nodeIpv4CidrBlock":
@@ -1601,6 +1662,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
+        elif key == "stackType":
+            suggest = "stack_type"
         elif key == "subnetworkName":
             suggest = "subnetwork_name"
         elif key == "tpuIpv4CidrBlock":
@@ -1626,11 +1689,13 @@ class IPAllocationPolicyResponse(dict):
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  create_subnetwork: bool,
+                 ipv6_access_type: str,
                  node_ipv4_cidr: str,
                  node_ipv4_cidr_block: str,
                  services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
                  services_secondary_range_name: str,
+                 stack_type: str,
                  subnetwork_name: str,
                  tpu_ipv4_cidr_block: str,
                  use_ip_aliases: bool,
@@ -1641,11 +1706,13 @@ class IPAllocationPolicyResponse(dict):
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param bool create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param str ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param str node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
+        :param str stack_type: The IP stack type of the cluster
         :param str subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param str tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1655,11 +1722,13 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
@@ -1696,6 +1765,14 @@ class IPAllocationPolicyResponse(dict):
         Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
         """
         return pulumi.get(self, "create_subnetwork")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> str:
+        """
+        The ipv6 access type (internal or external) when create_subnetwork is true
+        """
+        return pulumi.get(self, "ipv6_access_type")
 
     @property
     @pulumi.getter(name="nodeIpv4Cidr")
@@ -1736,6 +1813,14 @@ class IPAllocationPolicyResponse(dict):
         The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         """
         return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        The IP stack type of the cluster
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter(name="subnetworkName")

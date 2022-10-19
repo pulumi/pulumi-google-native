@@ -124,7 +124,7 @@ class GetAddressResult:
     @pulumi.getter(name="ipv6EndpointType")
     def ipv6_endpoint_type(self) -> str:
         """
-        The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+        The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
         """
         return pulumi.get(self, "ipv6_endpoint_type")
 

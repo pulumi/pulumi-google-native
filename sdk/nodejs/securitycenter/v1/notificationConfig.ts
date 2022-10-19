@@ -9,6 +9,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a notification config.
+ * Auto-naming is currently not supported for this resource.
  */
 export class NotificationConfig extends pulumi.CustomResource {
     /**
@@ -49,7 +50,7 @@ export class NotificationConfig extends pulumi.CustomResource {
      * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly organizationId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
      */
@@ -77,13 +78,10 @@ export class NotificationConfig extends pulumi.CustomResource {
             if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationId'");
-            }
             resourceInputs["configId"] = args ? args.configId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pubsubTopic"] = args ? args.pubsubTopic : undefined;
             resourceInputs["streamingConfig"] = args ? args.streamingConfig : undefined;
             resourceInputs["serviceAccount"] = undefined /*out*/;
@@ -91,13 +89,13 @@ export class NotificationConfig extends pulumi.CustomResource {
             resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["organizationId"] = undefined /*out*/;
+            resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["streamingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["configId", "organizationId"] };
+        const replaceOnChanges = { replaceOnChanges: ["configId", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NotificationConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,7 +117,7 @@ export interface NotificationConfigArgs {
      * The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
      */
     name?: pulumi.Input<string>;
-    organizationId: pulumi.Input<string>;
+    project?: pulumi.Input<string>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
      */

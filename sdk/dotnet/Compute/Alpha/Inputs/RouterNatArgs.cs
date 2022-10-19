@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// </summary>
     public sealed class RouterNatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        /// </summary>
+        [Input("autoNetworkTier")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RouterNatAutoNetworkTier>? AutoNetworkTier { get; set; }
+
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
 

@@ -512,9 +512,9 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
-// Contains information of the customer's network configurations.
+// Contains information of the customer's network configurations.Next available ID: 4
 type Consumer struct {
-	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
@@ -529,9 +529,9 @@ type ConsumerInput interface {
 	ToConsumerOutputWithContext(context.Context) ConsumerOutput
 }
 
-// Contains information of the customer's network configurations.
+// Contains information of the customer's network configurations.Next available ID: 4
 type ConsumerArgs struct {
-	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
@@ -572,7 +572,7 @@ func (i ConsumerArray) ToConsumerArrayOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerArrayOutput)
 }
 
-// Contains information of the customer's network configurations.
+// Contains information of the customer's network configurations.Next available ID: 4
 type ConsumerOutput struct{ *pulumi.OutputState }
 
 func (ConsumerOutput) ElementType() reflect.Type {
@@ -587,7 +587,7 @@ func (o ConsumerOutput) ToConsumerOutputWithContext(ctx context.Context) Consume
 	return o
 }
 
-// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 func (o ConsumerOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Consumer) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -612,15 +612,15 @@ func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
 	}).(ConsumerOutput)
 }
 
-// Contains information of the customer's network configurations.
+// Contains information of the customer's network configurations.Next available ID: 4
 type ConsumerResponse struct {
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
-	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
-// Contains information of the customer's network configurations.
+// Contains information of the customer's network configurations.Next available ID: 4
 type ConsumerResponseOutput struct{ *pulumi.OutputState }
 
 func (ConsumerResponseOutput) ElementType() reflect.Type {
@@ -640,7 +640,7 @@ func (o ConsumerResponseOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ConsumerResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
 }
 
-// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 func (o ConsumerResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v ConsumerResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
@@ -2630,7 +2630,7 @@ func (o MetadataManagementActivityResponseOutput) Restores() RestoreResponseArra
 	return o.ApplyT(func(v MetadataManagementActivityResponse) []RestoreResponse { return v.Restores }).(RestoreResponseArrayOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.
+// Network configuration for the Dataproc Metastore service.Next available ID: 3
 type NetworkConfig struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []Consumer `pulumi:"consumers"`
@@ -2647,7 +2647,7 @@ type NetworkConfigInput interface {
 	ToNetworkConfigOutputWithContext(context.Context) NetworkConfigOutput
 }
 
-// Network configuration for the Dataproc Metastore service.
+// Network configuration for the Dataproc Metastore service.Next available ID: 3
 type NetworkConfigArgs struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers ConsumerArrayInput `pulumi:"consumers"`
@@ -2706,7 +2706,7 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.
+// Network configuration for the Dataproc Metastore service.Next available ID: 3
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigOutput) ElementType() reflect.Type {
@@ -2770,13 +2770,13 @@ func (o NetworkConfigPtrOutput) Consumers() ConsumerArrayOutput {
 	}).(ConsumerArrayOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.
+// Network configuration for the Dataproc Metastore service.Next available ID: 3
 type NetworkConfigResponse struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []ConsumerResponse `pulumi:"consumers"`
 }
 
-// Network configuration for the Dataproc Metastore service.
+// Network configuration for the Dataproc Metastore service.Next available ID: 3
 type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigResponseOutput) ElementType() reflect.Type {
@@ -3069,7 +3069,7 @@ type ServiceResponse struct {
 	Name string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
-	// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+	// The configuration specifying the network settings for the Dataproc Metastore service.
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
 	Port int `pulumi:"port"`
@@ -3162,7 +3162,7 @@ func (o ServiceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+// The configuration specifying the network settings for the Dataproc Metastore service.
 func (o ServiceResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v ServiceResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
 }

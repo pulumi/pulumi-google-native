@@ -1607,6 +1607,736 @@ func (o RestrictionEvaluationsResponseOutput) MemberRestrictionEvaluation() Memb
 	}).(MembershipRoleRestrictionEvaluationResponseOutput)
 }
 
+// SAML IDP (identity provider) configuration.
+type SamlIdpConfig struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri *string `pulumi:"changePasswordUri"`
+	// The SAML **Entity ID** of the identity provider.
+	EntityId string `pulumi:"entityId"`
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	LogoutRedirectUri *string `pulumi:"logoutRedirectUri"`
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	SingleSignOnServiceUri string `pulumi:"singleSignOnServiceUri"`
+}
+
+// SamlIdpConfigInput is an input type that accepts SamlIdpConfigArgs and SamlIdpConfigOutput values.
+// You can construct a concrete instance of `SamlIdpConfigInput` via:
+//
+//	SamlIdpConfigArgs{...}
+type SamlIdpConfigInput interface {
+	pulumi.Input
+
+	ToSamlIdpConfigOutput() SamlIdpConfigOutput
+	ToSamlIdpConfigOutputWithContext(context.Context) SamlIdpConfigOutput
+}
+
+// SAML IDP (identity provider) configuration.
+type SamlIdpConfigArgs struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri pulumi.StringPtrInput `pulumi:"changePasswordUri"`
+	// The SAML **Entity ID** of the identity provider.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	LogoutRedirectUri pulumi.StringPtrInput `pulumi:"logoutRedirectUri"`
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	SingleSignOnServiceUri pulumi.StringInput `pulumi:"singleSignOnServiceUri"`
+}
+
+func (SamlIdpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlIdpConfig)(nil)).Elem()
+}
+
+func (i SamlIdpConfigArgs) ToSamlIdpConfigOutput() SamlIdpConfigOutput {
+	return i.ToSamlIdpConfigOutputWithContext(context.Background())
+}
+
+func (i SamlIdpConfigArgs) ToSamlIdpConfigOutputWithContext(ctx context.Context) SamlIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlIdpConfigOutput)
+}
+
+func (i SamlIdpConfigArgs) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput {
+	return i.ToSamlIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SamlIdpConfigArgs) ToSamlIdpConfigPtrOutputWithContext(ctx context.Context) SamlIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlIdpConfigOutput).ToSamlIdpConfigPtrOutputWithContext(ctx)
+}
+
+// SamlIdpConfigPtrInput is an input type that accepts SamlIdpConfigArgs, SamlIdpConfigPtr and SamlIdpConfigPtrOutput values.
+// You can construct a concrete instance of `SamlIdpConfigPtrInput` via:
+//
+//	        SamlIdpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SamlIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput
+	ToSamlIdpConfigPtrOutputWithContext(context.Context) SamlIdpConfigPtrOutput
+}
+
+type samlIdpConfigPtrType SamlIdpConfigArgs
+
+func SamlIdpConfigPtr(v *SamlIdpConfigArgs) SamlIdpConfigPtrInput {
+	return (*samlIdpConfigPtrType)(v)
+}
+
+func (*samlIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlIdpConfig)(nil)).Elem()
+}
+
+func (i *samlIdpConfigPtrType) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput {
+	return i.ToSamlIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *samlIdpConfigPtrType) ToSamlIdpConfigPtrOutputWithContext(ctx context.Context) SamlIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlIdpConfigPtrOutput)
+}
+
+// SAML IDP (identity provider) configuration.
+type SamlIdpConfigOutput struct{ *pulumi.OutputState }
+
+func (SamlIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlIdpConfig)(nil)).Elem()
+}
+
+func (o SamlIdpConfigOutput) ToSamlIdpConfigOutput() SamlIdpConfigOutput {
+	return o
+}
+
+func (o SamlIdpConfigOutput) ToSamlIdpConfigOutputWithContext(ctx context.Context) SamlIdpConfigOutput {
+	return o
+}
+
+func (o SamlIdpConfigOutput) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput {
+	return o.ToSamlIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SamlIdpConfigOutput) ToSamlIdpConfigPtrOutputWithContext(ctx context.Context) SamlIdpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlIdpConfig) *SamlIdpConfig {
+		return &v
+	}).(SamlIdpConfigPtrOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+func (o SamlIdpConfigOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlIdpConfig) *string { return v.ChangePasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// The SAML **Entity ID** of the identity provider.
+func (o SamlIdpConfigOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfig) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+func (o SamlIdpConfigOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SamlIdpConfig) *string { return v.LogoutRedirectUri }).(pulumi.StringPtrOutput)
+}
+
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+func (o SamlIdpConfigOutput) SingleSignOnServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfig) string { return v.SingleSignOnServiceUri }).(pulumi.StringOutput)
+}
+
+type SamlIdpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SamlIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlIdpConfig)(nil)).Elem()
+}
+
+func (o SamlIdpConfigPtrOutput) ToSamlIdpConfigPtrOutput() SamlIdpConfigPtrOutput {
+	return o
+}
+
+func (o SamlIdpConfigPtrOutput) ToSamlIdpConfigPtrOutputWithContext(ctx context.Context) SamlIdpConfigPtrOutput {
+	return o
+}
+
+func (o SamlIdpConfigPtrOutput) Elem() SamlIdpConfigOutput {
+	return o.ApplyT(func(v *SamlIdpConfig) SamlIdpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SamlIdpConfig
+		return ret
+	}).(SamlIdpConfigOutput)
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+func (o SamlIdpConfigPtrOutput) ChangePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChangePasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAML **Entity ID** of the identity provider.
+func (o SamlIdpConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+func (o SamlIdpConfigPtrOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoutRedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+func (o SamlIdpConfigPtrOutput) SingleSignOnServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SingleSignOnServiceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// SAML IDP (identity provider) configuration.
+type SamlIdpConfigResponse struct {
+	// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+	ChangePasswordUri string `pulumi:"changePasswordUri"`
+	// The SAML **Entity ID** of the identity provider.
+	EntityId string `pulumi:"entityId"`
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	LogoutRedirectUri string `pulumi:"logoutRedirectUri"`
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	SingleSignOnServiceUri string `pulumi:"singleSignOnServiceUri"`
+}
+
+// SAML IDP (identity provider) configuration.
+type SamlIdpConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SamlIdpConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlIdpConfigResponse)(nil)).Elem()
+}
+
+func (o SamlIdpConfigResponseOutput) ToSamlIdpConfigResponseOutput() SamlIdpConfigResponseOutput {
+	return o
+}
+
+func (o SamlIdpConfigResponseOutput) ToSamlIdpConfigResponseOutputWithContext(ctx context.Context) SamlIdpConfigResponseOutput {
+	return o
+}
+
+// The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+func (o SamlIdpConfigResponseOutput) ChangePasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.ChangePasswordUri }).(pulumi.StringOutput)
+}
+
+// The SAML **Entity ID** of the identity provider.
+func (o SamlIdpConfigResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+func (o SamlIdpConfigResponseOutput) LogoutRedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.LogoutRedirectUri }).(pulumi.StringOutput)
+}
+
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+func (o SamlIdpConfigResponseOutput) SingleSignOnServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.SingleSignOnServiceUri }).(pulumi.StringOutput)
+}
+
+// SAML SP (service provider) configuration.
+type SamlSpConfig struct {
+}
+
+// SamlSpConfigInput is an input type that accepts SamlSpConfigArgs and SamlSpConfigOutput values.
+// You can construct a concrete instance of `SamlSpConfigInput` via:
+//
+//	SamlSpConfigArgs{...}
+type SamlSpConfigInput interface {
+	pulumi.Input
+
+	ToSamlSpConfigOutput() SamlSpConfigOutput
+	ToSamlSpConfigOutputWithContext(context.Context) SamlSpConfigOutput
+}
+
+// SAML SP (service provider) configuration.
+type SamlSpConfigArgs struct {
+}
+
+func (SamlSpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSpConfig)(nil)).Elem()
+}
+
+func (i SamlSpConfigArgs) ToSamlSpConfigOutput() SamlSpConfigOutput {
+	return i.ToSamlSpConfigOutputWithContext(context.Background())
+}
+
+func (i SamlSpConfigArgs) ToSamlSpConfigOutputWithContext(ctx context.Context) SamlSpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSpConfigOutput)
+}
+
+func (i SamlSpConfigArgs) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
+	return i.ToSamlSpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SamlSpConfigArgs) ToSamlSpConfigPtrOutputWithContext(ctx context.Context) SamlSpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSpConfigOutput).ToSamlSpConfigPtrOutputWithContext(ctx)
+}
+
+// SamlSpConfigPtrInput is an input type that accepts SamlSpConfigArgs, SamlSpConfigPtr and SamlSpConfigPtrOutput values.
+// You can construct a concrete instance of `SamlSpConfigPtrInput` via:
+//
+//	        SamlSpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SamlSpConfigPtrInput interface {
+	pulumi.Input
+
+	ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput
+	ToSamlSpConfigPtrOutputWithContext(context.Context) SamlSpConfigPtrOutput
+}
+
+type samlSpConfigPtrType SamlSpConfigArgs
+
+func SamlSpConfigPtr(v *SamlSpConfigArgs) SamlSpConfigPtrInput {
+	return (*samlSpConfigPtrType)(v)
+}
+
+func (*samlSpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlSpConfig)(nil)).Elem()
+}
+
+func (i *samlSpConfigPtrType) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
+	return i.ToSamlSpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *samlSpConfigPtrType) ToSamlSpConfigPtrOutputWithContext(ctx context.Context) SamlSpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSpConfigPtrOutput)
+}
+
+// SAML SP (service provider) configuration.
+type SamlSpConfigOutput struct{ *pulumi.OutputState }
+
+func (SamlSpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSpConfig)(nil)).Elem()
+}
+
+func (o SamlSpConfigOutput) ToSamlSpConfigOutput() SamlSpConfigOutput {
+	return o
+}
+
+func (o SamlSpConfigOutput) ToSamlSpConfigOutputWithContext(ctx context.Context) SamlSpConfigOutput {
+	return o
+}
+
+func (o SamlSpConfigOutput) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
+	return o.ToSamlSpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SamlSpConfigOutput) ToSamlSpConfigPtrOutputWithContext(ctx context.Context) SamlSpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlSpConfig) *SamlSpConfig {
+		return &v
+	}).(SamlSpConfigPtrOutput)
+}
+
+type SamlSpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SamlSpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlSpConfig)(nil)).Elem()
+}
+
+func (o SamlSpConfigPtrOutput) ToSamlSpConfigPtrOutput() SamlSpConfigPtrOutput {
+	return o
+}
+
+func (o SamlSpConfigPtrOutput) ToSamlSpConfigPtrOutputWithContext(ctx context.Context) SamlSpConfigPtrOutput {
+	return o
+}
+
+func (o SamlSpConfigPtrOutput) Elem() SamlSpConfigOutput {
+	return o.ApplyT(func(v *SamlSpConfig) SamlSpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SamlSpConfig
+		return ret
+	}).(SamlSpConfigOutput)
+}
+
+// SAML SP (service provider) configuration.
+type SamlSpConfigResponse struct {
+	// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+	AssertionConsumerServiceUri string `pulumi:"assertionConsumerServiceUri"`
+	// The SAML **Entity ID** for this service provider.
+	EntityId string `pulumi:"entityId"`
+}
+
+// SAML SP (service provider) configuration.
+type SamlSpConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SamlSpConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSpConfigResponse)(nil)).Elem()
+}
+
+func (o SamlSpConfigResponseOutput) ToSamlSpConfigResponseOutput() SamlSpConfigResponseOutput {
+	return o
+}
+
+func (o SamlSpConfigResponseOutput) ToSamlSpConfigResponseOutputWithContext(ctx context.Context) SamlSpConfigResponseOutput {
+	return o
+}
+
+// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+func (o SamlSpConfigResponseOutput) AssertionConsumerServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlSpConfigResponse) string { return v.AssertionConsumerServiceUri }).(pulumi.StringOutput)
+}
+
+// The SAML **Entity ID** for this service provider.
+func (o SamlSpConfigResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlSpConfigResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// Details that are applicable when `sso_mode` == `SAML_SSO`.
+type SamlSsoInfo struct {
+	// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+	InboundSamlSsoProfile string `pulumi:"inboundSamlSsoProfile"`
+}
+
+// SamlSsoInfoInput is an input type that accepts SamlSsoInfoArgs and SamlSsoInfoOutput values.
+// You can construct a concrete instance of `SamlSsoInfoInput` via:
+//
+//	SamlSsoInfoArgs{...}
+type SamlSsoInfoInput interface {
+	pulumi.Input
+
+	ToSamlSsoInfoOutput() SamlSsoInfoOutput
+	ToSamlSsoInfoOutputWithContext(context.Context) SamlSsoInfoOutput
+}
+
+// Details that are applicable when `sso_mode` == `SAML_SSO`.
+type SamlSsoInfoArgs struct {
+	// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+	InboundSamlSsoProfile pulumi.StringInput `pulumi:"inboundSamlSsoProfile"`
+}
+
+func (SamlSsoInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSsoInfo)(nil)).Elem()
+}
+
+func (i SamlSsoInfoArgs) ToSamlSsoInfoOutput() SamlSsoInfoOutput {
+	return i.ToSamlSsoInfoOutputWithContext(context.Background())
+}
+
+func (i SamlSsoInfoArgs) ToSamlSsoInfoOutputWithContext(ctx context.Context) SamlSsoInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSsoInfoOutput)
+}
+
+func (i SamlSsoInfoArgs) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
+	return i.ToSamlSsoInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SamlSsoInfoArgs) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context) SamlSsoInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSsoInfoOutput).ToSamlSsoInfoPtrOutputWithContext(ctx)
+}
+
+// SamlSsoInfoPtrInput is an input type that accepts SamlSsoInfoArgs, SamlSsoInfoPtr and SamlSsoInfoPtrOutput values.
+// You can construct a concrete instance of `SamlSsoInfoPtrInput` via:
+//
+//	        SamlSsoInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SamlSsoInfoPtrInput interface {
+	pulumi.Input
+
+	ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput
+	ToSamlSsoInfoPtrOutputWithContext(context.Context) SamlSsoInfoPtrOutput
+}
+
+type samlSsoInfoPtrType SamlSsoInfoArgs
+
+func SamlSsoInfoPtr(v *SamlSsoInfoArgs) SamlSsoInfoPtrInput {
+	return (*samlSsoInfoPtrType)(v)
+}
+
+func (*samlSsoInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlSsoInfo)(nil)).Elem()
+}
+
+func (i *samlSsoInfoPtrType) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
+	return i.ToSamlSsoInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *samlSsoInfoPtrType) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context) SamlSsoInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlSsoInfoPtrOutput)
+}
+
+// Details that are applicable when `sso_mode` == `SAML_SSO`.
+type SamlSsoInfoOutput struct{ *pulumi.OutputState }
+
+func (SamlSsoInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSsoInfo)(nil)).Elem()
+}
+
+func (o SamlSsoInfoOutput) ToSamlSsoInfoOutput() SamlSsoInfoOutput {
+	return o
+}
+
+func (o SamlSsoInfoOutput) ToSamlSsoInfoOutputWithContext(ctx context.Context) SamlSsoInfoOutput {
+	return o
+}
+
+func (o SamlSsoInfoOutput) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
+	return o.ToSamlSsoInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SamlSsoInfoOutput) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context) SamlSsoInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SamlSsoInfo) *SamlSsoInfo {
+		return &v
+	}).(SamlSsoInfoPtrOutput)
+}
+
+// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+func (o SamlSsoInfoOutput) InboundSamlSsoProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlSsoInfo) string { return v.InboundSamlSsoProfile }).(pulumi.StringOutput)
+}
+
+type SamlSsoInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SamlSsoInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SamlSsoInfo)(nil)).Elem()
+}
+
+func (o SamlSsoInfoPtrOutput) ToSamlSsoInfoPtrOutput() SamlSsoInfoPtrOutput {
+	return o
+}
+
+func (o SamlSsoInfoPtrOutput) ToSamlSsoInfoPtrOutputWithContext(ctx context.Context) SamlSsoInfoPtrOutput {
+	return o
+}
+
+func (o SamlSsoInfoPtrOutput) Elem() SamlSsoInfoOutput {
+	return o.ApplyT(func(v *SamlSsoInfo) SamlSsoInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SamlSsoInfo
+		return ret
+	}).(SamlSsoInfoOutput)
+}
+
+// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+func (o SamlSsoInfoPtrOutput) InboundSamlSsoProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SamlSsoInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InboundSamlSsoProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details that are applicable when `sso_mode` == `SAML_SSO`.
+type SamlSsoInfoResponse struct {
+	// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+	InboundSamlSsoProfile string `pulumi:"inboundSamlSsoProfile"`
+}
+
+// Details that are applicable when `sso_mode` == `SAML_SSO`.
+type SamlSsoInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SamlSsoInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlSsoInfoResponse)(nil)).Elem()
+}
+
+func (o SamlSsoInfoResponseOutput) ToSamlSsoInfoResponseOutput() SamlSsoInfoResponseOutput {
+	return o
+}
+
+func (o SamlSsoInfoResponseOutput) ToSamlSsoInfoResponseOutputWithContext(ctx context.Context) SamlSsoInfoResponseOutput {
+	return o
+}
+
+// Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+func (o SamlSsoInfoResponseOutput) InboundSamlSsoProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlSsoInfoResponse) string { return v.InboundSamlSsoProfile }).(pulumi.StringOutput)
+}
+
+// Controls sign-in behavior.
+type SignInBehavior struct {
+	// When to redirect sign-ins to the IdP.
+	RedirectCondition *SignInBehaviorRedirectCondition `pulumi:"redirectCondition"`
+}
+
+// SignInBehaviorInput is an input type that accepts SignInBehaviorArgs and SignInBehaviorOutput values.
+// You can construct a concrete instance of `SignInBehaviorInput` via:
+//
+//	SignInBehaviorArgs{...}
+type SignInBehaviorInput interface {
+	pulumi.Input
+
+	ToSignInBehaviorOutput() SignInBehaviorOutput
+	ToSignInBehaviorOutputWithContext(context.Context) SignInBehaviorOutput
+}
+
+// Controls sign-in behavior.
+type SignInBehaviorArgs struct {
+	// When to redirect sign-ins to the IdP.
+	RedirectCondition SignInBehaviorRedirectConditionPtrInput `pulumi:"redirectCondition"`
+}
+
+func (SignInBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignInBehavior)(nil)).Elem()
+}
+
+func (i SignInBehaviorArgs) ToSignInBehaviorOutput() SignInBehaviorOutput {
+	return i.ToSignInBehaviorOutputWithContext(context.Background())
+}
+
+func (i SignInBehaviorArgs) ToSignInBehaviorOutputWithContext(ctx context.Context) SignInBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignInBehaviorOutput)
+}
+
+func (i SignInBehaviorArgs) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput {
+	return i.ToSignInBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i SignInBehaviorArgs) ToSignInBehaviorPtrOutputWithContext(ctx context.Context) SignInBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignInBehaviorOutput).ToSignInBehaviorPtrOutputWithContext(ctx)
+}
+
+// SignInBehaviorPtrInput is an input type that accepts SignInBehaviorArgs, SignInBehaviorPtr and SignInBehaviorPtrOutput values.
+// You can construct a concrete instance of `SignInBehaviorPtrInput` via:
+//
+//	        SignInBehaviorArgs{...}
+//
+//	or:
+//
+//	        nil
+type SignInBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput
+	ToSignInBehaviorPtrOutputWithContext(context.Context) SignInBehaviorPtrOutput
+}
+
+type signInBehaviorPtrType SignInBehaviorArgs
+
+func SignInBehaviorPtr(v *SignInBehaviorArgs) SignInBehaviorPtrInput {
+	return (*signInBehaviorPtrType)(v)
+}
+
+func (*signInBehaviorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignInBehavior)(nil)).Elem()
+}
+
+func (i *signInBehaviorPtrType) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput {
+	return i.ToSignInBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (i *signInBehaviorPtrType) ToSignInBehaviorPtrOutputWithContext(ctx context.Context) SignInBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SignInBehaviorPtrOutput)
+}
+
+// Controls sign-in behavior.
+type SignInBehaviorOutput struct{ *pulumi.OutputState }
+
+func (SignInBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignInBehavior)(nil)).Elem()
+}
+
+func (o SignInBehaviorOutput) ToSignInBehaviorOutput() SignInBehaviorOutput {
+	return o
+}
+
+func (o SignInBehaviorOutput) ToSignInBehaviorOutputWithContext(ctx context.Context) SignInBehaviorOutput {
+	return o
+}
+
+func (o SignInBehaviorOutput) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput {
+	return o.ToSignInBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o SignInBehaviorOutput) ToSignInBehaviorPtrOutputWithContext(ctx context.Context) SignInBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SignInBehavior) *SignInBehavior {
+		return &v
+	}).(SignInBehaviorPtrOutput)
+}
+
+// When to redirect sign-ins to the IdP.
+func (o SignInBehaviorOutput) RedirectCondition() SignInBehaviorRedirectConditionPtrOutput {
+	return o.ApplyT(func(v SignInBehavior) *SignInBehaviorRedirectCondition { return v.RedirectCondition }).(SignInBehaviorRedirectConditionPtrOutput)
+}
+
+type SignInBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (SignInBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SignInBehavior)(nil)).Elem()
+}
+
+func (o SignInBehaviorPtrOutput) ToSignInBehaviorPtrOutput() SignInBehaviorPtrOutput {
+	return o
+}
+
+func (o SignInBehaviorPtrOutput) ToSignInBehaviorPtrOutputWithContext(ctx context.Context) SignInBehaviorPtrOutput {
+	return o
+}
+
+func (o SignInBehaviorPtrOutput) Elem() SignInBehaviorOutput {
+	return o.ApplyT(func(v *SignInBehavior) SignInBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret SignInBehavior
+		return ret
+	}).(SignInBehaviorOutput)
+}
+
+// When to redirect sign-ins to the IdP.
+func (o SignInBehaviorPtrOutput) RedirectCondition() SignInBehaviorRedirectConditionPtrOutput {
+	return o.ApplyT(func(v *SignInBehavior) *SignInBehaviorRedirectCondition {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectCondition
+	}).(SignInBehaviorRedirectConditionPtrOutput)
+}
+
+// Controls sign-in behavior.
+type SignInBehaviorResponse struct {
+	// When to redirect sign-ins to the IdP.
+	RedirectCondition string `pulumi:"redirectCondition"`
+}
+
+// Controls sign-in behavior.
+type SignInBehaviorResponseOutput struct{ *pulumi.OutputState }
+
+func (SignInBehaviorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SignInBehaviorResponse)(nil)).Elem()
+}
+
+func (o SignInBehaviorResponseOutput) ToSignInBehaviorResponseOutput() SignInBehaviorResponseOutput {
+	return o
+}
+
+func (o SignInBehaviorResponseOutput) ToSignInBehaviorResponseOutputWithContext(ctx context.Context) SignInBehaviorResponseOutput {
+	return o
+}
+
+// When to redirect sign-ins to the IdP.
+func (o SignInBehaviorResponseOutput) RedirectCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v SignInBehaviorResponse) string { return v.RedirectCondition }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupMetadataPtrInput)(nil)).Elem(), DynamicGroupMetadataArgs{})
@@ -1624,6 +2354,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixGroupArrayInput)(nil)).Elem(), PosixGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestrictionEvaluationsPtrInput)(nil)).Elem(), RestrictionEvaluationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlIdpConfigInput)(nil)).Elem(), SamlIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlIdpConfigPtrInput)(nil)).Elem(), SamlIdpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlSpConfigInput)(nil)).Elem(), SamlSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlSpConfigPtrInput)(nil)).Elem(), SamlSpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlSsoInfoInput)(nil)).Elem(), SamlSsoInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlSsoInfoPtrInput)(nil)).Elem(), SamlSsoInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorInput)(nil)).Elem(), SignInBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorPtrInput)(nil)).Elem(), SignInBehaviorArgs{})
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseOutput{})
 	pulumi.RegisterOutputType(CertificateAttributesResponseArrayOutput{})
@@ -1657,4 +2395,16 @@ func init() {
 	pulumi.RegisterOutputType(RestrictionEvaluationsOutput{})
 	pulumi.RegisterOutputType(RestrictionEvaluationsPtrOutput{})
 	pulumi.RegisterOutputType(RestrictionEvaluationsResponseOutput{})
+	pulumi.RegisterOutputType(SamlIdpConfigOutput{})
+	pulumi.RegisterOutputType(SamlIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(SamlIdpConfigResponseOutput{})
+	pulumi.RegisterOutputType(SamlSpConfigOutput{})
+	pulumi.RegisterOutputType(SamlSpConfigPtrOutput{})
+	pulumi.RegisterOutputType(SamlSpConfigResponseOutput{})
+	pulumi.RegisterOutputType(SamlSsoInfoOutput{})
+	pulumi.RegisterOutputType(SamlSsoInfoPtrOutput{})
+	pulumi.RegisterOutputType(SamlSsoInfoResponseOutput{})
+	pulumi.RegisterOutputType(SignInBehaviorOutput{})
+	pulumi.RegisterOutputType(SignInBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(SignInBehaviorResponseOutput{})
 }

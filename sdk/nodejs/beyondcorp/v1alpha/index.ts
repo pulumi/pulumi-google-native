@@ -235,6 +235,36 @@ export const getConnectorIamPolicy: typeof import("./getConnectorIamPolicy").get
 export const getConnectorIamPolicyOutput: typeof import("./getConnectorIamPolicy").getConnectorIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorIamPolicy","getConnectorIamPolicyOutput"], () => require("./getConnectorIamPolicy"));
 
+export { GetNetConnectionArgs, GetNetConnectionResult, GetNetConnectionOutputArgs } from "./getNetConnection";
+export const getNetConnection: typeof import("./getNetConnection").getNetConnection = null as any;
+export const getNetConnectionOutput: typeof import("./getNetConnection").getNetConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getNetConnection","getNetConnectionOutput"], () => require("./getNetConnection"));
+
+export { GetNetConnectionIamPolicyArgs, GetNetConnectionIamPolicyResult, GetNetConnectionIamPolicyOutputArgs } from "./getNetConnectionIamPolicy";
+export const getNetConnectionIamPolicy: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicy = null as any;
+export const getNetConnectionIamPolicyOutput: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNetConnectionIamPolicy","getNetConnectionIamPolicyOutput"], () => require("./getNetConnectionIamPolicy"));
+
+export { NetConnectionArgs } from "./netConnection";
+export type NetConnection = import("./netConnection").NetConnection;
+export const NetConnection: typeof import("./netConnection").NetConnection = null as any;
+utilities.lazyLoad(exports, ["NetConnection"], () => require("./netConnection"));
+
+export { NetConnectionIamBindingArgs } from "./netConnectionIamBinding";
+export type NetConnectionIamBinding = import("./netConnectionIamBinding").NetConnectionIamBinding;
+export const NetConnectionIamBinding: typeof import("./netConnectionIamBinding").NetConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["NetConnectionIamBinding"], () => require("./netConnectionIamBinding"));
+
+export { NetConnectionIamMemberArgs } from "./netConnectionIamMember";
+export type NetConnectionIamMember = import("./netConnectionIamMember").NetConnectionIamMember;
+export const NetConnectionIamMember: typeof import("./netConnectionIamMember").NetConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["NetConnectionIamMember"], () => require("./netConnectionIamMember"));
+
+export { NetConnectionIamPolicyArgs } from "./netConnectionIamPolicy";
+export type NetConnectionIamPolicy = import("./netConnectionIamPolicy").NetConnectionIamPolicy;
+export const NetConnectionIamPolicy: typeof import("./netConnectionIamPolicy").NetConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NetConnectionIamPolicy"], () => require("./netConnectionIamPolicy"));
+
 
 // Export enums:
 export * from "../../types/enums/beyondcorp/v1alpha";
@@ -305,6 +335,14 @@ const _module = {
                 return new ConnectorIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ConnectorIamPolicy":
                 return new ConnectorIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:NetConnection":
+                return new NetConnection(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:NetConnectionIamBinding":
+                return new NetConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:NetConnectionIamMember":
+                return new NetConnectionIamMember(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
+                return new NetConnectionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<Outputs.ConfidentialNodesResponse> ConfidentialNodes { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the fine-grained cost management feature.
+        /// </summary>
+        [Output("costManagementConfig")]
+        public Output<Outputs.CostManagementConfigResponse> CostManagementConfig { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Output("createTime")]
@@ -490,6 +496,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ConfidentialNodesArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// Configuration for the fine-grained cost management feature.
+        /// </summary>
+        [Input("costManagementConfig")]
+        public Input<Inputs.CostManagementConfigArgs>? CostManagementConfig { get; set; }
 
         /// <summary>
         /// Configuration of etcd encryption.

@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? ImagePullPolicy { get; set; }
 
         /// <summary>
-        /// Not supported by Cloud Run.
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Input("livenessProbe")]
         public Input<Inputs.ProbeArgs>? LivenessProbe { get; set; }

@@ -10,14 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
 {
 
+    /// <summary>
+    /// Configures how to transform sensitive text `InfoTypes`.
+    /// </summary>
     public sealed class TextConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("transformations")]
         private InputList<Inputs.InfoTypeTransformationArgs>? _transformations;
 
         /// <summary>
-        /// The transformations to apply to the detected data.
+        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>
+        [Obsolete(@"The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.")]
         public InputList<Inputs.InfoTypeTransformationArgs> Transformations
         {
             get => _transformations ?? (_transformations = new InputList<Inputs.InfoTypeTransformationArgs>());

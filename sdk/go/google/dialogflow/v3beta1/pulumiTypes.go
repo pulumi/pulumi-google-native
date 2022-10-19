@@ -9885,7 +9885,7 @@ type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings struct {
 	AudioFormat *GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat `pulumi:"audioFormat"`
 	// Enable audio redaction if it is true.
 	EnableAudioRedaction *bool `pulumi:"enableAudioRedaction"`
-	// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+	// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 	GcsBucket *string `pulumi:"gcsBucket"`
 }
 
@@ -9908,7 +9908,7 @@ type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs struc
 	AudioFormat GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput `pulumi:"audioFormat"`
 	// Enable audio redaction if it is true.
 	EnableAudioRedaction pulumi.BoolPtrInput `pulumi:"enableAudioRedaction"`
-	// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+	// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 	GcsBucket pulumi.StringPtrInput `pulumi:"gcsBucket"`
 }
 
@@ -10011,7 +10011,7 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsOutput)
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsOutput) GcsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
 }
@@ -10070,7 +10070,7 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsPtrOutput) GcsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings) *string {
 		if v == nil {
@@ -10088,7 +10088,7 @@ type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsResponse s
 	AudioFormat string `pulumi:"audioFormat"`
 	// Enable audio redaction if it is true.
 	EnableAudioRedaction bool `pulumi:"enableAudioRedaction"`
-	// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+	// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 	GcsBucket string `pulumi:"gcsBucket"`
 }
 
@@ -10128,7 +10128,7 @@ func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsRespons
 	}).(pulumi.BoolOutput)
 }
 
-// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
 func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsResponseOutput) GcsBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsResponse) string {
 		return v.GcsBucket

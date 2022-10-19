@@ -541,6 +541,26 @@ export const PlacementPolicyType = {
  */
 export type PlacementPolicyType = (typeof PlacementPolicyType)[keyof typeof PlacementPolicyType];
 
+export const ProtectConfigWorkloadVulnerabilityMode = {
+    /**
+     * Default value not specified.
+     */
+    WorkloadVulnerabilityModeUnspecified: "WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED",
+    /**
+     * Disables Workload Vulnerability Scanning feature on the cluster.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Applies basic vulnerability scanning settings for cluster workloads.
+     */
+    Basic: "BASIC",
+} as const;
+
+/**
+ * Sets which mode to use for Protect workload vulnerability scanning feature.
+ */
+export type ProtectConfigWorkloadVulnerabilityMode = (typeof ProtectConfigWorkloadVulnerabilityMode)[keyof typeof ProtectConfigWorkloadVulnerabilityMode];
+
 export const ReleaseChannelChannel = {
     /**
      * No channel specified.
@@ -607,7 +627,7 @@ export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxC
 
 export const StatusConditionCanonicalCode = {
     /**
-     * Not an error; returned on success HTTP Mapping: 200 OK
+     * Not an error; returned on success. HTTP Mapping: 200 OK
      */
     Ok: "OK",
     /**

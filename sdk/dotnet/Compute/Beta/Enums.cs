@@ -154,6 +154,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct AddressIpv6EndpointType : IEquatable<AddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private AddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static AddressIpv6EndpointType Netlb { get; } = new AddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
+        /// </summary>
+        public static AddressIpv6EndpointType Vm { get; } = new AddressIpv6EndpointType("VM");
+
+        public static bool operator ==(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(AddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AddressIpv6EndpointType other && Equals(other);
+        public bool Equals(AddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
@@ -291,7 +328,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     /// </summary>
     [EnumType]
     public readonly struct AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval : IEquatable<AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>
@@ -1642,6 +1679,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static DistributionPolicyTargetShape Any { get; } = new DistributionPolicyTargetShape("ANY");
         /// <summary>
+        /// The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+        /// </summary>
+        public static DistributionPolicyTargetShape AnySingleZone { get; } = new DistributionPolicyTargetShape("ANY_SINGLE_ZONE");
+        /// <summary>
         /// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
         /// </summary>
         public static DistributionPolicyTargetShape Balanced { get; } = new DistributionPolicyTargetShape("BALANCED");
@@ -2136,6 +2177,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GlobalAddressIpVersion other && Equals(other);
         public bool Equals(GlobalAddressIpVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct GlobalAddressIpv6EndpointType : IEquatable<GlobalAddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private GlobalAddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Netlb { get; } = new GlobalAddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Vm { get; } = new GlobalAddressIpv6EndpointType("VM");
+
+        public static bool operator ==(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalAddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalAddressIpv6EndpointType other && Equals(other);
+        public bool Equals(GlobalAddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2964,6 +3042,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceGroupManagerFailoverAction other && Equals(other);
         public bool Equals(InstanceGroupManagerFailoverAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair : IEquatable<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair No { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO");
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair Yes { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("YES");
+
+        public static bool operator ==(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other && Equals(other);
+        public bool Equals(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6065,7 +6174,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     /// </summary>
     [EnumType]
     public readonly struct SchedulingMaintenanceInterval : IEquatable<SchedulingMaintenanceInterval>
@@ -6439,7 +6548,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -6455,7 +6564,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey AllIps { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP");
 
         public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKey left, SecurityPolicyRuleRateLimitOptionsEnforceOnKey right) => left.Equals(right);

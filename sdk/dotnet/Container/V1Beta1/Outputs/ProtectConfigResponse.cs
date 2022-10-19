@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
         /// </summary>
         public readonly Outputs.WorkloadConfigResponse WorkloadConfig;
+        /// <summary>
+        /// Sets which mode to use for Protect workload vulnerability scanning feature.
+        /// </summary>
+        public readonly string WorkloadVulnerabilityMode;
 
         [OutputConstructor]
-        private ProtectConfigResponse(Outputs.WorkloadConfigResponse workloadConfig)
+        private ProtectConfigResponse(
+            Outputs.WorkloadConfigResponse workloadConfig,
+
+            string workloadVulnerabilityMode)
         {
             WorkloadConfig = workloadConfig;
+            WorkloadVulnerabilityMode = workloadVulnerabilityMode;
         }
     }
 }

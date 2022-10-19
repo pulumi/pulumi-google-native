@@ -1408,17 +1408,21 @@ class TimeSeriesFilterArgs:
 @pulumi.input_type
 class TimeSeriesQueryArgs:
     def __init__(__self__, *,
+                 prometheus_query: Optional[pulumi.Input[str]] = None,
                  time_series_filter: Optional[pulumi.Input['TimeSeriesFilterArgs']] = None,
                  time_series_filter_ratio: Optional[pulumi.Input['TimeSeriesFilterRatioArgs']] = None,
                  time_series_query_language: Optional[pulumi.Input[str]] = None,
                  unit_override: Optional[pulumi.Input[str]] = None):
         """
         TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+        :param pulumi.Input[str] prometheus_query: A query used to fetch time series with PromQL.
         :param pulumi.Input['TimeSeriesFilterArgs'] time_series_filter: Filter parameters to fetch time series.
         :param pulumi.Input['TimeSeriesFilterRatioArgs'] time_series_filter_ratio: Parameters to fetch a ratio between two time series filters.
         :param pulumi.Input[str] time_series_query_language: A query used to fetch time series with MQL.
         :param pulumi.Input[str] unit_override: The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
         """
+        if prometheus_query is not None:
+            pulumi.set(__self__, "prometheus_query", prometheus_query)
         if time_series_filter is not None:
             pulumi.set(__self__, "time_series_filter", time_series_filter)
         if time_series_filter_ratio is not None:
@@ -1427,6 +1431,18 @@ class TimeSeriesQueryArgs:
             pulumi.set(__self__, "time_series_query_language", time_series_query_language)
         if unit_override is not None:
             pulumi.set(__self__, "unit_override", unit_override)
+
+    @property
+    @pulumi.getter(name="prometheusQuery")
+    def prometheus_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        A query used to fetch time series with PromQL.
+        """
+        return pulumi.get(self, "prometheus_query")
+
+    @prometheus_query.setter
+    def prometheus_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prometheus_query", value)
 
     @property
     @pulumi.getter(name="timeSeriesFilter")

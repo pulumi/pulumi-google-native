@@ -17,13 +17,17 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
     public sealed class IpConfigurationResponse
     {
         /// <summary>
-        /// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        /// The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         /// </summary>
         public readonly string AllocatedIpRange;
         /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
         /// </summary>
         public readonly ImmutableArray<Outputs.AclEntryResponse> AuthorizedNetworks;
+        /// <summary>
+        /// Controls connectivity to private IP instances from Google services, such as BigQuery.
+        /// </summary>
+        public readonly bool EnablePrivatePathForGoogleCloudServices;
         /// <summary>
         /// Whether the instance is assigned a public IP address or not.
         /// </summary>
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             ImmutableArray<Outputs.AclEntryResponse> authorizedNetworks,
 
+            bool enablePrivatePathForGoogleCloudServices,
+
             bool ipv4Enabled,
 
             string privateNetwork,
@@ -51,6 +57,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         {
             AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
+            EnablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;
             RequireSsl = requireSsl;

@@ -4458,6 +4458,8 @@ class ProtectConfigResponse(dict):
         suggest = None
         if key == "workloadConfig":
             suggest = "workload_config"
+        elif key == "workloadVulnerabilityMode":
+            suggest = "workload_vulnerability_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ProtectConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4471,12 +4473,15 @@ class ProtectConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 workload_config: 'outputs.WorkloadConfigResponse'):
+                 workload_config: 'outputs.WorkloadConfigResponse',
+                 workload_vulnerability_mode: str):
         """
         ProtectConfig defines the flags needed to enable/disable features for the Protect API.
         :param 'WorkloadConfigResponse' workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        :param str workload_vulnerability_mode: Sets which mode to use for Protect workload vulnerability scanning feature.
         """
         pulumi.set(__self__, "workload_config", workload_config)
+        pulumi.set(__self__, "workload_vulnerability_mode", workload_vulnerability_mode)
 
     @property
     @pulumi.getter(name="workloadConfig")
@@ -4485,6 +4490,14 @@ class ProtectConfigResponse(dict):
         WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
         """
         return pulumi.get(self, "workload_config")
+
+    @property
+    @pulumi.getter(name="workloadVulnerabilityMode")
+    def workload_vulnerability_mode(self) -> str:
+        """
+        Sets which mode to use for Protect workload vulnerability scanning feature.
+        """
+        return pulumi.get(self, "workload_vulnerability_mode")
 
 
 @pulumi.output_type

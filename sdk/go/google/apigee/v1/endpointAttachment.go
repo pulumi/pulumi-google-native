@@ -18,7 +18,7 @@ type EndpointAttachment struct {
 
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
-	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+	// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
 	EndpointAttachmentId pulumi.StringPtrOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -79,7 +79,7 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 }
 
 type endpointAttachmentArgs struct {
-	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+	// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Location of the endpoint attachment.
 	Location *string `pulumi:"location"`
@@ -92,7 +92,7 @@ type endpointAttachmentArgs struct {
 
 // The set of arguments for constructing a EndpointAttachment resource.
 type EndpointAttachmentArgs struct {
-	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+	// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Location of the endpoint attachment.
 	Location pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
-// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
 func (o EndpointAttachmentOutput) EndpointAttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringPtrOutput { return v.EndpointAttachmentId }).(pulumi.StringPtrOutput)
 }

@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static DicomConfigFilterProfile TagFilterProfileUnspecified { get; } = new DicomConfigFilterProfile("TAG_FILTER_PROFILE_UNSPECIFIED");
         /// <summary>
-        /// Keep only tags required to produce valid DICOM.
+        /// Keep only the tags required to produce valid DICOM objects.
         /// </summary>
         public static DicomConfigFilterProfile MinimalKeepListProfile { get; } = new DicomConfigFilterProfile("MINIMAL_KEEP_LIST_PROFILE");
         /// <summary>
@@ -176,7 +176,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static DicomConfigFilterProfile KeepAllProfile { get; } = new DicomConfigFilterProfile("KEEP_ALL_PROFILE");
         /// <summary>
-        /// Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        /// Inspect within tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
         /// </summary>
         public static DicomConfigFilterProfile DeidentifyTagContents { get; } = new DicomConfigFilterProfile("DEIDENTIFY_TAG_CONTENTS");
 
@@ -532,7 +532,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static SchemaConfigSchemaType Analytics { get; } = new SchemaConfigSchemaType("ANALYTICS");
         /// <summary>
-        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
         /// </summary>
         public static SchemaConfigSchemaType AnalyticsV2 { get; } = new SchemaConfigSchemaType("ANALYTICS_V2");
 

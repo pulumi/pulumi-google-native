@@ -38,6 +38,8 @@ type LookupBackupResult struct {
 	Name string `pulumi:"name"`
 	// Size of the backup in bytes.
 	SizeBytes string `pulumi:"sizeBytes"`
+	// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+	SourceBackup string `pulumi:"sourceBackup"`
 	// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
 	SourceTable string `pulumi:"sourceTable"`
 	// `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
@@ -107,6 +109,11 @@ func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 // Size of the backup in bytes.
 func (o LookupBackupResultOutput) SizeBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+func (o LookupBackupResultOutput) SourceBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceBackup }).(pulumi.StringOutput)
 }
 
 // Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.

@@ -22,19 +22,19 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Output<string> ActionType { get; private set; } = null!;
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         [Output("condition")]
         public Output<string> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// Detailed information about this custom policy constraint.
+        /// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// One line display name for the UI.
+        /// One line display name for the UI. The max length of the display_name is 200 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Output<ImmutableArray<string>> MethodTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -122,19 +122,19 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Input<Pulumi.GoogleNative.Orgpolicy.V2.CustomConstraintActionType>? ActionType { get; set; }
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
         /// <summary>
-        /// Detailed information about this custom policy constraint.
+        /// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// One line display name for the UI.
+        /// One line display name for the UI. The max length of the display_name is 200 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         }
 
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

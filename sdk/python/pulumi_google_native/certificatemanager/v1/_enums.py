@@ -5,9 +5,28 @@
 from enum import Enum
 
 __all__ = [
+    'CertificateIssuanceConfigKeyAlgorithm',
     'CertificateMapEntryMatcher',
     'CertificateScope',
 ]
+
+
+class CertificateIssuanceConfigKeyAlgorithm(str, Enum):
+    """
+    Required. The key algorithm to use when generating the private key.
+    """
+    KEY_ALGORITHM_UNSPECIFIED = "KEY_ALGORITHM_UNSPECIFIED"
+    """
+    Unspecified key algorithm.
+    """
+    RSA2048 = "RSA_2048"
+    """
+    Specifies RSA with a 2048-bit modulus.
+    """
+    ECDSA_P256 = "ECDSA_P256"
+    """
+    Specifies ECDSA with curve P256.
+    """
 
 
 class CertificateMapEntryMatcher(str, Enum):

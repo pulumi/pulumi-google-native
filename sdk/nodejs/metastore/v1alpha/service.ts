@@ -87,7 +87,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     * The configuration specifying the network settings for the Dataproc Metastore service.
      */
     public readonly networkConfig!: pulumi.Output<outputs.metastore.v1alpha.NetworkConfigResponse>;
     /**
@@ -237,7 +237,7 @@ export interface ServiceArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+     * The configuration specifying the network settings for the Dataproc Metastore service.
      */
     networkConfig?: pulumi.Input<inputs.metastore.v1alpha.NetworkConfigArgs>;
     /**

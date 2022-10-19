@@ -58,7 +58,7 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
-     * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+     * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
      */
     public readonly ipv6EndpointType!: pulumi.Output<string>;
     /**
@@ -208,7 +208,7 @@ export interface AddressArgs {
      */
     ipVersion?: pulumi.Input<enums.compute.alpha.AddressIpVersion>;
     /**
-     * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+     * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
      */
     ipv6EndpointType?: pulumi.Input<enums.compute.alpha.AddressIpv6EndpointType>;
     /**

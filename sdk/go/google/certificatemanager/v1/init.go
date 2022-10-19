@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:certificatemanager/v1:Certificate":
 		r = &Certificate{}
+	case "google-native:certificatemanager/v1:CertificateIssuanceConfig":
+		r = &CertificateIssuanceConfig{}
 	case "google-native:certificatemanager/v1:CertificateMap":
 		r = &CertificateMap{}
 	case "google-native:certificatemanager/v1:CertificateMapEntry":

@@ -619,9 +619,9 @@ class DeidentifyConfigResponse(dict):
         """
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param 'AnnotationConfigResponse' annotation: Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
-        :param 'DicomConfigResponse' dicom: Configures de-id of application/DICOM content.
-        :param 'FhirConfigResponse' fhir: Configures de-id of application/FHIR content.
-        :param 'ImageConfigResponse' image: Configures de-identification of image pixels wherever they are found in the source_dataset.
+        :param 'DicomConfigResponse' dicom: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+        :param 'FhirConfigResponse' fhir: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+        :param 'ImageConfigResponse' image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param 'DeidentifyOperationMetadataResponse' operation_metadata: Details about the work the de-identify operation performed.
         :param 'TextConfigResponse' text: Configures de-identification of text wherever it is found in the source_dataset.
         """
@@ -644,7 +644,7 @@ class DeidentifyConfigResponse(dict):
     @pulumi.getter
     def dicom(self) -> 'outputs.DicomConfigResponse':
         """
-        Configures de-id of application/DICOM content.
+        Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         """
         return pulumi.get(self, "dicom")
 
@@ -652,7 +652,7 @@ class DeidentifyConfigResponse(dict):
     @pulumi.getter
     def fhir(self) -> 'outputs.FhirConfigResponse':
         """
-        Configures de-id of application/FHIR content.
+        Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         """
         return pulumi.get(self, "fhir")
 
@@ -660,7 +660,7 @@ class DeidentifyConfigResponse(dict):
     @pulumi.getter
     def image(self) -> 'outputs.ImageConfigResponse':
         """
-        Configures de-identification of image pixels wherever they are found in the source_dataset.
+        Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         """
         return pulumi.get(self, "image")
 
@@ -1664,7 +1664,7 @@ class InfoTypeTransformationResponse(dict):
         :param 'CharacterMaskConfigResponse' character_mask_config: Config for character mask.
         :param 'CryptoHashConfigResponse' crypto_hash_config: Config for crypto hash.
         :param 'DateShiftConfigResponse' date_shift_config: Config for date shift.
-        :param Sequence[str] info_types: InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        :param Sequence[str] info_types: `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         :param 'RedactConfigResponse' redact_config: Config for text redaction.
         :param 'ReplaceWithInfoTypeConfigResponse' replace_with_info_type_config: Config for replace with InfoType.
         """
@@ -1703,7 +1703,7 @@ class InfoTypeTransformationResponse(dict):
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Sequence[str]:
         """
-        InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         """
         return pulumi.get(self, "info_types")
 
@@ -2508,10 +2508,14 @@ class TagFilterListResponse(dict):
 
 @pulumi.output_type
 class TextConfigResponse(dict):
+    """
+    Configures how to transform sensitive text `InfoTypes`.
+    """
     def __init__(__self__, *,
                  transformations: Sequence['outputs.InfoTypeTransformationResponse']):
         """
-        :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data.
+        Configures how to transform sensitive text `InfoTypes`.
+        :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         pulumi.set(__self__, "transformations", transformations)
 
@@ -2519,7 +2523,7 @@ class TextConfigResponse(dict):
     @pulumi.getter
     def transformations(self) -> Sequence['outputs.InfoTypeTransformationResponse']:
         """
-        The transformations to apply to the detected data.
+        The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         return pulumi.get(self, "transformations")
 

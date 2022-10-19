@@ -79,7 +79,7 @@ export interface GetOrganizationSecurityPolicyResult {
      */
     readonly ruleTupleCount: number;
     /**
-     * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+     * A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
     readonly rules: outputs.compute.beta.SecurityPolicyRuleResponse[];
     /**

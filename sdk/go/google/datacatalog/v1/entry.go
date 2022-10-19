@@ -57,7 +57,7 @@ type Entry struct {
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponseOutput `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1SchemaResponseOutput `pulumi:"schema"`
-	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponseOutput `pulumi:"sourceSystemTimestamps"`
 	// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -150,7 +150,7 @@ type entryArgs struct {
 	RoutineSpec *GoogleCloudDatacatalogV1RoutineSpec `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema *GoogleCloudDatacatalogV1Schema `pulumi:"schema"`
-	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps *GoogleCloudDatacatalogV1SystemTimestamps `pulumi:"sourceSystemTimestamps"`
 	// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
 	Type *EntryType `pulumi:"type"`
@@ -193,7 +193,7 @@ type EntryArgs struct {
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecPtrInput
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1SchemaPtrInput
-	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps GoogleCloudDatacatalogV1SystemTimestampsPtrInput
 	// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
 	Type EntryTypePtrInput
@@ -353,7 +353,7 @@ func (o EntryOutput) Schema() GoogleCloudDatacatalogV1SchemaResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1SchemaResponseOutput { return v.Schema }).(GoogleCloudDatacatalogV1SchemaResponseOutput)
 }
 
-// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 func (o EntryOutput) SourceSystemTimestamps() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
 	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1SystemTimestampsResponseOutput { return v.SourceSystemTimestamps }).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
 }

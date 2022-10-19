@@ -252,7 +252,7 @@ export const SchemaConfigSchemaType = {
      */
     Analytics: "ANALYTICS",
     /**
-     * Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+     * Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
      */
     AnalyticsV2: "ANALYTICS_V2",
 } as const;

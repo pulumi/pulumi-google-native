@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("workloadConfig")]
         public Input<Inputs.WorkloadConfigArgs>? WorkloadConfig { get; set; }
 
+        /// <summary>
+        /// Sets which mode to use for Protect workload vulnerability scanning feature.
+        /// </summary>
+        [Input("workloadVulnerabilityMode")]
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.ProtectConfigWorkloadVulnerabilityMode>? WorkloadVulnerabilityMode { get; set; }
+
         public ProtectConfigArgs()
         {
         }

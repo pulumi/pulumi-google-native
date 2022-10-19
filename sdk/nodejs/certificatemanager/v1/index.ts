@@ -10,6 +10,11 @@ export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
+export { CertificateIssuanceConfigArgs } from "./certificateIssuanceConfig";
+export type CertificateIssuanceConfig = import("./certificateIssuanceConfig").CertificateIssuanceConfig;
+export const CertificateIssuanceConfig: typeof import("./certificateIssuanceConfig").CertificateIssuanceConfig = null as any;
+utilities.lazyLoad(exports, ["CertificateIssuanceConfig"], () => require("./certificateIssuanceConfig"));
+
 export { CertificateMapArgs } from "./certificateMap";
 export type CertificateMap = import("./certificateMap").CertificateMap;
 export const CertificateMap: typeof import("./certificateMap").CertificateMap = null as any;
@@ -29,6 +34,11 @@ export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } fr
 export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
 export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+
+export { GetCertificateIssuanceConfigArgs, GetCertificateIssuanceConfigResult, GetCertificateIssuanceConfigOutputArgs } from "./getCertificateIssuanceConfig";
+export const getCertificateIssuanceConfig: typeof import("./getCertificateIssuanceConfig").getCertificateIssuanceConfig = null as any;
+export const getCertificateIssuanceConfigOutput: typeof import("./getCertificateIssuanceConfig").getCertificateIssuanceConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateIssuanceConfig","getCertificateIssuanceConfigOutput"], () => require("./getCertificateIssuanceConfig"));
 
 export { GetCertificateMapArgs, GetCertificateMapResult, GetCertificateMapOutputArgs } from "./getCertificateMap";
 export const getCertificateMap: typeof import("./getCertificateMap").getCertificateMap = null as any;
@@ -55,6 +65,8 @@ const _module = {
         switch (type) {
             case "google-native:certificatemanager/v1:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "google-native:certificatemanager/v1:CertificateIssuanceConfig":
+                return new CertificateIssuanceConfig(name, <any>undefined, { urn })
             case "google-native:certificatemanager/v1:CertificateMap":
                 return new CertificateMap(name, <any>undefined, { urn })
             case "google-native:certificatemanager/v1:CertificateMapEntry":

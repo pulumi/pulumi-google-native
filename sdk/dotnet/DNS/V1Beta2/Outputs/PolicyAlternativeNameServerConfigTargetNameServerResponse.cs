@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
         /// </summary>
         public readonly string ForwardingPath;
         /// <summary>
-        /// IPv4 address to forward to.
+        /// IPv4 address to forward queries to.
         /// </summary>
         public readonly string Ipv4Address;
         /// <summary>

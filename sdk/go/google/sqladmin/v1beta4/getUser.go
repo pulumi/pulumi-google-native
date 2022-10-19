@@ -21,6 +21,7 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 }
 
 type LookupUserArgs struct {
+	Host     *string `pulumi:"host"`
 	Instance string  `pulumi:"instance"`
 	Name     string  `pulumi:"name"`
 	Project  *string `pulumi:"project"`
@@ -66,6 +67,7 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 }
 
 type LookupUserOutputArgs struct {
+	Host     pulumi.StringPtrInput `pulumi:"host"`
 	Instance pulumi.StringInput    `pulumi:"instance"`
 	Name     pulumi.StringInput    `pulumi:"name"`
 	Project  pulumi.StringPtrInput `pulumi:"project"`

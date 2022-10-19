@@ -25,10 +25,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Looker specific column info of this column.
-        /// </summary>
-        public readonly Outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse LookerColumnSpec;
-        /// <summary>
         /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         /// </summary>
         public readonly string Mode;
@@ -47,8 +43,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 
             string description,
 
-            Outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse lookerColumnSpec,
-
             string mode,
 
             ImmutableArray<Outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse> subcolumns,
@@ -57,7 +51,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         {
             Column = column;
             Description = description;
-            LookerColumnSpec = lookerColumnSpec;
             Mode = mode;
             Subcolumns = subcolumns;
             Type = type;

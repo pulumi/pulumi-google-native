@@ -28,12 +28,14 @@ __all__ = [
     'GitLabSecretsArgs',
     'GitRepoSourceArgs',
     'InlineSecretArgs',
+    'MavenArtifactArgs',
     'NetworkConfigArgs',
     'PoolOptionArgs',
     'PrivatePoolV1ConfigArgs',
     'PubsubConfigArgs',
     'PullRequestFilterArgs',
     'PushFilterArgs',
+    'PythonPackageArgs',
     'RepoSourceArgs',
     'SecretManagerSecretArgs',
     'SecretsArgs',
@@ -115,16 +117,24 @@ class ArtifactObjectsArgs:
 class ArtifactsArgs:
     def __init__(__self__, *,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 objects: Optional[pulumi.Input['ArtifactObjectsArgs']] = None):
+                 maven_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]]] = None,
+                 objects: Optional[pulumi.Input['ArtifactObjectsArgs']] = None,
+                 python_packages: Optional[pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]]] = None):
         """
         Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+        :param pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]] maven_artifacts: A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
         :param pulumi.Input['ArtifactObjectsArgs'] objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+        :param pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]] python_packages: A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
         """
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if maven_artifacts is not None:
+            pulumi.set(__self__, "maven_artifacts", maven_artifacts)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
+        if python_packages is not None:
+            pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -139,6 +149,18 @@ class ArtifactsArgs:
         pulumi.set(self, "images", value)
 
     @property
+    @pulumi.getter(name="mavenArtifacts")
+    def maven_artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]]]:
+        """
+        A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "maven_artifacts")
+
+    @maven_artifacts.setter
+    def maven_artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]]]):
+        pulumi.set(self, "maven_artifacts", value)
+
+    @property
     @pulumi.getter
     def objects(self) -> Optional[pulumi.Input['ArtifactObjectsArgs']]:
         """
@@ -149,6 +171,18 @@ class ArtifactsArgs:
     @objects.setter
     def objects(self, value: Optional[pulumi.Input['ArtifactObjectsArgs']]):
         pulumi.set(self, "objects", value)
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]]]:
+        """
+        A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "python_packages")
+
+    @python_packages.setter
+    def python_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]]]):
+        pulumi.set(self, "python_packages", value)
 
 
 @pulumi.input_type
@@ -1627,6 +1661,94 @@ class InlineSecretArgs:
 
 
 @pulumi.input_type
+class MavenArtifactArgs:
+    def __init__(__self__, *,
+                 artifact_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+        :param pulumi.Input[str] artifact_id: Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+        :param pulumi.Input[str] group_id: Maven `groupId` value used when uploading the artifact to Artifact Registry.
+        :param pulumi.Input[str] path: Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        :param pulumi.Input[str] repository: Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        :param pulumi.Input[str] version: Maven `version` value used when uploading the artifact to Artifact Registry.
+        """
+        if artifact_id is not None:
+            pulumi.set(__self__, "artifact_id", artifact_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maven `artifactId` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @artifact_id.setter
+    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_id", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maven `groupId` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maven `version` value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
                  peered_network: pulumi.Input[str],
@@ -1895,6 +2017,46 @@ class PushFilterArgs:
     @tag.setter
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
+
+
+@pulumi.input_type
+class PythonPackageArgs:
+    def __init__(__self__, *,
+                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 repository: Optional[pulumi.Input[str]] = None):
+        """
+        Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+        :param pulumi.Input[str] repository: Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
 
 
 @pulumi.input_type

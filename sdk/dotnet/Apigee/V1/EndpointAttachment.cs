@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> ConnectionState { get; private set; } = null!;
 
         /// <summary>
-        /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        /// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         /// </summary>
         [Output("endpointAttachmentId")]
         public Output<string?> EndpointAttachmentId { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class EndpointAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        /// ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2.
         /// </summary>
         [Input("endpointAttachmentId")]
         public Input<string>? EndpointAttachmentId { get; set; }

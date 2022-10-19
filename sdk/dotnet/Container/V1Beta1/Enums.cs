@@ -1114,6 +1114,47 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// Sets which mode to use for Protect workload vulnerability scanning feature.
+    /// </summary>
+    [EnumType]
+    public readonly struct ProtectConfigWorkloadVulnerabilityMode : IEquatable<ProtectConfigWorkloadVulnerabilityMode>
+    {
+        private readonly string _value;
+
+        private ProtectConfigWorkloadVulnerabilityMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value not specified.
+        /// </summary>
+        public static ProtectConfigWorkloadVulnerabilityMode WorkloadVulnerabilityModeUnspecified { get; } = new ProtectConfigWorkloadVulnerabilityMode("WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Disables Workload Vulnerability Scanning feature on the cluster.
+        /// </summary>
+        public static ProtectConfigWorkloadVulnerabilityMode Disabled { get; } = new ProtectConfigWorkloadVulnerabilityMode("DISABLED");
+        /// <summary>
+        /// Applies basic vulnerability scanning settings for cluster workloads.
+        /// </summary>
+        public static ProtectConfigWorkloadVulnerabilityMode Basic { get; } = new ProtectConfigWorkloadVulnerabilityMode("BASIC");
+
+        public static bool operator ==(ProtectConfigWorkloadVulnerabilityMode left, ProtectConfigWorkloadVulnerabilityMode right) => left.Equals(right);
+        public static bool operator !=(ProtectConfigWorkloadVulnerabilityMode left, ProtectConfigWorkloadVulnerabilityMode right) => !left.Equals(right);
+
+        public static explicit operator string(ProtectConfigWorkloadVulnerabilityMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ProtectConfigWorkloadVulnerabilityMode other && Equals(other);
+        public bool Equals(ProtectConfigWorkloadVulnerabilityMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// channel specifies which release channel the cluster is subscribed to.
     /// </summary>
     [EnumType]
@@ -1254,7 +1295,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         }
 
         /// <summary>
-        /// Not an error; returned on success HTTP Mapping: 200 OK
+        /// Not an error; returned on success. HTTP Mapping: 200 OK
         /// </summary>
         public static StatusConditionCanonicalCode Ok { get; } = new StatusConditionCanonicalCode("OK");
         /// <summary>

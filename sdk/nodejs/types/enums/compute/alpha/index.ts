@@ -74,13 +74,17 @@ export type AddressIpVersion = (typeof AddressIpVersion)[keyof typeof AddressIpV
 
 export const AddressIpv6EndpointType = {
     /**
-     * Reserved IPv6 address will be assigned to VM.
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
      */
     Vm: "VM",
 } as const;
 
 /**
- * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
  */
 export type AddressIpv6EndpointType = (typeof AddressIpv6EndpointType)[keyof typeof AddressIpv6EndpointType];
 
@@ -1284,13 +1288,17 @@ export type GlobalAddressIpVersion = (typeof GlobalAddressIpVersion)[keyof typeo
 
 export const GlobalAddressIpv6EndpointType = {
     /**
-     * Reserved IPv6 address will be assigned to VM.
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
      */
     Vm: "VM",
 } as const;
 
 /**
- * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
  */
 export type GlobalAddressIpv6EndpointType = (typeof GlobalAddressIpv6EndpointType)[keyof typeof GlobalAddressIpv6EndpointType];
 
@@ -3351,6 +3359,34 @@ export const RouterBgpPeerEnable = {
  * The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
  */
 export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof RouterBgpPeerEnable];
+
+export const RouterNatAutoNetworkTier = {
+    /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
+     * High quality, Google-grade network tier, support for all networking products.
+     */
+    Premium: "PREMIUM",
+    /**
+     * Price competitive network tier, support for all networking products.
+     */
+    Select: "SELECT",
+    /**
+     * Public internet quality, only limited support for other networking products.
+     */
+    Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
+} as const;
+
+/**
+ * The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+ */
+export type RouterNatAutoNetworkTier = (typeof RouterNatAutoNetworkTier)[keyof typeof RouterNatAutoNetworkTier];
 
 export const RouterNatEndpointTypesItem = {
     /**

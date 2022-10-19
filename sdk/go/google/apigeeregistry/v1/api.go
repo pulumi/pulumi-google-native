@@ -33,9 +33,9 @@ type Api struct {
 	// Resource name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+	// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 	RecommendedDeployment pulumi.StringOutput `pulumi:"recommendedDeployment"`
-	// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+	// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 	RecommendedVersion pulumi.StringOutput `pulumi:"recommendedVersion"`
 	// Last update timestamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -105,9 +105,9 @@ type apiArgs struct {
 	// Resource name.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+	// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 	RecommendedDeployment *string `pulumi:"recommendedDeployment"`
-	// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+	// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 	RecommendedVersion *string `pulumi:"recommendedVersion"`
 }
 
@@ -129,9 +129,9 @@ type ApiArgs struct {
 	// Resource name.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+	// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 	RecommendedDeployment pulumi.StringPtrInput
-	// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+	// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 	RecommendedVersion pulumi.StringPtrInput
 }
 
@@ -220,12 +220,12 @@ func (o ApiOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+// The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
 func (o ApiOutput) RecommendedDeployment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RecommendedDeployment }).(pulumi.StringOutput)
 }
 
-// The recommended version of the API. Format: `apis/{api}/versions/{version}`
+// The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
 func (o ApiOutput) RecommendedVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RecommendedVersion }).(pulumi.StringOutput)
 }

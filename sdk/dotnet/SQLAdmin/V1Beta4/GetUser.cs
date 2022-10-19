@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
+        [Input("host")]
+        public string? Host { get; set; }
+
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
@@ -44,6 +47,9 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("host")]
+        public Input<string>? Host { get; set; }
+
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 

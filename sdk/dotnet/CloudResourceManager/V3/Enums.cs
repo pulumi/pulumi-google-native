@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public static TagKeyPurpose PurposeUnspecified { get; } = new TagKeyPurpose("PURPOSE_UNSPECIFIED");
         /// <summary>
-        /// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in the format of the network url id string: https://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+        /// Purpose for Compute Engine firewalls. A corresponding purpose_data should be set for the network the tag is intended for. The key should be 'network' and the value should be in either of these two formats: -https://www.googleapis.com/compute/{compute_version}/projects/{project_id}/global/networks/{network_id} -{project_id}/{network_name} Examples: -https://www.googleapis.com/compute/staging_v1/projects/fail-closed-load-testing/global/networks/6992953698831725600 -fail-closed-load-testing/load-testing-network
         /// </summary>
         public static TagKeyPurpose GceFirewall { get; } = new TagKeyPurpose("GCE_FIREWALL");
 

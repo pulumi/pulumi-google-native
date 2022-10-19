@@ -556,7 +556,7 @@ class ContainerResponse(dict):
         :param Sequence['EnvFromSourceResponse'] env_from: Not supported by Cloud Run.
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-        :param 'ProbeResponse' liveness_probe: Not supported by Cloud Run.
+        :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param str name: Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         :param Sequence['ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'ProbeResponse' readiness_probe: Not supported by Cloud Run.
@@ -638,7 +638,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> 'outputs.ProbeResponse':
         """
-        Not supported by Cloud Run.
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "liveness_probe")
 

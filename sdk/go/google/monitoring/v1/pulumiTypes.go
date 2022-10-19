@@ -5466,6 +5466,8 @@ func (o TimeSeriesFilterResponseOutput) StatisticalTimeSeriesFilter() Statistica
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQuery struct {
+	// A query used to fetch time series with PromQL.
+	PrometheusQuery *string `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
 	TimeSeriesFilter *TimeSeriesFilter `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
@@ -5489,6 +5491,8 @@ type TimeSeriesQueryInput interface {
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQueryArgs struct {
+	// A query used to fetch time series with PromQL.
+	PrometheusQuery pulumi.StringPtrInput `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
 	TimeSeriesFilter TimeSeriesFilterPtrInput `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
@@ -5577,6 +5581,11 @@ func (o TimeSeriesQueryOutput) ToTimeSeriesQueryPtrOutputWithContext(ctx context
 	}).(TimeSeriesQueryPtrOutput)
 }
 
+// A query used to fetch time series with PromQL.
+func (o TimeSeriesQueryOutput) PrometheusQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeSeriesQuery) *string { return v.PrometheusQuery }).(pulumi.StringPtrOutput)
+}
+
 // Filter parameters to fetch time series.
 func (o TimeSeriesQueryOutput) TimeSeriesFilter() TimeSeriesFilterPtrOutput {
 	return o.ApplyT(func(v TimeSeriesQuery) *TimeSeriesFilter { return v.TimeSeriesFilter }).(TimeSeriesFilterPtrOutput)
@@ -5621,6 +5630,16 @@ func (o TimeSeriesQueryPtrOutput) Elem() TimeSeriesQueryOutput {
 	}).(TimeSeriesQueryOutput)
 }
 
+// A query used to fetch time series with PromQL.
+func (o TimeSeriesQueryPtrOutput) PrometheusQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusQuery
+	}).(pulumi.StringPtrOutput)
+}
+
 // Filter parameters to fetch time series.
 func (o TimeSeriesQueryPtrOutput) TimeSeriesFilter() TimeSeriesFilterPtrOutput {
 	return o.ApplyT(func(v *TimeSeriesQuery) *TimeSeriesFilter {
@@ -5663,6 +5682,8 @@ func (o TimeSeriesQueryPtrOutput) UnitOverride() pulumi.StringPtrOutput {
 
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQueryResponse struct {
+	// A query used to fetch time series with PromQL.
+	PrometheusQuery string `pulumi:"prometheusQuery"`
 	// Filter parameters to fetch time series.
 	TimeSeriesFilter TimeSeriesFilterResponse `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
@@ -5686,6 +5707,11 @@ func (o TimeSeriesQueryResponseOutput) ToTimeSeriesQueryResponseOutput() TimeSer
 
 func (o TimeSeriesQueryResponseOutput) ToTimeSeriesQueryResponseOutputWithContext(ctx context.Context) TimeSeriesQueryResponseOutput {
 	return o
+}
+
+// A query used to fetch time series with PromQL.
+func (o TimeSeriesQueryResponseOutput) PrometheusQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) string { return v.PrometheusQuery }).(pulumi.StringOutput)
 }
 
 // Filter parameters to fetch time series.

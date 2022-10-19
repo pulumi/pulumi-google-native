@@ -46,10 +46,16 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? MaintenanceFreezeDurationHours { get; set; }
 
         /// <summary>
-        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingMaintenanceInterval>? MaintenanceInterval { get; set; }
+
+        /// <summary>
+        /// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
+        /// </summary>
+        [Input("maxRunDuration")]
+        public Input<Inputs.DurationArgs>? MaxRunDuration { get; set; }
 
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -86,6 +92,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("provisioningModel")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingProvisioningModel>? ProvisioningModel { get; set; }
+
+        /// <summary>
+        /// Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
+        /// </summary>
+        [Input("terminationTime")]
+        public Input<string>? TerminationTime { get; set; }
 
         public SchedulingArgs()
         {

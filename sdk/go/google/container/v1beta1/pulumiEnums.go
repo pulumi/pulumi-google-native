@@ -4395,6 +4395,175 @@ func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyTypePtrOutput)
 }
 
+// Sets which mode to use for Protect workload vulnerability scanning feature.
+type ProtectConfigWorkloadVulnerabilityMode string
+
+const (
+	// Default value not specified.
+	ProtectConfigWorkloadVulnerabilityModeWorkloadVulnerabilityModeUnspecified = ProtectConfigWorkloadVulnerabilityMode("WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED")
+	// Disables Workload Vulnerability Scanning feature on the cluster.
+	ProtectConfigWorkloadVulnerabilityModeDisabled = ProtectConfigWorkloadVulnerabilityMode("DISABLED")
+	// Applies basic vulnerability scanning settings for cluster workloads.
+	ProtectConfigWorkloadVulnerabilityModeBasic = ProtectConfigWorkloadVulnerabilityMode("BASIC")
+)
+
+func (ProtectConfigWorkloadVulnerabilityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectConfigWorkloadVulnerabilityMode)(nil)).Elem()
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToProtectConfigWorkloadVulnerabilityModeOutput() ProtectConfigWorkloadVulnerabilityModeOutput {
+	return pulumi.ToOutput(e).(ProtectConfigWorkloadVulnerabilityModeOutput)
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToProtectConfigWorkloadVulnerabilityModeOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProtectConfigWorkloadVulnerabilityModeOutput)
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToProtectConfigWorkloadVulnerabilityModePtrOutput() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return e.ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return ProtectConfigWorkloadVulnerabilityMode(e).ToProtectConfigWorkloadVulnerabilityModeOutputWithContext(ctx).ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx)
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProtectConfigWorkloadVulnerabilityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProtectConfigWorkloadVulnerabilityModeOutput struct{ *pulumi.OutputState }
+
+func (ProtectConfigWorkloadVulnerabilityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectConfigWorkloadVulnerabilityMode)(nil)).Elem()
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToProtectConfigWorkloadVulnerabilityModeOutput() ProtectConfigWorkloadVulnerabilityModeOutput {
+	return o
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToProtectConfigWorkloadVulnerabilityModeOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModeOutput {
+	return o
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToProtectConfigWorkloadVulnerabilityModePtrOutput() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o.ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(context.Background())
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectConfigWorkloadVulnerabilityMode) *ProtectConfigWorkloadVulnerabilityMode {
+		return &v
+	}).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProtectConfigWorkloadVulnerabilityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProtectConfigWorkloadVulnerabilityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProtectConfigWorkloadVulnerabilityModePtrOutput struct{ *pulumi.OutputState }
+
+func (ProtectConfigWorkloadVulnerabilityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectConfigWorkloadVulnerabilityMode)(nil)).Elem()
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) ToProtectConfigWorkloadVulnerabilityModePtrOutput() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return o
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) Elem() ProtectConfigWorkloadVulnerabilityModeOutput {
+	return o.ApplyT(func(v *ProtectConfigWorkloadVulnerabilityMode) ProtectConfigWorkloadVulnerabilityMode {
+		if v != nil {
+			return *v
+		}
+		var ret ProtectConfigWorkloadVulnerabilityMode
+		return ret
+	}).(ProtectConfigWorkloadVulnerabilityModeOutput)
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProtectConfigWorkloadVulnerabilityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProtectConfigWorkloadVulnerabilityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProtectConfigWorkloadVulnerabilityModeInput is an input type that accepts ProtectConfigWorkloadVulnerabilityModeArgs and ProtectConfigWorkloadVulnerabilityModeOutput values.
+// You can construct a concrete instance of `ProtectConfigWorkloadVulnerabilityModeInput` via:
+//
+//	ProtectConfigWorkloadVulnerabilityModeArgs{...}
+type ProtectConfigWorkloadVulnerabilityModeInput interface {
+	pulumi.Input
+
+	ToProtectConfigWorkloadVulnerabilityModeOutput() ProtectConfigWorkloadVulnerabilityModeOutput
+	ToProtectConfigWorkloadVulnerabilityModeOutputWithContext(context.Context) ProtectConfigWorkloadVulnerabilityModeOutput
+}
+
+var protectConfigWorkloadVulnerabilityModePtrType = reflect.TypeOf((**ProtectConfigWorkloadVulnerabilityMode)(nil)).Elem()
+
+type ProtectConfigWorkloadVulnerabilityModePtrInput interface {
+	pulumi.Input
+
+	ToProtectConfigWorkloadVulnerabilityModePtrOutput() ProtectConfigWorkloadVulnerabilityModePtrOutput
+	ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput
+}
+
+type protectConfigWorkloadVulnerabilityModePtr string
+
+func ProtectConfigWorkloadVulnerabilityModePtr(v string) ProtectConfigWorkloadVulnerabilityModePtrInput {
+	return (*protectConfigWorkloadVulnerabilityModePtr)(&v)
+}
+
+func (*protectConfigWorkloadVulnerabilityModePtr) ElementType() reflect.Type {
+	return protectConfigWorkloadVulnerabilityModePtrType
+}
+
+func (in *protectConfigWorkloadVulnerabilityModePtr) ToProtectConfigWorkloadVulnerabilityModePtrOutput() ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return pulumi.ToOutput(in).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
+}
+
+func (in *protectConfigWorkloadVulnerabilityModePtr) ToProtectConfigWorkloadVulnerabilityModePtrOutputWithContext(ctx context.Context) ProtectConfigWorkloadVulnerabilityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProtectConfigWorkloadVulnerabilityModePtrOutput)
+}
+
 // channel specifies which release channel the cluster is subscribed to.
 type ReleaseChannelChannel string
 
@@ -4908,7 +5077,7 @@ func (in *sandboxConfigTypePtr) ToSandboxConfigTypePtrOutputWithContext(ctx cont
 type StatusConditionCanonicalCode string
 
 const (
-	// Not an error; returned on success HTTP Mapping: 200 OK
+	// Not an error; returned on success. HTTP Mapping: 200 OK
 	StatusConditionCanonicalCodeOk = StatusConditionCanonicalCode("OK")
 	// The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request
 	StatusConditionCanonicalCodeCancelled = StatusConditionCanonicalCode("CANCELLED")
@@ -6014,6 +6183,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectPtrInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypeInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypePtrInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectConfigWorkloadVulnerabilityModeInput)(nil)).Elem(), ProtectConfigWorkloadVulnerabilityMode("WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProtectConfigWorkloadVulnerabilityModePtrInput)(nil)).Elem(), ProtectConfigWorkloadVulnerabilityMode("WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelPtrInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
@@ -6085,6 +6256,8 @@ func init() {
 	pulumi.RegisterOutputType(NodeTaintEffectPtrOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyTypeOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(ProtectConfigWorkloadVulnerabilityModeOutput{})
+	pulumi.RegisterOutputType(ProtectConfigWorkloadVulnerabilityModePtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})

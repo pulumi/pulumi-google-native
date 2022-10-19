@@ -414,6 +414,88 @@ namespace Pulumi.GoogleNative.Container.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The ipv6 access type (internal or external) when create_subnetwork is true
+    /// </summary>
+    [EnumType]
+    public readonly struct IPAllocationPolicyIpv6AccessType : IEquatable<IPAllocationPolicyIpv6AccessType>
+    {
+        private readonly string _value;
+
+        private IPAllocationPolicyIpv6AccessType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be defaulted as type external.
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType Ipv6AccessTypeUnspecified { get; } = new IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Access type internal (all v6 addresses are internal IPs)
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType Internal { get; } = new IPAllocationPolicyIpv6AccessType("INTERNAL");
+        /// <summary>
+        /// Access type external (all v6 addresses are external IPs)
+        /// </summary>
+        public static IPAllocationPolicyIpv6AccessType External { get; } = new IPAllocationPolicyIpv6AccessType("EXTERNAL");
+
+        public static bool operator ==(IPAllocationPolicyIpv6AccessType left, IPAllocationPolicyIpv6AccessType right) => left.Equals(right);
+        public static bool operator !=(IPAllocationPolicyIpv6AccessType left, IPAllocationPolicyIpv6AccessType right) => !left.Equals(right);
+
+        public static explicit operator string(IPAllocationPolicyIpv6AccessType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IPAllocationPolicyIpv6AccessType other && Equals(other);
+        public bool Equals(IPAllocationPolicyIpv6AccessType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The IP stack type of the cluster
+    /// </summary>
+    [EnumType]
+    public readonly struct IPAllocationPolicyStackType : IEquatable<IPAllocationPolicyStackType>
+    {
+        private readonly string _value;
+
+        private IPAllocationPolicyStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be defaulted as IPV4 only
+        /// </summary>
+        public static IPAllocationPolicyStackType StackTypeUnspecified { get; } = new IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Cluster is IPV4 only
+        /// </summary>
+        public static IPAllocationPolicyStackType Ipv4 { get; } = new IPAllocationPolicyStackType("IPV4");
+        /// <summary>
+        /// Cluster can use both IPv4 and IPv6
+        /// </summary>
+        public static IPAllocationPolicyStackType Ipv4Ipv6 { get; } = new IPAllocationPolicyStackType("IPV4_IPV6");
+
+        public static bool operator ==(IPAllocationPolicyStackType left, IPAllocationPolicyStackType right) => left.Equals(right);
+        public static bool operator !=(IPAllocationPolicyStackType left, IPAllocationPolicyStackType right) => !left.Equals(right);
+
+        public static explicit operator string(IPAllocationPolicyStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IPAllocationPolicyStackType other && Equals(other);
+        public bool Equals(IPAllocationPolicyStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct LoggingComponentConfigEnableComponentsItem : IEquatable<LoggingComponentConfigEnableComponentsItem>
     {
@@ -967,7 +1049,7 @@ namespace Pulumi.GoogleNative.Container.V1
         }
 
         /// <summary>
-        /// Not an error; returned on success HTTP Mapping: 200 OK
+        /// Not an error; returned on success. HTTP Mapping: 200 OK
         /// </summary>
         public static StatusConditionCanonicalCode Ok { get; } = new StatusConditionCanonicalCode("OK");
         /// <summary>

@@ -15,6 +15,8 @@ __all__ = [
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
     'GPUSharingConfigGpuSharingStrategy',
+    'IPAllocationPolicyIpv6AccessType',
+    'IPAllocationPolicyStackType',
     'LoggingComponentConfigEnableComponentsItem',
     'LoggingVariantConfigVariant',
     'MaintenanceExclusionOptionsScope',
@@ -209,6 +211,42 @@ class GPUSharingConfigGpuSharingStrategy(str, Enum):
     TIME_SHARING = "TIME_SHARING"
     """
     GPUs are time-shared between containers.
+    """
+
+
+class IPAllocationPolicyIpv6AccessType(str, Enum):
+    """
+    The ipv6 access type (internal or external) when create_subnetwork is true
+    """
+    IPV6_ACCESS_TYPE_UNSPECIFIED = "IPV6_ACCESS_TYPE_UNSPECIFIED"
+    """
+    Default value, will be defaulted as type external.
+    """
+    INTERNAL = "INTERNAL"
+    """
+    Access type internal (all v6 addresses are internal IPs)
+    """
+    EXTERNAL = "EXTERNAL"
+    """
+    Access type external (all v6 addresses are external IPs)
+    """
+
+
+class IPAllocationPolicyStackType(str, Enum):
+    """
+    The IP stack type of the cluster
+    """
+    STACK_TYPE_UNSPECIFIED = "STACK_TYPE_UNSPECIFIED"
+    """
+    Default value, will be defaulted as IPV4 only
+    """
+    IPV4 = "IPV4"
+    """
+    Cluster is IPV4 only
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    Cluster can use both IPv4 and IPv6
     """
 
 
@@ -458,7 +496,7 @@ class StatusConditionCanonicalCode(str, Enum):
     """
     OK = "OK"
     """
-    Not an error; returned on success HTTP Mapping: 200 OK
+    Not an error; returned on success. HTTP Mapping: 200 OK
     """
     CANCELLED = "CANCELLED"
     """

@@ -116,6 +116,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * The URL of the reserved internal range.
+     */
+    public readonly reservedInternalRange!: pulumi.Output<string>;
+    /**
      * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
      */
     public readonly role!: pulumi.Output<string>;
@@ -164,6 +168,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["purpose"] = args ? args.purpose : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["reservedInternalRange"] = args ? args.reservedInternalRange : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
@@ -198,6 +203,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["purpose"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["reservedInternalRange"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["secondaryIpRanges"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -268,6 +274,10 @@ export interface SubnetworkArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * The URL of the reserved internal range.
+     */
+    reservedInternalRange?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
      */

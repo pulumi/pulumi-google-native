@@ -58,6 +58,10 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
+     * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+     */
+    public readonly ipv6EndpointType!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#address for addresses.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["ipv6EndpointType"] = args ? args.ipv6EndpointType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkTier"] = args ? args.networkTier : undefined;
@@ -142,6 +147,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["ipVersion"] = undefined /*out*/;
+            resourceInputs["ipv6EndpointType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
@@ -183,6 +189,10 @@ export interface AddressArgs {
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
     ipVersion?: pulumi.Input<enums.compute.v1.AddressIpVersion>;
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+     */
+    ipv6EndpointType?: pulumi.Input<enums.compute.v1.AddressIpv6EndpointType>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */

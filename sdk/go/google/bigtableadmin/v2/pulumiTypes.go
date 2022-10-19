@@ -724,6 +724,8 @@ type BackupInfoResponse struct {
 	Backup string `pulumi:"backup"`
 	// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
 	EndTime string `pulumi:"endTime"`
+	// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+	SourceBackup string `pulumi:"sourceBackup"`
 	// Name of the table the backup was created from.
 	SourceTable string `pulumi:"sourceTable"`
 	// The time that the backup was started. Row data in the backup will be no older than this timestamp.
@@ -753,6 +755,11 @@ func (o BackupInfoResponseOutput) Backup() pulumi.StringOutput {
 // This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
 func (o BackupInfoResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInfoResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+func (o BackupInfoResponseOutput) SourceBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupInfoResponse) string { return v.SourceBackup }).(pulumi.StringOutput)
 }
 
 // Name of the table the backup was created from.

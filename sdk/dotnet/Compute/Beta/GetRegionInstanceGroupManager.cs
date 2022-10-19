@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string InstanceGroup;
         /// <summary>
+        /// The repair policy for this managed instance group.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse InstanceLifecyclePolicy;
+        /// <summary>
         /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         /// </summary>
         public readonly string InstanceTemplate;
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string instanceGroup,
 
+            Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse instanceLifecyclePolicy,
+
             string instanceTemplate,
 
             string kind,
@@ -226,6 +232,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             FailoverAction = failoverAction;
             Fingerprint = fingerprint;
             InstanceGroup = instanceGroup;
+            InstanceLifecyclePolicy = instanceLifecyclePolicy;
             InstanceTemplate = instanceTemplate;
             Kind = kind;
             ListManagedInstancesResults = listManagedInstancesResults;

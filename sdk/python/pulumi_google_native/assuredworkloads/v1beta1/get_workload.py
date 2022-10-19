@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, cjis_settings=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, fedramp_high_settings=None, fedramp_moderate_settings=None, il4_settings=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, cjis_settings=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, fedramp_high_settings=None, fedramp_moderate_settings=None, il4_settings=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -72,6 +72,9 @@ class GetWorkloadResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if partner and not isinstance(partner, str):
+            raise TypeError("Expected argument 'partner' to be a str")
+        pulumi.set(__self__, "partner", partner)
         if provisioned_resources_parent and not isinstance(provisioned_resources_parent, str):
             raise TypeError("Expected argument 'provisioned_resources_parent' to be a str")
         pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
@@ -214,6 +217,14 @@ class GetWorkloadResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def partner(self) -> str:
+        """
+        Optional. Compliance Regime associated with this workload.
+        """
+        return pulumi.get(self, "partner")
+
+    @property
     @pulumi.getter(name="provisionedResourcesParent")
     def provisioned_resources_parent(self) -> str:
         """
@@ -268,6 +279,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             kms_settings=self.kms_settings,
             labels=self.labels,
             name=self.name,
+            partner=self.partner,
             provisioned_resources_parent=self.provisioned_resources_parent,
             resource_settings=self.resource_settings,
             resources=self.resources,
@@ -305,6 +317,7 @@ def get_workload(location: Optional[str] = None,
         kms_settings=__ret__.kms_settings,
         labels=__ret__.labels,
         name=__ret__.name,
+        partner=__ret__.partner,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,
         resource_settings=__ret__.resource_settings,
         resources=__ret__.resources,

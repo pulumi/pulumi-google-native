@@ -84,7 +84,7 @@ export const DicomConfigFilterProfile = {
      */
     TagFilterProfileUnspecified: "TAG_FILTER_PROFILE_UNSPECIFIED",
     /**
-     * Keep only tags required to produce valid DICOM.
+     * Keep only the tags required to produce valid DICOM objects.
      */
     MinimalKeepListProfile: "MINIMAL_KEEP_LIST_PROFILE",
     /**
@@ -96,7 +96,7 @@ export const DicomConfigFilterProfile = {
      */
     KeepAllProfile: "KEEP_ALL_PROFILE",
     /**
-     * Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+     * Inspect within tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
      */
     DeidentifyTagContents: "DEIDENTIFY_TAG_CONTENTS",
 } as const;
@@ -284,7 +284,7 @@ export const SchemaConfigSchemaType = {
      */
     Analytics: "ANALYTICS",
     /**
-     * Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+     * Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
      */
     AnalyticsV2: "ANALYTICS_V2",
 } as const;

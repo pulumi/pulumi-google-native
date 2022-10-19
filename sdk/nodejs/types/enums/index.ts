@@ -38,6 +38,7 @@ import * as connectors from "./connectors";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
+import * as contentwarehouse from "./contentwarehouse";
 import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
 import * as datafusion from "./datafusion";
@@ -142,6 +143,7 @@ export {
     contactcenterinsights,
     container,
     containeranalysis,
+    contentwarehouse,
     datacatalog,
     dataflow,
     datafusion,

@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
+        /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+        /// </summary>
+        [Output("listManagedInstancesResults")]
+        public Output<string> ListManagedInstancesResults { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         /// </summary>
         [Output("name")]
@@ -232,6 +238,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("instanceTemplate")]
         public Input<string>? InstanceTemplate { get; set; }
+
+        /// <summary>
+        /// Pagination behavior of the listManagedInstances API method for this managed instance group.
+        /// </summary>
+        [Input("listManagedInstancesResults")]
+        public Input<Pulumi.GoogleNative.Compute.V1.RegionInstanceGroupManagerListManagedInstancesResults>? ListManagedInstancesResults { get; set; }
 
         /// <summary>
         /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.

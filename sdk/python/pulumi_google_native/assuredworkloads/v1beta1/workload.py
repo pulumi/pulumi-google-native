@@ -32,6 +32,7 @@ class WorkloadArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]]] = None):
         """
@@ -49,6 +50,7 @@ class WorkloadArgs:
         :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        :param pulumi.Input['WorkloadPartner'] partner: Optional. Compliance Regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
@@ -82,6 +84,8 @@ class WorkloadArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if partner is not None:
+            pulumi.set(__self__, "partner", partner)
         if provisioned_resources_parent is not None:
             pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
         if resource_settings is not None:
@@ -262,6 +266,18 @@ class WorkloadArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def partner(self) -> Optional[pulumi.Input['WorkloadPartner']]:
+        """
+        Optional. Compliance Regime associated with this workload.
+        """
+        return pulumi.get(self, "partner")
+
+    @partner.setter
+    def partner(self, value: Optional[pulumi.Input['WorkloadPartner']]):
+        pulumi.set(self, "partner", value)
+
+    @property
     @pulumi.getter(name="provisionedResourcesParent")
     def provisioned_resources_parent(self) -> Optional[pulumi.Input[str]]:
         """
@@ -306,6 +322,7 @@ class Workload(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]]]] = None,
                  __props__=None):
@@ -327,6 +344,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        :param pulumi.Input['WorkloadPartner'] partner: Optional. Compliance Regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
@@ -369,6 +387,7 @@ class Workload(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]]]] = None,
                  __props__=None):
@@ -404,6 +423,7 @@ class Workload(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["partner"] = partner
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
             __props__.__dict__["compliance_status"] = None
@@ -455,6 +475,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["organization_id"] = None
+        __props__.__dict__["partner"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
         __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
@@ -606,6 +627,14 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "organization_id")
+
+    @property
+    @pulumi.getter
+    def partner(self) -> pulumi.Output[str]:
+        """
+        Optional. Compliance Regime associated with this workload.
+        """
+        return pulumi.get(self, "partner")
 
     @property
     @pulumi.getter(name="provisionedResourcesParent")

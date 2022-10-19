@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.CertificateManager.V1
 {
     /// <summary>
+    /// Required. The key algorithm to use when generating the private key.
+    /// </summary>
+    [EnumType]
+    public readonly struct CertificateIssuanceConfigKeyAlgorithm : IEquatable<CertificateIssuanceConfigKeyAlgorithm>
+    {
+        private readonly string _value;
+
+        private CertificateIssuanceConfigKeyAlgorithm(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified key algorithm.
+        /// </summary>
+        public static CertificateIssuanceConfigKeyAlgorithm KeyAlgorithmUnspecified { get; } = new CertificateIssuanceConfigKeyAlgorithm("KEY_ALGORITHM_UNSPECIFIED");
+        /// <summary>
+        /// Specifies RSA with a 2048-bit modulus.
+        /// </summary>
+        public static CertificateIssuanceConfigKeyAlgorithm Rsa2048 { get; } = new CertificateIssuanceConfigKeyAlgorithm("RSA_2048");
+        /// <summary>
+        /// Specifies ECDSA with curve P256.
+        /// </summary>
+        public static CertificateIssuanceConfigKeyAlgorithm EcdsaP256 { get; } = new CertificateIssuanceConfigKeyAlgorithm("ECDSA_P256");
+
+        public static bool operator ==(CertificateIssuanceConfigKeyAlgorithm left, CertificateIssuanceConfigKeyAlgorithm right) => left.Equals(right);
+        public static bool operator !=(CertificateIssuanceConfigKeyAlgorithm left, CertificateIssuanceConfigKeyAlgorithm right) => !left.Equals(right);
+
+        public static explicit operator string(CertificateIssuanceConfigKeyAlgorithm value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CertificateIssuanceConfigKeyAlgorithm other && Equals(other);
+        public bool Equals(CertificateIssuanceConfigKeyAlgorithm other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// A predefined matcher for particular cases, other than SNI selection.
     /// </summary>
     [EnumType]

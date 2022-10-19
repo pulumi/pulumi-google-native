@@ -194,7 +194,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
         """
         A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
         :param 'GooglePrivacyDlpV2DeidentifyResponse' deidentify: Create a de-identified copy of the input data.
-        :param 'GooglePrivacyDlpV2JobNotificationEmailsResponse' job_notification_emails: Enable email notification for project owners and editors on job's completion/failure.
+        :param 'GooglePrivacyDlpV2JobNotificationEmailsResponse' job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         :param 'GooglePrivacyDlpV2PublishToPubSubResponse' pub_sub: Publish a notification to a Pub/Sub topic.
         :param 'GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse' publish_findings_to_cloud_data_catalog: Publish findings to Cloud Datahub.
         :param 'GooglePrivacyDlpV2PublishSummaryToCsccResponse' publish_summary_to_cscc: Publish summary to Cloud Security Command Center (Alpha).
@@ -221,7 +221,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
     @pulumi.getter(name="jobNotificationEmails")
     def job_notification_emails(self) -> 'outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse':
         """
-        Enable email notification for project owners and editors on job's completion/failure.
+        Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         """
         return pulumi.get(self, "job_notification_emails")
 
@@ -3250,7 +3250,7 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
                  version: str):
         """
         Type of information detected by the API.
-        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
         :param str version: Optional version name for this InfoType.
         """
         pulumi.set(__self__, "name", name)
@@ -3260,7 +3260,7 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
         """
         return pulumi.get(self, "name")
 

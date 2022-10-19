@@ -9,6 +9,7 @@ __all__ = [
     'AccessConfigType',
     'AddressAddressType',
     'AddressIpVersion',
+    'AddressIpv6EndpointType',
     'AddressNetworkTier',
     'AddressPurpose',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
@@ -57,6 +58,7 @@ __all__ = [
     'GRPCHealthCheckPortSpecification',
     'GlobalAddressAddressType',
     'GlobalAddressIpVersion',
+    'GlobalAddressIpv6EndpointType',
     'GlobalAddressNetworkTier',
     'GlobalAddressPurpose',
     'GlobalForwardingRuleIpProtocol',
@@ -78,6 +80,7 @@ __all__ = [
     'ImageRawDiskContainerType',
     'ImageSourceType',
     'InstanceGroupManagerFailoverAction',
+    'InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair',
     'InstanceGroupManagerListManagedInstancesResults',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
@@ -251,6 +254,20 @@ class AddressIpVersion(str, Enum):
     UNSPECIFIED_VERSION = "UNSPECIFIED_VERSION"
 
 
+class AddressIpv6EndpointType(str, Enum):
+    """
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
+    """
+    VM = "VM"
+    """
+    Reserved IPv6 address can be used on VM.
+    """
+
+
 class AddressNetworkTier(str, Enum):
     """
     This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -321,7 +338,7 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInte
 
 class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval(str, Enum):
     """
-    For more information about maintenance intervals, see Setting maintenance intervals.
+    Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     """
     PERIODIC = "PERIODIC"
     """
@@ -948,6 +965,10 @@ class DistributionPolicyTargetShape(str, Enum):
     """
     The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
     """
+    ANY_SINGLE_ZONE = "ANY_SINGLE_ZONE"
+    """
+    The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+    """
     BALANCED = "BALANCED"
     """
     The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
@@ -1135,6 +1156,20 @@ class GlobalAddressIpVersion(str, Enum):
     IPV4 = "IPV4"
     IPV6 = "IPV6"
     UNSPECIFIED_VERSION = "UNSPECIFIED_VERSION"
+
+
+class GlobalAddressIpv6EndpointType(str, Enum):
+    """
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
+    """
+    VM = "VM"
+    """
+    Reserved IPv6 address can be used on VM.
+    """
 
 
 class GlobalAddressNetworkTier(str, Enum):
@@ -1480,6 +1515,14 @@ class InstanceGroupManagerFailoverAction(str, Enum):
     """
     NO_FAILOVER = "NO_FAILOVER"
     UNKNOWN = "UNKNOWN"
+
+
+class InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(str, Enum):
+    """
+    A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+    """
+    NO = "NO"
+    YES = "YES"
 
 
 class InstanceGroupManagerListManagedInstancesResults(str, Enum):
@@ -2760,7 +2803,7 @@ class SchedulingInstanceTerminationAction(str, Enum):
 
 class SchedulingMaintenanceInterval(str, Enum):
     """
-    For more information about maintenance intervals, see Setting maintenance intervals.
+    Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     """
     PERIODIC = "PERIODIC"
     """
@@ -2881,13 +2924,16 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"
     HTTP_COOKIE = "HTTP_COOKIE"
     HTTP_HEADER = "HTTP_HEADER"
+    HTTP_PATH = "HTTP_PATH"
     IP = "IP"
+    REGION_CODE = "REGION_CODE"
+    SNI = "SNI"
     XFF_IP = "XFF_IP"
 
 

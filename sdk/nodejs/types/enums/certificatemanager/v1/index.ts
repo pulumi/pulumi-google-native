@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const CertificateIssuanceConfigKeyAlgorithm = {
+    /**
+     * Unspecified key algorithm.
+     */
+    KeyAlgorithmUnspecified: "KEY_ALGORITHM_UNSPECIFIED",
+    /**
+     * Specifies RSA with a 2048-bit modulus.
+     */
+    Rsa2048: "RSA_2048",
+    /**
+     * Specifies ECDSA with curve P256.
+     */
+    EcdsaP256: "ECDSA_P256",
+} as const;
+
+/**
+ * Required. The key algorithm to use when generating the private key.
+ */
+export type CertificateIssuanceConfigKeyAlgorithm = (typeof CertificateIssuanceConfigKeyAlgorithm)[keyof typeof CertificateIssuanceConfigKeyAlgorithm];
+
 export const CertificateMapEntryMatcher = {
     /**
      * A matcher has't been recognized.

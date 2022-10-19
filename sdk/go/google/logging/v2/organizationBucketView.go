@@ -29,7 +29,7 @@ type OrganizationBucketView struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The last update timestamp of the view.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringOutput `pulumi:"viewId"`
 }
 
@@ -97,7 +97,7 @@ type organizationBucketViewArgs struct {
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId string `pulumi:"viewId"`
 }
 
@@ -112,7 +112,7 @@ type OrganizationBucketViewArgs struct {
 	// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	// Required. The id to use for this view.
+	// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	ViewId pulumi.StringInput
 }
 
@@ -190,7 +190,7 @@ func (o OrganizationBucketViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Required. The id to use for this view.
+// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 func (o OrganizationBucketViewOutput) ViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBucketView) pulumi.StringOutput { return v.ViewId }).(pulumi.StringOutput)
 }

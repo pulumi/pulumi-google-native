@@ -64,6 +64,22 @@ export const AddressIpVersion = {
  */
 export type AddressIpVersion = (typeof AddressIpVersion)[keyof typeof AddressIpVersion];
 
+export const AddressIpv6EndpointType = {
+    /**
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+ */
+export type AddressIpv6EndpointType = (typeof AddressIpv6EndpointType)[keyof typeof AddressIpv6EndpointType];
+
 export const AddressNetworkTier = {
     /**
      * Public internet quality with fixed bandwidth.
@@ -146,7 +162,7 @@ export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanc
 } as const;
 
 /**
- * For more information about maintenance intervals, see Setting maintenance intervals.
+ * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
  */
 export type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval = (typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval)[keyof typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval];
 
@@ -827,6 +843,10 @@ export const DistributionPolicyTargetShape = {
      */
     Any: "ANY",
     /**
+     * The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+     */
+    AnySingleZone: "ANY_SINGLE_ZONE",
+    /**
      * The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
      */
     Balanced: "BALANCED",
@@ -1045,6 +1065,22 @@ export const GlobalAddressIpVersion = {
  * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
  */
 export type GlobalAddressIpVersion = (typeof GlobalAddressIpVersion)[keyof typeof GlobalAddressIpVersion];
+
+export const GlobalAddressIpv6EndpointType = {
+    /**
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+ */
+export type GlobalAddressIpv6EndpointType = (typeof GlobalAddressIpv6EndpointType)[keyof typeof GlobalAddressIpv6EndpointType];
 
 export const GlobalAddressNetworkTier = {
     /**
@@ -1432,6 +1468,16 @@ export const InstanceGroupManagerFailoverAction = {
  * The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
  */
 export type InstanceGroupManagerFailoverAction = (typeof InstanceGroupManagerFailoverAction)[keyof typeof InstanceGroupManagerFailoverAction];
+
+export const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = {
+    No: "NO",
+    Yes: "YES",
+} as const;
+
+/**
+ * A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
+ */
+export type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = (typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)[keyof typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair];
 
 export const InstanceGroupManagerListManagedInstancesResults = {
     /**
@@ -2875,7 +2921,7 @@ export const SchedulingMaintenanceInterval = {
 } as const;
 
 /**
- * For more information about maintenance intervals, see Setting maintenance intervals.
+ * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
  */
 export type SchedulingMaintenanceInterval = (typeof SchedulingMaintenanceInterval)[keyof typeof SchedulingMaintenanceInterval];
 
@@ -3015,12 +3061,15 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     AllIps: "ALL_IPS",
     HttpCookie: "HTTP_COOKIE",
     HttpHeader: "HTTP_HEADER",
+    HttpPath: "HTTP_PATH",
     Ip: "IP",
+    RegionCode: "REGION_CODE",
+    Sni: "SNI",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 

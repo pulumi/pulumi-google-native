@@ -188,7 +188,7 @@ const (
 	CustomConstraintMethodTypesItemCreate = CustomConstraintMethodTypesItem("CREATE")
 	// Constraint applied when updating the resource.
 	CustomConstraintMethodTypesItemUpdate = CustomConstraintMethodTypesItem("UPDATE")
-	// Constraint applied when deleting the resource.
+	// Constraint applied when deleting the resource. Not supported yet.
 	CustomConstraintMethodTypesItemDelete = CustomConstraintMethodTypesItem("DELETE")
 )
 

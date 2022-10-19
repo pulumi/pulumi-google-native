@@ -13,6 +13,8 @@ from ._enums import *
 
 __all__ = [
     'AuthorizationAttemptInfoResponse',
+    'CertificateAuthorityConfigResponse',
+    'CertificateAuthorityServiceConfigResponse',
     'DnsResourceRecordResponse',
     'GclbTargetResponse',
     'IpConfigResponse',
@@ -91,6 +93,84 @@ class AuthorizationAttemptInfoResponse(dict):
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class CertificateAuthorityConfigResponse(dict):
+    """
+    The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityServiceConfig":
+            suggest = "certificate_authority_service_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateAuthorityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateAuthorityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateAuthorityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_authority_service_config: 'outputs.CertificateAuthorityServiceConfigResponse'):
+        """
+        The CA that issues the workload certificate. It includes CA address, type, authentication to CA service, etc.
+        :param 'CertificateAuthorityServiceConfigResponse' certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+        """
+        pulumi.set(__self__, "certificate_authority_service_config", certificate_authority_service_config)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityServiceConfig")
+    def certificate_authority_service_config(self) -> 'outputs.CertificateAuthorityServiceConfigResponse':
+        """
+        Defines a CertificateAuthorityServiceConfig.
+        """
+        return pulumi.get(self, "certificate_authority_service_config")
+
+
+@pulumi.output_type
+class CertificateAuthorityServiceConfigResponse(dict):
+    """
+    Contains information required to contact CA service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caPool":
+            suggest = "ca_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateAuthorityServiceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateAuthorityServiceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateAuthorityServiceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_pool: str):
+        """
+        Contains information required to contact CA service.
+        :param str ca_pool: A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> str:
+        """
+        A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
+        """
+        return pulumi.get(self, "ca_pool")
 
 
 @pulumi.output_type
@@ -264,6 +344,8 @@ class ManagedCertificateResponse(dict):
             suggest = "authorization_attempt_info"
         elif key == "dnsAuthorizations":
             suggest = "dns_authorizations"
+        elif key == "issuanceConfig":
+            suggest = "issuance_config"
         elif key == "provisioningIssue":
             suggest = "provisioning_issue"
 
@@ -282,6 +364,7 @@ class ManagedCertificateResponse(dict):
                  authorization_attempt_info: Sequence['outputs.AuthorizationAttemptInfoResponse'],
                  dns_authorizations: Sequence[str],
                  domains: Sequence[str],
+                 issuance_config: str,
                  provisioning_issue: 'outputs.ProvisioningIssueResponse',
                  state: str):
         """
@@ -289,12 +372,14 @@ class ManagedCertificateResponse(dict):
         :param Sequence['AuthorizationAttemptInfoResponse'] authorization_attempt_info: Detailed state of the latest authorization attempt for each domain specified for managed certificate resource.
         :param Sequence[str] dns_authorizations: Immutable. Authorizations that will be used for performing domain authorization.
         :param Sequence[str] domains: Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
+        :param str issuance_config: Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
         :param 'ProvisioningIssueResponse' provisioning_issue: Information about issues with provisioning a Managed Certificate.
         :param str state: State of the managed certificate resource.
         """
         pulumi.set(__self__, "authorization_attempt_info", authorization_attempt_info)
         pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "issuance_config", issuance_config)
         pulumi.set(__self__, "provisioning_issue", provisioning_issue)
         pulumi.set(__self__, "state", state)
 
@@ -321,6 +406,14 @@ class ManagedCertificateResponse(dict):
         Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
         """
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="issuanceConfig")
+    def issuance_config(self) -> str:
+        """
+        Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        """
+        return pulumi.get(self, "issuance_config")
 
     @property
     @pulumi.getter(name="provisioningIssue")

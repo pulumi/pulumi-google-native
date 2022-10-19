@@ -9,6 +9,7 @@ __all__ = [
     'AccessConfigType',
     'AddressAddressType',
     'AddressIpVersion',
+    'AddressIpv6EndpointType',
     'AddressNetworkTier',
     'AddressPurpose',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
@@ -54,6 +55,7 @@ __all__ = [
     'GRPCHealthCheckPortSpecification',
     'GlobalAddressAddressType',
     'GlobalAddressIpVersion',
+    'GlobalAddressIpv6EndpointType',
     'GlobalAddressNetworkTier',
     'GlobalAddressPurpose',
     'GlobalForwardingRuleIpProtocol',
@@ -74,6 +76,7 @@ __all__ = [
     'ImageArchitecture',
     'ImageRawDiskContainerType',
     'ImageSourceType',
+    'InstanceGroupManagerListManagedInstancesResults',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
     'InstanceGroupManagerUpdatePolicyMinimalAction',
     'InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction',
@@ -117,6 +120,7 @@ __all__ = [
     'RegionDiskArchitecture',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
+    'RegionInstanceGroupManagerListManagedInstancesResults',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
@@ -233,6 +237,20 @@ class AddressIpVersion(str, Enum):
     IPV4 = "IPV4"
     IPV6 = "IPV6"
     UNSPECIFIED_VERSION = "UNSPECIFIED_VERSION"
+
+
+class AddressIpv6EndpointType(str, Enum):
+    """
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
+    """
+    VM = "VM"
+    """
+    Reserved IPv6 address can be used on VM.
+    """
 
 
 class AddressNetworkTier(str, Enum):
@@ -1085,6 +1103,20 @@ class GlobalAddressIpVersion(str, Enum):
     UNSPECIFIED_VERSION = "UNSPECIFIED_VERSION"
 
 
+class GlobalAddressIpv6EndpointType(str, Enum):
+    """
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
+    """
+    VM = "VM"
+    """
+    Reserved IPv6 address can be used on VM.
+    """
+
+
 class GlobalAddressNetworkTier(str, Enum):
     """
     This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
@@ -1420,6 +1452,20 @@ class ImageSourceType(str, Enum):
     The type of the image used to create this disk. The default and only valid value is RAW.
     """
     RAW = "RAW"
+
+
+class InstanceGroupManagerListManagedInstancesResults(str, Enum):
+    """
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
+    """
+    PAGELESS = "PAGELESS"
+    """
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    """
+    PAGINATED = "PAGINATED"
+    """
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    """
 
 
 class InstanceGroupManagerUpdatePolicyInstanceRedistributionType(str, Enum):
@@ -2194,6 +2240,20 @@ class RegionHealthCheckType(str, Enum):
     TCP = "TCP"
 
 
+class RegionInstanceGroupManagerListManagedInstancesResults(str, Enum):
+    """
+    Pagination behavior of the listManagedInstances API method for this managed instance group.
+    """
+    PAGELESS = "PAGELESS"
+    """
+    (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+    """
+    PAGINATED = "PAGINATED"
+    """
+    Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    """
+
+
 class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -2654,12 +2714,15 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     """
     ALL = "ALL"
     HTTP_COOKIE = "HTTP_COOKIE"
     HTTP_HEADER = "HTTP_HEADER"
+    HTTP_PATH = "HTTP_PATH"
     IP = "IP"
+    REGION_CODE = "REGION_CODE"
+    SNI = "SNI"
     XFF_IP = "XFF_IP"
 
 

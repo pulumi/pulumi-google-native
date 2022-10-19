@@ -10,10 +10,20 @@ export type FolderBigQueryExport = import("./folderBigQueryExport").FolderBigQue
 export const FolderBigQueryExport: typeof import("./folderBigQueryExport").FolderBigQueryExport = null as any;
 utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
 
+export { FolderNotificationConfigArgs } from "./folderNotificationConfig";
+export type FolderNotificationConfig = import("./folderNotificationConfig").FolderNotificationConfig;
+export const FolderNotificationConfig: typeof import("./folderNotificationConfig").FolderNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["FolderNotificationConfig"], () => require("./folderNotificationConfig"));
+
 export { GetFolderBigQueryExportArgs, GetFolderBigQueryExportResult, GetFolderBigQueryExportOutputArgs } from "./getFolderBigQueryExport";
 export const getFolderBigQueryExport: typeof import("./getFolderBigQueryExport").getFolderBigQueryExport = null as any;
 export const getFolderBigQueryExportOutput: typeof import("./getFolderBigQueryExport").getFolderBigQueryExportOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
+
+export { GetFolderNotificationConfigArgs, GetFolderNotificationConfigResult, GetFolderNotificationConfigOutputArgs } from "./getFolderNotificationConfig";
+export const getFolderNotificationConfig: typeof import("./getFolderNotificationConfig").getFolderNotificationConfig = null as any;
+export const getFolderNotificationConfigOutput: typeof import("./getFolderNotificationConfig").getFolderNotificationConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderNotificationConfig","getFolderNotificationConfigOutput"], () => require("./getFolderNotificationConfig"));
 
 export { GetMuteConfigArgs, GetMuteConfigResult, GetMuteConfigOutputArgs } from "./getMuteConfig";
 export const getMuteConfig: typeof import("./getMuteConfig").getMuteConfig = null as any;
@@ -34,6 +44,11 @@ export { GetOrganizationMuteConfigArgs, GetOrganizationMuteConfigResult, GetOrga
 export const getOrganizationMuteConfig: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfig = null as any;
 export const getOrganizationMuteConfigOutput: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationMuteConfig","getOrganizationMuteConfigOutput"], () => require("./getOrganizationMuteConfig"));
+
+export { GetOrganizationNotificationConfigArgs, GetOrganizationNotificationConfigResult, GetOrganizationNotificationConfigOutputArgs } from "./getOrganizationNotificationConfig";
+export const getOrganizationNotificationConfig: typeof import("./getOrganizationNotificationConfig").getOrganizationNotificationConfig = null as any;
+export const getOrganizationNotificationConfigOutput: typeof import("./getOrganizationNotificationConfig").getOrganizationNotificationConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationNotificationConfig","getOrganizationNotificationConfigOutput"], () => require("./getOrganizationNotificationConfig"));
 
 export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
 export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
@@ -70,6 +85,11 @@ export type OrganizationMuteConfig = import("./organizationMuteConfig").Organiza
 export const OrganizationMuteConfig: typeof import("./organizationMuteConfig").OrganizationMuteConfig = null as any;
 utilities.lazyLoad(exports, ["OrganizationMuteConfig"], () => require("./organizationMuteConfig"));
 
+export { OrganizationNotificationConfigArgs } from "./organizationNotificationConfig";
+export type OrganizationNotificationConfig = import("./organizationNotificationConfig").OrganizationNotificationConfig;
+export const OrganizationNotificationConfig: typeof import("./organizationNotificationConfig").OrganizationNotificationConfig = null as any;
+utilities.lazyLoad(exports, ["OrganizationNotificationConfig"], () => require("./organizationNotificationConfig"));
+
 export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
 export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
 export const OrganizationSourceIamBinding: typeof import("./organizationSourceIamBinding").OrganizationSourceIamBinding = null as any;
@@ -105,6 +125,8 @@ const _module = {
         switch (type) {
             case "google-native:securitycenter/v1:FolderBigQueryExport":
                 return new FolderBigQueryExport(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:FolderNotificationConfig":
+                return new FolderNotificationConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:MuteConfig":
                 return new MuteConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:NotificationConfig":
@@ -113,6 +135,8 @@ const _module = {
                 return new OrganizationBigQueryExport(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationMuteConfig":
                 return new OrganizationMuteConfig(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1:OrganizationNotificationConfig":
+                return new OrganizationNotificationConfig(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamBinding":
                 return new OrganizationSourceIamBinding(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1:OrganizationSourceIamMember":

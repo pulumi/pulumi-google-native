@@ -14,7 +14,7 @@ import (
 type GooglePrivacyDlpV2Action struct {
 	// Create a de-identified copy of the input data.
 	Deidentify *GooglePrivacyDlpV2Deidentify `pulumi:"deidentify"`
-	// Enable email notification for project owners and editors on job's completion/failure.
+	// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 	JobNotificationEmails *GooglePrivacyDlpV2JobNotificationEmails `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a Pub/Sub topic.
 	PubSub *GooglePrivacyDlpV2PublishToPubSub `pulumi:"pubSub"`
@@ -43,7 +43,7 @@ type GooglePrivacyDlpV2ActionInput interface {
 type GooglePrivacyDlpV2ActionArgs struct {
 	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyPtrInput `pulumi:"deidentify"`
-	// Enable email notification for project owners and editors on job's completion/failure.
+	// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsPtrInput `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a Pub/Sub topic.
 	PubSub GooglePrivacyDlpV2PublishToPubSubPtrInput `pulumi:"pubSub"`
@@ -114,7 +114,7 @@ func (o GooglePrivacyDlpV2ActionOutput) Deidentify() GooglePrivacyDlpV2Deidentif
 	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2Deidentify { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyPtrOutput)
 }
 
-// Enable email notification for project owners and editors on job's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 func (o GooglePrivacyDlpV2ActionOutput) JobNotificationEmails() GooglePrivacyDlpV2JobNotificationEmailsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2JobNotificationEmails {
 		return v.JobNotificationEmails
@@ -176,7 +176,7 @@ func (o GooglePrivacyDlpV2ActionArrayOutput) Index(i pulumi.IntInput) GooglePriv
 type GooglePrivacyDlpV2ActionResponse struct {
 	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyResponse `pulumi:"deidentify"`
-	// Enable email notification for project owners and editors on job's completion/failure.
+	// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsResponse `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a Pub/Sub topic.
 	PubSub GooglePrivacyDlpV2PublishToPubSubResponse `pulumi:"pubSub"`
@@ -210,7 +210,7 @@ func (o GooglePrivacyDlpV2ActionResponseOutput) Deidentify() GooglePrivacyDlpV2D
 	return o.ApplyT(func(v GooglePrivacyDlpV2ActionResponse) GooglePrivacyDlpV2DeidentifyResponse { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyResponseOutput)
 }
 
-// Enable email notification for project owners and editors on job's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 func (o GooglePrivacyDlpV2ActionResponseOutput) JobNotificationEmails() GooglePrivacyDlpV2JobNotificationEmailsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ActionResponse) GooglePrivacyDlpV2JobNotificationEmailsResponse {
 		return v.JobNotificationEmails
@@ -9681,7 +9681,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) Transforms() Googl
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name *string `pulumi:"name"`
 	// Optional version name for this InfoType.
 	Version *string `pulumi:"version"`
@@ -9700,7 +9700,7 @@ type GooglePrivacyDlpV2InfoTypeInput interface {
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Optional version name for this InfoType.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -9809,7 +9809,7 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) ToGooglePrivacyDlpV2InfoTypePtrOutputW
 	}).(GooglePrivacyDlpV2InfoTypePtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -9843,7 +9843,7 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) Elem() GooglePrivacyDlpV2InfoTypeOu
 	}).(GooglePrivacyDlpV2InfoTypeOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) *string {
 		if v == nil {
@@ -10047,7 +10047,7 @@ func (o GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput) Index(i pulumi.IntIn
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoTypeResponse struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name string `pulumi:"name"`
 	// Optional version name for this InfoType.
 	Version string `pulumi:"version"`
@@ -10068,7 +10068,7 @@ func (o GooglePrivacyDlpV2InfoTypeResponseOutput) ToGooglePrivacyDlpV2InfoTypeRe
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Name }).(pulumi.StringOutput)
 }

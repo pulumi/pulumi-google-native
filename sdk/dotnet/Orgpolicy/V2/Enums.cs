@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public static CustomConstraintMethodTypesItem Update { get; } = new CustomConstraintMethodTypesItem("UPDATE");
         /// <summary>
-        /// Constraint applied when deleting the resource.
+        /// Constraint applied when deleting the resource. Not supported yet.
         /// </summary>
         public static CustomConstraintMethodTypesItem Delete { get; } = new CustomConstraintMethodTypesItem("DELETE");
 

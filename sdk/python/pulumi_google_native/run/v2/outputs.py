@@ -334,7 +334,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param 'GoogleCloudRunV2ProbeResponse' liveness_probe: Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'GoogleCloudRunV2ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param str name: Name of the container specified as a DNS_LABEL.
         :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -390,7 +390,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> 'outputs.GoogleCloudRunV2ProbeResponse':
         """
-        Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "liveness_probe")
 

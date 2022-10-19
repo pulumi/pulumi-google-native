@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string IpVersion;
         /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+        /// </summary>
+        public readonly string Ipv6EndpointType;
+        /// <summary>
         /// Type of the resource. Always compute#address for addresses.
         /// </summary>
         public readonly string Kind;
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string ipVersion,
 
+            string ipv6EndpointType,
+
             string kind,
 
             string name,
@@ -161,6 +167,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             IpVersion = ipVersion;
+            Ipv6EndpointType = ipv6EndpointType;
             Kind = kind;
             Name = name;
             Network = network;

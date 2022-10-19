@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.VMMigration.V1
+namespace Pulumi.GoogleNative.Vmmigration.V1
 {
     /// <summary>
     /// Creates a new UtilizationReport.
@@ -174,7 +174,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// Time frame of the report.
         /// </summary>
         [Input("timeFrame")]
-        public Input<Pulumi.GoogleNative.VMMigration.V1.UtilizationReportTimeFrame>? TimeFrame { get; set; }
+        public Input<Pulumi.GoogleNative.Vmmigration.V1.UtilizationReportTimeFrame>? TimeFrame { get; set; }
 
         /// <summary>
         /// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.

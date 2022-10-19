@@ -64,6 +64,22 @@ export const AddressIpVersion = {
  */
 export type AddressIpVersion = (typeof AddressIpVersion)[keyof typeof AddressIpVersion];
 
+export const AddressIpv6EndpointType = {
+    /**
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+ */
+export type AddressIpv6EndpointType = (typeof AddressIpv6EndpointType)[keyof typeof AddressIpv6EndpointType];
+
 export const AddressNetworkTier = {
     /**
      * Public internet quality with fixed bandwidth.
@@ -1004,6 +1020,22 @@ export const GlobalAddressIpVersion = {
  */
 export type GlobalAddressIpVersion = (typeof GlobalAddressIpVersion)[keyof typeof GlobalAddressIpVersion];
 
+export const GlobalAddressIpv6EndpointType = {
+    /**
+     * Reserved IPv6 address can be used on network load balancer.
+     */
+    Netlb: "NETLB",
+    /**
+     * Reserved IPv6 address can be used on VM.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+ */
+export type GlobalAddressIpv6EndpointType = (typeof GlobalAddressIpv6EndpointType)[keyof typeof GlobalAddressIpv6EndpointType];
+
 export const GlobalAddressNetworkTier = {
     /**
      * Public internet quality with fixed bandwidth.
@@ -1380,6 +1412,22 @@ export const ImageSourceType = {
  * The type of the image used to create this disk. The default and only valid value is RAW.
  */
 export type ImageSourceType = (typeof ImageSourceType)[keyof typeof ImageSourceType];
+
+export const InstanceGroupManagerListManagedInstancesResults = {
+    /**
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     */
+    Pageless: "PAGELESS",
+    /**
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     */
+    Paginated: "PAGINATED",
+} as const;
+
+/**
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
+ */
+export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGroupManagerListManagedInstancesResults)[keyof typeof InstanceGroupManagerListManagedInstancesResults];
 
 export const InstanceGroupManagerUpdatePolicyInstanceRedistributionType = {
     /**
@@ -2239,6 +2287,22 @@ export const RegionHealthCheckType = {
  */
 export type RegionHealthCheckType = (typeof RegionHealthCheckType)[keyof typeof RegionHealthCheckType];
 
+export const RegionInstanceGroupManagerListManagedInstancesResults = {
+    /**
+     * (Default) Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+     */
+    Pageless: "PAGELESS",
+    /**
+     * Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+     */
+    Paginated: "PAGINATED",
+} as const;
+
+/**
+ * Pagination behavior of the listManagedInstances API method for this managed instance group.
+ */
+export type RegionInstanceGroupManagerListManagedInstancesResults = (typeof RegionInstanceGroupManagerListManagedInstancesResults)[keyof typeof RegionInstanceGroupManagerListManagedInstancesResults];
+
 export const RegionNetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -2771,12 +2835,15 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     All: "ALL",
     HttpCookie: "HTTP_COOKIE",
     HttpHeader: "HTTP_HEADER",
+    HttpPath: "HTTP_PATH",
     Ip: "IP",
+    RegionCode: "REGION_CODE",
+    Sni: "SNI",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 

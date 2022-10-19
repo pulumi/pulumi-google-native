@@ -65,6 +65,8 @@ type LookupSubnetworkResult struct {
 	Purpose string `pulumi:"purpose"`
 	// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
 	Region string `pulumi:"region"`
+	// The URL of the reserved internal range.
+	ReservedInternalRange string `pulumi:"reservedInternalRange"`
 	// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 	Role string `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
@@ -207,6 +209,11 @@ func (o LookupSubnetworkResultOutput) Purpose() pulumi.StringOutput {
 // URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
 func (o LookupSubnetworkResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URL of the reserved internal range.
+func (o LookupSubnetworkResultOutput) ReservedInternalRange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.ReservedInternalRange }).(pulumi.StringOutput)
 }
 
 // The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.

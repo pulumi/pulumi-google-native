@@ -3962,13 +3962,17 @@ class PrivateClusterMasterGlobalAccessConfigArgs:
 @pulumi.input_type
 class ProtectConfigArgs:
     def __init__(__self__, *,
-                 workload_config: Optional[pulumi.Input['WorkloadConfigArgs']] = None):
+                 workload_config: Optional[pulumi.Input['WorkloadConfigArgs']] = None,
+                 workload_vulnerability_mode: Optional[pulumi.Input['ProtectConfigWorkloadVulnerabilityMode']] = None):
         """
         ProtectConfig defines the flags needed to enable/disable features for the Protect API.
         :param pulumi.Input['WorkloadConfigArgs'] workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        :param pulumi.Input['ProtectConfigWorkloadVulnerabilityMode'] workload_vulnerability_mode: Sets which mode to use for Protect workload vulnerability scanning feature.
         """
         if workload_config is not None:
             pulumi.set(__self__, "workload_config", workload_config)
+        if workload_vulnerability_mode is not None:
+            pulumi.set(__self__, "workload_vulnerability_mode", workload_vulnerability_mode)
 
     @property
     @pulumi.getter(name="workloadConfig")
@@ -3981,6 +3985,18 @@ class ProtectConfigArgs:
     @workload_config.setter
     def workload_config(self, value: Optional[pulumi.Input['WorkloadConfigArgs']]):
         pulumi.set(self, "workload_config", value)
+
+    @property
+    @pulumi.getter(name="workloadVulnerabilityMode")
+    def workload_vulnerability_mode(self) -> Optional[pulumi.Input['ProtectConfigWorkloadVulnerabilityMode']]:
+        """
+        Sets which mode to use for Protect workload vulnerability scanning feature.
+        """
+        return pulumi.get(self, "workload_vulnerability_mode")
+
+    @workload_vulnerability_mode.setter
+    def workload_vulnerability_mode(self, value: Optional[pulumi.Input['ProtectConfigWorkloadVulnerabilityMode']]):
+        pulumi.set(self, "workload_vulnerability_mode", value)
 
 
 @pulumi.input_type

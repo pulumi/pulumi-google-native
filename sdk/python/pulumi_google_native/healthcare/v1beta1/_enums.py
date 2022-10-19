@@ -103,7 +103,7 @@ class DicomConfigFilterProfile(str, Enum):
     """
     MINIMAL_KEEP_LIST_PROFILE = "MINIMAL_KEEP_LIST_PROFILE"
     """
-    Keep only tags required to produce valid DICOM.
+    Keep only the tags required to produce valid DICOM objects.
     """
     ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE = "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
     """
@@ -115,7 +115,7 @@ class DicomConfigFilterProfile(str, Enum):
     """
     DEIDENTIFY_TAG_CONTENTS = "DEIDENTIFY_TAG_CONTENTS"
     """
-    Inspects within tag contents and replaces sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+    Inspect within tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
     """
 
 
@@ -287,7 +287,7 @@ class SchemaConfigSchemaType(str, Enum):
     """
     ANALYTICS_V2 = "ANALYTICS_V2"
     """
-    Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+    Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
     """
 
 

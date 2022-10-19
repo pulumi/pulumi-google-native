@@ -6,7 +6,6 @@ from enum import Enum
 
 __all__ = [
     'EntryType',
-    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
@@ -65,36 +64,6 @@ class EntryType(str, Enum):
     SERVICE = "SERVICE"
     """
     A service, for example, a Dataproc Metastore service.
-    """
-
-
-class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(str, Enum):
-    """
-    Looker specific column type of this column.
-    """
-    LOOKER_COLUMN_TYPE_UNSPECIFIED = "LOOKER_COLUMN_TYPE_UNSPECIFIED"
-    """
-    Unspecified.
-    """
-    DIMENSION = "DIMENSION"
-    """
-    Dimension.
-    """
-    DIMENSION_GROUP = "DIMENSION_GROUP"
-    """
-    Dimension group - parent for Dimension.
-    """
-    FILTER = "FILTER"
-    """
-    Filter.
-    """
-    MEASURE = "MEASURE"
-    """
-    Measure.
-    """
-    PAREMETER = "PAREMETER"
-    """
-    Parameter.
     """
 
 

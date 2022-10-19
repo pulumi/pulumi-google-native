@@ -17,15 +17,15 @@ type CustomConstraint struct {
 
 	// Allow or deny type.
 	ActionType pulumi.StringOutput `pulumi:"actionType"`
-	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 	Condition pulumi.StringOutput `pulumi:"condition"`
-	// Detailed information about this custom policy constraint.
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// One line display name for the UI.
+	// One line display name for the UI. The max length of the display_name is 200 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All the operations being applied for this constraint.
 	MethodTypes pulumi.StringArrayOutput `pulumi:"methodTypes"`
-	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
@@ -82,15 +82,15 @@ func (CustomConstraintState) ElementType() reflect.Type {
 type customConstraintArgs struct {
 	// Allow or deny type.
 	ActionType *CustomConstraintActionType `pulumi:"actionType"`
-	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 	Condition *string `pulumi:"condition"`
-	// Detailed information about this custom policy constraint.
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
 	Description *string `pulumi:"description"`
-	// One line display name for the UI.
+	// One line display name for the UI. The max length of the display_name is 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// All the operations being applied for this constraint.
 	MethodTypes []CustomConstraintMethodTypesItem `pulumi:"methodTypes"`
-	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
 	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
@@ -101,15 +101,15 @@ type customConstraintArgs struct {
 type CustomConstraintArgs struct {
 	// Allow or deny type.
 	ActionType CustomConstraintActionTypePtrInput
-	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+	// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 	Condition pulumi.StringPtrInput
-	// Detailed information about this custom policy constraint.
+	// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
 	Description pulumi.StringPtrInput
-	// One line display name for the UI.
+	// One line display name for the UI. The max length of the display_name is 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// All the operations being applied for this constraint.
 	MethodTypes CustomConstraintMethodTypesItemArrayInput
-	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
@@ -158,17 +158,17 @@ func (o CustomConstraintOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.ActionType }).(pulumi.StringOutput)
 }
 
-// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true`
+// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
 func (o CustomConstraintOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.Condition }).(pulumi.StringOutput)
 }
 
-// Detailed information about this custom policy constraint.
+// Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
 func (o CustomConstraintOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// One line display name for the UI.
+// One line display name for the UI. The max length of the display_name is 200 characters.
 func (o CustomConstraintOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -178,7 +178,7 @@ func (o CustomConstraintOutput) MethodTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringArrayOutput { return v.MethodTypes }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 func (o CustomConstraintOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

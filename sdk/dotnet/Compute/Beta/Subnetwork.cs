@@ -136,6 +136,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        [Output("reservedInternalRange")]
+        public Output<string> ReservedInternalRange { get; private set; } = null!;
+
+        /// <summary>
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         /// </summary>
         [Output("role")]
@@ -295,6 +301,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        [Input("reservedInternalRange")]
+        public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
         /// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.

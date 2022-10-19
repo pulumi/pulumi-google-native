@@ -185,6 +185,7 @@ __all__ = [
     'RouterBgpPeerBfdPacketMode',
     'RouterBgpPeerBfdSessionInitializationMode',
     'RouterBgpPeerEnable',
+    'RouterNatAutoNetworkTier',
     'RouterNatEndpointTypesItem',
     'RouterNatLogConfigFilter',
     'RouterNatNatIpAllocateOption',
@@ -306,11 +307,15 @@ class AddressIpVersion(str, Enum):
 
 class AddressIpv6EndpointType(str, Enum):
     """
-    The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
     """
     VM = "VM"
     """
-    Reserved IPv6 address will be assigned to VM.
+    Reserved IPv6 address can be used on VM.
     """
 
 
@@ -1396,11 +1401,15 @@ class GlobalAddressIpVersion(str, Enum):
 
 class GlobalAddressIpv6EndpointType(str, Enum):
     """
-    The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+    """
+    NETLB = "NETLB"
+    """
+    Reserved IPv6 address can be used on network load balancer.
     """
     VM = "VM"
     """
-    Reserved IPv6 address will be assigned to VM.
+    Reserved IPv6 address can be used on VM.
     """
 
 
@@ -3230,6 +3239,32 @@ class RouterBgpPeerEnable(str, Enum):
     """
     FALSE = "FALSE"
     TRUE = "TRUE"
+
+
+class RouterNatAutoNetworkTier(str, Enum):
+    """
+    The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+    """
+    FIXED_STANDARD = "FIXED_STANDARD"
+    """
+    Public internet quality with fixed bandwidth.
+    """
+    PREMIUM = "PREMIUM"
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
+    SELECT = "SELECT"
+    """
+    Price competitive network tier, support for all networking products.
+    """
+    STANDARD = "STANDARD"
+    """
+    Public internet quality, only limited support for other networking products.
+    """
+    STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
 
 
 class RouterNatEndpointTypesItem(str, Enum):

@@ -70,6 +70,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.v1.ConfidentialNodesResponse>;
     /**
+     * Configuration for the fine-grained cost management feature.
+     */
+    public readonly costManagementConfig!: pulumi.Output<outputs.container.v1.CostManagementConfigResponse>;
+    /**
      * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -307,6 +311,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
+            resourceInputs["costManagementConfig"] = args ? args.costManagementConfig : undefined;
             resourceInputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             resourceInputs["defaultMaxPodsConstraint"] = args ? args.defaultMaxPodsConstraint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -370,6 +375,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["confidentialNodes"] = undefined /*out*/;
+            resourceInputs["costManagementConfig"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentMasterVersion"] = undefined /*out*/;
             resourceInputs["currentNodeCount"] = undefined /*out*/;
@@ -483,6 +489,10 @@ export interface ClusterArgs {
      * Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
      */
     confidentialNodes?: pulumi.Input<inputs.container.v1.ConfidentialNodesArgs>;
+    /**
+     * Configuration for the fine-grained cost management feature.
+     */
+    costManagementConfig?: pulumi.Input<inputs.container.v1.CostManagementConfigArgs>;
     /**
      * Configuration of etcd encryption.
      */

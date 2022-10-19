@@ -182,7 +182,7 @@ class BindingResponse(dict):
 @pulumi.output_type
 class ConsumerResponse(dict):
     """
-    Contains information of the customer's network configurations.
+    Contains information of the customer's network configurations.Next available ID: 4
     """
     @staticmethod
     def __key_warning(key: str):
@@ -205,9 +205,9 @@ class ConsumerResponse(dict):
                  endpoint_uri: str,
                  subnetwork: str):
         """
-        Contains information of the customer's network configurations.
+        Contains information of the customer's network configurations.Next available ID: 4
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
-        :param str subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -224,7 +224,7 @@ class ConsumerResponse(dict):
     @pulumi.getter
     def subnetwork(self) -> str:
         """
-        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         return pulumi.get(self, "subnetwork")
 
@@ -856,12 +856,12 @@ class MetadataManagementActivityResponse(dict):
 @pulumi.output_type
 class NetworkConfigResponse(dict):
     """
-    Network configuration for the Dataproc Metastore service.
+    Network configuration for the Dataproc Metastore service.Next available ID: 3
     """
     def __init__(__self__, *,
                  consumers: Sequence['outputs.ConsumerResponse']):
         """
-        Network configuration for the Dataproc Metastore service.
+        Network configuration for the Dataproc Metastore service.Next available ID: 3
         :param Sequence['ConsumerResponse'] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
         """
         pulumi.set(__self__, "consumers", consumers)
@@ -1091,7 +1091,7 @@ class ServiceResponse(dict):
         :param 'MetadataManagementActivityResponse' metadata_management_activity: The metadata management activities of the metastore service.
         :param str name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param str network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-        :param 'NetworkConfigResponse' network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        :param 'NetworkConfigResponse' network_config: The configuration specifying the network settings for the Dataproc Metastore service.
         :param int port: The TCP port at which the metastore service is reached. Default: 9083.
         :param str release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param str state: The current state of the metastore service.
@@ -1221,7 +1221,7 @@ class ServiceResponse(dict):
     @pulumi.getter(name="networkConfig")
     def network_config(self) -> 'outputs.NetworkConfigResponse':
         """
-        Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        The configuration specifying the network settings for the Dataproc Metastore service.
         """
         return pulumi.get(self, "network_config")
 

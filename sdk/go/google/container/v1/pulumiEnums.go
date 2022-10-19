@@ -1430,6 +1430,344 @@ func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStr
 	return pulumi.ToOutputWithContext(ctx, in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+type IPAllocationPolicyIpv6AccessType string
+
+const (
+	// Default value, will be defaulted as type external.
+	IPAllocationPolicyIpv6AccessTypeIpv6AccessTypeUnspecified = IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED")
+	// Access type internal (all v6 addresses are internal IPs)
+	IPAllocationPolicyIpv6AccessTypeInternal = IPAllocationPolicyIpv6AccessType("INTERNAL")
+	// Access type external (all v6 addresses are external IPs)
+	IPAllocationPolicyIpv6AccessTypeExternal = IPAllocationPolicyIpv6AccessType("EXTERNAL")
+)
+
+func (IPAllocationPolicyIpv6AccessType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPAllocationPolicyIpv6AccessType)(nil)).Elem()
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToIPAllocationPolicyIpv6AccessTypeOutput() IPAllocationPolicyIpv6AccessTypeOutput {
+	return pulumi.ToOutput(e).(IPAllocationPolicyIpv6AccessTypeOutput)
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToIPAllocationPolicyIpv6AccessTypeOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IPAllocationPolicyIpv6AccessTypeOutput)
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToIPAllocationPolicyIpv6AccessTypePtrOutput() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return e.ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(context.Background())
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return IPAllocationPolicyIpv6AccessType(e).ToIPAllocationPolicyIpv6AccessTypeOutputWithContext(ctx).ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx)
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IPAllocationPolicyIpv6AccessType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IPAllocationPolicyIpv6AccessTypeOutput struct{ *pulumi.OutputState }
+
+func (IPAllocationPolicyIpv6AccessTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPAllocationPolicyIpv6AccessType)(nil)).Elem()
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToIPAllocationPolicyIpv6AccessTypeOutput() IPAllocationPolicyIpv6AccessTypeOutput {
+	return o
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToIPAllocationPolicyIpv6AccessTypeOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypeOutput {
+	return o
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToIPAllocationPolicyIpv6AccessTypePtrOutput() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicyIpv6AccessType) *IPAllocationPolicyIpv6AccessType {
+		return &v
+	}).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IPAllocationPolicyIpv6AccessType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyIpv6AccessTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IPAllocationPolicyIpv6AccessType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IPAllocationPolicyIpv6AccessTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IPAllocationPolicyIpv6AccessTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IPAllocationPolicyIpv6AccessType)(nil)).Elem()
+}
+
+func (o IPAllocationPolicyIpv6AccessTypePtrOutput) ToIPAllocationPolicyIpv6AccessTypePtrOutput() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o
+}
+
+func (o IPAllocationPolicyIpv6AccessTypePtrOutput) ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o
+}
+
+func (o IPAllocationPolicyIpv6AccessTypePtrOutput) Elem() IPAllocationPolicyIpv6AccessTypeOutput {
+	return o.ApplyT(func(v *IPAllocationPolicyIpv6AccessType) IPAllocationPolicyIpv6AccessType {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicyIpv6AccessType
+		return ret
+	}).(IPAllocationPolicyIpv6AccessTypeOutput)
+}
+
+func (o IPAllocationPolicyIpv6AccessTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyIpv6AccessTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IPAllocationPolicyIpv6AccessType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPAllocationPolicyIpv6AccessTypeInput is an input type that accepts IPAllocationPolicyIpv6AccessTypeArgs and IPAllocationPolicyIpv6AccessTypeOutput values.
+// You can construct a concrete instance of `IPAllocationPolicyIpv6AccessTypeInput` via:
+//
+//	IPAllocationPolicyIpv6AccessTypeArgs{...}
+type IPAllocationPolicyIpv6AccessTypeInput interface {
+	pulumi.Input
+
+	ToIPAllocationPolicyIpv6AccessTypeOutput() IPAllocationPolicyIpv6AccessTypeOutput
+	ToIPAllocationPolicyIpv6AccessTypeOutputWithContext(context.Context) IPAllocationPolicyIpv6AccessTypeOutput
+}
+
+var ipallocationPolicyIpv6AccessTypePtrType = reflect.TypeOf((**IPAllocationPolicyIpv6AccessType)(nil)).Elem()
+
+type IPAllocationPolicyIpv6AccessTypePtrInput interface {
+	pulumi.Input
+
+	ToIPAllocationPolicyIpv6AccessTypePtrOutput() IPAllocationPolicyIpv6AccessTypePtrOutput
+	ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(context.Context) IPAllocationPolicyIpv6AccessTypePtrOutput
+}
+
+type ipallocationPolicyIpv6AccessTypePtr string
+
+func IPAllocationPolicyIpv6AccessTypePtr(v string) IPAllocationPolicyIpv6AccessTypePtrInput {
+	return (*ipallocationPolicyIpv6AccessTypePtr)(&v)
+}
+
+func (*ipallocationPolicyIpv6AccessTypePtr) ElementType() reflect.Type {
+	return ipallocationPolicyIpv6AccessTypePtrType
+}
+
+func (in *ipallocationPolicyIpv6AccessTypePtr) ToIPAllocationPolicyIpv6AccessTypePtrOutput() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return pulumi.ToOutput(in).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
+func (in *ipallocationPolicyIpv6AccessTypePtr) ToIPAllocationPolicyIpv6AccessTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
+// The IP stack type of the cluster
+type IPAllocationPolicyStackType string
+
+const (
+	// Default value, will be defaulted as IPV4 only
+	IPAllocationPolicyStackTypeStackTypeUnspecified = IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED")
+	// Cluster is IPV4 only
+	IPAllocationPolicyStackTypeIpv4 = IPAllocationPolicyStackType("IPV4")
+	// Cluster can use both IPv4 and IPv6
+	IPAllocationPolicyStackTypeIpv4Ipv6 = IPAllocationPolicyStackType("IPV4_IPV6")
+)
+
+func (IPAllocationPolicyStackType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPAllocationPolicyStackType)(nil)).Elem()
+}
+
+func (e IPAllocationPolicyStackType) ToIPAllocationPolicyStackTypeOutput() IPAllocationPolicyStackTypeOutput {
+	return pulumi.ToOutput(e).(IPAllocationPolicyStackTypeOutput)
+}
+
+func (e IPAllocationPolicyStackType) ToIPAllocationPolicyStackTypeOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IPAllocationPolicyStackTypeOutput)
+}
+
+func (e IPAllocationPolicyStackType) ToIPAllocationPolicyStackTypePtrOutput() IPAllocationPolicyStackTypePtrOutput {
+	return e.ToIPAllocationPolicyStackTypePtrOutputWithContext(context.Background())
+}
+
+func (e IPAllocationPolicyStackType) ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypePtrOutput {
+	return IPAllocationPolicyStackType(e).ToIPAllocationPolicyStackTypeOutputWithContext(ctx).ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx)
+}
+
+func (e IPAllocationPolicyStackType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IPAllocationPolicyStackType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IPAllocationPolicyStackType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IPAllocationPolicyStackType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IPAllocationPolicyStackTypeOutput struct{ *pulumi.OutputState }
+
+func (IPAllocationPolicyStackTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IPAllocationPolicyStackType)(nil)).Elem()
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToIPAllocationPolicyStackTypeOutput() IPAllocationPolicyStackTypeOutput {
+	return o
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToIPAllocationPolicyStackTypeOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypeOutput {
+	return o
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToIPAllocationPolicyStackTypePtrOutput() IPAllocationPolicyStackTypePtrOutput {
+	return o.ToIPAllocationPolicyStackTypePtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IPAllocationPolicyStackType) *IPAllocationPolicyStackType {
+		return &v
+	}).(IPAllocationPolicyStackTypePtrOutput)
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IPAllocationPolicyStackType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyStackTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IPAllocationPolicyStackType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IPAllocationPolicyStackTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IPAllocationPolicyStackTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IPAllocationPolicyStackType)(nil)).Elem()
+}
+
+func (o IPAllocationPolicyStackTypePtrOutput) ToIPAllocationPolicyStackTypePtrOutput() IPAllocationPolicyStackTypePtrOutput {
+	return o
+}
+
+func (o IPAllocationPolicyStackTypePtrOutput) ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypePtrOutput {
+	return o
+}
+
+func (o IPAllocationPolicyStackTypePtrOutput) Elem() IPAllocationPolicyStackTypeOutput {
+	return o.ApplyT(func(v *IPAllocationPolicyStackType) IPAllocationPolicyStackType {
+		if v != nil {
+			return *v
+		}
+		var ret IPAllocationPolicyStackType
+		return ret
+	}).(IPAllocationPolicyStackTypeOutput)
+}
+
+func (o IPAllocationPolicyStackTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IPAllocationPolicyStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IPAllocationPolicyStackType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPAllocationPolicyStackTypeInput is an input type that accepts IPAllocationPolicyStackTypeArgs and IPAllocationPolicyStackTypeOutput values.
+// You can construct a concrete instance of `IPAllocationPolicyStackTypeInput` via:
+//
+//	IPAllocationPolicyStackTypeArgs{...}
+type IPAllocationPolicyStackTypeInput interface {
+	pulumi.Input
+
+	ToIPAllocationPolicyStackTypeOutput() IPAllocationPolicyStackTypeOutput
+	ToIPAllocationPolicyStackTypeOutputWithContext(context.Context) IPAllocationPolicyStackTypeOutput
+}
+
+var ipallocationPolicyStackTypePtrType = reflect.TypeOf((**IPAllocationPolicyStackType)(nil)).Elem()
+
+type IPAllocationPolicyStackTypePtrInput interface {
+	pulumi.Input
+
+	ToIPAllocationPolicyStackTypePtrOutput() IPAllocationPolicyStackTypePtrOutput
+	ToIPAllocationPolicyStackTypePtrOutputWithContext(context.Context) IPAllocationPolicyStackTypePtrOutput
+}
+
+type ipallocationPolicyStackTypePtr string
+
+func IPAllocationPolicyStackTypePtr(v string) IPAllocationPolicyStackTypePtrInput {
+	return (*ipallocationPolicyStackTypePtr)(&v)
+}
+
+func (*ipallocationPolicyStackTypePtr) ElementType() reflect.Type {
+	return ipallocationPolicyStackTypePtrType
+}
+
+func (in *ipallocationPolicyStackTypePtr) ToIPAllocationPolicyStackTypePtrOutput() IPAllocationPolicyStackTypePtrOutput {
+	return pulumi.ToOutput(in).(IPAllocationPolicyStackTypePtrOutput)
+}
+
+func (in *ipallocationPolicyStackTypePtr) ToIPAllocationPolicyStackTypePtrOutputWithContext(ctx context.Context) IPAllocationPolicyStackTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationPolicyStackTypePtrOutput)
+}
+
 type LoggingComponentConfigEnableComponentsItem string
 
 const (
@@ -3725,7 +4063,7 @@ func (in *sandboxConfigTypePtr) ToSandboxConfigTypePtrOutputWithContext(ctx cont
 type StatusConditionCanonicalCode string
 
 const (
-	// Not an error; returned on success HTTP Mapping: 200 OK
+	// Not an error; returned on success. HTTP Mapping: 200 OK
 	StatusConditionCanonicalCodeOk = StatusConditionCanonicalCode("OK")
 	// The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request
 	StatusConditionCanonicalCodeCancelled = StatusConditionCanonicalCode("CANCELLED")
@@ -4451,6 +4789,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyPtrInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypeInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypePtrInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypeInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypePtrInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItemArray{})
@@ -4504,6 +4846,10 @@ func init() {
 	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyPtrOutput{})
+	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypeOutput{})
+	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypePtrOutput{})
+	pulumi.RegisterOutputType(IPAllocationPolicyStackTypeOutput{})
+	pulumi.RegisterOutputType(IPAllocationPolicyStackTypePtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})

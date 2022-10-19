@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.GcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
 
         /// <summary>
+        /// Configuration for the Backup for GKE agent addon.
+        /// </summary>
+        [Input("gkeBackupAgentConfig")]
+        public Input<Inputs.GkeBackupAgentConfigArgs>? GkeBackupAgentConfig { get; set; }
+
+        /// <summary>
         /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         /// </summary>
         [Input("horizontalPodAutoscaling")]

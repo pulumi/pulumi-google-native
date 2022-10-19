@@ -37,9 +37,17 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.BuiltImageResponse> Images;
         /// <summary>
+        /// Maven artifacts uploaded to Artifact Registry at the end of the build.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.UploadedMavenArtifactResponse> MavenArtifacts;
+        /// <summary>
         /// Number of artifacts uploaded. Only populated when artifacts are uploaded.
         /// </summary>
         public readonly string NumArtifacts;
+        /// <summary>
+        /// Python artifacts uploaded to Artifact Registry at the end of the build.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.UploadedPythonPackageResponse> PythonPackages;
 
         [OutputConstructor]
         private ResultsResponse(
@@ -53,14 +61,20 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<Outputs.BuiltImageResponse> images,
 
-            string numArtifacts)
+            ImmutableArray<Outputs.UploadedMavenArtifactResponse> mavenArtifacts,
+
+            string numArtifacts,
+
+            ImmutableArray<Outputs.UploadedPythonPackageResponse> pythonPackages)
         {
             ArtifactManifest = artifactManifest;
             ArtifactTiming = artifactTiming;
             BuildStepImages = buildStepImages;
             BuildStepOutputs = buildStepOutputs;
             Images = images;
+            MavenArtifacts = mavenArtifacts;
             NumArtifacts = numArtifacts;
+            PythonPackages = pythonPackages;
         }
     }
 }

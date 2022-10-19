@@ -670,13 +670,15 @@ class IpConfigurationArgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]]] = None,
+                 enable_private_path_for_google_cloud_services: Optional[pulumi.Input[bool]] = None,
                  ipv4_enabled: Optional[pulumi.Input[bool]] = None,
                  private_network: Optional[pulumi.Input[str]] = None,
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         IP Management configuration.
-        :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         :param pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`).
+        :param pulumi.Input[bool] enable_private_path_for_google_cloud_services: Controls connectivity to private IP instances from Google services, such as BigQuery.
         :param pulumi.Input[bool] ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not.
@@ -685,6 +687,8 @@ class IpConfigurationArgs:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         if authorized_networks is not None:
             pulumi.set(__self__, "authorized_networks", authorized_networks)
+        if enable_private_path_for_google_cloud_services is not None:
+            pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         if ipv4_enabled is not None:
             pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         if private_network is not None:
@@ -696,7 +700,7 @@ class IpConfigurationArgs:
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
+        The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.`
         """
         return pulumi.get(self, "allocated_ip_range")
 
@@ -715,6 +719,18 @@ class IpConfigurationArgs:
     @authorized_networks.setter
     def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryArgs']]]]):
         pulumi.set(self, "authorized_networks", value)
+
+    @property
+    @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
+    def enable_private_path_for_google_cloud_services(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls connectivity to private IP instances from Google services, such as BigQuery.
+        """
+        return pulumi.get(self, "enable_private_path_for_google_cloud_services")
+
+    @enable_private_path_for_google_cloud_services.setter
+    def enable_private_path_for_google_cloud_services(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_path_for_google_cloud_services", value)
 
     @property
     @pulumi.getter(name="ipv4Enabled")

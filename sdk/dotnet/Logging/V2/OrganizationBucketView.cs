@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The id to use for this view.
+        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         /// </summary>
         [Output("viewId")]
         public Output<string> ViewId { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The id to use for this view.
+        /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         /// </summary>
         [Input("viewId", required: true)]
         public Input<string> ViewId { get; set; } = null!;

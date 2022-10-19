@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.NetworkConfigResponse> NetworkConfig { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+        /// The configuration specifying the network settings for the Dataproc Metastore service.
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }

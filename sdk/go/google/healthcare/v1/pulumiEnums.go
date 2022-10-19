@@ -1728,7 +1728,7 @@ const (
 	SchemaConfigSchemaTypeSchemaTypeUnspecified = SchemaConfigSchemaType("SCHEMA_TYPE_UNSPECIFIED")
 	// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`.
 	SchemaConfigSchemaTypeAnalytics = SchemaConfigSchemaType("ANALYTICS")
-	// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
+	// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
 	SchemaConfigSchemaTypeAnalyticsV2 = SchemaConfigSchemaType("ANALYTICS_V2")
 )
 

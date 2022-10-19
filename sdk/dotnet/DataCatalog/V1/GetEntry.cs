@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SchemaResponse Schema;
         /// <summary>
-        /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+        /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse SourceSystemTimestamps;
         /// <summary>

@@ -216,6 +216,8 @@ type AddonsConfig struct {
 	GcePersistentDiskCsiDriverConfig *GcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig *GcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig *GkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling *HorizontalPodAutoscaling `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -249,6 +251,8 @@ type AddonsConfigArgs struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig GkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingPtrInput `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -362,6 +366,11 @@ func (o AddonsConfigOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverC
 	return o.ApplyT(func(v AddonsConfig) *GcpFilestoreCsiDriverConfig { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *GkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *HorizontalPodAutoscaling { return v.HorizontalPodAutoscaling }).(HorizontalPodAutoscalingPtrOutput)
@@ -456,6 +465,16 @@ func (o AddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriv
 	}).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigPtrOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *GkeBackupAgentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GkeBackupAgentConfig
+	}).(GkeBackupAgentConfigPtrOutput)
+}
+
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 func (o AddonsConfigPtrOutput) HorizontalPodAutoscaling() HorizontalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) *HorizontalPodAutoscaling {
@@ -508,6 +527,8 @@ type AddonsConfigResponse struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponse `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponse `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Backup for GKE agent addon.
+	GkeBackupAgentConfig GkeBackupAgentConfigResponse `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 	HorizontalPodAutoscaling HorizontalPodAutoscalingResponse `pulumi:"horizontalPodAutoscaling"`
 	// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -558,6 +579,11 @@ func (o AddonsConfigResponseOutput) GcePersistentDiskCsiDriverConfig() GcePersis
 // Configuration for the GCP Filestore CSI driver.
 func (o AddonsConfigResponseOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) GcpFilestoreCsiDriverConfigResponse { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigResponseOutput)
+}
+
+// Configuration for the Backup for GKE agent addon.
+func (o AddonsConfigResponseOutput) GkeBackupAgentConfig() GkeBackupAgentConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) GkeBackupAgentConfigResponse { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigResponseOutput)
 }
 
 // Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -3092,6 +3118,8 @@ type ClusterUpdate struct {
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
 	DesiredClusterAutoscaling *ClusterAutoscaling `pulumi:"desiredClusterAutoscaling"`
+	// The desired configuration for the fine-grained cost management feature.
+	DesiredCostManagementConfig *CostManagementConfig `pulumi:"desiredCostManagementConfig"`
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption *DatabaseEncryption `pulumi:"desiredDatabaseEncryption"`
 	// The desired datapath provider for the cluster.
@@ -3652,6 +3680,172 @@ func (o ConsumptionMeteringConfigResponseOutput) ToConsumptionMeteringConfigResp
 // Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
 func (o ConsumptionMeteringConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConsumptionMeteringConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfig struct {
+	// Whether the feature is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// CostManagementConfigInput is an input type that accepts CostManagementConfigArgs and CostManagementConfigOutput values.
+// You can construct a concrete instance of `CostManagementConfigInput` via:
+//
+//	CostManagementConfigArgs{...}
+type CostManagementConfigInput interface {
+	pulumi.Input
+
+	ToCostManagementConfigOutput() CostManagementConfigOutput
+	ToCostManagementConfigOutputWithContext(context.Context) CostManagementConfigOutput
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigArgs struct {
+	// Whether the feature is enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (CostManagementConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfig)(nil)).Elem()
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigOutput() CostManagementConfigOutput {
+	return i.ToCostManagementConfigOutputWithContext(context.Background())
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigOutputWithContext(ctx context.Context) CostManagementConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigOutput)
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return i.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CostManagementConfigArgs) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigOutput).ToCostManagementConfigPtrOutputWithContext(ctx)
+}
+
+// CostManagementConfigPtrInput is an input type that accepts CostManagementConfigArgs, CostManagementConfigPtr and CostManagementConfigPtrOutput values.
+// You can construct a concrete instance of `CostManagementConfigPtrInput` via:
+//
+//	        CostManagementConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CostManagementConfigPtrInput interface {
+	pulumi.Input
+
+	ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput
+	ToCostManagementConfigPtrOutputWithContext(context.Context) CostManagementConfigPtrOutput
+}
+
+type costManagementConfigPtrType CostManagementConfigArgs
+
+func CostManagementConfigPtr(v *CostManagementConfigArgs) CostManagementConfigPtrInput {
+	return (*costManagementConfigPtrType)(v)
+}
+
+func (*costManagementConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CostManagementConfig)(nil)).Elem()
+}
+
+func (i *costManagementConfigPtrType) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return i.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *costManagementConfigPtrType) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CostManagementConfigPtrOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfig)(nil)).Elem()
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigOutput() CostManagementConfigOutput {
+	return o
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigOutputWithContext(ctx context.Context) CostManagementConfigOutput {
+	return o
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return o.ToCostManagementConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CostManagementConfigOutput) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CostManagementConfig) *CostManagementConfig {
+		return &v
+	}).(CostManagementConfigPtrOutput)
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CostManagementConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CostManagementConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CostManagementConfig)(nil)).Elem()
+}
+
+func (o CostManagementConfigPtrOutput) ToCostManagementConfigPtrOutput() CostManagementConfigPtrOutput {
+	return o
+}
+
+func (o CostManagementConfigPtrOutput) ToCostManagementConfigPtrOutputWithContext(ctx context.Context) CostManagementConfigPtrOutput {
+	return o
+}
+
+func (o CostManagementConfigPtrOutput) Elem() CostManagementConfigOutput {
+	return o.ApplyT(func(v *CostManagementConfig) CostManagementConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CostManagementConfig
+		return ret
+	}).(CostManagementConfigOutput)
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CostManagementConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigResponse struct {
+	// Whether the feature is enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for fine-grained cost management feature.
+type CostManagementConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CostManagementConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CostManagementConfigResponse)(nil)).Elem()
+}
+
+func (o CostManagementConfigResponseOutput) ToCostManagementConfigResponseOutput() CostManagementConfigResponseOutput {
+	return o
+}
+
+func (o CostManagementConfigResponseOutput) ToCostManagementConfigResponseOutputWithContext(ctx context.Context) CostManagementConfigResponseOutput {
+	return o
+}
+
+// Whether the feature is enabled or not.
+func (o CostManagementConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CostManagementConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // DNSConfig contains the desired set of options for configuring clusterDNS.
@@ -5425,6 +5619,172 @@ func (o GcpFilestoreCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GcpFilestoreCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfig struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GkeBackupAgentConfigInput is an input type that accepts GkeBackupAgentConfigArgs and GkeBackupAgentConfigOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigInput` via:
+//
+//	GkeBackupAgentConfigArgs{...}
+type GkeBackupAgentConfigInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput
+	ToGkeBackupAgentConfigOutputWithContext(context.Context) GkeBackupAgentConfigOutput
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigArgs struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GkeBackupAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput {
+	return i.ToGkeBackupAgentConfigOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigOutputWithContext(ctx context.Context) GkeBackupAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigOutput)
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return i.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeBackupAgentConfigArgs) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigOutput).ToGkeBackupAgentConfigPtrOutputWithContext(ctx)
+}
+
+// GkeBackupAgentConfigPtrInput is an input type that accepts GkeBackupAgentConfigArgs, GkeBackupAgentConfigPtr and GkeBackupAgentConfigPtrOutput values.
+// You can construct a concrete instance of `GkeBackupAgentConfigPtrInput` via:
+//
+//	        GkeBackupAgentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GkeBackupAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput
+	ToGkeBackupAgentConfigPtrOutputWithContext(context.Context) GkeBackupAgentConfigPtrOutput
+}
+
+type gkeBackupAgentConfigPtrType GkeBackupAgentConfigArgs
+
+func GkeBackupAgentConfigPtr(v *GkeBackupAgentConfigArgs) GkeBackupAgentConfigPtrInput {
+	return (*gkeBackupAgentConfigPtrType)(v)
+}
+
+func (*gkeBackupAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (i *gkeBackupAgentConfigPtrType) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return i.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeBackupAgentConfigPtrType) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeBackupAgentConfigPtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigOutput() GkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigOutputWithContext(ctx context.Context) GkeBackupAgentConfigOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return o.ToGkeBackupAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeBackupAgentConfigOutput) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeBackupAgentConfig) *GkeBackupAgentConfig {
+		return &v
+	}).(GkeBackupAgentConfigPtrOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GkeBackupAgentConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GkeBackupAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeBackupAgentConfig)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigPtrOutput) ToGkeBackupAgentConfigPtrOutput() GkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigPtrOutput) ToGkeBackupAgentConfigPtrOutputWithContext(ctx context.Context) GkeBackupAgentConfigPtrOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigPtrOutput) Elem() GkeBackupAgentConfigOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfig) GkeBackupAgentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeBackupAgentConfig
+		return ret
+	}).(GkeBackupAgentConfigOutput)
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeBackupAgentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigResponse struct {
+	// Whether the Backup for GKE agent is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for the Backup for GKE Agent.
+type GkeBackupAgentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeBackupAgentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeBackupAgentConfigResponse)(nil)).Elem()
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponseOutput() GkeBackupAgentConfigResponseOutput {
+	return o
+}
+
+func (o GkeBackupAgentConfigResponseOutput) ToGkeBackupAgentConfigResponseOutputWithContext(ctx context.Context) GkeBackupAgentConfigResponseOutput {
+	return o
+}
+
+// Whether the Backup for GKE agent is enabled for this cluster.
+func (o GkeBackupAgentConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeBackupAgentConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 type HorizontalPodAutoscaling struct {
 	// Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
@@ -5775,6 +6135,8 @@ type IPAllocationPolicy struct {
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork *bool `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType *IPAllocationPolicyIpv6AccessType `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -5789,6 +6151,8 @@ type IPAllocationPolicy struct {
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
+	// The IP stack type of the cluster
+	StackType *IPAllocationPolicyStackType `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName *string `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -5822,6 +6186,8 @@ type IPAllocationPolicyArgs struct {
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork pulumi.BoolPtrInput `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType IPAllocationPolicyIpv6AccessTypePtrInput `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -5836,6 +6202,8 @@ type IPAllocationPolicyArgs struct {
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
+	// The IP stack type of the cluster
+	StackType IPAllocationPolicyStackTypePtrInput `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName pulumi.StringPtrInput `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -5946,6 +6314,11 @@ func (o IPAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.CreateSubnetwork }).(pulumi.BoolPtrOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyOutput) Ipv6AccessType() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicyIpv6AccessType { return v.Ipv6AccessType }).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -5973,6 +6346,11 @@ func (o IPAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput
 // The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 func (o IPAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+}
+
+// The IP stack type of the cluster
+func (o IPAllocationPolicyOutput) StackType() IPAllocationPolicyStackTypePtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *IPAllocationPolicyStackType { return v.StackType }).(IPAllocationPolicyStackTypePtrOutput)
 }
 
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -6061,6 +6439,16 @@ func (o IPAllocationPolicyPtrOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyPtrOutput) Ipv6AccessType() IPAllocationPolicyIpv6AccessTypePtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *IPAllocationPolicyIpv6AccessType {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6AccessType
+	}).(IPAllocationPolicyIpv6AccessTypePtrOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6115,6 +6503,16 @@ func (o IPAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP stack type of the cluster
+func (o IPAllocationPolicyPtrOutput) StackType() IPAllocationPolicyStackTypePtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *IPAllocationPolicyStackType {
+		if v == nil {
+			return nil
+		}
+		return v.StackType
+	}).(IPAllocationPolicyStackTypePtrOutput)
+}
+
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 func (o IPAllocationPolicyPtrOutput) SubnetworkName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
@@ -6167,6 +6565,8 @@ type IPAllocationPolicyResponse struct {
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork bool `pulumi:"createSubnetwork"`
+	// The ipv6 access type (internal or external) when create_subnetwork is true
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
 	// This field is deprecated, use node_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6181,6 +6581,8 @@ type IPAllocationPolicyResponse struct {
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
+	// The IP stack type of the cluster
+	StackType string `pulumi:"stackType"`
 	// A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
 	SubnetworkName string `pulumi:"subnetworkName"`
 	// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -6228,6 +6630,11 @@ func (o IPAllocationPolicyResponseOutput) CreateSubnetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
 }
 
+// The ipv6 access type (internal or external) when create_subnetwork is true
+func (o IPAllocationPolicyResponseOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
 // This field is deprecated, use node_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use node_ipv4_cidr_block.
@@ -6255,6 +6662,11 @@ func (o IPAllocationPolicyResponseOutput) ServicesIpv4CidrBlock() pulumi.StringO
 // The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 func (o IPAllocationPolicyResponseOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
+}
+
+// The IP stack type of the cluster
+func (o IPAllocationPolicyResponseOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -17604,6 +18016,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigConnectorConfigPtrInput)(nil)).Elem(), ConfigConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumptionMeteringConfigPtrInput)(nil)).Elem(), ConsumptionMeteringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CostManagementConfigInput)(nil)).Elem(), CostManagementConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CostManagementConfigPtrInput)(nil)).Elem(), CostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigInput)(nil)).Elem(), DNSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DNSConfigPtrInput)(nil)).Elem(), DNSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DailyMaintenanceWindowInput)(nil)).Elem(), DailyMaintenanceWindowArgs{})
@@ -17624,6 +18038,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigPtrInput)(nil)).Elem(), GcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigPtrInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingPtrInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpLoadBalancingInput)(nil)).Elem(), HttpLoadBalancingArgs{})
@@ -17792,6 +18208,9 @@ func init() {
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponseOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigPtrOutput{})
+	pulumi.RegisterOutputType(CostManagementConfigResponseOutput{})
 	pulumi.RegisterOutputType(DNSConfigOutput{})
 	pulumi.RegisterOutputType(DNSConfigPtrOutput{})
 	pulumi.RegisterOutputType(DNSConfigResponseOutput{})
@@ -17822,6 +18241,9 @@ func init() {
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeBackupAgentConfigResponseOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(HorizontalPodAutoscalingResponseOutput{})

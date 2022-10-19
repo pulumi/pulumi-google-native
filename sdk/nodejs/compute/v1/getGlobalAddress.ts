@@ -46,6 +46,10 @@ export interface GetGlobalAddressResult {
      */
     readonly ipVersion: string;
     /**
+     * The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
+     */
+    readonly ipv6EndpointType: string;
+    /**
      * Type of the resource. Always compute#address for addresses.
      */
     readonly kind: string;

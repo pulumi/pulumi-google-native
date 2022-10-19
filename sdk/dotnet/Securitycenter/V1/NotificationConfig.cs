@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
     /// Creates a notification config.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:NotificationConfig")]
     public partial class NotificationConfig : global::Pulumi.CustomResource
@@ -33,8 +34,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        [Output("organizationId")]
-        public Output<string> OrganizationId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
@@ -80,7 +81,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
                 ReplaceOnChanges =
                 {
                     "configId",
-                    "organizationId",
+                    "project",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -122,8 +123,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationId", required: true)]
-        public Input<string> OrganizationId { get; set; } = null!;
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

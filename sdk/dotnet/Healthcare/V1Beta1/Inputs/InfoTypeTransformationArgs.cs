@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         private InputList<string>? _infoTypes;
 
         /// <summary>
-        /// InfoTypes to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any info_type that is not specified in another transformation.
+        /// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
         /// </summary>
         public InputList<string> InfoTypes
         {

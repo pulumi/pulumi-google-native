@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<bool>? EnableAudioRedaction { get; set; }
 
         /// <summary>
-        /// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
         /// </summary>
         [Input("gcsBucket")]
         public Input<string>? GcsBucket { get; set; }

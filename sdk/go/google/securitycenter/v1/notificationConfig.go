@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a notification config.
+// Auto-naming is currently not supported for this resource.
 type NotificationConfig struct {
 	pulumi.CustomResourceState
 
@@ -20,8 +21,8 @@ type NotificationConfig struct {
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name           pulumi.StringOutput `pulumi:"name"`
-	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
 	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
@@ -40,12 +41,9 @@ func NewNotificationConfig(ctx *pulumi.Context,
 	if args.ConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.OrganizationId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationId'")
-	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"configId",
-		"organizationId",
+		"project",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource NotificationConfig
@@ -85,8 +83,8 @@ type notificationConfigArgs struct {
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The config for triggering streaming-based notifications.
@@ -100,8 +98,8 @@ type NotificationConfigArgs struct {
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name           pulumi.StringPtrInput
-	OrganizationId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
 	// The config for triggering streaming-based notifications.
@@ -160,8 +158,8 @@ func (o NotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o NotificationConfigOutput) OrganizationId() pulumi.StringOutput {
-	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+func (o NotificationConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".

@@ -17,10 +17,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
     public sealed class GoogleCloudDatacatalogV1UsageSignalResponse
     {
         /// <summary>
-        /// Favorite count in the source system.
-        /// </summary>
-        public readonly string FavoriteCount;
-        /// <summary>
         /// The end timestamp of the duration of usage statistics.
         /// </summary>
         public readonly string UpdateTime;
@@ -31,13 +27,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1UsageSignalResponse(
-            string favoriteCount,
-
             string updateTime,
 
             ImmutableDictionary<string, string> usageWithinTimeRange)
         {
-            FavoriteCount = favoriteCount;
             UpdateTime = updateTime;
             UsageWithinTimeRange = usageWithinTimeRange;
         }

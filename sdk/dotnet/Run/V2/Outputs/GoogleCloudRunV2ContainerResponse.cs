@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// Not Supported By Cloud Run. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ProbeResponse LivenessProbe;
         /// <summary>

@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
     /// </summary>
     [EnumType]
     public readonly struct AddressIpv6EndpointType : IEquatable<AddressIpv6EndpointType>
@@ -175,7 +175,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Reserved IPv6 address will be assigned to VM.
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static AddressIpv6EndpointType Netlb { get; } = new AddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
         /// </summary>
         public static AddressIpv6EndpointType Vm { get; } = new AddressIpv6EndpointType("VM");
 
@@ -2632,7 +2636,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    /// The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation.
     /// </summary>
     [EnumType]
     public readonly struct GlobalAddressIpv6EndpointType : IEquatable<GlobalAddressIpv6EndpointType>
@@ -2645,7 +2649,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Reserved IPv6 address will be assigned to VM.
+        /// Reserved IPv6 address can be used on network load balancer.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Netlb { get; } = new GlobalAddressIpv6EndpointType("NETLB");
+        /// <summary>
+        /// Reserved IPv6 address can be used on VM.
         /// </summary>
         public static GlobalAddressIpv6EndpointType Vm { get; } = new GlobalAddressIpv6EndpointType("VM");
 
@@ -7130,6 +7138,55 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RouterBgpPeerEnable other && Equals(other);
         public bool Equals(RouterBgpPeerEnable other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct RouterNatAutoNetworkTier : IEquatable<RouterNatAutoNetworkTier>
+    {
+        private readonly string _value;
+
+        private RouterNatAutoNetworkTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Public internet quality with fixed bandwidth.
+        /// </summary>
+        public static RouterNatAutoNetworkTier FixedStandard { get; } = new RouterNatAutoNetworkTier("FIXED_STANDARD");
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Premium { get; } = new RouterNatAutoNetworkTier("PREMIUM");
+        /// <summary>
+        /// Price competitive network tier, support for all networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Select { get; } = new RouterNatAutoNetworkTier("SELECT");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Standard { get; } = new RouterNatAutoNetworkTier("STANDARD");
+        /// <summary>
+        /// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+        /// </summary>
+        public static RouterNatAutoNetworkTier StandardOverridesFixedStandard { get; } = new RouterNatAutoNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD");
+
+        public static bool operator ==(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => left.Equals(right);
+        public static bool operator !=(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatAutoNetworkTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatAutoNetworkTier other && Equals(other);
+        public bool Equals(RouterNatAutoNetworkTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

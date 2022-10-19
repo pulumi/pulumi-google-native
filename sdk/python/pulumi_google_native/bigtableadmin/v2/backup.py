@@ -200,6 +200,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["size_bytes"] = None
+            __props__.__dict__["source_backup"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "cluster_id", "instance_id", "project"])
@@ -235,6 +236,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["size_bytes"] = None
+        __props__.__dict__["source_backup"] = None
         __props__.__dict__["source_table"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
@@ -302,6 +304,14 @@ class Backup(pulumi.CustomResource):
         Size of the backup in bytes.
         """
         return pulumi.get(self, "size_bytes")
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> pulumi.Output[str]:
+        """
+        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        """
+        return pulumi.get(self, "source_backup")
 
     @property
     @pulumi.getter(name="sourceTable")
