@@ -3820,7 +3820,7 @@
       }
     }
   },
-  "revision": "20220922",
+  "revision": "20221017",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {
@@ -8736,7 +8736,7 @@
           "type": "boolean"
         },
         "gcsBucket": {
-          "description": "Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.",
+          "description": "Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.",
           "type": "string"
         }
       },

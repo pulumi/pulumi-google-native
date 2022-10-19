@@ -14,7 +14,7 @@
   "canonicalName": "Serverless VPC Access",
   "description": "API for managing VPC access connectors.",
   "discoveryVersion": "v1",
-  "documentationLink": "http://cloud.google.com",
+  "documentationLink": "https://cloud.google.com/vpc/docs/configure-serverless-vpc-access",
   "fullyEncodeReservedExpansion": true,
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
@@ -350,7 +350,7 @@
       }
     }
   },
-  "revision": "20220916",
+  "revision": "20221017",
   "rootUrl": "https://vpcaccess.googleapis.com/",
   "schemas": {
     "Connector": {
