@@ -341,7 +341,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     /// </summary>
     [EnumType]
     public readonly struct AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval : IEquatable<AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>
@@ -7205,6 +7205,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
+        /// This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeManagedProxyLb { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB");
+        /// <summary>
         /// This is used for Secure Web Gateway endpoints.
         /// </summary>
         public static RouterNatEndpointTypesItem EndpointTypeSwg { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG");
@@ -7548,38 +7552,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Current Hot Standby state of VM.
-    /// </summary>
-    [EnumType]
-    public readonly struct SchedulingDynamicResizePropertiesHotStandbyState : IEquatable<SchedulingDynamicResizePropertiesHotStandbyState>
-    {
-        private readonly string _value;
-
-        private SchedulingDynamicResizePropertiesHotStandbyState(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static SchedulingDynamicResizePropertiesHotStandbyState Active { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE");
-        public static SchedulingDynamicResizePropertiesHotStandbyState HotstandbyStateUnspecified { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("HOTSTANDBY_STATE_UNSPECIFIED");
-        public static SchedulingDynamicResizePropertiesHotStandbyState Standby { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("STANDBY");
-
-        public static bool operator ==(SchedulingDynamicResizePropertiesHotStandbyState left, SchedulingDynamicResizePropertiesHotStandbyState right) => left.Equals(right);
-        public static bool operator !=(SchedulingDynamicResizePropertiesHotStandbyState left, SchedulingDynamicResizePropertiesHotStandbyState right) => !left.Equals(right);
-
-        public static explicit operator string(SchedulingDynamicResizePropertiesHotStandbyState value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is SchedulingDynamicResizePropertiesHotStandbyState other && Equals(other);
-        public bool Equals(SchedulingDynamicResizePropertiesHotStandbyState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Specifies the termination action for the instance.
     /// </summary>
     [EnumType]
@@ -7621,7 +7593,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// For more information about maintenance intervals, see Setting maintenance intervals.
+    /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     /// </summary>
     [EnumType]
     public readonly struct SchedulingMaintenanceInterval : IEquatable<SchedulingMaintenanceInterval>
@@ -7995,7 +7967,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -8011,7 +7983,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey AllIps { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP");
 
         public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKey left, SecurityPolicyRuleRateLimitOptionsEnforceOnKey right) => left.Equals(right);

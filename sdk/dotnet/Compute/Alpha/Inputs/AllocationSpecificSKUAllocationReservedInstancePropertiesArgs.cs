@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<int>? MaintenanceFreezeDurationHours { get; set; }
 
         /// <summary>
-        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>? MaintenanceInterval { get; set; }

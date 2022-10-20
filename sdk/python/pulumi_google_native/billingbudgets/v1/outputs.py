@@ -170,7 +170,7 @@ class GoogleCloudBillingBudgetsV1FilterResponse(dict):
         :param str credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         :param 'GoogleCloudBillingBudgetsV1CustomPeriodResponse' custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
         :param Mapping[str, str] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-        :param Sequence[str] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
+        :param Sequence[str] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
         :param Sequence[str] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
         :param Sequence[str] subaccounts: Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account is included. If the field is omitted, the report includes usage from the parent account and all subaccounts, if they exist.
         """
@@ -227,7 +227,7 @@ class GoogleCloudBillingBudgetsV1FilterResponse(dict):
     @pulumi.getter
     def projects(self) -> Sequence[str]:
         """
-        Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
+        Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
         """
         return pulumi.get(self, "projects")
 

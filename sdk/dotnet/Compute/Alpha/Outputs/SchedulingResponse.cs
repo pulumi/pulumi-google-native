@@ -32,7 +32,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
         /// </summary>
         public readonly string CurrentMemoryMb;
-        public readonly Outputs.SchedulingDynamicResizePropertiesResponse DynamicResizeProperties;
         /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
@@ -54,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int MaintenanceFreezeDurationHours;
         /// <summary>
-        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>
@@ -96,8 +95,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string currentMemoryMb,
 
-            Outputs.SchedulingDynamicResizePropertiesResponse dynamicResizeProperties,
-
             int hostErrorTimeoutSeconds,
 
             string instanceTerminationAction,
@@ -128,7 +125,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             AvailabilityDomain = availabilityDomain;
             CurrentCpus = currentCpus;
             CurrentMemoryMb = currentMemoryMb;
-            DynamicResizeProperties = dynamicResizeProperties;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LatencyTolerant = latencyTolerant;

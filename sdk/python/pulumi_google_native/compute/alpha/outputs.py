@@ -256,7 +256,6 @@ __all__ = [
     'SSLHealthCheckResponse',
     'SavedAttachedDiskResponse',
     'SavedDiskResponse',
-    'SchedulingDynamicResizePropertiesResponse',
     'SchedulingNodeAffinityResponse',
     'SchedulingResponse',
     'SdsConfigResponse',
@@ -870,7 +869,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
         :param str location_hint: An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
         :param str machine_type: Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
         :param int maintenance_freeze_duration_hours: Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
-        :param str maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param str min_cpu_platform: Minimum cpu platform the reservation.
         """
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
@@ -925,7 +924,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> str:
         """
-        For more information about maintenance intervals, see Setting maintenance intervals.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -7850,6 +7849,8 @@ class HttpRouteRuleMatchResponse(dict):
             suggest = "ignore_case"
         elif key == "metadataFilters":
             suggest = "metadata_filters"
+        elif key == "pathTemplateMatch":
+            suggest = "path_template_match"
         elif key == "prefixMatch":
             suggest = "prefix_match"
         elif key == "queryParameterMatches":
@@ -7873,6 +7874,7 @@ class HttpRouteRuleMatchResponse(dict):
                  header_matches: Sequence['outputs.HttpHeaderMatchResponse'],
                  ignore_case: bool,
                  metadata_filters: Sequence['outputs.MetadataFilterResponse'],
+                 path_template_match: str,
                  prefix_match: str,
                  query_parameter_matches: Sequence['outputs.HttpQueryParameterMatchResponse'],
                  regex_match: str):
@@ -7882,6 +7884,7 @@ class HttpRouteRuleMatchResponse(dict):
         :param Sequence['HttpHeaderMatchResponse'] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
         :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy.
         :param Sequence['MetadataFilterResponse'] metadata_filters: Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param str path_template_match: If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
         :param str prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         :param Sequence['HttpQueryParameterMatchResponse'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
         :param str regex_match: For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -7890,6 +7893,7 @@ class HttpRouteRuleMatchResponse(dict):
         pulumi.set(__self__, "header_matches", header_matches)
         pulumi.set(__self__, "ignore_case", ignore_case)
         pulumi.set(__self__, "metadata_filters", metadata_filters)
+        pulumi.set(__self__, "path_template_match", path_template_match)
         pulumi.set(__self__, "prefix_match", prefix_match)
         pulumi.set(__self__, "query_parameter_matches", query_parameter_matches)
         pulumi.set(__self__, "regex_match", regex_match)
@@ -7925,6 +7929,14 @@ class HttpRouteRuleMatchResponse(dict):
         Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "metadata_filters")
+
+    @property
+    @pulumi.getter(name="pathTemplateMatch")
+    def path_template_match(self) -> str:
+        """
+        If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+        """
+        return pulumi.get(self, "path_template_match")
 
     @property
     @pulumi.getter(name="prefixMatch")
@@ -13155,10 +13167,10 @@ class OutlierDetectionResponse(dict):
         """
         Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
         :param 'DurationResponse' base_ejection_time: The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
-        :param int consecutive_errors: Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
-        :param int consecutive_gateway_failure: The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
-        :param int enforcing_consecutive_errors: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
-        :param int enforcing_consecutive_gateway_failure: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+        :param int consecutive_errors: Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int consecutive_gateway_failure: The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int enforcing_consecutive_errors: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param int enforcing_consecutive_gateway_failure: The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param int enforcing_success_rate: The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
         :param 'DurationResponse' interval: Time interval between ejection analysis sweeps. This can result in both new ejections as well as hosts being returned to service. Defaults to 1 second.
         :param int max_ejection_percent: Maximum percentage of hosts in the load balancing pool for the backend service that can be ejected. Defaults to 50%.
@@ -13190,7 +13202,7 @@ class OutlierDetectionResponse(dict):
     @pulumi.getter(name="consecutiveErrors")
     def consecutive_errors(self) -> int:
         """
-        Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+        Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consecutive_errors")
 
@@ -13198,7 +13210,7 @@ class OutlierDetectionResponse(dict):
     @pulumi.getter(name="consecutiveGatewayFailure")
     def consecutive_gateway_failure(self) -> int:
         """
-        The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+        The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consecutive_gateway_failure")
 
@@ -13206,7 +13218,7 @@ class OutlierDetectionResponse(dict):
     @pulumi.getter(name="enforcingConsecutiveErrors")
     def enforcing_consecutive_errors(self) -> int:
         """
-        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "enforcing_consecutive_errors")
 
@@ -13214,7 +13226,7 @@ class OutlierDetectionResponse(dict):
     @pulumi.getter(name="enforcingConsecutiveGatewayFailure")
     def enforcing_consecutive_gateway_failure(self) -> int:
         """
-        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+        The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "enforcing_consecutive_gateway_failure")
 
@@ -17974,58 +17986,6 @@ class SavedDiskResponse(dict):
 
 
 @pulumi.output_type
-class SchedulingDynamicResizePropertiesResponse(dict):
-    """
-    Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "enableHotStandby":
-            suggest = "enable_hot_standby"
-        elif key == "hotStandbyState":
-            suggest = "hot_standby_state"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SchedulingDynamicResizePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SchedulingDynamicResizePropertiesResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SchedulingDynamicResizePropertiesResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 enable_hot_standby: bool,
-                 hot_standby_state: str):
-        """
-        Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-        :param bool enable_hot_standby: Set to true if this VM is supporting HotStandby modes (b/235044648).
-        :param str hot_standby_state: Current Hot Standby state of VM.
-        """
-        pulumi.set(__self__, "enable_hot_standby", enable_hot_standby)
-        pulumi.set(__self__, "hot_standby_state", hot_standby_state)
-
-    @property
-    @pulumi.getter(name="enableHotStandby")
-    def enable_hot_standby(self) -> bool:
-        """
-        Set to true if this VM is supporting HotStandby modes (b/235044648).
-        """
-        return pulumi.get(self, "enable_hot_standby")
-
-    @property
-    @pulumi.getter(name="hotStandbyState")
-    def hot_standby_state(self) -> str:
-        """
-        Current Hot Standby state of VM.
-        """
-        return pulumi.get(self, "hot_standby_state")
-
-
-@pulumi.output_type
 class SchedulingNodeAffinityResponse(dict):
     """
     Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -18085,8 +18045,6 @@ class SchedulingResponse(dict):
             suggest = "current_cpus"
         elif key == "currentMemoryMb":
             suggest = "current_memory_mb"
-        elif key == "dynamicResizeProperties":
-            suggest = "dynamic_resize_properties"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -18128,7 +18086,6 @@ class SchedulingResponse(dict):
                  availability_domain: int,
                  current_cpus: int,
                  current_memory_mb: str,
-                 dynamic_resize_properties: 'outputs.SchedulingDynamicResizePropertiesResponse',
                  host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  latency_tolerant: bool,
@@ -18153,7 +18110,7 @@ class SchedulingResponse(dict):
         :param bool latency_tolerant: Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
         :param str location_hint: An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         :param int maintenance_freeze_duration_hours: Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
-        :param str maintenance_interval: For more information about maintenance intervals, see Setting maintenance intervals.
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param 'DurationResponse' max_run_duration: Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['SchedulingNodeAffinityResponse'] node_affinities: A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
@@ -18166,7 +18123,6 @@ class SchedulingResponse(dict):
         pulumi.set(__self__, "availability_domain", availability_domain)
         pulumi.set(__self__, "current_cpus", current_cpus)
         pulumi.set(__self__, "current_memory_mb", current_memory_mb)
-        pulumi.set(__self__, "dynamic_resize_properties", dynamic_resize_properties)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "latency_tolerant", latency_tolerant)
@@ -18214,11 +18170,6 @@ class SchedulingResponse(dict):
         return pulumi.get(self, "current_memory_mb")
 
     @property
-    @pulumi.getter(name="dynamicResizeProperties")
-    def dynamic_resize_properties(self) -> 'outputs.SchedulingDynamicResizePropertiesResponse':
-        return pulumi.get(self, "dynamic_resize_properties")
-
-    @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> int:
         """
@@ -18262,7 +18213,7 @@ class SchedulingResponse(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> str:
         """
-        For more information about maintenance intervals, see Setting maintenance intervals.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -19097,6 +19048,9 @@ class SecurityPolicyRuleMatcherResponse(dict):
 
 @pulumi.output_type
 class SecurityPolicyRuleNetworkMatcherResponse(dict):
+    """
+    Represents a match condition that incoming network traffic is evaluated against.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -19138,6 +19092,7 @@ class SecurityPolicyRuleNetworkMatcherResponse(dict):
                  src_region_codes: Sequence[str],
                  user_defined_fields: Sequence['outputs.SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse']):
         """
+        Represents a match condition that incoming network traffic is evaluated against.
         :param Sequence[str] dest_ip_ranges: Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
         :param Sequence[str] dest_ports: Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
         :param Sequence[str] ip_protocols: IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
@@ -19446,7 +19401,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         :param 'SecurityPolicyRuleRateLimitOptionsRpcStatusResponse' exceed_action_rpc_status: Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
@@ -19491,7 +19446,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -19717,7 +19672,7 @@ class SecurityPolicyRuleResponse(dict):
         :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers.
         :param str kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param 'SecurityPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
-        :param 'SecurityPolicyRuleNetworkMatcherResponse' network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+        :param 'SecurityPolicyRuleNetworkMatcherResponse' network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
         :param 'SecurityPolicyRulePreconfiguredWafConfigResponse' preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param bool preview: If set to true, the specified action is not enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -19810,7 +19765,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter(name="networkMatch")
     def network_match(self) -> 'outputs.SecurityPolicyRuleNetworkMatcherResponse':
         """
-        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
         """
         return pulumi.get(self, "network_match")
 
@@ -22085,6 +22040,8 @@ class UrlRewriteResponse(dict):
             suggest = "host_rewrite"
         elif key == "pathPrefixRewrite":
             suggest = "path_prefix_rewrite"
+        elif key == "pathTemplateRewrite":
+            suggest = "path_template_rewrite"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in UrlRewriteResponse. Access the value via the '{suggest}' property getter instead.")
@@ -22099,14 +22056,17 @@ class UrlRewriteResponse(dict):
 
     def __init__(__self__, *,
                  host_rewrite: str,
-                 path_prefix_rewrite: str):
+                 path_prefix_rewrite: str,
+                 path_template_rewrite: str):
         """
         The spec for modifying the path before sending the request to the matched backend service.
         :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
         :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
+        :param str path_template_rewrite:  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
         """
         pulumi.set(__self__, "host_rewrite", host_rewrite)
         pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+        pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -22123,6 +22083,14 @@ class UrlRewriteResponse(dict):
         Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_prefix_rewrite")
+
+    @property
+    @pulumi.getter(name="pathTemplateRewrite")
+    def path_template_rewrite(self) -> str:
+        """
+         If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+        """
+        return pulumi.get(self, "path_template_rewrite")
 
 
 @pulumi.output_type

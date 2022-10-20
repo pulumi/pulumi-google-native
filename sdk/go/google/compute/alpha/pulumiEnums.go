@@ -1369,7 +1369,7 @@ func (in *allocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfacePtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval string
 
 const (
@@ -30543,6 +30543,8 @@ func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutputWithCo
 type RouterNatEndpointTypesItem string
 
 const (
+	// This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+	RouterNatEndpointTypesItemEndpointTypeManagedProxyLb = RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB")
 	// This is used for Secure Web Gateway endpoints.
 	RouterNatEndpointTypesItemEndpointTypeSwg = RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG")
 	// This is the default.
@@ -32145,172 +32147,6 @@ func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
-// Current Hot Standby state of VM.
-type SchedulingDynamicResizePropertiesHotStandbyState string
-
-const (
-	SchedulingDynamicResizePropertiesHotStandbyStateActive                     = SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE")
-	SchedulingDynamicResizePropertiesHotStandbyStateHotstandbyStateUnspecified = SchedulingDynamicResizePropertiesHotStandbyState("HOTSTANDBY_STATE_UNSPECIFIED")
-	SchedulingDynamicResizePropertiesHotStandbyStateStandby                    = SchedulingDynamicResizePropertiesHotStandbyState("STANDBY")
-)
-
-func (SchedulingDynamicResizePropertiesHotStandbyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
-	return pulumi.ToOutput(e).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return e.ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Background())
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return SchedulingDynamicResizePropertiesHotStandbyState(e).ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx).ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx)
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type SchedulingDynamicResizePropertiesHotStandbyStateOutput struct{ *pulumi.OutputState }
-
-func (SchedulingDynamicResizePropertiesHotStandbyStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o.ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Background())
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingDynamicResizePropertiesHotStandbyState) *SchedulingDynamicResizePropertiesHotStandbyState {
-		return &v
-	}).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingDynamicResizePropertiesHotStandbyState) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingDynamicResizePropertiesHotStandbyState) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) Elem() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
-	return o.ApplyT(func(v *SchedulingDynamicResizePropertiesHotStandbyState) SchedulingDynamicResizePropertiesHotStandbyState {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulingDynamicResizePropertiesHotStandbyState
-		return ret
-	}).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchedulingDynamicResizePropertiesHotStandbyState) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// SchedulingDynamicResizePropertiesHotStandbyStateInput is an input type that accepts SchedulingDynamicResizePropertiesHotStandbyStateArgs and SchedulingDynamicResizePropertiesHotStandbyStateOutput values.
-// You can construct a concrete instance of `SchedulingDynamicResizePropertiesHotStandbyStateInput` via:
-//
-//	SchedulingDynamicResizePropertiesHotStandbyStateArgs{...}
-type SchedulingDynamicResizePropertiesHotStandbyStateInput interface {
-	pulumi.Input
-
-	ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput
-	ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput
-}
-
-var schedulingDynamicResizePropertiesHotStandbyStatePtrType = reflect.TypeOf((**SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
-
-type SchedulingDynamicResizePropertiesHotStandbyStatePtrInput interface {
-	pulumi.Input
-
-	ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput
-	ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput
-}
-
-type schedulingDynamicResizePropertiesHotStandbyStatePtr string
-
-func SchedulingDynamicResizePropertiesHotStandbyStatePtr(v string) SchedulingDynamicResizePropertiesHotStandbyStatePtrInput {
-	return (*schedulingDynamicResizePropertiesHotStandbyStatePtr)(&v)
-}
-
-func (*schedulingDynamicResizePropertiesHotStandbyStatePtr) ElementType() reflect.Type {
-	return schedulingDynamicResizePropertiesHotStandbyStatePtrType
-}
-
-func (in *schedulingDynamicResizePropertiesHotStandbyStatePtr) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return pulumi.ToOutput(in).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
-}
-
-func (in *schedulingDynamicResizePropertiesHotStandbyStatePtr) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
-}
-
 // Specifies the termination action for the instance.
 type SchedulingInstanceTerminationAction string
 
@@ -32480,7 +32316,7 @@ func (in *schedulingInstanceTerminationActionPtr) ToSchedulingInstanceTerminatio
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingInstanceTerminationActionPtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 type SchedulingMaintenanceInterval string
 
 const (
@@ -34308,7 +34144,7 @@ func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToS
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
@@ -34316,7 +34152,10 @@ const (
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAllIps     = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpPath   = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI")
 	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
 )
 
@@ -40053,8 +39892,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnablePtrInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierPtrInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemPtrInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemPtrInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_MANAGED_PROXY_LB"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemArrayInput)(nil)).Elem(), RouterNatEndpointTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigFilterInput)(nil)).Elem(), RouterNatLogConfigFilter("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigFilterPtrInput)(nil)).Elem(), RouterNatLogConfigFilter("ALL"))
@@ -40073,8 +39912,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckPortSpecificationPtrInput)(nil)).Elem(), SSLHealthCheckPortSpecification("USE_FIXED_PORT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckProxyHeaderInput)(nil)).Elem(), SSLHealthCheckProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckProxyHeaderPtrInput)(nil)).Elem(), SSLHealthCheckProxyHeader("NONE"))
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyStateInput)(nil)).Elem(), SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE"))
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyStatePtrInput)(nil)).Elem(), SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInstanceTerminationActionInput)(nil)).Elem(), SchedulingInstanceTerminationAction("DELETE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInstanceTerminationActionPtrInput)(nil)).Elem(), SchedulingInstanceTerminationAction("DELETE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingMaintenanceIntervalInput)(nil)).Elem(), SchedulingMaintenanceInterval("PERIODIC"))
@@ -40545,8 +40382,6 @@ func init() {
 	pulumi.RegisterOutputType(SSLHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderPtrOutput{})
-	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesHotStandbyStateOutput{})
-	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionOutput{})
 	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingMaintenanceIntervalOutput{})

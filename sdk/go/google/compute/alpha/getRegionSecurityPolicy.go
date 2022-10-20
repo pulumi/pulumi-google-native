@@ -56,7 +56,7 @@ type LookupRegionSecurityPolicyResult struct {
 	Region string `pulumi:"region"`
 	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
-	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRuleResponse `pulumi:"rules"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -195,7 +195,7 @@ func (o LookupRegionSecurityPolicyResultOutput) RuleTupleCount() pulumi.IntOutpu
 	return o.ApplyT(func(v LookupRegionSecurityPolicyResult) int { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
-// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+// A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 func (o LookupRegionSecurityPolicyResultOutput) Rules() SecurityPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupRegionSecurityPolicyResult) []SecurityPolicyRuleResponse { return v.Rules }).(SecurityPolicyRuleResponseArrayOutput)
 }

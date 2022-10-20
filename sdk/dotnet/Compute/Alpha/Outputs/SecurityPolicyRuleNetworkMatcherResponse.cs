@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
+    /// <summary>
+    /// Represents a match condition that incoming network traffic is evaluated against.
+    /// </summary>
     [OutputType]
     public sealed class SecurityPolicyRuleNetworkMatcherResponse
     {

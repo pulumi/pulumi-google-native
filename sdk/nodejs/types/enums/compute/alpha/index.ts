@@ -175,7 +175,7 @@ export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanc
 } as const;
 
 /**
- * For more information about maintenance intervals, see Setting maintenance intervals.
+ * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
  */
 export type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval = (typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval)[keyof typeof AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval];
 
@@ -3390,6 +3390,10 @@ export type RouterNatAutoNetworkTier = (typeof RouterNatAutoNetworkTier)[keyof t
 
 export const RouterNatEndpointTypesItem = {
     /**
+     * This is used for Regional Internal/External HTTP(S) and TCP Proxy load balancer endpoints.
+     */
+    EndpointTypeManagedProxyLb: "ENDPOINT_TYPE_MANAGED_PROXY_LB",
+    /**
      * This is used for Secure Web Gateway endpoints.
      */
     EndpointTypeSwg: "ENDPOINT_TYPE_SWG",
@@ -3552,17 +3556,6 @@ export const SSLHealthCheckProxyHeader = {
  */
 export type SSLHealthCheckProxyHeader = (typeof SSLHealthCheckProxyHeader)[keyof typeof SSLHealthCheckProxyHeader];
 
-export const SchedulingDynamicResizePropertiesHotStandbyState = {
-    Active: "ACTIVE",
-    HotstandbyStateUnspecified: "HOTSTANDBY_STATE_UNSPECIFIED",
-    Standby: "STANDBY",
-} as const;
-
-/**
- * Current Hot Standby state of VM.
- */
-export type SchedulingDynamicResizePropertiesHotStandbyState = (typeof SchedulingDynamicResizePropertiesHotStandbyState)[keyof typeof SchedulingDynamicResizePropertiesHotStandbyState];
-
 export const SchedulingInstanceTerminationAction = {
     /**
      * Delete the VM.
@@ -3591,7 +3584,7 @@ export const SchedulingMaintenanceInterval = {
 } as const;
 
 /**
- * For more information about maintenance intervals, see Setting maintenance intervals.
+ * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
  */
 export type SchedulingMaintenanceInterval = (typeof SchedulingMaintenanceInterval)[keyof typeof SchedulingMaintenanceInterval];
 
@@ -3731,12 +3724,15 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     AllIps: "ALL_IPS",
     HttpCookie: "HTTP_COOKIE",
     HttpHeader: "HTTP_HEADER",
+    HttpPath: "HTTP_PATH",
     Ip: "IP",
+    RegionCode: "REGION_CODE",
+    Sni: "SNI",
     XffIp: "XFF_IP",
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
+    /// <summary>
+    /// Represents a match condition that incoming network traffic is evaluated against.
+    /// </summary>
     public sealed class SecurityPolicyRuleNetworkMatcherArgs : global::Pulumi.ResourceArgs
     {
         [Input("destIpRanges")]

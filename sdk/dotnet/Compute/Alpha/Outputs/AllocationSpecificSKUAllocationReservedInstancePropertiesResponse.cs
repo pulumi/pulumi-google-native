@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int MaintenanceFreezeDurationHours;
         /// <summary>
-        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>

@@ -1132,7 +1132,7 @@ type AllocationSpecificSKUAllocationReservedInstanceProperties struct {
 	MachineType *string `pulumi:"machineType"`
 	// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours *int `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval *AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval `pulumi:"maintenanceInterval"`
 	// Minimum cpu platform the reservation.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
@@ -1161,7 +1161,7 @@ type AllocationSpecificSKUAllocationReservedInstancePropertiesArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours pulumi.IntPtrInput `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrInput `pulumi:"maintenanceInterval"`
 	// Minimum cpu platform the reservation.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
@@ -1276,7 +1276,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesOutput) Mainten
 	}).(pulumi.IntPtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesOutput) MaintenanceInterval() AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUAllocationReservedInstanceProperties) *AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval {
 		return v.MaintenanceInterval
@@ -1362,7 +1362,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput) Main
 	}).(pulumi.IntPtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput) MaintenanceInterval() AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput {
 	return o.ApplyT(func(v *AllocationSpecificSKUAllocationReservedInstanceProperties) *AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval {
 		if v == nil {
@@ -1394,7 +1394,7 @@ type AllocationSpecificSKUAllocationReservedInstancePropertiesResponse struct {
 	MachineType string `pulumi:"machineType"`
 	// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours int `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
 	// Minimum cpu platform the reservation.
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
@@ -1448,7 +1448,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
 	}).(pulumi.IntOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v AllocationSpecificSKUAllocationReservedInstancePropertiesResponse) string {
 		return v.MaintenanceInterval
@@ -22283,6 +22283,8 @@ type HttpRouteRuleMatch struct {
 	IgnoreCase *bool `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilter `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch *string `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -22312,6 +22314,8 @@ type HttpRouteRuleMatchArgs struct {
 	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters MetadataFilterArrayInput `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch pulumi.StringPtrInput `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -22392,6 +22396,11 @@ func (o HttpRouteRuleMatchOutput) MetadataFilters() MetadataFilterArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) []MetadataFilter { return v.MetadataFilters }).(MetadataFilterArrayOutput)
 }
 
+// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+func (o HttpRouteRuleMatchOutput) PathTemplateMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PathTemplateMatch }).(pulumi.StringPtrOutput)
+}
+
 // For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
@@ -22437,6 +22446,8 @@ type HttpRouteRuleMatchResponse struct {
 	IgnoreCase bool `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilterResponse `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch string `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -22478,6 +22489,11 @@ func (o HttpRouteRuleMatchResponseOutput) IgnoreCase() pulumi.BoolOutput {
 // Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleMatchResponseOutput) MetadataFilters() MetadataFilterResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []MetadataFilterResponse { return v.MetadataFilters }).(MetadataFilterResponseArrayOutput)
+}
+
+// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+func (o HttpRouteRuleMatchResponseOutput) PathTemplateMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.PathTemplateMatch }).(pulumi.StringOutput)
 }
 
 // For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
@@ -35261,13 +35277,13 @@ func (o OriginAuthenticationMethodResponseArrayOutput) Index(i pulumi.IntInput) 
 type OutlierDetection struct {
 	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime *Duration `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveErrors *int `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveGatewayFailure *int `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveErrors *int `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveGatewayFailure *int `pulumi:"enforcingConsecutiveGatewayFailure"`
 	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate *int `pulumi:"enforcingSuccessRate"`
@@ -35298,13 +35314,13 @@ type OutlierDetectionInput interface {
 type OutlierDetectionArgs struct {
 	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime DurationPtrInput `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveErrors pulumi.IntPtrInput `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveGatewayFailure pulumi.IntPtrInput `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveErrors pulumi.IntPtrInput `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveGatewayFailure pulumi.IntPtrInput `pulumi:"enforcingConsecutiveGatewayFailure"`
 	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate pulumi.IntPtrInput `pulumi:"enforcingSuccessRate"`
@@ -35403,22 +35419,22 @@ func (o OutlierDetectionOutput) BaseEjectionTime() DurationPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *Duration { return v.BaseEjectionTime }).(DurationPtrOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.ConsecutiveErrors }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.ConsecutiveGatewayFailure }).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.EnforcingConsecutiveErrors }).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OutlierDetection) *int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntPtrOutput)
 }
@@ -35487,7 +35503,7 @@ func (o OutlierDetectionPtrOutput) BaseEjectionTime() DurationPtrOutput {
 	}).(DurationPtrOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -35497,7 +35513,7 @@ func (o OutlierDetectionPtrOutput) ConsecutiveErrors() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionPtrOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -35507,7 +35523,7 @@ func (o OutlierDetectionPtrOutput) ConsecutiveGatewayFailure() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionPtrOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -35517,7 +35533,7 @@ func (o OutlierDetectionPtrOutput) EnforcingConsecutiveErrors() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionPtrOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OutlierDetection) *int {
 		if v == nil {
@@ -35591,13 +35607,13 @@ func (o OutlierDetectionPtrOutput) SuccessRateStdevFactor() pulumi.IntPtrOutput 
 type OutlierDetectionResponse struct {
 	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
 	BaseEjectionTime DurationResponse `pulumi:"baseEjectionTime"`
-	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+	// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+	// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+	// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
 	// The percentage chance that a host will be actually ejected when an outlier status is detected through success rate statistics. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
 	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
@@ -35633,22 +35649,22 @@ func (o OutlierDetectionResponseOutput) BaseEjectionTime() DurationResponseOutpu
 	return o.ApplyT(func(v OutlierDetectionResponse) DurationResponse { return v.BaseEjectionTime }).(DurationResponseOutput)
 }
 
-// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5.
+// Number of errors before a host is ejected from the connection pool. When the backend host is accessed over HTTP, a 5xx return code qualifies as an error. Defaults to 5. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionResponseOutput) ConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
 }
 
-// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3.
+// The number of consecutive gateway failures (502, 503, 504 status or connection errors that are mapped to one of those status codes) before a consecutive gateway failure ejection occurs. Defaults to 3. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionResponseOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive 5xx. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 0. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionResponseOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
 }
 
-// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100.
+// The percentage chance that a host will be actually ejected when an outlier status is detected through consecutive gateway failures. This setting can be used to disable ejection or to ramp it up slowly. Defaults to 100. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o OutlierDetectionResponseOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v OutlierDetectionResponse) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
@@ -47204,8 +47220,7 @@ type Scheduling struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus *int `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb         *string                            `pulumi:"currentMemoryMb"`
-	DynamicResizeProperties *SchedulingDynamicResizeProperties `pulumi:"dynamicResizeProperties"`
+	CurrentMemoryMb *string `pulumi:"currentMemoryMb"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds *int `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -47216,7 +47231,7 @@ type Scheduling struct {
 	LocationHint *string `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours *int `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval *SchedulingMaintenanceInterval `pulumi:"maintenanceInterval"`
 	// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
 	MaxRunDuration *Duration `pulumi:"maxRunDuration"`
@@ -47254,8 +47269,7 @@ type SchedulingArgs struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus pulumi.IntPtrInput `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb         pulumi.StringPtrInput                     `pulumi:"currentMemoryMb"`
-	DynamicResizeProperties SchedulingDynamicResizePropertiesPtrInput `pulumi:"dynamicResizeProperties"`
+	CurrentMemoryMb pulumi.StringPtrInput `pulumi:"currentMemoryMb"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds pulumi.IntPtrInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -47266,7 +47280,7 @@ type SchedulingArgs struct {
 	LocationHint pulumi.StringPtrInput `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours pulumi.IntPtrInput `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval SchedulingMaintenanceIntervalPtrInput `pulumi:"maintenanceInterval"`
 	// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
 	MaxRunDuration DurationPtrInput `pulumi:"maxRunDuration"`
@@ -47382,10 +47396,6 @@ func (o SchedulingOutput) CurrentMemoryMb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Scheduling) *string { return v.CurrentMemoryMb }).(pulumi.StringPtrOutput)
 }
 
-func (o SchedulingOutput) DynamicResizeProperties() SchedulingDynamicResizePropertiesPtrOutput {
-	return o.ApplyT(func(v Scheduling) *SchedulingDynamicResizeProperties { return v.DynamicResizeProperties }).(SchedulingDynamicResizePropertiesPtrOutput)
-}
-
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o SchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Scheduling) *int { return v.HostErrorTimeoutSeconds }).(pulumi.IntPtrOutput)
@@ -47411,7 +47421,7 @@ func (o SchedulingOutput) MaintenanceFreezeDurationHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Scheduling) *int { return v.MaintenanceFreezeDurationHours }).(pulumi.IntPtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o SchedulingOutput) MaintenanceInterval() SchedulingMaintenanceIntervalPtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingMaintenanceInterval { return v.MaintenanceInterval }).(SchedulingMaintenanceIntervalPtrOutput)
 }
@@ -47515,15 +47525,6 @@ func (o SchedulingPtrOutput) CurrentMemoryMb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SchedulingPtrOutput) DynamicResizeProperties() SchedulingDynamicResizePropertiesPtrOutput {
-	return o.ApplyT(func(v *Scheduling) *SchedulingDynamicResizeProperties {
-		if v == nil {
-			return nil
-		}
-		return v.DynamicResizeProperties
-	}).(SchedulingDynamicResizePropertiesPtrOutput)
-}
-
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o SchedulingPtrOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Scheduling) *int {
@@ -47574,7 +47575,7 @@ func (o SchedulingPtrOutput) MaintenanceFreezeDurationHours() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o SchedulingPtrOutput) MaintenanceInterval() SchedulingMaintenanceIntervalPtrOutput {
 	return o.ApplyT(func(v *Scheduling) *SchedulingMaintenanceInterval {
 		if v == nil {
@@ -47652,200 +47653,6 @@ func (o SchedulingPtrOutput) TerminationTime() pulumi.StringPtrOutput {
 		}
 		return v.TerminationTime
 	}).(pulumi.StringPtrOutput)
-}
-
-// Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-type SchedulingDynamicResizeProperties struct {
-	// Set to true if this VM is supporting HotStandby modes (b/235044648).
-	EnableHotStandby *bool `pulumi:"enableHotStandby"`
-	// Current Hot Standby state of VM.
-	HotStandbyState *SchedulingDynamicResizePropertiesHotStandbyState `pulumi:"hotStandbyState"`
-}
-
-// SchedulingDynamicResizePropertiesInput is an input type that accepts SchedulingDynamicResizePropertiesArgs and SchedulingDynamicResizePropertiesOutput values.
-// You can construct a concrete instance of `SchedulingDynamicResizePropertiesInput` via:
-//
-//	SchedulingDynamicResizePropertiesArgs{...}
-type SchedulingDynamicResizePropertiesInput interface {
-	pulumi.Input
-
-	ToSchedulingDynamicResizePropertiesOutput() SchedulingDynamicResizePropertiesOutput
-	ToSchedulingDynamicResizePropertiesOutputWithContext(context.Context) SchedulingDynamicResizePropertiesOutput
-}
-
-// Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-type SchedulingDynamicResizePropertiesArgs struct {
-	// Set to true if this VM is supporting HotStandby modes (b/235044648).
-	EnableHotStandby pulumi.BoolPtrInput `pulumi:"enableHotStandby"`
-	// Current Hot Standby state of VM.
-	HotStandbyState SchedulingDynamicResizePropertiesHotStandbyStatePtrInput `pulumi:"hotStandbyState"`
-}
-
-func (SchedulingDynamicResizePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingDynamicResizeProperties)(nil)).Elem()
-}
-
-func (i SchedulingDynamicResizePropertiesArgs) ToSchedulingDynamicResizePropertiesOutput() SchedulingDynamicResizePropertiesOutput {
-	return i.ToSchedulingDynamicResizePropertiesOutputWithContext(context.Background())
-}
-
-func (i SchedulingDynamicResizePropertiesArgs) ToSchedulingDynamicResizePropertiesOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingDynamicResizePropertiesOutput)
-}
-
-func (i SchedulingDynamicResizePropertiesArgs) ToSchedulingDynamicResizePropertiesPtrOutput() SchedulingDynamicResizePropertiesPtrOutput {
-	return i.ToSchedulingDynamicResizePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i SchedulingDynamicResizePropertiesArgs) ToSchedulingDynamicResizePropertiesPtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingDynamicResizePropertiesOutput).ToSchedulingDynamicResizePropertiesPtrOutputWithContext(ctx)
-}
-
-// SchedulingDynamicResizePropertiesPtrInput is an input type that accepts SchedulingDynamicResizePropertiesArgs, SchedulingDynamicResizePropertiesPtr and SchedulingDynamicResizePropertiesPtrOutput values.
-// You can construct a concrete instance of `SchedulingDynamicResizePropertiesPtrInput` via:
-//
-//	        SchedulingDynamicResizePropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type SchedulingDynamicResizePropertiesPtrInput interface {
-	pulumi.Input
-
-	ToSchedulingDynamicResizePropertiesPtrOutput() SchedulingDynamicResizePropertiesPtrOutput
-	ToSchedulingDynamicResizePropertiesPtrOutputWithContext(context.Context) SchedulingDynamicResizePropertiesPtrOutput
-}
-
-type schedulingDynamicResizePropertiesPtrType SchedulingDynamicResizePropertiesArgs
-
-func SchedulingDynamicResizePropertiesPtr(v *SchedulingDynamicResizePropertiesArgs) SchedulingDynamicResizePropertiesPtrInput {
-	return (*schedulingDynamicResizePropertiesPtrType)(v)
-}
-
-func (*schedulingDynamicResizePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulingDynamicResizeProperties)(nil)).Elem()
-}
-
-func (i *schedulingDynamicResizePropertiesPtrType) ToSchedulingDynamicResizePropertiesPtrOutput() SchedulingDynamicResizePropertiesPtrOutput {
-	return i.ToSchedulingDynamicResizePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *schedulingDynamicResizePropertiesPtrType) ToSchedulingDynamicResizePropertiesPtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchedulingDynamicResizePropertiesPtrOutput)
-}
-
-// Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-type SchedulingDynamicResizePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SchedulingDynamicResizePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingDynamicResizeProperties)(nil)).Elem()
-}
-
-func (o SchedulingDynamicResizePropertiesOutput) ToSchedulingDynamicResizePropertiesOutput() SchedulingDynamicResizePropertiesOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesOutput) ToSchedulingDynamicResizePropertiesOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesOutput) ToSchedulingDynamicResizePropertiesPtrOutput() SchedulingDynamicResizePropertiesPtrOutput {
-	return o.ToSchedulingDynamicResizePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o SchedulingDynamicResizePropertiesOutput) ToSchedulingDynamicResizePropertiesPtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingDynamicResizeProperties) *SchedulingDynamicResizeProperties {
-		return &v
-	}).(SchedulingDynamicResizePropertiesPtrOutput)
-}
-
-// Set to true if this VM is supporting HotStandby modes (b/235044648).
-func (o SchedulingDynamicResizePropertiesOutput) EnableHotStandby() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SchedulingDynamicResizeProperties) *bool { return v.EnableHotStandby }).(pulumi.BoolPtrOutput)
-}
-
-// Current Hot Standby state of VM.
-func (o SchedulingDynamicResizePropertiesOutput) HotStandbyState() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o.ApplyT(func(v SchedulingDynamicResizeProperties) *SchedulingDynamicResizePropertiesHotStandbyState {
-		return v.HotStandbyState
-	}).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
-}
-
-type SchedulingDynamicResizePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SchedulingDynamicResizePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchedulingDynamicResizeProperties)(nil)).Elem()
-}
-
-func (o SchedulingDynamicResizePropertiesPtrOutput) ToSchedulingDynamicResizePropertiesPtrOutput() SchedulingDynamicResizePropertiesPtrOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesPtrOutput) ToSchedulingDynamicResizePropertiesPtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesPtrOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesPtrOutput) Elem() SchedulingDynamicResizePropertiesOutput {
-	return o.ApplyT(func(v *SchedulingDynamicResizeProperties) SchedulingDynamicResizeProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SchedulingDynamicResizeProperties
-		return ret
-	}).(SchedulingDynamicResizePropertiesOutput)
-}
-
-// Set to true if this VM is supporting HotStandby modes (b/235044648).
-func (o SchedulingDynamicResizePropertiesPtrOutput) EnableHotStandby() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SchedulingDynamicResizeProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableHotStandby
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Current Hot Standby state of VM.
-func (o SchedulingDynamicResizePropertiesPtrOutput) HotStandbyState() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
-	return o.ApplyT(func(v *SchedulingDynamicResizeProperties) *SchedulingDynamicResizePropertiesHotStandbyState {
-		if v == nil {
-			return nil
-		}
-		return v.HotStandbyState
-	}).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
-}
-
-// Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-type SchedulingDynamicResizePropertiesResponse struct {
-	// Set to true if this VM is supporting HotStandby modes (b/235044648).
-	EnableHotStandby bool `pulumi:"enableHotStandby"`
-	// Current Hot Standby state of VM.
-	HotStandbyState string `pulumi:"hotStandbyState"`
-}
-
-// Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
-type SchedulingDynamicResizePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SchedulingDynamicResizePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchedulingDynamicResizePropertiesResponse)(nil)).Elem()
-}
-
-func (o SchedulingDynamicResizePropertiesResponseOutput) ToSchedulingDynamicResizePropertiesResponseOutput() SchedulingDynamicResizePropertiesResponseOutput {
-	return o
-}
-
-func (o SchedulingDynamicResizePropertiesResponseOutput) ToSchedulingDynamicResizePropertiesResponseOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesResponseOutput {
-	return o
-}
-
-// Set to true if this VM is supporting HotStandby modes (b/235044648).
-func (o SchedulingDynamicResizePropertiesResponseOutput) EnableHotStandby() pulumi.BoolOutput {
-	return o.ApplyT(func(v SchedulingDynamicResizePropertiesResponse) bool { return v.EnableHotStandby }).(pulumi.BoolOutput)
-}
-
-// Current Hot Standby state of VM.
-func (o SchedulingDynamicResizePropertiesResponseOutput) HotStandbyState() pulumi.StringOutput {
-	return o.ApplyT(func(v SchedulingDynamicResizePropertiesResponse) string { return v.HotStandbyState }).(pulumi.StringOutput)
 }
 
 // Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -48035,8 +47842,7 @@ type SchedulingResponse struct {
 	// Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
 	CurrentCpus int `pulumi:"currentCpus"`
 	// Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
-	CurrentMemoryMb         string                                    `pulumi:"currentMemoryMb"`
-	DynamicResizeProperties SchedulingDynamicResizePropertiesResponse `pulumi:"dynamicResizeProperties"`
+	CurrentMemoryMb string `pulumi:"currentMemoryMb"`
 	// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Specifies the termination action for the instance.
@@ -48047,7 +47853,7 @@ type SchedulingResponse struct {
 	LocationHint string `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
 	MaintenanceFreezeDurationHours int `pulumi:"maintenanceFreezeDurationHours"`
-	// For more information about maintenance intervals, see Setting maintenance intervals.
+	// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
 	// Specifies the max run duration for the given instance. If specified, the instance termination action will be performed at the end of the run duration.
 	MaxRunDuration DurationResponse `pulumi:"maxRunDuration"`
@@ -48100,10 +47906,6 @@ func (o SchedulingResponseOutput) CurrentMemoryMb() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.CurrentMemoryMb }).(pulumi.StringOutput)
 }
 
-func (o SchedulingResponseOutput) DynamicResizeProperties() SchedulingDynamicResizePropertiesResponseOutput {
-	return o.ApplyT(func(v SchedulingResponse) SchedulingDynamicResizePropertiesResponse { return v.DynamicResizeProperties }).(SchedulingDynamicResizePropertiesResponseOutput)
-}
-
 // Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o SchedulingResponseOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v SchedulingResponse) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
@@ -48129,7 +47931,7 @@ func (o SchedulingResponseOutput) MaintenanceFreezeDurationHours() pulumi.IntOut
 	return o.ApplyT(func(v SchedulingResponse) int { return v.MaintenanceFreezeDurationHours }).(pulumi.IntOutput)
 }
 
-// For more information about maintenance intervals, see Setting maintenance intervals.
+// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
 func (o SchedulingResponseOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
@@ -49990,7 +49792,7 @@ type SecurityPolicyRule struct {
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
-	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
 	NetworkMatch *SecurityPolicyRuleNetworkMatcher `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig *SecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
@@ -50037,7 +49839,7 @@ type SecurityPolicyRuleArgs struct {
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
-	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
 	NetworkMatch SecurityPolicyRuleNetworkMatcherPtrInput `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigPtrInput `pulumi:"preconfiguredWafConfig"`
@@ -50141,7 +49943,7 @@ func (o SecurityPolicyRuleOutput) Match() SecurityPolicyRuleMatcherPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleMatcher { return v.Match }).(SecurityPolicyRuleMatcherPtrOutput)
 }
 
-// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
 func (o SecurityPolicyRuleOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleNetworkMatcher { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherPtrOutput)
 }
@@ -51312,6 +51114,7 @@ func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOu
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
 }
 
+// Represents a match condition that incoming network traffic is evaluated against.
 type SecurityPolicyRuleNetworkMatcher struct {
 	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
 	DestIpRanges []string `pulumi:"destIpRanges"`
@@ -51342,6 +51145,7 @@ type SecurityPolicyRuleNetworkMatcherInput interface {
 	ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherOutput
 }
 
+// Represents a match condition that incoming network traffic is evaluated against.
 type SecurityPolicyRuleNetworkMatcherArgs struct {
 	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
@@ -51414,6 +51218,7 @@ func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMat
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherPtrOutput)
 }
 
+// Represents a match condition that incoming network traffic is evaluated against.
 type SecurityPolicyRuleNetworkMatcherOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyRuleNetworkMatcherOutput) ElementType() reflect.Type {
@@ -51584,6 +51389,7 @@ func (o SecurityPolicyRuleNetworkMatcherPtrOutput) UserDefinedFields() SecurityP
 	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
 }
 
+// Represents a match condition that incoming network traffic is evaluated against.
 type SecurityPolicyRuleNetworkMatcherResponse struct {
 	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
 	DestIpRanges []string `pulumi:"destIpRanges"`
@@ -51603,6 +51409,7 @@ type SecurityPolicyRuleNetworkMatcherResponse struct {
 	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse `pulumi:"userDefinedFields"`
 }
 
+// Represents a match condition that incoming network traffic is evaluated against.
 type SecurityPolicyRuleNetworkMatcherResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyRuleNetworkMatcherResponseOutput) ElementType() reflect.Type {
@@ -52384,7 +52191,7 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
@@ -52416,7 +52223,7 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
@@ -52524,7 +52331,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
@@ -52616,7 +52423,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -52683,7 +52490,7 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
@@ -52728,7 +52535,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
@@ -53346,7 +53153,7 @@ type SecurityPolicyRuleResponse struct {
 	Kind string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherResponse `pulumi:"match"`
-	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
 	NetworkMatch SecurityPolicyRuleNetworkMatcherResponse `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigResponse `pulumi:"preconfiguredWafConfig"`
@@ -53422,7 +53229,7 @@ func (o SecurityPolicyRuleResponseOutput) Match() SecurityPolicyRuleMatcherRespo
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleMatcherResponse { return v.Match }).(SecurityPolicyRuleMatcherResponseOutput)
 }
 
-// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
 func (o SecurityPolicyRuleResponseOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleNetworkMatcherResponse { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherResponseOutput)
 }
@@ -53637,6 +53444,345 @@ func (o SecurityPolicyUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) Secu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedField {
 		return vs[0].([]SecurityPolicyUserDefinedField)[vs[1].(int)]
 	}).(SecurityPolicyUserDefinedFieldOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponse struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base string `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size int `pulumi:"size"`
+}
+
+type SecurityPolicyUserDefinedFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutput() SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Base() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Base }).(pulumi.StringOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Mask() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Mask }).(pulumi.StringOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutput() SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedFieldResponse {
+		return vs[0].([]SecurityPolicyUserDefinedFieldResponse)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldResponseOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettings struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication *string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy *AuthenticationPolicy `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// SecuritySettingsInput is an input type that accepts SecuritySettingsArgs and SecuritySettingsOutput values.
+// You can construct a concrete instance of `SecuritySettingsInput` via:
+//
+//	SecuritySettingsArgs{...}
+type SecuritySettingsInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsOutput() SecuritySettingsOutput
+	ToSecuritySettingsOutputWithContext(context.Context) SecuritySettingsOutput
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsArgs struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyPtrInput `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (SecuritySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return i.ToSecuritySettingsOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput)
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput).ToSecuritySettingsPtrOutputWithContext(ctx)
+}
+
+// SecuritySettingsPtrInput is an input type that accepts SecuritySettingsArgs, SecuritySettingsPtr and SecuritySettingsPtrOutput values.
+// You can construct a concrete instance of `SecuritySettingsPtrInput` via:
+//
+//	        SecuritySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecuritySettingsPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput
+	ToSecuritySettingsPtrOutputWithContext(context.Context) SecuritySettingsPtrOutput
+}
+
+type securitySettingsPtrType SecuritySettingsArgs
+
+func SecuritySettingsPtr(v *SecuritySettingsArgs) SecuritySettingsPtrInput {
+	return (*securitySettingsPtrType)(v)
+}
+
+func (*securitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsPtrOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettings) *SecuritySettings {
+		return &v
+	}).(SecuritySettingsPtrOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthenticationPolicy { return v.AuthenticationPolicy }).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthorizationConfig { return v.AuthorizationConfig }).(AuthorizationConfigPtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type SecuritySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
+	return o.ApplyT(func(v *SecuritySettings) SecuritySettings {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettings
+		return ret
+	}).(SecuritySettingsOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsPtrOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthenticationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationPolicy
+	}).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsPtrOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthorizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationConfig
+	}).(AuthorizationConfigPtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *ClientTlsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsSettings
+	}).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecuritySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltNames
+	}).(pulumi.StringArrayOutput)
 }
 
 func init() {
@@ -54037,8 +54183,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SavedDiskArrayInput)(nil)).Elem(), SavedDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesInput)(nil)).Elem(), SchedulingDynamicResizePropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesPtrInput)(nil)).Elem(), SchedulingDynamicResizePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdsConfigInput)(nil)).Elem(), SdsConfigArgs{})
@@ -54095,6 +54239,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldArrayInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
@@ -54826,9 +54972,6 @@ func init() {
 	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
-	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesOutput{})
-	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
@@ -54922,4 +55065,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 }

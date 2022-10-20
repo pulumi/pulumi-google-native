@@ -10,345 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type SecurityPolicyUserDefinedFieldResponse struct {
-	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
-	Base string `pulumi:"base"`
-	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
-	Mask string `pulumi:"mask"`
-	// The name of this field. Must be unique within the policy.
-	Name string `pulumi:"name"`
-	// Offset of the first byte of the field (in network byte order) relative to 'base'.
-	Offset int `pulumi:"offset"`
-	// Size of the field in bytes. Valid values: 1-4.
-	Size int `pulumi:"size"`
-}
-
-type SecurityPolicyUserDefinedFieldResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyUserDefinedFieldResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutput() SecurityPolicyUserDefinedFieldResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseOutput {
-	return o
-}
-
-// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
-func (o SecurityPolicyUserDefinedFieldResponseOutput) Base() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Base }).(pulumi.StringOutput)
-}
-
-// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
-func (o SecurityPolicyUserDefinedFieldResponseOutput) Mask() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Mask }).(pulumi.StringOutput)
-}
-
-// The name of this field. Must be unique within the policy.
-func (o SecurityPolicyUserDefinedFieldResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Offset of the first byte of the field (in network byte order) relative to 'base'.
-func (o SecurityPolicyUserDefinedFieldResponseOutput) Offset() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Offset }).(pulumi.IntOutput)
-}
-
-// Size of the field in bytes. Valid values: 1-4.
-func (o SecurityPolicyUserDefinedFieldResponseOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type SecurityPolicyUserDefinedFieldResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyUserDefinedFieldResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutput() SecurityPolicyUserDefinedFieldResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedFieldResponse {
-		return vs[0].([]SecurityPolicyUserDefinedFieldResponse)[vs[1].(int)]
-	}).(SecurityPolicyUserDefinedFieldResponseOutput)
-}
-
-// The authentication and authorization settings for a BackendService.
-type SecuritySettings struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	//
-	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
-	Authentication *string `pulumi:"authentication"`
-	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-	//
-	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-	AuthenticationPolicy *AuthenticationPolicy `pulumi:"authenticationPolicy"`
-	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-	//
-	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
-	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
-	// [Deprecated] TLS Settings for the backend service.
-	//
-	// Deprecated: [Deprecated] TLS Settings for the backend service.
-	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
-	SubjectAltNames []string `pulumi:"subjectAltNames"`
-}
-
-// SecuritySettingsInput is an input type that accepts SecuritySettingsArgs and SecuritySettingsOutput values.
-// You can construct a concrete instance of `SecuritySettingsInput` via:
-//
-//	SecuritySettingsArgs{...}
-type SecuritySettingsInput interface {
-	pulumi.Input
-
-	ToSecuritySettingsOutput() SecuritySettingsOutput
-	ToSecuritySettingsOutputWithContext(context.Context) SecuritySettingsOutput
-}
-
-// The authentication and authorization settings for a BackendService.
-type SecuritySettingsArgs struct {
-	// [Deprecated] Use clientTlsPolicy instead.
-	//
-	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
-	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
-	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-	//
-	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-	AuthenticationPolicy AuthenticationPolicyPtrInput `pulumi:"authenticationPolicy"`
-	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-	//
-	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
-	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
-	// [Deprecated] TLS Settings for the backend service.
-	//
-	// Deprecated: [Deprecated] TLS Settings for the backend service.
-	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
-	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
-}
-
-func (SecuritySettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
-}
-
-func (i SecuritySettingsArgs) ToSecuritySettingsOutput() SecuritySettingsOutput {
-	return i.ToSecuritySettingsOutputWithContext(context.Background())
-}
-
-func (i SecuritySettingsArgs) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput)
-}
-
-func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
-	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput).ToSecuritySettingsPtrOutputWithContext(ctx)
-}
-
-// SecuritySettingsPtrInput is an input type that accepts SecuritySettingsArgs, SecuritySettingsPtr and SecuritySettingsPtrOutput values.
-// You can construct a concrete instance of `SecuritySettingsPtrInput` via:
-//
-//	        SecuritySettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecuritySettingsPtrInput interface {
-	pulumi.Input
-
-	ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput
-	ToSecuritySettingsPtrOutputWithContext(context.Context) SecuritySettingsPtrOutput
-}
-
-type securitySettingsPtrType SecuritySettingsArgs
-
-func SecuritySettingsPtr(v *SecuritySettingsArgs) SecuritySettingsPtrInput {
-	return (*securitySettingsPtrType)(v)
-}
-
-func (*securitySettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
-}
-
-func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
-	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsPtrOutput)
-}
-
-// The authentication and authorization settings for a BackendService.
-type SecuritySettingsOutput struct{ *pulumi.OutputState }
-
-func (SecuritySettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
-}
-
-func (o SecuritySettingsOutput) ToSecuritySettingsOutput() SecuritySettingsOutput {
-	return o
-}
-
-func (o SecuritySettingsOutput) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
-	return o
-}
-
-func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
-	return o.ToSecuritySettingsPtrOutputWithContext(context.Background())
-}
-
-func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettings) *SecuritySettings {
-		return &v
-	}).(SecuritySettingsPtrOutput)
-}
-
-// [Deprecated] Use clientTlsPolicy instead.
-//
-// Deprecated: [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-//
-// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-func (o SecuritySettingsOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *AuthenticationPolicy { return v.AuthenticationPolicy }).(AuthenticationPolicyPtrOutput)
-}
-
-// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-//
-// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-func (o SecuritySettingsOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *AuthorizationConfig { return v.AuthorizationConfig }).(AuthorizationConfigPtrOutput)
-}
-
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
-func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] TLS Settings for the backend service.
-//
-// Deprecated: [Deprecated] TLS Settings for the backend service.
-func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
-	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
-}
-
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
-func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
-}
-
-type SecuritySettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (SecuritySettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
-}
-
-func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
-	return o
-}
-
-func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
-	return o
-}
-
-func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
-	return o.ApplyT(func(v *SecuritySettings) SecuritySettings {
-		if v != nil {
-			return *v
-		}
-		var ret SecuritySettings
-		return ret
-	}).(SecuritySettingsOutput)
-}
-
-// [Deprecated] Use clientTlsPolicy instead.
-//
-// Deprecated: [Deprecated] Use clientTlsPolicy instead.
-func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Authentication
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-//
-// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
-func (o SecuritySettingsPtrOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *AuthenticationPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.AuthenticationPolicy
-	}).(AuthenticationPolicyPtrOutput)
-}
-
-// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-//
-// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
-func (o SecuritySettingsPtrOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *AuthorizationConfig {
-		if v == nil {
-			return nil
-		}
-		return v.AuthorizationConfig
-	}).(AuthorizationConfigPtrOutput)
-}
-
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
-func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientTlsPolicy
-	}).(pulumi.StringPtrOutput)
-}
-
-// [Deprecated] TLS Settings for the backend service.
-//
-// Deprecated: [Deprecated] TLS Settings for the backend service.
-func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
-	return o.ApplyT(func(v *SecuritySettings) *ClientTlsSettings {
-		if v == nil {
-			return nil
-		}
-		return v.ClientTlsSettings
-	}).(ClientTlsSettingsPtrOutput)
-}
-
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
-func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecuritySettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SubjectAltNames
-	}).(pulumi.StringArrayOutput)
-}
-
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsResponse struct {
 	// [Deprecated] Use clientTlsPolicy instead.
@@ -6244,6 +5905,8 @@ type UrlRewrite struct {
 	HostRewrite *string `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite *string `pulumi:"pathTemplateRewrite"`
 }
 
 // UrlRewriteInput is an input type that accepts UrlRewriteArgs and UrlRewriteOutput values.
@@ -6263,6 +5926,8 @@ type UrlRewriteArgs struct {
 	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite pulumi.StringPtrInput `pulumi:"pathTemplateRewrite"`
 }
 
 func (UrlRewriteArgs) ElementType() reflect.Type {
@@ -6353,6 +6018,11 @@ func (o UrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
 }
 
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewriteOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlRewrite) *string { return v.PathTemplateRewrite }).(pulumi.StringPtrOutput)
+}
+
 type UrlRewritePtrOutput struct{ *pulumi.OutputState }
 
 func (UrlRewritePtrOutput) ElementType() reflect.Type {
@@ -6397,12 +6067,24 @@ func (o UrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewritePtrOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathTemplateRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewriteResponse struct {
 	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite string `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite string `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite string `pulumi:"pathTemplateRewrite"`
 }
 
 // The spec for modifying the path before sending the request to the matched backend service.
@@ -6428,6 +6110,11 @@ func (o UrlRewriteResponseOutput) HostRewrite() pulumi.StringOutput {
 // Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewriteResponseOutput) PathPrefixRewrite() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteResponse) string { return v.PathPrefixRewrite }).(pulumi.StringOutput)
+}
+
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewriteResponseOutput) PathTemplateRewrite() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlRewriteResponse) string { return v.PathTemplateRewrite }).(pulumi.StringOutput)
 }
 
 // A VPN gateway interface.
@@ -6762,8 +6449,6 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingInput)(nil)).Elem(), ServerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingPtrInput)(nil)).Elem(), ServerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsInput)(nil)).Elem(), ServerTlsSettingsArgs{})
@@ -6824,10 +6509,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
-	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecuritySettingsOutput{})
-	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})
 	pulumi.RegisterOutputType(ServerBindingOutput{})
 	pulumi.RegisterOutputType(ServerBindingPtrOutput{})

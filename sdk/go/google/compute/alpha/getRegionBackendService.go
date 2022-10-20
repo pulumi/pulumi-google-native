@@ -77,7 +77,7 @@ type LookupRegionBackendServiceResult struct {
 	Name string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
 	Network string `pulumi:"network"`
-	// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2, or GRPC, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	OutlierDetection OutlierDetectionResponse `pulumi:"outlierDetection"`
 	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
 	//
@@ -281,7 +281,7 @@ func (o LookupRegionBackendServiceResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2, or GRPC, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 func (o LookupRegionBackendServiceResultOutput) OutlierDetection() OutlierDetectionResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) OutlierDetectionResponse { return v.OutlierDetection }).(OutlierDetectionResponseOutput)
 }
