@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.27.0 (2022-10-20)
+
+Upgraded pulumi dependencies and added latest upstream SDK changes.
+
 ## 0.26.1 (2022-10-07)
 
 ### BUG FIXES/ENHANCEMENTS
