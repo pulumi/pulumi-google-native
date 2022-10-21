@@ -3,9 +3,54 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-## 0.27.0 (2022-10-20)
+## 0.27.0 (2022-10-21)
+### BREAKING CHANGE
+Upstream API changes affected the following:
+- `Resource "google-native:securitycenter/v1:NotificationConfig" missing input "organizationId"`
+- `Resource "google-native:securitycenter/v1:NotificationConfig" missing output "organizationId"`
+- `Function "google-native:securitycenter/v1:getNotificationConfig" missing input "organizationId"`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse" missing`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1ColumnSchema" missing property "lookerColumnSpec"`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1UsageSignalResponse" missing property "favoriteCount"`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1ColumnSchemaResponse" missing property "lookerColumnSpec"`
+- `Type "google-native:compute/alpha:Scheduling" missing property "dynamicResizeProperties"`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType" missing`
+- `Type "google-native:compute/alpha:SchedulingDynamicResizePropertiesHotStandbyState" missing`
+- `Type "google-native:compute/alpha:SchedulingDynamicResizeProperties" missing`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec" missing`
+- `Type "google-native:compute/alpha:SchedulingResponse" missing property "dynamicResizeProperties"`
+- `Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1UsageSignal" missing property "favoriteCount"`
+- `Type "google-native:compute/alpha:SchedulingDynamicResizePropertiesResponse" missing`
 
-Upgraded pulumi dependencies and added latest upstream SDK changes.
+### New resources:
+
+- `beyondcorp/v1alpha.NetConnection`
+- `beyondcorp/v1alpha.NetConnectionIamBinding`
+- `beyondcorp/v1alpha.NetConnectionIamMember`
+- `beyondcorp/v1alpha.NetConnectionIamPolicy`
+- `certificatemanager/v1.CertificateIssuanceConfig`
+- `cloudidentity/v1beta1.InboundSamlSsoProfile`
+- `cloudidentity/v1beta1.InboundSsoAssignment`
+- `contentwarehouse/v1.Document`
+- `contentwarehouse/v1.DocumentSchema`
+- `contentwarehouse/v1.RuleSet`
+- `contentwarehouse/v1.SynonymSet`
+- `securitycenter/v1.FolderNotificationConfig`
+- `securitycenter/v1.OrganizationNotificationConfig`
+
+### New functions:
+
+- `beyondcorp/v1alpha.getNetConnection`
+- `beyondcorp/v1alpha.getNetConnectionIamPolicy`
+- `certificatemanager/v1.getCertificateIssuanceConfig`
+- `cloudidentity/v1beta1.getInboundSamlSsoProfile`
+- `cloudidentity/v1beta1.getInboundSsoAssignment`
+- `contentwarehouse/v1.getDocument`
+- `contentwarehouse/v1.getDocumentSchema`
+- `contentwarehouse/v1.getRuleSet`
+- `contentwarehouse/v1.getSynonymSet`
+- `securitycenter/v1.getFolderNotificationConfig`
+- `securitycenter/v1.getOrganizationNotificationConfig`
 
 ## 0.26.1 (2022-10-07)
 
