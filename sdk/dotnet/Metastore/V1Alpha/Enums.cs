@@ -354,4 +354,42 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
         public override string ToString() => _value;
     }
+
+    [EnumType]
+    public readonly struct TelemetryConfigLogFormat : IEquatable<TelemetryConfigLogFormat>
+    {
+        private readonly string _value;
+
+        private TelemetryConfigLogFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The LOG_FORMAT is not set.
+        /// </summary>
+        public static TelemetryConfigLogFormat LogFormatUnspecified { get; } = new TelemetryConfigLogFormat("LOG_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// Logging output uses the legacy textPayload format.
+        /// </summary>
+        public static TelemetryConfigLogFormat Legacy { get; } = new TelemetryConfigLogFormat("LEGACY");
+        /// <summary>
+        /// Logging output uses the jsonPayload format.
+        /// </summary>
+        public static TelemetryConfigLogFormat Json { get; } = new TelemetryConfigLogFormat("JSON");
+
+        public static bool operator ==(TelemetryConfigLogFormat left, TelemetryConfigLogFormat right) => left.Equals(right);
+        public static bool operator !=(TelemetryConfigLogFormat left, TelemetryConfigLogFormat right) => !left.Equals(right);
+
+        public static explicit operator string(TelemetryConfigLogFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TelemetryConfigLogFormat other && Equals(other);
+        public bool Equals(TelemetryConfigLogFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

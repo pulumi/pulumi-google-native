@@ -514,7 +514,11 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Describes the Build step of the function that builds a container from the given source.
 type BuildConfig struct {
-	// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Specifies one of the Google provided buildpack stacks.
+	BuildpackStack *string `pulumi:"buildpackStack"`
+	// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	DockerRegistry *BuildConfigDockerRegistry `pulumi:"dockerRegistry"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository *string `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint *string `pulumi:"entryPoint"`
@@ -541,7 +545,11 @@ type BuildConfigInput interface {
 
 // Describes the Build step of the function that builds a container from the given source.
 type BuildConfigArgs struct {
-	// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Specifies one of the Google provided buildpack stacks.
+	BuildpackStack pulumi.StringPtrInput `pulumi:"buildpackStack"`
+	// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	DockerRegistry BuildConfigDockerRegistryPtrInput `pulumi:"dockerRegistry"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringPtrInput `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
@@ -633,7 +641,17 @@ func (o BuildConfigOutput) ToBuildConfigPtrOutputWithContext(ctx context.Context
 	}).(BuildConfigPtrOutput)
 }
 
-// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Specifies one of the Google provided buildpack stacks.
+func (o BuildConfigOutput) BuildpackStack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *string { return v.BuildpackStack }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o BuildConfigOutput) DockerRegistry() BuildConfigDockerRegistryPtrOutput {
+	return o.ApplyT(func(v BuildConfig) *BuildConfigDockerRegistry { return v.DockerRegistry }).(BuildConfigDockerRegistryPtrOutput)
+}
+
+// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfig) *string { return v.DockerRepository }).(pulumi.StringPtrOutput)
 }
@@ -687,7 +705,27 @@ func (o BuildConfigPtrOutput) Elem() BuildConfigOutput {
 	}).(BuildConfigOutput)
 }
 
-// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Specifies one of the Google provided buildpack stacks.
+func (o BuildConfigPtrOutput) BuildpackStack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildpackStack
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o BuildConfigPtrOutput) DockerRegistry() BuildConfigDockerRegistryPtrOutput {
+	return o.ApplyT(func(v *BuildConfig) *BuildConfigDockerRegistry {
+		if v == nil {
+			return nil
+		}
+		return v.DockerRegistry
+	}).(BuildConfigDockerRegistryPtrOutput)
+}
+
+// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigPtrOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildConfig) *string {
 		if v == nil {
@@ -751,7 +789,11 @@ func (o BuildConfigPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 type BuildConfigResponse struct {
 	// The Cloud Build name of the latest successful deployment of the function.
 	Build string `pulumi:"build"`
-	// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+	// Specifies one of the Google provided buildpack stacks.
+	BuildpackStack string `pulumi:"buildpackStack"`
+	// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	DockerRegistry string `pulumi:"dockerRegistry"`
+	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository string `pulumi:"dockerRepository"`
 	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
 	EntryPoint string `pulumi:"entryPoint"`
@@ -787,7 +829,17 @@ func (o BuildConfigResponseOutput) Build() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.Build }).(pulumi.StringOutput)
 }
 
-// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+// Specifies one of the Google provided buildpack stacks.
+func (o BuildConfigResponseOutput) BuildpackStack() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildConfigResponse) string { return v.BuildpackStack }).(pulumi.StringOutput)
+}
+
+// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o BuildConfigResponseOutput) DockerRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildConfigResponse) string { return v.DockerRegistry }).(pulumi.StringOutput)
+}
+
+// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 func (o BuildConfigResponseOutput) DockerRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildConfigResponse) string { return v.DockerRepository }).(pulumi.StringOutput)
 }
@@ -2523,6 +2575,8 @@ type ServiceConfig struct {
 	SecretEnvironmentVariables []SecretEnvVar `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes []SecretVolume `pulumi:"secretVolumes"`
+	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	SecurityLevel *ServiceConfigSecurityLevel `pulumi:"securityLevel"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -2562,6 +2616,8 @@ type ServiceConfigArgs struct {
 	SecretEnvironmentVariables SecretEnvVarArrayInput `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes SecretVolumeArrayInput `pulumi:"secretVolumes"`
+	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	SecurityLevel ServiceConfigSecurityLevelPtrInput `pulumi:"securityLevel"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -2690,6 +2746,11 @@ func (o ServiceConfigOutput) SecretVolumes() SecretVolumeArrayOutput {
 	return o.ApplyT(func(v ServiceConfig) []SecretVolume { return v.SecretVolumes }).(SecretVolumeArrayOutput)
 }
 
+// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+func (o ServiceConfigOutput) SecurityLevel() ServiceConfigSecurityLevelPtrOutput {
+	return o.ApplyT(func(v ServiceConfig) *ServiceConfigSecurityLevel { return v.SecurityLevel }).(ServiceConfigSecurityLevelPtrOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -2814,6 +2875,16 @@ func (o ServiceConfigPtrOutput) SecretVolumes() SecretVolumeArrayOutput {
 	}).(SecretVolumeArrayOutput)
 }
 
+// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+func (o ServiceConfigPtrOutput) SecurityLevel() ServiceConfigSecurityLevelPtrOutput {
+	return o.ApplyT(func(v *ServiceConfig) *ServiceConfigSecurityLevel {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(ServiceConfigSecurityLevelPtrOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *string {
@@ -2874,6 +2945,8 @@ type ServiceConfigResponse struct {
 	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes []SecretVolumeResponse `pulumi:"secretVolumes"`
+	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	SecurityLevel string `pulumi:"securityLevel"`
 	// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
 	Service string `pulumi:"service"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
@@ -2946,6 +3019,11 @@ func (o ServiceConfigResponseOutput) SecretEnvironmentVariables() SecretEnvVarRe
 // Secret volumes configuration.
 func (o ServiceConfigResponseOutput) SecretVolumes() SecretVolumeResponseArrayOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) []SecretVolumeResponse { return v.SecretVolumes }).(SecretVolumeResponseArrayOutput)
+}
+
+// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+func (o ServiceConfigResponseOutput) SecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) string { return v.SecurityLevel }).(pulumi.StringOutput)
 }
 
 // Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`

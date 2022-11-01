@@ -21,7 +21,6 @@ __all__ = [
     'GoogleCloudRunV2EnvVarSourceResponse',
     'GoogleCloudRunV2ExecutionReferenceResponse',
     'GoogleCloudRunV2ExecutionTemplateResponse',
-    'GoogleCloudRunV2GRPCActionResponse',
     'GoogleCloudRunV2HTTPGetActionResponse',
     'GoogleCloudRunV2HTTPHeaderResponse',
     'GoogleCloudRunV2ProbeResponse',
@@ -690,39 +689,6 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunV2GRPCActionResponse(dict):
-    """
-    GRPCAction describes an action involving a GRPC port.
-    """
-    def __init__(__self__, *,
-                 port: int,
-                 service: str):
-        """
-        GRPCAction describes an action involving a GRPC port.
-        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535.
-        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-        """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "service", service)
-
-    @property
-    @pulumi.getter
-    def port(self) -> int:
-        """
-        Port number of the gRPC service. Number must be in the range 1 to 65535.
-        """
-        return pulumi.get(self, "port")
-
-    @property
-    @pulumi.getter
-    def service(self) -> str:
-        """
-        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-        """
-        return pulumi.get(self, "service")
-
-
-@pulumi.output_type
 class GoogleCloudRunV2HTTPGetActionResponse(dict):
     """
     HTTPGetAction describes an action based on HTTP Get requests.
@@ -745,29 +711,15 @@ class GoogleCloudRunV2HTTPGetActionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 host: str,
                  http_headers: Sequence['outputs.GoogleCloudRunV2HTTPHeaderResponse'],
-                 path: str,
-                 scheme: str):
+                 path: str):
         """
         HTTPGetAction describes an action based on HTTP Get requests.
-        :param str host: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
         :param Sequence['GoogleCloudRunV2HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
-        :param str scheme: Scheme to use for connecting to the host. Defaults to HTTP.
         """
-        pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "scheme", scheme)
-
-    @property
-    @pulumi.getter
-    def host(self) -> str:
-        """
-        Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        """
-        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -784,14 +736,6 @@ class GoogleCloudRunV2HTTPGetActionResponse(dict):
         Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
-
-    @property
-    @pulumi.getter
-    def scheme(self) -> str:
-        """
-        Scheme to use for connecting to the host. Defaults to HTTP.
-        """
-        return pulumi.get(self, "scheme")
 
 
 @pulumi.output_type
@@ -861,7 +805,6 @@ class GoogleCloudRunV2ProbeResponse(dict):
 
     def __init__(__self__, *,
                  failure_threshold: int,
-                 grpc: 'outputs.GoogleCloudRunV2GRPCActionResponse',
                  http_get: 'outputs.GoogleCloudRunV2HTTPGetActionResponse',
                  initial_delay_seconds: int,
                  period_seconds: int,
@@ -870,15 +813,13 @@ class GoogleCloudRunV2ProbeResponse(dict):
         """
         Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'GoogleCloudRunV2GRPCActionResponse' grpc: GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-        :param 'GoogleCloudRunV2HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        :param 'GoogleCloudRunV2HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
-        :param 'GoogleCloudRunV2TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        :param 'GoogleCloudRunV2TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         pulumi.set(__self__, "failure_threshold", failure_threshold)
-        pulumi.set(__self__, "grpc", grpc)
         pulumi.set(__self__, "http_get", http_get)
         pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         pulumi.set(__self__, "period_seconds", period_seconds)
@@ -894,18 +835,10 @@ class GoogleCloudRunV2ProbeResponse(dict):
         return pulumi.get(self, "failure_threshold")
 
     @property
-    @pulumi.getter
-    def grpc(self) -> 'outputs.GoogleCloudRunV2GRPCActionResponse':
-        """
-        GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-        """
-        return pulumi.get(self, "grpc")
-
-    @property
     @pulumi.getter(name="httpGet")
     def http_get(self) -> 'outputs.GoogleCloudRunV2HTTPGetActionResponse':
         """
-        HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         """
         return pulumi.get(self, "http_get")
 
@@ -929,7 +862,7 @@ class GoogleCloudRunV2ProbeResponse(dict):
     @pulumi.getter(name="tcpSocket")
     def tcp_socket(self) -> 'outputs.GoogleCloudRunV2TCPSocketActionResponse':
         """
-        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
         """
         return pulumi.get(self, "tcp_socket")
 
@@ -1312,29 +1245,18 @@ class GoogleCloudRunV2TCPSocketActionResponse(dict):
     TCPSocketAction describes an action based on opening a socket
     """
     def __init__(__self__, *,
-                 host: str,
                  port: int):
         """
         TCPSocketAction describes an action based on opening a socket
-        :param str host: Host name to connect to, defaults to the pod IP.
-        :param int port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         """
-        pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
-
-    @property
-    @pulumi.getter
-    def host(self) -> str:
-        """
-        Host name to connect to, defaults to the pod IP.
-        """
-        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def port(self) -> int:
         """
-        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         """
         return pulumi.get(self, "port")
 

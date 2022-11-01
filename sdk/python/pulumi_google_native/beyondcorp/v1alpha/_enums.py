@@ -15,6 +15,8 @@ __all__ = [
     'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus',
     'GoogleIamV1AuditLogConfigLogType',
     'ResourceInfoStatus',
+    'SubscriptionSku',
+    'SubscriptionType',
 ]
 
 
@@ -187,4 +189,40 @@ class ResourceInfoStatus(str, Enum):
     DEGRADED = "DEGRADED"
     """
     Some sub-resources are UNHEALTHY.
+    """
+
+
+class SubscriptionSku(str, Enum):
+    """
+    Required. SKU of subscription.
+    """
+    SKU_UNSPECIFIED = "SKU_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    BCE_STANDARD_SKU = "BCE_STANDARD_SKU"
+    """
+    Represents BeyondCorp Standard SKU.
+    """
+
+
+class SubscriptionType(str, Enum):
+    """
+    Required. Type of subscription.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    TRIAL = "TRIAL"
+    """
+    Represents a trial subscription.
+    """
+    PAID = "PAID"
+    """
+    Represents a paid subscription.
+    """
+    ALLOWLIST = "ALLOWLIST"
+    """
+    Reresents an allowlisted subscription.
     """

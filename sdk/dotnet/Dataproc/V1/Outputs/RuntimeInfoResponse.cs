@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class RuntimeInfoResponse
     {
         /// <summary>
+        /// Approximate workload resource usage calculated after workload finishes.
+        /// </summary>
+        public readonly Outputs.UsageMetricsResponse ApproximateUsage;
+        /// <summary>
         /// A URI pointing to the location of the diagnostics tarball.
         /// </summary>
         public readonly string DiagnosticOutputUri;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
         [OutputConstructor]
         private RuntimeInfoResponse(
+            Outputs.UsageMetricsResponse approximateUsage,
+
             string diagnosticOutputUri,
 
             ImmutableDictionary<string, string> endpoints,
 
             string outputUri)
         {
+            ApproximateUsage = approximateUsage;
             DiagnosticOutputUri = diagnosticOutputUri;
             Endpoints = endpoints;
             OutputUri = outputUri;

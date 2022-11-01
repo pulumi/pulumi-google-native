@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<Inputs.RepoSourceArgs>? RepoSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this location in in Google Cloud Storage.
+        /// If provided, get the source from this location in Google Cloud Storage.
         /// </summary>
         [Input("storageSource")]
         public Input<Inputs.StorageSourceArgs>? StorageSource { get; set; }

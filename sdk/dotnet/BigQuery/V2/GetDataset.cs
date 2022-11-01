@@ -127,6 +127,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        /// </summary>
+        public readonly string StorageBillingModel;
+        /// <summary>
         /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
         /// </summary>
         public readonly ImmutableArray<Outputs.DatasetTagsItemResponse> Tags;
@@ -169,6 +173,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string selfLink,
 
+            string storageBillingModel,
+
             ImmutableArray<Outputs.DatasetTagsItemResponse> tags)
         {
             Access = access;
@@ -189,6 +195,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             MaxTimeTravelHours = maxTimeTravelHours;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
+            StorageBillingModel = storageBillingModel;
             Tags = tags;
         }
     }

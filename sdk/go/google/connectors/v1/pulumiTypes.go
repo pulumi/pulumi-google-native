@@ -2793,8 +2793,6 @@ func (o SecretResponseOutput) SecretVersion() pulumi.StringOutput {
 type SshPublicKey struct {
 	// Format of SSH Client cert.
 	CertType *string `pulumi:"certType"`
-	// This is an optional field used in case client has enabled multi-factor authentication
-	Password *Secret `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert *Secret `pulumi:"sshClientCert"`
 	// Password (passphrase) for ssh client certificate if it has one.
@@ -2818,8 +2816,6 @@ type SshPublicKeyInput interface {
 type SshPublicKeyArgs struct {
 	// Format of SSH Client cert.
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
-	// This is an optional field used in case client has enabled multi-factor authentication
-	Password SecretPtrInput `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert SecretPtrInput `pulumi:"sshClientCert"`
 	// Password (passphrase) for ssh client certificate if it has one.
@@ -2911,11 +2907,6 @@ func (o SshPublicKeyOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field used in case client has enabled multi-factor authentication
-func (o SshPublicKeyOutput) Password() SecretPtrOutput {
-	return o.ApplyT(func(v SshPublicKey) *Secret { return v.Password }).(SecretPtrOutput)
-}
-
 // SSH Client Cert. It should contain both public and private key.
 func (o SshPublicKeyOutput) SshClientCert() SecretPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *Secret { return v.SshClientCert }).(SecretPtrOutput)
@@ -2965,16 +2956,6 @@ func (o SshPublicKeyPtrOutput) CertType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This is an optional field used in case client has enabled multi-factor authentication
-func (o SshPublicKeyPtrOutput) Password() SecretPtrOutput {
-	return o.ApplyT(func(v *SshPublicKey) *Secret {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(SecretPtrOutput)
-}
-
 // SSH Client Cert. It should contain both public and private key.
 func (o SshPublicKeyPtrOutput) SshClientCert() SecretPtrOutput {
 	return o.ApplyT(func(v *SshPublicKey) *Secret {
@@ -3009,8 +2990,6 @@ func (o SshPublicKeyPtrOutput) Username() pulumi.StringPtrOutput {
 type SshPublicKeyResponse struct {
 	// Format of SSH Client cert.
 	CertType string `pulumi:"certType"`
-	// This is an optional field used in case client has enabled multi-factor authentication
-	Password SecretResponse `pulumi:"password"`
 	// SSH Client Cert. It should contain both public and private key.
 	SshClientCert SecretResponse `pulumi:"sshClientCert"`
 	// Password (passphrase) for ssh client certificate if it has one.
@@ -3037,11 +3016,6 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 // Format of SSH Client cert.
 func (o SshPublicKeyResponseOutput) CertType() pulumi.StringOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) string { return v.CertType }).(pulumi.StringOutput)
-}
-
-// This is an optional field used in case client has enabled multi-factor authentication
-func (o SshPublicKeyResponseOutput) Password() SecretResponseOutput {
-	return o.ApplyT(func(v SshPublicKeyResponse) SecretResponse { return v.Password }).(SecretResponseOutput)
 }
 
 // SSH Client Cert. It should contain both public and private key.

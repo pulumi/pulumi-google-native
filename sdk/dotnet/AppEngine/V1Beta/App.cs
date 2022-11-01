@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The project and location in which the application should be created, specified in the format projects/*/locations/*
+        /// </summary>
+        [Output("parent")]
+        public Output<string?> Parent { get; private set; } = null!;
+
+        /// <summary>
         /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
         /// </summary>
         [Output("serviceAccount")]
@@ -180,12 +186,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("featureSettings")]
         public Input<Inputs.FeatureSettingsArgs>? FeatureSettings { get; set; }
 
-        /// <summary>
-        /// The Google Container Registry domain used for storing managed build docker images for this application.
-        /// </summary>
-        [Input("gcrDomain")]
-        public Input<string>? GcrDomain { get; set; }
-
         [Input("iap")]
         public Input<Inputs.IdentityAwareProxyArgs>? Iap { get; set; }
 
@@ -200,6 +200,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The project and location in which the application should be created, specified in the format projects/*/locations/*
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
 
         /// <summary>
         /// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.

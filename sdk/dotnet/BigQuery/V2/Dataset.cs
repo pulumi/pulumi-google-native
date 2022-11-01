@@ -125,6 +125,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        /// </summary>
+        [Output("storageBillingModel")]
+        public Output<string> StorageBillingModel { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
         /// </summary>
         [Output("tags")]
@@ -256,6 +262,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        /// </summary>
+        [Input("storageBillingModel")]
+        public Input<string>? StorageBillingModel { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.DatasetTagsItemArgs>? _tags;

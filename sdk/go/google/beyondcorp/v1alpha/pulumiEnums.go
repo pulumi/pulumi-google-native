@@ -1696,6 +1696,344 @@ func (in *resourceInfoStatusPtr) ToResourceInfoStatusPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceInfoStatusPtrOutput)
 }
 
+// Required. SKU of subscription.
+type SubscriptionSku string
+
+const (
+	// Default value. This value is unused.
+	SubscriptionSkuSkuUnspecified = SubscriptionSku("SKU_UNSPECIFIED")
+	// Represents BeyondCorp Standard SKU.
+	SubscriptionSkuBceStandardSku = SubscriptionSku("BCE_STANDARD_SKU")
+)
+
+func (SubscriptionSku) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionSku)(nil)).Elem()
+}
+
+func (e SubscriptionSku) ToSubscriptionSkuOutput() SubscriptionSkuOutput {
+	return pulumi.ToOutput(e).(SubscriptionSkuOutput)
+}
+
+func (e SubscriptionSku) ToSubscriptionSkuOutputWithContext(ctx context.Context) SubscriptionSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SubscriptionSkuOutput)
+}
+
+func (e SubscriptionSku) ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOutput {
+	return e.ToSubscriptionSkuPtrOutputWithContext(context.Background())
+}
+
+func (e SubscriptionSku) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
+	return SubscriptionSku(e).ToSubscriptionSkuOutputWithContext(ctx).ToSubscriptionSkuPtrOutputWithContext(ctx)
+}
+
+func (e SubscriptionSku) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubscriptionSku) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubscriptionSku) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SubscriptionSku) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SubscriptionSkuOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionSku)(nil)).Elem()
+}
+
+func (o SubscriptionSkuOutput) ToSubscriptionSkuOutput() SubscriptionSkuOutput {
+	return o
+}
+
+func (o SubscriptionSkuOutput) ToSubscriptionSkuOutputWithContext(ctx context.Context) SubscriptionSkuOutput {
+	return o
+}
+
+func (o SubscriptionSkuOutput) ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOutput {
+	return o.ToSubscriptionSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionSkuOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionSku) *SubscriptionSku {
+		return &v
+	}).(SubscriptionSkuPtrOutput)
+}
+
+func (o SubscriptionSkuOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SubscriptionSkuOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubscriptionSku) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SubscriptionSkuOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionSkuOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubscriptionSku) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionSku)(nil)).Elem()
+}
+
+func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOutput {
+	return o
+}
+
+func (o SubscriptionSkuPtrOutput) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
+	return o
+}
+
+func (o SubscriptionSkuPtrOutput) Elem() SubscriptionSkuOutput {
+	return o.ApplyT(func(v *SubscriptionSku) SubscriptionSku {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionSku
+		return ret
+	}).(SubscriptionSkuOutput)
+}
+
+func (o SubscriptionSkuPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionSkuPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SubscriptionSku) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SubscriptionSkuInput is an input type that accepts SubscriptionSkuArgs and SubscriptionSkuOutput values.
+// You can construct a concrete instance of `SubscriptionSkuInput` via:
+//
+//	SubscriptionSkuArgs{...}
+type SubscriptionSkuInput interface {
+	pulumi.Input
+
+	ToSubscriptionSkuOutput() SubscriptionSkuOutput
+	ToSubscriptionSkuOutputWithContext(context.Context) SubscriptionSkuOutput
+}
+
+var subscriptionSkuPtrType = reflect.TypeOf((**SubscriptionSku)(nil)).Elem()
+
+type SubscriptionSkuPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOutput
+	ToSubscriptionSkuPtrOutputWithContext(context.Context) SubscriptionSkuPtrOutput
+}
+
+type subscriptionSkuPtr string
+
+func SubscriptionSkuPtr(v string) SubscriptionSkuPtrInput {
+	return (*subscriptionSkuPtr)(&v)
+}
+
+func (*subscriptionSkuPtr) ElementType() reflect.Type {
+	return subscriptionSkuPtrType
+}
+
+func (in *subscriptionSkuPtr) ToSubscriptionSkuPtrOutput() SubscriptionSkuPtrOutput {
+	return pulumi.ToOutput(in).(SubscriptionSkuPtrOutput)
+}
+
+func (in *subscriptionSkuPtr) ToSubscriptionSkuPtrOutputWithContext(ctx context.Context) SubscriptionSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionSkuPtrOutput)
+}
+
+// Required. Type of subscription.
+type SubscriptionType string
+
+const (
+	// Default value. This value is unused.
+	SubscriptionTypeTypeUnspecified = SubscriptionType("TYPE_UNSPECIFIED")
+	// Represents a trial subscription.
+	SubscriptionTypeTrial = SubscriptionType("TRIAL")
+	// Represents a paid subscription.
+	SubscriptionTypePaid = SubscriptionType("PAID")
+	// Reresents an allowlisted subscription.
+	SubscriptionTypeAllowlist = SubscriptionType("ALLOWLIST")
+)
+
+func (SubscriptionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionType)(nil)).Elem()
+}
+
+func (e SubscriptionType) ToSubscriptionTypeOutput() SubscriptionTypeOutput {
+	return pulumi.ToOutput(e).(SubscriptionTypeOutput)
+}
+
+func (e SubscriptionType) ToSubscriptionTypeOutputWithContext(ctx context.Context) SubscriptionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SubscriptionTypeOutput)
+}
+
+func (e SubscriptionType) ToSubscriptionTypePtrOutput() SubscriptionTypePtrOutput {
+	return e.ToSubscriptionTypePtrOutputWithContext(context.Background())
+}
+
+func (e SubscriptionType) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
+	return SubscriptionType(e).ToSubscriptionTypeOutputWithContext(ctx).ToSubscriptionTypePtrOutputWithContext(ctx)
+}
+
+func (e SubscriptionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubscriptionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SubscriptionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SubscriptionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SubscriptionTypeOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionType)(nil)).Elem()
+}
+
+func (o SubscriptionTypeOutput) ToSubscriptionTypeOutput() SubscriptionTypeOutput {
+	return o
+}
+
+func (o SubscriptionTypeOutput) ToSubscriptionTypeOutputWithContext(ctx context.Context) SubscriptionTypeOutput {
+	return o
+}
+
+func (o SubscriptionTypeOutput) ToSubscriptionTypePtrOutput() SubscriptionTypePtrOutput {
+	return o.ToSubscriptionTypePtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionTypeOutput) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionType) *SubscriptionType {
+		return &v
+	}).(SubscriptionTypePtrOutput)
+}
+
+func (o SubscriptionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SubscriptionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubscriptionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SubscriptionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SubscriptionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionType)(nil)).Elem()
+}
+
+func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutput() SubscriptionTypePtrOutput {
+	return o
+}
+
+func (o SubscriptionTypePtrOutput) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
+	return o
+}
+
+func (o SubscriptionTypePtrOutput) Elem() SubscriptionTypeOutput {
+	return o.ApplyT(func(v *SubscriptionType) SubscriptionType {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionType
+		return ret
+	}).(SubscriptionTypeOutput)
+}
+
+func (o SubscriptionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SubscriptionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SubscriptionTypeInput is an input type that accepts SubscriptionTypeArgs and SubscriptionTypeOutput values.
+// You can construct a concrete instance of `SubscriptionTypeInput` via:
+//
+//	SubscriptionTypeArgs{...}
+type SubscriptionTypeInput interface {
+	pulumi.Input
+
+	ToSubscriptionTypeOutput() SubscriptionTypeOutput
+	ToSubscriptionTypeOutputWithContext(context.Context) SubscriptionTypeOutput
+}
+
+var subscriptionTypePtrType = reflect.TypeOf((**SubscriptionType)(nil)).Elem()
+
+type SubscriptionTypePtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionTypePtrOutput() SubscriptionTypePtrOutput
+	ToSubscriptionTypePtrOutputWithContext(context.Context) SubscriptionTypePtrOutput
+}
+
+type subscriptionTypePtr string
+
+func SubscriptionTypePtr(v string) SubscriptionTypePtrInput {
+	return (*subscriptionTypePtr)(&v)
+}
+
+func (*subscriptionTypePtr) ElementType() reflect.Type {
+	return subscriptionTypePtrType
+}
+
+func (in *subscriptionTypePtr) ToSubscriptionTypePtrOutput() SubscriptionTypePtrOutput {
+	return pulumi.ToOutput(in).(SubscriptionTypePtrOutput)
+}
+
+func (in *subscriptionTypePtr) ToSubscriptionTypePtrOutputWithContext(ctx context.Context) SubscriptionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionTypeInput)(nil)).Elem(), AppConnectionType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppConnectionTypePtrInput)(nil)).Elem(), AppConnectionType("TYPE_UNSPECIFIED"))
@@ -1717,6 +2055,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInfoStatusInput)(nil)).Elem(), ResourceInfoStatus("HEALTH_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInfoStatusPtrInput)(nil)).Elem(), ResourceInfoStatus("HEALTH_STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionSkuInput)(nil)).Elem(), SubscriptionSku("SKU_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionSkuPtrInput)(nil)).Elem(), SubscriptionSku("SKU_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionTypeInput)(nil)).Elem(), SubscriptionType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionTypePtrInput)(nil)).Elem(), SubscriptionType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AppConnectionTypeOutput{})
 	pulumi.RegisterOutputType(AppConnectionTypePtrOutput{})
 	pulumi.RegisterOutputType(AppGatewayHostTypeOutput{})
@@ -1737,4 +2079,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceInfoStatusOutput{})
 	pulumi.RegisterOutputType(ResourceInfoStatusPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionSkuOutput{})
+	pulumi.RegisterOutputType(SubscriptionSkuPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionTypeOutput{})
+	pulumi.RegisterOutputType(SubscriptionTypePtrOutput{})
 }

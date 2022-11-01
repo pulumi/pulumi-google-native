@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> UserLabels;
         /// <summary>
-        /// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+        /// The Google Cloud Platform zone where your Cloud SQL database instance is located.
         /// </summary>
         public readonly string Zone;
 

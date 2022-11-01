@@ -20,6 +20,11 @@ export const getProvisioningConfig: typeof import("./getProvisioningConfig").get
 export const getProvisioningConfigOutput: typeof import("./getProvisioningConfig").getProvisioningConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getProvisioningConfig","getProvisioningConfigOutput"], () => require("./getProvisioningConfig"));
 
+export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
+export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
+export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
+
 export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -35,6 +40,11 @@ export type ProvisioningConfig = import("./provisioningConfig").ProvisioningConf
 export const ProvisioningConfig: typeof import("./provisioningConfig").ProvisioningConfig = null as any;
 utilities.lazyLoad(exports, ["ProvisioningConfig"], () => require("./provisioningConfig"));
 
+export { SnapshotArgs } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+
 
 // Export enums:
 export * from "../../types/enums/baremetalsolution/v2";
@@ -49,6 +59,8 @@ const _module = {
                 return new NfsShare(name, <any>undefined, { urn })
             case "google-native:baremetalsolution/v2:ProvisioningConfig":
                 return new ProvisioningConfig(name, <any>undefined, { urn })
+            case "google-native:baremetalsolution/v2:Snapshot":
+                return new Snapshot(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

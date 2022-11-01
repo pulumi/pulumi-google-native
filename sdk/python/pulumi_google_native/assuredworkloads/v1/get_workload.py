@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
         if compliance_regime and not isinstance(compliance_regime, str):
             raise TypeError("Expected argument 'compliance_regime' to be a str")
         pulumi.set(__self__, "compliance_regime", compliance_regime)
+        if compliance_status and not isinstance(compliance_status, dict):
+            raise TypeError("Expected argument 'compliance_status' to be a dict")
+        pulumi.set(__self__, "compliance_status", compliance_status)
         if compliant_but_disallowed_services and not isinstance(compliant_but_disallowed_services, list):
             raise TypeError("Expected argument 'compliant_but_disallowed_services' to be a list")
         pulumi.set(__self__, "compliant_but_disallowed_services", compliant_but_disallowed_services)
@@ -88,6 +91,14 @@ class GetWorkloadResult:
         Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> 'outputs.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse':
+        """
+        Count of active Violations in the Workload.
+        """
+        return pulumi.get(self, "compliance_status")
 
     @property
     @pulumi.getter(name="compliantButDisallowedServices")
@@ -210,6 +221,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
         return GetWorkloadResult(
             billing_account=self.billing_account,
             compliance_regime=self.compliance_regime,
+            compliance_status=self.compliance_status,
             compliant_but_disallowed_services=self.compliant_but_disallowed_services,
             create_time=self.create_time,
             display_name=self.display_name,
@@ -243,6 +255,7 @@ def get_workload(location: Optional[str] = None,
     return AwaitableGetWorkloadResult(
         billing_account=__ret__.billing_account,
         compliance_regime=__ret__.compliance_regime,
+        compliance_status=__ret__.compliance_status,
         compliant_but_disallowed_services=__ret__.compliant_but_disallowed_services,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,

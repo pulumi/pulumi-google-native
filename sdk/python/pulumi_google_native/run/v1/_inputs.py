@@ -1134,28 +1134,27 @@ class HTTPGetActionArgs:
 @pulumi.input_type
 class HTTPHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
+                 name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
         HTTPHeader describes a custom header to be used in HTTP probes
         :param pulumi.Input[str] name: The header field name
         :param pulumi.Input[str] value: The header field value
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
         The header field name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
@@ -2263,7 +2262,7 @@ class TrafficTargetArgs:
         """
         TrafficTarget holds a single entry of the routing table for a Route.
         :param pulumi.Input[str] configuration_name: ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
-        :param pulumi.Input[bool] latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        :param pulumi.Input[bool] latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         :param pulumi.Input[int] percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
         :param pulumi.Input[str] revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
         :param pulumi.Input[str] tag: Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
@@ -2295,7 +2294,7 @@ class TrafficTargetArgs:
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         """
         return pulumi.get(self, "latest_revision")
 

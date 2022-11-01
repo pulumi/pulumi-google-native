@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, annotations=None, endpoints=None, name=None):
+    def __init__(__self__, annotations=None, endpoints=None, name=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -29,6 +29,9 @@ class GetServiceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter
@@ -54,6 +57,14 @@ class GetServiceResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The globally unique identifier of the service in the UUID4 format.
+        """
+        return pulumi.get(self, "uid")
+
 
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
@@ -63,7 +74,8 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             annotations=self.annotations,
             endpoints=self.endpoints,
-            name=self.name)
+            name=self.name,
+            uid=self.uid)
 
 
 def get_service(location: Optional[str] = None,
@@ -85,7 +97,8 @@ def get_service(location: Optional[str] = None,
     return AwaitableGetServiceResult(
         annotations=__ret__.annotations,
         endpoints=__ret__.endpoints,
-        name=__ret__.name)
+        name=__ret__.name,
+        uid=__ret__.uid)
 
 
 @_utilities.lift_output_func(get_service)

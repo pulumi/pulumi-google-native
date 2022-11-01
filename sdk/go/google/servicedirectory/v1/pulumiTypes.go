@@ -200,6 +200,8 @@ type EndpointResponse struct {
 	Network string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port int `pulumi:"port"`
+	// The globally unique identifier of the endpoint in the UUID4 format.
+	Uid string `pulumi:"uid"`
 }
 
 // An individual endpoint that provides a service. The service must already exist to create an endpoint.
@@ -240,6 +242,11 @@ func (o EndpointResponseOutput) Network() pulumi.StringOutput {
 // Optional. Service Directory rejects values outside of `[0, 65535]`.
 func (o EndpointResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The globally unique identifier of the endpoint in the UUID4 format.
+func (o EndpointResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 type EndpointResponseArrayOutput struct{ *pulumi.OutputState }

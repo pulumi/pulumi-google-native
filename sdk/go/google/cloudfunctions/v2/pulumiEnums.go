@@ -181,6 +181,175 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+type BuildConfigDockerRegistry string
+
+const (
+	// Unspecified.
+	BuildConfigDockerRegistryDockerRegistryUnspecified = BuildConfigDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED")
+	// Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+	BuildConfigDockerRegistryContainerRegistry = BuildConfigDockerRegistry("CONTAINER_REGISTRY")
+	// Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+	BuildConfigDockerRegistryArtifactRegistry = BuildConfigDockerRegistry("ARTIFACT_REGISTRY")
+)
+
+func (BuildConfigDockerRegistry) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildConfigDockerRegistry)(nil)).Elem()
+}
+
+func (e BuildConfigDockerRegistry) ToBuildConfigDockerRegistryOutput() BuildConfigDockerRegistryOutput {
+	return pulumi.ToOutput(e).(BuildConfigDockerRegistryOutput)
+}
+
+func (e BuildConfigDockerRegistry) ToBuildConfigDockerRegistryOutputWithContext(ctx context.Context) BuildConfigDockerRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildConfigDockerRegistryOutput)
+}
+
+func (e BuildConfigDockerRegistry) ToBuildConfigDockerRegistryPtrOutput() BuildConfigDockerRegistryPtrOutput {
+	return e.ToBuildConfigDockerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (e BuildConfigDockerRegistry) ToBuildConfigDockerRegistryPtrOutputWithContext(ctx context.Context) BuildConfigDockerRegistryPtrOutput {
+	return BuildConfigDockerRegistry(e).ToBuildConfigDockerRegistryOutputWithContext(ctx).ToBuildConfigDockerRegistryPtrOutputWithContext(ctx)
+}
+
+func (e BuildConfigDockerRegistry) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BuildConfigDockerRegistry) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BuildConfigDockerRegistry) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BuildConfigDockerRegistry) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BuildConfigDockerRegistryOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigDockerRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildConfigDockerRegistry)(nil)).Elem()
+}
+
+func (o BuildConfigDockerRegistryOutput) ToBuildConfigDockerRegistryOutput() BuildConfigDockerRegistryOutput {
+	return o
+}
+
+func (o BuildConfigDockerRegistryOutput) ToBuildConfigDockerRegistryOutputWithContext(ctx context.Context) BuildConfigDockerRegistryOutput {
+	return o
+}
+
+func (o BuildConfigDockerRegistryOutput) ToBuildConfigDockerRegistryPtrOutput() BuildConfigDockerRegistryPtrOutput {
+	return o.ToBuildConfigDockerRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o BuildConfigDockerRegistryOutput) ToBuildConfigDockerRegistryPtrOutputWithContext(ctx context.Context) BuildConfigDockerRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildConfigDockerRegistry) *BuildConfigDockerRegistry {
+		return &v
+	}).(BuildConfigDockerRegistryPtrOutput)
+}
+
+func (o BuildConfigDockerRegistryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildConfigDockerRegistryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildConfigDockerRegistry) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildConfigDockerRegistryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildConfigDockerRegistryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildConfigDockerRegistry) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildConfigDockerRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildConfigDockerRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildConfigDockerRegistry)(nil)).Elem()
+}
+
+func (o BuildConfigDockerRegistryPtrOutput) ToBuildConfigDockerRegistryPtrOutput() BuildConfigDockerRegistryPtrOutput {
+	return o
+}
+
+func (o BuildConfigDockerRegistryPtrOutput) ToBuildConfigDockerRegistryPtrOutputWithContext(ctx context.Context) BuildConfigDockerRegistryPtrOutput {
+	return o
+}
+
+func (o BuildConfigDockerRegistryPtrOutput) Elem() BuildConfigDockerRegistryOutput {
+	return o.ApplyT(func(v *BuildConfigDockerRegistry) BuildConfigDockerRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret BuildConfigDockerRegistry
+		return ret
+	}).(BuildConfigDockerRegistryOutput)
+}
+
+func (o BuildConfigDockerRegistryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildConfigDockerRegistryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildConfigDockerRegistry) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BuildConfigDockerRegistryInput is an input type that accepts BuildConfigDockerRegistryArgs and BuildConfigDockerRegistryOutput values.
+// You can construct a concrete instance of `BuildConfigDockerRegistryInput` via:
+//
+//	BuildConfigDockerRegistryArgs{...}
+type BuildConfigDockerRegistryInput interface {
+	pulumi.Input
+
+	ToBuildConfigDockerRegistryOutput() BuildConfigDockerRegistryOutput
+	ToBuildConfigDockerRegistryOutputWithContext(context.Context) BuildConfigDockerRegistryOutput
+}
+
+var buildConfigDockerRegistryPtrType = reflect.TypeOf((**BuildConfigDockerRegistry)(nil)).Elem()
+
+type BuildConfigDockerRegistryPtrInput interface {
+	pulumi.Input
+
+	ToBuildConfigDockerRegistryPtrOutput() BuildConfigDockerRegistryPtrOutput
+	ToBuildConfigDockerRegistryPtrOutputWithContext(context.Context) BuildConfigDockerRegistryPtrOutput
+}
+
+type buildConfigDockerRegistryPtr string
+
+func BuildConfigDockerRegistryPtr(v string) BuildConfigDockerRegistryPtrInput {
+	return (*buildConfigDockerRegistryPtr)(&v)
+}
+
+func (*buildConfigDockerRegistryPtr) ElementType() reflect.Type {
+	return buildConfigDockerRegistryPtrType
+}
+
+func (in *buildConfigDockerRegistryPtr) ToBuildConfigDockerRegistryPtrOutput() BuildConfigDockerRegistryPtrOutput {
+	return pulumi.ToOutput(in).(BuildConfigDockerRegistryPtrOutput)
+}
+
+func (in *buildConfigDockerRegistryPtr) ToBuildConfigDockerRegistryPtrOutputWithContext(ctx context.Context) BuildConfigDockerRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildConfigDockerRegistryPtrOutput)
+}
+
 // Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
 type EventTriggerRetryPolicy string
 
@@ -690,6 +859,175 @@ func (in *serviceConfigIngressSettingsPtr) ToServiceConfigIngressSettingsPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceConfigIngressSettingsPtrOutput)
 }
 
+// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+type ServiceConfigSecurityLevel string
+
+const (
+	// Unspecified.
+	ServiceConfigSecurityLevelSecurityLevelUnspecified = ServiceConfigSecurityLevel("SECURITY_LEVEL_UNSPECIFIED")
+	// Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+	ServiceConfigSecurityLevelSecureAlways = ServiceConfigSecurityLevel("SECURE_ALWAYS")
+	// Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+	ServiceConfigSecurityLevelSecureOptional = ServiceConfigSecurityLevel("SECURE_OPTIONAL")
+)
+
+func (ServiceConfigSecurityLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConfigSecurityLevel)(nil)).Elem()
+}
+
+func (e ServiceConfigSecurityLevel) ToServiceConfigSecurityLevelOutput() ServiceConfigSecurityLevelOutput {
+	return pulumi.ToOutput(e).(ServiceConfigSecurityLevelOutput)
+}
+
+func (e ServiceConfigSecurityLevel) ToServiceConfigSecurityLevelOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceConfigSecurityLevelOutput)
+}
+
+func (e ServiceConfigSecurityLevel) ToServiceConfigSecurityLevelPtrOutput() ServiceConfigSecurityLevelPtrOutput {
+	return e.ToServiceConfigSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceConfigSecurityLevel) ToServiceConfigSecurityLevelPtrOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelPtrOutput {
+	return ServiceConfigSecurityLevel(e).ToServiceConfigSecurityLevelOutputWithContext(ctx).ToServiceConfigSecurityLevelPtrOutputWithContext(ctx)
+}
+
+func (e ServiceConfigSecurityLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceConfigSecurityLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceConfigSecurityLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceConfigSecurityLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceConfigSecurityLevelOutput struct{ *pulumi.OutputState }
+
+func (ServiceConfigSecurityLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConfigSecurityLevel)(nil)).Elem()
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToServiceConfigSecurityLevelOutput() ServiceConfigSecurityLevelOutput {
+	return o
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToServiceConfigSecurityLevelOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelOutput {
+	return o
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToServiceConfigSecurityLevelPtrOutput() ServiceConfigSecurityLevelPtrOutput {
+	return o.ToServiceConfigSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToServiceConfigSecurityLevelPtrOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConfigSecurityLevel) *ServiceConfigSecurityLevel {
+		return &v
+	}).(ServiceConfigSecurityLevelPtrOutput)
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceConfigSecurityLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConfigSecurityLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceConfigSecurityLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceConfigSecurityLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceConfigSecurityLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConfigSecurityLevel)(nil)).Elem()
+}
+
+func (o ServiceConfigSecurityLevelPtrOutput) ToServiceConfigSecurityLevelPtrOutput() ServiceConfigSecurityLevelPtrOutput {
+	return o
+}
+
+func (o ServiceConfigSecurityLevelPtrOutput) ToServiceConfigSecurityLevelPtrOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelPtrOutput {
+	return o
+}
+
+func (o ServiceConfigSecurityLevelPtrOutput) Elem() ServiceConfigSecurityLevelOutput {
+	return o.ApplyT(func(v *ServiceConfigSecurityLevel) ServiceConfigSecurityLevel {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceConfigSecurityLevel
+		return ret
+	}).(ServiceConfigSecurityLevelOutput)
+}
+
+func (o ServiceConfigSecurityLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConfigSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceConfigSecurityLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceConfigSecurityLevelInput is an input type that accepts ServiceConfigSecurityLevelArgs and ServiceConfigSecurityLevelOutput values.
+// You can construct a concrete instance of `ServiceConfigSecurityLevelInput` via:
+//
+//	ServiceConfigSecurityLevelArgs{...}
+type ServiceConfigSecurityLevelInput interface {
+	pulumi.Input
+
+	ToServiceConfigSecurityLevelOutput() ServiceConfigSecurityLevelOutput
+	ToServiceConfigSecurityLevelOutputWithContext(context.Context) ServiceConfigSecurityLevelOutput
+}
+
+var serviceConfigSecurityLevelPtrType = reflect.TypeOf((**ServiceConfigSecurityLevel)(nil)).Elem()
+
+type ServiceConfigSecurityLevelPtrInput interface {
+	pulumi.Input
+
+	ToServiceConfigSecurityLevelPtrOutput() ServiceConfigSecurityLevelPtrOutput
+	ToServiceConfigSecurityLevelPtrOutputWithContext(context.Context) ServiceConfigSecurityLevelPtrOutput
+}
+
+type serviceConfigSecurityLevelPtr string
+
+func ServiceConfigSecurityLevelPtr(v string) ServiceConfigSecurityLevelPtrInput {
+	return (*serviceConfigSecurityLevelPtr)(&v)
+}
+
+func (*serviceConfigSecurityLevelPtr) ElementType() reflect.Type {
+	return serviceConfigSecurityLevelPtrType
+}
+
+func (in *serviceConfigSecurityLevelPtr) ToServiceConfigSecurityLevelPtrOutput() ServiceConfigSecurityLevelPtrOutput {
+	return pulumi.ToOutput(in).(ServiceConfigSecurityLevelPtrOutput)
+}
+
+func (in *serviceConfigSecurityLevelPtr) ToServiceConfigSecurityLevelPtrOutputWithContext(ctx context.Context) ServiceConfigSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceConfigSecurityLevelPtrOutput)
+}
+
 // The egress settings for the connector, controlling what traffic is diverted through it.
 type ServiceConfigVpcConnectorEgressSettings string
 
@@ -862,22 +1200,30 @@ func (in *serviceConfigVpcConnectorEgressSettingsPtr) ToServiceConfigVpcConnecto
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildConfigDockerRegistryInput)(nil)).Elem(), BuildConfigDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildConfigDockerRegistryPtrInput)(nil)).Elem(), BuildConfigDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerRetryPolicyInput)(nil)).Elem(), EventTriggerRetryPolicy("RETRY_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EventTriggerRetryPolicyPtrInput)(nil)).Elem(), EventTriggerRetryPolicy("RETRY_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEnvironmentInput)(nil)).Elem(), FunctionEnvironment("ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionEnvironmentPtrInput)(nil)).Elem(), FunctionEnvironment("ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigIngressSettingsInput)(nil)).Elem(), ServiceConfigIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigIngressSettingsPtrInput)(nil)).Elem(), ServiceConfigIngressSettings("INGRESS_SETTINGS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigSecurityLevelInput)(nil)).Elem(), ServiceConfigSecurityLevel("SECURITY_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigSecurityLevelPtrInput)(nil)).Elem(), ServiceConfigSecurityLevel("SECURITY_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigVpcConnectorEgressSettingsInput)(nil)).Elem(), ServiceConfigVpcConnectorEgressSettings("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigVpcConnectorEgressSettingsPtrInput)(nil)).Elem(), ServiceConfigVpcConnectorEgressSettings("VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(BuildConfigDockerRegistryOutput{})
+	pulumi.RegisterOutputType(BuildConfigDockerRegistryPtrOutput{})
 	pulumi.RegisterOutputType(EventTriggerRetryPolicyOutput{})
 	pulumi.RegisterOutputType(EventTriggerRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(FunctionEnvironmentOutput{})
 	pulumi.RegisterOutputType(FunctionEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConfigIngressSettingsOutput{})
 	pulumi.RegisterOutputType(ServiceConfigIngressSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceConfigSecurityLevelOutput{})
+	pulumi.RegisterOutputType(ServiceConfigSecurityLevelPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConfigVpcConnectorEgressSettingsOutput{})
 	pulumi.RegisterOutputType(ServiceConfigVpcConnectorEgressSettingsPtrOutput{})
 }

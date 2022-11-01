@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'ActionArgs',
     'AnnotationConfigArgs',
     'AnnotationSourceArgs',
     'AttributeArgs',
@@ -19,20 +20,32 @@ __all__ = [
     'BindingArgs',
     'BoundingPolyArgs',
     'CharacterMaskConfigArgs',
+    'CharacterMaskFieldArgs',
+    'CleanDescriptorsOptionArgs',
+    'CleanTextFieldArgs',
+    'CleanTextTagArgs',
     'CloudHealthcareSourceArgs',
+    'ContextualDeidConfigArgs',
     'CryptoHashConfigArgs',
+    'CryptoHashFieldArgs',
     'DateShiftConfigArgs',
+    'DateShiftFieldArgs',
     'DeidentifiedStoreDestinationArgs',
     'DeidentifyConfigArgs',
     'DeidentifyOperationMetadataArgs',
+    'DeleteTagArgs',
     'DicomConfigArgs',
+    'DicomTagConfigArgs',
     'ExprArgs',
     'FhirConfigArgs',
+    'FhirFieldConfigArgs',
     'FhirNotificationConfigArgs',
     'FhirOutputArgs',
     'FieldMetadataArgs',
     'FieldArgs',
     'GoogleCloudHealthcareV1beta1ConsentPolicyArgs',
+    'GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs',
+    'GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs',
     'GoogleCloudHealthcareV1beta1DicomStreamConfigArgs',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs',
@@ -43,12 +56,21 @@ __all__ = [
     'ImageConfigArgs',
     'ImageArgs',
     'InfoTypeTransformationArgs',
+    'KeepExtensionsConfigArgs',
+    'KeepFieldArgs',
+    'KeepTagArgs',
     'KmsWrappedCryptoKeyArgs',
     'NotificationConfigArgs',
+    'OptionsArgs',
     'ParserConfigArgs',
     'PatientIdArgs',
+    'RecurseTagArgs',
     'RedactConfigArgs',
+    'RegenUidTagArgs',
+    'RemoveFieldArgs',
+    'RemoveTagArgs',
     'ReplaceWithInfoTypeConfigArgs',
+    'ResetTagArgs',
     'ResourceAnnotationArgs',
     'SchemaConfigArgs',
     'SchemaPackageArgs',
@@ -65,6 +87,158 @@ __all__ = [
     'VersionSourceArgs',
     'VertexArgs',
 ]
+
+@pulumi.input_type
+class ActionArgs:
+    def __init__(__self__, *,
+                 clean_image_tag: Optional[pulumi.Input['ImageConfigArgs']] = None,
+                 clean_text_tag: Optional[pulumi.Input['CleanTextTagArgs']] = None,
+                 delete_tag: Optional[pulumi.Input['DeleteTagArgs']] = None,
+                 keep_tag: Optional[pulumi.Input['KeepTagArgs']] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 recurse_tag: Optional[pulumi.Input['RecurseTagArgs']] = None,
+                 regen_uid_tag: Optional[pulumi.Input['RegenUidTagArgs']] = None,
+                 remove_tag: Optional[pulumi.Input['RemoveTagArgs']] = None,
+                 reset_tag: Optional[pulumi.Input['ResetTagArgs']] = None):
+        """
+        Specifies a selection of tags and an `Action` to apply to each one.
+        :param pulumi.Input['ImageConfigArgs'] clean_image_tag: Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+        :param pulumi.Input['CleanTextTagArgs'] clean_text_tag: Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        :param pulumi.Input['DeleteTagArgs'] delete_tag: Delete tag.
+        :param pulumi.Input['KeepTagArgs'] keep_tag: Keep tag unchanged.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] queries: Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+        :param pulumi.Input['RecurseTagArgs'] recurse_tag: Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        :param pulumi.Input['RegenUidTagArgs'] regen_uid_tag: Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        :param pulumi.Input['RemoveTagArgs'] remove_tag: Replace with empty tag.
+        :param pulumi.Input['ResetTagArgs'] reset_tag: Reset tag to a placeholder value.
+        """
+        if clean_image_tag is not None:
+            pulumi.set(__self__, "clean_image_tag", clean_image_tag)
+        if clean_text_tag is not None:
+            pulumi.set(__self__, "clean_text_tag", clean_text_tag)
+        if delete_tag is not None:
+            pulumi.set(__self__, "delete_tag", delete_tag)
+        if keep_tag is not None:
+            pulumi.set(__self__, "keep_tag", keep_tag)
+        if queries is not None:
+            pulumi.set(__self__, "queries", queries)
+        if recurse_tag is not None:
+            pulumi.set(__self__, "recurse_tag", recurse_tag)
+        if regen_uid_tag is not None:
+            pulumi.set(__self__, "regen_uid_tag", regen_uid_tag)
+        if remove_tag is not None:
+            pulumi.set(__self__, "remove_tag", remove_tag)
+        if reset_tag is not None:
+            pulumi.set(__self__, "reset_tag", reset_tag)
+
+    @property
+    @pulumi.getter(name="cleanImageTag")
+    def clean_image_tag(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
+        """
+        Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+        """
+        return pulumi.get(self, "clean_image_tag")
+
+    @clean_image_tag.setter
+    def clean_image_tag(self, value: Optional[pulumi.Input['ImageConfigArgs']]):
+        pulumi.set(self, "clean_image_tag", value)
+
+    @property
+    @pulumi.getter(name="cleanTextTag")
+    def clean_text_tag(self) -> Optional[pulumi.Input['CleanTextTagArgs']]:
+        """
+        Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        """
+        return pulumi.get(self, "clean_text_tag")
+
+    @clean_text_tag.setter
+    def clean_text_tag(self, value: Optional[pulumi.Input['CleanTextTagArgs']]):
+        pulumi.set(self, "clean_text_tag", value)
+
+    @property
+    @pulumi.getter(name="deleteTag")
+    def delete_tag(self) -> Optional[pulumi.Input['DeleteTagArgs']]:
+        """
+        Delete tag.
+        """
+        return pulumi.get(self, "delete_tag")
+
+    @delete_tag.setter
+    def delete_tag(self, value: Optional[pulumi.Input['DeleteTagArgs']]):
+        pulumi.set(self, "delete_tag", value)
+
+    @property
+    @pulumi.getter(name="keepTag")
+    def keep_tag(self) -> Optional[pulumi.Input['KeepTagArgs']]:
+        """
+        Keep tag unchanged.
+        """
+        return pulumi.get(self, "keep_tag")
+
+    @keep_tag.setter
+    def keep_tag(self, value: Optional[pulumi.Input['KeepTagArgs']]):
+        pulumi.set(self, "keep_tag", value)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+        """
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "queries", value)
+
+    @property
+    @pulumi.getter(name="recurseTag")
+    def recurse_tag(self) -> Optional[pulumi.Input['RecurseTagArgs']]:
+        """
+        Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        """
+        return pulumi.get(self, "recurse_tag")
+
+    @recurse_tag.setter
+    def recurse_tag(self, value: Optional[pulumi.Input['RecurseTagArgs']]):
+        pulumi.set(self, "recurse_tag", value)
+
+    @property
+    @pulumi.getter(name="regenUidTag")
+    def regen_uid_tag(self) -> Optional[pulumi.Input['RegenUidTagArgs']]:
+        """
+        Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        """
+        return pulumi.get(self, "regen_uid_tag")
+
+    @regen_uid_tag.setter
+    def regen_uid_tag(self, value: Optional[pulumi.Input['RegenUidTagArgs']]):
+        pulumi.set(self, "regen_uid_tag", value)
+
+    @property
+    @pulumi.getter(name="removeTag")
+    def remove_tag(self) -> Optional[pulumi.Input['RemoveTagArgs']]:
+        """
+        Replace with empty tag.
+        """
+        return pulumi.get(self, "remove_tag")
+
+    @remove_tag.setter
+    def remove_tag(self, value: Optional[pulumi.Input['RemoveTagArgs']]):
+        pulumi.set(self, "remove_tag", value)
+
+    @property
+    @pulumi.getter(name="resetTag")
+    def reset_tag(self) -> Optional[pulumi.Input['ResetTagArgs']]:
+        """
+        Reset tag to a placeholder value.
+        """
+        return pulumi.get(self, "reset_tag")
+
+    @reset_tag.setter
+    def reset_tag(self, value: Optional[pulumi.Input['ResetTagArgs']]):
+        pulumi.set(self, "reset_tag", value)
+
 
 @pulumi.input_type
 class AnnotationConfigArgs:
@@ -371,6 +545,42 @@ class CharacterMaskConfigArgs:
 
 
 @pulumi.input_type
+class CharacterMaskFieldArgs:
+    def __init__(__self__):
+        """
+        Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.input_type
+class CleanDescriptorsOptionArgs:
+    def __init__(__self__):
+        """
+        This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+        """
+        pass
+
+
+@pulumi.input_type
+class CleanTextFieldArgs:
+    def __init__(__self__):
+        """
+        Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.input_type
+class CleanTextTagArgs:
+    def __init__(__self__):
+        """
+        Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        """
+        pass
+
+
+@pulumi.input_type
 class CloudHealthcareSourceArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
@@ -392,6 +602,15 @@ class CloudHealthcareSourceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class ContextualDeidConfigArgs:
+    def __init__(__self__):
+        """
+        The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -435,6 +654,15 @@ class CryptoHashConfigArgs:
 
 
 @pulumi.input_type
+class CryptoHashFieldArgs:
+    def __init__(__self__):
+        """
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.input_type
 class DateShiftConfigArgs:
     def __init__(__self__, *,
                  crypto_key: Optional[pulumi.Input[str]] = None,
@@ -472,6 +700,15 @@ class DateShiftConfigArgs:
     @kms_wrapped.setter
     def kms_wrapped(self, value: Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']]):
         pulumi.set(self, "kms_wrapped", value)
+
+
+@pulumi.input_type
+class DateShiftFieldArgs:
+    def __init__(__self__):
+        """
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        """
+        pass
 
 
 @pulumi.input_type
@@ -519,7 +756,9 @@ class DeidentifyConfigArgs:
     def __init__(__self__, *,
                  annotation: Optional[pulumi.Input['AnnotationConfigArgs']] = None,
                  dicom: Optional[pulumi.Input['DicomConfigArgs']] = None,
+                 dicom_tag_config: Optional[pulumi.Input['DicomTagConfigArgs']] = None,
                  fhir: Optional[pulumi.Input['FhirConfigArgs']] = None,
+                 fhir_field_config: Optional[pulumi.Input['FhirFieldConfigArgs']] = None,
                  image: Optional[pulumi.Input['ImageConfigArgs']] = None,
                  operation_metadata: Optional[pulumi.Input['DeidentifyOperationMetadataArgs']] = None,
                  text: Optional[pulumi.Input['TextConfigArgs']] = None):
@@ -527,7 +766,9 @@ class DeidentifyConfigArgs:
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param pulumi.Input['AnnotationConfigArgs'] annotation: Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
         :param pulumi.Input['DicomConfigArgs'] dicom: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+        :param pulumi.Input['DicomTagConfigArgs'] dicom_tag_config: Configures de-id of application/DICOM content.
         :param pulumi.Input['FhirConfigArgs'] fhir: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+        :param pulumi.Input['FhirFieldConfigArgs'] fhir_field_config: Configures de-id of application/FHIR content.
         :param pulumi.Input['ImageConfigArgs'] image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param pulumi.Input['DeidentifyOperationMetadataArgs'] operation_metadata: Details about the work the de-identify operation performed.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
@@ -539,11 +780,15 @@ class DeidentifyConfigArgs:
             pulumi.log.warn("""dicom is deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""")
         if dicom is not None:
             pulumi.set(__self__, "dicom", dicom)
+        if dicom_tag_config is not None:
+            pulumi.set(__self__, "dicom_tag_config", dicom_tag_config)
         if fhir is not None:
             warnings.warn("""Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""", DeprecationWarning)
             pulumi.log.warn("""fhir is deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""")
         if fhir is not None:
             pulumi.set(__self__, "fhir", fhir)
+        if fhir_field_config is not None:
+            pulumi.set(__self__, "fhir_field_config", fhir_field_config)
         if image is not None:
             warnings.warn("""Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""", DeprecationWarning)
             pulumi.log.warn("""image is deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""")
@@ -579,6 +824,18 @@ class DeidentifyConfigArgs:
         pulumi.set(self, "dicom", value)
 
     @property
+    @pulumi.getter(name="dicomTagConfig")
+    def dicom_tag_config(self) -> Optional[pulumi.Input['DicomTagConfigArgs']]:
+        """
+        Configures de-id of application/DICOM content.
+        """
+        return pulumi.get(self, "dicom_tag_config")
+
+    @dicom_tag_config.setter
+    def dicom_tag_config(self, value: Optional[pulumi.Input['DicomTagConfigArgs']]):
+        pulumi.set(self, "dicom_tag_config", value)
+
+    @property
     @pulumi.getter
     def fhir(self) -> Optional[pulumi.Input['FhirConfigArgs']]:
         """
@@ -589,6 +846,18 @@ class DeidentifyConfigArgs:
     @fhir.setter
     def fhir(self, value: Optional[pulumi.Input['FhirConfigArgs']]):
         pulumi.set(self, "fhir", value)
+
+    @property
+    @pulumi.getter(name="fhirFieldConfig")
+    def fhir_field_config(self) -> Optional[pulumi.Input['FhirFieldConfigArgs']]:
+        """
+        Configures de-id of application/FHIR content.
+        """
+        return pulumi.get(self, "fhir_field_config")
+
+    @fhir_field_config.setter
+    def fhir_field_config(self, value: Optional[pulumi.Input['FhirFieldConfigArgs']]):
+        pulumi.set(self, "fhir_field_config", value)
 
     @property
     @pulumi.getter
@@ -649,6 +918,15 @@ class DeidentifyOperationMetadataArgs:
     @fhir_output.setter
     def fhir_output(self, value: Optional[pulumi.Input['FhirOutputArgs']]):
         pulumi.set(self, "fhir_output", value)
+
+
+@pulumi.input_type
+class DeleteTagArgs:
+    def __init__(__self__):
+        """
+        Delete tag.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -721,6 +999,62 @@ class DicomConfigArgs:
     @skip_id_redaction.setter
     def skip_id_redaction(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_id_redaction", value)
+
+
+@pulumi.input_type
+class DicomTagConfigArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['ActionArgs']]]] = None,
+                 options: Optional[pulumi.Input['OptionsArgs']] = None,
+                 profile_type: Optional[pulumi.Input['DicomTagConfigProfileType']] = None):
+        """
+        Specifies the parameters needed for the de-identification of DICOM stores.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionArgs']]] actions: Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+        :param pulumi.Input['OptionsArgs'] options: Specifies additional options to apply, overriding the base `profile`.
+        :param pulumi.Input['DicomTagConfigProfileType'] profile_type: Base profile type for handling DICOM tags.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if profile_type is not None:
+            pulumi.set(__self__, "profile_type", profile_type)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionArgs']]]]:
+        """
+        Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionArgs']]]]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['OptionsArgs']]:
+        """
+        Specifies additional options to apply, overriding the base `profile`.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['OptionsArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> Optional[pulumi.Input['DicomTagConfigProfileType']]:
+        """
+        Base profile type for handling DICOM tags.
+        """
+        return pulumi.get(self, "profile_type")
+
+    @profile_type.setter
+    def profile_type(self, value: Optional[pulumi.Input['DicomTagConfigProfileType']]):
+        pulumi.set(self, "profile_type", value)
 
 
 @pulumi.input_type
@@ -833,6 +1167,62 @@ class FhirConfigArgs:
     @field_metadata_list.setter
     def field_metadata_list(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldMetadataArgs']]]]):
         pulumi.set(self, "field_metadata_list", value)
+
+
+@pulumi.input_type
+class FhirFieldConfigArgs:
+    def __init__(__self__, *,
+                 field_metadata_list: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]]] = None,
+                 options: Optional[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs']] = None,
+                 profile_type: Optional[pulumi.Input['FhirFieldConfigProfileType']] = None):
+        """
+        Specifies how to handle the de-identification of a FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]] field_metadata_list: Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        :param pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs'] options: Specifies additional options, overriding the base `profile`.
+        :param pulumi.Input['FhirFieldConfigProfileType'] profile_type: Base profile type for handling FHIR fields.
+        """
+        if field_metadata_list is not None:
+            pulumi.set(__self__, "field_metadata_list", field_metadata_list)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if profile_type is not None:
+            pulumi.set(__self__, "profile_type", profile_type)
+
+    @property
+    @pulumi.getter(name="fieldMetadataList")
+    def field_metadata_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]]]:
+        """
+        Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        """
+        return pulumi.get(self, "field_metadata_list")
+
+    @field_metadata_list.setter
+    def field_metadata_list(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs']]]]):
+        pulumi.set(self, "field_metadata_list", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs']]:
+        """
+        Specifies additional options, overriding the base `profile`.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> Optional[pulumi.Input['FhirFieldConfigProfileType']]:
+        """
+        Base profile type for handling FHIR fields.
+        """
+        return pulumi.get(self, "profile_type")
+
+    @profile_type.setter
+    def profile_type(self, value: Optional[pulumi.Input['FhirFieldConfigProfileType']]):
+        pulumi.set(self, "profile_type", value)
 
 
 @pulumi.input_type
@@ -1064,6 +1454,214 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyArgs:
     @resource_attributes.setter
     def resource_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttributeArgs']]]]):
         pulumi.set(self, "resource_attributes", value)
+
+
+@pulumi.input_type
+class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs:
+    def __init__(__self__, *,
+                 character_mask_field: Optional[pulumi.Input['CharacterMaskFieldArgs']] = None,
+                 clean_text_field: Optional[pulumi.Input['CleanTextFieldArgs']] = None,
+                 crypto_hash_field: Optional[pulumi.Input['CryptoHashFieldArgs']] = None,
+                 date_shift_field: Optional[pulumi.Input['DateShiftFieldArgs']] = None,
+                 keep_field: Optional[pulumi.Input['KeepFieldArgs']] = None,
+                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 remove_field: Optional[pulumi.Input['RemoveFieldArgs']] = None):
+        """
+        Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+        :param pulumi.Input['CharacterMaskFieldArgs'] character_mask_field: Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param pulumi.Input['CleanTextFieldArgs'] clean_text_field: Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param pulumi.Input['CryptoHashFieldArgs'] crypto_hash_field: Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param pulumi.Input['DateShiftFieldArgs'] date_shift_field: Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        :param pulumi.Input['KeepFieldArgs'] keep_field: Keep the field unchanged.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        :param pulumi.Input['RemoveFieldArgs'] remove_field: Remove the field.
+        """
+        if character_mask_field is not None:
+            pulumi.set(__self__, "character_mask_field", character_mask_field)
+        if clean_text_field is not None:
+            pulumi.set(__self__, "clean_text_field", clean_text_field)
+        if crypto_hash_field is not None:
+            pulumi.set(__self__, "crypto_hash_field", crypto_hash_field)
+        if date_shift_field is not None:
+            pulumi.set(__self__, "date_shift_field", date_shift_field)
+        if keep_field is not None:
+            pulumi.set(__self__, "keep_field", keep_field)
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if remove_field is not None:
+            pulumi.set(__self__, "remove_field", remove_field)
+
+    @property
+    @pulumi.getter(name="characterMaskField")
+    def character_mask_field(self) -> Optional[pulumi.Input['CharacterMaskFieldArgs']]:
+        """
+        Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "character_mask_field")
+
+    @character_mask_field.setter
+    def character_mask_field(self, value: Optional[pulumi.Input['CharacterMaskFieldArgs']]):
+        pulumi.set(self, "character_mask_field", value)
+
+    @property
+    @pulumi.getter(name="cleanTextField")
+    def clean_text_field(self) -> Optional[pulumi.Input['CleanTextFieldArgs']]:
+        """
+        Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "clean_text_field")
+
+    @clean_text_field.setter
+    def clean_text_field(self, value: Optional[pulumi.Input['CleanTextFieldArgs']]):
+        pulumi.set(self, "clean_text_field", value)
+
+    @property
+    @pulumi.getter(name="cryptoHashField")
+    def crypto_hash_field(self) -> Optional[pulumi.Input['CryptoHashFieldArgs']]:
+        """
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "crypto_hash_field")
+
+    @crypto_hash_field.setter
+    def crypto_hash_field(self, value: Optional[pulumi.Input['CryptoHashFieldArgs']]):
+        pulumi.set(self, "crypto_hash_field", value)
+
+    @property
+    @pulumi.getter(name="dateShiftField")
+    def date_shift_field(self) -> Optional[pulumi.Input['DateShiftFieldArgs']]:
+        """
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        """
+        return pulumi.get(self, "date_shift_field")
+
+    @date_shift_field.setter
+    def date_shift_field(self, value: Optional[pulumi.Input['DateShiftFieldArgs']]):
+        pulumi.set(self, "date_shift_field", value)
+
+    @property
+    @pulumi.getter(name="keepField")
+    def keep_field(self) -> Optional[pulumi.Input['KeepFieldArgs']]:
+        """
+        Keep the field unchanged.
+        """
+        return pulumi.get(self, "keep_field")
+
+    @keep_field.setter
+    def keep_field(self, value: Optional[pulumi.Input['KeepFieldArgs']]):
+        pulumi.set(self, "keep_field", value)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter(name="removeField")
+    def remove_field(self) -> Optional[pulumi.Input['RemoveFieldArgs']]:
+        """
+        Remove the field.
+        """
+        return pulumi.get(self, "remove_field")
+
+    @remove_field.setter
+    def remove_field(self, value: Optional[pulumi.Input['RemoveFieldArgs']]):
+        pulumi.set(self, "remove_field", value)
+
+
+@pulumi.input_type
+class GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs:
+    def __init__(__self__, *,
+                 character_mask_config: Optional[pulumi.Input['CharacterMaskConfigArgs']] = None,
+                 contextual_deid: Optional[pulumi.Input['ContextualDeidConfigArgs']] = None,
+                 crypto_hash_config: Optional[pulumi.Input['CryptoHashConfigArgs']] = None,
+                 date_shift_config: Optional[pulumi.Input['DateShiftConfigArgs']] = None,
+                 keep_extensions: Optional[pulumi.Input['KeepExtensionsConfigArgs']] = None):
+        """
+        Specifies additional options to apply to the base `profile`.
+        :param pulumi.Input['CharacterMaskConfigArgs'] character_mask_config: Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        :param pulumi.Input['ContextualDeidConfigArgs'] contextual_deid: Configure contextual de-id.
+        :param pulumi.Input['CryptoHashConfigArgs'] crypto_hash_config: Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        :param pulumi.Input['DateShiftConfigArgs'] date_shift_config: Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        :param pulumi.Input['KeepExtensionsConfigArgs'] keep_extensions: Configure keeping extensions by default.
+        """
+        if character_mask_config is not None:
+            pulumi.set(__self__, "character_mask_config", character_mask_config)
+        if contextual_deid is not None:
+            pulumi.set(__self__, "contextual_deid", contextual_deid)
+        if crypto_hash_config is not None:
+            pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+        if date_shift_config is not None:
+            pulumi.set(__self__, "date_shift_config", date_shift_config)
+        if keep_extensions is not None:
+            pulumi.set(__self__, "keep_extensions", keep_extensions)
+
+    @property
+    @pulumi.getter(name="characterMaskConfig")
+    def character_mask_config(self) -> Optional[pulumi.Input['CharacterMaskConfigArgs']]:
+        """
+        Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "character_mask_config")
+
+    @character_mask_config.setter
+    def character_mask_config(self, value: Optional[pulumi.Input['CharacterMaskConfigArgs']]):
+        pulumi.set(self, "character_mask_config", value)
+
+    @property
+    @pulumi.getter(name="contextualDeid")
+    def contextual_deid(self) -> Optional[pulumi.Input['ContextualDeidConfigArgs']]:
+        """
+        Configure contextual de-id.
+        """
+        return pulumi.get(self, "contextual_deid")
+
+    @contextual_deid.setter
+    def contextual_deid(self, value: Optional[pulumi.Input['ContextualDeidConfigArgs']]):
+        pulumi.set(self, "contextual_deid", value)
+
+    @property
+    @pulumi.getter(name="cryptoHashConfig")
+    def crypto_hash_config(self) -> Optional[pulumi.Input['CryptoHashConfigArgs']]:
+        """
+        Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "crypto_hash_config")
+
+    @crypto_hash_config.setter
+    def crypto_hash_config(self, value: Optional[pulumi.Input['CryptoHashConfigArgs']]):
+        pulumi.set(self, "crypto_hash_config", value)
+
+    @property
+    @pulumi.getter(name="dateShiftConfig")
+    def date_shift_config(self) -> Optional[pulumi.Input['DateShiftConfigArgs']]:
+        """
+        Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "date_shift_config")
+
+    @date_shift_config.setter
+    def date_shift_config(self, value: Optional[pulumi.Input['DateShiftConfigArgs']]):
+        pulumi.set(self, "date_shift_config", value)
+
+    @property
+    @pulumi.getter(name="keepExtensions")
+    def keep_extensions(self) -> Optional[pulumi.Input['KeepExtensionsConfigArgs']]:
+        """
+        Configure keeping extensions by default.
+        """
+        return pulumi.get(self, "keep_extensions")
+
+    @keep_extensions.setter
+    def keep_extensions(self, value: Optional[pulumi.Input['KeepExtensionsConfigArgs']]):
+        pulumi.set(self, "keep_extensions", value)
 
 
 @pulumi.input_type
@@ -1381,13 +1979,45 @@ class ImageAnnotationArgs:
 @pulumi.input_type
 class ImageConfigArgs:
     def __init__(__self__, *,
+                 additional_info_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_info_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  text_redaction_mode: Optional[pulumi.Input['ImageConfigTextRedactionMode']] = None):
         """
         Specifies how to handle de-identification of image pixels.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_info_types: Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_info_types: InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
         :param pulumi.Input['ImageConfigTextRedactionMode'] text_redaction_mode: Determines how to redact text from image.
         """
+        if additional_info_types is not None:
+            pulumi.set(__self__, "additional_info_types", additional_info_types)
+        if exclude_info_types is not None:
+            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         if text_redaction_mode is not None:
             pulumi.set(__self__, "text_redaction_mode", text_redaction_mode)
+
+    @property
+    @pulumi.getter(name="additionalInfoTypes")
+    def additional_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "additional_info_types")
+
+    @additional_info_types.setter
+    def additional_info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_info_types", value)
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @exclude_info_types.setter
+    def exclude_info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_info_types", value)
 
     @property
     @pulumi.getter(name="textRedactionMode")
@@ -1547,6 +2177,33 @@ class InfoTypeTransformationArgs:
 
 
 @pulumi.input_type
+class KeepExtensionsConfigArgs:
+    def __init__(__self__):
+        """
+        The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+        """
+        pass
+
+
+@pulumi.input_type
+class KeepFieldArgs:
+    def __init__(__self__):
+        """
+        Keep field unchanged.
+        """
+        pass
+
+
+@pulumi.input_type
+class KeepTagArgs:
+    def __init__(__self__):
+        """
+        Keep tag unchanged.
+        """
+        pass
+
+
+@pulumi.input_type
 class KmsWrappedCryptoKeyArgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[str],
@@ -1622,6 +2279,62 @@ class NotificationConfigArgs:
     @send_for_bulk_import.setter
     def send_for_bulk_import(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "send_for_bulk_import", value)
+
+
+@pulumi.input_type
+class OptionsArgs:
+    def __init__(__self__, *,
+                 clean_descriptors: Optional[pulumi.Input['CleanDescriptorsOptionArgs']] = None,
+                 clean_image: Optional[pulumi.Input['ImageConfigArgs']] = None,
+                 primary_ids: Optional[pulumi.Input['OptionsPrimaryIds']] = None):
+        """
+        Specifies additional options to apply to the base profile.
+        :param pulumi.Input['CleanDescriptorsOptionArgs'] clean_descriptors: Set Clean Descriptors Option.
+        :param pulumi.Input['ImageConfigArgs'] clean_image: Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+        :param pulumi.Input['OptionsPrimaryIds'] primary_ids: Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+        """
+        if clean_descriptors is not None:
+            pulumi.set(__self__, "clean_descriptors", clean_descriptors)
+        if clean_image is not None:
+            pulumi.set(__self__, "clean_image", clean_image)
+        if primary_ids is not None:
+            pulumi.set(__self__, "primary_ids", primary_ids)
+
+    @property
+    @pulumi.getter(name="cleanDescriptors")
+    def clean_descriptors(self) -> Optional[pulumi.Input['CleanDescriptorsOptionArgs']]:
+        """
+        Set Clean Descriptors Option.
+        """
+        return pulumi.get(self, "clean_descriptors")
+
+    @clean_descriptors.setter
+    def clean_descriptors(self, value: Optional[pulumi.Input['CleanDescriptorsOptionArgs']]):
+        pulumi.set(self, "clean_descriptors", value)
+
+    @property
+    @pulumi.getter(name="cleanImage")
+    def clean_image(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
+        """
+        Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+        """
+        return pulumi.get(self, "clean_image")
+
+    @clean_image.setter
+    def clean_image(self, value: Optional[pulumi.Input['ImageConfigArgs']]):
+        pulumi.set(self, "clean_image", value)
+
+    @property
+    @pulumi.getter(name="primaryIds")
+    def primary_ids(self) -> Optional[pulumi.Input['OptionsPrimaryIds']]:
+        """
+        Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+        """
+        return pulumi.get(self, "primary_ids")
+
+    @primary_ids.setter
+    def primary_ids(self, value: Optional[pulumi.Input['OptionsPrimaryIds']]):
+        pulumi.set(self, "primary_ids", value)
 
 
 @pulumi.input_type
@@ -1737,6 +2450,15 @@ class PatientIdArgs:
 
 
 @pulumi.input_type
+class RecurseTagArgs:
+    def __init__(__self__):
+        """
+        Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        """
+        pass
+
+
+@pulumi.input_type
 class RedactConfigArgs:
     def __init__(__self__):
         """
@@ -1746,10 +2468,46 @@ class RedactConfigArgs:
 
 
 @pulumi.input_type
+class RegenUidTagArgs:
+    def __init__(__self__):
+        """
+        Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        """
+        pass
+
+
+@pulumi.input_type
+class RemoveFieldArgs:
+    def __init__(__self__):
+        """
+        Remove field.
+        """
+        pass
+
+
+@pulumi.input_type
+class RemoveTagArgs:
+    def __init__(__self__):
+        """
+        Replace with empty tag.
+        """
+        pass
+
+
+@pulumi.input_type
 class ReplaceWithInfoTypeConfigArgs:
     def __init__(__self__):
         """
         When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+        """
+        pass
+
+
+@pulumi.input_type
+class ResetTagArgs:
+    def __init__(__self__):
+        """
+        Reset tag to a placeholder value.
         """
         pass
 
@@ -2188,16 +2946,64 @@ class TagFilterListArgs:
 @pulumi.input_type
 class TextConfigArgs:
     def __init__(__self__, *,
+                 additional_transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None,
+                 exclude_info_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 profile_type: Optional[pulumi.Input['TextConfigProfileType']] = None,
                  transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None):
         """
         Configures how to transform sensitive text `InfoTypes`.
+        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] additional_transformations: Additional transformations to apply to the detected data, overriding `profile`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_info_types: InfoTypes to skip transforming, overriding `profile`.
+        :param pulumi.Input['TextConfigProfileType'] profile_type: Base profile type for text transformation.
         :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        if additional_transformations is not None:
+            pulumi.set(__self__, "additional_transformations", additional_transformations)
+        if exclude_info_types is not None:
+            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+        if profile_type is not None:
+            pulumi.set(__self__, "profile_type", profile_type)
         if transformations is not None:
             warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
             pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
         if transformations is not None:
             pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter(name="additionalTransformations")
+    def additional_transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]:
+        """
+        Additional transformations to apply to the detected data, overriding `profile`.
+        """
+        return pulumi.get(self, "additional_transformations")
+
+    @additional_transformations.setter
+    def additional_transformations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]):
+        pulumi.set(self, "additional_transformations", value)
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        InfoTypes to skip transforming, overriding `profile`.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @exclude_info_types.setter
+    def exclude_info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_info_types", value)
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> Optional[pulumi.Input['TextConfigProfileType']]:
+        """
+        Base profile type for text transformation.
+        """
+        return pulumi.get(self, "profile_type")
+
+    @profile_type.setter
+    def profile_type(self, value: Optional[pulumi.Input['TextConfigProfileType']]):
+        pulumi.set(self, "profile_type", value)
 
     @property
     @pulumi.getter

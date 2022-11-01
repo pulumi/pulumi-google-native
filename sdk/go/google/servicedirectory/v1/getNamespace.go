@@ -31,6 +31,8 @@ type LookupNamespaceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name string `pulumi:"name"`
+	// The globally unique identifier of the namespace in the UUID4 format.
+	Uid string `pulumi:"uid"`
 }
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
@@ -78,6 +80,11 @@ func (o LookupNamespaceResultOutput) Labels() pulumi.StringMapOutput {
 // Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The globally unique identifier of the namespace in the UUID4 format.
+func (o LookupNamespaceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

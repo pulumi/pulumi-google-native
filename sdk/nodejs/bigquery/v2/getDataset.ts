@@ -98,6 +98,10 @@ export interface GetDatasetResult {
      */
     readonly selfLink: string;
     /**
+     * [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+     */
+    readonly storageBillingModel: string;
+    /**
      * [Optional]The tags associated with this dataset. Tag keys are globally unique.
      */
     readonly tags: outputs.bigquery.v2.DatasetTagsItemResponse[];

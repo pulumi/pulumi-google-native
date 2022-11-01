@@ -30,6 +30,8 @@ __all__ = [
     'FeatureSpecResponse',
     'FeatureStateResponse',
     'FleetLifecycleStateResponse',
+    'FleetObservabilityFeatureSpecResponse',
+    'FleetObservabilityFeatureStateResponse',
     'GkeClusterResponse',
     'KubernetesMetadataResponse',
     'KubernetesResourceResponse',
@@ -510,6 +512,7 @@ class CommonFeatureSpecResponse(dict):
                  anthosobservability: 'outputs.AnthosObservabilityFeatureSpecResponse',
                  appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
                  cloudauditlogging: 'outputs.CloudAuditLoggingFeatureSpecResponse',
+                 fleetobservability: 'outputs.FleetObservabilityFeatureSpecResponse',
                  multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse',
                  workloadcertificate: 'outputs.FeatureSpecResponse'):
         """
@@ -517,12 +520,14 @@ class CommonFeatureSpecResponse(dict):
         :param 'AnthosObservabilityFeatureSpecResponse' anthosobservability: Anthos Observability spec
         :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
         :param 'CloudAuditLoggingFeatureSpecResponse' cloudauditlogging: Cloud Audit Logging-specific spec.
+        :param 'FleetObservabilityFeatureSpecResponse' fleetobservability: FleetObservability feature spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
         :param 'FeatureSpecResponse' workloadcertificate: Workload Certificate spec.
         """
         pulumi.set(__self__, "anthosobservability", anthosobservability)
         pulumi.set(__self__, "appdevexperience", appdevexperience)
         pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
+        pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
         pulumi.set(__self__, "workloadcertificate", workloadcertificate)
 
@@ -552,6 +557,14 @@ class CommonFeatureSpecResponse(dict):
 
     @property
     @pulumi.getter
+    def fleetobservability(self) -> 'outputs.FleetObservabilityFeatureSpecResponse':
+        """
+        FleetObservability feature spec.
+        """
+        return pulumi.get(self, "fleetobservability")
+
+    @property
+    @pulumi.getter
     def multiclusteringress(self) -> 'outputs.MultiClusterIngressFeatureSpecResponse':
         """
         Multicluster Ingress-specific spec.
@@ -574,15 +587,18 @@ class CommonFeatureStateResponse(dict):
     """
     def __init__(__self__, *,
                  appdevexperience: 'outputs.AppDevExperienceFeatureStateResponse',
+                 fleetobservability: 'outputs.FleetObservabilityFeatureStateResponse',
                  servicemesh: 'outputs.ServiceMeshFeatureStateResponse',
                  state: 'outputs.FeatureStateResponse'):
         """
         CommonFeatureState contains Hub-wide Feature status information.
         :param 'AppDevExperienceFeatureStateResponse' appdevexperience: Appdevexperience specific state.
+        :param 'FleetObservabilityFeatureStateResponse' fleetobservability: FleetObservability feature state.
         :param 'ServiceMeshFeatureStateResponse' servicemesh: Service Mesh-specific state.
         :param 'FeatureStateResponse' state: The "running state" of the Feature in this Hub.
         """
         pulumi.set(__self__, "appdevexperience", appdevexperience)
+        pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "servicemesh", servicemesh)
         pulumi.set(__self__, "state", state)
 
@@ -593,6 +609,14 @@ class CommonFeatureStateResponse(dict):
         Appdevexperience specific state.
         """
         return pulumi.get(self, "appdevexperience")
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> 'outputs.FleetObservabilityFeatureStateResponse':
+        """
+        FleetObservability feature state.
+        """
+        return pulumi.get(self, "fleetobservability")
 
     @property
     @pulumi.getter
@@ -860,6 +884,30 @@ class FleetLifecycleStateResponse(dict):
         The current state of the Fleet resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class FleetObservabilityFeatureSpecResponse(dict):
+    """
+    **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+    """
+    def __init__(__self__):
+        """
+        **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        """
+        pass
+
+
+@pulumi.output_type
+class FleetObservabilityFeatureStateResponse(dict):
+    """
+    **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+    """
+    def __init__(__self__):
+        """
+        **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+        """
+        pass
 
 
 @pulumi.output_type

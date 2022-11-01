@@ -10,6 +10,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents the Compliance Status of this workload
+type GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse struct {
+	// Count of active Violations which are acknowledged in the Workload.
+	AcknowledgedViolationCount int `pulumi:"acknowledgedViolationCount"`
+	// Count of active Violations which haven't been acknowledged.
+	ActiveViolationCount int `pulumi:"activeViolationCount"`
+}
+
+// Represents the Compliance Status of this workload
+type GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput {
+	return o
+}
+
+// Count of active Violations which are acknowledged in the Workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) AcknowledgedViolationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse) int {
+		return v.AcknowledgedViolationCount
+	}).(pulumi.IntOutput)
+}
+
+// Count of active Violations which haven't been acknowledged.
+func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) ActiveViolationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse) int {
+		return v.ActiveViolationCount
+	}).(pulumi.IntOutput)
+}
+
 // Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -477,6 +514,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput{})

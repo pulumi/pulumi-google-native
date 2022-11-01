@@ -84,7 +84,7 @@ class GetTriggerResult:
     @pulumi.getter(name="matchingCriteria")
     def matching_criteria(self) -> Sequence['outputs.MatchingCriteriaResponse']:
         """
-        null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         """
         return pulumi.get(self, "matching_criteria")
 

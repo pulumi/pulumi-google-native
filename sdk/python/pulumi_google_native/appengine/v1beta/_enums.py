@@ -10,6 +10,8 @@ __all__ = [
     'ApiConfigHandlerSecurityLevel',
     'AppDatabaseType',
     'AppServingStatus',
+    'ApplicationDatabaseType',
+    'ApplicationServingStatus',
     'EndpointsApiServiceRolloutStrategy',
     'ErrorHandlerErrorCode',
     'IngressRuleAction',
@@ -114,6 +116,50 @@ class AppDatabaseType(str, Enum):
 
 
 class AppServingStatus(str, Enum):
+    """
+    Serving status of this application.
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+    """
+    Serving status is unspecified.
+    """
+    SERVING = "SERVING"
+    """
+    Application is serving.
+    """
+    USER_DISABLED = "USER_DISABLED"
+    """
+    Application has been disabled by the user.
+    """
+    SYSTEM_DISABLED = "SYSTEM_DISABLED"
+    """
+    Application has been disabled by the system.
+    """
+
+
+class ApplicationDatabaseType(str, Enum):
+    """
+    The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+    """
+    DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
+    """
+    Database type is unspecified.
+    """
+    CLOUD_DATASTORE = "CLOUD_DATASTORE"
+    """
+    Cloud Datastore
+    """
+    CLOUD_FIRESTORE = "CLOUD_FIRESTORE"
+    """
+    Cloud Firestore Native
+    """
+    CLOUD_DATASTORE_COMPATIBILITY = "CLOUD_DATASTORE_COMPATIBILITY"
+    """
+    Cloud Firestore in Datastore Mode
+    """
+
+
+class ApplicationServingStatus(str, Enum):
     """
     Serving status of this application.
     """

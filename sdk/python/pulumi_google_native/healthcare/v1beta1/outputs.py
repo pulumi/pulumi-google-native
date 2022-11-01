@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'ActionResponse',
     'AnnotationConfigResponse',
     'AnnotationSourceResponse',
     'AttributeResponse',
@@ -20,20 +21,32 @@ __all__ = [
     'BindingResponse',
     'BoundingPolyResponse',
     'CharacterMaskConfigResponse',
+    'CharacterMaskFieldResponse',
+    'CleanDescriptorsOptionResponse',
+    'CleanTextFieldResponse',
+    'CleanTextTagResponse',
     'CloudHealthcareSourceResponse',
+    'ContextualDeidConfigResponse',
     'CryptoHashConfigResponse',
+    'CryptoHashFieldResponse',
     'DateShiftConfigResponse',
+    'DateShiftFieldResponse',
     'DeidentifiedStoreDestinationResponse',
     'DeidentifyConfigResponse',
     'DeidentifyOperationMetadataResponse',
+    'DeleteTagResponse',
     'DicomConfigResponse',
+    'DicomTagConfigResponse',
     'ExprResponse',
     'FhirConfigResponse',
+    'FhirFieldConfigResponse',
     'FhirNotificationConfigResponse',
     'FhirOutputResponse',
     'FieldMetadataResponse',
     'FieldResponse',
     'GoogleCloudHealthcareV1beta1ConsentPolicyResponse',
+    'GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse',
+    'GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse',
     'GoogleCloudHealthcareV1beta1DicomStreamConfigResponse',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse',
@@ -44,13 +57,22 @@ __all__ = [
     'ImageConfigResponse',
     'ImageResponse',
     'InfoTypeTransformationResponse',
+    'KeepExtensionsConfigResponse',
+    'KeepFieldResponse',
+    'KeepTagResponse',
     'KmsWrappedCryptoKeyResponse',
     'NotificationConfigResponse',
+    'OptionsResponse',
     'ParsedDataResponse',
     'ParserConfigResponse',
     'PatientIdResponse',
+    'RecurseTagResponse',
     'RedactConfigResponse',
+    'RegenUidTagResponse',
+    'RemoveFieldResponse',
+    'RemoveTagResponse',
     'ReplaceWithInfoTypeConfigResponse',
+    'ResetTagResponse',
     'ResourceAnnotationResponse',
     'SchemaConfigResponse',
     'SchemaPackageResponse',
@@ -68,6 +90,147 @@ __all__ = [
     'VersionSourceResponse',
     'VertexResponse',
 ]
+
+@pulumi.output_type
+class ActionResponse(dict):
+    """
+    Specifies a selection of tags and an `Action` to apply to each one.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanImageTag":
+            suggest = "clean_image_tag"
+        elif key == "cleanTextTag":
+            suggest = "clean_text_tag"
+        elif key == "deleteTag":
+            suggest = "delete_tag"
+        elif key == "keepTag":
+            suggest = "keep_tag"
+        elif key == "recurseTag":
+            suggest = "recurse_tag"
+        elif key == "regenUidTag":
+            suggest = "regen_uid_tag"
+        elif key == "removeTag":
+            suggest = "remove_tag"
+        elif key == "resetTag":
+            suggest = "reset_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clean_image_tag: 'outputs.ImageConfigResponse',
+                 clean_text_tag: 'outputs.CleanTextTagResponse',
+                 delete_tag: 'outputs.DeleteTagResponse',
+                 keep_tag: 'outputs.KeepTagResponse',
+                 queries: Sequence[str],
+                 recurse_tag: 'outputs.RecurseTagResponse',
+                 regen_uid_tag: 'outputs.RegenUidTagResponse',
+                 remove_tag: 'outputs.RemoveTagResponse',
+                 reset_tag: 'outputs.ResetTagResponse'):
+        """
+        Specifies a selection of tags and an `Action` to apply to each one.
+        :param 'ImageConfigResponse' clean_image_tag: Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+        :param 'CleanTextTagResponse' clean_text_tag: Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        :param 'DeleteTagResponse' delete_tag: Delete tag.
+        :param 'KeepTagResponse' keep_tag: Keep tag unchanged.
+        :param Sequence[str] queries: Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+        :param 'RecurseTagResponse' recurse_tag: Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        :param 'RegenUidTagResponse' regen_uid_tag: Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        :param 'RemoveTagResponse' remove_tag: Replace with empty tag.
+        :param 'ResetTagResponse' reset_tag: Reset tag to a placeholder value.
+        """
+        pulumi.set(__self__, "clean_image_tag", clean_image_tag)
+        pulumi.set(__self__, "clean_text_tag", clean_text_tag)
+        pulumi.set(__self__, "delete_tag", delete_tag)
+        pulumi.set(__self__, "keep_tag", keep_tag)
+        pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "recurse_tag", recurse_tag)
+        pulumi.set(__self__, "regen_uid_tag", regen_uid_tag)
+        pulumi.set(__self__, "remove_tag", remove_tag)
+        pulumi.set(__self__, "reset_tag", reset_tag)
+
+    @property
+    @pulumi.getter(name="cleanImageTag")
+    def clean_image_tag(self) -> 'outputs.ImageConfigResponse':
+        """
+        Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+        """
+        return pulumi.get(self, "clean_image_tag")
+
+    @property
+    @pulumi.getter(name="cleanTextTag")
+    def clean_text_tag(self) -> 'outputs.CleanTextTagResponse':
+        """
+        Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        """
+        return pulumi.get(self, "clean_text_tag")
+
+    @property
+    @pulumi.getter(name="deleteTag")
+    def delete_tag(self) -> 'outputs.DeleteTagResponse':
+        """
+        Delete tag.
+        """
+        return pulumi.get(self, "delete_tag")
+
+    @property
+    @pulumi.getter(name="keepTag")
+    def keep_tag(self) -> 'outputs.KeepTagResponse':
+        """
+        Keep tag unchanged.
+        """
+        return pulumi.get(self, "keep_tag")
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Sequence[str]:
+        """
+        Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+        """
+        return pulumi.get(self, "queries")
+
+    @property
+    @pulumi.getter(name="recurseTag")
+    def recurse_tag(self) -> 'outputs.RecurseTagResponse':
+        """
+        Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        """
+        return pulumi.get(self, "recurse_tag")
+
+    @property
+    @pulumi.getter(name="regenUidTag")
+    def regen_uid_tag(self) -> 'outputs.RegenUidTagResponse':
+        """
+        Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        """
+        return pulumi.get(self, "regen_uid_tag")
+
+    @property
+    @pulumi.getter(name="removeTag")
+    def remove_tag(self) -> 'outputs.RemoveTagResponse':
+        """
+        Replace with empty tag.
+        """
+        return pulumi.get(self, "remove_tag")
+
+    @property
+    @pulumi.getter(name="resetTag")
+    def reset_tag(self) -> 'outputs.ResetTagResponse':
+        """
+        Reset tag to a placeholder value.
+        """
+        return pulumi.get(self, "reset_tag")
+
 
 @pulumi.output_type
 class AnnotationConfigResponse(dict):
@@ -429,6 +592,54 @@ class CharacterMaskConfigResponse(dict):
 
 
 @pulumi.output_type
+class CharacterMaskFieldResponse(dict):
+    """
+    Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    """
+    def __init__(__self__):
+        """
+        Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.output_type
+class CleanDescriptorsOptionResponse(dict):
+    """
+    This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+    """
+    def __init__(__self__):
+        """
+        This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+        """
+        pass
+
+
+@pulumi.output_type
+class CleanTextFieldResponse(dict):
+    """
+    Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    """
+    def __init__(__self__):
+        """
+        Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.output_type
+class CleanTextTagResponse(dict):
+    """
+    Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+    """
+    def __init__(__self__):
+        """
+        Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        """
+        pass
+
+
+@pulumi.output_type
 class CloudHealthcareSourceResponse(dict):
     """
     Cloud Healthcare API resource.
@@ -448,6 +659,18 @@ class CloudHealthcareSourceResponse(dict):
         Full path of a Cloud Healthcare API resource.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ContextualDeidConfigResponse(dict):
+    """
+    The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+    """
+    def __init__(__self__):
+        """
+        The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -503,6 +726,18 @@ class CryptoHashConfigResponse(dict):
 
 
 @pulumi.output_type
+class CryptoHashFieldResponse(dict):
+    """
+    Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    """
+    def __init__(__self__):
+        """
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        pass
+
+
+@pulumi.output_type
 class DateShiftConfigResponse(dict):
     """
     Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
@@ -555,6 +790,18 @@ class DateShiftConfigResponse(dict):
 
 
 @pulumi.output_type
+class DateShiftFieldResponse(dict):
+    """
+    Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+    """
+    def __init__(__self__):
+        """
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        """
+        pass
+
+
+@pulumi.output_type
 class DeidentifiedStoreDestinationResponse(dict):
     """
     Contains configuration for streaming de-identified FHIR export.
@@ -595,7 +842,11 @@ class DeidentifyConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "operationMetadata":
+        if key == "dicomTagConfig":
+            suggest = "dicom_tag_config"
+        elif key == "fhirFieldConfig":
+            suggest = "fhir_field_config"
+        elif key == "operationMetadata":
             suggest = "operation_metadata"
 
         if suggest:
@@ -612,7 +863,9 @@ class DeidentifyConfigResponse(dict):
     def __init__(__self__, *,
                  annotation: 'outputs.AnnotationConfigResponse',
                  dicom: 'outputs.DicomConfigResponse',
+                 dicom_tag_config: 'outputs.DicomTagConfigResponse',
                  fhir: 'outputs.FhirConfigResponse',
+                 fhir_field_config: 'outputs.FhirFieldConfigResponse',
                  image: 'outputs.ImageConfigResponse',
                  operation_metadata: 'outputs.DeidentifyOperationMetadataResponse',
                  text: 'outputs.TextConfigResponse'):
@@ -620,14 +873,18 @@ class DeidentifyConfigResponse(dict):
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param 'AnnotationConfigResponse' annotation: Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
         :param 'DicomConfigResponse' dicom: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
+        :param 'DicomTagConfigResponse' dicom_tag_config: Configures de-id of application/DICOM content.
         :param 'FhirConfigResponse' fhir: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
+        :param 'FhirFieldConfigResponse' fhir_field_config: Configures de-id of application/FHIR content.
         :param 'ImageConfigResponse' image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param 'DeidentifyOperationMetadataResponse' operation_metadata: Details about the work the de-identify operation performed.
         :param 'TextConfigResponse' text: Configures de-identification of text wherever it is found in the source_dataset.
         """
         pulumi.set(__self__, "annotation", annotation)
         pulumi.set(__self__, "dicom", dicom)
+        pulumi.set(__self__, "dicom_tag_config", dicom_tag_config)
         pulumi.set(__self__, "fhir", fhir)
+        pulumi.set(__self__, "fhir_field_config", fhir_field_config)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "operation_metadata", operation_metadata)
         pulumi.set(__self__, "text", text)
@@ -649,12 +906,28 @@ class DeidentifyConfigResponse(dict):
         return pulumi.get(self, "dicom")
 
     @property
+    @pulumi.getter(name="dicomTagConfig")
+    def dicom_tag_config(self) -> 'outputs.DicomTagConfigResponse':
+        """
+        Configures de-id of application/DICOM content.
+        """
+        return pulumi.get(self, "dicom_tag_config")
+
+    @property
     @pulumi.getter
     def fhir(self) -> 'outputs.FhirConfigResponse':
         """
         Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         """
         return pulumi.get(self, "fhir")
+
+    @property
+    @pulumi.getter(name="fhirFieldConfig")
+    def fhir_field_config(self) -> 'outputs.FhirFieldConfigResponse':
+        """
+        Configures de-id of application/FHIR content.
+        """
+        return pulumi.get(self, "fhir_field_config")
 
     @property
     @pulumi.getter
@@ -718,6 +991,18 @@ class DeidentifyOperationMetadataResponse(dict):
         Details about the FHIR store to write the output to.
         """
         return pulumi.get(self, "fhir_output")
+
+
+@pulumi.output_type
+class DeleteTagResponse(dict):
+    """
+    Delete tag.
+    """
+    def __init__(__self__):
+        """
+        Delete tag.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -796,6 +1081,67 @@ class DicomConfigResponse(dict):
         If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
         """
         return pulumi.get(self, "skip_id_redaction")
+
+
+@pulumi.output_type
+class DicomTagConfigResponse(dict):
+    """
+    Specifies the parameters needed for the de-identification of DICOM stores.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileType":
+            suggest = "profile_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DicomTagConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DicomTagConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DicomTagConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.ActionResponse'],
+                 options: 'outputs.OptionsResponse',
+                 profile_type: str):
+        """
+        Specifies the parameters needed for the de-identification of DICOM stores.
+        :param Sequence['ActionResponse'] actions: Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+        :param 'OptionsResponse' options: Specifies additional options to apply, overriding the base `profile`.
+        :param str profile_type: Base profile type for handling DICOM tags.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "profile_type", profile_type)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.ActionResponse']:
+        """
+        Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def options(self) -> 'outputs.OptionsResponse':
+        """
+        Specifies additional options to apply, overriding the base `profile`.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> str:
+        """
+        Base profile type for handling DICOM tags.
+        """
+        return pulumi.get(self, "profile_type")
 
 
 @pulumi.output_type
@@ -903,6 +1249,69 @@ class FhirConfigResponse(dict):
         Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`. If a field can be matched by more than one FieldMetadata, the first FieldMetadata.Action is applied.
         """
         return pulumi.get(self, "field_metadata_list")
+
+
+@pulumi.output_type
+class FhirFieldConfigResponse(dict):
+    """
+    Specifies how to handle the de-identification of a FHIR store.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldMetadataList":
+            suggest = "field_metadata_list"
+        elif key == "profileType":
+            suggest = "profile_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirFieldConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirFieldConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirFieldConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_metadata_list: Sequence['outputs.GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse'],
+                 options: 'outputs.GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse',
+                 profile_type: str):
+        """
+        Specifies how to handle the de-identification of a FHIR store.
+        :param Sequence['GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse'] field_metadata_list: Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        :param 'GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse' options: Specifies additional options, overriding the base `profile`.
+        :param str profile_type: Base profile type for handling FHIR fields.
+        """
+        pulumi.set(__self__, "field_metadata_list", field_metadata_list)
+        pulumi.set(__self__, "options", options)
+        pulumi.set(__self__, "profile_type", profile_type)
+
+    @property
+    @pulumi.getter(name="fieldMetadataList")
+    def field_metadata_list(self) -> Sequence['outputs.GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse']:
+        """
+        Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        """
+        return pulumi.get(self, "field_metadata_list")
+
+    @property
+    @pulumi.getter
+    def options(self) -> 'outputs.GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse':
+        """
+        Specifies additional options, overriding the base `profile`.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> str:
+        """
+        Base profile type for handling FHIR fields.
+        """
+        return pulumi.get(self, "profile_type")
 
 
 @pulumi.output_type
@@ -1164,6 +1573,212 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
         The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
         """
         return pulumi.get(self, "resource_attributes")
+
+
+@pulumi.output_type
+class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse(dict):
+    """
+    Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterMaskField":
+            suggest = "character_mask_field"
+        elif key == "cleanTextField":
+            suggest = "clean_text_field"
+        elif key == "cryptoHashField":
+            suggest = "crypto_hash_field"
+        elif key == "dateShiftField":
+            suggest = "date_shift_field"
+        elif key == "keepField":
+            suggest = "keep_field"
+        elif key == "removeField":
+            suggest = "remove_field"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 character_mask_field: 'outputs.CharacterMaskFieldResponse',
+                 clean_text_field: 'outputs.CleanTextFieldResponse',
+                 crypto_hash_field: 'outputs.CryptoHashFieldResponse',
+                 date_shift_field: 'outputs.DateShiftFieldResponse',
+                 keep_field: 'outputs.KeepFieldResponse',
+                 paths: Sequence[str],
+                 remove_field: 'outputs.RemoveFieldResponse'):
+        """
+        Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+        :param 'CharacterMaskFieldResponse' character_mask_field: Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param 'CleanTextFieldResponse' clean_text_field: Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param 'CryptoHashFieldResponse' crypto_hash_field: Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        :param 'DateShiftFieldResponse' date_shift_field: Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        :param 'KeepFieldResponse' keep_field: Keep the field unchanged.
+        :param Sequence[str] paths: List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        :param 'RemoveFieldResponse' remove_field: Remove the field.
+        """
+        pulumi.set(__self__, "character_mask_field", character_mask_field)
+        pulumi.set(__self__, "clean_text_field", clean_text_field)
+        pulumi.set(__self__, "crypto_hash_field", crypto_hash_field)
+        pulumi.set(__self__, "date_shift_field", date_shift_field)
+        pulumi.set(__self__, "keep_field", keep_field)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "remove_field", remove_field)
+
+    @property
+    @pulumi.getter(name="characterMaskField")
+    def character_mask_field(self) -> 'outputs.CharacterMaskFieldResponse':
+        """
+        Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "character_mask_field")
+
+    @property
+    @pulumi.getter(name="cleanTextField")
+    def clean_text_field(self) -> 'outputs.CleanTextFieldResponse':
+        """
+        Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "clean_text_field")
+
+    @property
+    @pulumi.getter(name="cryptoHashField")
+    def crypto_hash_field(self) -> 'outputs.CryptoHashFieldResponse':
+        """
+        Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        """
+        return pulumi.get(self, "crypto_hash_field")
+
+    @property
+    @pulumi.getter(name="dateShiftField")
+    def date_shift_field(self) -> 'outputs.DateShiftFieldResponse':
+        """
+        Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        """
+        return pulumi.get(self, "date_shift_field")
+
+    @property
+    @pulumi.getter(name="keepField")
+    def keep_field(self) -> 'outputs.KeepFieldResponse':
+        """
+        Keep the field unchanged.
+        """
+        return pulumi.get(self, "keep_field")
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        """
+        List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter(name="removeField")
+    def remove_field(self) -> 'outputs.RemoveFieldResponse':
+        """
+        Remove the field.
+        """
+        return pulumi.get(self, "remove_field")
+
+
+@pulumi.output_type
+class GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse(dict):
+    """
+    Specifies additional options to apply to the base `profile`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterMaskConfig":
+            suggest = "character_mask_config"
+        elif key == "contextualDeid":
+            suggest = "contextual_deid"
+        elif key == "cryptoHashConfig":
+            suggest = "crypto_hash_config"
+        elif key == "dateShiftConfig":
+            suggest = "date_shift_config"
+        elif key == "keepExtensions":
+            suggest = "keep_extensions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 character_mask_config: 'outputs.CharacterMaskConfigResponse',
+                 contextual_deid: 'outputs.ContextualDeidConfigResponse',
+                 crypto_hash_config: 'outputs.CryptoHashConfigResponse',
+                 date_shift_config: 'outputs.DateShiftConfigResponse',
+                 keep_extensions: 'outputs.KeepExtensionsConfigResponse'):
+        """
+        Specifies additional options to apply to the base `profile`.
+        :param 'CharacterMaskConfigResponse' character_mask_config: Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        :param 'ContextualDeidConfigResponse' contextual_deid: Configure contextual de-id.
+        :param 'CryptoHashConfigResponse' crypto_hash_config: Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        :param 'DateShiftConfigResponse' date_shift_config: Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        :param 'KeepExtensionsConfigResponse' keep_extensions: Configure keeping extensions by default.
+        """
+        pulumi.set(__self__, "character_mask_config", character_mask_config)
+        pulumi.set(__self__, "contextual_deid", contextual_deid)
+        pulumi.set(__self__, "crypto_hash_config", crypto_hash_config)
+        pulumi.set(__self__, "date_shift_config", date_shift_config)
+        pulumi.set(__self__, "keep_extensions", keep_extensions)
+
+    @property
+    @pulumi.getter(name="characterMaskConfig")
+    def character_mask_config(self) -> 'outputs.CharacterMaskConfigResponse':
+        """
+        Character mask config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "character_mask_config")
+
+    @property
+    @pulumi.getter(name="contextualDeid")
+    def contextual_deid(self) -> 'outputs.ContextualDeidConfigResponse':
+        """
+        Configure contextual de-id.
+        """
+        return pulumi.get(self, "contextual_deid")
+
+    @property
+    @pulumi.getter(name="cryptoHashConfig")
+    def crypto_hash_config(self) -> 'outputs.CryptoHashConfigResponse':
+        """
+        Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "crypto_hash_config")
+
+    @property
+    @pulumi.getter(name="dateShiftConfig")
+    def date_shift_config(self) -> 'outputs.DateShiftConfigResponse':
+        """
+        Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+        """
+        return pulumi.get(self, "date_shift_config")
+
+    @property
+    @pulumi.getter(name="keepExtensions")
+    def keep_extensions(self) -> 'outputs.KeepExtensionsConfigResponse':
+        """
+        Configure keeping extensions by default.
+        """
+        return pulumi.get(self, "keep_extensions")
 
 
 @pulumi.output_type
@@ -1537,7 +2152,11 @@ class ImageConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "textRedactionMode":
+        if key == "additionalInfoTypes":
+            suggest = "additional_info_types"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+        elif key == "textRedactionMode":
             suggest = "text_redaction_mode"
 
         if suggest:
@@ -1552,12 +2171,34 @@ class ImageConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_info_types: Sequence[str],
+                 exclude_info_types: Sequence[str],
                  text_redaction_mode: str):
         """
         Specifies how to handle de-identification of image pixels.
+        :param Sequence[str] additional_info_types: Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        :param Sequence[str] exclude_info_types: InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
         :param str text_redaction_mode: Determines how to redact text from image.
         """
+        pulumi.set(__self__, "additional_info_types", additional_info_types)
+        pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         pulumi.set(__self__, "text_redaction_mode", text_redaction_mode)
+
+    @property
+    @pulumi.getter(name="additionalInfoTypes")
+    def additional_info_types(self) -> Sequence[str]:
+        """
+        Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "additional_info_types")
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Sequence[str]:
+        """
+        InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+        """
+        return pulumi.get(self, "exclude_info_types")
 
     @property
     @pulumi.getter(name="textRedactionMode")
@@ -1725,6 +2366,42 @@ class InfoTypeTransformationResponse(dict):
 
 
 @pulumi.output_type
+class KeepExtensionsConfigResponse(dict):
+    """
+    The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+    """
+    def __init__(__self__):
+        """
+        The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+        """
+        pass
+
+
+@pulumi.output_type
+class KeepFieldResponse(dict):
+    """
+    Keep field unchanged.
+    """
+    def __init__(__self__):
+        """
+        Keep field unchanged.
+        """
+        pass
+
+
+@pulumi.output_type
+class KeepTagResponse(dict):
+    """
+    Keep tag unchanged.
+    """
+    def __init__(__self__):
+        """
+        Keep tag unchanged.
+        """
+        pass
+
+
+@pulumi.output_type
 class KmsWrappedCryptoKeyResponse(dict):
     """
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
@@ -1826,6 +2503,71 @@ class NotificationConfigResponse(dict):
         Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
         """
         return pulumi.get(self, "send_for_bulk_import")
+
+
+@pulumi.output_type
+class OptionsResponse(dict):
+    """
+    Specifies additional options to apply to the base profile.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cleanDescriptors":
+            suggest = "clean_descriptors"
+        elif key == "cleanImage":
+            suggest = "clean_image"
+        elif key == "primaryIds":
+            suggest = "primary_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clean_descriptors: 'outputs.CleanDescriptorsOptionResponse',
+                 clean_image: 'outputs.ImageConfigResponse',
+                 primary_ids: str):
+        """
+        Specifies additional options to apply to the base profile.
+        :param 'CleanDescriptorsOptionResponse' clean_descriptors: Set Clean Descriptors Option.
+        :param 'ImageConfigResponse' clean_image: Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+        :param str primary_ids: Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+        """
+        pulumi.set(__self__, "clean_descriptors", clean_descriptors)
+        pulumi.set(__self__, "clean_image", clean_image)
+        pulumi.set(__self__, "primary_ids", primary_ids)
+
+    @property
+    @pulumi.getter(name="cleanDescriptors")
+    def clean_descriptors(self) -> 'outputs.CleanDescriptorsOptionResponse':
+        """
+        Set Clean Descriptors Option.
+        """
+        return pulumi.get(self, "clean_descriptors")
+
+    @property
+    @pulumi.getter(name="cleanImage")
+    def clean_image(self) -> 'outputs.ImageConfigResponse':
+        """
+        Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+        """
+        return pulumi.get(self, "clean_image")
+
+    @property
+    @pulumi.getter(name="primaryIds")
+    def primary_ids(self) -> str:
+        """
+        Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+        """
+        return pulumi.get(self, "primary_ids")
 
 
 @pulumi.output_type
@@ -1954,6 +2696,18 @@ class PatientIdResponse(dict):
 
 
 @pulumi.output_type
+class RecurseTagResponse(dict):
+    """
+    Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+    """
+    def __init__(__self__):
+        """
+        Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+        """
+        pass
+
+
+@pulumi.output_type
 class RedactConfigResponse(dict):
     """
     Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
@@ -1966,6 +2720,42 @@ class RedactConfigResponse(dict):
 
 
 @pulumi.output_type
+class RegenUidTagResponse(dict):
+    """
+    Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+    """
+    def __init__(__self__):
+        """
+        Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+        """
+        pass
+
+
+@pulumi.output_type
+class RemoveFieldResponse(dict):
+    """
+    Remove field.
+    """
+    def __init__(__self__):
+        """
+        Remove field.
+        """
+        pass
+
+
+@pulumi.output_type
+class RemoveTagResponse(dict):
+    """
+    Replace with empty tag.
+    """
+    def __init__(__self__):
+        """
+        Replace with empty tag.
+        """
+        pass
+
+
+@pulumi.output_type
 class ReplaceWithInfoTypeConfigResponse(dict):
     """
     When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
@@ -1973,6 +2763,18 @@ class ReplaceWithInfoTypeConfigResponse(dict):
     def __init__(__self__):
         """
         When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+        """
+        pass
+
+
+@pulumi.output_type
+class ResetTagResponse(dict):
+    """
+    Reset tag to a placeholder value.
+    """
+    def __init__(__self__):
+        """
+        Reset tag to a placeholder value.
         """
         pass
 
@@ -2511,13 +3313,67 @@ class TextConfigResponse(dict):
     """
     Configures how to transform sensitive text `InfoTypes`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalTransformations":
+            suggest = "additional_transformations"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+        elif key == "profileType":
+            suggest = "profile_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TextConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TextConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TextConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 additional_transformations: Sequence['outputs.InfoTypeTransformationResponse'],
+                 exclude_info_types: Sequence[str],
+                 profile_type: str,
                  transformations: Sequence['outputs.InfoTypeTransformationResponse']):
         """
         Configures how to transform sensitive text `InfoTypes`.
+        :param Sequence['InfoTypeTransformationResponse'] additional_transformations: Additional transformations to apply to the detected data, overriding `profile`.
+        :param Sequence[str] exclude_info_types: InfoTypes to skip transforming, overriding `profile`.
+        :param str profile_type: Base profile type for text transformation.
         :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        pulumi.set(__self__, "additional_transformations", additional_transformations)
+        pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+        pulumi.set(__self__, "profile_type", profile_type)
         pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter(name="additionalTransformations")
+    def additional_transformations(self) -> Sequence['outputs.InfoTypeTransformationResponse']:
+        """
+        Additional transformations to apply to the detected data, overriding `profile`.
+        """
+        return pulumi.get(self, "additional_transformations")
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Sequence[str]:
+        """
+        InfoTypes to skip transforming, overriding `profile`.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @property
+    @pulumi.getter(name="profileType")
+    def profile_type(self) -> str:
+        """
+        Base profile type for text transformation.
+        """
+        return pulumi.get(self, "profile_type")
 
     @property
     @pulumi.getter

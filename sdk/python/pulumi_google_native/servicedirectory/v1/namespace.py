@@ -155,6 +155,7 @@ class Namespace(pulumi.CustomResource):
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["uid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Namespace, __self__).__init__(
@@ -184,6 +185,7 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["namespace_id"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["uid"] = None
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -219,4 +221,12 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        The globally unique identifier of the namespace in the UUID4 format.
+        """
+        return pulumi.get(self, "uid")
 

@@ -2156,7 +2156,7 @@ type BuildResponse struct {
 	Tags []string `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout string `pulumi:"timeout"`
-	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`
@@ -2307,7 +2307,7 @@ func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
-// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
+// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
 }
@@ -6965,9 +6965,9 @@ func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
 
 // Artifacts created by the build pipeline.
 type ResultsResponse struct {
-	// Path to the artifact manifest. Only populated when artifacts are uploaded.
+	// Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
 	ArtifactManifest string `pulumi:"artifactManifest"`
-	// Time to push all non-container artifacts.
+	// Time to push all non-container artifacts to Cloud Storage.
 	ArtifactTiming TimeSpanResponse `pulumi:"artifactTiming"`
 	// List of build step digests, in the order corresponding to build step indices.
 	BuildStepImages []string `pulumi:"buildStepImages"`
@@ -6977,7 +6977,7 @@ type ResultsResponse struct {
 	Images []BuiltImageResponse `pulumi:"images"`
 	// Maven artifacts uploaded to Artifact Registry at the end of the build.
 	MavenArtifacts []UploadedMavenArtifactResponse `pulumi:"mavenArtifacts"`
-	// Number of artifacts uploaded. Only populated when artifacts are uploaded.
+	// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
 	NumArtifacts string `pulumi:"numArtifacts"`
 	// Python artifacts uploaded to Artifact Registry at the end of the build.
 	PythonPackages []UploadedPythonPackageResponse `pulumi:"pythonPackages"`
@@ -6998,12 +6998,12 @@ func (o ResultsResponseOutput) ToResultsResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Path to the artifact manifest. Only populated when artifacts are uploaded.
+// Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
 func (o ResultsResponseOutput) ArtifactManifest() pulumi.StringOutput {
 	return o.ApplyT(func(v ResultsResponse) string { return v.ArtifactManifest }).(pulumi.StringOutput)
 }
 
-// Time to push all non-container artifacts.
+// Time to push all non-container artifacts to Cloud Storage.
 func (o ResultsResponseOutput) ArtifactTiming() TimeSpanResponseOutput {
 	return o.ApplyT(func(v ResultsResponse) TimeSpanResponse { return v.ArtifactTiming }).(TimeSpanResponseOutput)
 }
@@ -7028,7 +7028,7 @@ func (o ResultsResponseOutput) MavenArtifacts() UploadedMavenArtifactResponseArr
 	return o.ApplyT(func(v ResultsResponse) []UploadedMavenArtifactResponse { return v.MavenArtifacts }).(UploadedMavenArtifactResponseArrayOutput)
 }
 
-// Number of artifacts uploaded. Only populated when artifacts are uploaded.
+// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
 func (o ResultsResponseOutput) NumArtifacts() pulumi.StringOutput {
 	return o.ApplyT(func(v ResultsResponse) string { return v.NumArtifacts }).(pulumi.StringOutput)
 }

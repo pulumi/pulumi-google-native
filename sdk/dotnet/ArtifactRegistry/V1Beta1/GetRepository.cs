@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// If set, the repository satisfies physical zone separation.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
         /// </summary>
         public readonly string SizeBytes;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 
             string name,
 
+            bool satisfiesPzs,
+
             string sizeBytes,
 
             string updateTime)
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
             KmsKeyName = kmsKeyName;
             Labels = labels;
             Name = name;
+            SatisfiesPzs = satisfiesPzs;
             SizeBytes = sizeBytes;
             UpdateTime = updateTime;
         }

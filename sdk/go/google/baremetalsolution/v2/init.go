@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NfsShare{}
 	case "google-native:baremetalsolution/v2:ProvisioningConfig":
 		r = &ProvisioningConfig{}
+	case "google-native:baremetalsolution/v2:Snapshot":
+		r = &Snapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

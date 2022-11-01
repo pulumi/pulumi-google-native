@@ -4599,7 +4599,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpec struct {
 	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
 	// The facet key specification.
 	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey `pulumi:"facetKey"`
-	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 	Limit *int `pulumi:"limit"`
 }
 
@@ -4622,7 +4622,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecArgs struct {
 	ExcludedFilterKeys pulumi.StringArrayInput `pulumi:"excludedFilterKeys"`
 	// The facet key specification.
 	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput `pulumi:"facetKey"`
-	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 }
 
@@ -4721,7 +4721,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) FacetKey() GoogleCl
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput)
 }
 
-// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpec) *int { return v.Limit }).(pulumi.IntPtrOutput)
 }
@@ -4780,7 +4780,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) FacetKey() Googl
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput)
 }
 
-// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput) Limit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpec) *int {
 		if v == nil {
@@ -5178,7 +5178,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecResponse struct {
 	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
 	// The facet key specification.
 	FacetKey GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse `pulumi:"facetKey"`
-	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+	// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 	Limit int `pulumi:"limit"`
 }
 
@@ -5214,7 +5214,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) FacetKey() 
 	}).(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput)
 }
 
-// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) Limit() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) int { return v.Limit }).(pulumi.IntOutput)
 }

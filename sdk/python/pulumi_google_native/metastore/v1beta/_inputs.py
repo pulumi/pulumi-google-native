@@ -26,6 +26,7 @@ __all__ = [
     'MetadataIntegrationArgs',
     'NetworkConfigArgs',
     'SecretArgs',
+    'TelemetryConfigArgs',
 ]
 
 @pulumi.input_type
@@ -169,7 +170,7 @@ class ConsumerArgs:
     def __init__(__self__, *,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
-        Contains information of the customer's network configurations.Next available ID: 4
+        Contains information of the customer's network configurations.
         :param pulumi.Input[str] subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         if subnetwork is not None:
@@ -633,7 +634,7 @@ class NetworkConfigArgs:
     def __init__(__self__, *,
                  consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]] = None):
         """
-        Network configuration for the Dataproc Metastore service.Next available ID: 3
+        Network configuration for the Dataproc Metastore service.
         :param pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
         """
         if consumers is not None:
@@ -674,5 +675,25 @@ class SecretArgs:
     @cloud_secret.setter
     def cloud_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_secret", value)
+
+
+@pulumi.input_type
+class TelemetryConfigArgs:
+    def __init__(__self__, *,
+                 log_format: Optional[pulumi.Input['TelemetryConfigLogFormat']] = None):
+        """
+        Telemetry Configuration for the Dataproc Metastore service.
+        """
+        if log_format is not None:
+            pulumi.set(__self__, "log_format", log_format)
+
+    @property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> Optional[pulumi.Input['TelemetryConfigLogFormat']]:
+        return pulumi.get(self, "log_format")
+
+    @log_format.setter
+    def log_format(self, value: Optional[pulumi.Input['TelemetryConfigLogFormat']]):
+        pulumi.set(self, "log_format", value)
 
 

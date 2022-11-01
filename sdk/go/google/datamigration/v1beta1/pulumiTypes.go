@@ -725,7 +725,7 @@ type CloudSqlSettings struct {
 	Tier *string `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
 	UserLabels map[string]string `pulumi:"userLabels"`
-	// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+	// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -766,7 +766,7 @@ type CloudSqlSettingsArgs struct {
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
-	// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+	// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -908,7 +908,7 @@ func (o CloudSqlSettingsOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CloudSqlSettings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
-// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 func (o CloudSqlSettingsOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -1057,7 +1057,7 @@ func (o CloudSqlSettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 func (o CloudSqlSettingsPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudSqlSettings) *string {
 		if v == nil {
@@ -1095,7 +1095,7 @@ type CloudSqlSettingsResponse struct {
 	Tier string `pulumi:"tier"`
 	// The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
 	UserLabels map[string]string `pulumi:"userLabels"`
-	// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+	// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 	Zone string `pulumi:"zone"`
 }
 
@@ -1179,7 +1179,7 @@ func (o CloudSqlSettingsResponseOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
-// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+// The Google Cloud Platform zone where your Cloud SQL database instance is located.
 func (o CloudSqlSettingsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Zone }).(pulumi.StringOutput)
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly int TaskCount;
         /// <summary>
-        /// Optional. Describes the task(s) that will be created when executing an execution.
+        /// Optional. The template used to create tasks for this execution.
         /// </summary>
         public readonly Outputs.TaskTemplateSpecResponse Template;
 

@@ -17,13 +17,28 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
     public sealed class ImageConfigResponse
     {
         /// <summary>
+        /// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+        /// </summary>
+        public readonly ImmutableArray<string> AdditionalInfoTypes;
+        /// <summary>
+        /// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeInfoTypes;
+        /// <summary>
         /// Determines how to redact text from image.
         /// </summary>
         public readonly string TextRedactionMode;
 
         [OutputConstructor]
-        private ImageConfigResponse(string textRedactionMode)
+        private ImageConfigResponse(
+            ImmutableArray<string> additionalInfoTypes,
+
+            ImmutableArray<string> excludeInfoTypes,
+
+            string textRedactionMode)
         {
+            AdditionalInfoTypes = additionalInfoTypes;
+            ExcludeInfoTypes = excludeInfoTypes;
             TextRedactionMode = textRedactionMode;
         }
     }

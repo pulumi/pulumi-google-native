@@ -38,6 +38,7 @@ __all__ = [
     'DnsCacheConfigResponse',
     'FilterResponse',
     'GPUSharingConfigResponse',
+    'GatewayAPIConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
@@ -1503,6 +1504,28 @@ class GPUSharingConfigResponse(dict):
 
 
 @pulumi.output_type
+class GatewayAPIConfigResponse(dict):
+    """
+    GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+    """
+    def __init__(__self__, *,
+                 channel: str):
+        """
+        GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        :param str channel: The Gateway API release channel to use for Gateway API.
+        """
+        pulumi.set(__self__, "channel", channel)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        The Gateway API release channel to use for Gateway API.
+        """
+        return pulumi.get(self, "channel")
+
+
+@pulumi.output_type
 class GcePersistentDiskCsiDriverConfigResponse(dict):
     """
     Configuration for the Compute Engine PD CSI driver.
@@ -1926,13 +1949,41 @@ class LinuxNodeConfigResponse(dict):
     """
     Parameters that can be configured on Linux nodes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cgroupMode":
+            suggest = "cgroup_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinuxNodeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinuxNodeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinuxNodeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 cgroup_mode: str,
                  sysctls: Mapping[str, str]):
         """
         Parameters that can be configured on Linux nodes.
+        :param str cgroup_mode: cgroup_mode specifies the cgroup mode to be used on the node.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
+        pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> str:
+        """
+        cgroup_mode specifies the cgroup mode to be used on the node.
+        """
+        return pulumi.get(self, "cgroup_mode")
 
     @property
     @pulumi.getter
@@ -2312,6 +2363,8 @@ class MasterAuthorizedNetworksConfigResponse(dict):
         suggest = None
         if key == "cidrBlocks":
             suggest = "cidr_blocks"
+        elif key == "gcpPublicCidrsAccessEnabled":
+            suggest = "gcp_public_cidrs_access_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MasterAuthorizedNetworksConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2326,14 +2379,17 @@ class MasterAuthorizedNetworksConfigResponse(dict):
 
     def __init__(__self__, *,
                  cidr_blocks: Sequence['outputs.CidrBlockResponse'],
-                 enabled: bool):
+                 enabled: bool,
+                 gcp_public_cidrs_access_enabled: bool):
         """
         Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
         :param Sequence['CidrBlockResponse'] cidr_blocks: cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
         :param bool enabled: Whether or not master authorized networks is enabled.
+        :param bool gcp_public_cidrs_access_enabled: Whether master is accessbile via Google Compute Engine Public IP addresses.
         """
         pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
 
     @property
     @pulumi.getter(name="cidrBlocks")
@@ -2350,6 +2406,14 @@ class MasterAuthorizedNetworksConfigResponse(dict):
         Whether or not master authorized networks is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="gcpPublicCidrsAccessEnabled")
+    def gcp_public_cidrs_access_enabled(self) -> bool:
+        """
+        Whether master is accessbile via Google Compute Engine Public IP addresses.
+        """
+        return pulumi.get(self, "gcp_public_cidrs_access_enabled")
 
 
 @pulumi.output_type
@@ -2539,6 +2603,8 @@ class NetworkConfigResponse(dict):
             suggest = "enable_intra_node_visibility"
         elif key == "enableL4ilbSubsetting":
             suggest = "enable_l4ilb_subsetting"
+        elif key == "gatewayApiConfig":
+            suggest = "gateway_api_config"
         elif key == "privateIpv6GoogleAccess":
             suggest = "private_ipv6_google_access"
         elif key == "serviceExternalIpsConfig":
@@ -2561,6 +2627,7 @@ class NetworkConfigResponse(dict):
                  dns_config: 'outputs.DNSConfigResponse',
                  enable_intra_node_visibility: bool,
                  enable_l4ilb_subsetting: bool,
+                 gateway_api_config: 'outputs.GatewayAPIConfigResponse',
                  network: str,
                  private_ipv6_google_access: str,
                  service_external_ips_config: 'outputs.ServiceExternalIPsConfigResponse',
@@ -2572,6 +2639,7 @@ class NetworkConfigResponse(dict):
         :param 'DNSConfigResponse' dns_config: DNSConfig contains clusterDNS config for this cluster.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
+        :param 'GatewayAPIConfigResponse' gateway_api_config: GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         :param str network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param str private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param 'ServiceExternalIPsConfigResponse' service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -2582,6 +2650,7 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "dns_config", dns_config)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
+        pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
@@ -2626,6 +2695,14 @@ class NetworkConfigResponse(dict):
         Whether L4ILB Subsetting is enabled for this cluster.
         """
         return pulumi.get(self, "enable_l4ilb_subsetting")
+
+    @property
+    @pulumi.getter(name="gatewayApiConfig")
+    def gateway_api_config(self) -> 'outputs.GatewayAPIConfigResponse':
+        """
+        GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        """
+        return pulumi.get(self, "gateway_api_config")
 
     @property
     @pulumi.getter
@@ -2868,6 +2945,8 @@ class NodeConfigResponse(dict):
             suggest = "oauth_scopes"
         elif key == "reservationAffinity":
             suggest = "reservation_affinity"
+        elif key == "resourceLabels":
+            suggest = "resource_labels"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
         elif key == "serviceAccount":
@@ -2910,6 +2989,7 @@ class NodeConfigResponse(dict):
                  oauth_scopes: Sequence[str],
                  preemptible: bool,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
+                 resource_labels: Mapping[str, str],
                  sandbox_config: 'outputs.SandboxConfigResponse',
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
@@ -2940,6 +3020,7 @@ class NodeConfigResponse(dict):
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param bool preemptible: Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
         :param 'ReservationAffinityResponse' reservation_affinity: The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
+        :param Mapping[str, str] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -2969,6 +3050,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "sandbox_config", sandbox_config)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
@@ -3144,6 +3226,14 @@ class NodeConfigResponse(dict):
         The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Mapping[str, str]:
+        """
+        The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        """
+        return pulumi.get(self, "resource_labels")
 
     @property
     @pulumi.getter(name="sandboxConfig")
@@ -3355,6 +3445,8 @@ class NodeNetworkConfigResponse(dict):
         suggest = None
         if key == "createPodRange":
             suggest = "create_pod_range"
+        elif key == "enablePrivateNodes":
+            suggest = "enable_private_nodes"
         elif key == "networkPerformanceConfig":
             suggest = "network_performance_config"
         elif key == "podIpv4CidrBlock":
@@ -3375,17 +3467,20 @@ class NodeNetworkConfigResponse(dict):
 
     def __init__(__self__, *,
                  create_pod_range: bool,
+                 enable_private_nodes: bool,
                  network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
         """
         Parameters for node pool-level network config.
         :param bool create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param bool enable_private_nodes: Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         pulumi.set(__self__, "create_pod_range", create_pod_range)
+        pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
@@ -3397,6 +3492,14 @@ class NodeNetworkConfigResponse(dict):
         Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> bool:
+        """
+        Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+        """
+        return pulumi.get(self, "enable_private_nodes")
 
     @property
     @pulumi.getter(name="networkPerformanceConfig")
@@ -3970,6 +4073,8 @@ class PrivateClusterConfigResponse(dict):
             suggest = "peering_name"
         elif key == "privateEndpoint":
             suggest = "private_endpoint"
+        elif key == "privateEndpointSubnetwork":
+            suggest = "private_endpoint_subnetwork"
         elif key == "publicEndpoint":
             suggest = "public_endpoint"
 
@@ -3991,6 +4096,7 @@ class PrivateClusterConfigResponse(dict):
                  master_ipv4_cidr_block: str,
                  peering_name: str,
                  private_endpoint: str,
+                 private_endpoint_subnetwork: str,
                  public_endpoint: str):
         """
         Configuration options for private clusters.
@@ -4000,6 +4106,7 @@ class PrivateClusterConfigResponse(dict):
         :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
         :param str peering_name: The peering name in the customer VPC used by this cluster.
         :param str private_endpoint: The internal IP address of this cluster's master endpoint.
+        :param str private_endpoint_subnetwork: Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
         :param str public_endpoint: The external IP address of this cluster's master endpoint.
         """
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
@@ -4008,6 +4115,7 @@ class PrivateClusterConfigResponse(dict):
         pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         pulumi.set(__self__, "peering_name", peering_name)
         pulumi.set(__self__, "private_endpoint", private_endpoint)
+        pulumi.set(__self__, "private_endpoint_subnetwork", private_endpoint_subnetwork)
         pulumi.set(__self__, "public_endpoint", public_endpoint)
 
     @property
@@ -4057,6 +4165,14 @@ class PrivateClusterConfigResponse(dict):
         The internal IP address of this cluster's master endpoint.
         """
         return pulumi.get(self, "private_endpoint")
+
+    @property
+    @pulumi.getter(name="privateEndpointSubnetwork")
+    def private_endpoint_subnetwork(self) -> str:
+        """
+        Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+        """
+        return pulumi.get(self, "private_endpoint_subnetwork")
 
     @property
     @pulumi.getter(name="publicEndpoint")
@@ -4570,7 +4686,7 @@ class StandardRolloutPolicyResponse(dict):
         """
         Standard rollout policy is the default policy for blue-green.
         :param int batch_node_count: Number of blue nodes to drain in a batch.
-        :param float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        :param float batch_percentage: Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         :param str batch_soak_duration: Soak time after each batch gets drained. Default to zero.
         """
         pulumi.set(__self__, "batch_node_count", batch_node_count)
@@ -4589,7 +4705,7 @@ class StandardRolloutPolicyResponse(dict):
     @pulumi.getter(name="batchPercentage")
     def batch_percentage(self) -> float:
         """
-        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         """
         return pulumi.get(self, "batch_percentage")
 

@@ -26,7 +26,7 @@ type LookupContactArgs struct {
 }
 
 type LookupContactResult struct {
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag string `pulumi:"languageTag"`
@@ -76,7 +76,7 @@ func (o LookupContactResultOutput) ToLookupContactResultOutputWithContext(ctx co
 	return o
 }
 
-// The email address to send notifications to. This does not need to be a Google account.
+// The email address to send notifications to. The email address does not need to be a Google Account.
 func (o LookupContactResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContactResult) string { return v.Email }).(pulumi.StringOutput)
 }

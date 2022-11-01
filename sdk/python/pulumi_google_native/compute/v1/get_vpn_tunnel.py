@@ -151,7 +151,7 @@ class GetVpnTunnelResult:
     @pulumi.getter(name="peerExternalGatewayInterface")
     def peer_external_gateway_interface(self) -> int:
         """
-        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         """
         return pulumi.get(self, "peer_external_gateway_interface")
 
@@ -247,7 +247,7 @@ class GetVpnTunnelResult:
     @pulumi.getter(name="vpnGatewayInterface")
     def vpn_gateway_interface(self) -> int:
         """
-        The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         """
         return pulumi.get(self, "vpn_gateway_interface")
 

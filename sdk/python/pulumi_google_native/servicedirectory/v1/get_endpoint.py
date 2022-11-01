@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointResult:
-    def __init__(__self__, address=None, annotations=None, name=None, network=None, port=None):
+    def __init__(__self__, address=None, annotations=None, name=None, network=None, port=None, uid=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -34,6 +34,9 @@ class GetEndpointResult:
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter
@@ -75,6 +78,14 @@ class GetEndpointResult:
         """
         return pulumi.get(self, "port")
 
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The globally unique identifier of the endpoint in the UUID4 format.
+        """
+        return pulumi.get(self, "uid")
+
 
 class AwaitableGetEndpointResult(GetEndpointResult):
     # pylint: disable=using-constant-test
@@ -86,7 +97,8 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             annotations=self.annotations,
             name=self.name,
             network=self.network,
-            port=self.port)
+            port=self.port,
+            uid=self.uid)
 
 
 def get_endpoint(endpoint_id: Optional[str] = None,
@@ -112,7 +124,8 @@ def get_endpoint(endpoint_id: Optional[str] = None,
         annotations=__ret__.annotations,
         name=__ret__.name,
         network=__ret__.network,
-        port=__ret__.port)
+        port=__ret__.port,
+        uid=__ret__.uid)
 
 
 @_utilities.lift_output_func(get_endpoint)

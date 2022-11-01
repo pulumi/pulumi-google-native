@@ -45,7 +45,7 @@ type LookupVpnGatewayResult struct {
 	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
 	StackType string `pulumi:"stackType"`
 	// The list of VPN interfaces associated with this VPN gateway.
 	VpnInterfaces []VpnGatewayVpnGatewayInterfaceResponse `pulumi:"vpnInterfaces"`
@@ -133,7 +133,7 @@ func (o LookupVpnGatewayResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnGatewayResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+// The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
 func (o LookupVpnGatewayResultOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnGatewayResult) string { return v.StackType }).(pulumi.StringOutput)
 }

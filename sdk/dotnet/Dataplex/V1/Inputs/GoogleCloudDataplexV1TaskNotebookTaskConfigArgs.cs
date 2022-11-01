@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         private InputList<string>? _archiveUris;
 
         /// <summary>
-        /// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         /// </summary>
         public InputList<string> ArchiveUris
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         private InputList<string>? _fileUris;
 
         /// <summary>
-        /// Optional. GCS URIs of files to be placed in the working directory of each executor.
+        /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
         /// </summary>
         public InputList<string> FileUris
         {
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<Inputs.GoogleCloudDataplexV1TaskInfrastructureSpecArgs>? InfrastructureSpec { get; set; }
 
         /// <summary>
-        /// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         [Input("notebook", required: true)]
         public Input<string> Notebook { get; set; } = null!;

@@ -83,6 +83,10 @@ var resourceNameByPathOverrides = map[string]string{
 	// IAM.
 	"iam_v1.json:v1/organizations/{organizationsId}/roles": "OrganizationRole",
 
+	// Integrations.
+	"integrations_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions":                 "Version",
+	"integrations_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrationtemplates/{integrationtemplatesId}/versions": "TemplatesVersion",
+
 	// Logging.
 	"logging_v2.json:v2/billingAccounts/{billingAccountsId}/exclusions":                                        "BillingAccountExclusion",
 	"logging_v2.json:v2/folders/{foldersId}/exclusions":                                                        "FolderExclusion",

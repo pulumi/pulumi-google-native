@@ -31,6 +31,8 @@ type Endpoint struct {
 	Port      pulumi.IntOutput    `pulumi:"port"`
 	Project   pulumi.StringOutput `pulumi:"project"`
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
+	// The globally unique identifier of the endpoint in the UUID4 format.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -208,6 +210,11 @@ func (o EndpointOutput) Project() pulumi.StringOutput {
 
 func (o EndpointOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The globally unique identifier of the endpoint in the UUID4 format.
+func (o EndpointOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

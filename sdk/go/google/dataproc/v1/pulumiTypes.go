@@ -4419,9 +4419,9 @@ type GkeNodeConfig struct {
 	MachineType *string `pulumi:"machineType"`
 	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Preemptible *bool `pulumi:"preemptible"`
-	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Spot *bool `pulumi:"spot"`
 }
 
@@ -4448,9 +4448,9 @@ type GkeNodeConfigArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 }
 
@@ -4557,12 +4557,12 @@ func (o GkeNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GkeNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GkeNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
@@ -4641,7 +4641,7 @@ func (o GkeNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GkeNodeConfig) *bool {
 		if v == nil {
@@ -4651,7 +4651,7 @@ func (o GkeNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GkeNodeConfig) *bool {
 		if v == nil {
@@ -4673,9 +4673,9 @@ type GkeNodeConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
-	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+	// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Preemptible bool `pulumi:"preemptible"`
-	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 	Spot bool `pulumi:"spot"`
 }
 
@@ -4719,12 +4719,12 @@ func (o GkeNodeConfigResponseOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeNodeConfigResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
-// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeNodeConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
 }
 
-// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
 func (o GkeNodeConfigResponseOutput) Spot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeNodeConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
 }
@@ -12709,6 +12709,8 @@ func (o RuntimeConfigResponseOutput) Version() pulumi.StringOutput {
 
 // Runtime information about workload execution.
 type RuntimeInfoResponse struct {
+	// Approximate workload resource usage calculated after workload finishes.
+	ApproximateUsage UsageMetricsResponse `pulumi:"approximateUsage"`
 	// A URI pointing to the location of the diagnostics tarball.
 	DiagnosticOutputUri string `pulumi:"diagnosticOutputUri"`
 	// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
@@ -12730,6 +12732,11 @@ func (o RuntimeInfoResponseOutput) ToRuntimeInfoResponseOutput() RuntimeInfoResp
 
 func (o RuntimeInfoResponseOutput) ToRuntimeInfoResponseOutputWithContext(ctx context.Context) RuntimeInfoResponseOutput {
 	return o
+}
+
+// Approximate workload resource usage calculated after workload finishes.
+func (o RuntimeInfoResponseOutput) ApproximateUsage() UsageMetricsResponseOutput {
+	return o.ApplyT(func(v RuntimeInfoResponse) UsageMetricsResponse { return v.ApproximateUsage }).(UsageMetricsResponseOutput)
 }
 
 // A URI pointing to the location of the diagnostics tarball.
@@ -16085,6 +16092,39 @@ func (o TrinoJobResponseOutput) QueryList() QueryListResponseOutput {
 	return o.ApplyT(func(v TrinoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
 }
 
+// Usage metrics represent total resources consumed by a workload.
+type UsageMetricsResponse struct {
+	// Optional. DCU usage in milliDCU*seconds.
+	MilliDcuSeconds string `pulumi:"milliDcuSeconds"`
+	// Optional. Shuffle storage usage in GB*Seconds
+	ShuffleStorageGbSeconds string `pulumi:"shuffleStorageGbSeconds"`
+}
+
+// Usage metrics represent total resources consumed by a workload.
+type UsageMetricsResponseOutput struct{ *pulumi.OutputState }
+
+func (UsageMetricsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageMetricsResponse)(nil)).Elem()
+}
+
+func (o UsageMetricsResponseOutput) ToUsageMetricsResponseOutput() UsageMetricsResponseOutput {
+	return o
+}
+
+func (o UsageMetricsResponseOutput) ToUsageMetricsResponseOutputWithContext(ctx context.Context) UsageMetricsResponseOutput {
+	return o
+}
+
+// Optional. DCU usage in milliDCU*seconds.
+func (o UsageMetricsResponseOutput) MilliDcuSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageMetricsResponse) string { return v.MilliDcuSeconds }).(pulumi.StringOutput)
+}
+
+// Optional. Shuffle storage usage in GB*Seconds
+func (o UsageMetricsResponseOutput) ShuffleStorageGbSeconds() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageMetricsResponse) string { return v.ShuffleStorageGbSeconds }).(pulumi.StringOutput)
+}
+
 // Validation based on a list of allowed values.
 type ValueValidation struct {
 	// List of allowed values for the parameter.
@@ -16986,6 +17026,7 @@ func init() {
 	pulumi.RegisterOutputType(TrinoJobOutput{})
 	pulumi.RegisterOutputType(TrinoJobPtrOutput{})
 	pulumi.RegisterOutputType(TrinoJobResponseOutput{})
+	pulumi.RegisterOutputType(UsageMetricsResponseOutput{})
 	pulumi.RegisterOutputType(ValueValidationOutput{})
 	pulumi.RegisterOutputType(ValueValidationPtrOutput{})
 	pulumi.RegisterOutputType(ValueValidationResponseOutput{})

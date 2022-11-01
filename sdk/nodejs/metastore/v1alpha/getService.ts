@@ -99,6 +99,10 @@ export interface GetServiceResult {
      */
     readonly stateMessage: string;
     /**
+     * The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+     */
+    readonly telemetryConfig: outputs.metastore.v1alpha.TelemetryConfigResponse;
+    /**
      * The tier of the service.
      */
     readonly tier: string;

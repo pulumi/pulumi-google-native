@@ -61,6 +61,8 @@ type LookupDatasetResult struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+	StorageBillingModel string `pulumi:"storageBillingModel"`
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags []DatasetTagsItemResponse `pulumi:"tags"`
 }
@@ -188,6 +190,11 @@ func (o LookupDatasetResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 // A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 func (o LookupDatasetResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+func (o LookupDatasetResultOutput) StorageBillingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.StorageBillingModel }).(pulumi.StringOutput)
 }
 
 // [Optional]The tags associated with this dataset. Tag keys are globally unique.

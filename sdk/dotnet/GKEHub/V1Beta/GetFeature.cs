@@ -92,6 +92,14 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         public readonly Outputs.FeatureResourceStateResponse ResourceState;
         /// <summary>
+        /// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ScopeSpecs;
+        /// <summary>
+        /// Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ScopeStates;
+        /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         /// </summary>
         public readonly Outputs.CommonFeatureSpecResponse Spec;
@@ -120,6 +128,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
             Outputs.FeatureResourceStateResponse resourceState,
 
+            ImmutableDictionary<string, string> scopeSpecs,
+
+            ImmutableDictionary<string, string> scopeStates,
+
             Outputs.CommonFeatureSpecResponse spec,
 
             Outputs.CommonFeatureStateResponse state,
@@ -133,6 +145,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
             MembershipStates = membershipStates;
             Name = name;
             ResourceState = resourceState;
+            ScopeSpecs = scopeSpecs;
+            ScopeStates = scopeStates;
             Spec = spec;
             State = state;
             UpdateTime = updateTime;

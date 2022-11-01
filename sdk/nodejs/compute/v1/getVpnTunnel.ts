@@ -60,7 +60,7 @@ export interface GetVpnTunnelResult {
      */
     readonly peerExternalGateway: string;
     /**
-     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
      */
     readonly peerExternalGatewayInterface: number;
     /**
@@ -108,7 +108,7 @@ export interface GetVpnTunnelResult {
      */
     readonly vpnGateway: string;
     /**
-     * The interface ID of the VPN gateway with which this VPN tunnel is associated.
+     * The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
      */
     readonly vpnGatewayInterface: number;
 }

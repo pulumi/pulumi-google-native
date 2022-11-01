@@ -61,6 +61,8 @@ type LookupServiceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage string `pulumi:"stateMessage"`
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	TelemetryConfig TelemetryConfigResponse `pulumi:"telemetryConfig"`
 	// The tier of the service.
 	Tier string `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
@@ -189,6 +191,11 @@ func (o LookupServiceResultOutput) State() pulumi.StringOutput {
 // Additional information about the current state of the metastore service, if available.
 func (o LookupServiceResultOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+func (o LookupServiceResultOutput) TelemetryConfig() TelemetryConfigResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) TelemetryConfigResponse { return v.TelemetryConfig }).(TelemetryConfigResponseOutput)
 }
 
 // The tier of the service.

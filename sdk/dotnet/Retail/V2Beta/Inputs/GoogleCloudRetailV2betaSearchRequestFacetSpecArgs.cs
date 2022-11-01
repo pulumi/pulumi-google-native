@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public Input<Inputs.GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs> FacetKey { get; set; } = null!;
 
         /// <summary>
-        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
         /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }

@@ -4146,6 +4146,8 @@ func (o TableDataSetResponseArrayOutput) Index(i pulumi.IntInput) TableDataSetRe
 
 // Table display options that can be reused.
 type TableDisplayOptions struct {
+	// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+	ShownColumns []string `pulumi:"shownColumns"`
 }
 
 // TableDisplayOptionsInput is an input type that accepts TableDisplayOptionsArgs and TableDisplayOptionsOutput values.
@@ -4161,6 +4163,8 @@ type TableDisplayOptionsInput interface {
 
 // Table display options that can be reused.
 type TableDisplayOptionsArgs struct {
+	// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+	ShownColumns pulumi.StringArrayInput `pulumi:"shownColumns"`
 }
 
 func (TableDisplayOptionsArgs) ElementType() reflect.Type {
@@ -4241,6 +4245,11 @@ func (o TableDisplayOptionsOutput) ToTableDisplayOptionsPtrOutputWithContext(ctx
 	}).(TableDisplayOptionsPtrOutput)
 }
 
+// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+func (o TableDisplayOptionsOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableDisplayOptions) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
+}
+
 type TableDisplayOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableDisplayOptionsPtrOutput) ElementType() reflect.Type {
@@ -4265,8 +4274,20 @@ func (o TableDisplayOptionsPtrOutput) Elem() TableDisplayOptionsOutput {
 	}).(TableDisplayOptionsOutput)
 }
 
+// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+func (o TableDisplayOptionsPtrOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableDisplayOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ShownColumns
+	}).(pulumi.StringArrayOutput)
+}
+
 // Table display options that can be reused.
 type TableDisplayOptionsResponse struct {
+	// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+	ShownColumns []string `pulumi:"shownColumns"`
 }
 
 // Table display options that can be reused.
@@ -4282,6 +4303,11 @@ func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutput()
 
 func (o TableDisplayOptionsResponseOutput) ToTableDisplayOptionsResponseOutputWithContext(ctx context.Context) TableDisplayOptionsResponseOutput {
 	return o
+}
+
+// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+func (o TableDisplayOptionsResponseOutput) ShownColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableDisplayOptionsResponse) []string { return v.ShownColumns }).(pulumi.StringArrayOutput)
 }
 
 // A widget that displays textual content.

@@ -196,6 +196,100 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
     /// <summary>
+    /// Base profile type for handling DICOM tags.
+    /// </summary>
+    [EnumType]
+    public readonly struct DicomTagConfigProfileType : IEquatable<DicomTagConfigProfileType>
+    {
+        private readonly string _value;
+
+        private DicomTagConfigProfileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No profile provided. Same as `ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE`.
+        /// </summary>
+        public static DicomTagConfigProfileType ProfileTypeUnspecified { get; } = new DicomTagConfigProfileType("PROFILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Keep only the tags required to produce valid DICOM objects.
+        /// </summary>
+        public static DicomTagConfigProfileType MinimalKeepListProfile { get; } = new DicomTagConfigProfileType("MINIMAL_KEEP_LIST_PROFILE");
+        /// <summary>
+        /// Remove tags based on DICOM Standard's [Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e)](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html).
+        /// </summary>
+        public static DicomTagConfigProfileType AttributeConfidentialityBasicProfile { get; } = new DicomTagConfigProfileType("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE");
+        /// <summary>
+        /// Keep all tags.
+        /// </summary>
+        public static DicomTagConfigProfileType KeepAllProfile { get; } = new DicomTagConfigProfileType("KEEP_ALL_PROFILE");
+        /// <summary>
+        /// Inspect tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+        /// </summary>
+        public static DicomTagConfigProfileType DeidentifyTagContents { get; } = new DicomTagConfigProfileType("DEIDENTIFY_TAG_CONTENTS");
+
+        public static bool operator ==(DicomTagConfigProfileType left, DicomTagConfigProfileType right) => left.Equals(right);
+        public static bool operator !=(DicomTagConfigProfileType left, DicomTagConfigProfileType right) => !left.Equals(right);
+
+        public static explicit operator string(DicomTagConfigProfileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DicomTagConfigProfileType other && Equals(other);
+        public bool Equals(DicomTagConfigProfileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Base profile type for handling FHIR fields.
+    /// </summary>
+    [EnumType]
+    public readonly struct FhirFieldConfigProfileType : IEquatable<FhirFieldConfigProfileType>
+    {
+        private readonly string _value;
+
+        private FhirFieldConfigProfileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No profile provided. Same as `BASIC`.
+        /// </summary>
+        public static FhirFieldConfigProfileType ProfileTypeUnspecified { get; } = new FhirFieldConfigProfileType("PROFILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// `Keep` all fields.
+        /// </summary>
+        public static FhirFieldConfigProfileType KeepAll { get; } = new FhirFieldConfigProfileType("KEEP_ALL");
+        /// <summary>
+        /// Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+        /// </summary>
+        public static FhirFieldConfigProfileType Basic { get; } = new FhirFieldConfigProfileType("BASIC");
+        /// <summary>
+        /// Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// </summary>
+        public static FhirFieldConfigProfileType CleanAll { get; } = new FhirFieldConfigProfileType("CLEAN_ALL");
+
+        public static bool operator ==(FhirFieldConfigProfileType left, FhirFieldConfigProfileType right) => left.Equals(right);
+        public static bool operator !=(FhirFieldConfigProfileType left, FhirFieldConfigProfileType right) => !left.Equals(right);
+
+        public static explicit operator string(FhirFieldConfigProfileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FhirFieldConfigProfileType other && Equals(other);
+        public bool Equals(FhirFieldConfigProfileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
     /// </summary>
     [EnumType]
@@ -445,6 +539,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// Do not redact text.
         /// </summary>
         public static ImageConfigTextRedactionMode RedactNoText { get; } = new ImageConfigTextRedactionMode("REDACT_NO_TEXT");
+        /// <summary>
+        /// This mode is like `REDACT_SENSITIVE_TEXT` with the addition of the [Clean Descriptors Option] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html) enabled: When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This mode uses an additional InfoType during inspection.
+        /// </summary>
+        public static ImageConfigTextRedactionMode RedactSensitiveTextCleanDescriptors { get; } = new ImageConfigTextRedactionMode("REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS");
 
         public static bool operator ==(ImageConfigTextRedactionMode left, ImageConfigTextRedactionMode right) => left.Equals(right);
         public static bool operator !=(ImageConfigTextRedactionMode left, ImageConfigTextRedactionMode right) => !left.Equals(right);
@@ -454,6 +552,47 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ImageConfigTextRedactionMode other && Equals(other);
         public bool Equals(ImageConfigTextRedactionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+    /// </summary>
+    [EnumType]
+    public readonly struct OptionsPrimaryIds : IEquatable<OptionsPrimaryIds>
+    {
+        private readonly string _value;
+
+        private OptionsPrimaryIds(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No value provided. Default to the behavior specified by the base profile.
+        /// </summary>
+        public static OptionsPrimaryIds PrimaryIdsOptionUnspecified { get; } = new OptionsPrimaryIds("PRIMARY_IDS_OPTION_UNSPECIFIED");
+        /// <summary>
+        /// Keep primary IDs.
+        /// </summary>
+        public static OptionsPrimaryIds Keep { get; } = new OptionsPrimaryIds("KEEP");
+        /// <summary>
+        /// Regenerate primary IDs.
+        /// </summary>
+        public static OptionsPrimaryIds Regen { get; } = new OptionsPrimaryIds("REGEN");
+
+        public static bool operator ==(OptionsPrimaryIds left, OptionsPrimaryIds right) => left.Equals(right);
+        public static bool operator !=(OptionsPrimaryIds left, OptionsPrimaryIds right) => !left.Equals(right);
+
+        public static explicit operator string(OptionsPrimaryIds value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OptionsPrimaryIds other && Equals(other);
+        public bool Equals(OptionsPrimaryIds other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -630,6 +769,47 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SchemaPackageUnexpectedSegmentHandling other && Equals(other);
         public bool Equals(SchemaPackageUnexpectedSegmentHandling other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Base profile type for text transformation.
+    /// </summary>
+    [EnumType]
+    public readonly struct TextConfigProfileType : IEquatable<TextConfigProfileType>
+    {
+        private readonly string _value;
+
+        private TextConfigProfileType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Same as BASIC.
+        /// </summary>
+        public static TextConfigProfileType ProfileTypeUnspecified { get; } = new TextConfigProfileType("PROFILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Empty profile which does not perform any transformations.
+        /// </summary>
+        public static TextConfigProfileType Empty { get; } = new TextConfigProfileType("EMPTY");
+        /// <summary>
+        /// Basic profile applies: DATE -&gt; DateShift Default -&gt; ReplaceWithInfoType
+        /// </summary>
+        public static TextConfigProfileType Basic { get; } = new TextConfigProfileType("BASIC");
+
+        public static bool operator ==(TextConfigProfileType left, TextConfigProfileType right) => left.Equals(right);
+        public static bool operator !=(TextConfigProfileType left, TextConfigProfileType right) => !left.Equals(right);
+
+        public static explicit operator string(TextConfigProfileType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TextConfigProfileType other && Equals(other);
+        public bool Equals(TextConfigProfileType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

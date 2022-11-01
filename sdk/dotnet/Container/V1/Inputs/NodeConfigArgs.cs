@@ -165,6 +165,18 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceLabels")]
+        private InputMap<string>? _resourceLabels;
+
+        /// <summary>
+        /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        /// </summary>
+        public InputMap<string> ResourceLabels
+        {
+            get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
+            set => _resourceLabels = value;
+        }
+
         /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>

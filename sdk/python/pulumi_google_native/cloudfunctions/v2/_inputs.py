@@ -166,6 +166,8 @@ class BindingArgs:
 @pulumi.input_type
 class BuildConfigArgs:
     def __init__(__self__, *,
+                 buildpack_stack: Optional[pulumi.Input[str]] = None,
+                 docker_registry: Optional[pulumi.Input['BuildConfigDockerRegistry']] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -174,13 +176,19 @@ class BuildConfigArgs:
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         Describes the Build step of the function that builds a container from the given source.
-        :param pulumi.Input[str] docker_repository: Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        :param pulumi.Input[str] buildpack_stack: Specifies one of the Google provided buildpack stacks.
+        :param pulumi.Input['BuildConfigDockerRegistry'] docker_registry: Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         :param pulumi.Input['SourceArgs'] source: The location of the function source code.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
+        if buildpack_stack is not None:
+            pulumi.set(__self__, "buildpack_stack", buildpack_stack)
+        if docker_registry is not None:
+            pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository is not None:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if entry_point is not None:
@@ -195,10 +203,34 @@ class BuildConfigArgs:
             pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
+    @pulumi.getter(name="buildpackStack")
+    def buildpack_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies one of the Google provided buildpack stacks.
+        """
+        return pulumi.get(self, "buildpack_stack")
+
+    @buildpack_stack.setter
+    def buildpack_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "buildpack_stack", value)
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> Optional[pulumi.Input['BuildConfigDockerRegistry']]:
+        """
+        Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        """
+        return pulumi.get(self, "docker_registry")
+
+    @docker_registry.setter
+    def docker_registry(self, value: Optional[pulumi.Input['BuildConfigDockerRegistry']]):
+        pulumi.set(self, "docker_registry", value)
+
+    @property
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         """
         return pulumi.get(self, "docker_repository")
 
@@ -827,6 +859,7 @@ class ServiceConfigArgs:
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]] = None,
                  secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]] = None,
+                 security_level: Optional[pulumi.Input['ServiceConfigSecurityLevel']] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -841,6 +874,7 @@ class ServiceConfigArgs:
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
+        :param pulumi.Input['ServiceConfigSecurityLevel'] security_level: Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         :param pulumi.Input[str] service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param pulumi.Input[int] timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         :param pulumi.Input[str] vpc_connector: The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -862,6 +896,8 @@ class ServiceConfigArgs:
             pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         if secret_volumes is not None:
             pulumi.set(__self__, "secret_volumes", secret_volumes)
+        if security_level is not None:
+            pulumi.set(__self__, "security_level", security_level)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if timeout_seconds is not None:
@@ -966,6 +1002,18 @@ class ServiceConfigArgs:
     @secret_volumes.setter
     def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]]):
         pulumi.set(self, "secret_volumes", value)
+
+    @property
+    @pulumi.getter(name="securityLevel")
+    def security_level(self) -> Optional[pulumi.Input['ServiceConfigSecurityLevel']]:
+        """
+        Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        """
+        return pulumi.get(self, "security_level")
+
+    @security_level.setter
+    def security_level(self, value: Optional[pulumi.Input['ServiceConfigSecurityLevel']]):
+        pulumi.set(self, "security_level", value)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")

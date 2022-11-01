@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<int>? BatchNodeCount { get; set; }
 
         /// <summary>
-        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        /// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         /// </summary>
         [Input("batchPercentage")]
         public Input<double>? BatchPercentage { get; set; }

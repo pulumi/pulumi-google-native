@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<string>? CertType { get; set; }
 
         /// <summary>
-        /// This is an optional field used in case client has enabled multi-factor authentication
-        /// </summary>
-        [Input("password")]
-        public Input<Inputs.SecretArgs>? Password { get; set; }
-
-        /// <summary>
         /// SSH Client Cert. It should contain both public and private key.
         /// </summary>
         [Input("sshClientCert")]

@@ -59,7 +59,7 @@ type Service struct {
 	Project            pulumi.StringOutput `pulumi:"project"`
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+	// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplateResponseOutput `pulumi:"template"`
@@ -150,7 +150,7 @@ type serviceArgs struct {
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+	// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId string `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplate `pulumi:"template"`
@@ -182,7 +182,7 @@ type ServiceArgs struct {
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+	// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringInput
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplateInput
@@ -342,7 +342,7 @@ func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

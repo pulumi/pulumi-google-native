@@ -199,7 +199,6 @@ class ZoneQueuedResource(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
-            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["state"] = None
@@ -235,7 +234,6 @@ class ZoneQueuedResource(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["queuing_policy"] = None
-        __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -296,14 +294,6 @@ class ZoneQueuedResource(pulumi.CustomResource):
         Queuing parameters for the requested capacity.
         """
         return pulumi.get(self, "queuing_policy")
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Output[str]:
-        """
-        URL of the region where the resource resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
-        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="requestId")

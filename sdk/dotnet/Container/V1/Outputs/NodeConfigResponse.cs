@@ -101,6 +101,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.ReservationAffinityResponse ReservationAffinity;
         /// <summary>
+        /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ResourceLabels;
+        /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
         public readonly Outputs.SandboxConfigResponse SandboxConfig;
@@ -173,6 +177,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.ReservationAffinityResponse reservationAffinity,
 
+            ImmutableDictionary<string, string> resourceLabels,
+
             Outputs.SandboxConfigResponse sandboxConfig,
 
             string serviceAccount,
@@ -208,6 +214,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
             ReservationAffinity = reservationAffinity;
+            ResourceLabels = resourceLabels;
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;

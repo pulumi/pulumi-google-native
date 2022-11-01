@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         }
 
         /// <summary>
-        /// The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+        /// The Google Cloud Platform zone where your Cloud SQL database instance is located.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

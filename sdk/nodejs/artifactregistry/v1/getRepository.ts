@@ -59,6 +59,10 @@ export interface GetRepositoryResult {
      */
     readonly name: string;
     /**
+     * If set, the repository satisfies physical zone separation.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
      */
     readonly sizeBytes: string;

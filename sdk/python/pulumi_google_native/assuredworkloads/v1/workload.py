@@ -346,6 +346,7 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["partner"] = partner
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
+            __props__.__dict__["compliance_status"] = None
             __props__.__dict__["compliant_but_disallowed_services"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kaj_enrollment_state"] = None
@@ -377,6 +378,7 @@ class Workload(pulumi.CustomResource):
 
         __props__.__dict__["billing_account"] = None
         __props__.__dict__["compliance_regime"] = None
+        __props__.__dict__["compliance_status"] = None
         __props__.__dict__["compliant_but_disallowed_services"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
@@ -411,6 +413,14 @@ class Workload(pulumi.CustomResource):
         Immutable. Compliance Regime associated with this workload.
         """
         return pulumi.get(self, "compliance_regime")
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> pulumi.Output['outputs.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse']:
+        """
+        Count of active Violations in the Workload.
+        """
+        return pulumi.get(self, "compliance_status")
 
     @property
     @pulumi.getter(name="compliantButDisallowedServices")

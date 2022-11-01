@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<Inputs.CloudAuditLoggingFeatureSpecArgs>? Cloudauditlogging { get; set; }
 
         /// <summary>
+        /// FleetObservability feature spec.
+        /// </summary>
+        [Input("fleetobservability")]
+        public Input<Inputs.FleetObservabilityFeatureSpecArgs>? Fleetobservability { get; set; }
+
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         [Input("multiclusteringress")]

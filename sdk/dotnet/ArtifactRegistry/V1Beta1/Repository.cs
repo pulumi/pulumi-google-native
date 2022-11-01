@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public Output<string?> RepositoryId { get; private set; } = null!;
 
         /// <summary>
+        /// If set, the repository satisfies physical zone separation.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
         /// </summary>
         [Output("sizeBytes")]

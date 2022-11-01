@@ -5586,7 +5586,7 @@ class SourceResponse(dict):
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse' context: If provided, the source code used for the build came from this location.
         :param Mapping[str, str] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param 'RepoSourceResponse' repo_source: If provided, get source from this location in a Cloud Repo.
-        :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in in Google Cloud Storage.
+        :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
         pulumi.set(__self__, "additional_contexts", additional_contexts)
         pulumi.set(__self__, "artifact_storage_source", artifact_storage_source)
@@ -5639,7 +5639,7 @@ class SourceResponse(dict):
     @pulumi.getter(name="storageSource")
     def storage_source(self) -> 'outputs.StorageSourceResponse':
         """
-        If provided, get the source from this location in in Google Cloud Storage.
+        If provided, get the source from this location in Google Cloud Storage.
         """
         return pulumi.get(self, "storage_source")
 

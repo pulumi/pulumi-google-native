@@ -109,6 +109,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+     */
+    public readonly storageBillingModel!: pulumi.Output<string>;
+    /**
      * [Optional]The tags associated with this dataset. Tag keys are globally unique.
      */
     public readonly tags!: pulumi.Output<outputs.bigquery.v2.DatasetTagsItemResponse[]>;
@@ -136,6 +140,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
@@ -164,6 +169,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["storageBillingModel"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -219,6 +225,10 @@ export interface DatasetArgs {
      */
     maxTimeTravelHours?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+     */
+    storageBillingModel?: pulumi.Input<string>;
     /**
      * [Optional]The tags associated with this dataset. Tag keys are globally unique.
      */

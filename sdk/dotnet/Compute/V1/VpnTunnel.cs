@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> PeerExternalGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         /// </summary>
         [Output("peerExternalGatewayInterface")]
         public Output<int> PeerExternalGatewayInterface { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> VpnGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        /// The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         /// </summary>
         [Output("vpnGatewayInterface")]
         public Output<int> VpnGatewayInterface { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? PeerExternalGateway { get; set; }
 
         /// <summary>
-        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         /// </summary>
         [Input("peerExternalGatewayInterface")]
         public Input<int>? PeerExternalGatewayInterface { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? VpnGateway { get; set; }
 
         /// <summary>
-        /// The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        /// The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         /// </summary>
         [Input("vpnGatewayInterface")]
         public Input<int>? VpnGatewayInterface { get; set; }

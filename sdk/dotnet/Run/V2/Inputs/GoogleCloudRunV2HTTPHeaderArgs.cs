@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         /// <summary>
         /// The header field value
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public GoogleCloudRunV2HTTPHeaderArgs()
         {

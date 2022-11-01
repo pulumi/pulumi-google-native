@@ -59,6 +59,14 @@ export interface GetFeatureResult {
      */
     readonly resourceState: outputs.gkehub.v1alpha.FeatureResourceStateResponse;
     /**
+     * Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+     */
+    readonly scopeSpecs: {[key: string]: string};
+    /**
+     * Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+     */
+    readonly scopeStates: {[key: string]: string};
+    /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
     readonly spec: outputs.gkehub.v1alpha.CommonFeatureSpecResponse;

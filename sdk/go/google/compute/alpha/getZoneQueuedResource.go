@@ -39,8 +39,6 @@ type LookupZoneQueuedResourceResult struct {
 	Name string `pulumi:"name"`
 	// Queuing parameters for the requested capacity.
 	QueuingPolicy QueuingPolicyResponse `pulumi:"queuingPolicy"`
-	// URL of the region where the resource resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -120,11 +118,6 @@ func (o LookupZoneQueuedResourceResultOutput) Name() pulumi.StringOutput {
 // Queuing parameters for the requested capacity.
 func (o LookupZoneQueuedResourceResultOutput) QueuingPolicy() QueuingPolicyResponseOutput {
 	return o.ApplyT(func(v LookupZoneQueuedResourceResult) QueuingPolicyResponse { return v.QueuingPolicy }).(QueuingPolicyResponseOutput)
-}
-
-// URL of the region where the resource resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-func (o LookupZoneQueuedResourceResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneQueuedResourceResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // [Output only] Server-defined URL for the resource.

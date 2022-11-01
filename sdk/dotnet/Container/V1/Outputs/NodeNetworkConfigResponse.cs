@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly bool CreatePodRange;
         /// <summary>
+        /// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+        /// </summary>
+        public readonly bool EnablePrivateNodes;
+        /// <summary>
         /// Network bandwidth tier configuration.
         /// </summary>
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         private NodeNetworkConfigResponse(
             bool createPodRange,
 
+            bool enablePrivateNodes,
+
             Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
 
             string podIpv4CidrBlock,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             string podRange)
         {
             CreatePodRange = createPodRange;
+            EnablePrivateNodes = enablePrivateNodes;
             NetworkPerformanceConfig = networkPerformanceConfig;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;

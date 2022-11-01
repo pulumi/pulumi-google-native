@@ -415,6 +415,51 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// The Gateway API release channel to use for Gateway API.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayAPIConfigChannel : IEquatable<GatewayAPIConfigChannel>
+    {
+        private readonly string _value;
+
+        private GatewayAPIConfigChannel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelUnspecified { get; } = new GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED");
+        /// <summary>
+        /// Gateway API support is disabled
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelDisabled { get; } = new GatewayAPIConfigChannel("CHANNEL_DISABLED");
+        /// <summary>
+        /// Gateway API support is enabled, experimental CRDs are installed
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelExperimental { get; } = new GatewayAPIConfigChannel("CHANNEL_EXPERIMENTAL");
+        /// <summary>
+        /// Gateway API support is enabled, standard CRDs are installed
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelStandard { get; } = new GatewayAPIConfigChannel("CHANNEL_STANDARD");
+
+        public static bool operator ==(GatewayAPIConfigChannel left, GatewayAPIConfigChannel right) => left.Equals(right);
+        public static bool operator !=(GatewayAPIConfigChannel left, GatewayAPIConfigChannel right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayAPIConfigChannel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayAPIConfigChannel other && Equals(other);
+        public bool Equals(GatewayAPIConfigChannel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The ipv6 access type (internal or external) when create_subnetwork is true
     /// </summary>
     [EnumType]
@@ -496,6 +541,47 @@ namespace Pulumi.GoogleNative.Container.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// cgroup_mode specifies the cgroup mode to be used on the node.
+    /// </summary>
+    [EnumType]
+    public readonly struct LinuxNodeConfigCgroupMode : IEquatable<LinuxNodeConfigCgroupMode>
+    {
+        private readonly string _value;
+
+        private LinuxNodeConfigCgroupMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+        /// </summary>
+        public static LinuxNodeConfigCgroupMode CgroupModeUnspecified { get; } = new LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED");
+        /// <summary>
+        /// CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+        /// </summary>
+        public static LinuxNodeConfigCgroupMode CgroupModeV1 { get; } = new LinuxNodeConfigCgroupMode("CGROUP_MODE_V1");
+        /// <summary>
+        /// CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        /// </summary>
+        public static LinuxNodeConfigCgroupMode CgroupModeV2 { get; } = new LinuxNodeConfigCgroupMode("CGROUP_MODE_V2");
+
+        public static bool operator ==(LinuxNodeConfigCgroupMode left, LinuxNodeConfigCgroupMode right) => left.Equals(right);
+        public static bool operator !=(LinuxNodeConfigCgroupMode left, LinuxNodeConfigCgroupMode right) => !left.Equals(right);
+
+        public static explicit operator string(LinuxNodeConfigCgroupMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LinuxNodeConfigCgroupMode other && Equals(other);
+        public bool Equals(LinuxNodeConfigCgroupMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct LoggingComponentConfigEnableComponentsItem : IEquatable<LoggingComponentConfigEnableComponentsItem>
     {
@@ -518,6 +604,18 @@ namespace Pulumi.GoogleNative.Container.V1
         /// workloads
         /// </summary>
         public static LoggingComponentConfigEnableComponentsItem Workloads { get; } = new LoggingComponentConfigEnableComponentsItem("WORKLOADS");
+        /// <summary>
+        /// kube-apiserver
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Apiserver { get; } = new LoggingComponentConfigEnableComponentsItem("APISERVER");
+        /// <summary>
+        /// kube-scheduler
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Scheduler { get; } = new LoggingComponentConfigEnableComponentsItem("SCHEDULER");
+        /// <summary>
+        /// kube-controller-manager
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem ControllerManager { get; } = new LoggingComponentConfigEnableComponentsItem("CONTROLLER_MANAGER");
 
         public static bool operator ==(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => left.Equals(right);
         public static bool operator !=(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => !left.Equals(right);

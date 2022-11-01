@@ -76,7 +76,7 @@ export class VpnGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
      */
     public readonly stackType!: pulumi.Output<string>;
     /**
@@ -160,7 +160,7 @@ export interface VpnGatewayArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
      */
     stackType?: pulumi.Input<enums.compute.v1.VpnGatewayStackType>;
     /**

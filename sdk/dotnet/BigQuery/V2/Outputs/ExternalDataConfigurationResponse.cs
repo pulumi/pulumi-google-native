@@ -58,6 +58,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly int MaxBadRecords;
         /// <summary>
+        /// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        /// </summary>
+        public readonly string MetadataCacheMode;
+        /// <summary>
+        /// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        /// </summary>
+        public readonly string ObjectMetadata;
+        /// <summary>
         /// Additional properties to set if sourceFormat is set to Parquet.
         /// </summary>
         public readonly Outputs.ParquetOptionsResponse ParquetOptions;
@@ -102,6 +110,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             int maxBadRecords,
 
+            string metadataCacheMode,
+
+            string objectMetadata,
+
             Outputs.ParquetOptionsResponse parquetOptions,
 
             string referenceFileSchemaUri,
@@ -123,6 +135,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
+            MetadataCacheMode = metadataCacheMode;
+            ObjectMetadata = objectMetadata;
             ParquetOptions = parquetOptions;
             ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;

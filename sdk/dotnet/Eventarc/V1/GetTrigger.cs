@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+        /// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         /// </summary>
         public readonly ImmutableArray<Outputs.EventFilterResponse> EventFilters;
         /// <summary>

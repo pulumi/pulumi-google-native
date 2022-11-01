@@ -95,6 +95,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// Optional. Service Directory rejects values outside of `[0, 65535]`.
         /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The globally unique identifier of the endpoint in the UUID4 format.
+        /// </summary>
+        public readonly string Uid;
 
         [OutputConstructor]
         private GetEndpointResult(
@@ -106,13 +110,16 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
 
             string network,
 
-            int port)
+            int port,
+
+            string uid)
         {
             Address = address;
             Annotations = annotations;
             Name = name;
             Network = network;
             Port = port;
+            Uid = uid;
         }
     }
 }

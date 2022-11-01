@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// The URIs of linked VPN tunnel resources.
         /// </summary>
         public readonly ImmutableArray<string> Uris;
+        /// <summary>
+        /// The VPC network where these VPN tunnels are located.
+        /// </summary>
+        public readonly string VpcNetwork;
 
         [OutputConstructor]
         private LinkedVpnTunnelsResponse(
             bool siteToSiteDataTransfer,
 
-            ImmutableArray<string> uris)
+            ImmutableArray<string> uris,
+
+            string vpcNetwork)
         {
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
             Uris = uris;
+            VpcNetwork = vpcNetwork;
         }
     }
 }

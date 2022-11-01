@@ -88,10 +88,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.QueuingPolicyResponse QueuingPolicy;
         /// <summary>
-        /// URL of the region where the resource resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
         /// [Output only] Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -126,8 +122,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.QueuingPolicyResponse queuingPolicy,
 
-            string region,
-
             string selfLink,
 
             string selfLinkWithId,
@@ -144,7 +138,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             Name = name;
             QueuingPolicy = queuingPolicy;
-            Region = region;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             State = state;

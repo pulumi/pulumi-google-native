@@ -61,11 +61,11 @@ export const InstanceGroupConfigPreemptibility = {
      */
     NonPreemptible: "NON_PREEMPTIBLE",
     /**
-     * Instances are preemptible.This option is allowed only for secondary worker groups.
+     * Instances are preemptible (https://cloud.google.com/compute/docs/instances/preemptible).This option is allowed only for secondary worker (https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms) groups.
      */
     Preemptible: "PREEMPTIBLE",
     /**
-     * Instances are Spot VMsThis option is allowed only for secondary worker groups. See Spot VMs (https://cloud.google.com/compute/docs/instances/spot).
+     * Instances are Spot VMs (https://cloud.google.com/compute/docs/instances/spot).This option is allowed only for secondary worker (https://cloud.google.com/dataproc/docs/concepts/compute/secondary-vms) groups. Spot VMs are the latest version of preemptible VMs (https://cloud.google.com/compute/docs/instances/preemptible), and provide additional features.
      */
     Spot: "SPOT",
 } as const;

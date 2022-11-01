@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.CloudAuditLoggingFeatureSpecResponse Cloudauditlogging;
         /// <summary>
+        /// FleetObservability feature spec.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityFeatureSpecResponse Fleetobservability;
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         public readonly Outputs.MultiClusterIngressFeatureSpecResponse Multiclusteringress;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             Outputs.CloudAuditLoggingFeatureSpecResponse cloudauditlogging,
 
+            Outputs.FleetObservabilityFeatureSpecResponse fleetobservability,
+
             Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress,
 
             Outputs.FeatureSpecResponse workloadcertificate)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
             Anthosobservability = anthosobservability;
             Appdevexperience = appdevexperience;
             Cloudauditlogging = cloudauditlogging;
+            Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
             Workloadcertificate = workloadcertificate;
         }

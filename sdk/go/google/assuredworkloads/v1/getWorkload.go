@@ -31,6 +31,8 @@ type LookupWorkloadResult struct {
 	BillingAccount string `pulumi:"billingAccount"`
 	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime string `pulumi:"complianceRegime"`
+	// Count of active Violations in the Workload.
+	ComplianceStatus GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse `pulumi:"complianceStatus"`
 	// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
 	CompliantButDisallowedServices []string `pulumi:"compliantButDisallowedServices"`
 	// Immutable. The Workload creation timestamp.
@@ -108,6 +110,13 @@ func (o LookupWorkloadResultOutput) BillingAccount() pulumi.StringOutput {
 // Immutable. Compliance Regime associated with this workload.
 func (o LookupWorkloadResultOutput) ComplianceRegime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.ComplianceRegime }).(pulumi.StringOutput)
+}
+
+// Count of active Violations in the Workload.
+func (o LookupWorkloadResultOutput) ComplianceStatus() GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
+		return v.ComplianceStatus
+	}).(GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput)
 }
 
 // Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."

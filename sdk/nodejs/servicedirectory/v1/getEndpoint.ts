@@ -51,6 +51,10 @@ export interface GetEndpointResult {
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     readonly port: number;
+    /**
+     * The globally unique identifier of the endpoint in the UUID4 format.
+     */
+    readonly uid: string;
 }
 
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {

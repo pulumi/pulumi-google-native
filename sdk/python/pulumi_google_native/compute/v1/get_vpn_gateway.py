@@ -130,7 +130,7 @@ class GetVpnGatewayResult:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> str:
         """
-        The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+        The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
         """
         return pulumi.get(self, "stack_type")
 

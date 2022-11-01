@@ -81,6 +81,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The globally unique identifier of the service in the UUID4 format.
+        /// </summary>
+        public readonly string Uid;
 
         [OutputConstructor]
         private GetServiceResult(
@@ -88,11 +92,14 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
 
             ImmutableArray<Outputs.EndpointResponse> endpoints,
 
-            string name)
+            string name,
+
+            string uid)
         {
             Annotations = annotations;
             Endpoints = endpoints;
             Name = name;
+            Uid = uid;
         }
     }
 }

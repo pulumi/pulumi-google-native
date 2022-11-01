@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1TaskNotebookTaskConfigResponse
     {
         /// <summary>
-        /// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
         /// <summary>
-        /// Optional. GCS URIs of files to be placed in the working directory of each executor.
+        /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
         /// </summary>
         public readonly ImmutableArray<string> FileUris;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1TaskInfrastructureSpecResponse InfrastructureSpec;
         /// <summary>
-        /// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         /// </summary>
         public readonly string Notebook;
 

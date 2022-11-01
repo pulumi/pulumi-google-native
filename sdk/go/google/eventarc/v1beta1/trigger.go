@@ -24,7 +24,7 @@ type Trigger struct {
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaResponseArrayOutput `pulumi:"matchingCriteria"`
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name    pulumi.StringOutput `pulumi:"name"`
@@ -104,7 +104,7 @@ type triggerArgs struct {
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria []MatchingCriteria `pulumi:"matchingCriteria"`
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name    *string `pulumi:"name"`
@@ -124,7 +124,7 @@ type TriggerArgs struct {
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaArrayInput
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name    pulumi.StringPtrInput
@@ -198,7 +198,7 @@ func (o TriggerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 func (o TriggerOutput) MatchingCriteria() MatchingCriteriaResponseArrayOutput {
 	return o.ApplyT(func(v *Trigger) MatchingCriteriaResponseArrayOutput { return v.MatchingCriteria }).(MatchingCriteriaResponseArrayOutput)
 }

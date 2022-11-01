@@ -11682,7 +11682,7 @@ type CorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
@@ -11713,7 +11713,7 @@ type CorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
@@ -11818,7 +11818,7 @@ func (o CorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
@@ -11897,7 +11897,7 @@ func (o CorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -11955,7 +11955,7 @@ type CorsPolicyResponse struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
@@ -11997,7 +11997,7 @@ func (o CorsPolicyResponseOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyResponseOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
@@ -20619,7 +20619,7 @@ type HttpHeaderMatch struct {
 	PresentMatch *bool `pulumi:"presentMatch"`
 	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch *Int64RangeMatch `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch *string `pulumi:"suffixMatch"`
@@ -20650,7 +20650,7 @@ type HttpHeaderMatchArgs struct {
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
 	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchPtrInput `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
@@ -20738,7 +20738,7 @@ func (o HttpHeaderMatchOutput) RangeMatch() Int64RangeMatchPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *Int64RangeMatch { return v.RangeMatch }).(Int64RangeMatchPtrOutput)
 }
 
-// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpHeaderMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpHeaderMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -20782,7 +20782,7 @@ type HttpHeaderMatchResponse struct {
 	PresentMatch bool `pulumi:"presentMatch"`
 	// The header value must be an integer and its value must be in the range specified in rangeMatch. If the header does not contain an integer, number or is empty, the match fails. For example for a range [-5, 0] - -3 will match. - 0 will not match. - 0.25 will not match. - -3someString will not match. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. rangeMatch is not supported for load balancers that have loadBalancingScheme set to EXTERNAL.
 	RangeMatch Int64RangeMatchResponse `pulumi:"rangeMatch"`
-	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 	// The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
 	SuffixMatch string `pulumi:"suffixMatch"`
@@ -20833,7 +20833,7 @@ func (o HttpHeaderMatchResponseOutput) RangeMatch() Int64RangeMatchResponseOutpu
 	return o.ApplyT(func(v HttpHeaderMatchResponse) Int64RangeMatchResponse { return v.RangeMatch }).(Int64RangeMatchResponseOutput)
 }
 
-// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// The value of the header must match the regular expression specified in regexMatch. For more information about regular expression syntax, see Syntax. For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpHeaderMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpHeaderMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }
@@ -21049,7 +21049,7 @@ type HttpQueryParameterMatch struct {
 	Name *string `pulumi:"name"`
 	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch *bool `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 }
 
@@ -21072,7 +21072,7 @@ type HttpQueryParameterMatchArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 }
 
@@ -21143,7 +21143,7 @@ func (o HttpQueryParameterMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
 }
 
-// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpQueryParameterMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -21176,7 +21176,7 @@ type HttpQueryParameterMatchResponse struct {
 	Name string `pulumi:"name"`
 	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch, or regexMatch must be set.
 	PresentMatch bool `pulumi:"presentMatch"`
-	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
@@ -21210,7 +21210,7 @@ func (o HttpQueryParameterMatchResponseOutput) PresentMatch() pulumi.BoolOutput 
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) bool { return v.PresentMatch }).(pulumi.BoolOutput)
 }
 
-// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. regexMatch only applies when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For more information about regular expression syntax, see Syntax. Only one of presentMatch, exactMatch, or regexMatch must be set. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpQueryParameterMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpQueryParameterMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }
@@ -22289,7 +22289,7 @@ type HttpRouteRuleMatch struct {
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches []HttpQueryParameterMatch `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch *string `pulumi:"regexMatch"`
 }
 
@@ -22320,7 +22320,7 @@ type HttpRouteRuleMatchArgs struct {
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches HttpQueryParameterMatchArrayInput `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
 }
 
@@ -22411,7 +22411,7 @@ func (o HttpRouteRuleMatchOutput) QueryParameterMatches() HttpQueryParameterMatc
 	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpQueryParameterMatch { return v.QueryParameterMatches }).(HttpQueryParameterMatchArrayOutput)
 }
 
-// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteRuleMatchOutput) RegexMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
 }
@@ -22452,7 +22452,7 @@ type HttpRouteRuleMatchResponse struct {
 	PrefixMatch string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
 	QueryParameterMatches []HttpQueryParameterMatchResponse `pulumi:"queryParameterMatches"`
-	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	RegexMatch string `pulumi:"regexMatch"`
 }
 
@@ -22506,7 +22506,7 @@ func (o HttpRouteRuleMatchResponseOutput) QueryParameterMatches() HttpQueryParam
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []HttpQueryParameterMatchResponse { return v.QueryParameterMatches }).(HttpQueryParameterMatchResponseArrayOutput)
 }
 
-// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. regexMatch only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+// For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For more information about regular expression syntax, see Syntax. Only one of prefixMatch, fullPathMatch or regexMatch must be specified. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o HttpRouteRuleMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.RegexMatch }).(pulumi.StringOutput)
 }

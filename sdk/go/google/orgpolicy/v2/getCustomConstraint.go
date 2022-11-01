@@ -36,7 +36,7 @@ type LookupCustomConstraintResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// All the operations being applied for this constraint.
 	MethodTypes []string `pulumi:"methodTypes"`
-	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 	Name string `pulumi:"name"`
 	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
 	ResourceTypes []string `pulumi:"resourceTypes"`
@@ -105,7 +105,7 @@ func (o LookupCustomConstraintResultOutput) MethodTypes() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupCustomConstraintResult) []string { return v.MethodTypes }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 100 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
 func (o LookupCustomConstraintResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConstraintResult) string { return v.Name }).(pulumi.StringOutput)
 }

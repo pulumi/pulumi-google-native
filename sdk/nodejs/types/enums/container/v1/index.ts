@@ -199,6 +199,30 @@ export const GPUSharingConfigGpuSharingStrategy = {
  */
 export type GPUSharingConfigGpuSharingStrategy = (typeof GPUSharingConfigGpuSharingStrategy)[keyof typeof GPUSharingConfigGpuSharingStrategy];
 
+export const GatewayAPIConfigChannel = {
+    /**
+     * Default value.
+     */
+    ChannelUnspecified: "CHANNEL_UNSPECIFIED",
+    /**
+     * Gateway API support is disabled
+     */
+    ChannelDisabled: "CHANNEL_DISABLED",
+    /**
+     * Gateway API support is enabled, experimental CRDs are installed
+     */
+    ChannelExperimental: "CHANNEL_EXPERIMENTAL",
+    /**
+     * Gateway API support is enabled, standard CRDs are installed
+     */
+    ChannelStandard: "CHANNEL_STANDARD",
+} as const;
+
+/**
+ * The Gateway API release channel to use for Gateway API.
+ */
+export type GatewayAPIConfigChannel = (typeof GatewayAPIConfigChannel)[keyof typeof GatewayAPIConfigChannel];
+
 export const IPAllocationPolicyIpv6AccessType = {
     /**
      * Default value, will be defaulted as type external.
@@ -239,6 +263,26 @@ export const IPAllocationPolicyStackType = {
  */
 export type IPAllocationPolicyStackType = (typeof IPAllocationPolicyStackType)[keyof typeof IPAllocationPolicyStackType];
 
+export const LinuxNodeConfigCgroupMode = {
+    /**
+     * CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+     */
+    CgroupModeUnspecified: "CGROUP_MODE_UNSPECIFIED",
+    /**
+     * CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+     */
+    CgroupModeV1: "CGROUP_MODE_V1",
+    /**
+     * CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+     */
+    CgroupModeV2: "CGROUP_MODE_V2",
+} as const;
+
+/**
+ * cgroup_mode specifies the cgroup mode to be used on the node.
+ */
+export type LinuxNodeConfigCgroupMode = (typeof LinuxNodeConfigCgroupMode)[keyof typeof LinuxNodeConfigCgroupMode];
+
 export const LoggingComponentConfigEnableComponentsItem = {
     /**
      * Default value. This shouldn't be used.
@@ -252,6 +296,18 @@ export const LoggingComponentConfigEnableComponentsItem = {
      * workloads
      */
     Workloads: "WORKLOADS",
+    /**
+     * kube-apiserver
+     */
+    Apiserver: "APISERVER",
+    /**
+     * kube-scheduler
+     */
+    Scheduler: "SCHEDULER",
+    /**
+     * kube-controller-manager
+     */
+    ControllerManager: "CONTROLLER_MANAGER",
 } as const;
 
 export type LoggingComponentConfigEnableComponentsItem = (typeof LoggingComponentConfigEnableComponentsItem)[keyof typeof LoggingComponentConfigEnableComponentsItem];

@@ -23,6 +23,7 @@ import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as authorization from "./authorization";
 import * as baremetalsolution from "./baremetalsolution";
+import * as batch from "./batch";
 import * as beyondcorp from "./beyondcorp";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
@@ -90,6 +91,7 @@ import * as iam from "./iam";
 import * as iap from "./iap";
 import * as identitytoolkit from "./identitytoolkit";
 import * as ids from "./ids";
+import * as integrations from "./integrations";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
 import * as managedidentities from "./managedidentities";
@@ -151,6 +153,7 @@ export {
     assuredworkloads,
     authorization,
     baremetalsolution,
+    batch,
     beyondcorp,
     bigquery,
     bigqueryconnection,
@@ -218,6 +221,7 @@ export {
     iap,
     identitytoolkit,
     ids,
+    integrations,
     jobs,
     logging,
     managedidentities,

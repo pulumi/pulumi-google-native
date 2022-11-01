@@ -1430,6 +1430,177 @@ func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStr
 	return pulumi.ToOutputWithContext(ctx, in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
 }
 
+// The Gateway API release channel to use for Gateway API.
+type GatewayAPIConfigChannel string
+
+const (
+	// Default value.
+	GatewayAPIConfigChannelChannelUnspecified = GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED")
+	// Gateway API support is disabled
+	GatewayAPIConfigChannelChannelDisabled = GatewayAPIConfigChannel("CHANNEL_DISABLED")
+	// Gateway API support is enabled, experimental CRDs are installed
+	GatewayAPIConfigChannelChannelExperimental = GatewayAPIConfigChannel("CHANNEL_EXPERIMENTAL")
+	// Gateway API support is enabled, standard CRDs are installed
+	GatewayAPIConfigChannelChannelStandard = GatewayAPIConfigChannel("CHANNEL_STANDARD")
+)
+
+func (GatewayAPIConfigChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput {
+	return pulumi.ToOutput(e).(GatewayAPIConfigChannelOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelOutputWithContext(ctx context.Context) GatewayAPIConfigChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayAPIConfigChannelOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return e.ToGatewayAPIConfigChannelPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return GatewayAPIConfigChannel(e).ToGatewayAPIConfigChannelOutputWithContext(ctx).ToGatewayAPIConfigChannelPtrOutputWithContext(ctx)
+}
+
+func (e GatewayAPIConfigChannel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayAPIConfigChannel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayAPIConfigChannelOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelOutputWithContext(ctx context.Context) GatewayAPIConfigChannelOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return o.ToGatewayAPIConfigChannelPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayAPIConfigChannel) *GatewayAPIConfigChannel {
+		return &v
+	}).(GatewayAPIConfigChannelPtrOutput)
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayAPIConfigChannel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayAPIConfigChannel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayAPIConfigChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) Elem() GatewayAPIConfigChannelOutput {
+	return o.ApplyT(func(v *GatewayAPIConfigChannel) GatewayAPIConfigChannel {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayAPIConfigChannel
+		return ret
+	}).(GatewayAPIConfigChannelOutput)
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayAPIConfigChannel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayAPIConfigChannelInput is an input type that accepts GatewayAPIConfigChannelArgs and GatewayAPIConfigChannelOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigChannelInput` via:
+//
+//	GatewayAPIConfigChannelArgs{...}
+type GatewayAPIConfigChannelInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput
+	ToGatewayAPIConfigChannelOutputWithContext(context.Context) GatewayAPIConfigChannelOutput
+}
+
+var gatewayAPIConfigChannelPtrType = reflect.TypeOf((**GatewayAPIConfigChannel)(nil)).Elem()
+
+type GatewayAPIConfigChannelPtrInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput
+	ToGatewayAPIConfigChannelPtrOutputWithContext(context.Context) GatewayAPIConfigChannelPtrOutput
+}
+
+type gatewayAPIConfigChannelPtr string
+
+func GatewayAPIConfigChannelPtr(v string) GatewayAPIConfigChannelPtrInput {
+	return (*gatewayAPIConfigChannelPtr)(&v)
+}
+
+func (*gatewayAPIConfigChannelPtr) ElementType() reflect.Type {
+	return gatewayAPIConfigChannelPtrType
+}
+
+func (in *gatewayAPIConfigChannelPtr) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return pulumi.ToOutput(in).(GatewayAPIConfigChannelPtrOutput)
+}
+
+func (in *gatewayAPIConfigChannelPtr) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayAPIConfigChannelPtrOutput)
+}
+
 // The ipv6 access type (internal or external) when create_subnetwork is true
 type IPAllocationPolicyIpv6AccessType string
 
@@ -1768,6 +1939,175 @@ func (in *ipallocationPolicyStackTypePtr) ToIPAllocationPolicyStackTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationPolicyStackTypePtrOutput)
 }
 
+// cgroup_mode specifies the cgroup mode to be used on the node.
+type LinuxNodeConfigCgroupMode string
+
+const (
+	// CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	LinuxNodeConfigCgroupModeCgroupModeUnspecified = LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED")
+	// CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	LinuxNodeConfigCgroupModeCgroupModeV1 = LinuxNodeConfigCgroupMode("CGROUP_MODE_V1")
+	// CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+	LinuxNodeConfigCgroupModeCgroupModeV2 = LinuxNodeConfigCgroupMode("CGROUP_MODE_V2")
+)
+
+func (LinuxNodeConfigCgroupMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput {
+	return pulumi.ToOutput(e).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModeOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return e.ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Background())
+}
+
+func (e LinuxNodeConfigCgroupMode) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return LinuxNodeConfigCgroupMode(e).ToLinuxNodeConfigCgroupModeOutputWithContext(ctx).ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LinuxNodeConfigCgroupMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LinuxNodeConfigCgroupModeOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigCgroupModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModeOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModeOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return o.ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxNodeConfigCgroupMode) *LinuxNodeConfigCgroupMode {
+		return &v
+	}).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxNodeConfigCgroupMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxNodeConfigCgroupMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LinuxNodeConfigCgroupModePtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxNodeConfigCgroupModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxNodeConfigCgroupMode)(nil)).Elem()
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return o
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) Elem() LinuxNodeConfigCgroupModeOutput {
+	return o.ApplyT(func(v *LinuxNodeConfigCgroupMode) LinuxNodeConfigCgroupMode {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxNodeConfigCgroupMode
+		return ret
+	}).(LinuxNodeConfigCgroupModeOutput)
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxNodeConfigCgroupModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LinuxNodeConfigCgroupMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxNodeConfigCgroupModeInput is an input type that accepts LinuxNodeConfigCgroupModeArgs and LinuxNodeConfigCgroupModeOutput values.
+// You can construct a concrete instance of `LinuxNodeConfigCgroupModeInput` via:
+//
+//	LinuxNodeConfigCgroupModeArgs{...}
+type LinuxNodeConfigCgroupModeInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigCgroupModeOutput() LinuxNodeConfigCgroupModeOutput
+	ToLinuxNodeConfigCgroupModeOutputWithContext(context.Context) LinuxNodeConfigCgroupModeOutput
+}
+
+var linuxNodeConfigCgroupModePtrType = reflect.TypeOf((**LinuxNodeConfigCgroupMode)(nil)).Elem()
+
+type LinuxNodeConfigCgroupModePtrInput interface {
+	pulumi.Input
+
+	ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput
+	ToLinuxNodeConfigCgroupModePtrOutputWithContext(context.Context) LinuxNodeConfigCgroupModePtrOutput
+}
+
+type linuxNodeConfigCgroupModePtr string
+
+func LinuxNodeConfigCgroupModePtr(v string) LinuxNodeConfigCgroupModePtrInput {
+	return (*linuxNodeConfigCgroupModePtr)(&v)
+}
+
+func (*linuxNodeConfigCgroupModePtr) ElementType() reflect.Type {
+	return linuxNodeConfigCgroupModePtrType
+}
+
+func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutput() LinuxNodeConfigCgroupModePtrOutput {
+	return pulumi.ToOutput(in).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
+func (in *linuxNodeConfigCgroupModePtr) ToLinuxNodeConfigCgroupModePtrOutputWithContext(ctx context.Context) LinuxNodeConfigCgroupModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
 type LoggingComponentConfigEnableComponentsItem string
 
 const (
@@ -1777,6 +2117,12 @@ const (
 	LoggingComponentConfigEnableComponentsItemSystemComponents = LoggingComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
 	// workloads
 	LoggingComponentConfigEnableComponentsItemWorkloads = LoggingComponentConfigEnableComponentsItem("WORKLOADS")
+	// kube-apiserver
+	LoggingComponentConfigEnableComponentsItemApiserver = LoggingComponentConfigEnableComponentsItem("APISERVER")
+	// kube-scheduler
+	LoggingComponentConfigEnableComponentsItemScheduler = LoggingComponentConfigEnableComponentsItem("SCHEDULER")
+	// kube-controller-manager
+	LoggingComponentConfigEnableComponentsItemControllerManager = LoggingComponentConfigEnableComponentsItem("CONTROLLER_MANAGER")
 )
 
 func (LoggingComponentConfigEnableComponentsItem) ElementType() reflect.Type {
@@ -4789,10 +5135,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyPtrInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigChannelInput)(nil)).Elem(), GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigChannelPtrInput)(nil)).Elem(), GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypeInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypePtrInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypeInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypePtrInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigCgroupModeInput)(nil)).Elem(), LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigCgroupModePtrInput)(nil)).Elem(), LinuxNodeConfigCgroupMode("CGROUP_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItemArray{})
@@ -4846,10 +5196,14 @@ func init() {
 	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigChannelOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigChannelPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypeOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypePtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyStackTypeOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyStackTypePtrOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigCgroupModeOutput{})
+	pulumi.RegisterOutputType(LinuxNodeConfigCgroupModePtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})

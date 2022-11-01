@@ -44,6 +44,10 @@ export interface GetServiceResult {
      * Immutable. The resource name for the service in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     readonly name: string;
+    /**
+     * The globally unique identifier of the service in the UUID4 format.
+     */
+    readonly uid: string;
 }
 
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {

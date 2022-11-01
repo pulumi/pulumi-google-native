@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+        /// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         /// </summary>
         [Output("eventFilters")]
         public Output<ImmutableArray<Outputs.EventFilterResponse>> EventFilters { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         private InputList<Inputs.EventFilterArgs>? _eventFilters;
 
         /// <summary>
-        /// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+        /// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         /// </summary>
         public InputList<Inputs.EventFilterArgs> EventFilters
         {

@@ -70,7 +70,8 @@ class EndpointResponse(dict):
                  annotations: Mapping[str, str],
                  name: str,
                  network: str,
-                 port: int):
+                 port: int,
+                 uid: str):
         """
         An individual endpoint that provides a service. The service must already exist to create an endpoint.
         :param str address: Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
@@ -78,12 +79,14 @@ class EndpointResponse(dict):
         :param str name: Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         :param str network: Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
         :param int port: Optional. Service Directory rejects values outside of `[0, 65535]`.
+        :param str uid: The globally unique identifier of the endpoint in the UUID4 format.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter
@@ -124,6 +127,14 @@ class EndpointResponse(dict):
         Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The globally unique identifier of the endpoint in the UUID4 format.
+        """
+        return pulumi.get(self, "uid")
 
 
 @pulumi.output_type

@@ -32,6 +32,7 @@ class ServiceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input['TelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
         The set of arguments for constructing a Service resource.
@@ -48,6 +49,7 @@ class ServiceArgs:
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        :param pulumi.Input['TelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -79,6 +81,8 @@ class ServiceArgs:
             pulumi.set(__self__, "release_channel", release_channel)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if telemetry_config is not None:
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
 
@@ -257,6 +261,18 @@ class ServiceArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> Optional[pulumi.Input['TelemetryConfigArgs']]:
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        """
+        return pulumi.get(self, "telemetry_config")
+
+    @telemetry_config.setter
+    def telemetry_config(self, value: Optional[pulumi.Input['TelemetryConfigArgs']]):
+        pulumi.set(self, "telemetry_config", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input['ServiceTier']]:
         """
@@ -289,6 +305,7 @@ class Service(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         """
@@ -309,6 +326,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
         :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        :param pulumi.Input[pulumi.InputType['TelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         ...
@@ -350,6 +368,7 @@ class Service(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -377,6 +396,7 @@ class Service(pulumi.CustomResource):
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["artifact_gcs_uri"] = None
             __props__.__dict__["create_time"] = None
@@ -431,6 +451,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["service_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
+        __props__.__dict__["telemetry_config"] = None
         __props__.__dict__["tier"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -597,6 +618,14 @@ class Service(pulumi.CustomResource):
         Additional information about the current state of the metastore service, if available.
         """
         return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> pulumi.Output['outputs.TelemetryConfigResponse']:
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        """
+        return pulumi.get(self, "telemetry_config")
 
     @property
     @pulumi.getter

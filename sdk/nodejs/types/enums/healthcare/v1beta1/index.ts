@@ -106,6 +106,58 @@ export const DicomConfigFilterProfile = {
  */
 export type DicomConfigFilterProfile = (typeof DicomConfigFilterProfile)[keyof typeof DicomConfigFilterProfile];
 
+export const DicomTagConfigProfileType = {
+    /**
+     * No profile provided. Same as `ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE`.
+     */
+    ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
+    /**
+     * Keep only the tags required to produce valid DICOM objects.
+     */
+    MinimalKeepListProfile: "MINIMAL_KEEP_LIST_PROFILE",
+    /**
+     * Remove tags based on DICOM Standard's [Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e)](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html).
+     */
+    AttributeConfidentialityBasicProfile: "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE",
+    /**
+     * Keep all tags.
+     */
+    KeepAllProfile: "KEEP_ALL_PROFILE",
+    /**
+     * Inspect tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+     */
+    DeidentifyTagContents: "DEIDENTIFY_TAG_CONTENTS",
+} as const;
+
+/**
+ * Base profile type for handling DICOM tags.
+ */
+export type DicomTagConfigProfileType = (typeof DicomTagConfigProfileType)[keyof typeof DicomTagConfigProfileType];
+
+export const FhirFieldConfigProfileType = {
+    /**
+     * No profile provided. Same as `BASIC`.
+     */
+    ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
+    /**
+     * `Keep` all fields.
+     */
+    KeepAll: "KEEP_ALL",
+    /**
+     * Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+     */
+    Basic: "BASIC",
+    /**
+     * Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+     */
+    CleanAll: "CLEAN_ALL",
+} as const;
+
+/**
+ * Base profile type for handling FHIR fields.
+ */
+export type FhirFieldConfigProfileType = (typeof FhirFieldConfigProfileType)[keyof typeof FhirFieldConfigProfileType];
+
 export const FhirStoreComplexDataTypeReferenceParsing = {
     /**
      * No parsing behavior specified. This is the same as DISABLED for backwards compatibility.
@@ -239,12 +291,36 @@ export const ImageConfigTextRedactionMode = {
      * Do not redact text.
      */
     RedactNoText: "REDACT_NO_TEXT",
+    /**
+     * This mode is like `REDACT_SENSITIVE_TEXT` with the addition of the [Clean Descriptors Option] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html) enabled: When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This mode uses an additional InfoType during inspection.
+     */
+    RedactSensitiveTextCleanDescriptors: "REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS",
 } as const;
 
 /**
  * Determines how to redact text from image.
  */
 export type ImageConfigTextRedactionMode = (typeof ImageConfigTextRedactionMode)[keyof typeof ImageConfigTextRedactionMode];
+
+export const OptionsPrimaryIds = {
+    /**
+     * No value provided. Default to the behavior specified by the base profile.
+     */
+    PrimaryIdsOptionUnspecified: "PRIMARY_IDS_OPTION_UNSPECIFIED",
+    /**
+     * Keep primary IDs.
+     */
+    Keep: "KEEP",
+    /**
+     * Regenerate primary IDs.
+     */
+    Regen: "REGEN",
+} as const;
+
+/**
+ * Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+ */
+export type OptionsPrimaryIds = (typeof OptionsPrimaryIds)[keyof typeof OptionsPrimaryIds];
 
 export const ParserConfigVersion = {
     /**
@@ -337,6 +413,26 @@ export const SchemaPackageUnexpectedSegmentHandling = {
  * Determines how unexpected segments (segments not matched to the schema) are handled.
  */
 export type SchemaPackageUnexpectedSegmentHandling = (typeof SchemaPackageUnexpectedSegmentHandling)[keyof typeof SchemaPackageUnexpectedSegmentHandling];
+
+export const TextConfigProfileType = {
+    /**
+     * Same as BASIC.
+     */
+    ProfileTypeUnspecified: "PROFILE_TYPE_UNSPECIFIED",
+    /**
+     * Empty profile which does not perform any transformations.
+     */
+    Empty: "EMPTY",
+    /**
+     * Basic profile applies: DATE -> DateShift Default -> ReplaceWithInfoType
+     */
+    Basic: "BASIC",
+} as const;
+
+/**
+ * Base profile type for text transformation.
+ */
+export type TextConfigProfileType = (typeof TextConfigProfileType)[keyof typeof TextConfigProfileType];
 
 export const TypePrimitive = {
     /**

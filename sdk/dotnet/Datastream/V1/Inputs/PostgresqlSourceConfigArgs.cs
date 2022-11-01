@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<string> Publication { get; set; } = null!;
 
         /// <summary>
-        /// The name of the logical replication slot that's configured with the pgoutput plugin.
+        /// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         /// </summary>
         [Input("replicationSlot", required: true)]
         public Input<string> ReplicationSlot { get; set; } = null!;

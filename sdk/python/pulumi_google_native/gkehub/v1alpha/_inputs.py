@@ -24,6 +24,7 @@ __all__ = [
     'EdgeClusterArgs',
     'ExprArgs',
     'FeatureSpecArgs',
+    'FleetObservabilityFeatureSpecArgs',
     'GkeClusterArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
@@ -353,6 +354,7 @@ class CommonFeatureSpecArgs:
                  anthosobservability: Optional[pulumi.Input['AnthosObservabilityFeatureSpecArgs']] = None,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
                  cloudauditlogging: Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']] = None,
+                 fleetobservability: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None,
                  workloadcertificate: Optional[pulumi.Input['FeatureSpecArgs']] = None):
         """
@@ -360,6 +362,7 @@ class CommonFeatureSpecArgs:
         :param pulumi.Input['AnthosObservabilityFeatureSpecArgs'] anthosobservability: Anthos Observability spec
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
         :param pulumi.Input['CloudAuditLoggingFeatureSpecArgs'] cloudauditlogging: Cloud Audit Logging-specific spec.
+        :param pulumi.Input['FleetObservabilityFeatureSpecArgs'] fleetobservability: FleetObservability feature spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         :param pulumi.Input['FeatureSpecArgs'] workloadcertificate: Workload Certificate spec.
         """
@@ -369,6 +372,8 @@ class CommonFeatureSpecArgs:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
         if cloudauditlogging is not None:
             pulumi.set(__self__, "cloudauditlogging", cloudauditlogging)
+        if fleetobservability is not None:
+            pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
         if workloadcertificate is not None:
@@ -409,6 +414,18 @@ class CommonFeatureSpecArgs:
     @cloudauditlogging.setter
     def cloudauditlogging(self, value: Optional[pulumi.Input['CloudAuditLoggingFeatureSpecArgs']]):
         pulumi.set(self, "cloudauditlogging", value)
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']]:
+        """
+        FleetObservability feature spec.
+        """
+        return pulumi.get(self, "fleetobservability")
+
+    @fleetobservability.setter
+    def fleetobservability(self, value: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']]):
+        pulumi.set(self, "fleetobservability", value)
 
     @property
     @pulumi.getter
@@ -569,6 +586,15 @@ class FeatureSpecArgs:
     @provision_google_ca.setter
     def provision_google_ca(self, value: Optional[pulumi.Input['FeatureSpecProvisionGoogleCa']]):
         pulumi.set(self, "provision_google_ca", value)
+
+
+@pulumi.input_type
+class FleetObservabilityFeatureSpecArgs:
+    def __init__(__self__):
+        """
+        **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        """
+        pass
 
 
 @pulumi.input_type

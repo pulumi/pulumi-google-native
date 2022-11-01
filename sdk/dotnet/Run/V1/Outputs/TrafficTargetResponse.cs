@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string ConfigurationName;
         /// <summary>
-        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         /// </summary>
         public readonly bool LatestRevision;
         /// <summary>

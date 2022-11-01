@@ -25,9 +25,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.DicomConfigResponse Dicom;
         /// <summary>
+        /// Configures de-id of application/DICOM content.
+        /// </summary>
+        public readonly Outputs.DicomTagConfigResponse DicomTagConfig;
+        /// <summary>
         /// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         /// </summary>
         public readonly Outputs.FhirConfigResponse Fhir;
+        /// <summary>
+        /// Configures de-id of application/FHIR content.
+        /// </summary>
+        public readonly Outputs.FhirFieldConfigResponse FhirFieldConfig;
         /// <summary>
         /// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         /// </summary>
@@ -47,7 +55,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
 
             Outputs.DicomConfigResponse dicom,
 
+            Outputs.DicomTagConfigResponse dicomTagConfig,
+
             Outputs.FhirConfigResponse fhir,
+
+            Outputs.FhirFieldConfigResponse fhirFieldConfig,
 
             Outputs.ImageConfigResponse image,
 
@@ -57,7 +69,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         {
             Annotation = annotation;
             Dicom = dicom;
+            DicomTagConfig = dicomTagConfig;
             Fhir = fhir;
+            FhirFieldConfig = fhirFieldConfig;
             Image = image;
             OperationMetadata = operationMetadata;
             Text = text;

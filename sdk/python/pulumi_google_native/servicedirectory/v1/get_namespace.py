@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetNamespaceResult:
-    def __init__(__self__, labels=None, name=None):
+    def __init__(__self__, labels=None, name=None, uid=None):
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
 
     @property
     @pulumi.getter
@@ -42,6 +45,14 @@ class GetNamespaceResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The globally unique identifier of the namespace in the UUID4 format.
+        """
+        return pulumi.get(self, "uid")
+
 
 class AwaitableGetNamespaceResult(GetNamespaceResult):
     # pylint: disable=using-constant-test
@@ -50,7 +61,8 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             yield self
         return GetNamespaceResult(
             labels=self.labels,
-            name=self.name)
+            name=self.name,
+            uid=self.uid)
 
 
 def get_namespace(location: Optional[str] = None,
@@ -69,7 +81,8 @@ def get_namespace(location: Optional[str] = None,
 
     return AwaitableGetNamespaceResult(
         labels=__ret__.labels,
-        name=__ret__.name)
+        name=__ret__.name,
+        uid=__ret__.uid)
 
 
 @_utilities.lift_output_func(get_namespace)

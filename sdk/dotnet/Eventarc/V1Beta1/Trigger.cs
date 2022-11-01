@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         [Output("matchingCriteria")]
         public Output<ImmutableArray<Outputs.MatchingCriteriaResponse>> MatchingCriteria { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         private InputList<Inputs.MatchingCriteriaArgs>? _matchingCriteria;
 
         /// <summary>
-        /// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        /// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         /// </summary>
         public InputList<Inputs.MatchingCriteriaArgs> MatchingCriteria
         {

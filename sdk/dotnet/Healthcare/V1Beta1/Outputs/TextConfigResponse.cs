@@ -17,13 +17,35 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
     public sealed class TextConfigResponse
     {
         /// <summary>
+        /// Additional transformations to apply to the detected data, overriding `profile`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.InfoTypeTransformationResponse> AdditionalTransformations;
+        /// <summary>
+        /// InfoTypes to skip transforming, overriding `profile`.
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludeInfoTypes;
+        /// <summary>
+        /// Base profile type for text transformation.
+        /// </summary>
+        public readonly string ProfileType;
+        /// <summary>
         /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.InfoTypeTransformationResponse> Transformations;
 
         [OutputConstructor]
-        private TextConfigResponse(ImmutableArray<Outputs.InfoTypeTransformationResponse> transformations)
+        private TextConfigResponse(
+            ImmutableArray<Outputs.InfoTypeTransformationResponse> additionalTransformations,
+
+            ImmutableArray<string> excludeInfoTypes,
+
+            string profileType,
+
+            ImmutableArray<Outputs.InfoTypeTransformationResponse> transformations)
         {
+            AdditionalTransformations = additionalTransformations;
+            ExcludeInfoTypes = excludeInfoTypes;
+            ProfileType = profileType;
             Transformations = transformations;
         }
     }

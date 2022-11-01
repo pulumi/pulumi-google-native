@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? ConfigurationName { get; set; }
 
         /// <summary>
-        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         /// </summary>
         [Input("latestRevision")]
         public Input<bool>? LatestRevision { get; set; }

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureResult:
-    def __init__(__self__, create_time=None, delete_time=None, labels=None, membership_specs=None, membership_states=None, name=None, resource_state=None, spec=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, labels=None, membership_specs=None, membership_states=None, name=None, resource_state=None, scope_specs=None, scope_states=None, spec=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +41,12 @@ class GetFeatureResult:
         if resource_state and not isinstance(resource_state, dict):
             raise TypeError("Expected argument 'resource_state' to be a dict")
         pulumi.set(__self__, "resource_state", resource_state)
+        if scope_specs and not isinstance(scope_specs, dict):
+            raise TypeError("Expected argument 'scope_specs' to be a dict")
+        pulumi.set(__self__, "scope_specs", scope_specs)
+        if scope_states and not isinstance(scope_states, dict):
+            raise TypeError("Expected argument 'scope_states' to be a dict")
+        pulumi.set(__self__, "scope_states", scope_states)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -108,6 +114,22 @@ class GetFeatureResult:
         return pulumi.get(self, "resource_state")
 
     @property
+    @pulumi.getter(name="scopeSpecs")
+    def scope_specs(self) -> Mapping[str, str]:
+        """
+        Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        """
+        return pulumi.get(self, "scope_specs")
+
+    @property
+    @pulumi.getter(name="scopeStates")
+    def scope_states(self) -> Mapping[str, str]:
+        """
+        Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+        """
+        return pulumi.get(self, "scope_states")
+
+    @property
     @pulumi.getter
     def spec(self) -> 'outputs.CommonFeatureSpecResponse':
         """
@@ -145,6 +167,8 @@ class AwaitableGetFeatureResult(GetFeatureResult):
             membership_states=self.membership_states,
             name=self.name,
             resource_state=self.resource_state,
+            scope_specs=self.scope_specs,
+            scope_states=self.scope_states,
             spec=self.spec,
             state=self.state,
             update_time=self.update_time)
@@ -172,6 +196,8 @@ def get_feature(feature_id: Optional[str] = None,
         membership_states=__ret__.membership_states,
         name=__ret__.name,
         resource_state=__ret__.resource_state,
+        scope_specs=__ret__.scope_specs,
+        scope_states=__ret__.scope_states,
         spec=__ret__.spec,
         state=__ret__.state,
         update_time=__ret__.update_time)

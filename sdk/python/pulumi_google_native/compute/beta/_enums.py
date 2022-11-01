@@ -3289,7 +3289,7 @@ class TargetTcpProxyProxyHeader(str, Enum):
 
 class VpnGatewayStackType(str, Enum):
     """
-    The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used.
+    The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
     """
     IPV4_IPV6 = "IPV4_IPV6"
     """

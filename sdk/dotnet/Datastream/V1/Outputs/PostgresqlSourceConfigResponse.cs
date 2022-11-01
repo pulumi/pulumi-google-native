@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly string Publication;
         /// <summary>
-        /// The name of the logical replication slot that's configured with the pgoutput plugin.
+        /// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         /// </summary>
         public readonly string ReplicationSlot;
 

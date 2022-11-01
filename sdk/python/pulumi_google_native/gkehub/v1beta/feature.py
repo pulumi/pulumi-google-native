@@ -23,6 +23,7 @@ class FeatureArgs:
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spec: Optional[pulumi.Input['CommonFeatureSpecArgs']] = None):
         """
         The set of arguments for constructing a Feature resource.
@@ -30,6 +31,7 @@ class FeatureArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scope_specs: Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input['CommonFeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
         if feature_id is not None:
@@ -44,6 +46,8 @@ class FeatureArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if scope_specs is not None:
+            pulumi.set(__self__, "scope_specs", scope_specs)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -114,6 +118,18 @@ class FeatureArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="scopeSpecs")
+    def scope_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        """
+        return pulumi.get(self, "scope_specs")
+
+    @scope_specs.setter
+    def scope_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "scope_specs", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['CommonFeatureSpecArgs']]:
         """
@@ -137,6 +153,7 @@ class Feature(pulumi.CustomResource):
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
         """
@@ -149,6 +166,7 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scope_specs: Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
         ...
@@ -182,6 +200,7 @@ class Feature(pulumi.CustomResource):
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -198,12 +217,14 @@ class Feature(pulumi.CustomResource):
             __props__.__dict__["membership_specs"] = membership_specs
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["scope_specs"] = scope_specs
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["membership_states"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["resource_state"] = None
+            __props__.__dict__["scope_states"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -241,6 +262,8 @@ class Feature(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_state"] = None
+        __props__.__dict__["scope_specs"] = None
+        __props__.__dict__["scope_states"] = None
         __props__.__dict__["spec"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
@@ -327,6 +350,22 @@ class Feature(pulumi.CustomResource):
         State of the Feature resource itself.
         """
         return pulumi.get(self, "resource_state")
+
+    @property
+    @pulumi.getter(name="scopeSpecs")
+    def scope_specs(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        """
+        return pulumi.get(self, "scope_specs")
+
+    @property
+    @pulumi.getter(name="scopeStates")
+    def scope_states(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+        """
+        return pulumi.get(self, "scope_states")
 
     @property
     @pulumi.getter

@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse FacetKey;
         /// <summary>
-        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
+        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
         /// </summary>
         public readonly int Limit;
 

@@ -3128,6 +3128,10 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// Enable/Disable private endpoint for the cluster's master.
+	DesiredEnablePrivateEndpoint *bool `pulumi:"desiredEnablePrivateEndpoint"`
+	// The desired config of Gateway API on this cluster.
+	DesiredGatewayApiConfig *GatewayAPIConfig `pulumi:"desiredGatewayApiConfig"`
 	// The desired GCFS config for the cluster
 	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
@@ -5119,6 +5123,172 @@ func (o GPUSharingConfigResponseOutput) GpuSharingStrategy() pulumi.StringOutput
 // The max number of containers that can share a physical GPU.
 func (o GPUSharingConfigResponseOutput) MaxSharedClientsPerGpu() pulumi.StringOutput {
 	return o.ApplyT(func(v GPUSharingConfigResponse) string { return v.MaxSharedClientsPerGpu }).(pulumi.StringOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfig struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel *GatewayAPIConfigChannel `pulumi:"channel"`
+}
+
+// GatewayAPIConfigInput is an input type that accepts GatewayAPIConfigArgs and GatewayAPIConfigOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigInput` via:
+//
+//	GatewayAPIConfigArgs{...}
+type GatewayAPIConfigInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigOutput() GatewayAPIConfigOutput
+	ToGatewayAPIConfigOutputWithContext(context.Context) GatewayAPIConfigOutput
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigArgs struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel GatewayAPIConfigChannelPtrInput `pulumi:"channel"`
+}
+
+func (GatewayAPIConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfig)(nil)).Elem()
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigOutput() GatewayAPIConfigOutput {
+	return i.ToGatewayAPIConfigOutputWithContext(context.Background())
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigOutputWithContext(ctx context.Context) GatewayAPIConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigOutput)
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return i.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigOutput).ToGatewayAPIConfigPtrOutputWithContext(ctx)
+}
+
+// GatewayAPIConfigPtrInput is an input type that accepts GatewayAPIConfigArgs, GatewayAPIConfigPtr and GatewayAPIConfigPtrOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigPtrInput` via:
+//
+//	        GatewayAPIConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayAPIConfigPtrInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput
+	ToGatewayAPIConfigPtrOutputWithContext(context.Context) GatewayAPIConfigPtrOutput
+}
+
+type gatewayAPIConfigPtrType GatewayAPIConfigArgs
+
+func GatewayAPIConfigPtr(v *GatewayAPIConfigArgs) GatewayAPIConfigPtrInput {
+	return (*gatewayAPIConfigPtrType)(v)
+}
+
+func (*gatewayAPIConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfig)(nil)).Elem()
+}
+
+func (i *gatewayAPIConfigPtrType) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return i.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayAPIConfigPtrType) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigPtrOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfig)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigOutput() GatewayAPIConfigOutput {
+	return o
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigOutputWithContext(ctx context.Context) GatewayAPIConfigOutput {
+	return o
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return o.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayAPIConfig) *GatewayAPIConfig {
+		return &v
+	}).(GatewayAPIConfigPtrOutput)
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigOutput) Channel() GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyT(func(v GatewayAPIConfig) *GatewayAPIConfigChannel { return v.Channel }).(GatewayAPIConfigChannelPtrOutput)
+}
+
+type GatewayAPIConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfig)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigPtrOutput) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigPtrOutput) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigPtrOutput) Elem() GatewayAPIConfigOutput {
+	return o.ApplyT(func(v *GatewayAPIConfig) GatewayAPIConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayAPIConfig
+		return ret
+	}).(GatewayAPIConfigOutput)
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigPtrOutput) Channel() GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyT(func(v *GatewayAPIConfig) *GatewayAPIConfigChannel {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(GatewayAPIConfigChannelPtrOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigResponse struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel string `pulumi:"channel"`
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigResponse)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigResponseOutput) ToGatewayAPIConfigResponseOutput() GatewayAPIConfigResponseOutput {
+	return o
+}
+
+func (o GatewayAPIConfigResponseOutput) ToGatewayAPIConfigResponseOutputWithContext(ctx context.Context) GatewayAPIConfigResponseOutput {
+	return o
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigResponseOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayAPIConfigResponse) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 // Configuration for the Compute Engine PD CSI driver.
@@ -7195,6 +7365,8 @@ func (o LegacyAbacResponseOutput) Enabled() pulumi.BoolOutput {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfig struct {
+	// cgroup_mode specifies the cgroup mode to be used on the node.
+	CgroupMode *LinuxNodeConfigCgroupMode `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
@@ -7212,6 +7384,8 @@ type LinuxNodeConfigInput interface {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfigArgs struct {
+	// cgroup_mode specifies the cgroup mode to be used on the node.
+	CgroupMode LinuxNodeConfigCgroupModePtrInput `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
@@ -7294,6 +7468,11 @@ func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx context
 	}).(LinuxNodeConfigPtrOutput)
 }
 
+// cgroup_mode specifies the cgroup mode to be used on the node.
+func (o LinuxNodeConfigOutput) CgroupMode() LinuxNodeConfigCgroupModePtrOutput {
+	return o.ApplyT(func(v LinuxNodeConfig) *LinuxNodeConfigCgroupMode { return v.CgroupMode }).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 func (o LinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
@@ -7323,6 +7502,16 @@ func (o LinuxNodeConfigPtrOutput) Elem() LinuxNodeConfigOutput {
 	}).(LinuxNodeConfigOutput)
 }
 
+// cgroup_mode specifies the cgroup mode to be used on the node.
+func (o LinuxNodeConfigPtrOutput) CgroupMode() LinuxNodeConfigCgroupModePtrOutput {
+	return o.ApplyT(func(v *LinuxNodeConfig) *LinuxNodeConfigCgroupMode {
+		if v == nil {
+			return nil
+		}
+		return v.CgroupMode
+	}).(LinuxNodeConfigCgroupModePtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 func (o LinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LinuxNodeConfig) map[string]string {
@@ -7335,6 +7524,8 @@ func (o LinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfigResponse struct {
+	// cgroup_mode specifies the cgroup mode to be used on the node.
+	CgroupMode string `pulumi:"cgroupMode"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
@@ -7352,6 +7543,11 @@ func (o LinuxNodeConfigResponseOutput) ToLinuxNodeConfigResponseOutput() LinuxNo
 
 func (o LinuxNodeConfigResponseOutput) ToLinuxNodeConfigResponseOutputWithContext(ctx context.Context) LinuxNodeConfigResponseOutput {
 	return o
+}
+
+// cgroup_mode specifies the cgroup mode to be used on the node.
+func (o LinuxNodeConfigResponseOutput) CgroupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LinuxNodeConfigResponse) string { return v.CgroupMode }).(pulumi.StringOutput)
 }
 
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
@@ -8844,6 +9040,8 @@ type MasterAuthorizedNetworksConfig struct {
 	CidrBlocks []CidrBlock `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled *bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // MasterAuthorizedNetworksConfigInput is an input type that accepts MasterAuthorizedNetworksConfigArgs and MasterAuthorizedNetworksConfigOutput values.
@@ -8863,6 +9061,8 @@ type MasterAuthorizedNetworksConfigArgs struct {
 	CidrBlocks CidrBlockArrayInput `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled pulumi.BoolPtrInput `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 func (MasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -8953,6 +9153,11 @@ func (o MasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type MasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
@@ -8997,12 +9202,24 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigPtrOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GcpPublicCidrsAccessEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfigResponse struct {
 	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []CidrBlockResponse `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled bool `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
@@ -9028,6 +9245,11 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) CidrBlocks() CidrBlockResp
 // Whether or not master authorized networks is enabled.
 func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigResponseOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolOutput)
 }
 
 // Constraints applied to pods.
@@ -9734,6 +9956,8 @@ type NetworkConfig struct {
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig *GatewayAPIConfig `pulumi:"gatewayApiConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -9763,6 +9987,8 @@ type NetworkConfigArgs struct {
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig GatewayAPIConfigPtrInput `pulumi:"gatewayApiConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess NetworkConfigPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -9872,6 +10098,11 @@ func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolPtrOutput)
 }
 
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *GatewayAPIConfig { return v.GatewayApiConfig }).(GatewayAPIConfigPtrOutput)
+}
+
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess { return v.PrivateIpv6GoogleAccess }).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
@@ -9956,6 +10187,16 @@ func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigPtrOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *GatewayAPIConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayApiConfig
+	}).(GatewayAPIConfigPtrOutput)
+}
+
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess {
@@ -9988,6 +10229,8 @@ type NetworkConfigResponse struct {
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting bool `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig GatewayAPIConfigResponse `pulumi:"gatewayApiConfig"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -10036,6 +10279,11 @@ func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutp
 // Whether L4ILB Subsetting is enabled for this cluster.
 func (o NetworkConfigResponseOutput) EnableL4ilbSubsetting() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigResponseOutput) GatewayApiConfig() GatewayAPIConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) GatewayAPIConfigResponse { return v.GatewayApiConfig }).(GatewayAPIConfigResponseOutput)
 }
 
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -10794,6 +11042,8 @@ type NodeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig *SandboxConfig `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -10865,6 +11115,8 @@ type NodeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -11062,6 +11314,11 @@ func (o NodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
 // The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 func (o NodeConfigOutput) ReservationAffinity() ReservationAffinityPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
+}
+
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -11331,6 +11588,16 @@ func (o NodeConfigPtrOutput) ReservationAffinity() ReservationAffinityPtrOutput 
 		}
 		return v.ReservationAffinity
 	}).(ReservationAffinityPtrOutput)
+}
+
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(pulumi.StringMapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -11639,6 +11906,8 @@ type NodeConfigResponse struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigResponse `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -11773,6 +12042,11 @@ func (o NodeConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 // The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 func (o NodeConfigResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
+}
+
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigResponseOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeConfigResponse) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }
 
 // Sandbox configuration for this node.
@@ -12282,6 +12556,8 @@ func (o NodeManagementResponseOutput) UpgradeOptions() AutoUpgradeOptionsRespons
 type NodeNetworkConfig struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12305,6 +12581,8 @@ type NodeNetworkConfigInput interface {
 type NodeNetworkConfigArgs struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12396,6 +12674,11 @@ func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
@@ -12445,6 +12728,16 @@ func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateNodes
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigPtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *NetworkPerformanceConfig {
@@ -12479,6 +12772,8 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 type NodeNetworkConfigResponse struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12505,6 +12800,11 @@ func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponseOutputWithCo
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
+}
+
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigResponseOutput) EnablePrivateNodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
 }
 
 // Network bandwidth tier configuration.
@@ -14054,6 +14354,8 @@ type PrivateClusterConfig struct {
 	MasterGlobalAccessConfig *PrivateClusterMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork *string `pulumi:"privateEndpointSubnetwork"`
 }
 
 // PrivateClusterConfigInput is an input type that accepts PrivateClusterConfigArgs and PrivateClusterConfigOutput values.
@@ -14077,6 +14379,8 @@ type PrivateClusterConfigArgs struct {
 	MasterGlobalAccessConfig PrivateClusterMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork pulumi.StringPtrInput `pulumi:"privateEndpointSubnetwork"`
 }
 
 func (PrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -14179,6 +14483,11 @@ func (o PrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.PrivateEndpointSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 type PrivateClusterConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PrivateClusterConfigPtrOutput) ElementType() reflect.Type {
@@ -14243,6 +14552,16 @@ func (o PrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigPtrOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointSubnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration options for private clusters.
 type PrivateClusterConfigResponse struct {
 	// Whether the master's internal IP address is used as the cluster endpoint.
@@ -14257,6 +14576,8 @@ type PrivateClusterConfigResponse struct {
 	PeeringName string `pulumi:"peeringName"`
 	// The internal IP address of this cluster's master endpoint.
 	PrivateEndpoint string `pulumi:"privateEndpoint"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork string `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
 	PublicEndpoint string `pulumi:"publicEndpoint"`
 }
@@ -14306,6 +14627,11 @@ func (o PrivateClusterConfigResponseOutput) PeeringName() pulumi.StringOutput {
 // The internal IP address of this cluster's master endpoint.
 func (o PrivateClusterConfigResponseOutput) PrivateEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.PrivateEndpoint }).(pulumi.StringOutput)
+}
+
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigResponseOutput) PrivateEndpointSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.PrivateEndpointSubnetwork }).(pulumi.StringOutput)
 }
 
 // The external IP address of this cluster's master endpoint.
@@ -15333,6 +15659,12 @@ func (o ReservationAffinityResponseOutput) Key() pulumi.StringOutput {
 // Corresponds to the label value(s) of reservation resource(s).
 func (o ReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+type ResourceLabels struct {
+	// Map of node label keys and node label values.
+	Labels map[string]string `pulumi:"labels"`
 }
 
 // Contains information about amount of some resource in the cluster. For memory, value should be in GB.
@@ -16427,7 +16759,7 @@ func (o ShieldedNodesResponseOutput) Enabled() pulumi.BoolOutput {
 type StandardRolloutPolicy struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount *int `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage *float64 `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration *string `pulumi:"batchSoakDuration"`
@@ -16448,7 +16780,7 @@ type StandardRolloutPolicyInput interface {
 type StandardRolloutPolicyArgs struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount pulumi.IntPtrInput `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage pulumi.Float64PtrInput `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration pulumi.StringPtrInput `pulumi:"batchSoakDuration"`
@@ -16537,7 +16869,7 @@ func (o StandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StandardRolloutPolicy) *int { return v.BatchNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyOutput) BatchPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StandardRolloutPolicy) *float64 { return v.BatchPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -16581,7 +16913,7 @@ func (o StandardRolloutPolicyPtrOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyPtrOutput) BatchPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StandardRolloutPolicy) *float64 {
 		if v == nil {
@@ -16605,7 +16937,7 @@ func (o StandardRolloutPolicyPtrOutput) BatchSoakDuration() pulumi.StringPtrOutp
 type StandardRolloutPolicyResponse struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount int `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage float64 `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration string `pulumi:"batchSoakDuration"`
@@ -16631,7 +16963,7 @@ func (o StandardRolloutPolicyResponseOutput) BatchNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v StandardRolloutPolicyResponse) int { return v.BatchNodeCount }).(pulumi.IntOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyResponseOutput) BatchPercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v StandardRolloutPolicyResponse) float64 { return v.BatchPercentage }).(pulumi.Float64Output)
 }
@@ -18032,6 +18364,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigPtrInput)(nil)).Elem(), GPUSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigInput)(nil)).Elem(), GatewayAPIConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigPtrInput)(nil)).Elem(), GatewayAPIConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigInput)(nil)).Elem(), GcfsConfigArgs{})
@@ -18232,6 +18566,9 @@ func init() {
 	pulumi.RegisterOutputType(GPUSharingConfigOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})

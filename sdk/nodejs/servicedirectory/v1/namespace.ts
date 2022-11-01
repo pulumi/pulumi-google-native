@@ -48,6 +48,10 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly namespaceId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The globally unique identifier of the namespace in the UUID4 format.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -68,12 +72,14 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "namespaceId", "project"] };

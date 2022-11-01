@@ -58,7 +58,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+     * Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
      */
     public readonly eventFilters!: pulumi.Output<outputs.eventarc.v1.EventFilterResponse[]>;
     /**
@@ -173,7 +173,7 @@ export interface TriggerArgs {
      */
     destination: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
     /**
-     * null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+     * Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
      */
     eventFilters: pulumi.Input<pulumi.Input<inputs.eventarc.v1.EventFilterArgs>[]>;
     /**

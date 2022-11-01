@@ -1466,208 +1466,12 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudR
 	}).(GoogleCloudRunV2TaskTemplateResponseOutput)
 }
 
-// GRPCAction describes an action involving a GRPC port.
-type GoogleCloudRunV2GRPCAction struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535.
-	Port *int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service *string `pulumi:"service"`
-}
-
-// GoogleCloudRunV2GRPCActionInput is an input type that accepts GoogleCloudRunV2GRPCActionArgs and GoogleCloudRunV2GRPCActionOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2GRPCActionInput` via:
-//
-//	GoogleCloudRunV2GRPCActionArgs{...}
-type GoogleCloudRunV2GRPCActionInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput
-	ToGoogleCloudRunV2GRPCActionOutputWithContext(context.Context) GoogleCloudRunV2GRPCActionOutput
-}
-
-// GRPCAction describes an action involving a GRPC port.
-type GoogleCloudRunV2GRPCActionArgs struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service pulumi.StringPtrInput `pulumi:"service"`
-}
-
-func (GoogleCloudRunV2GRPCActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunV2GRPCAction)(nil)).Elem()
-}
-
-func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput {
-	return i.ToGoogleCloudRunV2GRPCActionOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionOutput)
-}
-
-func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
-	return i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionOutput).ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudRunV2GRPCActionPtrInput is an input type that accepts GoogleCloudRunV2GRPCActionArgs, GoogleCloudRunV2GRPCActionPtr and GoogleCloudRunV2GRPCActionPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV2GRPCActionPtrInput` via:
-//
-//	        GoogleCloudRunV2GRPCActionArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudRunV2GRPCActionPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput
-	ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Context) GoogleCloudRunV2GRPCActionPtrOutput
-}
-
-type googleCloudRunV2GRPCActionPtrType GoogleCloudRunV2GRPCActionArgs
-
-func GoogleCloudRunV2GRPCActionPtr(v *GoogleCloudRunV2GRPCActionArgs) GoogleCloudRunV2GRPCActionPtrInput {
-	return (*googleCloudRunV2GRPCActionPtrType)(v)
-}
-
-func (*googleCloudRunV2GRPCActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunV2GRPCAction)(nil)).Elem()
-}
-
-func (i *googleCloudRunV2GRPCActionPtrType) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
-	return i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudRunV2GRPCActionPtrType) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionPtrOutput)
-}
-
-// GRPCAction describes an action involving a GRPC port.
-type GoogleCloudRunV2GRPCActionOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunV2GRPCActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunV2GRPCAction)(nil)).Elem()
-}
-
-func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput {
-	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionOutput {
-	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
-	return o.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2GRPCAction) *GoogleCloudRunV2GRPCAction {
-		return &v
-	}).(GoogleCloudRunV2GRPCActionPtrOutput)
-}
-
-// Port number of the gRPC service. Number must be in the range 1 to 65535.
-func (o GoogleCloudRunV2GRPCActionOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o GoogleCloudRunV2GRPCActionOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *string { return v.Service }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudRunV2GRPCActionPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunV2GRPCActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunV2GRPCAction)(nil)).Elem()
-}
-
-func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionPtrOutput) Elem() GoogleCloudRunV2GRPCActionOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) GoogleCloudRunV2GRPCAction {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudRunV2GRPCAction
-		return ret
-	}).(GoogleCloudRunV2GRPCActionOutput)
-}
-
-// Port number of the gRPC service. Number must be in the range 1 to 65535.
-func (o GoogleCloudRunV2GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o GoogleCloudRunV2GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Service
-	}).(pulumi.StringPtrOutput)
-}
-
-// GRPCAction describes an action involving a GRPC port.
-type GoogleCloudRunV2GRPCActionResponse struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535.
-	Port int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-	Service string `pulumi:"service"`
-}
-
-// GRPCAction describes an action involving a GRPC port.
-type GoogleCloudRunV2GRPCActionResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunV2GRPCActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunV2GRPCActionResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionResponseOutput() GoogleCloudRunV2GRPCActionResponseOutput {
-	return o
-}
-
-func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionResponseOutput {
-	return o
-}
-
-// Port number of the gRPC service. Number must be in the range 1 to 65535.
-func (o GoogleCloudRunV2GRPCActionResponseOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
-func (o GoogleCloudRunV2GRPCActionResponseOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) string { return v.Service }).(pulumi.StringOutput)
-}
-
 // HTTPGetAction describes an action based on HTTP Get requests.
 type GoogleCloudRunV2HTTPGetAction struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host *string `pulumi:"host"`
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []GoogleCloudRunV2HTTPHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
-	// Scheme to use for connecting to the host. Defaults to HTTP.
-	Scheme *string `pulumi:"scheme"`
 }
 
 // GoogleCloudRunV2HTTPGetActionInput is an input type that accepts GoogleCloudRunV2HTTPGetActionArgs and GoogleCloudRunV2HTTPGetActionOutput values.
@@ -1683,14 +1487,10 @@ type GoogleCloudRunV2HTTPGetActionInput interface {
 
 // HTTPGetAction describes an action based on HTTP Get requests.
 type GoogleCloudRunV2HTTPGetActionArgs struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders GoogleCloudRunV2HTTPHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Scheme to use for connecting to the host. Defaults to HTTP.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
 func (GoogleCloudRunV2HTTPGetActionArgs) ElementType() reflect.Type {
@@ -1771,11 +1571,6 @@ func (o GoogleCloudRunV2HTTPGetActionOutput) ToGoogleCloudRunV2HTTPGetActionPtrO
 	}).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o GoogleCloudRunV2HTTPGetActionOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
 // Custom headers to set in the request. HTTP allows repeated headers.
 func (o GoogleCloudRunV2HTTPGetActionOutput) HttpHeaders() GoogleCloudRunV2HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) []GoogleCloudRunV2HTTPHeader { return v.HttpHeaders }).(GoogleCloudRunV2HTTPHeaderArrayOutput)
@@ -1784,11 +1579,6 @@ func (o GoogleCloudRunV2HTTPGetActionOutput) HttpHeaders() GoogleCloudRunV2HTTPH
 // Path to access on the HTTP server. Defaults to '/'.
 func (o GoogleCloudRunV2HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// Scheme to use for connecting to the host. Defaults to HTTP.
-func (o GoogleCloudRunV2HTTPGetActionOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudRunV2HTTPGetActionPtrOutput struct{ *pulumi.OutputState }
@@ -1815,16 +1605,6 @@ func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Elem() GoogleCloudRunV2HTTPGetAc
 	}).(GoogleCloudRunV2HTTPGetActionOutput)
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2HTTPGetAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
 // Custom headers to set in the request. HTTP allows repeated headers.
 func (o GoogleCloudRunV2HTTPGetActionPtrOutput) HttpHeaders() GoogleCloudRunV2HTTPHeaderArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2HTTPGetAction) []GoogleCloudRunV2HTTPHeader {
@@ -1845,26 +1625,12 @@ func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Scheme to use for connecting to the host. Defaults to HTTP.
-func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2HTTPGetAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Scheme
-	}).(pulumi.StringPtrOutput)
-}
-
 // HTTPGetAction describes an action based on HTTP Get requests.
 type GoogleCloudRunV2HTTPGetActionResponse struct {
-	// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-	Host string `pulumi:"host"`
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []GoogleCloudRunV2HTTPHeaderResponse `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path string `pulumi:"path"`
-	// Scheme to use for connecting to the host. Defaults to HTTP.
-	Scheme string `pulumi:"scheme"`
 }
 
 // HTTPGetAction describes an action based on HTTP Get requests.
@@ -1882,11 +1648,6 @@ func (o GoogleCloudRunV2HTTPGetActionResponseOutput) ToGoogleCloudRunV2HTTPGetAc
 	return o
 }
 
-// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-func (o GoogleCloudRunV2HTTPGetActionResponseOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) string { return v.Host }).(pulumi.StringOutput)
-}
-
 // Custom headers to set in the request. HTTP allows repeated headers.
 func (o GoogleCloudRunV2HTTPGetActionResponseOutput) HttpHeaders() GoogleCloudRunV2HTTPHeaderResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) []GoogleCloudRunV2HTTPHeaderResponse {
@@ -1899,17 +1660,12 @@ func (o GoogleCloudRunV2HTTPGetActionResponseOutput) Path() pulumi.StringOutput 
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Scheme to use for connecting to the host. Defaults to HTTP.
-func (o GoogleCloudRunV2HTTPGetActionResponseOutput) Scheme() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) string { return v.Scheme }).(pulumi.StringOutput)
-}
-
 // HTTPHeader describes a custom header to be used in HTTP probes
 type GoogleCloudRunV2HTTPHeader struct {
 	// The header field name
 	Name string `pulumi:"name"`
 	// The header field value
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GoogleCloudRunV2HTTPHeaderInput is an input type that accepts GoogleCloudRunV2HTTPHeaderArgs and GoogleCloudRunV2HTTPHeaderOutput values.
@@ -1928,7 +1684,7 @@ type GoogleCloudRunV2HTTPHeaderArgs struct {
 	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GoogleCloudRunV2HTTPHeaderArgs) ElementType() reflect.Type {
@@ -1989,8 +1745,8 @@ func (o GoogleCloudRunV2HTTPHeaderOutput) Name() pulumi.StringOutput {
 }
 
 // The header field value
-func (o GoogleCloudRunV2HTTPHeaderOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2HTTPHeader) string { return v.Value }).(pulumi.StringOutput)
+func (o GoogleCloudRunV2HTTPHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2HTTPHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudRunV2HTTPHeaderArrayOutput struct{ *pulumi.OutputState }
@@ -2070,15 +1826,13 @@ func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) 
 type GoogleCloudRunV2Probe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-	Grpc *GoogleCloudRunV2GRPCAction `pulumi:"grpc"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	HttpGet *GoogleCloudRunV2HTTPGetAction `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 	TcpSocket *GoogleCloudRunV2TCPSocketAction `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -2099,15 +1853,13 @@ type GoogleCloudRunV2ProbeInput interface {
 type GoogleCloudRunV2ProbeArgs struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-	Grpc GoogleCloudRunV2GRPCActionPtrInput `pulumi:"grpc"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionPtrInput `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionPtrInput `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -2196,12 +1948,7 @@ func (o GoogleCloudRunV2ProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-func (o GoogleCloudRunV2ProbeOutput) Grpc() GoogleCloudRunV2GRPCActionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2GRPCAction { return v.Grpc }).(GoogleCloudRunV2GRPCActionPtrOutput)
-}
-
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbeOutput) HttpGet() GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2HTTPGetAction { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
@@ -2216,7 +1963,7 @@ func (o GoogleCloudRunV2ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbeOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2TCPSocketAction { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
@@ -2260,17 +2007,7 @@ func (o GoogleCloudRunV2ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-func (o GoogleCloudRunV2ProbePtrOutput) Grpc() GoogleCloudRunV2GRPCActionPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2GRPCAction {
-		if v == nil {
-			return nil
-		}
-		return v.Grpc
-	}).(GoogleCloudRunV2GRPCActionPtrOutput)
-}
-
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbePtrOutput) HttpGet() GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2HTTPGetAction {
 		if v == nil {
@@ -2300,7 +2037,7 @@ func (o GoogleCloudRunV2ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbePtrOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2TCPSocketAction {
 		if v == nil {
@@ -2324,15 +2061,13 @@ func (o GoogleCloudRunV2ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 type GoogleCloudRunV2ProbeResponse struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold int `pulumi:"failureThreshold"`
-	// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-	Grpc GoogleCloudRunV2GRPCActionResponse `pulumi:"grpc"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionResponse `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionResponse `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
@@ -2358,12 +2093,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) FailureThreshold() pulumi.IntOutput
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
-// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-func (o GoogleCloudRunV2ProbeResponseOutput) Grpc() GoogleCloudRunV2GRPCActionResponseOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2GRPCActionResponse { return v.Grpc }).(GoogleCloudRunV2GRPCActionResponseOutput)
-}
-
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbeResponseOutput) HttpGet() GoogleCloudRunV2HTTPGetActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2HTTPGetActionResponse { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionResponseOutput)
 }
@@ -2378,7 +2108,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GoogleCloudRunV2ProbeResponseOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2TCPSocketActionResponse { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionResponseOutput)
 }
@@ -3449,9 +3179,7 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Secret() pulumi.String
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketAction struct {
-	// Host name to connect to, defaults to the pod IP.
-	Host *string `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 	Port *int `pulumi:"port"`
 }
 
@@ -3468,9 +3196,7 @@ type GoogleCloudRunV2TCPSocketActionInput interface {
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketActionArgs struct {
-	// Host name to connect to, defaults to the pod IP.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -3552,12 +3278,7 @@ func (o GoogleCloudRunV2TCPSocketActionOutput) ToGoogleCloudRunV2TCPSocketAction
 	}).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-// Host name to connect to, defaults to the pod IP.
-func (o GoogleCloudRunV2TCPSocketActionOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketAction) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 func (o GoogleCloudRunV2TCPSocketActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3586,17 +3307,7 @@ func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Elem() GoogleCloudRunV2TCPSock
 	}).(GoogleCloudRunV2TCPSocketActionOutput)
 }
 
-// Host name to connect to, defaults to the pod IP.
-func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2TCPSocketAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2TCPSocketAction) *int {
 		if v == nil {
@@ -3608,9 +3319,7 @@ func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketActionResponse struct {
-	// Host name to connect to, defaults to the pod IP.
-	Host string `pulumi:"host"`
-	// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 	Port int `pulumi:"port"`
 }
 
@@ -3629,12 +3338,7 @@ func (o GoogleCloudRunV2TCPSocketActionResponseOutput) ToGoogleCloudRunV2TCPSock
 	return o
 }
 
-// Host name to connect to, defaults to the pod IP.
-func (o GoogleCloudRunV2TCPSocketActionResponseOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketActionResponse) string { return v.Host }).(pulumi.StringOutput)
-}
-
-// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 func (o GoogleCloudRunV2TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -5574,8 +5278,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplateInput)(nil)).Elem(), GoogleCloudRunV2ExecutionTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionPtrInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionPtrInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArgs{})
@@ -5638,9 +5340,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionResponseOutput{})

@@ -356,13 +356,186 @@ func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentStateEnumPtrOutput)
 }
 
+// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+type NetworkingConfigConnectionType string
+
+const (
+	// No specific connection type was requested, so the environment uses the default value corresponding to the rest of its configuration.
+	NetworkingConfigConnectionTypeConnectionTypeUnspecified = NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED")
+	// Requests the use of VPC peerings for connecting the Customer and Tenant projects.
+	NetworkingConfigConnectionTypeVpcPeering = NetworkingConfigConnectionType("VPC_PEERING")
+	// Requests the use of Private Service Connect for connecting the Customer and Tenant projects.
+	NetworkingConfigConnectionTypePrivateServiceConnect = NetworkingConfigConnectionType("PRIVATE_SERVICE_CONNECT")
+)
+
+func (NetworkingConfigConnectionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingConfigConnectionType)(nil)).Elem()
+}
+
+func (e NetworkingConfigConnectionType) ToNetworkingConfigConnectionTypeOutput() NetworkingConfigConnectionTypeOutput {
+	return pulumi.ToOutput(e).(NetworkingConfigConnectionTypeOutput)
+}
+
+func (e NetworkingConfigConnectionType) ToNetworkingConfigConnectionTypeOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkingConfigConnectionTypeOutput)
+}
+
+func (e NetworkingConfigConnectionType) ToNetworkingConfigConnectionTypePtrOutput() NetworkingConfigConnectionTypePtrOutput {
+	return e.ToNetworkingConfigConnectionTypePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkingConfigConnectionType) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
+	return NetworkingConfigConnectionType(e).ToNetworkingConfigConnectionTypeOutputWithContext(ctx).ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx)
+}
+
+func (e NetworkingConfigConnectionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkingConfigConnectionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkingConfigConnectionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkingConfigConnectionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkingConfigConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (NetworkingConfigConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingConfigConnectionType)(nil)).Elem()
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypeOutput() NetworkingConfigConnectionTypeOutput {
+	return o
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypeOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypeOutput {
+	return o
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypePtrOutput() NetworkingConfigConnectionTypePtrOutput {
+	return o.ToNetworkingConfigConnectionTypePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkingConfigConnectionType) *NetworkingConfigConnectionType {
+		return &v
+	}).(NetworkingConfigConnectionTypePtrOutput)
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkingConfigConnectionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkingConfigConnectionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkingConfigConnectionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkingConfigConnectionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkingConfigConnectionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkingConfigConnectionType)(nil)).Elem()
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTypePtrOutput() NetworkingConfigConnectionTypePtrOutput {
+	return o
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
+	return o
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) Elem() NetworkingConfigConnectionTypeOutput {
+	return o.ApplyT(func(v *NetworkingConfigConnectionType) NetworkingConfigConnectionType {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkingConfigConnectionType
+		return ret
+	}).(NetworkingConfigConnectionTypeOutput)
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkingConfigConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkingConfigConnectionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkingConfigConnectionTypeInput is an input type that accepts NetworkingConfigConnectionTypeArgs and NetworkingConfigConnectionTypeOutput values.
+// You can construct a concrete instance of `NetworkingConfigConnectionTypeInput` via:
+//
+//	NetworkingConfigConnectionTypeArgs{...}
+type NetworkingConfigConnectionTypeInput interface {
+	pulumi.Input
+
+	ToNetworkingConfigConnectionTypeOutput() NetworkingConfigConnectionTypeOutput
+	ToNetworkingConfigConnectionTypeOutputWithContext(context.Context) NetworkingConfigConnectionTypeOutput
+}
+
+var networkingConfigConnectionTypePtrType = reflect.TypeOf((**NetworkingConfigConnectionType)(nil)).Elem()
+
+type NetworkingConfigConnectionTypePtrInput interface {
+	pulumi.Input
+
+	ToNetworkingConfigConnectionTypePtrOutput() NetworkingConfigConnectionTypePtrOutput
+	ToNetworkingConfigConnectionTypePtrOutputWithContext(context.Context) NetworkingConfigConnectionTypePtrOutput
+}
+
+type networkingConfigConnectionTypePtr string
+
+func NetworkingConfigConnectionTypePtr(v string) NetworkingConfigConnectionTypePtrInput {
+	return (*networkingConfigConnectionTypePtr)(&v)
+}
+
+func (*networkingConfigConnectionTypePtr) ElementType() reflect.Type {
+	return networkingConfigConnectionTypePtrType
+}
+
+func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtrOutput() NetworkingConfigConnectionTypePtrOutput {
+	return pulumi.ToOutput(in).(NetworkingConfigConnectionTypePtrOutput)
+}
+
+func (in *networkingConfigConnectionTypePtr) ToNetworkingConfigConnectionTypePtrOutputWithContext(ctx context.Context) NetworkingConfigConnectionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkingConfigConnectionTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizeInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizePtrInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypeInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypePtrInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizeOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})
 	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(NetworkingConfigConnectionTypeOutput{})
+	pulumi.RegisterOutputType(NetworkingConfigConnectionTypePtrOutput{})
 }
