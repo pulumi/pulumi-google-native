@@ -39,7 +39,7 @@ var root = filepath.Join("..", "..", "..")
 // This is a validation test to make sure that the metadata generated at schema generation stands-up
 // to the assumptions made for operation URL resolution at runtime in the provider.
 // NOTE this will need to be kept up-to-date with the provider.go implementation but this framework gives
-// valuable confidence in correctness around metadata generation without destabalizing the provider at runtime.
+// valuable confidence in correctness around metadata generation without destabilizing the provider at runtime.
 func TestMetadata_Operations(t *testing.T) {
 	cwd, err := os.Getwd()
 	require.NoError(t, err)

@@ -62,6 +62,8 @@ var resourceNameByPathOverrides = map[string]string{
 	// App Engine Alpha v1. Get rid of locations and operations nested under locations.
 	"appengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}":                           "",
 	"appengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}": "",
+	"appengine_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}":                             "",
+	"appengine_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}":   "",
 
 	// ApigeeRegistry
 	"apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
