@@ -22,13 +22,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<int>? FailureThreshold { get; set; }
 
         /// <summary>
-        /// GRPC specifies an action involving a GRPC port. Exactly one of HTTPGet, TCPSocket, or GRPC must be specified.
-        /// </summary>
-        [Input("grpc")]
-        public Input<Inputs.GoogleCloudRunV2GRPCActionArgs>? Grpc { get; set; }
-
-        /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified.
+        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
         /// </summary>
         [Input("httpGet")]
         public Input<Inputs.GoogleCloudRunV2HTTPGetActionArgs>? HttpGet { get; set; }
@@ -46,7 +40,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet, TCPSocket, or gRPC must be specified. TCP hooks not yet supported
+        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
         /// </summary>
         [Input("tcpSocket")]
         public Input<Inputs.GoogleCloudRunV2TCPSocketActionArgs>? TcpSocket { get; set; }

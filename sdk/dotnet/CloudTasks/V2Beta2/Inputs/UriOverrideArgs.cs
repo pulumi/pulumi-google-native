@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         [Input("scheme")]
         public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.UriOverrideScheme>? Scheme { get; set; }
 
+        /// <summary>
+        /// Uri Override Enforce Mode Determines the Target UriOverride mode.
+        /// </summary>
+        [Input("uriOverrideEnforceMode")]
+        public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.UriOverrideUriOverrideEnforceMode>? UriOverrideEnforceMode { get; set; }
+
         public UriOverrideArgs()
         {
         }

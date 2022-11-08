@@ -56,6 +56,10 @@ export class Service extends pulumi.CustomResource {
      * Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly serviceId!: pulumi.Output<string>;
+    /**
+     * The globally unique identifier of the service in the UUID4 format.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -81,6 +85,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
@@ -89,6 +94,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "namespaceId", "project", "serviceId"] };

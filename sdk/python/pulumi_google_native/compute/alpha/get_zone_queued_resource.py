@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetZoneQueuedResourceResult:
-    def __init__(__self__, bulk_insert_instance_resource=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, region=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
+    def __init__(__self__, bulk_insert_instance_resource=None, creation_timestamp=None, description=None, kind=None, name=None, queuing_policy=None, self_link=None, self_link_with_id=None, state=None, status=None, zone=None):
         if bulk_insert_instance_resource and not isinstance(bulk_insert_instance_resource, dict):
             raise TypeError("Expected argument 'bulk_insert_instance_resource' to be a dict")
         pulumi.set(__self__, "bulk_insert_instance_resource", bulk_insert_instance_resource)
@@ -38,9 +38,6 @@ class GetZoneQueuedResourceResult:
         if queuing_policy and not isinstance(queuing_policy, dict):
             raise TypeError("Expected argument 'queuing_policy' to be a dict")
         pulumi.set(__self__, "queuing_policy", queuing_policy)
-        if region and not isinstance(region, str):
-            raise TypeError("Expected argument 'region' to be a str")
-        pulumi.set(__self__, "region", region)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -106,14 +103,6 @@ class GetZoneQueuedResourceResult:
         return pulumi.get(self, "queuing_policy")
 
     @property
-    @pulumi.getter
-    def region(self) -> str:
-        """
-        URL of the region where the resource resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        """
-        return pulumi.get(self, "region")
-
-    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -166,7 +155,6 @@ class AwaitableGetZoneQueuedResourceResult(GetZoneQueuedResourceResult):
             kind=self.kind,
             name=self.name,
             queuing_policy=self.queuing_policy,
-            region=self.region,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             state=self.state,
@@ -195,7 +183,6 @@ def get_zone_queued_resource(project: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         queuing_policy=__ret__.queuing_policy,
-        region=__ret__.region,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         state=__ret__.state,

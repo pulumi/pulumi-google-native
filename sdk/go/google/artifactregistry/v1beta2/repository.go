@@ -32,6 +32,8 @@ type Repository struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrOutput `pulumi:"repositoryId"`
+	// If set, the repository satisfies physical zone separation.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
 	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
@@ -211,6 +213,11 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // The repository id to use for this repository.
 func (o RepositoryOutput) RepositoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.RepositoryId }).(pulumi.StringPtrOutput)
+}
+
+// If set, the repository satisfies physical zone separation.
+func (o RepositoryOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.

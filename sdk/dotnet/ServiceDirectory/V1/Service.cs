@@ -48,6 +48,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
+        /// <summary>
+        /// The globally unique identifier of the service in the UUID4 format.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.

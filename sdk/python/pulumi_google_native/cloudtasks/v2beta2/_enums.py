@@ -10,6 +10,7 @@ __all__ = [
     'HttpTargetHttpMethod',
     'TaskResponseView',
     'UriOverrideScheme',
+    'UriOverrideUriOverrideEnforceMode',
 ]
 
 
@@ -160,4 +161,22 @@ class UriOverrideScheme(str, Enum):
     HTTPS = "HTTPS"
     """
     Convert the scheme to HTTPS, e.g., http://www.google.ca will change to https://www.google.ca.
+    """
+
+
+class UriOverrideUriOverrideEnforceMode(str, Enum):
+    """
+    Uri Override Enforce Mode Determines the Target UriOverride mode.
+    """
+    URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED = "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"
+    """
+    OverrideMode Unspecified. Defaults to ALWAYS.
+    """
+    IF_NOT_EXISTS = "IF_NOT_EXISTS"
+    """
+    In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+    """
+    ALWAYS = "ALWAYS"
+    """
+    In the ALWAYS mode, queue-level configuration overrides all task-level configuration
     """

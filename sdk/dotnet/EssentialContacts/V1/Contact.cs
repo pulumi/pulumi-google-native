@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public partial class Contact : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. The email address does not need to be a Google Account.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public sealed class ContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. The email address does not need to be a Google Account.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -113,16 +113,10 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         /// <summary>
         /// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
         /// </summary>
-        [Input("languageTag")]
-        public Input<string>? LanguageTag { get; set; }
+        [Input("languageTag", required: true)]
+        public Input<string> LanguageTag { get; set; } = null!;
 
-        /// <summary>
-        /// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("notificationCategorySubscriptions")]
+        [Input("notificationCategorySubscriptions", required: true)]
         private InputList<Pulumi.GoogleNative.EssentialContacts.V1.ContactNotificationCategorySubscriptionsItem>? _notificationCategorySubscriptions;
 
         /// <summary>

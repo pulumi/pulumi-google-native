@@ -43,7 +43,7 @@ type LookupVpnTunnelResult struct {
 	Name string `pulumi:"name"`
 	// URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field is exclusive with the field peerGcpGateway.
 	PeerExternalGateway string `pulumi:"peerExternalGateway"`
-	// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+	// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
 	PeerExternalGatewayInterface int `pulumi:"peerExternalGatewayInterface"`
 	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
 	PeerGcpGateway string `pulumi:"peerGcpGateway"`
@@ -67,7 +67,7 @@ type LookupVpnTunnelResult struct {
 	TargetVpnGateway string `pulumi:"targetVpnGateway"`
 	// URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
 	VpnGateway string `pulumi:"vpnGateway"`
-	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
+	// The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
 	VpnGatewayInterface int `pulumi:"vpnGatewayInterface"`
 }
 
@@ -148,7 +148,7 @@ func (o LookupVpnTunnelResultOutput) PeerExternalGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) string { return v.PeerExternalGateway }).(pulumi.StringOutput)
 }
 
-// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
 func (o LookupVpnTunnelResultOutput) PeerExternalGatewayInterface() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) int { return v.PeerExternalGatewayInterface }).(pulumi.IntOutput)
 }
@@ -208,7 +208,7 @@ func (o LookupVpnTunnelResultOutput) VpnGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) string { return v.VpnGateway }).(pulumi.StringOutput)
 }
 
-// The interface ID of the VPN gateway with which this VPN tunnel is associated.
+// The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
 func (o LookupVpnTunnelResultOutput) VpnGatewayInterface() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVpnTunnelResult) int { return v.VpnGatewayInterface }).(pulumi.IntOutput)
 }

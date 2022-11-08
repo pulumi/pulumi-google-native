@@ -512,7 +512,7 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
-// Contains information of the customer's network configurations.Next available ID: 4
+// Contains information of the customer's network configurations.
 type Consumer struct {
 	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -529,7 +529,7 @@ type ConsumerInput interface {
 	ToConsumerOutputWithContext(context.Context) ConsumerOutput
 }
 
-// Contains information of the customer's network configurations.Next available ID: 4
+// Contains information of the customer's network configurations.
 type ConsumerArgs struct {
 	// Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -572,7 +572,7 @@ func (i ConsumerArray) ToConsumerArrayOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerArrayOutput)
 }
 
-// Contains information of the customer's network configurations.Next available ID: 4
+// Contains information of the customer's network configurations.
 type ConsumerOutput struct{ *pulumi.OutputState }
 
 func (ConsumerOutput) ElementType() reflect.Type {
@@ -612,7 +612,7 @@ func (o ConsumerArrayOutput) Index(i pulumi.IntInput) ConsumerOutput {
 	}).(ConsumerOutput)
 }
 
-// Contains information of the customer's network configurations.Next available ID: 4
+// Contains information of the customer's network configurations.
 type ConsumerResponse struct {
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
@@ -620,7 +620,7 @@ type ConsumerResponse struct {
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
-// Contains information of the customer's network configurations.Next available ID: 4
+// Contains information of the customer's network configurations.
 type ConsumerResponseOutput struct{ *pulumi.OutputState }
 
 func (ConsumerResponseOutput) ElementType() reflect.Type {
@@ -2630,7 +2630,7 @@ func (o MetadataManagementActivityResponseOutput) Restores() RestoreResponseArra
 	return o.ApplyT(func(v MetadataManagementActivityResponse) []RestoreResponse { return v.Restores }).(RestoreResponseArrayOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.Next available ID: 3
+// Network configuration for the Dataproc Metastore service.
 type NetworkConfig struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []Consumer `pulumi:"consumers"`
@@ -2647,7 +2647,7 @@ type NetworkConfigInput interface {
 	ToNetworkConfigOutputWithContext(context.Context) NetworkConfigOutput
 }
 
-// Network configuration for the Dataproc Metastore service.Next available ID: 3
+// Network configuration for the Dataproc Metastore service.
 type NetworkConfigArgs struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers ConsumerArrayInput `pulumi:"consumers"`
@@ -2706,7 +2706,7 @@ func (i *networkConfigPtrType) ToNetworkConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigPtrOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.Next available ID: 3
+// Network configuration for the Dataproc Metastore service.
 type NetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigOutput) ElementType() reflect.Type {
@@ -2770,13 +2770,13 @@ func (o NetworkConfigPtrOutput) Consumers() ConsumerArrayOutput {
 	}).(ConsumerArrayOutput)
 }
 
-// Network configuration for the Dataproc Metastore service.Next available ID: 3
+// Network configuration for the Dataproc Metastore service.
 type NetworkConfigResponse struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []ConsumerResponse `pulumi:"consumers"`
 }
 
-// Network configuration for the Dataproc Metastore service.Next available ID: 3
+// Network configuration for the Dataproc Metastore service.
 type NetworkConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigResponseOutput) ElementType() reflect.Type {
@@ -3079,6 +3079,8 @@ type ServiceResponse struct {
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
 	StateMessage string `pulumi:"stateMessage"`
+	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+	TelemetryConfig TelemetryConfigResponse `pulumi:"telemetryConfig"`
 	// The tier of the service.
 	Tier string `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
@@ -3187,6 +3189,11 @@ func (o ServiceResponseOutput) StateMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.StateMessage }).(pulumi.StringOutput)
 }
 
+// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+func (o ServiceResponseOutput) TelemetryConfig() TelemetryConfigResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) TelemetryConfigResponse { return v.TelemetryConfig }).(TelemetryConfigResponseOutput)
+}
+
 // The tier of the service.
 func (o ServiceResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.Tier }).(pulumi.StringOutput)
@@ -3200,6 +3207,166 @@ func (o ServiceResponseOutput) Uid() pulumi.StringOutput {
 // The time when the metastore service was last updated.
 func (o ServiceResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Telemetry Configuration for the Dataproc Metastore service.
+type TelemetryConfig struct {
+	LogFormat *TelemetryConfigLogFormat `pulumi:"logFormat"`
+}
+
+// TelemetryConfigInput is an input type that accepts TelemetryConfigArgs and TelemetryConfigOutput values.
+// You can construct a concrete instance of `TelemetryConfigInput` via:
+//
+//	TelemetryConfigArgs{...}
+type TelemetryConfigInput interface {
+	pulumi.Input
+
+	ToTelemetryConfigOutput() TelemetryConfigOutput
+	ToTelemetryConfigOutputWithContext(context.Context) TelemetryConfigOutput
+}
+
+// Telemetry Configuration for the Dataproc Metastore service.
+type TelemetryConfigArgs struct {
+	LogFormat TelemetryConfigLogFormatPtrInput `pulumi:"logFormat"`
+}
+
+func (TelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryConfig)(nil)).Elem()
+}
+
+func (i TelemetryConfigArgs) ToTelemetryConfigOutput() TelemetryConfigOutput {
+	return i.ToTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i TelemetryConfigArgs) ToTelemetryConfigOutputWithContext(ctx context.Context) TelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryConfigOutput)
+}
+
+func (i TelemetryConfigArgs) ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput {
+	return i.ToTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryConfigArgs) ToTelemetryConfigPtrOutputWithContext(ctx context.Context) TelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryConfigOutput).ToTelemetryConfigPtrOutputWithContext(ctx)
+}
+
+// TelemetryConfigPtrInput is an input type that accepts TelemetryConfigArgs, TelemetryConfigPtr and TelemetryConfigPtrOutput values.
+// You can construct a concrete instance of `TelemetryConfigPtrInput` via:
+//
+//	        TelemetryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryConfigPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput
+	ToTelemetryConfigPtrOutputWithContext(context.Context) TelemetryConfigPtrOutput
+}
+
+type telemetryConfigPtrType TelemetryConfigArgs
+
+func TelemetryConfigPtr(v *TelemetryConfigArgs) TelemetryConfigPtrInput {
+	return (*telemetryConfigPtrType)(v)
+}
+
+func (*telemetryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryConfig)(nil)).Elem()
+}
+
+func (i *telemetryConfigPtrType) ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput {
+	return i.ToTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryConfigPtrType) ToTelemetryConfigPtrOutputWithContext(ctx context.Context) TelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryConfigPtrOutput)
+}
+
+// Telemetry Configuration for the Dataproc Metastore service.
+type TelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (TelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryConfig)(nil)).Elem()
+}
+
+func (o TelemetryConfigOutput) ToTelemetryConfigOutput() TelemetryConfigOutput {
+	return o
+}
+
+func (o TelemetryConfigOutput) ToTelemetryConfigOutputWithContext(ctx context.Context) TelemetryConfigOutput {
+	return o
+}
+
+func (o TelemetryConfigOutput) ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput {
+	return o.ToTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryConfigOutput) ToTelemetryConfigPtrOutputWithContext(ctx context.Context) TelemetryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryConfig) *TelemetryConfig {
+		return &v
+	}).(TelemetryConfigPtrOutput)
+}
+
+func (o TelemetryConfigOutput) LogFormat() TelemetryConfigLogFormatPtrOutput {
+	return o.ApplyT(func(v TelemetryConfig) *TelemetryConfigLogFormat { return v.LogFormat }).(TelemetryConfigLogFormatPtrOutput)
+}
+
+type TelemetryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryConfig)(nil)).Elem()
+}
+
+func (o TelemetryConfigPtrOutput) ToTelemetryConfigPtrOutput() TelemetryConfigPtrOutput {
+	return o
+}
+
+func (o TelemetryConfigPtrOutput) ToTelemetryConfigPtrOutputWithContext(ctx context.Context) TelemetryConfigPtrOutput {
+	return o
+}
+
+func (o TelemetryConfigPtrOutput) Elem() TelemetryConfigOutput {
+	return o.ApplyT(func(v *TelemetryConfig) TelemetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryConfig
+		return ret
+	}).(TelemetryConfigOutput)
+}
+
+func (o TelemetryConfigPtrOutput) LogFormat() TelemetryConfigLogFormatPtrOutput {
+	return o.ApplyT(func(v *TelemetryConfig) *TelemetryConfigLogFormat {
+		if v == nil {
+			return nil
+		}
+		return v.LogFormat
+	}).(TelemetryConfigLogFormatPtrOutput)
+}
+
+// Telemetry Configuration for the Dataproc Metastore service.
+type TelemetryConfigResponse struct {
+	LogFormat string `pulumi:"logFormat"`
+}
+
+// Telemetry Configuration for the Dataproc Metastore service.
+type TelemetryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (TelemetryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryConfigResponse)(nil)).Elem()
+}
+
+func (o TelemetryConfigResponseOutput) ToTelemetryConfigResponseOutput() TelemetryConfigResponseOutput {
+	return o
+}
+
+func (o TelemetryConfigResponseOutput) ToTelemetryConfigResponseOutputWithContext(ctx context.Context) TelemetryConfigResponseOutput {
+	return o
+}
+
+func (o TelemetryConfigResponseOutput) LogFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryConfigResponse) string { return v.LogFormat }).(pulumi.StringOutput)
 }
 
 func init() {
@@ -3233,6 +3400,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigInput)(nil)).Elem(), TelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigPtrInput)(nil)).Elem(), TelemetryConfigArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3288,4 +3457,7 @@ func init() {
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})
 	pulumi.RegisterOutputType(ServiceResponseOutput{})
+	pulumi.RegisterOutputType(TelemetryConfigOutput{})
+	pulumi.RegisterOutputType(TelemetryConfigPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryConfigResponseOutput{})
 }

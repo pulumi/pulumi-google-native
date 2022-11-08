@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.RepoSourceResponse RepoSource;
         /// <summary>
-        /// If provided, get the source from this location in in Google Cloud Storage.
+        /// If provided, get the source from this location in Google Cloud Storage.
         /// </summary>
         public readonly Outputs.StorageSourceResponse StorageSource;
 

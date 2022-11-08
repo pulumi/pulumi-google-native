@@ -42,7 +42,7 @@ class GetContactResult:
     @pulumi.getter
     def email(self) -> str:
         """
-        The email address to send notifications to. This does not need to be a Google account.
+        The email address to send notifications to. The email address does not need to be a Google Account.
         """
         return pulumi.get(self, "email")
 

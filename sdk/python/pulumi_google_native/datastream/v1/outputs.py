@@ -1570,7 +1570,7 @@ class OracleSourceConfigResponse(dict):
         :param 'OracleRdbmsResponse' exclude_objects: Oracle objects to exclude from the stream.
         :param 'OracleRdbmsResponse' include_objects: Oracle objects to include in the stream.
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-        :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values.
+        :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
         """
         pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         pulumi.set(__self__, "exclude_objects", exclude_objects)
@@ -1614,7 +1614,7 @@ class OracleSourceConfigResponse(dict):
     @pulumi.getter(name="streamLargeObjects")
     def stream_large_objects(self) -> 'outputs.StreamLargeObjectsResponse':
         """
-        Stream large object values.
+        Stream large object values. NOTE: This feature is currently experimental.
         """
         return pulumi.get(self, "stream_large_objects")
 
@@ -1980,7 +1980,7 @@ class PostgresqlSourceConfigResponse(dict):
         :param 'PostgresqlRdbmsResponse' exclude_objects: PostgreSQL objects to exclude from the stream.
         :param 'PostgresqlRdbmsResponse' include_objects: PostgreSQL objects to include in the stream.
         :param str publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
-        :param str replication_slot: The name of the logical replication slot that's configured with the pgoutput plugin.
+        :param str replication_slot: Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         """
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
@@ -2015,7 +2015,7 @@ class PostgresqlSourceConfigResponse(dict):
     @pulumi.getter(name="replicationSlot")
     def replication_slot(self) -> str:
         """
-        The name of the logical replication slot that's configured with the pgoutput plugin.
+        Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         """
         return pulumi.get(self, "replication_slot")
 

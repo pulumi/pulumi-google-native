@@ -1612,6 +1612,8 @@ type CommonFeatureSpec struct {
 	Appdevexperience *AppDevExperienceFeatureSpec `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
 	Cloudauditlogging *CloudAuditLoggingFeatureSpec `pulumi:"cloudauditlogging"`
+	// FleetObservability feature spec.
+	Fleetobservability *FleetObservabilityFeatureSpec `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
 	// Workload Certificate spec.
@@ -1637,6 +1639,8 @@ type CommonFeatureSpecArgs struct {
 	Appdevexperience AppDevExperienceFeatureSpecPtrInput `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
 	Cloudauditlogging CloudAuditLoggingFeatureSpecPtrInput `pulumi:"cloudauditlogging"`
+	// FleetObservability feature spec.
+	Fleetobservability FleetObservabilityFeatureSpecPtrInput `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
 	// Workload Certificate spec.
@@ -1736,6 +1740,11 @@ func (o CommonFeatureSpecOutput) Cloudauditlogging() CloudAuditLoggingFeatureSpe
 	return o.ApplyT(func(v CommonFeatureSpec) *CloudAuditLoggingFeatureSpec { return v.Cloudauditlogging }).(CloudAuditLoggingFeatureSpecPtrOutput)
 }
 
+// FleetObservability feature spec.
+func (o CommonFeatureSpecOutput) Fleetobservability() FleetObservabilityFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *FleetObservabilityFeatureSpec { return v.Fleetobservability }).(FleetObservabilityFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
@@ -1800,6 +1809,16 @@ func (o CommonFeatureSpecPtrOutput) Cloudauditlogging() CloudAuditLoggingFeature
 	}).(CloudAuditLoggingFeatureSpecPtrOutput)
 }
 
+// FleetObservability feature spec.
+func (o CommonFeatureSpecPtrOutput) Fleetobservability() FleetObservabilityFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *FleetObservabilityFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Fleetobservability
+	}).(FleetObservabilityFeatureSpecPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpec) *MultiClusterIngressFeatureSpec {
@@ -1828,6 +1847,8 @@ type CommonFeatureSpecResponse struct {
 	Appdevexperience AppDevExperienceFeatureSpecResponse `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
 	Cloudauditlogging CloudAuditLoggingFeatureSpecResponse `pulumi:"cloudauditlogging"`
+	// FleetObservability feature spec.
+	Fleetobservability FleetObservabilityFeatureSpecResponse `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
 	// Workload Certificate spec.
@@ -1864,6 +1885,11 @@ func (o CommonFeatureSpecResponseOutput) Cloudauditlogging() CloudAuditLoggingFe
 	return o.ApplyT(func(v CommonFeatureSpecResponse) CloudAuditLoggingFeatureSpecResponse { return v.Cloudauditlogging }).(CloudAuditLoggingFeatureSpecResponseOutput)
 }
 
+// FleetObservability feature spec.
+func (o CommonFeatureSpecResponseOutput) Fleetobservability() FleetObservabilityFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) FleetObservabilityFeatureSpecResponse { return v.Fleetobservability }).(FleetObservabilityFeatureSpecResponseOutput)
+}
+
 // Multicluster Ingress-specific spec.
 func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
@@ -1878,6 +1904,8 @@ func (o CommonFeatureSpecResponseOutput) Workloadcertificate() FeatureSpecRespon
 type CommonFeatureStateResponse struct {
 	// Appdevexperience specific state.
 	Appdevexperience AppDevExperienceFeatureStateResponse `pulumi:"appdevexperience"`
+	// FleetObservability feature state.
+	Fleetobservability FleetObservabilityFeatureStateResponse `pulumi:"fleetobservability"`
 	// Service Mesh-specific state.
 	Servicemesh ServiceMeshFeatureStateResponse `pulumi:"servicemesh"`
 	// The "running state" of the Feature in this Hub.
@@ -1902,6 +1930,11 @@ func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponseOutputWith
 // Appdevexperience specific state.
 func (o CommonFeatureStateResponseOutput) Appdevexperience() AppDevExperienceFeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) AppDevExperienceFeatureStateResponse { return v.Appdevexperience }).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+// FleetObservability feature state.
+func (o CommonFeatureStateResponseOutput) Fleetobservability() FleetObservabilityFeatureStateResponseOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) FleetObservabilityFeatureStateResponse { return v.Fleetobservability }).(FleetObservabilityFeatureStateResponseOutput)
 }
 
 // Service Mesh-specific state.
@@ -2606,6 +2639,165 @@ func (o FleetLifecycleStateResponseOutput) ToFleetLifecycleStateResponseOutputWi
 // The current state of the Fleet resource.
 func (o FleetLifecycleStateResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetLifecycleStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+type FleetObservabilityFeatureSpec struct {
+}
+
+// FleetObservabilityFeatureSpecInput is an input type that accepts FleetObservabilityFeatureSpecArgs and FleetObservabilityFeatureSpecOutput values.
+// You can construct a concrete instance of `FleetObservabilityFeatureSpecInput` via:
+//
+//	FleetObservabilityFeatureSpecArgs{...}
+type FleetObservabilityFeatureSpecInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityFeatureSpecOutput() FleetObservabilityFeatureSpecOutput
+	ToFleetObservabilityFeatureSpecOutputWithContext(context.Context) FleetObservabilityFeatureSpecOutput
+}
+
+// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+type FleetObservabilityFeatureSpecArgs struct {
+}
+
+func (FleetObservabilityFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (i FleetObservabilityFeatureSpecArgs) ToFleetObservabilityFeatureSpecOutput() FleetObservabilityFeatureSpecOutput {
+	return i.ToFleetObservabilityFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityFeatureSpecArgs) ToFleetObservabilityFeatureSpecOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityFeatureSpecOutput)
+}
+
+func (i FleetObservabilityFeatureSpecArgs) ToFleetObservabilityFeatureSpecPtrOutput() FleetObservabilityFeatureSpecPtrOutput {
+	return i.ToFleetObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityFeatureSpecArgs) ToFleetObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityFeatureSpecOutput).ToFleetObservabilityFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityFeatureSpecPtrInput is an input type that accepts FleetObservabilityFeatureSpecArgs, FleetObservabilityFeatureSpecPtr and FleetObservabilityFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityFeatureSpecPtrInput` via:
+//
+//	        FleetObservabilityFeatureSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityFeatureSpecPtrOutput() FleetObservabilityFeatureSpecPtrOutput
+	ToFleetObservabilityFeatureSpecPtrOutputWithContext(context.Context) FleetObservabilityFeatureSpecPtrOutput
+}
+
+type fleetObservabilityFeatureSpecPtrType FleetObservabilityFeatureSpecArgs
+
+func FleetObservabilityFeatureSpecPtr(v *FleetObservabilityFeatureSpecArgs) FleetObservabilityFeatureSpecPtrInput {
+	return (*fleetObservabilityFeatureSpecPtrType)(v)
+}
+
+func (*fleetObservabilityFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (i *fleetObservabilityFeatureSpecPtrType) ToFleetObservabilityFeatureSpecPtrOutput() FleetObservabilityFeatureSpecPtrOutput {
+	return i.ToFleetObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityFeatureSpecPtrType) ToFleetObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityFeatureSpecPtrOutput)
+}
+
+// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+type FleetObservabilityFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecOutput() FleetObservabilityFeatureSpecOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecPtrOutput() FleetObservabilityFeatureSpecPtrOutput {
+	return o.ToFleetObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityFeatureSpec) *FleetObservabilityFeatureSpec {
+		return &v
+	}).(FleetObservabilityFeatureSpecPtrOutput)
+}
+
+type FleetObservabilityFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (o FleetObservabilityFeatureSpecPtrOutput) ToFleetObservabilityFeatureSpecPtrOutput() FleetObservabilityFeatureSpecPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureSpecPtrOutput) ToFleetObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureSpecPtrOutput) Elem() FleetObservabilityFeatureSpecOutput {
+	return o.ApplyT(func(v *FleetObservabilityFeatureSpec) FleetObservabilityFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityFeatureSpec
+		return ret
+	}).(FleetObservabilityFeatureSpecOutput)
+}
+
+// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+type FleetObservabilityFeatureSpecResponse struct {
+}
+
+// **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+type FleetObservabilityFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeatureSpecResponseOutput() FleetObservabilityFeatureSpecResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeatureSpecResponseOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecResponseOutput {
+	return o
+}
+
+// **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+type FleetObservabilityFeatureStateResponse struct {
+}
+
+// **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+type FleetObservabilityFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityFeatureStateResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityFeatureStateResponseOutput) ToFleetObservabilityFeatureStateResponseOutput() FleetObservabilityFeatureStateResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityFeatureStateResponseOutput) ToFleetObservabilityFeatureStateResponseOutputWithContext(ctx context.Context) FleetObservabilityFeatureStateResponseOutput {
+	return o
 }
 
 // GkeCluster contains information specific to GKE clusters.
@@ -4646,6 +4838,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecPtrInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
@@ -4709,6 +4903,10 @@ func init() {
 	pulumi.RegisterOutputType(FeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(FeatureStateResponseOutput{})
 	pulumi.RegisterOutputType(FleetLifecycleStateResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityFeatureStateResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})

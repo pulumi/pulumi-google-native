@@ -1372,6 +1372,174 @@ func (in *serviceTierPtr) ToServiceTierPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTierPtrOutput)
 }
 
+type TelemetryConfigLogFormat string
+
+const (
+	// The LOG_FORMAT is not set.
+	TelemetryConfigLogFormatLogFormatUnspecified = TelemetryConfigLogFormat("LOG_FORMAT_UNSPECIFIED")
+	// Logging output uses the legacy textPayload format.
+	TelemetryConfigLogFormatLegacy = TelemetryConfigLogFormat("LEGACY")
+	// Logging output uses the jsonPayload format.
+	TelemetryConfigLogFormatJson = TelemetryConfigLogFormat("JSON")
+)
+
+func (TelemetryConfigLogFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryConfigLogFormat)(nil)).Elem()
+}
+
+func (e TelemetryConfigLogFormat) ToTelemetryConfigLogFormatOutput() TelemetryConfigLogFormatOutput {
+	return pulumi.ToOutput(e).(TelemetryConfigLogFormatOutput)
+}
+
+func (e TelemetryConfigLogFormat) ToTelemetryConfigLogFormatOutputWithContext(ctx context.Context) TelemetryConfigLogFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TelemetryConfigLogFormatOutput)
+}
+
+func (e TelemetryConfigLogFormat) ToTelemetryConfigLogFormatPtrOutput() TelemetryConfigLogFormatPtrOutput {
+	return e.ToTelemetryConfigLogFormatPtrOutputWithContext(context.Background())
+}
+
+func (e TelemetryConfigLogFormat) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
+	return TelemetryConfigLogFormat(e).ToTelemetryConfigLogFormatOutputWithContext(ctx).ToTelemetryConfigLogFormatPtrOutputWithContext(ctx)
+}
+
+func (e TelemetryConfigLogFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TelemetryConfigLogFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TelemetryConfigLogFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TelemetryConfigLogFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TelemetryConfigLogFormatOutput struct{ *pulumi.OutputState }
+
+func (TelemetryConfigLogFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryConfigLogFormat)(nil)).Elem()
+}
+
+func (o TelemetryConfigLogFormatOutput) ToTelemetryConfigLogFormatOutput() TelemetryConfigLogFormatOutput {
+	return o
+}
+
+func (o TelemetryConfigLogFormatOutput) ToTelemetryConfigLogFormatOutputWithContext(ctx context.Context) TelemetryConfigLogFormatOutput {
+	return o
+}
+
+func (o TelemetryConfigLogFormatOutput) ToTelemetryConfigLogFormatPtrOutput() TelemetryConfigLogFormatPtrOutput {
+	return o.ToTelemetryConfigLogFormatPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryConfigLogFormatOutput) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryConfigLogFormat) *TelemetryConfigLogFormat {
+		return &v
+	}).(TelemetryConfigLogFormatPtrOutput)
+}
+
+func (o TelemetryConfigLogFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TelemetryConfigLogFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TelemetryConfigLogFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TelemetryConfigLogFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryConfigLogFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TelemetryConfigLogFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TelemetryConfigLogFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryConfigLogFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryConfigLogFormat)(nil)).Elem()
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) ToTelemetryConfigLogFormatPtrOutput() TelemetryConfigLogFormatPtrOutput {
+	return o
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
+	return o
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) Elem() TelemetryConfigLogFormatOutput {
+	return o.ApplyT(func(v *TelemetryConfigLogFormat) TelemetryConfigLogFormat {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryConfigLogFormat
+		return ret
+	}).(TelemetryConfigLogFormatOutput)
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryConfigLogFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TelemetryConfigLogFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TelemetryConfigLogFormatInput is an input type that accepts TelemetryConfigLogFormatArgs and TelemetryConfigLogFormatOutput values.
+// You can construct a concrete instance of `TelemetryConfigLogFormatInput` via:
+//
+//	TelemetryConfigLogFormatArgs{...}
+type TelemetryConfigLogFormatInput interface {
+	pulumi.Input
+
+	ToTelemetryConfigLogFormatOutput() TelemetryConfigLogFormatOutput
+	ToTelemetryConfigLogFormatOutputWithContext(context.Context) TelemetryConfigLogFormatOutput
+}
+
+var telemetryConfigLogFormatPtrType = reflect.TypeOf((**TelemetryConfigLogFormat)(nil)).Elem()
+
+type TelemetryConfigLogFormatPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryConfigLogFormatPtrOutput() TelemetryConfigLogFormatPtrOutput
+	ToTelemetryConfigLogFormatPtrOutputWithContext(context.Context) TelemetryConfigLogFormatPtrOutput
+}
+
+type telemetryConfigLogFormatPtr string
+
+func TelemetryConfigLogFormatPtr(v string) TelemetryConfigLogFormatPtrInput {
+	return (*telemetryConfigLogFormatPtr)(&v)
+}
+
+func (*telemetryConfigLogFormatPtr) ElementType() reflect.Type {
+	return telemetryConfigLogFormatPtrType
+}
+
+func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutput() TelemetryConfigLogFormatPtrOutput {
+	return pulumi.ToOutput(in).(TelemetryConfigLogFormatPtrOutput)
+}
+
+func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutputWithContext(ctx context.Context) TelemetryConfigLogFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TelemetryConfigLogFormatPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -1389,6 +1557,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReleaseChannelPtrInput)(nil)).Elem(), ServiceReleaseChannel("RELEASE_CHANNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTierInput)(nil)).Elem(), ServiceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTierPtrInput)(nil)).Elem(), ServiceTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigLogFormatInput)(nil)).Elem(), TelemetryConfigLogFormat("LOG_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigLogFormatPtrInput)(nil)).Elem(), TelemetryConfigLogFormat("LOG_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpDatabaseTypeOutput{})
@@ -1405,4 +1575,6 @@ func init() {
 	pulumi.RegisterOutputType(ServiceReleaseChannelPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTierOutput{})
 	pulumi.RegisterOutputType(ServiceTierPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryConfigLogFormatOutput{})
+	pulumi.RegisterOutputType(TelemetryConfigLogFormatPtrOutput{})
 }

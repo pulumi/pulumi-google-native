@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? EnableL4ilbSubsetting { get; set; }
 
         /// <summary>
+        /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        /// </summary>
+        [Input("gatewayApiConfig")]
+        public Input<Inputs.GatewayAPIConfigArgs>? GatewayApiConfig { get; set; }
+
+        /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         /// </summary>
         [Input("privateIpv6GoogleAccess")]

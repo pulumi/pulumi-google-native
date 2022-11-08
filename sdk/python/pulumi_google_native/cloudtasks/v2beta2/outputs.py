@@ -587,7 +587,7 @@ class HttpTargetResponse(dict):
         :param str http_method: The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
         :param 'OAuthTokenResponse' oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
         :param 'OidcTokenResponse' oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-        :param 'UriOverrideResponse' uri_override: Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        :param 'UriOverrideResponse' uri_override: Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         """
         pulumi.set(__self__, "header_overrides", header_overrides)
         pulumi.set(__self__, "http_method", http_method)
@@ -631,7 +631,7 @@ class HttpTargetResponse(dict):
     @pulumi.getter(name="uriOverride")
     def uri_override(self) -> 'outputs.UriOverrideResponse':
         """
-        Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         """
         return pulumi.get(self, "uri_override")
 
@@ -1168,12 +1168,30 @@ class UriOverrideResponse(dict):
     """
     Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "uriOverrideEnforceMode":
+            suggest = "uri_override_enforce_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UriOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  path: str,
                  port: str,
                  query: str,
-                 scheme: str):
+                 scheme: str,
+                 uri_override_enforce_mode: str):
         """
         Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
         :param str host: Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
@@ -1181,12 +1199,14 @@ class UriOverrideResponse(dict):
         :param str port: Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
         :param str query: Uri Query. Will replace the query part of the task uri.
         :param str scheme: Scheme override. When specified, the Uri scheme is replaced by the provided value.
+        :param str uri_override_enforce_mode: Uri Override Enforce Mode Determines the Target UriOverride mode.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "scheme", scheme)
+        pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
 
     @property
     @pulumi.getter
@@ -1227,5 +1247,13 @@ class UriOverrideResponse(dict):
         Scheme override. When specified, the Uri scheme is replaced by the provided value.
         """
         return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> str:
+        """
+        Uri Override Enforce Mode Determines the Target UriOverride mode.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
 
 

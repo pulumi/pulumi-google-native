@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, state=None, state_message=None, tier=None, uid=None, update_time=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, state=None, state_message=None, telemetry_config=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
@@ -71,6 +71,9 @@ class GetServiceResult:
         if state_message and not isinstance(state_message, str):
             raise TypeError("Expected argument 'state_message' to be a str")
         pulumi.set(__self__, "state_message", state_message)
+        if telemetry_config and not isinstance(telemetry_config, dict):
+            raise TypeError("Expected argument 'telemetry_config' to be a dict")
+        pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -218,6 +221,14 @@ class GetServiceResult:
         return pulumi.get(self, "state_message")
 
     @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> 'outputs.TelemetryConfigResponse':
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        """
+        return pulumi.get(self, "telemetry_config")
+
+    @property
     @pulumi.getter
     def tier(self) -> str:
         """
@@ -265,6 +276,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             release_channel=self.release_channel,
             state=self.state,
             state_message=self.state_message,
+            telemetry_config=self.telemetry_config,
             tier=self.tier,
             uid=self.uid,
             update_time=self.update_time)
@@ -302,6 +314,7 @@ def get_service(location: Optional[str] = None,
         release_channel=__ret__.release_channel,
         state=__ret__.state,
         state_message=__ret__.state_message,
+        telemetry_config=__ret__.telemetry_config,
         tier=__ret__.tier,
         uid=__ret__.uid,
         update_time=__ret__.update_time)

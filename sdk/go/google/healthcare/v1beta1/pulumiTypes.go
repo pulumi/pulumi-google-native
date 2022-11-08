@@ -10,6 +10,280 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Specifies a selection of tags and an `Action` to apply to each one.
+type Action struct {
+	// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+	CleanImageTag *ImageConfig `pulumi:"cleanImageTag"`
+	// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+	CleanTextTag *CleanTextTag `pulumi:"cleanTextTag"`
+	// Delete tag.
+	DeleteTag *DeleteTag `pulumi:"deleteTag"`
+	// Keep tag unchanged.
+	KeepTag *KeepTag `pulumi:"keepTag"`
+	// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+	Queries []string `pulumi:"queries"`
+	// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+	RecurseTag *RecurseTag `pulumi:"recurseTag"`
+	// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+	RegenUidTag *RegenUidTag `pulumi:"regenUidTag"`
+	// Replace with empty tag.
+	RemoveTag *RemoveTag `pulumi:"removeTag"`
+	// Reset tag to a placeholder value.
+	ResetTag *ResetTag `pulumi:"resetTag"`
+}
+
+// ActionInput is an input type that accepts ActionArgs and ActionOutput values.
+// You can construct a concrete instance of `ActionInput` via:
+//
+//	ActionArgs{...}
+type ActionInput interface {
+	pulumi.Input
+
+	ToActionOutput() ActionOutput
+	ToActionOutputWithContext(context.Context) ActionOutput
+}
+
+// Specifies a selection of tags and an `Action` to apply to each one.
+type ActionArgs struct {
+	// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+	CleanImageTag ImageConfigPtrInput `pulumi:"cleanImageTag"`
+	// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+	CleanTextTag CleanTextTagPtrInput `pulumi:"cleanTextTag"`
+	// Delete tag.
+	DeleteTag DeleteTagPtrInput `pulumi:"deleteTag"`
+	// Keep tag unchanged.
+	KeepTag KeepTagPtrInput `pulumi:"keepTag"`
+	// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+	// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+	RecurseTag RecurseTagPtrInput `pulumi:"recurseTag"`
+	// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+	RegenUidTag RegenUidTagPtrInput `pulumi:"regenUidTag"`
+	// Replace with empty tag.
+	RemoveTag RemoveTagPtrInput `pulumi:"removeTag"`
+	// Reset tag to a placeholder value.
+	ResetTag ResetTagPtrInput `pulumi:"resetTag"`
+}
+
+func (ActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Action)(nil)).Elem()
+}
+
+func (i ActionArgs) ToActionOutput() ActionOutput {
+	return i.ToActionOutputWithContext(context.Background())
+}
+
+func (i ActionArgs) ToActionOutputWithContext(ctx context.Context) ActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
+}
+
+// ActionArrayInput is an input type that accepts ActionArray and ActionArrayOutput values.
+// You can construct a concrete instance of `ActionArrayInput` via:
+//
+//	ActionArray{ ActionArgs{...} }
+type ActionArrayInput interface {
+	pulumi.Input
+
+	ToActionArrayOutput() ActionArrayOutput
+	ToActionArrayOutputWithContext(context.Context) ActionArrayOutput
+}
+
+type ActionArray []ActionInput
+
+func (ActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Action)(nil)).Elem()
+}
+
+func (i ActionArray) ToActionArrayOutput() ActionArrayOutput {
+	return i.ToActionArrayOutputWithContext(context.Background())
+}
+
+func (i ActionArray) ToActionArrayOutputWithContext(ctx context.Context) ActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionArrayOutput)
+}
+
+// Specifies a selection of tags and an `Action` to apply to each one.
+type ActionOutput struct{ *pulumi.OutputState }
+
+func (ActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Action)(nil)).Elem()
+}
+
+func (o ActionOutput) ToActionOutput() ActionOutput {
+	return o
+}
+
+func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutput {
+	return o
+}
+
+// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+func (o ActionOutput) CleanImageTag() ImageConfigPtrOutput {
+	return o.ApplyT(func(v Action) *ImageConfig { return v.CleanImageTag }).(ImageConfigPtrOutput)
+}
+
+// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+func (o ActionOutput) CleanTextTag() CleanTextTagPtrOutput {
+	return o.ApplyT(func(v Action) *CleanTextTag { return v.CleanTextTag }).(CleanTextTagPtrOutput)
+}
+
+// Delete tag.
+func (o ActionOutput) DeleteTag() DeleteTagPtrOutput {
+	return o.ApplyT(func(v Action) *DeleteTag { return v.DeleteTag }).(DeleteTagPtrOutput)
+}
+
+// Keep tag unchanged.
+func (o ActionOutput) KeepTag() KeepTagPtrOutput {
+	return o.ApplyT(func(v Action) *KeepTag { return v.KeepTag }).(KeepTagPtrOutput)
+}
+
+// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+func (o ActionOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Action) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+func (o ActionOutput) RecurseTag() RecurseTagPtrOutput {
+	return o.ApplyT(func(v Action) *RecurseTag { return v.RecurseTag }).(RecurseTagPtrOutput)
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+func (o ActionOutput) RegenUidTag() RegenUidTagPtrOutput {
+	return o.ApplyT(func(v Action) *RegenUidTag { return v.RegenUidTag }).(RegenUidTagPtrOutput)
+}
+
+// Replace with empty tag.
+func (o ActionOutput) RemoveTag() RemoveTagPtrOutput {
+	return o.ApplyT(func(v Action) *RemoveTag { return v.RemoveTag }).(RemoveTagPtrOutput)
+}
+
+// Reset tag to a placeholder value.
+func (o ActionOutput) ResetTag() ResetTagPtrOutput {
+	return o.ApplyT(func(v Action) *ResetTag { return v.ResetTag }).(ResetTagPtrOutput)
+}
+
+type ActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Action)(nil)).Elem()
+}
+
+func (o ActionArrayOutput) ToActionArrayOutput() ActionArrayOutput {
+	return o
+}
+
+func (o ActionArrayOutput) ToActionArrayOutputWithContext(ctx context.Context) ActionArrayOutput {
+	return o
+}
+
+func (o ActionArrayOutput) Index(i pulumi.IntInput) ActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Action {
+		return vs[0].([]Action)[vs[1].(int)]
+	}).(ActionOutput)
+}
+
+// Specifies a selection of tags and an `Action` to apply to each one.
+type ActionResponse struct {
+	// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+	CleanImageTag ImageConfigResponse `pulumi:"cleanImageTag"`
+	// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+	CleanTextTag CleanTextTagResponse `pulumi:"cleanTextTag"`
+	// Delete tag.
+	DeleteTag DeleteTagResponse `pulumi:"deleteTag"`
+	// Keep tag unchanged.
+	KeepTag KeepTagResponse `pulumi:"keepTag"`
+	// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+	Queries []string `pulumi:"queries"`
+	// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+	RecurseTag RecurseTagResponse `pulumi:"recurseTag"`
+	// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+	RegenUidTag RegenUidTagResponse `pulumi:"regenUidTag"`
+	// Replace with empty tag.
+	RemoveTag RemoveTagResponse `pulumi:"removeTag"`
+	// Reset tag to a placeholder value.
+	ResetTag ResetTagResponse `pulumi:"resetTag"`
+}
+
+// Specifies a selection of tags and an `Action` to apply to each one.
+type ActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionResponse)(nil)).Elem()
+}
+
+func (o ActionResponseOutput) ToActionResponseOutput() ActionResponseOutput {
+	return o
+}
+
+func (o ActionResponseOutput) ToActionResponseOutputWithContext(ctx context.Context) ActionResponseOutput {
+	return o
+}
+
+// Inspect image and transform sensitive burnt-in text. Doesn't apply to elements nested in a sequence, which revert to `Keep`. Supported [tags](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html): PixelData
+func (o ActionResponseOutput) CleanImageTag() ImageConfigResponseOutput {
+	return o.ApplyT(func(v ActionResponse) ImageConfigResponse { return v.CleanImageTag }).(ImageConfigResponseOutput)
+}
+
+// Inspect text and transform sensitive text. Configurable via TextConfig. Supported Value Representations: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+func (o ActionResponseOutput) CleanTextTag() CleanTextTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) CleanTextTagResponse { return v.CleanTextTag }).(CleanTextTagResponseOutput)
+}
+
+// Delete tag.
+func (o ActionResponseOutput) DeleteTag() DeleteTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) DeleteTagResponse { return v.DeleteTag }).(DeleteTagResponseOutput)
+}
+
+// Keep tag unchanged.
+func (o ActionResponseOutput) KeepTag() KeepTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) KeepTagResponse { return v.KeepTag }).(KeepTagResponseOutput)
+}
+
+// Select all tags with the listed tag IDs, names, or Value Representations (VRs). Examples: ID: "00100010" Keyword: "PatientName" VR: "PN"
+func (o ActionResponseOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionResponse) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+func (o ActionResponseOutput) RecurseTag() RecurseTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) RecurseTagResponse { return v.RecurseTag }).(RecurseTagResponseOutput)
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+func (o ActionResponseOutput) RegenUidTag() RegenUidTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) RegenUidTagResponse { return v.RegenUidTag }).(RegenUidTagResponseOutput)
+}
+
+// Replace with empty tag.
+func (o ActionResponseOutput) RemoveTag() RemoveTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) RemoveTagResponse { return v.RemoveTag }).(RemoveTagResponseOutput)
+}
+
+// Reset tag to a placeholder value.
+func (o ActionResponseOutput) ResetTag() ResetTagResponseOutput {
+	return o.ApplyT(func(v ActionResponse) ResetTagResponse { return v.ResetTag }).(ResetTagResponseOutput)
+}
+
+type ActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionResponse)(nil)).Elem()
+}
+
+func (o ActionResponseArrayOutput) ToActionResponseArrayOutput() ActionResponseArrayOutput {
+	return o
+}
+
+func (o ActionResponseArrayOutput) ToActionResponseArrayOutputWithContext(ctx context.Context) ActionResponseArrayOutput {
+	return o
+}
+
+func (o ActionResponseArrayOutput) Index(i pulumi.IntInput) ActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionResponse {
+		return vs[0].([]ActionResponse)[vs[1].(int)]
+	}).(ActionResponseOutput)
+}
+
 // Specifies how to store annotations during de-identification operation.
 type AnnotationConfig struct {
 	// The name of the annotation store, in the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`). * The destination annotation store must be in the same project as the source data. De-identifying data across multiple projects is not supported. * The destination annotation store must exist when using DeidentifyDicomStore or DeidentifyFhirStore. DeidentifyDataset automatically creates the destination annotation store.
@@ -1360,6 +1634,566 @@ func (o CharacterMaskConfigResponseOutput) MaskingCharacter() pulumi.StringOutpu
 	return o.ApplyT(func(v CharacterMaskConfigResponse) string { return v.MaskingCharacter }).(pulumi.StringOutput)
 }
 
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CharacterMaskField struct {
+}
+
+// CharacterMaskFieldInput is an input type that accepts CharacterMaskFieldArgs and CharacterMaskFieldOutput values.
+// You can construct a concrete instance of `CharacterMaskFieldInput` via:
+//
+//	CharacterMaskFieldArgs{...}
+type CharacterMaskFieldInput interface {
+	pulumi.Input
+
+	ToCharacterMaskFieldOutput() CharacterMaskFieldOutput
+	ToCharacterMaskFieldOutputWithContext(context.Context) CharacterMaskFieldOutput
+}
+
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CharacterMaskFieldArgs struct {
+}
+
+func (CharacterMaskFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskField)(nil)).Elem()
+}
+
+func (i CharacterMaskFieldArgs) ToCharacterMaskFieldOutput() CharacterMaskFieldOutput {
+	return i.ToCharacterMaskFieldOutputWithContext(context.Background())
+}
+
+func (i CharacterMaskFieldArgs) ToCharacterMaskFieldOutputWithContext(ctx context.Context) CharacterMaskFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskFieldOutput)
+}
+
+func (i CharacterMaskFieldArgs) ToCharacterMaskFieldPtrOutput() CharacterMaskFieldPtrOutput {
+	return i.ToCharacterMaskFieldPtrOutputWithContext(context.Background())
+}
+
+func (i CharacterMaskFieldArgs) ToCharacterMaskFieldPtrOutputWithContext(ctx context.Context) CharacterMaskFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskFieldOutput).ToCharacterMaskFieldPtrOutputWithContext(ctx)
+}
+
+// CharacterMaskFieldPtrInput is an input type that accepts CharacterMaskFieldArgs, CharacterMaskFieldPtr and CharacterMaskFieldPtrOutput values.
+// You can construct a concrete instance of `CharacterMaskFieldPtrInput` via:
+//
+//	        CharacterMaskFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type CharacterMaskFieldPtrInput interface {
+	pulumi.Input
+
+	ToCharacterMaskFieldPtrOutput() CharacterMaskFieldPtrOutput
+	ToCharacterMaskFieldPtrOutputWithContext(context.Context) CharacterMaskFieldPtrOutput
+}
+
+type characterMaskFieldPtrType CharacterMaskFieldArgs
+
+func CharacterMaskFieldPtr(v *CharacterMaskFieldArgs) CharacterMaskFieldPtrInput {
+	return (*characterMaskFieldPtrType)(v)
+}
+
+func (*characterMaskFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CharacterMaskField)(nil)).Elem()
+}
+
+func (i *characterMaskFieldPtrType) ToCharacterMaskFieldPtrOutput() CharacterMaskFieldPtrOutput {
+	return i.ToCharacterMaskFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *characterMaskFieldPtrType) ToCharacterMaskFieldPtrOutputWithContext(ctx context.Context) CharacterMaskFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CharacterMaskFieldPtrOutput)
+}
+
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CharacterMaskFieldOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskField)(nil)).Elem()
+}
+
+func (o CharacterMaskFieldOutput) ToCharacterMaskFieldOutput() CharacterMaskFieldOutput {
+	return o
+}
+
+func (o CharacterMaskFieldOutput) ToCharacterMaskFieldOutputWithContext(ctx context.Context) CharacterMaskFieldOutput {
+	return o
+}
+
+func (o CharacterMaskFieldOutput) ToCharacterMaskFieldPtrOutput() CharacterMaskFieldPtrOutput {
+	return o.ToCharacterMaskFieldPtrOutputWithContext(context.Background())
+}
+
+func (o CharacterMaskFieldOutput) ToCharacterMaskFieldPtrOutputWithContext(ctx context.Context) CharacterMaskFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CharacterMaskField) *CharacterMaskField {
+		return &v
+	}).(CharacterMaskFieldPtrOutput)
+}
+
+type CharacterMaskFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CharacterMaskField)(nil)).Elem()
+}
+
+func (o CharacterMaskFieldPtrOutput) ToCharacterMaskFieldPtrOutput() CharacterMaskFieldPtrOutput {
+	return o
+}
+
+func (o CharacterMaskFieldPtrOutput) ToCharacterMaskFieldPtrOutputWithContext(ctx context.Context) CharacterMaskFieldPtrOutput {
+	return o
+}
+
+func (o CharacterMaskFieldPtrOutput) Elem() CharacterMaskFieldOutput {
+	return o.ApplyT(func(v *CharacterMaskField) CharacterMaskField {
+		if v != nil {
+			return *v
+		}
+		var ret CharacterMaskField
+		return ret
+	}).(CharacterMaskFieldOutput)
+}
+
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CharacterMaskFieldResponse struct {
+}
+
+// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CharacterMaskFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (CharacterMaskFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CharacterMaskFieldResponse)(nil)).Elem()
+}
+
+func (o CharacterMaskFieldResponseOutput) ToCharacterMaskFieldResponseOutput() CharacterMaskFieldResponseOutput {
+	return o
+}
+
+func (o CharacterMaskFieldResponseOutput) ToCharacterMaskFieldResponseOutputWithContext(ctx context.Context) CharacterMaskFieldResponseOutput {
+	return o
+}
+
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+type CleanDescriptorsOption struct {
+}
+
+// CleanDescriptorsOptionInput is an input type that accepts CleanDescriptorsOptionArgs and CleanDescriptorsOptionOutput values.
+// You can construct a concrete instance of `CleanDescriptorsOptionInput` via:
+//
+//	CleanDescriptorsOptionArgs{...}
+type CleanDescriptorsOptionInput interface {
+	pulumi.Input
+
+	ToCleanDescriptorsOptionOutput() CleanDescriptorsOptionOutput
+	ToCleanDescriptorsOptionOutputWithContext(context.Context) CleanDescriptorsOptionOutput
+}
+
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+type CleanDescriptorsOptionArgs struct {
+}
+
+func (CleanDescriptorsOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanDescriptorsOption)(nil)).Elem()
+}
+
+func (i CleanDescriptorsOptionArgs) ToCleanDescriptorsOptionOutput() CleanDescriptorsOptionOutput {
+	return i.ToCleanDescriptorsOptionOutputWithContext(context.Background())
+}
+
+func (i CleanDescriptorsOptionArgs) ToCleanDescriptorsOptionOutputWithContext(ctx context.Context) CleanDescriptorsOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanDescriptorsOptionOutput)
+}
+
+func (i CleanDescriptorsOptionArgs) ToCleanDescriptorsOptionPtrOutput() CleanDescriptorsOptionPtrOutput {
+	return i.ToCleanDescriptorsOptionPtrOutputWithContext(context.Background())
+}
+
+func (i CleanDescriptorsOptionArgs) ToCleanDescriptorsOptionPtrOutputWithContext(ctx context.Context) CleanDescriptorsOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanDescriptorsOptionOutput).ToCleanDescriptorsOptionPtrOutputWithContext(ctx)
+}
+
+// CleanDescriptorsOptionPtrInput is an input type that accepts CleanDescriptorsOptionArgs, CleanDescriptorsOptionPtr and CleanDescriptorsOptionPtrOutput values.
+// You can construct a concrete instance of `CleanDescriptorsOptionPtrInput` via:
+//
+//	        CleanDescriptorsOptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CleanDescriptorsOptionPtrInput interface {
+	pulumi.Input
+
+	ToCleanDescriptorsOptionPtrOutput() CleanDescriptorsOptionPtrOutput
+	ToCleanDescriptorsOptionPtrOutputWithContext(context.Context) CleanDescriptorsOptionPtrOutput
+}
+
+type cleanDescriptorsOptionPtrType CleanDescriptorsOptionArgs
+
+func CleanDescriptorsOptionPtr(v *CleanDescriptorsOptionArgs) CleanDescriptorsOptionPtrInput {
+	return (*cleanDescriptorsOptionPtrType)(v)
+}
+
+func (*cleanDescriptorsOptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanDescriptorsOption)(nil)).Elem()
+}
+
+func (i *cleanDescriptorsOptionPtrType) ToCleanDescriptorsOptionPtrOutput() CleanDescriptorsOptionPtrOutput {
+	return i.ToCleanDescriptorsOptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cleanDescriptorsOptionPtrType) ToCleanDescriptorsOptionPtrOutputWithContext(ctx context.Context) CleanDescriptorsOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanDescriptorsOptionPtrOutput)
+}
+
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+type CleanDescriptorsOptionOutput struct{ *pulumi.OutputState }
+
+func (CleanDescriptorsOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanDescriptorsOption)(nil)).Elem()
+}
+
+func (o CleanDescriptorsOptionOutput) ToCleanDescriptorsOptionOutput() CleanDescriptorsOptionOutput {
+	return o
+}
+
+func (o CleanDescriptorsOptionOutput) ToCleanDescriptorsOptionOutputWithContext(ctx context.Context) CleanDescriptorsOptionOutput {
+	return o
+}
+
+func (o CleanDescriptorsOptionOutput) ToCleanDescriptorsOptionPtrOutput() CleanDescriptorsOptionPtrOutput {
+	return o.ToCleanDescriptorsOptionPtrOutputWithContext(context.Background())
+}
+
+func (o CleanDescriptorsOptionOutput) ToCleanDescriptorsOptionPtrOutputWithContext(ctx context.Context) CleanDescriptorsOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanDescriptorsOption) *CleanDescriptorsOption {
+		return &v
+	}).(CleanDescriptorsOptionPtrOutput)
+}
+
+type CleanDescriptorsOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanDescriptorsOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanDescriptorsOption)(nil)).Elem()
+}
+
+func (o CleanDescriptorsOptionPtrOutput) ToCleanDescriptorsOptionPtrOutput() CleanDescriptorsOptionPtrOutput {
+	return o
+}
+
+func (o CleanDescriptorsOptionPtrOutput) ToCleanDescriptorsOptionPtrOutputWithContext(ctx context.Context) CleanDescriptorsOptionPtrOutput {
+	return o
+}
+
+func (o CleanDescriptorsOptionPtrOutput) Elem() CleanDescriptorsOptionOutput {
+	return o.ApplyT(func(v *CleanDescriptorsOption) CleanDescriptorsOption {
+		if v != nil {
+			return *v
+		}
+		var ret CleanDescriptorsOption
+		return ret
+	}).(CleanDescriptorsOptionOutput)
+}
+
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+type CleanDescriptorsOptionResponse struct {
+}
+
+// This option is based on the DICOM Standard's [Clean Descriptors Option](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and the `CleanText` `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+type CleanDescriptorsOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanDescriptorsOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanDescriptorsOptionResponse)(nil)).Elem()
+}
+
+func (o CleanDescriptorsOptionResponseOutput) ToCleanDescriptorsOptionResponseOutput() CleanDescriptorsOptionResponseOutput {
+	return o
+}
+
+func (o CleanDescriptorsOptionResponseOutput) ToCleanDescriptorsOptionResponseOutputWithContext(ctx context.Context) CleanDescriptorsOptionResponseOutput {
+	return o
+}
+
+// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CleanTextField struct {
+}
+
+// CleanTextFieldInput is an input type that accepts CleanTextFieldArgs and CleanTextFieldOutput values.
+// You can construct a concrete instance of `CleanTextFieldInput` via:
+//
+//	CleanTextFieldArgs{...}
+type CleanTextFieldInput interface {
+	pulumi.Input
+
+	ToCleanTextFieldOutput() CleanTextFieldOutput
+	ToCleanTextFieldOutputWithContext(context.Context) CleanTextFieldOutput
+}
+
+// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CleanTextFieldArgs struct {
+}
+
+func (CleanTextFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextField)(nil)).Elem()
+}
+
+func (i CleanTextFieldArgs) ToCleanTextFieldOutput() CleanTextFieldOutput {
+	return i.ToCleanTextFieldOutputWithContext(context.Background())
+}
+
+func (i CleanTextFieldArgs) ToCleanTextFieldOutputWithContext(ctx context.Context) CleanTextFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextFieldOutput)
+}
+
+func (i CleanTextFieldArgs) ToCleanTextFieldPtrOutput() CleanTextFieldPtrOutput {
+	return i.ToCleanTextFieldPtrOutputWithContext(context.Background())
+}
+
+func (i CleanTextFieldArgs) ToCleanTextFieldPtrOutputWithContext(ctx context.Context) CleanTextFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextFieldOutput).ToCleanTextFieldPtrOutputWithContext(ctx)
+}
+
+// CleanTextFieldPtrInput is an input type that accepts CleanTextFieldArgs, CleanTextFieldPtr and CleanTextFieldPtrOutput values.
+// You can construct a concrete instance of `CleanTextFieldPtrInput` via:
+//
+//	        CleanTextFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type CleanTextFieldPtrInput interface {
+	pulumi.Input
+
+	ToCleanTextFieldPtrOutput() CleanTextFieldPtrOutput
+	ToCleanTextFieldPtrOutputWithContext(context.Context) CleanTextFieldPtrOutput
+}
+
+type cleanTextFieldPtrType CleanTextFieldArgs
+
+func CleanTextFieldPtr(v *CleanTextFieldArgs) CleanTextFieldPtrInput {
+	return (*cleanTextFieldPtrType)(v)
+}
+
+func (*cleanTextFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanTextField)(nil)).Elem()
+}
+
+func (i *cleanTextFieldPtrType) ToCleanTextFieldPtrOutput() CleanTextFieldPtrOutput {
+	return i.ToCleanTextFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *cleanTextFieldPtrType) ToCleanTextFieldPtrOutputWithContext(ctx context.Context) CleanTextFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextFieldPtrOutput)
+}
+
+// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CleanTextFieldOutput struct{ *pulumi.OutputState }
+
+func (CleanTextFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextField)(nil)).Elem()
+}
+
+func (o CleanTextFieldOutput) ToCleanTextFieldOutput() CleanTextFieldOutput {
+	return o
+}
+
+func (o CleanTextFieldOutput) ToCleanTextFieldOutputWithContext(ctx context.Context) CleanTextFieldOutput {
+	return o
+}
+
+func (o CleanTextFieldOutput) ToCleanTextFieldPtrOutput() CleanTextFieldPtrOutput {
+	return o.ToCleanTextFieldPtrOutputWithContext(context.Background())
+}
+
+func (o CleanTextFieldOutput) ToCleanTextFieldPtrOutputWithContext(ctx context.Context) CleanTextFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanTextField) *CleanTextField {
+		return &v
+	}).(CleanTextFieldPtrOutput)
+}
+
+type CleanTextFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanTextFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanTextField)(nil)).Elem()
+}
+
+func (o CleanTextFieldPtrOutput) ToCleanTextFieldPtrOutput() CleanTextFieldPtrOutput {
+	return o
+}
+
+func (o CleanTextFieldPtrOutput) ToCleanTextFieldPtrOutputWithContext(ctx context.Context) CleanTextFieldPtrOutput {
+	return o
+}
+
+func (o CleanTextFieldPtrOutput) Elem() CleanTextFieldOutput {
+	return o.ApplyT(func(v *CleanTextField) CleanTextField {
+		if v != nil {
+			return *v
+		}
+		var ret CleanTextField
+		return ret
+	}).(CleanTextFieldOutput)
+}
+
+// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CleanTextFieldResponse struct {
+}
+
+// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CleanTextFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanTextFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextFieldResponse)(nil)).Elem()
+}
+
+func (o CleanTextFieldResponseOutput) ToCleanTextFieldResponseOutput() CleanTextFieldResponseOutput {
+	return o
+}
+
+func (o CleanTextFieldResponseOutput) ToCleanTextFieldResponseOutputWithContext(ctx context.Context) CleanTextFieldResponseOutput {
+	return o
+}
+
+// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+type CleanTextTag struct {
+}
+
+// CleanTextTagInput is an input type that accepts CleanTextTagArgs and CleanTextTagOutput values.
+// You can construct a concrete instance of `CleanTextTagInput` via:
+//
+//	CleanTextTagArgs{...}
+type CleanTextTagInput interface {
+	pulumi.Input
+
+	ToCleanTextTagOutput() CleanTextTagOutput
+	ToCleanTextTagOutputWithContext(context.Context) CleanTextTagOutput
+}
+
+// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+type CleanTextTagArgs struct {
+}
+
+func (CleanTextTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextTag)(nil)).Elem()
+}
+
+func (i CleanTextTagArgs) ToCleanTextTagOutput() CleanTextTagOutput {
+	return i.ToCleanTextTagOutputWithContext(context.Background())
+}
+
+func (i CleanTextTagArgs) ToCleanTextTagOutputWithContext(ctx context.Context) CleanTextTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextTagOutput)
+}
+
+func (i CleanTextTagArgs) ToCleanTextTagPtrOutput() CleanTextTagPtrOutput {
+	return i.ToCleanTextTagPtrOutputWithContext(context.Background())
+}
+
+func (i CleanTextTagArgs) ToCleanTextTagPtrOutputWithContext(ctx context.Context) CleanTextTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextTagOutput).ToCleanTextTagPtrOutputWithContext(ctx)
+}
+
+// CleanTextTagPtrInput is an input type that accepts CleanTextTagArgs, CleanTextTagPtr and CleanTextTagPtrOutput values.
+// You can construct a concrete instance of `CleanTextTagPtrInput` via:
+//
+//	        CleanTextTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type CleanTextTagPtrInput interface {
+	pulumi.Input
+
+	ToCleanTextTagPtrOutput() CleanTextTagPtrOutput
+	ToCleanTextTagPtrOutputWithContext(context.Context) CleanTextTagPtrOutput
+}
+
+type cleanTextTagPtrType CleanTextTagArgs
+
+func CleanTextTagPtr(v *CleanTextTagArgs) CleanTextTagPtrInput {
+	return (*cleanTextTagPtrType)(v)
+}
+
+func (*cleanTextTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanTextTag)(nil)).Elem()
+}
+
+func (i *cleanTextTagPtrType) ToCleanTextTagPtrOutput() CleanTextTagPtrOutput {
+	return i.ToCleanTextTagPtrOutputWithContext(context.Background())
+}
+
+func (i *cleanTextTagPtrType) ToCleanTextTagPtrOutputWithContext(ctx context.Context) CleanTextTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanTextTagPtrOutput)
+}
+
+// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+type CleanTextTagOutput struct{ *pulumi.OutputState }
+
+func (CleanTextTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextTag)(nil)).Elem()
+}
+
+func (o CleanTextTagOutput) ToCleanTextTagOutput() CleanTextTagOutput {
+	return o
+}
+
+func (o CleanTextTagOutput) ToCleanTextTagOutputWithContext(ctx context.Context) CleanTextTagOutput {
+	return o
+}
+
+func (o CleanTextTagOutput) ToCleanTextTagPtrOutput() CleanTextTagPtrOutput {
+	return o.ToCleanTextTagPtrOutputWithContext(context.Background())
+}
+
+func (o CleanTextTagOutput) ToCleanTextTagPtrOutputWithContext(ctx context.Context) CleanTextTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanTextTag) *CleanTextTag {
+		return &v
+	}).(CleanTextTagPtrOutput)
+}
+
+type CleanTextTagPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanTextTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanTextTag)(nil)).Elem()
+}
+
+func (o CleanTextTagPtrOutput) ToCleanTextTagPtrOutput() CleanTextTagPtrOutput {
+	return o
+}
+
+func (o CleanTextTagPtrOutput) ToCleanTextTagPtrOutputWithContext(ctx context.Context) CleanTextTagPtrOutput {
+	return o
+}
+
+func (o CleanTextTagPtrOutput) Elem() CleanTextTagOutput {
+	return o.ApplyT(func(v *CleanTextTag) CleanTextTag {
+		if v != nil {
+			return *v
+		}
+		var ret CleanTextTag
+		return ret
+	}).(CleanTextTagOutput)
+}
+
+// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+type CleanTextTagResponse struct {
+}
+
+// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+type CleanTextTagResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanTextTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanTextTagResponse)(nil)).Elem()
+}
+
+func (o CleanTextTagResponseOutput) ToCleanTextTagResponseOutput() CleanTextTagResponseOutput {
+	return o
+}
+
+func (o CleanTextTagResponseOutput) ToCleanTextTagResponseOutputWithContext(ctx context.Context) CleanTextTagResponseOutput {
+	return o
+}
+
 // Cloud Healthcare API resource.
 type CloudHealthcareSource struct {
 	// Full path of a Cloud Healthcare API resource.
@@ -1524,6 +2358,146 @@ func (o CloudHealthcareSourceResponseOutput) ToCloudHealthcareSourceResponseOutp
 // Full path of a Cloud Healthcare API resource.
 func (o CloudHealthcareSourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudHealthcareSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+type ContextualDeidConfig struct {
+}
+
+// ContextualDeidConfigInput is an input type that accepts ContextualDeidConfigArgs and ContextualDeidConfigOutput values.
+// You can construct a concrete instance of `ContextualDeidConfigInput` via:
+//
+//	ContextualDeidConfigArgs{...}
+type ContextualDeidConfigInput interface {
+	pulumi.Input
+
+	ToContextualDeidConfigOutput() ContextualDeidConfigOutput
+	ToContextualDeidConfigOutputWithContext(context.Context) ContextualDeidConfigOutput
+}
+
+// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+type ContextualDeidConfigArgs struct {
+}
+
+func (ContextualDeidConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextualDeidConfig)(nil)).Elem()
+}
+
+func (i ContextualDeidConfigArgs) ToContextualDeidConfigOutput() ContextualDeidConfigOutput {
+	return i.ToContextualDeidConfigOutputWithContext(context.Background())
+}
+
+func (i ContextualDeidConfigArgs) ToContextualDeidConfigOutputWithContext(ctx context.Context) ContextualDeidConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextualDeidConfigOutput)
+}
+
+func (i ContextualDeidConfigArgs) ToContextualDeidConfigPtrOutput() ContextualDeidConfigPtrOutput {
+	return i.ToContextualDeidConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ContextualDeidConfigArgs) ToContextualDeidConfigPtrOutputWithContext(ctx context.Context) ContextualDeidConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextualDeidConfigOutput).ToContextualDeidConfigPtrOutputWithContext(ctx)
+}
+
+// ContextualDeidConfigPtrInput is an input type that accepts ContextualDeidConfigArgs, ContextualDeidConfigPtr and ContextualDeidConfigPtrOutput values.
+// You can construct a concrete instance of `ContextualDeidConfigPtrInput` via:
+//
+//	        ContextualDeidConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContextualDeidConfigPtrInput interface {
+	pulumi.Input
+
+	ToContextualDeidConfigPtrOutput() ContextualDeidConfigPtrOutput
+	ToContextualDeidConfigPtrOutputWithContext(context.Context) ContextualDeidConfigPtrOutput
+}
+
+type contextualDeidConfigPtrType ContextualDeidConfigArgs
+
+func ContextualDeidConfigPtr(v *ContextualDeidConfigArgs) ContextualDeidConfigPtrInput {
+	return (*contextualDeidConfigPtrType)(v)
+}
+
+func (*contextualDeidConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContextualDeidConfig)(nil)).Elem()
+}
+
+func (i *contextualDeidConfigPtrType) ToContextualDeidConfigPtrOutput() ContextualDeidConfigPtrOutput {
+	return i.ToContextualDeidConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *contextualDeidConfigPtrType) ToContextualDeidConfigPtrOutputWithContext(ctx context.Context) ContextualDeidConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextualDeidConfigPtrOutput)
+}
+
+// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+type ContextualDeidConfigOutput struct{ *pulumi.OutputState }
+
+func (ContextualDeidConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextualDeidConfig)(nil)).Elem()
+}
+
+func (o ContextualDeidConfigOutput) ToContextualDeidConfigOutput() ContextualDeidConfigOutput {
+	return o
+}
+
+func (o ContextualDeidConfigOutput) ToContextualDeidConfigOutputWithContext(ctx context.Context) ContextualDeidConfigOutput {
+	return o
+}
+
+func (o ContextualDeidConfigOutput) ToContextualDeidConfigPtrOutput() ContextualDeidConfigPtrOutput {
+	return o.ToContextualDeidConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ContextualDeidConfigOutput) ToContextualDeidConfigPtrOutputWithContext(ctx context.Context) ContextualDeidConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContextualDeidConfig) *ContextualDeidConfig {
+		return &v
+	}).(ContextualDeidConfigPtrOutput)
+}
+
+type ContextualDeidConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ContextualDeidConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContextualDeidConfig)(nil)).Elem()
+}
+
+func (o ContextualDeidConfigPtrOutput) ToContextualDeidConfigPtrOutput() ContextualDeidConfigPtrOutput {
+	return o
+}
+
+func (o ContextualDeidConfigPtrOutput) ToContextualDeidConfigPtrOutputWithContext(ctx context.Context) ContextualDeidConfigPtrOutput {
+	return o
+}
+
+func (o ContextualDeidConfigPtrOutput) Elem() ContextualDeidConfigOutput {
+	return o.ApplyT(func(v *ContextualDeidConfig) ContextualDeidConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ContextualDeidConfig
+		return ret
+	}).(ContextualDeidConfigOutput)
+}
+
+// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+type ContextualDeidConfigResponse struct {
+}
+
+// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType during inspection.
+type ContextualDeidConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ContextualDeidConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextualDeidConfigResponse)(nil)).Elem()
+}
+
+func (o ContextualDeidConfigResponseOutput) ToContextualDeidConfigResponseOutput() ContextualDeidConfigResponseOutput {
+	return o
+}
+
+func (o ContextualDeidConfigResponseOutput) ToContextualDeidConfigResponseOutputWithContext(ctx context.Context) ContextualDeidConfigResponseOutput {
+	return o
 }
 
 // Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
@@ -1718,6 +2692,146 @@ func (o CryptoHashConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponse
 	return o.ApplyT(func(v CryptoHashConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
 }
 
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CryptoHashField struct {
+}
+
+// CryptoHashFieldInput is an input type that accepts CryptoHashFieldArgs and CryptoHashFieldOutput values.
+// You can construct a concrete instance of `CryptoHashFieldInput` via:
+//
+//	CryptoHashFieldArgs{...}
+type CryptoHashFieldInput interface {
+	pulumi.Input
+
+	ToCryptoHashFieldOutput() CryptoHashFieldOutput
+	ToCryptoHashFieldOutputWithContext(context.Context) CryptoHashFieldOutput
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CryptoHashFieldArgs struct {
+}
+
+func (CryptoHashFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashField)(nil)).Elem()
+}
+
+func (i CryptoHashFieldArgs) ToCryptoHashFieldOutput() CryptoHashFieldOutput {
+	return i.ToCryptoHashFieldOutputWithContext(context.Background())
+}
+
+func (i CryptoHashFieldArgs) ToCryptoHashFieldOutputWithContext(ctx context.Context) CryptoHashFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashFieldOutput)
+}
+
+func (i CryptoHashFieldArgs) ToCryptoHashFieldPtrOutput() CryptoHashFieldPtrOutput {
+	return i.ToCryptoHashFieldPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoHashFieldArgs) ToCryptoHashFieldPtrOutputWithContext(ctx context.Context) CryptoHashFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashFieldOutput).ToCryptoHashFieldPtrOutputWithContext(ctx)
+}
+
+// CryptoHashFieldPtrInput is an input type that accepts CryptoHashFieldArgs, CryptoHashFieldPtr and CryptoHashFieldPtrOutput values.
+// You can construct a concrete instance of `CryptoHashFieldPtrInput` via:
+//
+//	        CryptoHashFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type CryptoHashFieldPtrInput interface {
+	pulumi.Input
+
+	ToCryptoHashFieldPtrOutput() CryptoHashFieldPtrOutput
+	ToCryptoHashFieldPtrOutputWithContext(context.Context) CryptoHashFieldPtrOutput
+}
+
+type cryptoHashFieldPtrType CryptoHashFieldArgs
+
+func CryptoHashFieldPtr(v *CryptoHashFieldArgs) CryptoHashFieldPtrInput {
+	return (*cryptoHashFieldPtrType)(v)
+}
+
+func (*cryptoHashFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoHashField)(nil)).Elem()
+}
+
+func (i *cryptoHashFieldPtrType) ToCryptoHashFieldPtrOutput() CryptoHashFieldPtrOutput {
+	return i.ToCryptoHashFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoHashFieldPtrType) ToCryptoHashFieldPtrOutputWithContext(ctx context.Context) CryptoHashFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoHashFieldPtrOutput)
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CryptoHashFieldOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashField)(nil)).Elem()
+}
+
+func (o CryptoHashFieldOutput) ToCryptoHashFieldOutput() CryptoHashFieldOutput {
+	return o
+}
+
+func (o CryptoHashFieldOutput) ToCryptoHashFieldOutputWithContext(ctx context.Context) CryptoHashFieldOutput {
+	return o
+}
+
+func (o CryptoHashFieldOutput) ToCryptoHashFieldPtrOutput() CryptoHashFieldPtrOutput {
+	return o.ToCryptoHashFieldPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoHashFieldOutput) ToCryptoHashFieldPtrOutputWithContext(ctx context.Context) CryptoHashFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoHashField) *CryptoHashField {
+		return &v
+	}).(CryptoHashFieldPtrOutput)
+}
+
+type CryptoHashFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoHashField)(nil)).Elem()
+}
+
+func (o CryptoHashFieldPtrOutput) ToCryptoHashFieldPtrOutput() CryptoHashFieldPtrOutput {
+	return o
+}
+
+func (o CryptoHashFieldPtrOutput) ToCryptoHashFieldPtrOutputWithContext(ctx context.Context) CryptoHashFieldPtrOutput {
+	return o
+}
+
+func (o CryptoHashFieldPtrOutput) Elem() CryptoHashFieldOutput {
+	return o.ApplyT(func(v *CryptoHashField) CryptoHashField {
+		if v != nil {
+			return *v
+		}
+		var ret CryptoHashField
+		return ret
+	}).(CryptoHashFieldOutput)
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CryptoHashFieldResponse struct {
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+type CryptoHashFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (CryptoHashFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoHashFieldResponse)(nil)).Elem()
+}
+
+func (o CryptoHashFieldResponseOutput) ToCryptoHashFieldResponseOutput() CryptoHashFieldResponseOutput {
+	return o
+}
+
+func (o CryptoHashFieldResponseOutput) ToCryptoHashFieldResponseOutputWithContext(ctx context.Context) CryptoHashFieldResponseOutput {
+	return o
+}
+
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfig struct {
 	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
@@ -1908,6 +3022,146 @@ func (o DateShiftConfigResponseOutput) CryptoKey() pulumi.StringOutput {
 // KMS wrapped key. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+type DateShiftField struct {
+}
+
+// DateShiftFieldInput is an input type that accepts DateShiftFieldArgs and DateShiftFieldOutput values.
+// You can construct a concrete instance of `DateShiftFieldInput` via:
+//
+//	DateShiftFieldArgs{...}
+type DateShiftFieldInput interface {
+	pulumi.Input
+
+	ToDateShiftFieldOutput() DateShiftFieldOutput
+	ToDateShiftFieldOutputWithContext(context.Context) DateShiftFieldOutput
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+type DateShiftFieldArgs struct {
+}
+
+func (DateShiftFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftField)(nil)).Elem()
+}
+
+func (i DateShiftFieldArgs) ToDateShiftFieldOutput() DateShiftFieldOutput {
+	return i.ToDateShiftFieldOutputWithContext(context.Background())
+}
+
+func (i DateShiftFieldArgs) ToDateShiftFieldOutputWithContext(ctx context.Context) DateShiftFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftFieldOutput)
+}
+
+func (i DateShiftFieldArgs) ToDateShiftFieldPtrOutput() DateShiftFieldPtrOutput {
+	return i.ToDateShiftFieldPtrOutputWithContext(context.Background())
+}
+
+func (i DateShiftFieldArgs) ToDateShiftFieldPtrOutputWithContext(ctx context.Context) DateShiftFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftFieldOutput).ToDateShiftFieldPtrOutputWithContext(ctx)
+}
+
+// DateShiftFieldPtrInput is an input type that accepts DateShiftFieldArgs, DateShiftFieldPtr and DateShiftFieldPtrOutput values.
+// You can construct a concrete instance of `DateShiftFieldPtrInput` via:
+//
+//	        DateShiftFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type DateShiftFieldPtrInput interface {
+	pulumi.Input
+
+	ToDateShiftFieldPtrOutput() DateShiftFieldPtrOutput
+	ToDateShiftFieldPtrOutputWithContext(context.Context) DateShiftFieldPtrOutput
+}
+
+type dateShiftFieldPtrType DateShiftFieldArgs
+
+func DateShiftFieldPtr(v *DateShiftFieldArgs) DateShiftFieldPtrInput {
+	return (*dateShiftFieldPtrType)(v)
+}
+
+func (*dateShiftFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateShiftField)(nil)).Elem()
+}
+
+func (i *dateShiftFieldPtrType) ToDateShiftFieldPtrOutput() DateShiftFieldPtrOutput {
+	return i.ToDateShiftFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *dateShiftFieldPtrType) ToDateShiftFieldPtrOutputWithContext(ctx context.Context) DateShiftFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateShiftFieldPtrOutput)
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+type DateShiftFieldOutput struct{ *pulumi.OutputState }
+
+func (DateShiftFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftField)(nil)).Elem()
+}
+
+func (o DateShiftFieldOutput) ToDateShiftFieldOutput() DateShiftFieldOutput {
+	return o
+}
+
+func (o DateShiftFieldOutput) ToDateShiftFieldOutputWithContext(ctx context.Context) DateShiftFieldOutput {
+	return o
+}
+
+func (o DateShiftFieldOutput) ToDateShiftFieldPtrOutput() DateShiftFieldPtrOutput {
+	return o.ToDateShiftFieldPtrOutputWithContext(context.Background())
+}
+
+func (o DateShiftFieldOutput) ToDateShiftFieldPtrOutputWithContext(ctx context.Context) DateShiftFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DateShiftField) *DateShiftField {
+		return &v
+	}).(DateShiftFieldPtrOutput)
+}
+
+type DateShiftFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (DateShiftFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateShiftField)(nil)).Elem()
+}
+
+func (o DateShiftFieldPtrOutput) ToDateShiftFieldPtrOutput() DateShiftFieldPtrOutput {
+	return o
+}
+
+func (o DateShiftFieldPtrOutput) ToDateShiftFieldPtrOutputWithContext(ctx context.Context) DateShiftFieldPtrOutput {
+	return o
+}
+
+func (o DateShiftFieldPtrOutput) Elem() DateShiftFieldOutput {
+	return o.ApplyT(func(v *DateShiftField) DateShiftField {
+		if v != nil {
+			return *v
+		}
+		var ret DateShiftField
+		return ret
+	}).(DateShiftFieldOutput)
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+type DateShiftFieldResponse struct {
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+type DateShiftFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (DateShiftFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateShiftFieldResponse)(nil)).Elem()
+}
+
+func (o DateShiftFieldResponseOutput) ToDateShiftFieldResponseOutput() DateShiftFieldResponseOutput {
+	return o
+}
+
+func (o DateShiftFieldResponseOutput) ToDateShiftFieldResponseOutputWithContext(ctx context.Context) DateShiftFieldResponseOutput {
+	return o
 }
 
 // Contains configuration for streaming de-identified FHIR export.
@@ -2110,10 +3364,14 @@ type DeidentifyConfig struct {
 	//
 	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom *DicomConfig `pulumi:"dicom"`
+	// Configures de-id of application/DICOM content.
+	DicomTagConfig *DicomTagConfig `pulumi:"dicomTagConfig"`
 	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	//
 	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir *FhirConfig `pulumi:"fhir"`
+	// Configures de-id of application/FHIR content.
+	FhirFieldConfig *FhirFieldConfig `pulumi:"fhirFieldConfig"`
 	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	//
 	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2143,10 +3401,14 @@ type DeidentifyConfigArgs struct {
 	//
 	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom DicomConfigPtrInput `pulumi:"dicom"`
+	// Configures de-id of application/DICOM content.
+	DicomTagConfig DicomTagConfigPtrInput `pulumi:"dicomTagConfig"`
 	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	//
 	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir FhirConfigPtrInput `pulumi:"fhir"`
+	// Configures de-id of application/FHIR content.
+	FhirFieldConfig FhirFieldConfigPtrInput `pulumi:"fhirFieldConfig"`
 	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	//
 	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2247,11 +3509,21 @@ func (o DeidentifyConfigOutput) Dicom() DicomConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *DicomConfig { return v.Dicom }).(DicomConfigPtrOutput)
 }
 
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigOutput) DicomTagConfig() DicomTagConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *DicomTagConfig { return v.DicomTagConfig }).(DicomTagConfigPtrOutput)
+}
+
 // Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 //
 // Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 func (o DeidentifyConfigOutput) Fhir() FhirConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *FhirConfig { return v.Fhir }).(FhirConfigPtrOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigOutput) FhirFieldConfig() FhirFieldConfigPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *FhirFieldConfig { return v.FhirFieldConfig }).(FhirFieldConfigPtrOutput)
 }
 
 // Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2317,6 +3589,16 @@ func (o DeidentifyConfigPtrOutput) Dicom() DicomConfigPtrOutput {
 	}).(DicomConfigPtrOutput)
 }
 
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigPtrOutput) DicomTagConfig() DicomTagConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *DicomTagConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DicomTagConfig
+	}).(DicomTagConfigPtrOutput)
+}
+
 // Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 //
 // Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
@@ -2327,6 +3609,16 @@ func (o DeidentifyConfigPtrOutput) Fhir() FhirConfigPtrOutput {
 		}
 		return v.Fhir
 	}).(FhirConfigPtrOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigPtrOutput) FhirFieldConfig() FhirFieldConfigPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *FhirFieldConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FhirFieldConfig
+	}).(FhirFieldConfigPtrOutput)
 }
 
 // Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2369,10 +3661,14 @@ type DeidentifyConfigResponse struct {
 	//
 	// Deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
 	Dicom DicomConfigResponse `pulumi:"dicom"`
+	// Configures de-id of application/DICOM content.
+	DicomTagConfig DicomTagConfigResponse `pulumi:"dicomTagConfig"`
 	// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	//
 	// Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 	Fhir FhirConfigResponse `pulumi:"fhir"`
+	// Configures de-id of application/FHIR content.
+	FhirFieldConfig FhirFieldConfigResponse `pulumi:"fhirFieldConfig"`
 	// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
 	//
 	// Deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2410,11 +3706,21 @@ func (o DeidentifyConfigResponseOutput) Dicom() DicomConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) DicomConfigResponse { return v.Dicom }).(DicomConfigResponseOutput)
 }
 
+// Configures de-id of application/DICOM content.
+func (o DeidentifyConfigResponseOutput) DicomTagConfig() DicomTagConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) DicomTagConfigResponse { return v.DicomTagConfig }).(DicomTagConfigResponseOutput)
+}
+
 // Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 //
 // Deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
 func (o DeidentifyConfigResponseOutput) Fhir() FhirConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) FhirConfigResponse { return v.Fhir }).(FhirConfigResponseOutput)
+}
+
+// Configures de-id of application/FHIR content.
+func (o DeidentifyConfigResponseOutput) FhirFieldConfig() FhirFieldConfigResponseOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) FhirFieldConfigResponse { return v.FhirFieldConfig }).(FhirFieldConfigResponseOutput)
 }
 
 // Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
@@ -2598,6 +3904,146 @@ func (o DeidentifyOperationMetadataResponseOutput) ToDeidentifyOperationMetadata
 // Details about the FHIR store to write the output to.
 func (o DeidentifyOperationMetadataResponseOutput) FhirOutput() FhirOutputResponseOutput {
 	return o.ApplyT(func(v DeidentifyOperationMetadataResponse) FhirOutputResponse { return v.FhirOutput }).(FhirOutputResponseOutput)
+}
+
+// Delete tag.
+type DeleteTag struct {
+}
+
+// DeleteTagInput is an input type that accepts DeleteTagArgs and DeleteTagOutput values.
+// You can construct a concrete instance of `DeleteTagInput` via:
+//
+//	DeleteTagArgs{...}
+type DeleteTagInput interface {
+	pulumi.Input
+
+	ToDeleteTagOutput() DeleteTagOutput
+	ToDeleteTagOutputWithContext(context.Context) DeleteTagOutput
+}
+
+// Delete tag.
+type DeleteTagArgs struct {
+}
+
+func (DeleteTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeleteTag)(nil)).Elem()
+}
+
+func (i DeleteTagArgs) ToDeleteTagOutput() DeleteTagOutput {
+	return i.ToDeleteTagOutputWithContext(context.Background())
+}
+
+func (i DeleteTagArgs) ToDeleteTagOutputWithContext(ctx context.Context) DeleteTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteTagOutput)
+}
+
+func (i DeleteTagArgs) ToDeleteTagPtrOutput() DeleteTagPtrOutput {
+	return i.ToDeleteTagPtrOutputWithContext(context.Background())
+}
+
+func (i DeleteTagArgs) ToDeleteTagPtrOutputWithContext(ctx context.Context) DeleteTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteTagOutput).ToDeleteTagPtrOutputWithContext(ctx)
+}
+
+// DeleteTagPtrInput is an input type that accepts DeleteTagArgs, DeleteTagPtr and DeleteTagPtrOutput values.
+// You can construct a concrete instance of `DeleteTagPtrInput` via:
+//
+//	        DeleteTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeleteTagPtrInput interface {
+	pulumi.Input
+
+	ToDeleteTagPtrOutput() DeleteTagPtrOutput
+	ToDeleteTagPtrOutputWithContext(context.Context) DeleteTagPtrOutput
+}
+
+type deleteTagPtrType DeleteTagArgs
+
+func DeleteTagPtr(v *DeleteTagArgs) DeleteTagPtrInput {
+	return (*deleteTagPtrType)(v)
+}
+
+func (*deleteTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteTag)(nil)).Elem()
+}
+
+func (i *deleteTagPtrType) ToDeleteTagPtrOutput() DeleteTagPtrOutput {
+	return i.ToDeleteTagPtrOutputWithContext(context.Background())
+}
+
+func (i *deleteTagPtrType) ToDeleteTagPtrOutputWithContext(ctx context.Context) DeleteTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteTagPtrOutput)
+}
+
+// Delete tag.
+type DeleteTagOutput struct{ *pulumi.OutputState }
+
+func (DeleteTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeleteTag)(nil)).Elem()
+}
+
+func (o DeleteTagOutput) ToDeleteTagOutput() DeleteTagOutput {
+	return o
+}
+
+func (o DeleteTagOutput) ToDeleteTagOutputWithContext(ctx context.Context) DeleteTagOutput {
+	return o
+}
+
+func (o DeleteTagOutput) ToDeleteTagPtrOutput() DeleteTagPtrOutput {
+	return o.ToDeleteTagPtrOutputWithContext(context.Background())
+}
+
+func (o DeleteTagOutput) ToDeleteTagPtrOutputWithContext(ctx context.Context) DeleteTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeleteTag) *DeleteTag {
+		return &v
+	}).(DeleteTagPtrOutput)
+}
+
+type DeleteTagPtrOutput struct{ *pulumi.OutputState }
+
+func (DeleteTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteTag)(nil)).Elem()
+}
+
+func (o DeleteTagPtrOutput) ToDeleteTagPtrOutput() DeleteTagPtrOutput {
+	return o
+}
+
+func (o DeleteTagPtrOutput) ToDeleteTagPtrOutputWithContext(ctx context.Context) DeleteTagPtrOutput {
+	return o
+}
+
+func (o DeleteTagPtrOutput) Elem() DeleteTagOutput {
+	return o.ApplyT(func(v *DeleteTag) DeleteTag {
+		if v != nil {
+			return *v
+		}
+		var ret DeleteTag
+		return ret
+	}).(DeleteTagOutput)
+}
+
+// Delete tag.
+type DeleteTagResponse struct {
+}
+
+// Delete tag.
+type DeleteTagResponseOutput struct{ *pulumi.OutputState }
+
+func (DeleteTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeleteTagResponse)(nil)).Elem()
+}
+
+func (o DeleteTagResponseOutput) ToDeleteTagResponseOutput() DeleteTagResponseOutput {
+	return o
+}
+
+func (o DeleteTagResponseOutput) ToDeleteTagResponseOutputWithContext(ctx context.Context) DeleteTagResponseOutput {
+	return o
 }
 
 // Specifies the parameters needed for de-identification of DICOM stores.
@@ -2842,6 +4288,224 @@ func (o DicomConfigResponseOutput) RemoveList() TagFilterListResponseOutput {
 // If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
 func (o DicomConfigResponseOutput) SkipIdRedaction() pulumi.BoolOutput {
 	return o.ApplyT(func(v DicomConfigResponse) bool { return v.SkipIdRedaction }).(pulumi.BoolOutput)
+}
+
+// Specifies the parameters needed for the de-identification of DICOM stores.
+type DicomTagConfig struct {
+	// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+	Actions []Action `pulumi:"actions"`
+	// Specifies additional options to apply, overriding the base `profile`.
+	Options *Options `pulumi:"options"`
+	// Base profile type for handling DICOM tags.
+	ProfileType *DicomTagConfigProfileType `pulumi:"profileType"`
+}
+
+// DicomTagConfigInput is an input type that accepts DicomTagConfigArgs and DicomTagConfigOutput values.
+// You can construct a concrete instance of `DicomTagConfigInput` via:
+//
+//	DicomTagConfigArgs{...}
+type DicomTagConfigInput interface {
+	pulumi.Input
+
+	ToDicomTagConfigOutput() DicomTagConfigOutput
+	ToDicomTagConfigOutputWithContext(context.Context) DicomTagConfigOutput
+}
+
+// Specifies the parameters needed for the de-identification of DICOM stores.
+type DicomTagConfigArgs struct {
+	// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+	Actions ActionArrayInput `pulumi:"actions"`
+	// Specifies additional options to apply, overriding the base `profile`.
+	Options OptionsPtrInput `pulumi:"options"`
+	// Base profile type for handling DICOM tags.
+	ProfileType DicomTagConfigProfileTypePtrInput `pulumi:"profileType"`
+}
+
+func (DicomTagConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomTagConfig)(nil)).Elem()
+}
+
+func (i DicomTagConfigArgs) ToDicomTagConfigOutput() DicomTagConfigOutput {
+	return i.ToDicomTagConfigOutputWithContext(context.Background())
+}
+
+func (i DicomTagConfigArgs) ToDicomTagConfigOutputWithContext(ctx context.Context) DicomTagConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomTagConfigOutput)
+}
+
+func (i DicomTagConfigArgs) ToDicomTagConfigPtrOutput() DicomTagConfigPtrOutput {
+	return i.ToDicomTagConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DicomTagConfigArgs) ToDicomTagConfigPtrOutputWithContext(ctx context.Context) DicomTagConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomTagConfigOutput).ToDicomTagConfigPtrOutputWithContext(ctx)
+}
+
+// DicomTagConfigPtrInput is an input type that accepts DicomTagConfigArgs, DicomTagConfigPtr and DicomTagConfigPtrOutput values.
+// You can construct a concrete instance of `DicomTagConfigPtrInput` via:
+//
+//	        DicomTagConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DicomTagConfigPtrInput interface {
+	pulumi.Input
+
+	ToDicomTagConfigPtrOutput() DicomTagConfigPtrOutput
+	ToDicomTagConfigPtrOutputWithContext(context.Context) DicomTagConfigPtrOutput
+}
+
+type dicomTagConfigPtrType DicomTagConfigArgs
+
+func DicomTagConfigPtr(v *DicomTagConfigArgs) DicomTagConfigPtrInput {
+	return (*dicomTagConfigPtrType)(v)
+}
+
+func (*dicomTagConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomTagConfig)(nil)).Elem()
+}
+
+func (i *dicomTagConfigPtrType) ToDicomTagConfigPtrOutput() DicomTagConfigPtrOutput {
+	return i.ToDicomTagConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dicomTagConfigPtrType) ToDicomTagConfigPtrOutputWithContext(ctx context.Context) DicomTagConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomTagConfigPtrOutput)
+}
+
+// Specifies the parameters needed for the de-identification of DICOM stores.
+type DicomTagConfigOutput struct{ *pulumi.OutputState }
+
+func (DicomTagConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomTagConfig)(nil)).Elem()
+}
+
+func (o DicomTagConfigOutput) ToDicomTagConfigOutput() DicomTagConfigOutput {
+	return o
+}
+
+func (o DicomTagConfigOutput) ToDicomTagConfigOutputWithContext(ctx context.Context) DicomTagConfigOutput {
+	return o
+}
+
+func (o DicomTagConfigOutput) ToDicomTagConfigPtrOutput() DicomTagConfigPtrOutput {
+	return o.ToDicomTagConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DicomTagConfigOutput) ToDicomTagConfigPtrOutputWithContext(ctx context.Context) DicomTagConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DicomTagConfig) *DicomTagConfig {
+		return &v
+	}).(DicomTagConfigPtrOutput)
+}
+
+// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+func (o DicomTagConfigOutput) Actions() ActionArrayOutput {
+	return o.ApplyT(func(v DicomTagConfig) []Action { return v.Actions }).(ActionArrayOutput)
+}
+
+// Specifies additional options to apply, overriding the base `profile`.
+func (o DicomTagConfigOutput) Options() OptionsPtrOutput {
+	return o.ApplyT(func(v DicomTagConfig) *Options { return v.Options }).(OptionsPtrOutput)
+}
+
+// Base profile type for handling DICOM tags.
+func (o DicomTagConfigOutput) ProfileType() DicomTagConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v DicomTagConfig) *DicomTagConfigProfileType { return v.ProfileType }).(DicomTagConfigProfileTypePtrOutput)
+}
+
+type DicomTagConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DicomTagConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomTagConfig)(nil)).Elem()
+}
+
+func (o DicomTagConfigPtrOutput) ToDicomTagConfigPtrOutput() DicomTagConfigPtrOutput {
+	return o
+}
+
+func (o DicomTagConfigPtrOutput) ToDicomTagConfigPtrOutputWithContext(ctx context.Context) DicomTagConfigPtrOutput {
+	return o
+}
+
+func (o DicomTagConfigPtrOutput) Elem() DicomTagConfigOutput {
+	return o.ApplyT(func(v *DicomTagConfig) DicomTagConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DicomTagConfig
+		return ret
+	}).(DicomTagConfigOutput)
+}
+
+// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+func (o DicomTagConfigPtrOutput) Actions() ActionArrayOutput {
+	return o.ApplyT(func(v *DicomTagConfig) []Action {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(ActionArrayOutput)
+}
+
+// Specifies additional options to apply, overriding the base `profile`.
+func (o DicomTagConfigPtrOutput) Options() OptionsPtrOutput {
+	return o.ApplyT(func(v *DicomTagConfig) *Options {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(OptionsPtrOutput)
+}
+
+// Base profile type for handling DICOM tags.
+func (o DicomTagConfigPtrOutput) ProfileType() DicomTagConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v *DicomTagConfig) *DicomTagConfigProfileType {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileType
+	}).(DicomTagConfigProfileTypePtrOutput)
+}
+
+// Specifies the parameters needed for the de-identification of DICOM stores.
+type DicomTagConfigResponse struct {
+	// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+	Actions []ActionResponse `pulumi:"actions"`
+	// Specifies additional options to apply, overriding the base `profile`.
+	Options OptionsResponse `pulumi:"options"`
+	// Base profile type for handling DICOM tags.
+	ProfileType string `pulumi:"profileType"`
+}
+
+// Specifies the parameters needed for the de-identification of DICOM stores.
+type DicomTagConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DicomTagConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomTagConfigResponse)(nil)).Elem()
+}
+
+func (o DicomTagConfigResponseOutput) ToDicomTagConfigResponseOutput() DicomTagConfigResponseOutput {
+	return o
+}
+
+func (o DicomTagConfigResponseOutput) ToDicomTagConfigResponseOutputWithContext(ctx context.Context) DicomTagConfigResponseOutput {
+	return o
+}
+
+// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
+func (o DicomTagConfigResponseOutput) Actions() ActionResponseArrayOutput {
+	return o.ApplyT(func(v DicomTagConfigResponse) []ActionResponse { return v.Actions }).(ActionResponseArrayOutput)
+}
+
+// Specifies additional options to apply, overriding the base `profile`.
+func (o DicomTagConfigResponseOutput) Options() OptionsResponseOutput {
+	return o.ApplyT(func(v DicomTagConfigResponse) OptionsResponse { return v.Options }).(OptionsResponseOutput)
+}
+
+// Base profile type for handling DICOM tags.
+func (o DicomTagConfigResponseOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v DicomTagConfigResponse) string { return v.ProfileType }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -3278,6 +4942,230 @@ func (o FhirConfigResponseOutput) DefaultKeepExtensions() pulumi.BoolOutput {
 // Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`. If a field can be matched by more than one FieldMetadata, the first FieldMetadata.Action is applied.
 func (o FhirConfigResponseOutput) FieldMetadataList() FieldMetadataResponseArrayOutput {
 	return o.ApplyT(func(v FhirConfigResponse) []FieldMetadataResponse { return v.FieldMetadataList }).(FieldMetadataResponseArrayOutput)
+}
+
+// Specifies how to handle the de-identification of a FHIR store.
+type FhirFieldConfig struct {
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	FieldMetadataList []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata `pulumi:"fieldMetadataList"`
+	// Specifies additional options, overriding the base `profile`.
+	Options *GoogleCloudHealthcareV1beta1DeidentifyOptions `pulumi:"options"`
+	// Base profile type for handling FHIR fields.
+	ProfileType *FhirFieldConfigProfileType `pulumi:"profileType"`
+}
+
+// FhirFieldConfigInput is an input type that accepts FhirFieldConfigArgs and FhirFieldConfigOutput values.
+// You can construct a concrete instance of `FhirFieldConfigInput` via:
+//
+//	FhirFieldConfigArgs{...}
+type FhirFieldConfigInput interface {
+	pulumi.Input
+
+	ToFhirFieldConfigOutput() FhirFieldConfigOutput
+	ToFhirFieldConfigOutputWithContext(context.Context) FhirFieldConfigOutput
+}
+
+// Specifies how to handle the de-identification of a FHIR store.
+type FhirFieldConfigArgs struct {
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	FieldMetadataList GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput `pulumi:"fieldMetadataList"`
+	// Specifies additional options, overriding the base `profile`.
+	Options GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput `pulumi:"options"`
+	// Base profile type for handling FHIR fields.
+	ProfileType FhirFieldConfigProfileTypePtrInput `pulumi:"profileType"`
+}
+
+func (FhirFieldConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirFieldConfig)(nil)).Elem()
+}
+
+func (i FhirFieldConfigArgs) ToFhirFieldConfigOutput() FhirFieldConfigOutput {
+	return i.ToFhirFieldConfigOutputWithContext(context.Background())
+}
+
+func (i FhirFieldConfigArgs) ToFhirFieldConfigOutputWithContext(ctx context.Context) FhirFieldConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirFieldConfigOutput)
+}
+
+func (i FhirFieldConfigArgs) ToFhirFieldConfigPtrOutput() FhirFieldConfigPtrOutput {
+	return i.ToFhirFieldConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirFieldConfigArgs) ToFhirFieldConfigPtrOutputWithContext(ctx context.Context) FhirFieldConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirFieldConfigOutput).ToFhirFieldConfigPtrOutputWithContext(ctx)
+}
+
+// FhirFieldConfigPtrInput is an input type that accepts FhirFieldConfigArgs, FhirFieldConfigPtr and FhirFieldConfigPtrOutput values.
+// You can construct a concrete instance of `FhirFieldConfigPtrInput` via:
+//
+//	        FhirFieldConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirFieldConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirFieldConfigPtrOutput() FhirFieldConfigPtrOutput
+	ToFhirFieldConfigPtrOutputWithContext(context.Context) FhirFieldConfigPtrOutput
+}
+
+type fhirFieldConfigPtrType FhirFieldConfigArgs
+
+func FhirFieldConfigPtr(v *FhirFieldConfigArgs) FhirFieldConfigPtrInput {
+	return (*fhirFieldConfigPtrType)(v)
+}
+
+func (*fhirFieldConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirFieldConfig)(nil)).Elem()
+}
+
+func (i *fhirFieldConfigPtrType) ToFhirFieldConfigPtrOutput() FhirFieldConfigPtrOutput {
+	return i.ToFhirFieldConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirFieldConfigPtrType) ToFhirFieldConfigPtrOutputWithContext(ctx context.Context) FhirFieldConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirFieldConfigPtrOutput)
+}
+
+// Specifies how to handle the de-identification of a FHIR store.
+type FhirFieldConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirFieldConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirFieldConfig)(nil)).Elem()
+}
+
+func (o FhirFieldConfigOutput) ToFhirFieldConfigOutput() FhirFieldConfigOutput {
+	return o
+}
+
+func (o FhirFieldConfigOutput) ToFhirFieldConfigOutputWithContext(ctx context.Context) FhirFieldConfigOutput {
+	return o
+}
+
+func (o FhirFieldConfigOutput) ToFhirFieldConfigPtrOutput() FhirFieldConfigPtrOutput {
+	return o.ToFhirFieldConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirFieldConfigOutput) ToFhirFieldConfigPtrOutputWithContext(ctx context.Context) FhirFieldConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirFieldConfig) *FhirFieldConfig {
+		return &v
+	}).(FhirFieldConfigPtrOutput)
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+func (o FhirFieldConfigOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return o.ApplyT(func(v FhirFieldConfig) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
+		return v.FieldMetadataList
+	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput)
+}
+
+// Specifies additional options, overriding the base `profile`.
+func (o FhirFieldConfigOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o.ApplyT(func(v FhirFieldConfig) *GoogleCloudHealthcareV1beta1DeidentifyOptions { return v.Options }).(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput)
+}
+
+// Base profile type for handling FHIR fields.
+func (o FhirFieldConfigOutput) ProfileType() FhirFieldConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v FhirFieldConfig) *FhirFieldConfigProfileType { return v.ProfileType }).(FhirFieldConfigProfileTypePtrOutput)
+}
+
+type FhirFieldConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirFieldConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirFieldConfig)(nil)).Elem()
+}
+
+func (o FhirFieldConfigPtrOutput) ToFhirFieldConfigPtrOutput() FhirFieldConfigPtrOutput {
+	return o
+}
+
+func (o FhirFieldConfigPtrOutput) ToFhirFieldConfigPtrOutputWithContext(ctx context.Context) FhirFieldConfigPtrOutput {
+	return o
+}
+
+func (o FhirFieldConfigPtrOutput) Elem() FhirFieldConfigOutput {
+	return o.ApplyT(func(v *FhirFieldConfig) FhirFieldConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirFieldConfig
+		return ret
+	}).(FhirFieldConfigOutput)
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+func (o FhirFieldConfigPtrOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return o.ApplyT(func(v *FhirFieldConfig) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.FieldMetadataList
+	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput)
+}
+
+// Specifies additional options, overriding the base `profile`.
+func (o FhirFieldConfigPtrOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o.ApplyT(func(v *FhirFieldConfig) *GoogleCloudHealthcareV1beta1DeidentifyOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput)
+}
+
+// Base profile type for handling FHIR fields.
+func (o FhirFieldConfigPtrOutput) ProfileType() FhirFieldConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v *FhirFieldConfig) *FhirFieldConfigProfileType {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileType
+	}).(FhirFieldConfigProfileTypePtrOutput)
+}
+
+// Specifies how to handle the de-identification of a FHIR store.
+type FhirFieldConfigResponse struct {
+	// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+	FieldMetadataList []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse `pulumi:"fieldMetadataList"`
+	// Specifies additional options, overriding the base `profile`.
+	Options GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse `pulumi:"options"`
+	// Base profile type for handling FHIR fields.
+	ProfileType string `pulumi:"profileType"`
+}
+
+// Specifies how to handle the de-identification of a FHIR store.
+type FhirFieldConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FhirFieldConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirFieldConfigResponse)(nil)).Elem()
+}
+
+func (o FhirFieldConfigResponseOutput) ToFhirFieldConfigResponseOutput() FhirFieldConfigResponseOutput {
+	return o
+}
+
+func (o FhirFieldConfigResponseOutput) ToFhirFieldConfigResponseOutputWithContext(ctx context.Context) FhirFieldConfigResponseOutput {
+	return o
+}
+
+// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata` is passed through to the output dataset unmodified. All extensions will be processed according to `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+func (o FhirFieldConfigResponseOutput) FieldMetadataList() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput {
+	return o.ApplyT(func(v FhirFieldConfigResponse) []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
+		return v.FieldMetadataList
+	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput)
+}
+
+// Specifies additional options, overriding the base `profile`.
+func (o FhirFieldConfigResponseOutput) Options() GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput {
+	return o.ApplyT(func(v FhirFieldConfigResponse) GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse {
+		return v.Options
+	}).(GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput)
+}
+
+// Base profile type for handling FHIR fields.
+func (o FhirFieldConfigResponseOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirFieldConfigResponse) string { return v.ProfileType }).(pulumi.StringOutput)
 }
 
 // Contains the configuration for FHIR notifications.
@@ -4142,6 +6030,544 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1beta1ConsentPolicyResponse {
 		return vs[0].([]GoogleCloudHealthcareV1beta1ConsentPolicyResponse)[vs[1].(int)]
 	}).(GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput)
+}
+
+// Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata struct {
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CharacterMaskField *CharacterMaskField `pulumi:"characterMaskField"`
+	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CleanTextField *CleanTextField `pulumi:"cleanTextField"`
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CryptoHashField *CryptoHashField `pulumi:"cryptoHashField"`
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	DateShiftField *DateShiftField `pulumi:"dateShiftField"`
+	// Keep the field unchanged.
+	KeepField *KeepField `pulumi:"keepField"`
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	Paths []string `pulumi:"paths"`
+	// Remove the field.
+	RemoveField *RemoveField `pulumi:"removeField"`
+}
+
+// GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput is an input type that accepts GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs and GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput` via:
+//
+//	GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs{...}
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput
+	ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput
+}
+
+// Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs struct {
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CharacterMaskField CharacterMaskFieldPtrInput `pulumi:"characterMaskField"`
+	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CleanTextField CleanTextFieldPtrInput `pulumi:"cleanTextField"`
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CryptoHashField CryptoHashFieldPtrInput `pulumi:"cryptoHashField"`
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	DateShiftField DateShiftFieldPtrInput `pulumi:"dateShiftField"`
+	// Keep the field unchanged.
+	KeepField KeepFieldPtrInput `pulumi:"keepField"`
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Remove the field.
+	RemoveField RemoveFieldPtrInput `pulumi:"removeField"`
+}
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput {
+	return i.ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput)
+}
+
+// GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput is an input type that accepts GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray and GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput` via:
+//
+//	GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray{ GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs{...} }
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput
+	ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput
+}
+
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray []GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return i.ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput)
+}
+
+// Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput {
+	return o
+}
+
+// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CharacterMaskField() CharacterMaskFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CharacterMaskField {
+		return v.CharacterMaskField
+	}).(CharacterMaskFieldPtrOutput)
+}
+
+// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CleanTextField() CleanTextFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CleanTextField { return v.CleanTextField }).(CleanTextFieldPtrOutput)
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) CryptoHashField() CryptoHashFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *CryptoHashField { return v.CryptoHashField }).(CryptoHashFieldPtrOutput)
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) DateShiftField() DateShiftFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *DateShiftField { return v.DateShiftField }).(DateShiftFieldPtrOutput)
+}
+
+// Keep the field unchanged.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) KeepField() KeepFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *KeepField { return v.KeepField }).(KeepFieldPtrOutput)
+}
+
+// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Remove the field.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput) RemoveField() RemoveFieldPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata) *RemoveField { return v.RemoveField }).(RemoveFieldPtrOutput)
+}
+
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput) Index(i pulumi.IntInput) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
+		return vs[0].([]GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata)[vs[1].(int)]
+	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput)
+}
+
+// Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse struct {
+	// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CharacterMaskField CharacterMaskFieldResponse `pulumi:"characterMaskField"`
+	// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CleanTextField CleanTextFieldResponse `pulumi:"cleanTextField"`
+	// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+	CryptoHashField CryptoHashFieldResponse `pulumi:"cryptoHashField"`
+	// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+	DateShiftField DateShiftFieldResponse `pulumi:"dateShiftField"`
+	// Keep the field unchanged.
+	KeepField KeepFieldResponse `pulumi:"keepField"`
+	// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+	Paths []string `pulumi:"paths"`
+	// Remove the field.
+	RemoveField RemoveFieldResponse `pulumi:"removeField"`
+}
+
+// Specifies the FHIR paths to match and how to handle the de-identification of matching fields.
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput {
+	return o
+}
+
+// Replace the field's value with a masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CharacterMaskField() CharacterMaskFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CharacterMaskFieldResponse {
+		return v.CharacterMaskField
+	}).(CharacterMaskFieldResponseOutput)
+}
+
+// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CleanTextField() CleanTextFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CleanTextFieldResponse {
+		return v.CleanTextField
+	}).(CleanTextFieldResponseOutput)
+}
+
+// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) CryptoHashField() CryptoHashFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) CryptoHashFieldResponse {
+		return v.CryptoHashField
+	}).(CryptoHashFieldResponseOutput)
+}
+
+// Shift the date by a randomized number of days. See [date shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) DateShiftField() DateShiftFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) DateShiftFieldResponse {
+		return v.DateShiftField
+	}).(DateShiftFieldResponseOutput)
+}
+
+// Keep the field unchanged.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) KeepField() KeepFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) KeepFieldResponse {
+		return v.KeepField
+	}).(KeepFieldResponseOutput)
+}
+
+// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]), use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family) can be omitted.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Remove the field.
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput) RemoveField() RemoveFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse) RemoveFieldResponse {
+		return v.RemoveField
+	}).(RemoveFieldResponseOutput)
+}
+
+type GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput() GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput) ToGoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
+		return vs[0].([]GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse)[vs[1].(int)]
+	}).(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput)
+}
+
+// Specifies additional options to apply to the base `profile`.
+type GoogleCloudHealthcareV1beta1DeidentifyOptions struct {
+	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	CharacterMaskConfig *CharacterMaskConfig `pulumi:"characterMaskConfig"`
+	// Configure contextual de-id.
+	ContextualDeid *ContextualDeidConfig `pulumi:"contextualDeid"`
+	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	CryptoHashConfig *CryptoHashConfig `pulumi:"cryptoHashConfig"`
+	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	DateShiftConfig *DateShiftConfig `pulumi:"dateShiftConfig"`
+	// Configure keeping extensions by default.
+	KeepExtensions *KeepExtensionsConfig `pulumi:"keepExtensions"`
+}
+
+// GoogleCloudHealthcareV1beta1DeidentifyOptionsInput is an input type that accepts GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs and GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DeidentifyOptionsInput` via:
+//
+//	GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs{...}
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput
+	ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput
+}
+
+// Specifies additional options to apply to the base `profile`.
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs struct {
+	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	CharacterMaskConfig CharacterMaskConfigPtrInput `pulumi:"characterMaskConfig"`
+	// Configure contextual de-id.
+	ContextualDeid ContextualDeidConfigPtrInput `pulumi:"contextualDeid"`
+	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	CryptoHashConfig CryptoHashConfigPtrInput `pulumi:"cryptoHashConfig"`
+	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	DateShiftConfig DateShiftConfigPtrInput `pulumi:"dateShiftConfig"`
+	// Configure keeping extensions by default.
+	KeepExtensions KeepExtensionsConfigPtrInput `pulumi:"keepExtensions"`
+}
+
+func (GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyOptions)(nil)).Elem()
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput {
+	return i.ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput)
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return i.ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput).ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput is an input type that accepts GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs, GoogleCloudHealthcareV1beta1DeidentifyOptionsPtr and GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput` via:
+//
+//	        GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput
+	ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput
+}
+
+type googleCloudHealthcareV1beta1DeidentifyOptionsPtrType GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs
+
+func GoogleCloudHealthcareV1beta1DeidentifyOptionsPtr(v *GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput {
+	return (*googleCloudHealthcareV1beta1DeidentifyOptionsPtrType)(v)
+}
+
+func (*googleCloudHealthcareV1beta1DeidentifyOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudHealthcareV1beta1DeidentifyOptions)(nil)).Elem()
+}
+
+func (i *googleCloudHealthcareV1beta1DeidentifyOptionsPtrType) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return i.ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudHealthcareV1beta1DeidentifyOptionsPtrType) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput)
+}
+
+// Specifies additional options to apply to the base `profile`.
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o.ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudHealthcareV1beta1DeidentifyOptions) *GoogleCloudHealthcareV1beta1DeidentifyOptions {
+		return &v
+	}).(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput)
+}
+
+// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) CharacterMaskConfig() CharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *CharacterMaskConfig {
+		return v.CharacterMaskConfig
+	}).(CharacterMaskConfigPtrOutput)
+}
+
+// Configure contextual de-id.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) ContextualDeid() ContextualDeidConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *ContextualDeidConfig { return v.ContextualDeid }).(ContextualDeidConfigPtrOutput)
+}
+
+// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) CryptoHashConfig() CryptoHashConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *CryptoHashConfig { return v.CryptoHashConfig }).(CryptoHashConfigPtrOutput)
+}
+
+// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) DateShiftConfig() DateShiftConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *DateShiftConfig { return v.DateShiftConfig }).(DateShiftConfigPtrOutput)
+}
+
+// Configure keeping extensions by default.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput) KeepExtensions() KeepExtensionsConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptions) *KeepExtensionsConfig { return v.KeepExtensions }).(KeepExtensionsConfigPtrOutput)
+}
+
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudHealthcareV1beta1DeidentifyOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) Elem() GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) GoogleCloudHealthcareV1beta1DeidentifyOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudHealthcareV1beta1DeidentifyOptions
+		return ret
+	}).(GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput)
+}
+
+// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) CharacterMaskConfig() CharacterMaskConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *CharacterMaskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CharacterMaskConfig
+	}).(CharacterMaskConfigPtrOutput)
+}
+
+// Configure contextual de-id.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) ContextualDeid() ContextualDeidConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *ContextualDeidConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ContextualDeid
+	}).(ContextualDeidConfigPtrOutput)
+}
+
+// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) CryptoHashConfig() CryptoHashConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *CryptoHashConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CryptoHashConfig
+	}).(CryptoHashConfigPtrOutput)
+}
+
+// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) DateShiftConfig() DateShiftConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *DateShiftConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DateShiftConfig
+	}).(DateShiftConfigPtrOutput)
+}
+
+// Configure keeping extensions by default.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput) KeepExtensions() KeepExtensionsConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1beta1DeidentifyOptions) *KeepExtensionsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KeepExtensions
+	}).(KeepExtensionsConfigPtrOutput)
+}
+
+// Specifies additional options to apply to the base `profile`.
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse struct {
+	// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+	CharacterMaskConfig CharacterMaskConfigResponse `pulumi:"characterMaskConfig"`
+	// Configure contextual de-id.
+	ContextualDeid ContextualDeidConfigResponse `pulumi:"contextualDeid"`
+	// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+	CryptoHashConfig CryptoHashConfigResponse `pulumi:"cryptoHashConfig"`
+	// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+	DateShiftConfig DateShiftConfigResponse `pulumi:"dateShiftConfig"`
+	// Configure keeping extensions by default.
+	KeepExtensions KeepExtensionsConfigResponse `pulumi:"keepExtensions"`
+}
+
+// Specifies additional options to apply to the base `profile`.
+type GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput() GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ToGoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput {
+	return o
+}
+
+// Character mask config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) CharacterMaskConfig() CharacterMaskConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) CharacterMaskConfigResponse {
+		return v.CharacterMaskConfig
+	}).(CharacterMaskConfigResponseOutput)
+}
+
+// Configure contextual de-id.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) ContextualDeid() ContextualDeidConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) ContextualDeidConfigResponse {
+		return v.ContextualDeid
+	}).(ContextualDeidConfigResponseOutput)
+}
+
+// Crypo hash config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) CryptoHashConfig() CryptoHashConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) CryptoHashConfigResponse {
+		return v.CryptoHashConfig
+	}).(CryptoHashConfigResponseOutput)
+}
+
+// Date shifting config for `CharacterMaskField` `FieldMetadatas`.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) DateShiftConfig() DateShiftConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) DateShiftConfigResponse {
+		return v.DateShiftConfig
+	}).(DateShiftConfigResponseOutput)
+}
+
+// Configure keeping extensions by default.
+func (o GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput) KeepExtensions() KeepExtensionsConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse) KeepExtensionsConfigResponse {
+		return v.KeepExtensions
+	}).(KeepExtensionsConfigResponseOutput)
 }
 
 // The BigQuery table where the server writes output.
@@ -5646,6 +8072,10 @@ func (o ImageAnnotationResponseOutput) FrameIndex() pulumi.IntOutput {
 
 // Specifies how to handle de-identification of image pixels.
 type ImageConfig struct {
+	// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+	AdditionalInfoTypes []string `pulumi:"additionalInfoTypes"`
+	// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
 	// Determines how to redact text from image.
 	TextRedactionMode *ImageConfigTextRedactionMode `pulumi:"textRedactionMode"`
 }
@@ -5663,6 +8093,10 @@ type ImageConfigInput interface {
 
 // Specifies how to handle de-identification of image pixels.
 type ImageConfigArgs struct {
+	// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+	AdditionalInfoTypes pulumi.StringArrayInput `pulumi:"additionalInfoTypes"`
+	// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+	ExcludeInfoTypes pulumi.StringArrayInput `pulumi:"excludeInfoTypes"`
 	// Determines how to redact text from image.
 	TextRedactionMode ImageConfigTextRedactionModePtrInput `pulumi:"textRedactionMode"`
 }
@@ -5745,6 +8179,16 @@ func (o ImageConfigOutput) ToImageConfigPtrOutputWithContext(ctx context.Context
 	}).(ImageConfigPtrOutput)
 }
 
+// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+func (o ImageConfigOutput) AdditionalInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageConfig) []string { return v.AdditionalInfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+func (o ImageConfigOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageConfig) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
+}
+
 // Determines how to redact text from image.
 func (o ImageConfigOutput) TextRedactionMode() ImageConfigTextRedactionModePtrOutput {
 	return o.ApplyT(func(v ImageConfig) *ImageConfigTextRedactionMode { return v.TextRedactionMode }).(ImageConfigTextRedactionModePtrOutput)
@@ -5774,6 +8218,26 @@ func (o ImageConfigPtrOutput) Elem() ImageConfigOutput {
 	}).(ImageConfigOutput)
 }
 
+// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+func (o ImageConfigPtrOutput) AdditionalInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfoTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+func (o ImageConfigPtrOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeInfoTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // Determines how to redact text from image.
 func (o ImageConfigPtrOutput) TextRedactionMode() ImageConfigTextRedactionModePtrOutput {
 	return o.ApplyT(func(v *ImageConfig) *ImageConfigTextRedactionMode {
@@ -5786,6 +8250,10 @@ func (o ImageConfigPtrOutput) TextRedactionMode() ImageConfigTextRedactionModePt
 
 // Specifies how to handle de-identification of image pixels.
 type ImageConfigResponse struct {
+	// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+	AdditionalInfoTypes []string `pulumi:"additionalInfoTypes"`
+	// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
 	// Determines how to redact text from image.
 	TextRedactionMode string `pulumi:"textRedactionMode"`
 }
@@ -5803,6 +8271,16 @@ func (o ImageConfigResponseOutput) ToImageConfigResponseOutput() ImageConfigResp
 
 func (o ImageConfigResponseOutput) ToImageConfigResponseOutputWithContext(ctx context.Context) ImageConfigResponseOutput {
 	return o
+}
+
+// Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
+func (o ImageConfigResponseOutput) AdditionalInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageConfigResponse) []string { return v.AdditionalInfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
+func (o ImageConfigResponseOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ImageConfigResponse) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
 }
 
 // Determines how to redact text from image.
@@ -6089,6 +8567,426 @@ func (o InfoTypeTransformationResponseArrayOutput) Index(i pulumi.IntInput) Info
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfoTypeTransformationResponse {
 		return vs[0].([]InfoTypeTransformationResponse)[vs[1].(int)]
 	}).(InfoTypeTransformationResponseOutput)
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+type KeepExtensionsConfig struct {
+}
+
+// KeepExtensionsConfigInput is an input type that accepts KeepExtensionsConfigArgs and KeepExtensionsConfigOutput values.
+// You can construct a concrete instance of `KeepExtensionsConfigInput` via:
+//
+//	KeepExtensionsConfigArgs{...}
+type KeepExtensionsConfigInput interface {
+	pulumi.Input
+
+	ToKeepExtensionsConfigOutput() KeepExtensionsConfigOutput
+	ToKeepExtensionsConfigOutputWithContext(context.Context) KeepExtensionsConfigOutput
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+type KeepExtensionsConfigArgs struct {
+}
+
+func (KeepExtensionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepExtensionsConfig)(nil)).Elem()
+}
+
+func (i KeepExtensionsConfigArgs) ToKeepExtensionsConfigOutput() KeepExtensionsConfigOutput {
+	return i.ToKeepExtensionsConfigOutputWithContext(context.Background())
+}
+
+func (i KeepExtensionsConfigArgs) ToKeepExtensionsConfigOutputWithContext(ctx context.Context) KeepExtensionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepExtensionsConfigOutput)
+}
+
+func (i KeepExtensionsConfigArgs) ToKeepExtensionsConfigPtrOutput() KeepExtensionsConfigPtrOutput {
+	return i.ToKeepExtensionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KeepExtensionsConfigArgs) ToKeepExtensionsConfigPtrOutputWithContext(ctx context.Context) KeepExtensionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepExtensionsConfigOutput).ToKeepExtensionsConfigPtrOutputWithContext(ctx)
+}
+
+// KeepExtensionsConfigPtrInput is an input type that accepts KeepExtensionsConfigArgs, KeepExtensionsConfigPtr and KeepExtensionsConfigPtrOutput values.
+// You can construct a concrete instance of `KeepExtensionsConfigPtrInput` via:
+//
+//	        KeepExtensionsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeepExtensionsConfigPtrInput interface {
+	pulumi.Input
+
+	ToKeepExtensionsConfigPtrOutput() KeepExtensionsConfigPtrOutput
+	ToKeepExtensionsConfigPtrOutputWithContext(context.Context) KeepExtensionsConfigPtrOutput
+}
+
+type keepExtensionsConfigPtrType KeepExtensionsConfigArgs
+
+func KeepExtensionsConfigPtr(v *KeepExtensionsConfigArgs) KeepExtensionsConfigPtrInput {
+	return (*keepExtensionsConfigPtrType)(v)
+}
+
+func (*keepExtensionsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepExtensionsConfig)(nil)).Elem()
+}
+
+func (i *keepExtensionsConfigPtrType) ToKeepExtensionsConfigPtrOutput() KeepExtensionsConfigPtrOutput {
+	return i.ToKeepExtensionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *keepExtensionsConfigPtrType) ToKeepExtensionsConfigPtrOutputWithContext(ctx context.Context) KeepExtensionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepExtensionsConfigPtrOutput)
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+type KeepExtensionsConfigOutput struct{ *pulumi.OutputState }
+
+func (KeepExtensionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepExtensionsConfig)(nil)).Elem()
+}
+
+func (o KeepExtensionsConfigOutput) ToKeepExtensionsConfigOutput() KeepExtensionsConfigOutput {
+	return o
+}
+
+func (o KeepExtensionsConfigOutput) ToKeepExtensionsConfigOutputWithContext(ctx context.Context) KeepExtensionsConfigOutput {
+	return o
+}
+
+func (o KeepExtensionsConfigOutput) ToKeepExtensionsConfigPtrOutput() KeepExtensionsConfigPtrOutput {
+	return o.ToKeepExtensionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KeepExtensionsConfigOutput) ToKeepExtensionsConfigPtrOutputWithContext(ctx context.Context) KeepExtensionsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeepExtensionsConfig) *KeepExtensionsConfig {
+		return &v
+	}).(KeepExtensionsConfigPtrOutput)
+}
+
+type KeepExtensionsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KeepExtensionsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepExtensionsConfig)(nil)).Elem()
+}
+
+func (o KeepExtensionsConfigPtrOutput) ToKeepExtensionsConfigPtrOutput() KeepExtensionsConfigPtrOutput {
+	return o
+}
+
+func (o KeepExtensionsConfigPtrOutput) ToKeepExtensionsConfigPtrOutputWithContext(ctx context.Context) KeepExtensionsConfigPtrOutput {
+	return o
+}
+
+func (o KeepExtensionsConfigPtrOutput) Elem() KeepExtensionsConfigOutput {
+	return o.ApplyT(func(v *KeepExtensionsConfig) KeepExtensionsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KeepExtensionsConfig
+		return ret
+	}).(KeepExtensionsConfigOutput)
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+type KeepExtensionsConfigResponse struct {
+}
+
+// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided, all extensions are preserved during de-identification by default. If unspecified, all extensions are removed during de-identification by default.
+type KeepExtensionsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (KeepExtensionsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepExtensionsConfigResponse)(nil)).Elem()
+}
+
+func (o KeepExtensionsConfigResponseOutput) ToKeepExtensionsConfigResponseOutput() KeepExtensionsConfigResponseOutput {
+	return o
+}
+
+func (o KeepExtensionsConfigResponseOutput) ToKeepExtensionsConfigResponseOutputWithContext(ctx context.Context) KeepExtensionsConfigResponseOutput {
+	return o
+}
+
+// Keep field unchanged.
+type KeepField struct {
+}
+
+// KeepFieldInput is an input type that accepts KeepFieldArgs and KeepFieldOutput values.
+// You can construct a concrete instance of `KeepFieldInput` via:
+//
+//	KeepFieldArgs{...}
+type KeepFieldInput interface {
+	pulumi.Input
+
+	ToKeepFieldOutput() KeepFieldOutput
+	ToKeepFieldOutputWithContext(context.Context) KeepFieldOutput
+}
+
+// Keep field unchanged.
+type KeepFieldArgs struct {
+}
+
+func (KeepFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepField)(nil)).Elem()
+}
+
+func (i KeepFieldArgs) ToKeepFieldOutput() KeepFieldOutput {
+	return i.ToKeepFieldOutputWithContext(context.Background())
+}
+
+func (i KeepFieldArgs) ToKeepFieldOutputWithContext(ctx context.Context) KeepFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepFieldOutput)
+}
+
+func (i KeepFieldArgs) ToKeepFieldPtrOutput() KeepFieldPtrOutput {
+	return i.ToKeepFieldPtrOutputWithContext(context.Background())
+}
+
+func (i KeepFieldArgs) ToKeepFieldPtrOutputWithContext(ctx context.Context) KeepFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepFieldOutput).ToKeepFieldPtrOutputWithContext(ctx)
+}
+
+// KeepFieldPtrInput is an input type that accepts KeepFieldArgs, KeepFieldPtr and KeepFieldPtrOutput values.
+// You can construct a concrete instance of `KeepFieldPtrInput` via:
+//
+//	        KeepFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeepFieldPtrInput interface {
+	pulumi.Input
+
+	ToKeepFieldPtrOutput() KeepFieldPtrOutput
+	ToKeepFieldPtrOutputWithContext(context.Context) KeepFieldPtrOutput
+}
+
+type keepFieldPtrType KeepFieldArgs
+
+func KeepFieldPtr(v *KeepFieldArgs) KeepFieldPtrInput {
+	return (*keepFieldPtrType)(v)
+}
+
+func (*keepFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepField)(nil)).Elem()
+}
+
+func (i *keepFieldPtrType) ToKeepFieldPtrOutput() KeepFieldPtrOutput {
+	return i.ToKeepFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *keepFieldPtrType) ToKeepFieldPtrOutputWithContext(ctx context.Context) KeepFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepFieldPtrOutput)
+}
+
+// Keep field unchanged.
+type KeepFieldOutput struct{ *pulumi.OutputState }
+
+func (KeepFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepField)(nil)).Elem()
+}
+
+func (o KeepFieldOutput) ToKeepFieldOutput() KeepFieldOutput {
+	return o
+}
+
+func (o KeepFieldOutput) ToKeepFieldOutputWithContext(ctx context.Context) KeepFieldOutput {
+	return o
+}
+
+func (o KeepFieldOutput) ToKeepFieldPtrOutput() KeepFieldPtrOutput {
+	return o.ToKeepFieldPtrOutputWithContext(context.Background())
+}
+
+func (o KeepFieldOutput) ToKeepFieldPtrOutputWithContext(ctx context.Context) KeepFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeepField) *KeepField {
+		return &v
+	}).(KeepFieldPtrOutput)
+}
+
+type KeepFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (KeepFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepField)(nil)).Elem()
+}
+
+func (o KeepFieldPtrOutput) ToKeepFieldPtrOutput() KeepFieldPtrOutput {
+	return o
+}
+
+func (o KeepFieldPtrOutput) ToKeepFieldPtrOutputWithContext(ctx context.Context) KeepFieldPtrOutput {
+	return o
+}
+
+func (o KeepFieldPtrOutput) Elem() KeepFieldOutput {
+	return o.ApplyT(func(v *KeepField) KeepField {
+		if v != nil {
+			return *v
+		}
+		var ret KeepField
+		return ret
+	}).(KeepFieldOutput)
+}
+
+// Keep field unchanged.
+type KeepFieldResponse struct {
+}
+
+// Keep field unchanged.
+type KeepFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (KeepFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepFieldResponse)(nil)).Elem()
+}
+
+func (o KeepFieldResponseOutput) ToKeepFieldResponseOutput() KeepFieldResponseOutput {
+	return o
+}
+
+func (o KeepFieldResponseOutput) ToKeepFieldResponseOutputWithContext(ctx context.Context) KeepFieldResponseOutput {
+	return o
+}
+
+// Keep tag unchanged.
+type KeepTag struct {
+}
+
+// KeepTagInput is an input type that accepts KeepTagArgs and KeepTagOutput values.
+// You can construct a concrete instance of `KeepTagInput` via:
+//
+//	KeepTagArgs{...}
+type KeepTagInput interface {
+	pulumi.Input
+
+	ToKeepTagOutput() KeepTagOutput
+	ToKeepTagOutputWithContext(context.Context) KeepTagOutput
+}
+
+// Keep tag unchanged.
+type KeepTagArgs struct {
+}
+
+func (KeepTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepTag)(nil)).Elem()
+}
+
+func (i KeepTagArgs) ToKeepTagOutput() KeepTagOutput {
+	return i.ToKeepTagOutputWithContext(context.Background())
+}
+
+func (i KeepTagArgs) ToKeepTagOutputWithContext(ctx context.Context) KeepTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepTagOutput)
+}
+
+func (i KeepTagArgs) ToKeepTagPtrOutput() KeepTagPtrOutput {
+	return i.ToKeepTagPtrOutputWithContext(context.Background())
+}
+
+func (i KeepTagArgs) ToKeepTagPtrOutputWithContext(ctx context.Context) KeepTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepTagOutput).ToKeepTagPtrOutputWithContext(ctx)
+}
+
+// KeepTagPtrInput is an input type that accepts KeepTagArgs, KeepTagPtr and KeepTagPtrOutput values.
+// You can construct a concrete instance of `KeepTagPtrInput` via:
+//
+//	        KeepTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeepTagPtrInput interface {
+	pulumi.Input
+
+	ToKeepTagPtrOutput() KeepTagPtrOutput
+	ToKeepTagPtrOutputWithContext(context.Context) KeepTagPtrOutput
+}
+
+type keepTagPtrType KeepTagArgs
+
+func KeepTagPtr(v *KeepTagArgs) KeepTagPtrInput {
+	return (*keepTagPtrType)(v)
+}
+
+func (*keepTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepTag)(nil)).Elem()
+}
+
+func (i *keepTagPtrType) ToKeepTagPtrOutput() KeepTagPtrOutput {
+	return i.ToKeepTagPtrOutputWithContext(context.Background())
+}
+
+func (i *keepTagPtrType) ToKeepTagPtrOutputWithContext(ctx context.Context) KeepTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeepTagPtrOutput)
+}
+
+// Keep tag unchanged.
+type KeepTagOutput struct{ *pulumi.OutputState }
+
+func (KeepTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepTag)(nil)).Elem()
+}
+
+func (o KeepTagOutput) ToKeepTagOutput() KeepTagOutput {
+	return o
+}
+
+func (o KeepTagOutput) ToKeepTagOutputWithContext(ctx context.Context) KeepTagOutput {
+	return o
+}
+
+func (o KeepTagOutput) ToKeepTagPtrOutput() KeepTagPtrOutput {
+	return o.ToKeepTagPtrOutputWithContext(context.Background())
+}
+
+func (o KeepTagOutput) ToKeepTagPtrOutputWithContext(ctx context.Context) KeepTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeepTag) *KeepTag {
+		return &v
+	}).(KeepTagPtrOutput)
+}
+
+type KeepTagPtrOutput struct{ *pulumi.OutputState }
+
+func (KeepTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeepTag)(nil)).Elem()
+}
+
+func (o KeepTagPtrOutput) ToKeepTagPtrOutput() KeepTagPtrOutput {
+	return o
+}
+
+func (o KeepTagPtrOutput) ToKeepTagPtrOutputWithContext(ctx context.Context) KeepTagPtrOutput {
+	return o
+}
+
+func (o KeepTagPtrOutput) Elem() KeepTagOutput {
+	return o.ApplyT(func(v *KeepTag) KeepTag {
+		if v != nil {
+			return *v
+		}
+		var ret KeepTag
+		return ret
+	}).(KeepTagOutput)
+}
+
+// Keep tag unchanged.
+type KeepTagResponse struct {
+}
+
+// Keep tag unchanged.
+type KeepTagResponseOutput struct{ *pulumi.OutputState }
+
+func (KeepTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeepTagResponse)(nil)).Elem()
+}
+
+func (o KeepTagResponseOutput) ToKeepTagResponseOutput() KeepTagResponseOutput {
+	return o
+}
+
+func (o KeepTagResponseOutput) ToKeepTagResponseOutputWithContext(ctx context.Context) KeepTagResponseOutput {
+	return o
 }
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
@@ -6473,6 +9371,224 @@ func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
 // Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
 func (o NotificationConfigResponseOutput) SendForBulkImport() pulumi.BoolOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) bool { return v.SendForBulkImport }).(pulumi.BoolOutput)
+}
+
+// Specifies additional options to apply to the base profile.
+type Options struct {
+	// Set Clean Descriptors Option.
+	CleanDescriptors *CleanDescriptorsOption `pulumi:"cleanDescriptors"`
+	// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+	CleanImage *ImageConfig `pulumi:"cleanImage"`
+	// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+	PrimaryIds *OptionsPrimaryIds `pulumi:"primaryIds"`
+}
+
+// OptionsInput is an input type that accepts OptionsArgs and OptionsOutput values.
+// You can construct a concrete instance of `OptionsInput` via:
+//
+//	OptionsArgs{...}
+type OptionsInput interface {
+	pulumi.Input
+
+	ToOptionsOutput() OptionsOutput
+	ToOptionsOutputWithContext(context.Context) OptionsOutput
+}
+
+// Specifies additional options to apply to the base profile.
+type OptionsArgs struct {
+	// Set Clean Descriptors Option.
+	CleanDescriptors CleanDescriptorsOptionPtrInput `pulumi:"cleanDescriptors"`
+	// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+	CleanImage ImageConfigPtrInput `pulumi:"cleanImage"`
+	// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+	PrimaryIds OptionsPrimaryIdsPtrInput `pulumi:"primaryIds"`
+}
+
+func (OptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Options)(nil)).Elem()
+}
+
+func (i OptionsArgs) ToOptionsOutput() OptionsOutput {
+	return i.ToOptionsOutputWithContext(context.Background())
+}
+
+func (i OptionsArgs) ToOptionsOutputWithContext(ctx context.Context) OptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsOutput)
+}
+
+func (i OptionsArgs) ToOptionsPtrOutput() OptionsPtrOutput {
+	return i.ToOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i OptionsArgs) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsOutput).ToOptionsPtrOutputWithContext(ctx)
+}
+
+// OptionsPtrInput is an input type that accepts OptionsArgs, OptionsPtr and OptionsPtrOutput values.
+// You can construct a concrete instance of `OptionsPtrInput` via:
+//
+//	        OptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OptionsPtrInput interface {
+	pulumi.Input
+
+	ToOptionsPtrOutput() OptionsPtrOutput
+	ToOptionsPtrOutputWithContext(context.Context) OptionsPtrOutput
+}
+
+type optionsPtrType OptionsArgs
+
+func OptionsPtr(v *OptionsArgs) OptionsPtrInput {
+	return (*optionsPtrType)(v)
+}
+
+func (*optionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Options)(nil)).Elem()
+}
+
+func (i *optionsPtrType) ToOptionsPtrOutput() OptionsPtrOutput {
+	return i.ToOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *optionsPtrType) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsPtrOutput)
+}
+
+// Specifies additional options to apply to the base profile.
+type OptionsOutput struct{ *pulumi.OutputState }
+
+func (OptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Options)(nil)).Elem()
+}
+
+func (o OptionsOutput) ToOptionsOutput() OptionsOutput {
+	return o
+}
+
+func (o OptionsOutput) ToOptionsOutputWithContext(ctx context.Context) OptionsOutput {
+	return o
+}
+
+func (o OptionsOutput) ToOptionsPtrOutput() OptionsPtrOutput {
+	return o.ToOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o OptionsOutput) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Options) *Options {
+		return &v
+	}).(OptionsPtrOutput)
+}
+
+// Set Clean Descriptors Option.
+func (o OptionsOutput) CleanDescriptors() CleanDescriptorsOptionPtrOutput {
+	return o.ApplyT(func(v Options) *CleanDescriptorsOption { return v.CleanDescriptors }).(CleanDescriptorsOptionPtrOutput)
+}
+
+// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+func (o OptionsOutput) CleanImage() ImageConfigPtrOutput {
+	return o.ApplyT(func(v Options) *ImageConfig { return v.CleanImage }).(ImageConfigPtrOutput)
+}
+
+// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+func (o OptionsOutput) PrimaryIds() OptionsPrimaryIdsPtrOutput {
+	return o.ApplyT(func(v Options) *OptionsPrimaryIds { return v.PrimaryIds }).(OptionsPrimaryIdsPtrOutput)
+}
+
+type OptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (OptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Options)(nil)).Elem()
+}
+
+func (o OptionsPtrOutput) ToOptionsPtrOutput() OptionsPtrOutput {
+	return o
+}
+
+func (o OptionsPtrOutput) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsPtrOutput {
+	return o
+}
+
+func (o OptionsPtrOutput) Elem() OptionsOutput {
+	return o.ApplyT(func(v *Options) Options {
+		if v != nil {
+			return *v
+		}
+		var ret Options
+		return ret
+	}).(OptionsOutput)
+}
+
+// Set Clean Descriptors Option.
+func (o OptionsPtrOutput) CleanDescriptors() CleanDescriptorsOptionPtrOutput {
+	return o.ApplyT(func(v *Options) *CleanDescriptorsOption {
+		if v == nil {
+			return nil
+		}
+		return v.CleanDescriptors
+	}).(CleanDescriptorsOptionPtrOutput)
+}
+
+// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+func (o OptionsPtrOutput) CleanImage() ImageConfigPtrOutput {
+	return o.ApplyT(func(v *Options) *ImageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CleanImage
+	}).(ImageConfigPtrOutput)
+}
+
+// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+func (o OptionsPtrOutput) PrimaryIds() OptionsPrimaryIdsPtrOutput {
+	return o.ApplyT(func(v *Options) *OptionsPrimaryIds {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIds
+	}).(OptionsPrimaryIdsPtrOutput)
+}
+
+// Specifies additional options to apply to the base profile.
+type OptionsResponse struct {
+	// Set Clean Descriptors Option.
+	CleanDescriptors CleanDescriptorsOptionResponse `pulumi:"cleanDescriptors"`
+	// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+	CleanImage ImageConfigResponse `pulumi:"cleanImage"`
+	// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+	PrimaryIds string `pulumi:"primaryIds"`
+}
+
+// Specifies additional options to apply to the base profile.
+type OptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (OptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionsResponse)(nil)).Elem()
+}
+
+func (o OptionsResponseOutput) ToOptionsResponseOutput() OptionsResponseOutput {
+	return o
+}
+
+func (o OptionsResponseOutput) ToOptionsResponseOutputWithContext(ctx context.Context) OptionsResponseOutput {
+	return o
+}
+
+// Set Clean Descriptors Option.
+func (o OptionsResponseOutput) CleanDescriptors() CleanDescriptorsOptionResponseOutput {
+	return o.ApplyT(func(v OptionsResponse) CleanDescriptorsOptionResponse { return v.CleanDescriptors }).(CleanDescriptorsOptionResponseOutput)
+}
+
+// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
+func (o OptionsResponseOutput) CleanImage() ImageConfigResponseOutput {
+	return o.ApplyT(func(v OptionsResponse) ImageConfigResponse { return v.CleanImage }).(ImageConfigResponseOutput)
+}
+
+// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+func (o OptionsResponseOutput) PrimaryIds() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionsResponse) string { return v.PrimaryIds }).(pulumi.StringOutput)
 }
 
 // The content of an HL7v2 message in a structured format.
@@ -6905,6 +10021,146 @@ func (o PatientIdResponseArrayOutput) Index(i pulumi.IntInput) PatientIdResponse
 	}).(PatientIdResponseOutput)
 }
 
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+type RecurseTag struct {
+}
+
+// RecurseTagInput is an input type that accepts RecurseTagArgs and RecurseTagOutput values.
+// You can construct a concrete instance of `RecurseTagInput` via:
+//
+//	RecurseTagArgs{...}
+type RecurseTagInput interface {
+	pulumi.Input
+
+	ToRecurseTagOutput() RecurseTagOutput
+	ToRecurseTagOutputWithContext(context.Context) RecurseTagOutput
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+type RecurseTagArgs struct {
+}
+
+func (RecurseTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurseTag)(nil)).Elem()
+}
+
+func (i RecurseTagArgs) ToRecurseTagOutput() RecurseTagOutput {
+	return i.ToRecurseTagOutputWithContext(context.Background())
+}
+
+func (i RecurseTagArgs) ToRecurseTagOutputWithContext(ctx context.Context) RecurseTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurseTagOutput)
+}
+
+func (i RecurseTagArgs) ToRecurseTagPtrOutput() RecurseTagPtrOutput {
+	return i.ToRecurseTagPtrOutputWithContext(context.Background())
+}
+
+func (i RecurseTagArgs) ToRecurseTagPtrOutputWithContext(ctx context.Context) RecurseTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurseTagOutput).ToRecurseTagPtrOutputWithContext(ctx)
+}
+
+// RecurseTagPtrInput is an input type that accepts RecurseTagArgs, RecurseTagPtr and RecurseTagPtrOutput values.
+// You can construct a concrete instance of `RecurseTagPtrInput` via:
+//
+//	        RecurseTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecurseTagPtrInput interface {
+	pulumi.Input
+
+	ToRecurseTagPtrOutput() RecurseTagPtrOutput
+	ToRecurseTagPtrOutputWithContext(context.Context) RecurseTagPtrOutput
+}
+
+type recurseTagPtrType RecurseTagArgs
+
+func RecurseTagPtr(v *RecurseTagArgs) RecurseTagPtrInput {
+	return (*recurseTagPtrType)(v)
+}
+
+func (*recurseTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecurseTag)(nil)).Elem()
+}
+
+func (i *recurseTagPtrType) ToRecurseTagPtrOutput() RecurseTagPtrOutput {
+	return i.ToRecurseTagPtrOutputWithContext(context.Background())
+}
+
+func (i *recurseTagPtrType) ToRecurseTagPtrOutputWithContext(ctx context.Context) RecurseTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurseTagPtrOutput)
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+type RecurseTagOutput struct{ *pulumi.OutputState }
+
+func (RecurseTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurseTag)(nil)).Elem()
+}
+
+func (o RecurseTagOutput) ToRecurseTagOutput() RecurseTagOutput {
+	return o
+}
+
+func (o RecurseTagOutput) ToRecurseTagOutputWithContext(ctx context.Context) RecurseTagOutput {
+	return o
+}
+
+func (o RecurseTagOutput) ToRecurseTagPtrOutput() RecurseTagPtrOutput {
+	return o.ToRecurseTagPtrOutputWithContext(context.Background())
+}
+
+func (o RecurseTagOutput) ToRecurseTagPtrOutputWithContext(ctx context.Context) RecurseTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurseTag) *RecurseTag {
+		return &v
+	}).(RecurseTagPtrOutput)
+}
+
+type RecurseTagPtrOutput struct{ *pulumi.OutputState }
+
+func (RecurseTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecurseTag)(nil)).Elem()
+}
+
+func (o RecurseTagPtrOutput) ToRecurseTagPtrOutput() RecurseTagPtrOutput {
+	return o
+}
+
+func (o RecurseTagPtrOutput) ToRecurseTagPtrOutputWithContext(ctx context.Context) RecurseTagPtrOutput {
+	return o
+}
+
+func (o RecurseTagPtrOutput) Elem() RecurseTagOutput {
+	return o.ApplyT(func(v *RecurseTag) RecurseTag {
+		if v != nil {
+			return *v
+		}
+		var ret RecurseTag
+		return ret
+	}).(RecurseTagOutput)
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+type RecurseTagResponse struct {
+}
+
+// Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): SQ
+type RecurseTagResponseOutput struct{ *pulumi.OutputState }
+
+func (RecurseTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurseTagResponse)(nil)).Elem()
+}
+
+func (o RecurseTagResponseOutput) ToRecurseTagResponseOutput() RecurseTagResponseOutput {
+	return o
+}
+
+func (o RecurseTagResponseOutput) ToRecurseTagResponseOutputWithContext(ctx context.Context) RecurseTagResponseOutput {
+	return o
+}
+
 // Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
 type RedactConfig struct {
 }
@@ -7045,6 +10301,426 @@ func (o RedactConfigResponseOutput) ToRedactConfigResponseOutputWithContext(ctx 
 	return o
 }
 
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+type RegenUidTag struct {
+}
+
+// RegenUidTagInput is an input type that accepts RegenUidTagArgs and RegenUidTagOutput values.
+// You can construct a concrete instance of `RegenUidTagInput` via:
+//
+//	RegenUidTagArgs{...}
+type RegenUidTagInput interface {
+	pulumi.Input
+
+	ToRegenUidTagOutput() RegenUidTagOutput
+	ToRegenUidTagOutputWithContext(context.Context) RegenUidTagOutput
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+type RegenUidTagArgs struct {
+}
+
+func (RegenUidTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegenUidTag)(nil)).Elem()
+}
+
+func (i RegenUidTagArgs) ToRegenUidTagOutput() RegenUidTagOutput {
+	return i.ToRegenUidTagOutputWithContext(context.Background())
+}
+
+func (i RegenUidTagArgs) ToRegenUidTagOutputWithContext(ctx context.Context) RegenUidTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegenUidTagOutput)
+}
+
+func (i RegenUidTagArgs) ToRegenUidTagPtrOutput() RegenUidTagPtrOutput {
+	return i.ToRegenUidTagPtrOutputWithContext(context.Background())
+}
+
+func (i RegenUidTagArgs) ToRegenUidTagPtrOutputWithContext(ctx context.Context) RegenUidTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegenUidTagOutput).ToRegenUidTagPtrOutputWithContext(ctx)
+}
+
+// RegenUidTagPtrInput is an input type that accepts RegenUidTagArgs, RegenUidTagPtr and RegenUidTagPtrOutput values.
+// You can construct a concrete instance of `RegenUidTagPtrInput` via:
+//
+//	        RegenUidTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegenUidTagPtrInput interface {
+	pulumi.Input
+
+	ToRegenUidTagPtrOutput() RegenUidTagPtrOutput
+	ToRegenUidTagPtrOutputWithContext(context.Context) RegenUidTagPtrOutput
+}
+
+type regenUidTagPtrType RegenUidTagArgs
+
+func RegenUidTagPtr(v *RegenUidTagArgs) RegenUidTagPtrInput {
+	return (*regenUidTagPtrType)(v)
+}
+
+func (*regenUidTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegenUidTag)(nil)).Elem()
+}
+
+func (i *regenUidTagPtrType) ToRegenUidTagPtrOutput() RegenUidTagPtrOutput {
+	return i.ToRegenUidTagPtrOutputWithContext(context.Background())
+}
+
+func (i *regenUidTagPtrType) ToRegenUidTagPtrOutputWithContext(ctx context.Context) RegenUidTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegenUidTagPtrOutput)
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+type RegenUidTagOutput struct{ *pulumi.OutputState }
+
+func (RegenUidTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegenUidTag)(nil)).Elem()
+}
+
+func (o RegenUidTagOutput) ToRegenUidTagOutput() RegenUidTagOutput {
+	return o
+}
+
+func (o RegenUidTagOutput) ToRegenUidTagOutputWithContext(ctx context.Context) RegenUidTagOutput {
+	return o
+}
+
+func (o RegenUidTagOutput) ToRegenUidTagPtrOutput() RegenUidTagPtrOutput {
+	return o.ToRegenUidTagPtrOutputWithContext(context.Background())
+}
+
+func (o RegenUidTagOutput) ToRegenUidTagPtrOutputWithContext(ctx context.Context) RegenUidTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegenUidTag) *RegenUidTag {
+		return &v
+	}).(RegenUidTagPtrOutput)
+}
+
+type RegenUidTagPtrOutput struct{ *pulumi.OutputState }
+
+func (RegenUidTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegenUidTag)(nil)).Elem()
+}
+
+func (o RegenUidTagPtrOutput) ToRegenUidTagPtrOutput() RegenUidTagPtrOutput {
+	return o
+}
+
+func (o RegenUidTagPtrOutput) ToRegenUidTagPtrOutputWithContext(ctx context.Context) RegenUidTagPtrOutput {
+	return o
+}
+
+func (o RegenUidTagPtrOutput) Elem() RegenUidTagOutput {
+	return o.ApplyT(func(v *RegenUidTag) RegenUidTag {
+		if v != nil {
+			return *v
+		}
+		var ret RegenUidTag
+		return ret
+	}).(RegenUidTagOutput)
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+type RegenUidTagResponse struct {
+}
+
+// Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
+type RegenUidTagResponseOutput struct{ *pulumi.OutputState }
+
+func (RegenUidTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegenUidTagResponse)(nil)).Elem()
+}
+
+func (o RegenUidTagResponseOutput) ToRegenUidTagResponseOutput() RegenUidTagResponseOutput {
+	return o
+}
+
+func (o RegenUidTagResponseOutput) ToRegenUidTagResponseOutputWithContext(ctx context.Context) RegenUidTagResponseOutput {
+	return o
+}
+
+// Remove field.
+type RemoveField struct {
+}
+
+// RemoveFieldInput is an input type that accepts RemoveFieldArgs and RemoveFieldOutput values.
+// You can construct a concrete instance of `RemoveFieldInput` via:
+//
+//	RemoveFieldArgs{...}
+type RemoveFieldInput interface {
+	pulumi.Input
+
+	ToRemoveFieldOutput() RemoveFieldOutput
+	ToRemoveFieldOutputWithContext(context.Context) RemoveFieldOutput
+}
+
+// Remove field.
+type RemoveFieldArgs struct {
+}
+
+func (RemoveFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveField)(nil)).Elem()
+}
+
+func (i RemoveFieldArgs) ToRemoveFieldOutput() RemoveFieldOutput {
+	return i.ToRemoveFieldOutputWithContext(context.Background())
+}
+
+func (i RemoveFieldArgs) ToRemoveFieldOutputWithContext(ctx context.Context) RemoveFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveFieldOutput)
+}
+
+func (i RemoveFieldArgs) ToRemoveFieldPtrOutput() RemoveFieldPtrOutput {
+	return i.ToRemoveFieldPtrOutputWithContext(context.Background())
+}
+
+func (i RemoveFieldArgs) ToRemoveFieldPtrOutputWithContext(ctx context.Context) RemoveFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveFieldOutput).ToRemoveFieldPtrOutputWithContext(ctx)
+}
+
+// RemoveFieldPtrInput is an input type that accepts RemoveFieldArgs, RemoveFieldPtr and RemoveFieldPtrOutput values.
+// You can construct a concrete instance of `RemoveFieldPtrInput` via:
+//
+//	        RemoveFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemoveFieldPtrInput interface {
+	pulumi.Input
+
+	ToRemoveFieldPtrOutput() RemoveFieldPtrOutput
+	ToRemoveFieldPtrOutputWithContext(context.Context) RemoveFieldPtrOutput
+}
+
+type removeFieldPtrType RemoveFieldArgs
+
+func RemoveFieldPtr(v *RemoveFieldArgs) RemoveFieldPtrInput {
+	return (*removeFieldPtrType)(v)
+}
+
+func (*removeFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoveField)(nil)).Elem()
+}
+
+func (i *removeFieldPtrType) ToRemoveFieldPtrOutput() RemoveFieldPtrOutput {
+	return i.ToRemoveFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *removeFieldPtrType) ToRemoveFieldPtrOutputWithContext(ctx context.Context) RemoveFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveFieldPtrOutput)
+}
+
+// Remove field.
+type RemoveFieldOutput struct{ *pulumi.OutputState }
+
+func (RemoveFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveField)(nil)).Elem()
+}
+
+func (o RemoveFieldOutput) ToRemoveFieldOutput() RemoveFieldOutput {
+	return o
+}
+
+func (o RemoveFieldOutput) ToRemoveFieldOutputWithContext(ctx context.Context) RemoveFieldOutput {
+	return o
+}
+
+func (o RemoveFieldOutput) ToRemoveFieldPtrOutput() RemoveFieldPtrOutput {
+	return o.ToRemoveFieldPtrOutputWithContext(context.Background())
+}
+
+func (o RemoveFieldOutput) ToRemoveFieldPtrOutputWithContext(ctx context.Context) RemoveFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoveField) *RemoveField {
+		return &v
+	}).(RemoveFieldPtrOutput)
+}
+
+type RemoveFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (RemoveFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoveField)(nil)).Elem()
+}
+
+func (o RemoveFieldPtrOutput) ToRemoveFieldPtrOutput() RemoveFieldPtrOutput {
+	return o
+}
+
+func (o RemoveFieldPtrOutput) ToRemoveFieldPtrOutputWithContext(ctx context.Context) RemoveFieldPtrOutput {
+	return o
+}
+
+func (o RemoveFieldPtrOutput) Elem() RemoveFieldOutput {
+	return o.ApplyT(func(v *RemoveField) RemoveField {
+		if v != nil {
+			return *v
+		}
+		var ret RemoveField
+		return ret
+	}).(RemoveFieldOutput)
+}
+
+// Remove field.
+type RemoveFieldResponse struct {
+}
+
+// Remove field.
+type RemoveFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoveFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveFieldResponse)(nil)).Elem()
+}
+
+func (o RemoveFieldResponseOutput) ToRemoveFieldResponseOutput() RemoveFieldResponseOutput {
+	return o
+}
+
+func (o RemoveFieldResponseOutput) ToRemoveFieldResponseOutputWithContext(ctx context.Context) RemoveFieldResponseOutput {
+	return o
+}
+
+// Replace with empty tag.
+type RemoveTag struct {
+}
+
+// RemoveTagInput is an input type that accepts RemoveTagArgs and RemoveTagOutput values.
+// You can construct a concrete instance of `RemoveTagInput` via:
+//
+//	RemoveTagArgs{...}
+type RemoveTagInput interface {
+	pulumi.Input
+
+	ToRemoveTagOutput() RemoveTagOutput
+	ToRemoveTagOutputWithContext(context.Context) RemoveTagOutput
+}
+
+// Replace with empty tag.
+type RemoveTagArgs struct {
+}
+
+func (RemoveTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveTag)(nil)).Elem()
+}
+
+func (i RemoveTagArgs) ToRemoveTagOutput() RemoveTagOutput {
+	return i.ToRemoveTagOutputWithContext(context.Background())
+}
+
+func (i RemoveTagArgs) ToRemoveTagOutputWithContext(ctx context.Context) RemoveTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveTagOutput)
+}
+
+func (i RemoveTagArgs) ToRemoveTagPtrOutput() RemoveTagPtrOutput {
+	return i.ToRemoveTagPtrOutputWithContext(context.Background())
+}
+
+func (i RemoveTagArgs) ToRemoveTagPtrOutputWithContext(ctx context.Context) RemoveTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveTagOutput).ToRemoveTagPtrOutputWithContext(ctx)
+}
+
+// RemoveTagPtrInput is an input type that accepts RemoveTagArgs, RemoveTagPtr and RemoveTagPtrOutput values.
+// You can construct a concrete instance of `RemoveTagPtrInput` via:
+//
+//	        RemoveTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemoveTagPtrInput interface {
+	pulumi.Input
+
+	ToRemoveTagPtrOutput() RemoveTagPtrOutput
+	ToRemoveTagPtrOutputWithContext(context.Context) RemoveTagPtrOutput
+}
+
+type removeTagPtrType RemoveTagArgs
+
+func RemoveTagPtr(v *RemoveTagArgs) RemoveTagPtrInput {
+	return (*removeTagPtrType)(v)
+}
+
+func (*removeTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoveTag)(nil)).Elem()
+}
+
+func (i *removeTagPtrType) ToRemoveTagPtrOutput() RemoveTagPtrOutput {
+	return i.ToRemoveTagPtrOutputWithContext(context.Background())
+}
+
+func (i *removeTagPtrType) ToRemoveTagPtrOutputWithContext(ctx context.Context) RemoveTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveTagPtrOutput)
+}
+
+// Replace with empty tag.
+type RemoveTagOutput struct{ *pulumi.OutputState }
+
+func (RemoveTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveTag)(nil)).Elem()
+}
+
+func (o RemoveTagOutput) ToRemoveTagOutput() RemoveTagOutput {
+	return o
+}
+
+func (o RemoveTagOutput) ToRemoveTagOutputWithContext(ctx context.Context) RemoveTagOutput {
+	return o
+}
+
+func (o RemoveTagOutput) ToRemoveTagPtrOutput() RemoveTagPtrOutput {
+	return o.ToRemoveTagPtrOutputWithContext(context.Background())
+}
+
+func (o RemoveTagOutput) ToRemoveTagPtrOutputWithContext(ctx context.Context) RemoveTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoveTag) *RemoveTag {
+		return &v
+	}).(RemoveTagPtrOutput)
+}
+
+type RemoveTagPtrOutput struct{ *pulumi.OutputState }
+
+func (RemoveTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoveTag)(nil)).Elem()
+}
+
+func (o RemoveTagPtrOutput) ToRemoveTagPtrOutput() RemoveTagPtrOutput {
+	return o
+}
+
+func (o RemoveTagPtrOutput) ToRemoveTagPtrOutputWithContext(ctx context.Context) RemoveTagPtrOutput {
+	return o
+}
+
+func (o RemoveTagPtrOutput) Elem() RemoveTagOutput {
+	return o.ApplyT(func(v *RemoveTag) RemoveTag {
+		if v != nil {
+			return *v
+		}
+		var ret RemoveTag
+		return ret
+	}).(RemoveTagOutput)
+}
+
+// Replace with empty tag.
+type RemoveTagResponse struct {
+}
+
+// Replace with empty tag.
+type RemoveTagResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoveTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveTagResponse)(nil)).Elem()
+}
+
+func (o RemoveTagResponseOutput) ToRemoveTagResponseOutput() RemoveTagResponseOutput {
+	return o
+}
+
+func (o RemoveTagResponseOutput) ToRemoveTagResponseOutputWithContext(ctx context.Context) RemoveTagResponseOutput {
+	return o
+}
+
 // When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
 type ReplaceWithInfoTypeConfig struct {
 }
@@ -7182,6 +10858,146 @@ func (o ReplaceWithInfoTypeConfigResponseOutput) ToReplaceWithInfoTypeConfigResp
 }
 
 func (o ReplaceWithInfoTypeConfigResponseOutput) ToReplaceWithInfoTypeConfigResponseOutputWithContext(ctx context.Context) ReplaceWithInfoTypeConfigResponseOutput {
+	return o
+}
+
+// Reset tag to a placeholder value.
+type ResetTag struct {
+}
+
+// ResetTagInput is an input type that accepts ResetTagArgs and ResetTagOutput values.
+// You can construct a concrete instance of `ResetTagInput` via:
+//
+//	ResetTagArgs{...}
+type ResetTagInput interface {
+	pulumi.Input
+
+	ToResetTagOutput() ResetTagOutput
+	ToResetTagOutputWithContext(context.Context) ResetTagOutput
+}
+
+// Reset tag to a placeholder value.
+type ResetTagArgs struct {
+}
+
+func (ResetTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResetTag)(nil)).Elem()
+}
+
+func (i ResetTagArgs) ToResetTagOutput() ResetTagOutput {
+	return i.ToResetTagOutputWithContext(context.Background())
+}
+
+func (i ResetTagArgs) ToResetTagOutputWithContext(ctx context.Context) ResetTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResetTagOutput)
+}
+
+func (i ResetTagArgs) ToResetTagPtrOutput() ResetTagPtrOutput {
+	return i.ToResetTagPtrOutputWithContext(context.Background())
+}
+
+func (i ResetTagArgs) ToResetTagPtrOutputWithContext(ctx context.Context) ResetTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResetTagOutput).ToResetTagPtrOutputWithContext(ctx)
+}
+
+// ResetTagPtrInput is an input type that accepts ResetTagArgs, ResetTagPtr and ResetTagPtrOutput values.
+// You can construct a concrete instance of `ResetTagPtrInput` via:
+//
+//	        ResetTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResetTagPtrInput interface {
+	pulumi.Input
+
+	ToResetTagPtrOutput() ResetTagPtrOutput
+	ToResetTagPtrOutputWithContext(context.Context) ResetTagPtrOutput
+}
+
+type resetTagPtrType ResetTagArgs
+
+func ResetTagPtr(v *ResetTagArgs) ResetTagPtrInput {
+	return (*resetTagPtrType)(v)
+}
+
+func (*resetTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResetTag)(nil)).Elem()
+}
+
+func (i *resetTagPtrType) ToResetTagPtrOutput() ResetTagPtrOutput {
+	return i.ToResetTagPtrOutputWithContext(context.Background())
+}
+
+func (i *resetTagPtrType) ToResetTagPtrOutputWithContext(ctx context.Context) ResetTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResetTagPtrOutput)
+}
+
+// Reset tag to a placeholder value.
+type ResetTagOutput struct{ *pulumi.OutputState }
+
+func (ResetTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResetTag)(nil)).Elem()
+}
+
+func (o ResetTagOutput) ToResetTagOutput() ResetTagOutput {
+	return o
+}
+
+func (o ResetTagOutput) ToResetTagOutputWithContext(ctx context.Context) ResetTagOutput {
+	return o
+}
+
+func (o ResetTagOutput) ToResetTagPtrOutput() ResetTagPtrOutput {
+	return o.ToResetTagPtrOutputWithContext(context.Background())
+}
+
+func (o ResetTagOutput) ToResetTagPtrOutputWithContext(ctx context.Context) ResetTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResetTag) *ResetTag {
+		return &v
+	}).(ResetTagPtrOutput)
+}
+
+type ResetTagPtrOutput struct{ *pulumi.OutputState }
+
+func (ResetTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResetTag)(nil)).Elem()
+}
+
+func (o ResetTagPtrOutput) ToResetTagPtrOutput() ResetTagPtrOutput {
+	return o
+}
+
+func (o ResetTagPtrOutput) ToResetTagPtrOutputWithContext(ctx context.Context) ResetTagPtrOutput {
+	return o
+}
+
+func (o ResetTagPtrOutput) Elem() ResetTagOutput {
+	return o.ApplyT(func(v *ResetTag) ResetTag {
+		if v != nil {
+			return *v
+		}
+		var ret ResetTag
+		return ret
+	}).(ResetTagOutput)
+}
+
+// Reset tag to a placeholder value.
+type ResetTagResponse struct {
+}
+
+// Reset tag to a placeholder value.
+type ResetTagResponseOutput struct{ *pulumi.OutputState }
+
+func (ResetTagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResetTagResponse)(nil)).Elem()
+}
+
+func (o ResetTagResponseOutput) ToResetTagResponseOutput() ResetTagResponseOutput {
+	return o
+}
+
+func (o ResetTagResponseOutput) ToResetTagResponseOutputWithContext(ctx context.Context) ResetTagResponseOutput {
 	return o
 }
 
@@ -9155,6 +12971,12 @@ func (o TagFilterListResponseOutput) Tags() pulumi.StringArrayOutput {
 
 // Configures how to transform sensitive text `InfoTypes`.
 type TextConfig struct {
+	// Additional transformations to apply to the detected data, overriding `profile`.
+	AdditionalTransformations []InfoTypeTransformation `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `profile`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
+	// Base profile type for text transformation.
+	ProfileType *TextConfigProfileType `pulumi:"profileType"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -9174,6 +12996,12 @@ type TextConfigInput interface {
 
 // Configures how to transform sensitive text `InfoTypes`.
 type TextConfigArgs struct {
+	// Additional transformations to apply to the detected data, overriding `profile`.
+	AdditionalTransformations InfoTypeTransformationArrayInput `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `profile`.
+	ExcludeInfoTypes pulumi.StringArrayInput `pulumi:"excludeInfoTypes"`
+	// Base profile type for text transformation.
+	ProfileType TextConfigProfileTypePtrInput `pulumi:"profileType"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -9258,6 +13086,21 @@ func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) 
 	}).(TextConfigPtrOutput)
 }
 
+// Additional transformations to apply to the detected data, overriding `profile`.
+func (o TextConfigOutput) AdditionalTransformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v TextConfig) []InfoTypeTransformation { return v.AdditionalTransformations }).(InfoTypeTransformationArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `profile`.
+func (o TextConfigOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TextConfig) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// Base profile type for text transformation.
+func (o TextConfigOutput) ProfileType() TextConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v TextConfig) *TextConfigProfileType { return v.ProfileType }).(TextConfigProfileTypePtrOutput)
+}
+
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 //
 // Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -9289,6 +13132,36 @@ func (o TextConfigPtrOutput) Elem() TextConfigOutput {
 	}).(TextConfigOutput)
 }
 
+// Additional transformations to apply to the detected data, overriding `profile`.
+func (o TextConfigPtrOutput) AdditionalTransformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v *TextConfig) []InfoTypeTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalTransformations
+	}).(InfoTypeTransformationArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `profile`.
+func (o TextConfigPtrOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TextConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeInfoTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Base profile type for text transformation.
+func (o TextConfigPtrOutput) ProfileType() TextConfigProfileTypePtrOutput {
+	return o.ApplyT(func(v *TextConfig) *TextConfigProfileType {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileType
+	}).(TextConfigProfileTypePtrOutput)
+}
+
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 //
 // Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -9303,6 +13176,12 @@ func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput
 
 // Configures how to transform sensitive text `InfoTypes`.
 type TextConfigResponse struct {
+	// Additional transformations to apply to the detected data, overriding `profile`.
+	AdditionalTransformations []InfoTypeTransformationResponse `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `profile`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
+	// Base profile type for text transformation.
+	ProfileType string `pulumi:"profileType"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -9322,6 +13201,21 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutput() TextConfigRespons
 
 func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx context.Context) TextConfigResponseOutput {
 	return o
+}
+
+// Additional transformations to apply to the detected data, overriding `profile`.
+func (o TextConfigResponseOutput) AdditionalTransformations() InfoTypeTransformationResponseArrayOutput {
+	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.AdditionalTransformations }).(InfoTypeTransformationResponseArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `profile`.
+func (o TextConfigResponseOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TextConfigResponse) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
+}
+
+// Base profile type for text transformation.
+func (o TextConfigResponseOutput) ProfileType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextConfigResponse) string { return v.ProfileType }).(pulumi.StringOutput)
 }
 
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -10104,6 +13998,8 @@ func (o VertexResponseArrayOutput) Index(i pulumi.IntInput) VertexResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionInput)(nil)).Elem(), ActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionArrayInput)(nil)).Elem(), ActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationConfigInput)(nil)).Elem(), AnnotationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationConfigPtrInput)(nil)).Elem(), AnnotationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSourceInput)(nil)).Elem(), AnnotationSourceArgs{})
@@ -10120,24 +14016,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BoundingPolyArrayInput)(nil)).Elem(), BoundingPolyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskConfigInput)(nil)).Elem(), CharacterMaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskConfigPtrInput)(nil)).Elem(), CharacterMaskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskFieldInput)(nil)).Elem(), CharacterMaskFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CharacterMaskFieldPtrInput)(nil)).Elem(), CharacterMaskFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanDescriptorsOptionInput)(nil)).Elem(), CleanDescriptorsOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanDescriptorsOptionPtrInput)(nil)).Elem(), CleanDescriptorsOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanTextFieldInput)(nil)).Elem(), CleanTextFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanTextFieldPtrInput)(nil)).Elem(), CleanTextFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanTextTagInput)(nil)).Elem(), CleanTextTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanTextTagPtrInput)(nil)).Elem(), CleanTextTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourceInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudHealthcareSourcePtrInput)(nil)).Elem(), CloudHealthcareSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContextualDeidConfigInput)(nil)).Elem(), ContextualDeidConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContextualDeidConfigPtrInput)(nil)).Elem(), ContextualDeidConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashConfigInput)(nil)).Elem(), CryptoHashConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashConfigPtrInput)(nil)).Elem(), CryptoHashConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashFieldInput)(nil)).Elem(), CryptoHashFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoHashFieldPtrInput)(nil)).Elem(), CryptoHashFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftConfigInput)(nil)).Elem(), DateShiftConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftConfigPtrInput)(nil)).Elem(), DateShiftConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftFieldInput)(nil)).Elem(), DateShiftFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DateShiftFieldPtrInput)(nil)).Elem(), DateShiftFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifiedStoreDestinationInput)(nil)).Elem(), DeidentifiedStoreDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifiedStoreDestinationPtrInput)(nil)).Elem(), DeidentifiedStoreDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyConfigInput)(nil)).Elem(), DeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyConfigPtrInput)(nil)).Elem(), DeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyOperationMetadataInput)(nil)).Elem(), DeidentifyOperationMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyOperationMetadataPtrInput)(nil)).Elem(), DeidentifyOperationMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeleteTagInput)(nil)).Elem(), DeleteTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeleteTagPtrInput)(nil)).Elem(), DeleteTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigInput)(nil)).Elem(), DicomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigPtrInput)(nil)).Elem(), DicomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomTagConfigInput)(nil)).Elem(), DicomTagConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DicomTagConfigPtrInput)(nil)).Elem(), DicomTagConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigInput)(nil)).Elem(), FhirConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigPtrInput)(nil)).Elem(), FhirConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirFieldConfigInput)(nil)).Elem(), FhirFieldConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirFieldConfigPtrInput)(nil)).Elem(), FhirFieldConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirNotificationConfigInput)(nil)).Elem(), FhirNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirNotificationConfigArrayInput)(nil)).Elem(), FhirNotificationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirOutputInput)(nil)).Elem(), FhirOutputArgs{})
@@ -10148,6 +14064,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataArrayInput)(nil)).Elem(), FieldMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1ConsentPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyOptionsInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1beta1DicomStreamConfigInput)(nil)).Elem(), GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{})
@@ -10169,18 +14089,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigPtrInput)(nil)).Elem(), ImageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfoTypeTransformationInput)(nil)).Elem(), InfoTypeTransformationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfoTypeTransformationArrayInput)(nil)).Elem(), InfoTypeTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepExtensionsConfigInput)(nil)).Elem(), KeepExtensionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepExtensionsConfigPtrInput)(nil)).Elem(), KeepExtensionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepFieldInput)(nil)).Elem(), KeepFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepFieldPtrInput)(nil)).Elem(), KeepFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepTagInput)(nil)).Elem(), KeepTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeepTagPtrInput)(nil)).Elem(), KeepTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsWrappedCryptoKeyInput)(nil)).Elem(), KmsWrappedCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KmsWrappedCryptoKeyPtrInput)(nil)).Elem(), KmsWrappedCryptoKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsInput)(nil)).Elem(), OptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsPtrInput)(nil)).Elem(), OptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigInput)(nil)).Elem(), ParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParserConfigPtrInput)(nil)).Elem(), ParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdInput)(nil)).Elem(), PatientIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PatientIdArrayInput)(nil)).Elem(), PatientIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurseTagInput)(nil)).Elem(), RecurseTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecurseTagPtrInput)(nil)).Elem(), RecurseTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedactConfigInput)(nil)).Elem(), RedactConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RedactConfigPtrInput)(nil)).Elem(), RedactConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegenUidTagInput)(nil)).Elem(), RegenUidTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegenUidTagPtrInput)(nil)).Elem(), RegenUidTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoveFieldInput)(nil)).Elem(), RemoveFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoveFieldPtrInput)(nil)).Elem(), RemoveFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoveTagInput)(nil)).Elem(), RemoveTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoveTagPtrInput)(nil)).Elem(), RemoveTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplaceWithInfoTypeConfigInput)(nil)).Elem(), ReplaceWithInfoTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplaceWithInfoTypeConfigPtrInput)(nil)).Elem(), ReplaceWithInfoTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResetTagInput)(nil)).Elem(), ResetTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResetTagPtrInput)(nil)).Elem(), ResetTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationInput)(nil)).Elem(), ResourceAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAnnotationPtrInput)(nil)).Elem(), ResourceAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigInput)(nil)).Elem(), SchemaConfigArgs{})
@@ -10211,6 +14149,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionSourceArrayInput)(nil)).Elem(), VersionSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexInput)(nil)).Elem(), VertexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VertexArrayInput)(nil)).Elem(), VertexArray{})
+	pulumi.RegisterOutputType(ActionOutput{})
+	pulumi.RegisterOutputType(ActionArrayOutput{})
+	pulumi.RegisterOutputType(ActionResponseOutput{})
+	pulumi.RegisterOutputType(ActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(AnnotationConfigOutput{})
 	pulumi.RegisterOutputType(AnnotationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AnnotationConfigResponseOutput{})
@@ -10240,15 +14182,36 @@ func init() {
 	pulumi.RegisterOutputType(CharacterMaskConfigOutput{})
 	pulumi.RegisterOutputType(CharacterMaskConfigPtrOutput{})
 	pulumi.RegisterOutputType(CharacterMaskConfigResponseOutput{})
+	pulumi.RegisterOutputType(CharacterMaskFieldOutput{})
+	pulumi.RegisterOutputType(CharacterMaskFieldPtrOutput{})
+	pulumi.RegisterOutputType(CharacterMaskFieldResponseOutput{})
+	pulumi.RegisterOutputType(CleanDescriptorsOptionOutput{})
+	pulumi.RegisterOutputType(CleanDescriptorsOptionPtrOutput{})
+	pulumi.RegisterOutputType(CleanDescriptorsOptionResponseOutput{})
+	pulumi.RegisterOutputType(CleanTextFieldOutput{})
+	pulumi.RegisterOutputType(CleanTextFieldPtrOutput{})
+	pulumi.RegisterOutputType(CleanTextFieldResponseOutput{})
+	pulumi.RegisterOutputType(CleanTextTagOutput{})
+	pulumi.RegisterOutputType(CleanTextTagPtrOutput{})
+	pulumi.RegisterOutputType(CleanTextTagResponseOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourceOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourcePtrOutput{})
 	pulumi.RegisterOutputType(CloudHealthcareSourceResponseOutput{})
+	pulumi.RegisterOutputType(ContextualDeidConfigOutput{})
+	pulumi.RegisterOutputType(ContextualDeidConfigPtrOutput{})
+	pulumi.RegisterOutputType(ContextualDeidConfigResponseOutput{})
 	pulumi.RegisterOutputType(CryptoHashConfigOutput{})
 	pulumi.RegisterOutputType(CryptoHashConfigPtrOutput{})
 	pulumi.RegisterOutputType(CryptoHashConfigResponseOutput{})
+	pulumi.RegisterOutputType(CryptoHashFieldOutput{})
+	pulumi.RegisterOutputType(CryptoHashFieldPtrOutput{})
+	pulumi.RegisterOutputType(CryptoHashFieldResponseOutput{})
 	pulumi.RegisterOutputType(DateShiftConfigOutput{})
 	pulumi.RegisterOutputType(DateShiftConfigPtrOutput{})
 	pulumi.RegisterOutputType(DateShiftConfigResponseOutput{})
+	pulumi.RegisterOutputType(DateShiftFieldOutput{})
+	pulumi.RegisterOutputType(DateShiftFieldPtrOutput{})
+	pulumi.RegisterOutputType(DateShiftFieldResponseOutput{})
 	pulumi.RegisterOutputType(DeidentifiedStoreDestinationOutput{})
 	pulumi.RegisterOutputType(DeidentifiedStoreDestinationPtrOutput{})
 	pulumi.RegisterOutputType(DeidentifiedStoreDestinationResponseOutput{})
@@ -10258,15 +14221,24 @@ func init() {
 	pulumi.RegisterOutputType(DeidentifyOperationMetadataOutput{})
 	pulumi.RegisterOutputType(DeidentifyOperationMetadataPtrOutput{})
 	pulumi.RegisterOutputType(DeidentifyOperationMetadataResponseOutput{})
+	pulumi.RegisterOutputType(DeleteTagOutput{})
+	pulumi.RegisterOutputType(DeleteTagPtrOutput{})
+	pulumi.RegisterOutputType(DeleteTagResponseOutput{})
 	pulumi.RegisterOutputType(DicomConfigOutput{})
 	pulumi.RegisterOutputType(DicomConfigPtrOutput{})
 	pulumi.RegisterOutputType(DicomConfigResponseOutput{})
+	pulumi.RegisterOutputType(DicomTagConfigOutput{})
+	pulumi.RegisterOutputType(DicomTagConfigPtrOutput{})
+	pulumi.RegisterOutputType(DicomTagConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FhirConfigOutput{})
 	pulumi.RegisterOutputType(FhirConfigPtrOutput{})
 	pulumi.RegisterOutputType(FhirConfigResponseOutput{})
+	pulumi.RegisterOutputType(FhirFieldConfigOutput{})
+	pulumi.RegisterOutputType(FhirFieldConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirFieldConfigResponseOutput{})
 	pulumi.RegisterOutputType(FhirNotificationConfigOutput{})
 	pulumi.RegisterOutputType(FhirNotificationConfigArrayOutput{})
 	pulumi.RegisterOutputType(FhirNotificationConfigResponseOutput{})
@@ -10286,6 +14258,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1ConsentPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1ConsentPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyOptionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DeidentifyOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DicomBigQueryDestinationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponseOutput{})
@@ -10323,12 +14302,24 @@ func init() {
 	pulumi.RegisterOutputType(InfoTypeTransformationArrayOutput{})
 	pulumi.RegisterOutputType(InfoTypeTransformationResponseOutput{})
 	pulumi.RegisterOutputType(InfoTypeTransformationResponseArrayOutput{})
+	pulumi.RegisterOutputType(KeepExtensionsConfigOutput{})
+	pulumi.RegisterOutputType(KeepExtensionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(KeepExtensionsConfigResponseOutput{})
+	pulumi.RegisterOutputType(KeepFieldOutput{})
+	pulumi.RegisterOutputType(KeepFieldPtrOutput{})
+	pulumi.RegisterOutputType(KeepFieldResponseOutput{})
+	pulumi.RegisterOutputType(KeepTagOutput{})
+	pulumi.RegisterOutputType(KeepTagPtrOutput{})
+	pulumi.RegisterOutputType(KeepTagResponseOutput{})
 	pulumi.RegisterOutputType(KmsWrappedCryptoKeyOutput{})
 	pulumi.RegisterOutputType(KmsWrappedCryptoKeyPtrOutput{})
 	pulumi.RegisterOutputType(KmsWrappedCryptoKeyResponseOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(OptionsOutput{})
+	pulumi.RegisterOutputType(OptionsPtrOutput{})
+	pulumi.RegisterOutputType(OptionsResponseOutput{})
 	pulumi.RegisterOutputType(ParsedDataResponseOutput{})
 	pulumi.RegisterOutputType(ParserConfigOutput{})
 	pulumi.RegisterOutputType(ParserConfigPtrOutput{})
@@ -10337,12 +14328,27 @@ func init() {
 	pulumi.RegisterOutputType(PatientIdArrayOutput{})
 	pulumi.RegisterOutputType(PatientIdResponseOutput{})
 	pulumi.RegisterOutputType(PatientIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(RecurseTagOutput{})
+	pulumi.RegisterOutputType(RecurseTagPtrOutput{})
+	pulumi.RegisterOutputType(RecurseTagResponseOutput{})
 	pulumi.RegisterOutputType(RedactConfigOutput{})
 	pulumi.RegisterOutputType(RedactConfigPtrOutput{})
 	pulumi.RegisterOutputType(RedactConfigResponseOutput{})
+	pulumi.RegisterOutputType(RegenUidTagOutput{})
+	pulumi.RegisterOutputType(RegenUidTagPtrOutput{})
+	pulumi.RegisterOutputType(RegenUidTagResponseOutput{})
+	pulumi.RegisterOutputType(RemoveFieldOutput{})
+	pulumi.RegisterOutputType(RemoveFieldPtrOutput{})
+	pulumi.RegisterOutputType(RemoveFieldResponseOutput{})
+	pulumi.RegisterOutputType(RemoveTagOutput{})
+	pulumi.RegisterOutputType(RemoveTagPtrOutput{})
+	pulumi.RegisterOutputType(RemoveTagResponseOutput{})
 	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigOutput{})
 	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ReplaceWithInfoTypeConfigResponseOutput{})
+	pulumi.RegisterOutputType(ResetTagOutput{})
+	pulumi.RegisterOutputType(ResetTagPtrOutput{})
+	pulumi.RegisterOutputType(ResetTagResponseOutput{})
 	pulumi.RegisterOutputType(ResourceAnnotationOutput{})
 	pulumi.RegisterOutputType(ResourceAnnotationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAnnotationResponseOutput{})

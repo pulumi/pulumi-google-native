@@ -51,6 +51,8 @@ type Dataset struct {
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+	StorageBillingModel pulumi.StringOutput `pulumi:"storageBillingModel"`
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags DatasetTagsItemResponseArrayOutput `pulumi:"tags"`
 }
@@ -120,6 +122,8 @@ type datasetArgs struct {
 	// [Optional] Number of hours for the max time travel for all tables in the dataset.
 	MaxTimeTravelHours *string `pulumi:"maxTimeTravelHours"`
 	Project            *string `pulumi:"project"`
+	// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+	StorageBillingModel *string `pulumi:"storageBillingModel"`
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags []DatasetTagsItem `pulumi:"tags"`
 }
@@ -148,6 +152,8 @@ type DatasetArgs struct {
 	// [Optional] Number of hours for the max time travel for all tables in the dataset.
 	MaxTimeTravelHours pulumi.StringPtrInput
 	Project            pulumi.StringPtrInput
+	// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+	StorageBillingModel pulumi.StringPtrInput
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags DatasetTagsItemArrayInput
 }
@@ -280,6 +286,11 @@ func (o DatasetOutput) SatisfiesPzs() pulumi.BoolOutput {
 // A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 func (o DatasetOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+func (o DatasetOutput) StorageBillingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.StorageBillingModel }).(pulumi.StringOutput)
 }
 
 // [Optional]The tags associated with this dataset. Tag keys are globally unique.

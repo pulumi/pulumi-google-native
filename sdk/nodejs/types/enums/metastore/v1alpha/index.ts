@@ -181,3 +181,20 @@ export const ServiceTier = {
  * The tier of the service.
  */
 export type ServiceTier = (typeof ServiceTier)[keyof typeof ServiceTier];
+
+export const TelemetryConfigLogFormat = {
+    /**
+     * The LOG_FORMAT is not set.
+     */
+    LogFormatUnspecified: "LOG_FORMAT_UNSPECIFIED",
+    /**
+     * Logging output uses the legacy textPayload format.
+     */
+    Legacy: "LEGACY",
+    /**
+     * Logging output uses the jsonPayload format.
+     */
+    Json: "JSON",
+} as const;
+
+export type TelemetryConfigLogFormat = (typeof TelemetryConfigLogFormat)[keyof typeof TelemetryConfigLogFormat];

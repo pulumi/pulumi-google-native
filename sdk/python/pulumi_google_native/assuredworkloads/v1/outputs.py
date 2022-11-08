@@ -11,11 +11,64 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(dict):
+    """
+    Represents the Compliance Status of this workload
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acknowledgedViolationCount":
+            suggest = "acknowledged_violation_count"
+        elif key == "activeViolationCount":
+            suggest = "active_violation_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acknowledged_violation_count: int,
+                 active_violation_count: int):
+        """
+        Represents the Compliance Status of this workload
+        :param int acknowledged_violation_count: Count of active Violations which are acknowledged in the Workload.
+        :param int active_violation_count: Count of active Violations which haven't been acknowledged.
+        """
+        pulumi.set(__self__, "acknowledged_violation_count", acknowledged_violation_count)
+        pulumi.set(__self__, "active_violation_count", active_violation_count)
+
+    @property
+    @pulumi.getter(name="acknowledgedViolationCount")
+    def acknowledged_violation_count(self) -> int:
+        """
+        Count of active Violations which are acknowledged in the Workload.
+        """
+        return pulumi.get(self, "acknowledged_violation_count")
+
+    @property
+    @pulumi.getter(name="activeViolationCount")
+    def active_violation_count(self) -> int:
+        """
+        Count of active Violations which haven't been acknowledged.
+        """
+        return pulumi.get(self, "active_violation_count")
+
 
 @pulumi.output_type
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):

@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// The URIs of linked interconnect attachment resources
         /// </summary>
         public readonly ImmutableArray<string> Uris;
+        /// <summary>
+        /// The VPC network where these VLAN attachments are located.
+        /// </summary>
+        public readonly string VpcNetwork;
 
         [OutputConstructor]
         private LinkedInterconnectAttachmentsResponse(
             bool siteToSiteDataTransfer,
 
-            ImmutableArray<string> uris)
+            ImmutableArray<string> uris,
+
+            string vpcNetwork)
         {
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
             Uris = uris;
+            VpcNetwork = vpcNetwork;
         }
     }
 }

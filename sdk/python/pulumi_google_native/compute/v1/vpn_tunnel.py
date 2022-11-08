@@ -39,7 +39,7 @@ class VpnTunnelArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selector: Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field is exclusive with the field peerGcpGateway.
-        :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selector: Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
@@ -49,7 +49,7 @@ class VpnTunnelArgs:
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
-        :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         """
         pulumi.set(__self__, "region", region)
         if description is not None:
@@ -160,7 +160,7 @@ class VpnTunnelArgs:
     @pulumi.getter(name="peerExternalGatewayInterface")
     def peer_external_gateway_interface(self) -> Optional[pulumi.Input[int]]:
         """
-        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         """
         return pulumi.get(self, "peer_external_gateway_interface")
 
@@ -289,7 +289,7 @@ class VpnTunnelArgs:
     @pulumi.getter(name="vpnGatewayInterface")
     def vpn_gateway_interface(self) -> Optional[pulumi.Input[int]]:
         """
-        The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         """
         return pulumi.get(self, "vpn_gateway_interface")
 
@@ -332,7 +332,7 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selector: Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field is exclusive with the field peerGcpGateway.
-        :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        :param pulumi.Input[int] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. This field can be used when creating highly available VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway. If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer GCP VPN gateway.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selector: Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
@@ -342,7 +342,7 @@ class VpnTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
-        :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        :param pulumi.Input[int] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         """
         ...
     @overload
@@ -537,7 +537,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter(name="peerExternalGatewayInterface")
     def peer_external_gateway_interface(self) -> pulumi.Output[int]:
         """
-        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         """
         return pulumi.get(self, "peer_external_gateway_interface")
 
@@ -643,7 +643,7 @@ class VpnTunnel(pulumi.CustomResource):
     @pulumi.getter(name="vpnGatewayInterface")
     def vpn_gateway_interface(self) -> pulumi.Output[int]:
         """
-        The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         """
         return pulumi.get(self, "vpn_gateway_interface")
 

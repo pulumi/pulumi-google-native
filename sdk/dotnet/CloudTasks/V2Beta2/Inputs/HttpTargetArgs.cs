@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public Input<Inputs.OidcTokenArgs>? OidcToken { get; set; }
 
         /// <summary>
-        /// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        /// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         /// </summary>
         [Input("uriOverride")]
         public Input<Inputs.UriOverrideArgs>? UriOverride { get; set; }

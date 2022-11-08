@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// </summary>
     public sealed class TableDisplayOptionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("shownColumns")]
+        private InputList<string>? _shownColumns;
+
+        /// <summary>
+        /// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+        /// </summary>
+        public InputList<string> ShownColumns
+        {
+            get => _shownColumns ?? (_shownColumns = new InputList<string>());
+            set => _shownColumns = value;
+        }
+
         public TableDisplayOptionsArgs()
         {
         }

@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'EnvironmentConfigEnvironmentSize',
     'EnvironmentState',
+    'NetworkingConfigConnectionType',
 ]
 
 
@@ -59,4 +60,22 @@ class EnvironmentState(str, Enum):
     ERROR = "ERROR"
     """
     The environment has encountered an error and cannot be used.
+    """
+
+
+class NetworkingConfigConnectionType(str, Enum):
+    """
+    Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+    """
+    CONNECTION_TYPE_UNSPECIFIED = "CONNECTION_TYPE_UNSPECIFIED"
+    """
+    No specific connection type was requested, so the environment uses the default value corresponding to the rest of its configuration.
+    """
+    VPC_PEERING = "VPC_PEERING"
+    """
+    Requests the use of VPC peerings for connecting the Customer and Tenant projects.
+    """
+    PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
+    """
+    Requests the use of Private Service Connect for connecting the Customer and Tenant projects.
     """

@@ -4899,6 +4899,10 @@ type ExternalDataConfiguration struct {
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
+	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+	MetadataCacheMode *string `pulumi:"metadataCacheMode"`
+	// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+	ObjectMetadata *string `pulumi:"objectMetadata"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions *ParquetOptions `pulumi:"parquetOptions"`
 	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
@@ -4945,6 +4949,10 @@ type ExternalDataConfigurationArgs struct {
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
+	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+	MetadataCacheMode pulumi.StringPtrInput `pulumi:"metadataCacheMode"`
+	// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+	ObjectMetadata pulumi.StringPtrInput `pulumi:"objectMetadata"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions ParquetOptionsPtrInput `pulumi:"parquetOptions"`
 	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
@@ -5087,6 +5095,16 @@ func (o ExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolPtrOut
 // [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 func (o ExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+}
+
+// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+func (o ExternalDataConfigurationOutput) MetadataCacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *string { return v.MetadataCacheMode }).(pulumi.StringPtrOutput)
+}
+
+// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+func (o ExternalDataConfigurationOutput) ObjectMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *string { return v.ObjectMetadata }).(pulumi.StringPtrOutput)
 }
 
 // Additional properties to set if sourceFormat is set to Parquet.
@@ -5248,6 +5266,26 @@ func (o ExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+func (o ExternalDataConfigurationPtrOutput) MetadataCacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataCacheMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+func (o ExternalDataConfigurationPtrOutput) ObjectMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectMetadata
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional properties to set if sourceFormat is set to Parquet.
 func (o ExternalDataConfigurationPtrOutput) ParquetOptions() ParquetOptionsPtrOutput {
 	return o.ApplyT(func(v *ExternalDataConfiguration) *ParquetOptions {
@@ -5321,6 +5359,10 @@ type ExternalDataConfigurationResponse struct {
 	IgnoreUnknownValues bool `pulumi:"ignoreUnknownValues"`
 	// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 	MaxBadRecords int `pulumi:"maxBadRecords"`
+	// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+	MetadataCacheMode string `pulumi:"metadataCacheMode"`
+	// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+	ObjectMetadata string `pulumi:"objectMetadata"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions ParquetOptionsResponse `pulumi:"parquetOptions"`
 	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
@@ -5402,6 +5444,16 @@ func (o ExternalDataConfigurationResponseOutput) IgnoreUnknownValues() pulumi.Bo
 // [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
 func (o ExternalDataConfigurationResponseOutput) MaxBadRecords() pulumi.IntOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) int { return v.MaxBadRecords }).(pulumi.IntOutput)
+}
+
+// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+func (o ExternalDataConfigurationResponseOutput) MetadataCacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) string { return v.MetadataCacheMode }).(pulumi.StringOutput)
+}
+
+// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+func (o ExternalDataConfigurationResponseOutput) ObjectMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) string { return v.ObjectMetadata }).(pulumi.StringOutput)
 }
 
 // Additional properties to set if sourceFormat is set to Parquet.

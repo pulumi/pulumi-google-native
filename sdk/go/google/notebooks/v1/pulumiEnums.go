@@ -1577,7 +1577,7 @@ type RuntimeAcceleratorConfigType string
 const (
 	// Accelerator type is not specified.
 	RuntimeAcceleratorConfigTypeAcceleratorTypeUnspecified = RuntimeAcceleratorConfigType("ACCELERATOR_TYPE_UNSPECIFIED")
-	// b/241005111 K80 deprecation in Google Managed Notebooks Accelerator type is Nvidia Tesla K80.
+	// Accelerator type is Nvidia Tesla K80.
 	RuntimeAcceleratorConfigTypeNvidiaTeslaK80 = RuntimeAcceleratorConfigType("NVIDIA_TESLA_K80")
 	// Accelerator type is Nvidia Tesla P100.
 	RuntimeAcceleratorConfigTypeNvidiaTeslaP100 = RuntimeAcceleratorConfigType("NVIDIA_TESLA_P100")

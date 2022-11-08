@@ -85,6 +85,7 @@ __all__ = [
     'StateHistoryResponse',
     'TemplateParameterResponse',
     'TrinoJobResponse',
+    'UsageMetricsResponse',
     'ValueValidationResponse',
     'VirtualClusterConfigResponse',
     'WorkflowTemplatePlacementResponse',
@@ -1582,8 +1583,8 @@ class GkeNodeConfigResponse(dict):
         :param int local_ssd_count: Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         :param str machine_type: Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
         :param str min_cpu_platform: Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
-        :param bool preemptible: Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
-        :param bool spot: Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        :param bool preemptible: Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        :param bool spot: Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -1637,7 +1638,7 @@ class GkeNodeConfigResponse(dict):
     @pulumi.getter
     def preemptible(self) -> bool:
         """
-        Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
         return pulumi.get(self, "preemptible")
 
@@ -1645,7 +1646,7 @@ class GkeNodeConfigResponse(dict):
     @pulumi.getter
     def spot(self) -> bool:
         """
-        Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
         return pulumi.get(self, "spot")
 
@@ -4392,7 +4393,9 @@ class RuntimeInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diagnosticOutputUri":
+        if key == "approximateUsage":
+            suggest = "approximate_usage"
+        elif key == "diagnosticOutputUri":
             suggest = "diagnostic_output_uri"
         elif key == "outputUri":
             suggest = "output_uri"
@@ -4409,18 +4412,29 @@ class RuntimeInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 approximate_usage: 'outputs.UsageMetricsResponse',
                  diagnostic_output_uri: str,
                  endpoints: Mapping[str, str],
                  output_uri: str):
         """
         Runtime information about workload execution.
+        :param 'UsageMetricsResponse' approximate_usage: Approximate workload resource usage calculated after workload finishes.
         :param str diagnostic_output_uri: A URI pointing to the location of the diagnostics tarball.
         :param Mapping[str, str] endpoints: Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
         :param str output_uri: A URI pointing to the location of the stdout and stderr of the workload.
         """
+        pulumi.set(__self__, "approximate_usage", approximate_usage)
         pulumi.set(__self__, "diagnostic_output_uri", diagnostic_output_uri)
         pulumi.set(__self__, "endpoints", endpoints)
         pulumi.set(__self__, "output_uri", output_uri)
+
+    @property
+    @pulumi.getter(name="approximateUsage")
+    def approximate_usage(self) -> 'outputs.UsageMetricsResponse':
+        """
+        Approximate workload resource usage calculated after workload finishes.
+        """
+        return pulumi.get(self, "approximate_usage")
 
     @property
     @pulumi.getter(name="diagnosticOutputUri")
@@ -5559,6 +5573,58 @@ class TrinoJobResponse(dict):
         A list of queries.
         """
         return pulumi.get(self, "query_list")
+
+
+@pulumi.output_type
+class UsageMetricsResponse(dict):
+    """
+    Usage metrics represent total resources consumed by a workload.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "milliDcuSeconds":
+            suggest = "milli_dcu_seconds"
+        elif key == "shuffleStorageGbSeconds":
+            suggest = "shuffle_storage_gb_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UsageMetricsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UsageMetricsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UsageMetricsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 milli_dcu_seconds: str,
+                 shuffle_storage_gb_seconds: str):
+        """
+        Usage metrics represent total resources consumed by a workload.
+        :param str milli_dcu_seconds: Optional. DCU usage in milliDCU*seconds.
+        :param str shuffle_storage_gb_seconds: Optional. Shuffle storage usage in GB*Seconds
+        """
+        pulumi.set(__self__, "milli_dcu_seconds", milli_dcu_seconds)
+        pulumi.set(__self__, "shuffle_storage_gb_seconds", shuffle_storage_gb_seconds)
+
+    @property
+    @pulumi.getter(name="milliDcuSeconds")
+    def milli_dcu_seconds(self) -> str:
+        """
+        Optional. DCU usage in milliDCU*seconds.
+        """
+        return pulumi.get(self, "milli_dcu_seconds")
+
+    @property
+    @pulumi.getter(name="shuffleStorageGbSeconds")
+    def shuffle_storage_gb_seconds(self) -> str:
+        """
+        Optional. Shuffle storage usage in GB*Seconds
+        """
+        return pulumi.get(self, "shuffle_storage_gb_seconds")
 
 
 @pulumi.output_type

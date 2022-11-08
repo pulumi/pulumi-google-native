@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<bool>? EnablePrivatelyUsedPublicIps { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for the network connections configuration in the environment.
+        /// </summary>
+        [Input("networkingConfig")]
+        public Input<Inputs.NetworkingConfigArgs>? NetworkingConfig { get; set; }
+
+        /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         /// </summary>
         [Input("privateClusterConfig")]

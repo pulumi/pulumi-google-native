@@ -34,6 +34,8 @@ type LookupServiceResult struct {
 	Endpoints []EndpointResponse `pulumi:"endpoints"`
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name string `pulumi:"name"`
+	// The globally unique identifier of the service in the UUID4 format.
+	Uid string `pulumi:"uid"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -87,6 +89,11 @@ func (o LookupServiceResultOutput) Endpoints() EndpointResponseArrayOutput {
 // Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The globally unique identifier of the service in the UUID4 format.
+func (o LookupServiceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

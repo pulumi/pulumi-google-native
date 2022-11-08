@@ -35,6 +35,10 @@ export interface GetNamespaceResult {
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     readonly name: string;
+    /**
+     * The globally unique identifier of the namespace in the UUID4 format.
+     */
+    readonly uid: string;
 }
 
 export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceResult> {

@@ -104,4 +104,45 @@ namespace Pulumi.GoogleNative.Composer.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkingConfigConnectionType : IEquatable<NetworkingConfigConnectionType>
+    {
+        private readonly string _value;
+
+        private NetworkingConfigConnectionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No specific connection type was requested, so the environment uses the default value corresponding to the rest of its configuration.
+        /// </summary>
+        public static NetworkingConfigConnectionType ConnectionTypeUnspecified { get; } = new NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Requests the use of VPC peerings for connecting the Customer and Tenant projects.
+        /// </summary>
+        public static NetworkingConfigConnectionType VpcPeering { get; } = new NetworkingConfigConnectionType("VPC_PEERING");
+        /// <summary>
+        /// Requests the use of Private Service Connect for connecting the Customer and Tenant projects.
+        /// </summary>
+        public static NetworkingConfigConnectionType PrivateServiceConnect { get; } = new NetworkingConfigConnectionType("PRIVATE_SERVICE_CONNECT");
+
+        public static bool operator ==(NetworkingConfigConnectionType left, NetworkingConfigConnectionType right) => left.Equals(right);
+        public static bool operator !=(NetworkingConfigConnectionType left, NetworkingConfigConnectionType right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkingConfigConnectionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkingConfigConnectionType other && Equals(other);
+        public bool Equals(NetworkingConfigConnectionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

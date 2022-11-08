@@ -15,10 +15,30 @@ export const getHubIamPolicy: typeof import("./getHubIamPolicy").getHubIamPolicy
 export const getHubIamPolicyOutput: typeof import("./getHubIamPolicy").getHubIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getHubIamPolicy","getHubIamPolicyOutput"], () => require("./getHubIamPolicy"));
 
+export { GetInternalRangeArgs, GetInternalRangeResult, GetInternalRangeOutputArgs } from "./getInternalRange";
+export const getInternalRange: typeof import("./getInternalRange").getInternalRange = null as any;
+export const getInternalRangeOutput: typeof import("./getInternalRange").getInternalRangeOutput = null as any;
+utilities.lazyLoad(exports, ["getInternalRange","getInternalRangeOutput"], () => require("./getInternalRange"));
+
 export { GetPolicyBasedRouteIamPolicyArgs, GetPolicyBasedRouteIamPolicyResult, GetPolicyBasedRouteIamPolicyOutputArgs } from "./getPolicyBasedRouteIamPolicy";
 export const getPolicyBasedRouteIamPolicy: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicy = null as any;
 export const getPolicyBasedRouteIamPolicyOutput: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyBasedRouteIamPolicy","getPolicyBasedRouteIamPolicyOutput"], () => require("./getPolicyBasedRouteIamPolicy"));
+
+export { GetServiceClassIamPolicyArgs, GetServiceClassIamPolicyResult, GetServiceClassIamPolicyOutputArgs } from "./getServiceClassIamPolicy";
+export const getServiceClassIamPolicy: typeof import("./getServiceClassIamPolicy").getServiceClassIamPolicy = null as any;
+export const getServiceClassIamPolicyOutput: typeof import("./getServiceClassIamPolicy").getServiceClassIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceClassIamPolicy","getServiceClassIamPolicyOutput"], () => require("./getServiceClassIamPolicy"));
+
+export { GetServiceConnectionMapIamPolicyArgs, GetServiceConnectionMapIamPolicyResult, GetServiceConnectionMapIamPolicyOutputArgs } from "./getServiceConnectionMapIamPolicy";
+export const getServiceConnectionMapIamPolicy: typeof import("./getServiceConnectionMapIamPolicy").getServiceConnectionMapIamPolicy = null as any;
+export const getServiceConnectionMapIamPolicyOutput: typeof import("./getServiceConnectionMapIamPolicy").getServiceConnectionMapIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceConnectionMapIamPolicy","getServiceConnectionMapIamPolicyOutput"], () => require("./getServiceConnectionMapIamPolicy"));
+
+export { GetServiceConnectionPolicyIamPolicyArgs, GetServiceConnectionPolicyIamPolicyResult, GetServiceConnectionPolicyIamPolicyOutputArgs } from "./getServiceConnectionPolicyIamPolicy";
+export const getServiceConnectionPolicyIamPolicy: typeof import("./getServiceConnectionPolicyIamPolicy").getServiceConnectionPolicyIamPolicy = null as any;
+export const getServiceConnectionPolicyIamPolicyOutput: typeof import("./getServiceConnectionPolicyIamPolicy").getServiceConnectionPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceConnectionPolicyIamPolicy","getServiceConnectionPolicyIamPolicyOutput"], () => require("./getServiceConnectionPolicyIamPolicy"));
 
 export { GetSpokeArgs, GetSpokeResult, GetSpokeOutputArgs } from "./getSpoke";
 export const getSpoke: typeof import("./getSpoke").getSpoke = null as any;
@@ -50,6 +70,11 @@ export type HubIamPolicy = import("./hubIamPolicy").HubIamPolicy;
 export const HubIamPolicy: typeof import("./hubIamPolicy").HubIamPolicy = null as any;
 utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
 
+export { InternalRangeArgs } from "./internalRange";
+export type InternalRange = import("./internalRange").InternalRange;
+export const InternalRange: typeof import("./internalRange").InternalRange = null as any;
+utilities.lazyLoad(exports, ["InternalRange"], () => require("./internalRange"));
+
 export { PolicyBasedRouteIamBindingArgs } from "./policyBasedRouteIamBinding";
 export type PolicyBasedRouteIamBinding = import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding;
 export const PolicyBasedRouteIamBinding: typeof import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding = null as any;
@@ -64,6 +89,51 @@ export { PolicyBasedRouteIamPolicyArgs } from "./policyBasedRouteIamPolicy";
 export type PolicyBasedRouteIamPolicy = import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy;
 export const PolicyBasedRouteIamPolicy: typeof import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy = null as any;
 utilities.lazyLoad(exports, ["PolicyBasedRouteIamPolicy"], () => require("./policyBasedRouteIamPolicy"));
+
+export { ServiceClassIamBindingArgs } from "./serviceClassIamBinding";
+export type ServiceClassIamBinding = import("./serviceClassIamBinding").ServiceClassIamBinding;
+export const ServiceClassIamBinding: typeof import("./serviceClassIamBinding").ServiceClassIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceClassIamBinding"], () => require("./serviceClassIamBinding"));
+
+export { ServiceClassIamMemberArgs } from "./serviceClassIamMember";
+export type ServiceClassIamMember = import("./serviceClassIamMember").ServiceClassIamMember;
+export const ServiceClassIamMember: typeof import("./serviceClassIamMember").ServiceClassIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceClassIamMember"], () => require("./serviceClassIamMember"));
+
+export { ServiceClassIamPolicyArgs } from "./serviceClassIamPolicy";
+export type ServiceClassIamPolicy = import("./serviceClassIamPolicy").ServiceClassIamPolicy;
+export const ServiceClassIamPolicy: typeof import("./serviceClassIamPolicy").ServiceClassIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceClassIamPolicy"], () => require("./serviceClassIamPolicy"));
+
+export { ServiceConnectionMapIamBindingArgs } from "./serviceConnectionMapIamBinding";
+export type ServiceConnectionMapIamBinding = import("./serviceConnectionMapIamBinding").ServiceConnectionMapIamBinding;
+export const ServiceConnectionMapIamBinding: typeof import("./serviceConnectionMapIamBinding").ServiceConnectionMapIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionMapIamBinding"], () => require("./serviceConnectionMapIamBinding"));
+
+export { ServiceConnectionMapIamMemberArgs } from "./serviceConnectionMapIamMember";
+export type ServiceConnectionMapIamMember = import("./serviceConnectionMapIamMember").ServiceConnectionMapIamMember;
+export const ServiceConnectionMapIamMember: typeof import("./serviceConnectionMapIamMember").ServiceConnectionMapIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionMapIamMember"], () => require("./serviceConnectionMapIamMember"));
+
+export { ServiceConnectionMapIamPolicyArgs } from "./serviceConnectionMapIamPolicy";
+export type ServiceConnectionMapIamPolicy = import("./serviceConnectionMapIamPolicy").ServiceConnectionMapIamPolicy;
+export const ServiceConnectionMapIamPolicy: typeof import("./serviceConnectionMapIamPolicy").ServiceConnectionMapIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionMapIamPolicy"], () => require("./serviceConnectionMapIamPolicy"));
+
+export { ServiceConnectionPolicyIamBindingArgs } from "./serviceConnectionPolicyIamBinding";
+export type ServiceConnectionPolicyIamBinding = import("./serviceConnectionPolicyIamBinding").ServiceConnectionPolicyIamBinding;
+export const ServiceConnectionPolicyIamBinding: typeof import("./serviceConnectionPolicyIamBinding").ServiceConnectionPolicyIamBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionPolicyIamBinding"], () => require("./serviceConnectionPolicyIamBinding"));
+
+export { ServiceConnectionPolicyIamMemberArgs } from "./serviceConnectionPolicyIamMember";
+export type ServiceConnectionPolicyIamMember = import("./serviceConnectionPolicyIamMember").ServiceConnectionPolicyIamMember;
+export const ServiceConnectionPolicyIamMember: typeof import("./serviceConnectionPolicyIamMember").ServiceConnectionPolicyIamMember = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionPolicyIamMember"], () => require("./serviceConnectionPolicyIamMember"));
+
+export { ServiceConnectionPolicyIamPolicyArgs } from "./serviceConnectionPolicyIamPolicy";
+export type ServiceConnectionPolicyIamPolicy = import("./serviceConnectionPolicyIamPolicy").ServiceConnectionPolicyIamPolicy;
+export const ServiceConnectionPolicyIamPolicy: typeof import("./serviceConnectionPolicyIamPolicy").ServiceConnectionPolicyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ServiceConnectionPolicyIamPolicy"], () => require("./serviceConnectionPolicyIamPolicy"));
 
 export { SpokeArgs } from "./spoke";
 export type Spoke = import("./spoke").Spoke;
@@ -101,12 +171,32 @@ const _module = {
                 return new HubIamMember(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:HubIamPolicy":
                 return new HubIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:InternalRange":
+                return new InternalRange(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:PolicyBasedRouteIamBinding":
                 return new PolicyBasedRouteIamBinding(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:PolicyBasedRouteIamMember":
                 return new PolicyBasedRouteIamMember(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy":
                 return new PolicyBasedRouteIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceClassIamBinding":
+                return new ServiceClassIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceClassIamMember":
+                return new ServiceClassIamMember(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceClassIamPolicy":
+                return new ServiceClassIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionMapIamBinding":
+                return new ServiceConnectionMapIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionMapIamMember":
+                return new ServiceConnectionMapIamMember(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionMapIamPolicy":
+                return new ServiceConnectionMapIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamBinding":
+                return new ServiceConnectionPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamMember":
+                return new ServiceConnectionPolicyIamMember(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamPolicy":
+                return new ServiceConnectionPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:Spoke":
                 return new Spoke(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:SpokeIamBinding":

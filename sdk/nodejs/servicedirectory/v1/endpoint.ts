@@ -62,6 +62,10 @@ export class Endpoint extends pulumi.CustomResource {
     public readonly port!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
     public readonly serviceId!: pulumi.Output<string>;
+    /**
+     * The globally unique identifier of the endpoint in the UUID4 format.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -93,6 +97,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["uid"] = undefined /*out*/;
         } else {
             resourceInputs["address"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
@@ -104,6 +109,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["endpointId", "location", "namespaceId", "project", "serviceId"] };

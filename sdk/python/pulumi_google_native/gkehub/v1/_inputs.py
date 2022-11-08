@@ -20,6 +20,7 @@ __all__ = [
     'CommonFeatureSpecArgs',
     'EdgeClusterArgs',
     'ExprArgs',
+    'FleetObservabilityFeatureSpecArgs',
     'GkeClusterArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
@@ -242,14 +243,18 @@ class BindingArgs:
 class CommonFeatureSpecArgs:
     def __init__(__self__, *,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
+                 fleetobservability: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
+        :param pulumi.Input['FleetObservabilityFeatureSpecArgs'] fleetobservability: FleetObservability feature spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         """
         if appdevexperience is not None:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
+        if fleetobservability is not None:
+            pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
 
@@ -264,6 +269,18 @@ class CommonFeatureSpecArgs:
     @appdevexperience.setter
     def appdevexperience(self, value: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']]):
         pulumi.set(self, "appdevexperience", value)
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']]:
+        """
+        FleetObservability feature spec.
+        """
+        return pulumi.get(self, "fleetobservability")
+
+    @fleetobservability.setter
+    def fleetobservability(self, value: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']]):
+        pulumi.set(self, "fleetobservability", value)
 
     @property
     @pulumi.getter
@@ -372,6 +389,15 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FleetObservabilityFeatureSpecArgs:
+    def __init__(__self__):
+        """
+        **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        """
+        pass
 
 
 @pulumi.input_type

@@ -31,6 +31,7 @@ __all__ = [
     'RestoreResponse',
     'SecretResponse',
     'ServiceResponse',
+    'TelemetryConfigResponse',
 ]
 
 @pulumi.output_type
@@ -182,7 +183,7 @@ class BindingResponse(dict):
 @pulumi.output_type
 class ConsumerResponse(dict):
     """
-    Contains information of the customer's network configurations.Next available ID: 4
+    Contains information of the customer's network configurations.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -205,7 +206,7 @@ class ConsumerResponse(dict):
                  endpoint_uri: str,
                  subnetwork: str):
         """
-        Contains information of the customer's network configurations.Next available ID: 4
+        Contains information of the customer's network configurations.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
@@ -856,12 +857,12 @@ class MetadataManagementActivityResponse(dict):
 @pulumi.output_type
 class NetworkConfigResponse(dict):
     """
-    Network configuration for the Dataproc Metastore service.Next available ID: 3
+    Network configuration for the Dataproc Metastore service.
     """
     def __init__(__self__, *,
                  consumers: Sequence['outputs.ConsumerResponse']):
         """
-        Network configuration for the Dataproc Metastore service.Next available ID: 3
+        Network configuration for the Dataproc Metastore service.
         :param Sequence['ConsumerResponse'] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
         """
         pulumi.set(__self__, "consumers", consumers)
@@ -1042,6 +1043,8 @@ class ServiceResponse(dict):
             suggest = "release_channel"
         elif key == "stateMessage":
             suggest = "state_message"
+        elif key == "telemetryConfig":
+            suggest = "telemetry_config"
         elif key == "updateTime":
             suggest = "update_time"
 
@@ -1074,6 +1077,7 @@ class ServiceResponse(dict):
                  release_channel: str,
                  state: str,
                  state_message: str,
+                 telemetry_config: 'outputs.TelemetryConfigResponse',
                  tier: str,
                  uid: str,
                  update_time: str):
@@ -1096,6 +1100,7 @@ class ServiceResponse(dict):
         :param str release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param str state: The current state of the metastore service.
         :param str state_message: Additional information about the current state of the metastore service, if available.
+        :param 'TelemetryConfigResponse' telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param str tier: The tier of the service.
         :param str uid: The globally unique resource identifier of the metastore service.
         :param str update_time: The time when the metastore service was last updated.
@@ -1117,6 +1122,7 @@ class ServiceResponse(dict):
         pulumi.set(__self__, "release_channel", release_channel)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_message", state_message)
+        pulumi.set(__self__, "telemetry_config", telemetry_config)
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "uid", uid)
         pulumi.set(__self__, "update_time", update_time)
@@ -1258,6 +1264,14 @@ class ServiceResponse(dict):
         return pulumi.get(self, "state_message")
 
     @property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> 'outputs.TelemetryConfigResponse':
+        """
+        The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        """
+        return pulumi.get(self, "telemetry_config")
+
+    @property
     @pulumi.getter
     def tier(self) -> str:
         """
@@ -1280,5 +1294,40 @@ class ServiceResponse(dict):
         The time when the metastore service was last updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class TelemetryConfigResponse(dict):
+    """
+    Telemetry Configuration for the Dataproc Metastore service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logFormat":
+            suggest = "log_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 log_format: str):
+        """
+        Telemetry Configuration for the Dataproc Metastore service.
+        """
+        pulumi.set(__self__, "log_format", log_format)
+
+    @property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> str:
+        return pulumi.get(self, "log_format")
 
 

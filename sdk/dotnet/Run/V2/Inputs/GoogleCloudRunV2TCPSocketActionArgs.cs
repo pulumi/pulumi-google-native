@@ -16,13 +16,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     public sealed class GoogleCloudRunV2TCPSocketActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP.
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        /// <summary>
-        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

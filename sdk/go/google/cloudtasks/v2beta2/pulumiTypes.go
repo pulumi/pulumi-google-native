@@ -1784,7 +1784,7 @@ type HttpTarget struct {
 	OauthToken *OAuthToken `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken *OidcToken `pulumi:"oidcToken"`
-	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 	UriOverride *UriOverride `pulumi:"uriOverride"`
 }
 
@@ -1809,7 +1809,7 @@ type HttpTargetArgs struct {
 	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
-	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 	UriOverride UriOverridePtrInput `pulumi:"uriOverride"`
 }
 
@@ -1911,7 +1911,7 @@ func (o HttpTargetOutput) OidcToken() OidcTokenPtrOutput {
 	return o.ApplyT(func(v HttpTarget) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
 }
 
-// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 func (o HttpTargetOutput) UriOverride() UriOverridePtrOutput {
 	return o.ApplyT(func(v HttpTarget) *UriOverride { return v.UriOverride }).(UriOverridePtrOutput)
 }
@@ -1980,7 +1980,7 @@ func (o HttpTargetPtrOutput) OidcToken() OidcTokenPtrOutput {
 	}).(OidcTokenPtrOutput)
 }
 
-// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 func (o HttpTargetPtrOutput) UriOverride() UriOverridePtrOutput {
 	return o.ApplyT(func(v *HttpTarget) *UriOverride {
 		if v == nil {
@@ -2000,7 +2000,7 @@ type HttpTargetResponse struct {
 	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
-	// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+	// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 	UriOverride UriOverrideResponse `pulumi:"uriOverride"`
 }
 
@@ -2039,7 +2039,7 @@ func (o HttpTargetResponseOutput) OidcToken() OidcTokenResponseOutput {
 	return o.ApplyT(func(v HttpTargetResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
 }
 
-// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
 func (o HttpTargetResponseOutput) UriOverride() UriOverrideResponseOutput {
 	return o.ApplyT(func(v HttpTargetResponse) UriOverrideResponse { return v.UriOverride }).(UriOverrideResponseOutput)
 }
@@ -3427,6 +3427,8 @@ type UriOverride struct {
 	Query *string `pulumi:"query"`
 	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
 	Scheme *UriOverrideScheme `pulumi:"scheme"`
+	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	UriOverrideEnforceMode *UriOverrideUriOverrideEnforceMode `pulumi:"uriOverrideEnforceMode"`
 }
 
 // UriOverrideInput is an input type that accepts UriOverrideArgs and UriOverrideOutput values.
@@ -3452,6 +3454,8 @@ type UriOverrideArgs struct {
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
 	Scheme UriOverrideSchemePtrInput `pulumi:"scheme"`
+	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	UriOverrideEnforceMode UriOverrideUriOverrideEnforceModePtrInput `pulumi:"uriOverrideEnforceMode"`
 }
 
 func (UriOverrideArgs) ElementType() reflect.Type {
@@ -3557,6 +3561,11 @@ func (o UriOverrideOutput) Scheme() UriOverrideSchemePtrOutput {
 	return o.ApplyT(func(v UriOverride) *UriOverrideScheme { return v.Scheme }).(UriOverrideSchemePtrOutput)
 }
 
+// Uri Override Enforce Mode Determines the Target UriOverride mode.
+func (o UriOverrideOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ApplyT(func(v UriOverride) *UriOverrideUriOverrideEnforceMode { return v.UriOverrideEnforceMode }).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
 type UriOverridePtrOutput struct{ *pulumi.OutputState }
 
 func (UriOverridePtrOutput) ElementType() reflect.Type {
@@ -3631,6 +3640,16 @@ func (o UriOverridePtrOutput) Scheme() UriOverrideSchemePtrOutput {
 	}).(UriOverrideSchemePtrOutput)
 }
 
+// Uri Override Enforce Mode Determines the Target UriOverride mode.
+func (o UriOverridePtrOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *UriOverrideUriOverrideEnforceMode {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverrideEnforceMode
+	}).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
 // Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
 type UriOverrideResponse struct {
 	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
@@ -3643,6 +3662,8 @@ type UriOverrideResponse struct {
 	Query string `pulumi:"query"`
 	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
 	Scheme string `pulumi:"scheme"`
+	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	UriOverrideEnforceMode string `pulumi:"uriOverrideEnforceMode"`
 }
 
 // Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
@@ -3683,6 +3704,11 @@ func (o UriOverrideResponseOutput) Query() pulumi.StringOutput {
 // Scheme override. When specified, the Uri scheme is replaced by the provided value.
 func (o UriOverrideResponseOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v UriOverrideResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// Uri Override Enforce Mode Determines the Target UriOverride mode.
+func (o UriOverrideResponseOutput) UriOverrideEnforceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.UriOverrideEnforceMode }).(pulumi.StringOutput)
 }
 
 func init() {

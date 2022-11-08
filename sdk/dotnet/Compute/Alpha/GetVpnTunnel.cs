@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string PeerExternalGateway;
         /// <summary>
-        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+        /// The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
         /// </summary>
         public readonly int PeerExternalGatewayInterface;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string VpnGateway;
         /// <summary>
-        /// The interface ID of the VPN gateway with which this VPN tunnel is associated.
+        /// The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
         /// </summary>
         public readonly int VpnGatewayInterface;
 

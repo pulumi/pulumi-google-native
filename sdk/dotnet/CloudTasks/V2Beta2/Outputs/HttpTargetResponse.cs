@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
         /// </summary>
         public readonly Outputs.OidcTokenResponse OidcToken;
         /// <summary>
-        /// Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        /// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         /// </summary>
         public readonly Outputs.UriOverrideResponse UriOverride;
 

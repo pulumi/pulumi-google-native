@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
+        /// Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
         /// <summary>
-        /// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        /// Optional. Whether the nodes are created as Spot VM instances (https://cloud.google.com/compute/docs/instances/spot). Spot VMs are the latest update to legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         [Input("spot")]
         public Input<bool>? Spot { get; set; }

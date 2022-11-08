@@ -2873,7 +2873,7 @@ type ExecutionSpec struct {
 	Parallelism *int `pulumi:"parallelism"`
 	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
 	TaskCount *int `pulumi:"taskCount"`
-	// Optional. Describes the task(s) that will be created when executing an execution.
+	// Optional. The template used to create tasks for this execution.
 	Template *TaskTemplateSpec `pulumi:"template"`
 }
 
@@ -2883,7 +2883,7 @@ type ExecutionSpecResponse struct {
 	Parallelism int `pulumi:"parallelism"`
 	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
 	TaskCount int `pulumi:"taskCount"`
-	// Optional. Describes the task(s) that will be created when executing an execution.
+	// Optional. The template used to create tasks for this execution.
 	Template TaskTemplateSpecResponse `pulumi:"template"`
 }
 
@@ -2912,7 +2912,7 @@ func (o ExecutionSpecResponseOutput) TaskCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.TaskCount }).(pulumi.IntOutput)
 }
 
-// Optional. Describes the task(s) that will be created when executing an execution.
+// Optional. The template used to create tasks for this execution.
 func (o ExecutionSpecResponseOutput) Template() TaskTemplateSpecResponseOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) TaskTemplateSpecResponse { return v.Template }).(TaskTemplateSpecResponseOutput)
 }
@@ -3738,7 +3738,7 @@ func (o HTTPGetActionResponseOutput) Scheme() pulumi.StringOutput {
 // HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeader struct {
 	// The header field name
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The header field value
 	Value *string `pulumi:"value"`
 }
@@ -3757,7 +3757,7 @@ type HTTPHeaderInput interface {
 // HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeaderArgs struct {
 	// The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -3815,8 +3815,8 @@ func (o HTTPHeaderOutput) ToHTTPHeaderOutputWithContext(ctx context.Context) HTT
 }
 
 // The header field name
-func (o HTTPHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HTTPHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o HTTPHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The header field value
@@ -7731,7 +7731,7 @@ func (o TaskTemplateSpecResponseOutput) Spec() TaskSpecResponseOutput {
 type TrafficTarget struct {
 	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
 	LatestRevision *bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
@@ -7756,7 +7756,7 @@ type TrafficTargetInput interface {
 type TrafficTargetArgs struct {
 	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName pulumi.StringPtrInput `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
 	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
@@ -7823,7 +7823,7 @@ func (o TrafficTargetOutput) ConfigurationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.ConfigurationName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
 func (o TrafficTargetOutput) LatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
 }
@@ -7867,7 +7867,7 @@ func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 type TrafficTargetResponse struct {
 	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
 	ConfigurationName string `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
 	LatestRevision bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent int `pulumi:"percent"`
@@ -7899,7 +7899,7 @@ func (o TrafficTargetResponseOutput) ConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.ConfigurationName }).(pulumi.StringOutput)
 }
 
-// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
 func (o TrafficTargetResponseOutput) LatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) bool { return v.LatestRevision }).(pulumi.BoolOutput)
 }

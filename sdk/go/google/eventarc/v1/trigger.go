@@ -25,7 +25,7 @@ type Trigger struct {
 	Destination DestinationResponseOutput `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters EventFilterResponseArrayOutput `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
@@ -109,7 +109,7 @@ type triggerArgs struct {
 	Channel *string `pulumi:"channel"`
 	// Destination specifies where the events should be sent to.
 	Destination Destination `pulumi:"destination"`
-	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters []EventFilter `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   map[string]string `pulumi:"labels"`
@@ -133,7 +133,7 @@ type TriggerArgs struct {
 	Channel pulumi.StringPtrInput
 	// Destination specifies where the events should be sent to.
 	Destination DestinationInput
-	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters EventFilterArrayInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapInput
@@ -213,7 +213,7 @@ func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 func (o TriggerOutput) EventFilters() EventFilterResponseArrayOutput {
 	return o.ApplyT(func(v *Trigger) EventFilterResponseArrayOutput { return v.EventFilters }).(EventFilterResponseArrayOutput)
 }

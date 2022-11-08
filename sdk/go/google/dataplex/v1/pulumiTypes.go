@@ -4651,13 +4651,13 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponseOutput) Sub
 
 // Config for running scheduled notebooks.
 type GoogleCloudDataplexV1TaskNotebookTaskConfig struct {
-	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
-	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 	FileUris []string `pulumi:"fileUris"`
 	// Optional. Infrastructure specification for the execution.
 	InfrastructureSpec *GoogleCloudDataplexV1TaskInfrastructureSpec `pulumi:"infrastructureSpec"`
-	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook string `pulumi:"notebook"`
 }
 
@@ -4674,13 +4674,13 @@ type GoogleCloudDataplexV1TaskNotebookTaskConfigInput interface {
 
 // Config for running scheduled notebooks.
 type GoogleCloudDataplexV1TaskNotebookTaskConfigArgs struct {
-	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
-	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// Optional. Infrastructure specification for the execution.
 	InfrastructureSpec GoogleCloudDataplexV1TaskInfrastructureSpecPtrInput `pulumi:"infrastructureSpec"`
-	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook pulumi.StringInput `pulumi:"notebook"`
 }
 
@@ -4762,12 +4762,12 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ToGoogleCloudDataplex
 	}).(GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput)
 }
 
-// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. GCS URIs of files to be placed in the working directory of each executor.
+// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) FileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) []string { return v.FileUris }).(pulumi.StringArrayOutput)
 }
@@ -4779,7 +4779,7 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) InfrastructureSpec() 
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
 }
 
-// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigOutput) Notebook() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfig) string { return v.Notebook }).(pulumi.StringOutput)
 }
@@ -4808,7 +4808,7 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Elem() GoogleCloud
 	}).(GoogleCloudDataplexV1TaskNotebookTaskConfigOutput)
 }
 
-// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) []string {
 		if v == nil {
@@ -4818,7 +4818,7 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) ArchiveUris() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. GCS URIs of files to be placed in the working directory of each executor.
+// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) FileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) []string {
 		if v == nil {
@@ -4838,7 +4838,7 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) InfrastructureSpec
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput)
 }
 
-// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Notebook() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskNotebookTaskConfig) *string {
 		if v == nil {
@@ -4850,13 +4850,13 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigPtrOutput) Notebook() pulumi.
 
 // Config for running scheduled notebooks.
 type GoogleCloudDataplexV1TaskNotebookTaskConfigResponse struct {
-	// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
-	// Optional. GCS URIs of files to be placed in the working directory of each executor.
+	// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 	FileUris []string `pulumi:"fileUris"`
 	// Optional. Infrastructure specification for the execution.
 	InfrastructureSpec GoogleCloudDataplexV1TaskInfrastructureSpecResponse `pulumi:"infrastructureSpec"`
-	// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 	Notebook string `pulumi:"notebook"`
 }
 
@@ -4875,12 +4875,12 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ToGoogleCloud
 	return o
 }
 
-// Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
 }
 
-// Optional. GCS URIs of files to be placed in the working directory of each executor.
+// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) FileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
 }
@@ -4892,7 +4892,7 @@ func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) Infrastructur
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecResponseOutput)
 }
 
-// Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
 func (o GoogleCloudDataplexV1TaskNotebookTaskConfigResponseOutput) Notebook() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskNotebookTaskConfigResponse) string { return v.Notebook }).(pulumi.StringOutput)
 }

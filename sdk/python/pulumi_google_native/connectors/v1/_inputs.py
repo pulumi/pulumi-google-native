@@ -768,22 +768,18 @@ class SecretArgs:
 class SshPublicKeyArgs:
     def __init__(__self__, *,
                  cert_type: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input['SecretArgs']] = None,
                  ssh_client_cert: Optional[pulumi.Input['SecretArgs']] = None,
                  ssh_client_cert_pass: Optional[pulumi.Input['SecretArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         Parameters to support Ssh public key Authentication.
         :param pulumi.Input[str] cert_type: Format of SSH Client cert.
-        :param pulumi.Input['SecretArgs'] password: This is an optional field used in case client has enabled multi-factor authentication
         :param pulumi.Input['SecretArgs'] ssh_client_cert: SSH Client Cert. It should contain both public and private key.
         :param pulumi.Input['SecretArgs'] ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
         :param pulumi.Input[str] username: The user account used to authenticate.
         """
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
         if ssh_client_cert is not None:
             pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
         if ssh_client_cert_pass is not None:
@@ -802,18 +798,6 @@ class SshPublicKeyArgs:
     @cert_type.setter
     def cert_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cert_type", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input['SecretArgs']]:
-        """
-        This is an optional field used in case client has enabled multi-factor authentication
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input['SecretArgs']]):
-        pulumi.set(self, "password", value)
 
     @property
     @pulumi.getter(name="sshClientCert")

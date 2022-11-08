@@ -17,21 +17,13 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2TCPSocketActionResponse
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP.
-        /// </summary>
-        public readonly string Host;
-        /// <summary>
-        /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
         /// </summary>
         public readonly int Port;
 
         [OutputConstructor]
-        private GoogleCloudRunV2TCPSocketActionResponse(
-            string host,
-
-            int port)
+        private GoogleCloudRunV2TCPSocketActionResponse(int port)
         {
-            Host = host;
             Port = port;
         }
     }

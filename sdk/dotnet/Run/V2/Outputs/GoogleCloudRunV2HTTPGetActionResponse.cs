@@ -17,10 +17,6 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2HTTPGetActionResponse
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        /// </summary>
-        public readonly string Host;
-        /// <summary>
         /// Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2HTTPHeaderResponse> HttpHeaders;
@@ -28,25 +24,15 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
         public readonly string Path;
-        /// <summary>
-        /// Scheme to use for connecting to the host. Defaults to HTTP.
-        /// </summary>
-        public readonly string Scheme;
 
         [OutputConstructor]
         private GoogleCloudRunV2HTTPGetActionResponse(
-            string host,
-
             ImmutableArray<Outputs.GoogleCloudRunV2HTTPHeaderResponse> httpHeaders,
 
-            string path,
-
-            string scheme)
+            string path)
         {
-            Host = host;
             HttpHeaders = httpHeaders;
             Path = path;
-            Scheme = scheme;
         }
     }
 }

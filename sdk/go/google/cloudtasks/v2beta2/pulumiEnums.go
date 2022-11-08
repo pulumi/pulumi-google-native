@@ -885,6 +885,175 @@ func (in *uriOverrideSchemePtr) ToUriOverrideSchemePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(UriOverrideSchemePtrOutput)
 }
 
+// Uri Override Enforce Mode Determines the Target UriOverride mode.
+type UriOverrideUriOverrideEnforceMode string
+
+const (
+	// OverrideMode Unspecified. Defaults to ALWAYS.
+	UriOverrideUriOverrideEnforceModeUriOverrideEnforceModeUnspecified = UriOverrideUriOverrideEnforceMode("URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED")
+	// In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+	UriOverrideUriOverrideEnforceModeIfNotExists = UriOverrideUriOverrideEnforceMode("IF_NOT_EXISTS")
+	// In the ALWAYS mode, queue-level configuration overrides all task-level configuration
+	UriOverrideUriOverrideEnforceModeAlways = UriOverrideUriOverrideEnforceMode("ALWAYS")
+)
+
+func (UriOverrideUriOverrideEnforceMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverrideUriOverrideEnforceMode)(nil)).Elem()
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToUriOverrideUriOverrideEnforceModeOutput() UriOverrideUriOverrideEnforceModeOutput {
+	return pulumi.ToOutput(e).(UriOverrideUriOverrideEnforceModeOutput)
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToUriOverrideUriOverrideEnforceModeOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UriOverrideUriOverrideEnforceModeOutput)
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToUriOverrideUriOverrideEnforceModePtrOutput() UriOverrideUriOverrideEnforceModePtrOutput {
+	return e.ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(context.Background())
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
+	return UriOverrideUriOverrideEnforceMode(e).ToUriOverrideUriOverrideEnforceModeOutputWithContext(ctx).ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx)
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UriOverrideUriOverrideEnforceMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UriOverrideUriOverrideEnforceModeOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideUriOverrideEnforceModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverrideUriOverrideEnforceMode)(nil)).Elem()
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforceModeOutput() UriOverrideUriOverrideEnforceModeOutput {
+	return o
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforceModeOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModeOutput {
+	return o
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforceModePtrOutput() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(context.Background())
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UriOverrideUriOverrideEnforceMode) *UriOverrideUriOverrideEnforceMode {
+		return &v
+	}).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UriOverrideUriOverrideEnforceMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UriOverrideUriOverrideEnforceModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UriOverrideUriOverrideEnforceMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UriOverrideUriOverrideEnforceModePtrOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideUriOverrideEnforceModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UriOverrideUriOverrideEnforceMode)(nil)).Elem()
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnforceModePtrOutput() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
+	return o
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) Elem() UriOverrideUriOverrideEnforceModeOutput {
+	return o.ApplyT(func(v *UriOverrideUriOverrideEnforceMode) UriOverrideUriOverrideEnforceMode {
+		if v != nil {
+			return *v
+		}
+		var ret UriOverrideUriOverrideEnforceMode
+		return ret
+	}).(UriOverrideUriOverrideEnforceModeOutput)
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UriOverrideUriOverrideEnforceModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UriOverrideUriOverrideEnforceMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UriOverrideUriOverrideEnforceModeInput is an input type that accepts UriOverrideUriOverrideEnforceModeArgs and UriOverrideUriOverrideEnforceModeOutput values.
+// You can construct a concrete instance of `UriOverrideUriOverrideEnforceModeInput` via:
+//
+//	UriOverrideUriOverrideEnforceModeArgs{...}
+type UriOverrideUriOverrideEnforceModeInput interface {
+	pulumi.Input
+
+	ToUriOverrideUriOverrideEnforceModeOutput() UriOverrideUriOverrideEnforceModeOutput
+	ToUriOverrideUriOverrideEnforceModeOutputWithContext(context.Context) UriOverrideUriOverrideEnforceModeOutput
+}
+
+var uriOverrideUriOverrideEnforceModePtrType = reflect.TypeOf((**UriOverrideUriOverrideEnforceMode)(nil)).Elem()
+
+type UriOverrideUriOverrideEnforceModePtrInput interface {
+	pulumi.Input
+
+	ToUriOverrideUriOverrideEnforceModePtrOutput() UriOverrideUriOverrideEnforceModePtrOutput
+	ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(context.Context) UriOverrideUriOverrideEnforceModePtrOutput
+}
+
+type uriOverrideUriOverrideEnforceModePtr string
+
+func UriOverrideUriOverrideEnforceModePtr(v string) UriOverrideUriOverrideEnforceModePtrInput {
+	return (*uriOverrideUriOverrideEnforceModePtr)(&v)
+}
+
+func (*uriOverrideUriOverrideEnforceModePtr) ElementType() reflect.Type {
+	return uriOverrideUriOverrideEnforceModePtrType
+}
+
+func (in *uriOverrideUriOverrideEnforceModePtr) ToUriOverrideUriOverrideEnforceModePtrOutput() UriOverrideUriOverrideEnforceModePtrOutput {
+	return pulumi.ToOutput(in).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
+func (in *uriOverrideUriOverrideEnforceModePtr) ToUriOverrideUriOverrideEnforceModePtrOutputWithContext(ctx context.Context) UriOverrideUriOverrideEnforceModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestHttpMethodInput)(nil)).Elem(), AppEngineHttpRequestHttpMethod("HTTP_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpRequestHttpMethodPtrInput)(nil)).Elem(), AppEngineHttpRequestHttpMethod("HTTP_METHOD_UNSPECIFIED"))
@@ -896,6 +1065,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskResponseViewPtrInput)(nil)).Elem(), TaskResponseView("VIEW_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideSchemeInput)(nil)).Elem(), UriOverrideScheme("SCHEME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideSchemePtrInput)(nil)).Elem(), UriOverrideScheme("SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideUriOverrideEnforceModeInput)(nil)).Elem(), UriOverrideUriOverrideEnforceMode("URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideUriOverrideEnforceModePtrInput)(nil)).Elem(), UriOverrideUriOverrideEnforceMode("URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodPtrOutput{})
 	pulumi.RegisterOutputType(HttpRequestHttpMethodOutput{})
@@ -906,4 +1077,6 @@ func init() {
 	pulumi.RegisterOutputType(TaskResponseViewPtrOutput{})
 	pulumi.RegisterOutputType(UriOverrideSchemeOutput{})
 	pulumi.RegisterOutputType(UriOverrideSchemePtrOutput{})
+	pulumi.RegisterOutputType(UriOverrideUriOverrideEnforceModeOutput{})
+	pulumi.RegisterOutputType(UriOverrideUriOverrideEnforceModePtrOutput{})
 }

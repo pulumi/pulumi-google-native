@@ -4701,7 +4701,7 @@ type OracleSourceConfig struct {
 	IncludeObjects *OracleRdbms `pulumi:"includeObjects"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values.
+	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects *StreamLargeObjects `pulumi:"streamLargeObjects"`
 }
 
@@ -4726,7 +4726,7 @@ type OracleSourceConfigArgs struct {
 	IncludeObjects OracleRdbmsPtrInput `pulumi:"includeObjects"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values.
+	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects StreamLargeObjectsPtrInput `pulumi:"streamLargeObjects"`
 }
 
@@ -4828,7 +4828,7 @@ func (o OracleSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
 }
 
-// Stream large object values.
+// Stream large object values. NOTE: This feature is currently experimental.
 func (o OracleSourceConfigOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *StreamLargeObjects { return v.StreamLargeObjects }).(StreamLargeObjectsPtrOutput)
 }
@@ -4897,7 +4897,7 @@ func (o OracleSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Stream large object values.
+// Stream large object values. NOTE: This feature is currently experimental.
 func (o OracleSourceConfigPtrOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
 	return o.ApplyT(func(v *OracleSourceConfig) *StreamLargeObjects {
 		if v == nil {
@@ -4917,7 +4917,7 @@ type OracleSourceConfigResponse struct {
 	IncludeObjects OracleRdbmsResponse `pulumi:"includeObjects"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
-	// Stream large object values.
+	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects StreamLargeObjectsResponse `pulumi:"streamLargeObjects"`
 }
 
@@ -4956,7 +4956,7 @@ func (o OracleSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutp
 	return o.ApplyT(func(v OracleSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
 }
 
-// Stream large object values.
+// Stream large object values. NOTE: This feature is currently experimental.
 func (o OracleSourceConfigResponseOutput) StreamLargeObjects() StreamLargeObjectsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) StreamLargeObjectsResponse { return v.StreamLargeObjects }).(StreamLargeObjectsResponseOutput)
 }
@@ -5987,7 +5987,7 @@ type PostgresqlSourceConfig struct {
 	IncludeObjects *PostgresqlRdbms `pulumi:"includeObjects"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication string `pulumi:"publication"`
-	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 	ReplicationSlot string `pulumi:"replicationSlot"`
 }
 
@@ -6010,7 +6010,7 @@ type PostgresqlSourceConfigArgs struct {
 	IncludeObjects PostgresqlRdbmsPtrInput `pulumi:"includeObjects"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication pulumi.StringInput `pulumi:"publication"`
-	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 	ReplicationSlot pulumi.StringInput `pulumi:"replicationSlot"`
 }
 
@@ -6107,7 +6107,7 @@ func (o PostgresqlSourceConfigOutput) Publication() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfig) string { return v.Publication }).(pulumi.StringOutput)
 }
 
-// The name of the logical replication slot that's configured with the pgoutput plugin.
+// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 func (o PostgresqlSourceConfigOutput) ReplicationSlot() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfig) string { return v.ReplicationSlot }).(pulumi.StringOutput)
 }
@@ -6166,7 +6166,7 @@ func (o PostgresqlSourceConfigPtrOutput) Publication() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the logical replication slot that's configured with the pgoutput plugin.
+// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 func (o PostgresqlSourceConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresqlSourceConfig) *string {
 		if v == nil {
@@ -6184,7 +6184,7 @@ type PostgresqlSourceConfigResponse struct {
 	IncludeObjects PostgresqlRdbmsResponse `pulumi:"includeObjects"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication string `pulumi:"publication"`
-	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 	ReplicationSlot string `pulumi:"replicationSlot"`
 }
 
@@ -6218,7 +6218,7 @@ func (o PostgresqlSourceConfigResponseOutput) Publication() pulumi.StringOutput 
 	return o.ApplyT(func(v PostgresqlSourceConfigResponse) string { return v.Publication }).(pulumi.StringOutput)
 }
 
-// The name of the logical replication slot that's configured with the pgoutput plugin.
+// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
 func (o PostgresqlSourceConfigResponseOutput) ReplicationSlot() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfigResponse) string { return v.ReplicationSlot }).(pulumi.StringOutput)
 }

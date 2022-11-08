@@ -47,7 +47,7 @@ export interface GetTriggerResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
     readonly matchingCriteria: outputs.eventarc.v1beta1.MatchingCriteriaResponse[];
     /**

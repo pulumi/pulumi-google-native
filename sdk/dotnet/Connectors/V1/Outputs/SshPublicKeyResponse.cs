@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly string CertType;
         /// <summary>
-        /// This is an optional field used in case client has enabled multi-factor authentication
-        /// </summary>
-        public readonly Outputs.SecretResponse Password;
-        /// <summary>
         /// SSH Client Cert. It should contain both public and private key.
         /// </summary>
         public readonly Outputs.SecretResponse SshClientCert;
@@ -41,8 +37,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         private SshPublicKeyResponse(
             string certType,
 
-            Outputs.SecretResponse password,
-
             Outputs.SecretResponse sshClientCert,
 
             Outputs.SecretResponse sshClientCertPass,
@@ -50,7 +44,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
             string username)
         {
             CertType = certType;
-            Password = password;
             SshClientCert = sshClientCert;
             SshClientCertPass = sshClientCertPass;
             Username = username;

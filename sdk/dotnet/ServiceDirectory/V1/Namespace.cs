@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The globally unique identifier of the namespace in the UUID4 format.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Namespace resource with the given unique name, arguments, and options.

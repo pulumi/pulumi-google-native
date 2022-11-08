@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public Output<string> ImageUri { get; private set; } = null!;
 
         /// <summary>
-        /// A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
+        /// This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
         /// </summary>
         [Output("keywordSearchableJobCustomAttributes")]
         public Output<ImmutableArray<string>> KeywordSearchableJobCustomAttributes { get; private set; } = null!;
@@ -195,8 +195,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
         private InputList<string>? _keywordSearchableJobCustomAttributes;
 
         /// <summary>
-        /// A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
+        /// This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
         /// </summary>
+        [Obsolete(@"This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.")]
         public InputList<string> KeywordSearchableJobCustomAttributes
         {
             get => _keywordSearchableJobCustomAttributes ?? (_keywordSearchableJobCustomAttributes = new InputList<string>());

@@ -184,7 +184,11 @@ class BuildConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dockerRepository":
+        if key == "buildpackStack":
+            suggest = "buildpack_stack"
+        elif key == "dockerRegistry":
+            suggest = "docker_registry"
+        elif key == "dockerRepository":
             suggest = "docker_repository"
         elif key == "entryPoint":
             suggest = "entry_point"
@@ -208,6 +212,8 @@ class BuildConfigResponse(dict):
 
     def __init__(__self__, *,
                  build: str,
+                 buildpack_stack: str,
+                 docker_registry: str,
                  docker_repository: str,
                  entry_point: str,
                  environment_variables: Mapping[str, str],
@@ -218,7 +224,9 @@ class BuildConfigResponse(dict):
         """
         Describes the Build step of the function that builds a container from the given source.
         :param str build: The Cloud Build name of the latest successful deployment of the function.
-        :param str docker_repository: Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        :param str buildpack_stack: Specifies one of the Google provided buildpack stacks.
+        :param str docker_registry: Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        :param str docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param str entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function
         :param str runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
@@ -227,6 +235,8 @@ class BuildConfigResponse(dict):
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
         pulumi.set(__self__, "build", build)
+        pulumi.set(__self__, "buildpack_stack", buildpack_stack)
+        pulumi.set(__self__, "docker_registry", docker_registry)
         pulumi.set(__self__, "docker_repository", docker_repository)
         pulumi.set(__self__, "entry_point", entry_point)
         pulumi.set(__self__, "environment_variables", environment_variables)
@@ -244,10 +254,26 @@ class BuildConfigResponse(dict):
         return pulumi.get(self, "build")
 
     @property
+    @pulumi.getter(name="buildpackStack")
+    def buildpack_stack(self) -> str:
+        """
+        Specifies one of the Google provided buildpack stacks.
+        """
+        return pulumi.get(self, "buildpack_stack")
+
+    @property
+    @pulumi.getter(name="dockerRegistry")
+    def docker_registry(self) -> str:
+        """
+        Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        """
+        return pulumi.get(self, "docker_registry")
+
+    @property
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> str:
         """
-        Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         """
         return pulumi.get(self, "docker_repository")
 
@@ -866,6 +892,8 @@ class ServiceConfigResponse(dict):
             suggest = "secret_environment_variables"
         elif key == "secretVolumes":
             suggest = "secret_volumes"
+        elif key == "securityLevel":
+            suggest = "security_level"
         elif key == "serviceAccountEmail":
             suggest = "service_account_email"
         elif key == "timeoutSeconds":
@@ -896,6 +924,7 @@ class ServiceConfigResponse(dict):
                  revision: str,
                  secret_environment_variables: Sequence['outputs.SecretEnvVarResponse'],
                  secret_volumes: Sequence['outputs.SecretVolumeResponse'],
+                 security_level: str,
                  service: str,
                  service_account_email: str,
                  timeout_seconds: int,
@@ -913,6 +942,7 @@ class ServiceConfigResponse(dict):
         :param str revision: The name of service revision.
         :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
         :param Sequence['SecretVolumeResponse'] secret_volumes: Secret volumes configuration.
+        :param str security_level: Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -929,6 +959,7 @@ class ServiceConfigResponse(dict):
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         pulumi.set(__self__, "secret_volumes", secret_volumes)
+        pulumi.set(__self__, "security_level", security_level)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
@@ -1007,6 +1038,14 @@ class ServiceConfigResponse(dict):
         Secret volumes configuration.
         """
         return pulumi.get(self, "secret_volumes")
+
+    @property
+    @pulumi.getter(name="securityLevel")
+    def security_level(self) -> str:
+        """
+        Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        """
+        return pulumi.get(self, "security_level")
 
     @property
     @pulumi.getter

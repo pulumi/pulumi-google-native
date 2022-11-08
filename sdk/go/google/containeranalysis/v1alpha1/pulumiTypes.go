@@ -18577,7 +18577,7 @@ type Source struct {
 	FileHashes map[string]string `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource *RepoSource `pulumi:"repoSource"`
-	// If provided, get the source from this location in in Google Cloud Storage.
+	// If provided, get the source from this location in Google Cloud Storage.
 	StorageSource *StorageSource `pulumi:"storageSource"`
 }
 
@@ -18604,7 +18604,7 @@ type SourceArgs struct {
 	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
-	// If provided, get the source from this location in in Google Cloud Storage.
+	// If provided, get the source from this location in Google Cloud Storage.
 	StorageSource StorageSourcePtrInput `pulumi:"storageSource"`
 }
 
@@ -18711,7 +18711,7 @@ func (o SourceOutput) RepoSource() RepoSourcePtrOutput {
 	return o.ApplyT(func(v Source) *RepoSource { return v.RepoSource }).(RepoSourcePtrOutput)
 }
 
-// If provided, get the source from this location in in Google Cloud Storage.
+// If provided, get the source from this location in Google Cloud Storage.
 func (o SourceOutput) StorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v Source) *StorageSource { return v.StorageSource }).(StorageSourcePtrOutput)
 }
@@ -18790,7 +18790,7 @@ func (o SourcePtrOutput) RepoSource() RepoSourcePtrOutput {
 	}).(RepoSourcePtrOutput)
 }
 
-// If provided, get the source from this location in in Google Cloud Storage.
+// If provided, get the source from this location in Google Cloud Storage.
 func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 	return o.ApplyT(func(v *Source) *StorageSource {
 		if v == nil {
@@ -18812,7 +18812,7 @@ type SourceResponse struct {
 	FileHashes map[string]string `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource RepoSourceResponse `pulumi:"repoSource"`
-	// If provided, get the source from this location in in Google Cloud Storage.
+	// If provided, get the source from this location in Google Cloud Storage.
 	StorageSource StorageSourceResponse `pulumi:"storageSource"`
 }
 
@@ -18858,7 +18858,7 @@ func (o SourceResponseOutput) RepoSource() RepoSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) RepoSourceResponse { return v.RepoSource }).(RepoSourceResponseOutput)
 }
 
-// If provided, get the source from this location in in Google Cloud Storage.
+// If provided, get the source from this location in Google Cloud Storage.
 func (o SourceResponseOutput) StorageSource() StorageSourceResponseOutput {
 	return o.ApplyT(func(v SourceResponse) StorageSourceResponse { return v.StorageSource }).(StorageSourceResponseOutput)
 }

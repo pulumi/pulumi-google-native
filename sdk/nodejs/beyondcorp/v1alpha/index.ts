@@ -235,20 +235,15 @@ export const getConnectorIamPolicy: typeof import("./getConnectorIamPolicy").get
 export const getConnectorIamPolicyOutput: typeof import("./getConnectorIamPolicy").getConnectorIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorIamPolicy","getConnectorIamPolicyOutput"], () => require("./getConnectorIamPolicy"));
 
-export { GetNetConnectionArgs, GetNetConnectionResult, GetNetConnectionOutputArgs } from "./getNetConnection";
-export const getNetConnection: typeof import("./getNetConnection").getNetConnection = null as any;
-export const getNetConnectionOutput: typeof import("./getNetConnection").getNetConnectionOutput = null as any;
-utilities.lazyLoad(exports, ["getNetConnection","getNetConnectionOutput"], () => require("./getNetConnection"));
-
 export { GetNetConnectionIamPolicyArgs, GetNetConnectionIamPolicyResult, GetNetConnectionIamPolicyOutputArgs } from "./getNetConnectionIamPolicy";
 export const getNetConnectionIamPolicy: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicy = null as any;
 export const getNetConnectionIamPolicyOutput: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getNetConnectionIamPolicy","getNetConnectionIamPolicyOutput"], () => require("./getNetConnectionIamPolicy"));
 
-export { NetConnectionArgs } from "./netConnection";
-export type NetConnection = import("./netConnection").NetConnection;
-export const NetConnection: typeof import("./netConnection").NetConnection = null as any;
-utilities.lazyLoad(exports, ["NetConnection"], () => require("./netConnection"));
+export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
+export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
+export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
 
 export { NetConnectionIamBindingArgs } from "./netConnectionIamBinding";
 export type NetConnectionIamBinding = import("./netConnectionIamBinding").NetConnectionIamBinding;
@@ -264,6 +259,11 @@ export { NetConnectionIamPolicyArgs } from "./netConnectionIamPolicy";
 export type NetConnectionIamPolicy = import("./netConnectionIamPolicy").NetConnectionIamPolicy;
 export const NetConnectionIamPolicy: typeof import("./netConnectionIamPolicy").NetConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["NetConnectionIamPolicy"], () => require("./netConnectionIamPolicy"));
+
+export { SubscriptionArgs } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
 
 
 // Export enums:
@@ -335,14 +335,14 @@ const _module = {
                 return new ConnectorIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:ConnectorIamPolicy":
                 return new ConnectorIamPolicy(name, <any>undefined, { urn })
-            case "google-native:beyondcorp/v1alpha:NetConnection":
-                return new NetConnection(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:NetConnectionIamBinding":
                 return new NetConnectionIamBinding(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:NetConnectionIamMember":
                 return new NetConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
                 return new NetConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:Subscription":
+                return new Subscription(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -15,12 +15,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudRunV2HTTPGetActionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
         [Input("httpHeaders")]
         private InputList<Inputs.GoogleCloudRunV2HTTPHeaderArgs>? _httpHeaders;
 
@@ -38,12 +32,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
-
-        /// <summary>
-        /// Scheme to use for connecting to the host. Defaults to HTTP.
-        /// </summary>
-        [Input("scheme")]
-        public Input<string>? Scheme { get; set; }
 
         public GoogleCloudRunV2HTTPGetActionArgs()
         {

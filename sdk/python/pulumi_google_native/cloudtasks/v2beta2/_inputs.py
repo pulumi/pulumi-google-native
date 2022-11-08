@@ -506,7 +506,7 @@ class HttpTargetArgs:
         :param pulumi.Input['HttpTargetHttpMethod'] http_method: The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
         :param pulumi.Input['OAuthTokenArgs'] oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
         :param pulumi.Input['OidcTokenArgs'] oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-        :param pulumi.Input['UriOverrideArgs'] uri_override: Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        :param pulumi.Input['UriOverrideArgs'] uri_override: Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         """
         if header_overrides is not None:
             pulumi.set(__self__, "header_overrides", header_overrides)
@@ -571,7 +571,7 @@ class HttpTargetArgs:
     @pulumi.getter(name="uriOverride")
     def uri_override(self) -> Optional[pulumi.Input['UriOverrideArgs']]:
         """
-        Uri override. When specified modifies the execution Uri for all the tasks in the queue.
+        Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
         """
         return pulumi.get(self, "uri_override")
 
@@ -876,7 +876,8 @@ class UriOverrideArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
-                 scheme: Optional[pulumi.Input['UriOverrideScheme']] = None):
+                 scheme: Optional[pulumi.Input['UriOverrideScheme']] = None,
+                 uri_override_enforce_mode: Optional[pulumi.Input['UriOverrideUriOverrideEnforceMode']] = None):
         """
         Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
         :param pulumi.Input[str] host: Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
@@ -884,6 +885,7 @@ class UriOverrideArgs:
         :param pulumi.Input[str] port: Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
         :param pulumi.Input[str] query: Uri Query. Will replace the query part of the task uri.
         :param pulumi.Input['UriOverrideScheme'] scheme: Scheme override. When specified, the Uri scheme is replaced by the provided value.
+        :param pulumi.Input['UriOverrideUriOverrideEnforceMode'] uri_override_enforce_mode: Uri Override Enforce Mode Determines the Target UriOverride mode.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -895,6 +897,8 @@ class UriOverrideArgs:
             pulumi.set(__self__, "query", query)
         if scheme is not None:
             pulumi.set(__self__, "scheme", scheme)
+        if uri_override_enforce_mode is not None:
+            pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
 
     @property
     @pulumi.getter
@@ -955,5 +959,17 @@ class UriOverrideArgs:
     @scheme.setter
     def scheme(self, value: Optional[pulumi.Input['UriOverrideScheme']]):
         pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> Optional[pulumi.Input['UriOverrideUriOverrideEnforceMode']]:
+        """
+        Uri Override Enforce Mode Determines the Target UriOverride mode.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
+
+    @uri_override_enforce_mode.setter
+    def uri_override_enforce_mode(self, value: Optional[pulumi.Input['UriOverrideUriOverrideEnforceMode']]):
+        pulumi.set(self, "uri_override_enforce_mode", value)
 
 

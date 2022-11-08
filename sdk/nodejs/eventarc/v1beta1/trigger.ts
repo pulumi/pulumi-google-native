@@ -55,7 +55,7 @@ export class Trigger extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
     public readonly matchingCriteria!: pulumi.Output<outputs.eventarc.v1beta1.MatchingCriteriaResponse[]>;
     /**
@@ -156,7 +156,7 @@ export interface TriggerArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
     matchingCriteria: pulumi.Input<pulumi.Input<inputs.eventarc.v1beta1.MatchingCriteriaArgs>[]>;
     /**

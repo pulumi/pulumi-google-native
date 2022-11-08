@@ -46,6 +46,10 @@ class GetCompanyResult:
         pulumi.set(__self__, "image_uri", image_uri)
         if keyword_searchable_job_custom_attributes and not isinstance(keyword_searchable_job_custom_attributes, list):
             raise TypeError("Expected argument 'keyword_searchable_job_custom_attributes' to be a list")
+        if keyword_searchable_job_custom_attributes is not None:
+            warnings.warn("""This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.""", DeprecationWarning)
+            pulumi.log.warn("""keyword_searchable_job_custom_attributes is deprecated: This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.""")
+
         pulumi.set(__self__, "keyword_searchable_job_custom_attributes", keyword_searchable_job_custom_attributes)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -128,7 +132,7 @@ class GetCompanyResult:
     @pulumi.getter(name="keywordSearchableJobCustomAttributes")
     def keyword_searchable_job_custom_attributes(self) -> Sequence[str]:
         """
-        A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
+        This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes.
         """
         return pulumi.get(self, "keyword_searchable_job_custom_attributes")
 

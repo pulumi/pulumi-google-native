@@ -1021,7 +1021,7 @@ class BuildResponse(dict):
         :param Mapping[str, str] substitutions: Substitutions data for `Build` resource.
         :param Sequence[str] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param str timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
-        :param Mapping[str, str] timing: Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
+        :param Mapping[str, str] timing: Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         :param Sequence['WarningResponse'] warnings: Non-fatal problems encountered during the execution of the build.
         """
         pulumi.set(__self__, "approval", approval)
@@ -1265,7 +1265,7 @@ class BuildResponse(dict):
     @pulumi.getter
     def timing(self) -> Mapping[str, str]:
         """
-        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
+        Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
 
@@ -3114,13 +3114,13 @@ class ResultsResponse(dict):
                  python_packages: Sequence['outputs.UploadedPythonPackageResponse']):
         """
         Artifacts created by the build pipeline.
-        :param str artifact_manifest: Path to the artifact manifest. Only populated when artifacts are uploaded.
-        :param 'TimeSpanResponse' artifact_timing: Time to push all non-container artifacts.
+        :param str artifact_manifest: Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
+        :param 'TimeSpanResponse' artifact_timing: Time to push all non-container artifacts to Cloud Storage.
         :param Sequence[str] build_step_images: List of build step digests, in the order corresponding to build step indices.
         :param Sequence[str] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
         :param Sequence['BuiltImageResponse'] images: Container images that were built as a part of the build.
         :param Sequence['UploadedMavenArtifactResponse'] maven_artifacts: Maven artifacts uploaded to Artifact Registry at the end of the build.
-        :param str num_artifacts: Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        :param str num_artifacts: Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         :param Sequence['UploadedPythonPackageResponse'] python_packages: Python artifacts uploaded to Artifact Registry at the end of the build.
         """
         pulumi.set(__self__, "artifact_manifest", artifact_manifest)
@@ -3136,7 +3136,7 @@ class ResultsResponse(dict):
     @pulumi.getter(name="artifactManifest")
     def artifact_manifest(self) -> str:
         """
-        Path to the artifact manifest. Only populated when artifacts are uploaded.
+        Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         """
         return pulumi.get(self, "artifact_manifest")
 
@@ -3144,7 +3144,7 @@ class ResultsResponse(dict):
     @pulumi.getter(name="artifactTiming")
     def artifact_timing(self) -> 'outputs.TimeSpanResponse':
         """
-        Time to push all non-container artifacts.
+        Time to push all non-container artifacts to Cloud Storage.
         """
         return pulumi.get(self, "artifact_timing")
 
@@ -3184,7 +3184,7 @@ class ResultsResponse(dict):
     @pulumi.getter(name="numArtifacts")
     def num_artifacts(self) -> str:
         """
-        Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         """
         return pulumi.get(self, "num_artifacts")
 

@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
+        /// <summary>
+        /// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+        /// </summary>
+        [Input("privateEndpointSubnetwork")]
+        public Input<string>? PrivateEndpointSubnetwork { get; set; }
+
         public PrivateClusterConfigArgs()
         {
         }

@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SecretVolumeResponse> SecretVolumes;
         /// <summary>
+        /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        /// </summary>
+        public readonly string SecurityLevel;
+        /// <summary>
         /// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         /// </summary>
         public readonly string Service;
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
             ImmutableArray<Outputs.SecretVolumeResponse> secretVolumes,
 
+            string securityLevel,
+
             string service,
 
             string serviceAccountEmail,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
             Revision = revision;
             SecretEnvironmentVariables = secretEnvironmentVariables;
             SecretVolumes = secretVolumes;
+            SecurityLevel = securityLevel;
             Service = service;
             ServiceAccountEmail = serviceAccountEmail;
             TimeoutSeconds = timeoutSeconds;

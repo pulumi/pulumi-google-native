@@ -36,6 +36,10 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
         /// Scheme override. When specified, the Uri scheme is replaced by the provided value.
         /// </summary>
         public readonly string Scheme;
+        /// <summary>
+        /// Uri Override Enforce Mode Determines the Target UriOverride mode.
+        /// </summary>
+        public readonly string UriOverrideEnforceMode;
 
         [OutputConstructor]
         private UriOverrideResponse(
@@ -47,13 +51,16 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
 
             string query,
 
-            string scheme)
+            string scheme,
+
+            string uriOverrideEnforceMode)
         {
             Host = host;
             Path = path;
             Port = port;
             Query = query;
             Scheme = scheme;
+            UriOverrideEnforceMode = uriOverrideEnforceMode;
         }
     }
 }

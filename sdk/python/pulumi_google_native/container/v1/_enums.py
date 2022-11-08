@@ -15,8 +15,10 @@ __all__ = [
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
     'GPUSharingConfigGpuSharingStrategy',
+    'GatewayAPIConfigChannel',
     'IPAllocationPolicyIpv6AccessType',
     'IPAllocationPolicyStackType',
+    'LinuxNodeConfigCgroupMode',
     'LoggingComponentConfigEnableComponentsItem',
     'LoggingVariantConfigVariant',
     'MaintenanceExclusionOptionsScope',
@@ -214,6 +216,28 @@ class GPUSharingConfigGpuSharingStrategy(str, Enum):
     """
 
 
+class GatewayAPIConfigChannel(str, Enum):
+    """
+    The Gateway API release channel to use for Gateway API.
+    """
+    CHANNEL_UNSPECIFIED = "CHANNEL_UNSPECIFIED"
+    """
+    Default value.
+    """
+    CHANNEL_DISABLED = "CHANNEL_DISABLED"
+    """
+    Gateway API support is disabled
+    """
+    CHANNEL_EXPERIMENTAL = "CHANNEL_EXPERIMENTAL"
+    """
+    Gateway API support is enabled, experimental CRDs are installed
+    """
+    CHANNEL_STANDARD = "CHANNEL_STANDARD"
+    """
+    Gateway API support is enabled, standard CRDs are installed
+    """
+
+
 class IPAllocationPolicyIpv6AccessType(str, Enum):
     """
     The ipv6 access type (internal or external) when create_subnetwork is true
@@ -250,6 +274,24 @@ class IPAllocationPolicyStackType(str, Enum):
     """
 
 
+class LinuxNodeConfigCgroupMode(str, Enum):
+    """
+    cgroup_mode specifies the cgroup mode to be used on the node.
+    """
+    CGROUP_MODE_UNSPECIFIED = "CGROUP_MODE_UNSPECIFIED"
+    """
+    CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+    """
+    CGROUP_MODE_V1 = "CGROUP_MODE_V1"
+    """
+    CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+    """
+    CGROUP_MODE_V2 = "CGROUP_MODE_V2"
+    """
+    CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+    """
+
+
 class LoggingComponentConfigEnableComponentsItem(str, Enum):
     COMPONENT_UNSPECIFIED = "COMPONENT_UNSPECIFIED"
     """
@@ -262,6 +304,18 @@ class LoggingComponentConfigEnableComponentsItem(str, Enum):
     WORKLOADS = "WORKLOADS"
     """
     workloads
+    """
+    APISERVER = "APISERVER"
+    """
+    kube-apiserver
+    """
+    SCHEDULER = "SCHEDULER"
+    """
+    kube-scheduler
+    """
+    CONTROLLER_MANAGER = "CONTROLLER_MANAGER"
+    """
+    kube-controller-manager
     """
 
 

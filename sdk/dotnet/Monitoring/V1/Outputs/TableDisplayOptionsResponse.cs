@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     [OutputType]
     public sealed class TableDisplayOptionsResponse
     {
+        /// <summary>
+        /// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+        /// </summary>
+        public readonly ImmutableArray<string> ShownColumns;
+
         [OutputConstructor]
-        private TableDisplayOptionsResponse()
+        private TableDisplayOptionsResponse(ImmutableArray<string> shownColumns)
         {
+            ShownColumns = shownColumns;
         }
     }
 }

@@ -1312,7 +1312,7 @@ class OracleSourceConfigArgs:
         :param pulumi.Input['OracleRdbmsArgs'] exclude_objects: Oracle objects to exclude from the stream.
         :param pulumi.Input['OracleRdbmsArgs'] include_objects: Oracle objects to include in the stream.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
-        :param pulumi.Input['StreamLargeObjectsArgs'] stream_large_objects: Stream large object values.
+        :param pulumi.Input['StreamLargeObjectsArgs'] stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
         """
         if drop_large_objects is not None:
             pulumi.set(__self__, "drop_large_objects", drop_large_objects)
@@ -1377,7 +1377,7 @@ class OracleSourceConfigArgs:
     @pulumi.getter(name="streamLargeObjects")
     def stream_large_objects(self) -> Optional[pulumi.Input['StreamLargeObjectsArgs']]:
         """
-        Stream large object values.
+        Stream large object values. NOTE: This feature is currently experimental.
         """
         return pulumi.get(self, "stream_large_objects")
 
@@ -1720,7 +1720,7 @@ class PostgresqlSourceConfigArgs:
         """
         PostgreSQL data source configuration
         :param pulumi.Input[str] publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
-        :param pulumi.Input[str] replication_slot: The name of the logical replication slot that's configured with the pgoutput plugin.
+        :param pulumi.Input[str] replication_slot: Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         :param pulumi.Input['PostgresqlRdbmsArgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
         :param pulumi.Input['PostgresqlRdbmsArgs'] include_objects: PostgreSQL objects to include in the stream.
         """
@@ -1747,7 +1747,7 @@ class PostgresqlSourceConfigArgs:
     @pulumi.getter(name="replicationSlot")
     def replication_slot(self) -> pulumi.Input[str]:
         """
-        The name of the logical replication slot that's configured with the pgoutput plugin.
+        Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         """
         return pulumi.get(self, "replication_slot")
 

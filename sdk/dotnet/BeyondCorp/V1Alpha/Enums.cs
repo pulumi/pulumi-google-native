@@ -408,4 +408,86 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Required. SKU of subscription.
+    /// </summary>
+    [EnumType]
+    public readonly struct SubscriptionSku : IEquatable<SubscriptionSku>
+    {
+        private readonly string _value;
+
+        private SubscriptionSku(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static SubscriptionSku SkuUnspecified { get; } = new SubscriptionSku("SKU_UNSPECIFIED");
+        /// <summary>
+        /// Represents BeyondCorp Standard SKU.
+        /// </summary>
+        public static SubscriptionSku BceStandardSku { get; } = new SubscriptionSku("BCE_STANDARD_SKU");
+
+        public static bool operator ==(SubscriptionSku left, SubscriptionSku right) => left.Equals(right);
+        public static bool operator !=(SubscriptionSku left, SubscriptionSku right) => !left.Equals(right);
+
+        public static explicit operator string(SubscriptionSku value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SubscriptionSku other && Equals(other);
+        public bool Equals(SubscriptionSku other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Type of subscription.
+    /// </summary>
+    [EnumType]
+    public readonly struct SubscriptionType : IEquatable<SubscriptionType>
+    {
+        private readonly string _value;
+
+        private SubscriptionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static SubscriptionType TypeUnspecified { get; } = new SubscriptionType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Represents a trial subscription.
+        /// </summary>
+        public static SubscriptionType Trial { get; } = new SubscriptionType("TRIAL");
+        /// <summary>
+        /// Represents a paid subscription.
+        /// </summary>
+        public static SubscriptionType Paid { get; } = new SubscriptionType("PAID");
+        /// <summary>
+        /// Reresents an allowlisted subscription.
+        /// </summary>
+        public static SubscriptionType Allowlist { get; } = new SubscriptionType("ALLOWLIST");
+
+        public static bool operator ==(SubscriptionType left, SubscriptionType right) => left.Equals(right);
+        public static bool operator !=(SubscriptionType left, SubscriptionType right) => !left.Equals(right);
+
+        public static explicit operator string(SubscriptionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SubscriptionType other && Equals(other);
+        public bool Equals(SubscriptionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -271,4 +271,45 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Uri Override Enforce Mode Determines the Target UriOverride mode.
+    /// </summary>
+    [EnumType]
+    public readonly struct UriOverrideUriOverrideEnforceMode : IEquatable<UriOverrideUriOverrideEnforceMode>
+    {
+        private readonly string _value;
+
+        private UriOverrideUriOverrideEnforceMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// OverrideMode Unspecified. Defaults to ALWAYS.
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode UriOverrideEnforceModeUnspecified { get; } = new UriOverrideUriOverrideEnforceMode("URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode IfNotExists { get; } = new UriOverrideUriOverrideEnforceMode("IF_NOT_EXISTS");
+        /// <summary>
+        /// In the ALWAYS mode, queue-level configuration overrides all task-level configuration
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode Always { get; } = new UriOverrideUriOverrideEnforceMode("ALWAYS");
+
+        public static bool operator ==(UriOverrideUriOverrideEnforceMode left, UriOverrideUriOverrideEnforceMode right) => left.Equals(right);
+        public static bool operator !=(UriOverrideUriOverrideEnforceMode left, UriOverrideUriOverrideEnforceMode right) => !left.Equals(right);
+
+        public static explicit operator string(UriOverrideUriOverrideEnforceMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UriOverrideUriOverrideEnforceMode other && Equals(other);
+        public bool Equals(UriOverrideUriOverrideEnforceMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

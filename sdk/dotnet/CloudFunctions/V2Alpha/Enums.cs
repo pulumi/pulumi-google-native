@@ -53,6 +53,47 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
     }
 
     /// <summary>
+    /// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+    /// </summary>
+    [EnumType]
+    public readonly struct BuildConfigDockerRegistry : IEquatable<BuildConfigDockerRegistry>
+    {
+        private readonly string _value;
+
+        private BuildConfigDockerRegistry(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static BuildConfigDockerRegistry DockerRegistryUnspecified { get; } = new BuildConfigDockerRegistry("DOCKER_REGISTRY_UNSPECIFIED");
+        /// <summary>
+        /// Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+        /// </summary>
+        public static BuildConfigDockerRegistry ContainerRegistry { get; } = new BuildConfigDockerRegistry("CONTAINER_REGISTRY");
+        /// <summary>
+        /// Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+        /// </summary>
+        public static BuildConfigDockerRegistry ArtifactRegistry { get; } = new BuildConfigDockerRegistry("ARTIFACT_REGISTRY");
+
+        public static bool operator ==(BuildConfigDockerRegistry left, BuildConfigDockerRegistry right) => left.Equals(right);
+        public static bool operator !=(BuildConfigDockerRegistry left, BuildConfigDockerRegistry right) => !left.Equals(right);
+
+        public static explicit operator string(BuildConfigDockerRegistry value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BuildConfigDockerRegistry other && Equals(other);
+        public bool Equals(BuildConfigDockerRegistry other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
     /// </summary>
     [EnumType]
@@ -172,6 +213,47 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ServiceConfigIngressSettings other && Equals(other);
         public bool Equals(ServiceConfigIngressSettings other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServiceConfigSecurityLevel : IEquatable<ServiceConfigSecurityLevel>
+    {
+        private readonly string _value;
+
+        private ServiceConfigSecurityLevel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static ServiceConfigSecurityLevel SecurityLevelUnspecified { get; } = new ServiceConfigSecurityLevel("SECURITY_LEVEL_UNSPECIFIED");
+        /// <summary>
+        /// Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+        /// </summary>
+        public static ServiceConfigSecurityLevel SecureAlways { get; } = new ServiceConfigSecurityLevel("SECURE_ALWAYS");
+        /// <summary>
+        /// Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+        /// </summary>
+        public static ServiceConfigSecurityLevel SecureOptional { get; } = new ServiceConfigSecurityLevel("SECURE_OPTIONAL");
+
+        public static bool operator ==(ServiceConfigSecurityLevel left, ServiceConfigSecurityLevel right) => left.Equals(right);
+        public static bool operator !=(ServiceConfigSecurityLevel left, ServiceConfigSecurityLevel right) => !left.Equals(right);
+
+        public static explicit operator string(ServiceConfigSecurityLevel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServiceConfigSecurityLevel other && Equals(other);
+        public bool Equals(ServiceConfigSecurityLevel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -1456,6 +1456,8 @@ class ExternalDataConfigurationArgs:
                  hive_partitioning_options: Optional[pulumi.Input['HivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
+                 metadata_cache_mode: Optional[pulumi.Input[str]] = None,
+                 object_metadata: Optional[pulumi.Input[str]] = None,
                  parquet_options: Optional[pulumi.Input['ParquetOptionsArgs']] = None,
                  reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
@@ -1473,6 +1475,8 @@ class ExternalDataConfigurationArgs:
         :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
         :param pulumi.Input[int] max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        :param pulumi.Input[str] metadata_cache_mode: [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        :param pulumi.Input[str] object_metadata: ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
         :param pulumi.Input['ParquetOptionsArgs'] parquet_options: Additional properties to set if sourceFormat is set to Parquet.
         :param pulumi.Input[str] reference_file_schema_uri: [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
@@ -1501,6 +1505,10 @@ class ExternalDataConfigurationArgs:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         if max_bad_records is not None:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
+        if metadata_cache_mode is not None:
+            pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
+        if object_metadata is not None:
+            pulumi.set(__self__, "object_metadata", object_metadata)
         if parquet_options is not None:
             pulumi.set(__self__, "parquet_options", parquet_options)
         if reference_file_schema_uri is not None:
@@ -1643,6 +1651,30 @@ class ExternalDataConfigurationArgs:
     @max_bad_records.setter
     def max_bad_records(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_bad_records", value)
+
+    @property
+    @pulumi.getter(name="metadataCacheMode")
+    def metadata_cache_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        """
+        return pulumi.get(self, "metadata_cache_mode")
+
+    @metadata_cache_mode.setter
+    def metadata_cache_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_cache_mode", value)
+
+    @property
+    @pulumi.getter(name="objectMetadata")
+    def object_metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        """
+        return pulumi.get(self, "object_metadata")
+
+    @object_metadata.setter
+    def object_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_metadata", value)
 
     @property
     @pulumi.getter(name="parquetOptions")

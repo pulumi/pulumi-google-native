@@ -234,6 +234,8 @@ class LinkedInterconnectAttachmentsResponse(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "vpcNetwork":
+            suggest = "vpc_network"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LinkedInterconnectAttachmentsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -248,14 +250,17 @@ class LinkedInterconnectAttachmentsResponse(dict):
 
     def __init__(__self__, *,
                  site_to_site_data_transfer: bool,
-                 uris: Sequence[str]):
+                 uris: Sequence[str],
+                 vpc_network: str):
         """
         A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param Sequence[str] uris: The URIs of linked interconnect attachment resources
+        :param str vpc_network: The VPC network where these VLAN attachments are located.
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "vpc_network", vpc_network)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -273,6 +278,14 @@ class LinkedInterconnectAttachmentsResponse(dict):
         """
         return pulumi.get(self, "uris")
 
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> str:
+        """
+        The VPC network where these VLAN attachments are located.
+        """
+        return pulumi.get(self, "vpc_network")
+
 
 @pulumi.output_type
 class LinkedRouterApplianceInstancesResponse(dict):
@@ -284,6 +297,8 @@ class LinkedRouterApplianceInstancesResponse(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "vpcNetwork":
+            suggest = "vpc_network"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LinkedRouterApplianceInstancesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -298,14 +313,17 @@ class LinkedRouterApplianceInstancesResponse(dict):
 
     def __init__(__self__, *,
                  instances: Sequence['outputs.RouterApplianceInstanceResponse'],
-                 site_to_site_data_transfer: bool):
+                 site_to_site_data_transfer: bool,
+                 vpc_network: str):
         """
         A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
         :param Sequence['RouterApplianceInstanceResponse'] instances: The list of router appliance instances.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+        :param str vpc_network: The VPC network where these router appliance instances are located.
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        pulumi.set(__self__, "vpc_network", vpc_network)
 
     @property
     @pulumi.getter
@@ -323,6 +341,14 @@ class LinkedRouterApplianceInstancesResponse(dict):
         """
         return pulumi.get(self, "site_to_site_data_transfer")
 
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> str:
+        """
+        The VPC network where these router appliance instances are located.
+        """
+        return pulumi.get(self, "vpc_network")
+
 
 @pulumi.output_type
 class LinkedVpnTunnelsResponse(dict):
@@ -334,6 +360,8 @@ class LinkedVpnTunnelsResponse(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "vpcNetwork":
+            suggest = "vpc_network"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LinkedVpnTunnelsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -348,14 +376,17 @@ class LinkedVpnTunnelsResponse(dict):
 
     def __init__(__self__, *,
                  site_to_site_data_transfer: bool,
-                 uris: Sequence[str]):
+                 uris: Sequence[str],
+                 vpc_network: str):
         """
         A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         :param Sequence[str] uris: The URIs of linked VPN tunnel resources.
+        :param str vpc_network: The VPC network where these VPN tunnels are located.
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "vpc_network", vpc_network)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -372,6 +403,14 @@ class LinkedVpnTunnelsResponse(dict):
         The URIs of linked VPN tunnel resources.
         """
         return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> str:
+        """
+        The VPC network where these VPN tunnels are located.
+        """
+        return pulumi.get(self, "vpc_network")
 
 
 @pulumi.output_type

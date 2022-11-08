@@ -132,6 +132,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public readonly string StateMessage;
         /// <summary>
+        /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        /// </summary>
+        public readonly Outputs.TelemetryConfigResponse TelemetryConfig;
+        /// <summary>
         /// The tier of the service.
         /// </summary>
         public readonly string Tier;
@@ -180,6 +184,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 
             string stateMessage,
 
+            Outputs.TelemetryConfigResponse telemetryConfig,
+
             string tier,
 
             string uid,
@@ -203,6 +209,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
             ReleaseChannel = releaseChannel;
             State = state;
             StateMessage = stateMessage;
+            TelemetryConfig = telemetryConfig;
             Tier = tier;
             Uid = uid;
             UpdateTime = updateTime;

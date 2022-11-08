@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class ResultsResponse
     {
         /// <summary>
-        /// Path to the artifact manifest. Only populated when artifacts are uploaded.
+        /// Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         /// </summary>
         public readonly string ArtifactManifest;
         /// <summary>
-        /// Time to push all non-container artifacts.
+        /// Time to push all non-container artifacts to Cloud Storage.
         /// </summary>
         public readonly Outputs.TimeSpanResponse ArtifactTiming;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.UploadedMavenArtifactResponse> MavenArtifacts;
         /// <summary>
-        /// Number of artifacts uploaded. Only populated when artifacts are uploaded.
+        /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         /// </summary>
         public readonly string NumArtifacts;
         /// <summary>

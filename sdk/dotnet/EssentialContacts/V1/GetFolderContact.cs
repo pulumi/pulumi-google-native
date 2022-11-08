@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public sealed class GetFolderContactResult
     {
         /// <summary>
-        /// The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. The email address does not need to be a Google Account.
         /// </summary>
         public readonly string Email;
         /// <summary>

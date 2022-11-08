@@ -334,7 +334,7 @@ class CloudSqlSettingsArgs:
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
-        :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+        :param pulumi.Input[str] zone: The Google Cloud Platform zone where your Cloud SQL database instance is located.
         """
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
@@ -539,7 +539,7 @@ class CloudSqlSettingsArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+        The Google Cloud Platform zone where your Cloud SQL database instance is located.
         """
         return pulumi.get(self, "zone")
 

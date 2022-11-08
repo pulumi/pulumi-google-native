@@ -39,7 +39,7 @@ export class OrganizationContact extends pulumi.CustomResource {
     }
 
     /**
-     * The email address to send notifications to. This does not need to be a Google account.
+     * The email address to send notifications to. The email address does not need to be a Google Account.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -49,7 +49,7 @@ export class OrganizationContact extends pulumi.CustomResource {
     /**
      * The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
@@ -78,16 +78,22 @@ export class OrganizationContact extends pulumi.CustomResource {
             if ((!args || args.email === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
+            if ((!args || args.languageTag === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'languageTag'");
+            }
+            if ((!args || args.notificationCategorySubscriptions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'notificationCategorySubscriptions'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["languageTag"] = args ? args.languageTag : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationCategorySubscriptions"] = args ? args.notificationCategorySubscriptions : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["validateTime"] = args ? args.validateTime : undefined;
             resourceInputs["validationState"] = args ? args.validationState : undefined;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["languageTag"] = undefined /*out*/;
@@ -109,21 +115,17 @@ export class OrganizationContact extends pulumi.CustomResource {
  */
 export interface OrganizationContactArgs {
     /**
-     * The email address to send notifications to. This does not need to be a Google account.
+     * The email address to send notifications to. The email address does not need to be a Google Account.
      */
     email: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
      */
-    languageTag?: pulumi.Input<string>;
-    /**
-     * The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-     */
-    name?: pulumi.Input<string>;
+    languageTag: pulumi.Input<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */
-    notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<enums.essentialcontacts.v1.OrganizationContactNotificationCategorySubscriptionsItem>[]>;
+    notificationCategorySubscriptions: pulumi.Input<pulumi.Input<enums.essentialcontacts.v1.OrganizationContactNotificationCategorySubscriptionsItem>[]>;
     organizationId: pulumi.Input<string>;
     /**
      * The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.

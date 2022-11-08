@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         public Input<Inputs.AppDevExperienceFeatureSpecArgs>? Appdevexperience { get; set; }
 
         /// <summary>
+        /// FleetObservability feature spec.
+        /// </summary>
+        [Input("fleetobservability")]
+        public Input<Inputs.FleetObservabilityFeatureSpecArgs>? Fleetobservability { get; set; }
+
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         [Input("multiclusteringress")]

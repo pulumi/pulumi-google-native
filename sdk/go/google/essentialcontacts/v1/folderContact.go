@@ -16,7 +16,7 @@ import (
 type FolderContact struct {
 	pulumi.CustomResourceState
 
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email    pulumi.StringOutput `pulumi:"email"`
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
@@ -43,6 +43,12 @@ func NewFolderContact(ctx *pulumi.Context,
 	}
 	if args.FolderId == nil {
 		return nil, errors.New("invalid value for required argument 'FolderId'")
+	}
+	if args.LanguageTag == nil {
+		return nil, errors.New("invalid value for required argument 'LanguageTag'")
+	}
+	if args.NotificationCategorySubscriptions == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationCategorySubscriptions'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"folderId",
@@ -80,13 +86,11 @@ func (FolderContactState) ElementType() reflect.Type {
 }
 
 type folderContactArgs struct {
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email    string `pulumi:"email"`
 	FolderId string `pulumi:"folderId"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag *string `pulumi:"languageTag"`
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name *string `pulumi:"name"`
+	LanguageTag string `pulumi:"languageTag"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []FolderContactNotificationCategorySubscriptionsItem `pulumi:"notificationCategorySubscriptions"`
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
@@ -97,13 +101,11 @@ type folderContactArgs struct {
 
 // The set of arguments for constructing a FolderContact resource.
 type FolderContactArgs struct {
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email    pulumi.StringInput
 	FolderId pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag pulumi.StringPtrInput
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name pulumi.StringPtrInput
+	LanguageTag pulumi.StringInput
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions FolderContactNotificationCategorySubscriptionsItemArrayInput
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
@@ -149,7 +151,7 @@ func (o FolderContactOutput) ToFolderContactOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The email address to send notifications to. This does not need to be a Google account.
+// The email address to send notifications to. The email address does not need to be a Google Account.
 func (o FolderContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderContact) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }

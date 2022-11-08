@@ -859,20 +859,17 @@ class SshPublicKeyResponse(dict):
 
     def __init__(__self__, *,
                  cert_type: str,
-                 password: 'outputs.SecretResponse',
                  ssh_client_cert: 'outputs.SecretResponse',
                  ssh_client_cert_pass: 'outputs.SecretResponse',
                  username: str):
         """
         Parameters to support Ssh public key Authentication.
         :param str cert_type: Format of SSH Client cert.
-        :param 'SecretResponse' password: This is an optional field used in case client has enabled multi-factor authentication
         :param 'SecretResponse' ssh_client_cert: SSH Client Cert. It should contain both public and private key.
         :param 'SecretResponse' ssh_client_cert_pass: Password (passphrase) for ssh client certificate if it has one.
         :param str username: The user account used to authenticate.
         """
         pulumi.set(__self__, "cert_type", cert_type)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "ssh_client_cert", ssh_client_cert)
         pulumi.set(__self__, "ssh_client_cert_pass", ssh_client_cert_pass)
         pulumi.set(__self__, "username", username)
@@ -884,14 +881,6 @@ class SshPublicKeyResponse(dict):
         Format of SSH Client cert.
         """
         return pulumi.get(self, "cert_type")
-
-    @property
-    @pulumi.getter
-    def password(self) -> 'outputs.SecretResponse':
-        """
-        This is an optional field used in case client has enabled multi-factor authentication
-        """
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sshClientCert")

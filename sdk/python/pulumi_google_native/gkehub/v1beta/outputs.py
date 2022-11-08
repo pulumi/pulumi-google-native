@@ -24,6 +24,8 @@ __all__ = [
     'ExprResponse',
     'FeatureResourceStateResponse',
     'FeatureStateResponse',
+    'FleetObservabilityFeatureSpecResponse',
+    'FleetObservabilityFeatureStateResponse',
     'MultiClusterIngressFeatureSpecResponse',
     'StatusResponse',
 ]
@@ -335,15 +337,18 @@ class CommonFeatureSpecResponse(dict):
     def __init__(__self__, *,
                  anthosobservability: 'outputs.AnthosObservabilityFeatureSpecResponse',
                  appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
+                 fleetobservability: 'outputs.FleetObservabilityFeatureSpecResponse',
                  multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param 'AnthosObservabilityFeatureSpecResponse' anthosobservability: Anthos Observability spec
         :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
+        :param 'FleetObservabilityFeatureSpecResponse' fleetobservability: FleetObservability feature spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
         """
         pulumi.set(__self__, "anthosobservability", anthosobservability)
         pulumi.set(__self__, "appdevexperience", appdevexperience)
+        pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
 
     @property
@@ -364,6 +369,14 @@ class CommonFeatureSpecResponse(dict):
 
     @property
     @pulumi.getter
+    def fleetobservability(self) -> 'outputs.FleetObservabilityFeatureSpecResponse':
+        """
+        FleetObservability feature spec.
+        """
+        return pulumi.get(self, "fleetobservability")
+
+    @property
+    @pulumi.getter
     def multiclusteringress(self) -> 'outputs.MultiClusterIngressFeatureSpecResponse':
         """
         Multicluster Ingress-specific spec.
@@ -378,13 +391,16 @@ class CommonFeatureStateResponse(dict):
     """
     def __init__(__self__, *,
                  appdevexperience: 'outputs.AppDevExperienceFeatureStateResponse',
+                 fleetobservability: 'outputs.FleetObservabilityFeatureStateResponse',
                  state: 'outputs.FeatureStateResponse'):
         """
         CommonFeatureState contains Hub-wide Feature status information.
         :param 'AppDevExperienceFeatureStateResponse' appdevexperience: Appdevexperience specific state.
+        :param 'FleetObservabilityFeatureStateResponse' fleetobservability: FleetObservability feature state.
         :param 'FeatureStateResponse' state: The "running state" of the Feature in this Hub.
         """
         pulumi.set(__self__, "appdevexperience", appdevexperience)
+        pulumi.set(__self__, "fleetobservability", fleetobservability)
         pulumi.set(__self__, "state", state)
 
     @property
@@ -394,6 +410,14 @@ class CommonFeatureStateResponse(dict):
         Appdevexperience specific state.
         """
         return pulumi.get(self, "appdevexperience")
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> 'outputs.FleetObservabilityFeatureStateResponse':
+        """
+        FleetObservability feature state.
+        """
+        return pulumi.get(self, "fleetobservability")
 
     @property
     @pulumi.getter
@@ -540,6 +564,30 @@ class FeatureStateResponse(dict):
         The time this status and any related Feature-specific details were updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class FleetObservabilityFeatureSpecResponse(dict):
+    """
+    **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+    """
+    def __init__(__self__):
+        """
+        **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        """
+        pass
+
+
+@pulumi.output_type
+class FleetObservabilityFeatureStateResponse(dict):
+    """
+    **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+    """
+    def __init__(__self__):
+        """
+        **FleetObservability**: An empty state left as an example Hub-wide Feature state.
+        """
+        pass
 
 
 @pulumi.output_type

@@ -10,6 +10,7 @@ import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as baremetalsolution from "./baremetalsolution";
+import * as batch from "./batch";
 import * as beyondcorp from "./beyondcorp";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
@@ -68,6 +69,7 @@ import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as identitytoolkit from "./identitytoolkit";
 import * as ids from "./ids";
+import * as integrations from "./integrations";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
 import * as memcache from "./memcache";
@@ -115,6 +117,7 @@ export {
     artifactregistry,
     assuredworkloads,
     baremetalsolution,
+    batch,
     beyondcorp,
     bigquery,
     bigqueryconnection,
@@ -173,6 +176,7 @@ export {
     iam,
     identitytoolkit,
     ids,
+    integrations,
     jobs,
     logging,
     memcache,

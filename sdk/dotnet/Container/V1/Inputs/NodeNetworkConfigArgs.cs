@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? CreatePodRange { get; set; }
 
         /// <summary>
+        /// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+        /// </summary>
+        [Input("enablePrivateNodes")]
+        public Input<bool>? EnablePrivateNodes { get; set; }
+
+        /// <summary>
         /// Network bandwidth tier configuration.
         /// </summary>
         [Input("networkPerformanceConfig")]

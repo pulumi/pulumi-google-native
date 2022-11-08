@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
         /// </summary>
         public readonly bool SiteToSiteDataTransfer;
+        /// <summary>
+        /// The VPC network where these router appliance instances are located.
+        /// </summary>
+        public readonly string VpcNetwork;
 
         [OutputConstructor]
         private LinkedRouterApplianceInstancesResponse(
             ImmutableArray<Outputs.RouterApplianceInstanceResponse> instances,
 
-            bool siteToSiteDataTransfer)
+            bool siteToSiteDataTransfer,
+
+            string vpcNetwork)
         {
             Instances = instances;
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
+            VpcNetwork = vpcNetwork;
         }
     }
 }

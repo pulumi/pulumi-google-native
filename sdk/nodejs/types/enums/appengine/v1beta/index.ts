@@ -122,6 +122,54 @@ export const AppServingStatus = {
  */
 export type AppServingStatus = (typeof AppServingStatus)[keyof typeof AppServingStatus];
 
+export const ApplicationDatabaseType = {
+    /**
+     * Database type is unspecified.
+     */
+    DatabaseTypeUnspecified: "DATABASE_TYPE_UNSPECIFIED",
+    /**
+     * Cloud Datastore
+     */
+    CloudDatastore: "CLOUD_DATASTORE",
+    /**
+     * Cloud Firestore Native
+     */
+    CloudFirestore: "CLOUD_FIRESTORE",
+    /**
+     * Cloud Firestore in Datastore Mode
+     */
+    CloudDatastoreCompatibility: "CLOUD_DATASTORE_COMPATIBILITY",
+} as const;
+
+/**
+ * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+ */
+export type ApplicationDatabaseType = (typeof ApplicationDatabaseType)[keyof typeof ApplicationDatabaseType];
+
+export const ApplicationServingStatus = {
+    /**
+     * Serving status is unspecified.
+     */
+    Unspecified: "UNSPECIFIED",
+    /**
+     * Application is serving.
+     */
+    Serving: "SERVING",
+    /**
+     * Application has been disabled by the user.
+     */
+    UserDisabled: "USER_DISABLED",
+    /**
+     * Application has been disabled by the system.
+     */
+    SystemDisabled: "SYSTEM_DISABLED",
+} as const;
+
+/**
+ * Serving status of this application.
+ */
+export type ApplicationServingStatus = (typeof ApplicationServingStatus)[keyof typeof ApplicationServingStatus];
+
 export const EndpointsApiServiceRolloutStrategy = {
     /**
      * Not specified. Defaults to FIXED.

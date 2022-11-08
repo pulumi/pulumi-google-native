@@ -1257,9 +1257,9 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigArgs:
                  infrastructure_spec: Optional[pulumi.Input['GoogleCloudDataplexV1TaskInfrastructureSpecArgs']] = None):
         """
         Config for running scheduled notebooks.
-        :param pulumi.Input[str] notebook: Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. GCS URIs of files to be placed in the working directory of each executor.
+        :param pulumi.Input[str] notebook: Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
         :param pulumi.Input['GoogleCloudDataplexV1TaskInfrastructureSpecArgs'] infrastructure_spec: Optional. Infrastructure specification for the execution.
         """
         pulumi.set(__self__, "notebook", notebook)
@@ -1274,7 +1274,7 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigArgs:
     @pulumi.getter
     def notebook(self) -> pulumi.Input[str]:
         """
-        Path to input notebook. This can be the GCS URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         """
         return pulumi.get(self, "notebook")
 
@@ -1286,7 +1286,7 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigArgs:
     @pulumi.getter(name="archiveUris")
     def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. GCS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         """
         return pulumi.get(self, "archive_uris")
 
@@ -1298,7 +1298,7 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigArgs:
     @pulumi.getter(name="fileUris")
     def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. GCS URIs of files to be placed in the working directory of each executor.
+        Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
         """
         return pulumi.get(self, "file_uris")
 

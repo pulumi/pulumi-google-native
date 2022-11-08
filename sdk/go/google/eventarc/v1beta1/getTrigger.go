@@ -35,7 +35,7 @@ type LookupTriggerResult struct {
 	Etag string `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria []MatchingCriteriaResponse `pulumi:"matchingCriteria"`
 	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name string `pulumi:"name"`
@@ -104,7 +104,7 @@ func (o LookupTriggerResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTriggerResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 func (o LookupTriggerResultOutput) MatchingCriteria() MatchingCriteriaResponseArrayOutput {
 	return o.ApplyT(func(v LookupTriggerResult) []MatchingCriteriaResponse { return v.MatchingCriteria }).(MatchingCriteriaResponseArrayOutput)
 }

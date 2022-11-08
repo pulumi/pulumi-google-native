@@ -36,6 +36,7 @@ __all__ = [
     'DnsCacheConfigArgs',
     'FilterArgs',
     'GPUSharingConfigArgs',
+    'GatewayAPIConfigArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
@@ -1235,6 +1236,30 @@ class GPUSharingConfigArgs:
 
 
 @pulumi.input_type
+class GatewayAPIConfigArgs:
+    def __init__(__self__, *,
+                 channel: Optional[pulumi.Input['GatewayAPIConfigChannel']] = None):
+        """
+        GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        :param pulumi.Input['GatewayAPIConfigChannel'] channel: The Gateway API release channel to use for Gateway API.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input['GatewayAPIConfigChannel']]:
+        """
+        The Gateway API release channel to use for Gateway API.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input['GatewayAPIConfigChannel']]):
+        pulumi.set(self, "channel", value)
+
+
+@pulumi.input_type
 class GcePersistentDiskCsiDriverConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
@@ -1710,13 +1735,29 @@ class LegacyAbacArgs:
 @pulumi.input_type
 class LinuxNodeConfigArgs:
     def __init__(__self__, *,
+                 cgroup_mode: Optional[pulumi.Input['LinuxNodeConfigCgroupMode']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Parameters that can be configured on Linux nodes.
+        :param pulumi.Input['LinuxNodeConfigCgroupMode'] cgroup_mode: cgroup_mode specifies the cgroup mode to be used on the node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[pulumi.Input['LinuxNodeConfigCgroupMode']]:
+        """
+        cgroup_mode specifies the cgroup mode to be used on the node.
+        """
+        return pulumi.get(self, "cgroup_mode")
+
+    @cgroup_mode.setter
+    def cgroup_mode(self, value: Optional[pulumi.Input['LinuxNodeConfigCgroupMode']]):
+        pulumi.set(self, "cgroup_mode", value)
 
     @property
     @pulumi.getter
@@ -1951,16 +1992,20 @@ class ManagedPrometheusConfigArgs:
 class MasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None):
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 gcp_public_cidrs_access_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
         :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
         :param pulumi.Input[bool] enabled: Whether or not master authorized networks is enabled.
+        :param pulumi.Input[bool] gcp_public_cidrs_access_enabled: Whether master is accessbile via Google Compute Engine Public IP addresses.
         """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if gcp_public_cidrs_access_enabled is not None:
+            pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
 
     @property
     @pulumi.getter(name="cidrBlocks")
@@ -1985,6 +2030,18 @@ class MasterAuthorizedNetworksConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="gcpPublicCidrsAccessEnabled")
+    def gcp_public_cidrs_access_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether master is accessbile via Google Compute Engine Public IP addresses.
+        """
+        return pulumi.get(self, "gcp_public_cidrs_access_enabled")
+
+    @gcp_public_cidrs_access_enabled.setter
+    def gcp_public_cidrs_access_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gcp_public_cidrs_access_enabled", value)
 
 
 @pulumi.input_type
@@ -2163,6 +2220,7 @@ class NetworkConfigArgs:
                  dns_config: Optional[pulumi.Input['DNSConfigArgs']] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
+                 gateway_api_config: Optional[pulumi.Input['GatewayAPIConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
                  service_external_ips_config: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']] = None):
         """
@@ -2172,6 +2230,7 @@ class NetworkConfigArgs:
         :param pulumi.Input['DNSConfigArgs'] dns_config: DNSConfig contains clusterDNS config for this cluster.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
+        :param pulumi.Input['GatewayAPIConfigArgs'] gateway_api_config: GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param pulumi.Input['ServiceExternalIPsConfigArgs'] service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
         """
@@ -2185,6 +2244,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         if enable_l4ilb_subsetting is not None:
             pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
+        if gateway_api_config is not None:
+            pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if service_external_ips_config is not None:
@@ -2249,6 +2310,18 @@ class NetworkConfigArgs:
     @enable_l4ilb_subsetting.setter
     def enable_l4ilb_subsetting(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_l4ilb_subsetting", value)
+
+    @property
+    @pulumi.getter(name="gatewayApiConfig")
+    def gateway_api_config(self) -> Optional[pulumi.Input['GatewayAPIConfigArgs']]:
+        """
+        GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        """
+        return pulumi.get(self, "gateway_api_config")
+
+    @gateway_api_config.setter
+    def gateway_api_config(self, value: Optional[pulumi.Input['GatewayAPIConfigArgs']]):
+        pulumi.set(self, "gateway_api_config", value)
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
@@ -2451,6 +2524,7 @@ class NodeConfigArgs:
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
+                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  sandbox_config: Optional[pulumi.Input['SandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -2481,6 +2555,7 @@ class NodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param pulumi.Input[bool] preemptible: Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['SandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
@@ -2531,6 +2606,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "preemptible", preemptible)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_labels is not None:
+            pulumi.set(__self__, "resource_labels", resource_labels)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
         if service_account is not None:
@@ -2799,6 +2876,18 @@ class NodeConfigArgs:
         pulumi.set(self, "reservation_affinity", value)
 
     @property
+    @pulumi.getter(name="resourceLabels")
+    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        """
+        return pulumi.get(self, "resource_labels")
+
+    @resource_labels.setter
+    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_labels", value)
+
+    @property
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional[pulumi.Input['SandboxConfigArgs']]:
         """
@@ -3015,18 +3104,22 @@ class NodeManagementArgs:
 class NodeNetworkConfigArgs:
     def __init__(__self__, *,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
+                 enable_private_nodes: Optional[pulumi.Input[bool]] = None,
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
         Parameters for node pool-level network config.
         :param pulumi.Input[bool] create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
         :param pulumi.Input['NetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if enable_private_nodes is not None:
+            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if pod_ipv4_cidr_block is not None:
@@ -3045,6 +3138,18 @@ class NodeNetworkConfigArgs:
     @create_pod_range.setter
     def create_pod_range(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_pod_range", value)
+
+    @property
+    @pulumi.getter(name="enablePrivateNodes")
+    def enable_private_nodes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+        """
+        return pulumi.get(self, "enable_private_nodes")
+
+    @enable_private_nodes.setter
+    def enable_private_nodes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_nodes", value)
 
     @property
     @pulumi.getter(name="networkPerformanceConfig")
@@ -3545,13 +3650,15 @@ class PrivateClusterConfigArgs:
                  enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
                  master_global_access_config: Optional[pulumi.Input['PrivateClusterMasterGlobalAccessConfigArgs']] = None,
-                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
+                 master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 private_endpoint_subnetwork: Optional[pulumi.Input[str]] = None):
         """
         Configuration options for private clusters.
         :param pulumi.Input[bool] enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint.
         :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
         :param pulumi.Input['PrivateClusterMasterGlobalAccessConfigArgs'] master_global_access_config: Controls master global access settings.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
+        :param pulumi.Input[str] private_endpoint_subnetwork: Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
         """
         if enable_private_endpoint is not None:
             pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
@@ -3561,6 +3668,8 @@ class PrivateClusterConfigArgs:
             pulumi.set(__self__, "master_global_access_config", master_global_access_config)
         if master_ipv4_cidr_block is not None:
             pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
+        if private_endpoint_subnetwork is not None:
+            pulumi.set(__self__, "private_endpoint_subnetwork", private_endpoint_subnetwork)
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
@@ -3609,6 +3718,18 @@ class PrivateClusterConfigArgs:
     @master_ipv4_cidr_block.setter
     def master_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "master_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="privateEndpointSubnetwork")
+    def private_endpoint_subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+        """
+        return pulumi.get(self, "private_endpoint_subnetwork")
+
+    @private_endpoint_subnetwork.setter
+    def private_endpoint_subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_endpoint_subnetwork", value)
 
 
 @pulumi.input_type
@@ -4044,7 +4165,7 @@ class StandardRolloutPolicyArgs:
         """
         Standard rollout policy is the default policy for blue-green.
         :param pulumi.Input[int] batch_node_count: Number of blue nodes to drain in a batch.
-        :param pulumi.Input[float] batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        :param pulumi.Input[float] batch_percentage: Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         :param pulumi.Input[str] batch_soak_duration: Soak time after each batch gets drained. Default to zero.
         """
         if batch_node_count is not None:
@@ -4070,7 +4191,7 @@ class StandardRolloutPolicyArgs:
     @pulumi.getter(name="batchPercentage")
     def batch_percentage(self) -> Optional[pulumi.Input[float]]:
         """
-        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+        Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         """
         return pulumi.get(self, "batch_percentage")
 

@@ -2231,6 +2231,10 @@ class ExternalDataConfigurationResponse(dict):
             suggest = "ignore_unknown_values"
         elif key == "maxBadRecords":
             suggest = "max_bad_records"
+        elif key == "metadataCacheMode":
+            suggest = "metadata_cache_mode"
+        elif key == "objectMetadata":
+            suggest = "object_metadata"
         elif key == "parquetOptions":
             suggest = "parquet_options"
         elif key == "referenceFileSchemaUri":
@@ -2263,6 +2267,8 @@ class ExternalDataConfigurationResponse(dict):
                  hive_partitioning_options: 'outputs.HivePartitioningOptionsResponse',
                  ignore_unknown_values: bool,
                  max_bad_records: int,
+                 metadata_cache_mode: str,
+                 object_metadata: str,
                  parquet_options: 'outputs.ParquetOptionsResponse',
                  reference_file_schema_uri: str,
                  schema: 'outputs.TableSchemaResponse',
@@ -2280,6 +2286,8 @@ class ExternalDataConfigurationResponse(dict):
         :param 'HivePartitioningOptionsResponse' hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param bool ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
         :param int max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        :param str metadata_cache_mode: [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        :param str object_metadata: ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
         :param 'ParquetOptionsResponse' parquet_options: Additional properties to set if sourceFormat is set to Parquet.
         :param str reference_file_schema_uri: [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
         :param 'TableSchemaResponse' schema: [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
@@ -2297,6 +2305,8 @@ class ExternalDataConfigurationResponse(dict):
         pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         pulumi.set(__self__, "max_bad_records", max_bad_records)
+        pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
+        pulumi.set(__self__, "object_metadata", object_metadata)
         pulumi.set(__self__, "parquet_options", parquet_options)
         pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         pulumi.set(__self__, "schema", schema)
@@ -2390,6 +2400,22 @@ class ExternalDataConfigurationResponse(dict):
         [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         """
         return pulumi.get(self, "max_bad_records")
+
+    @property
+    @pulumi.getter(name="metadataCacheMode")
+    def metadata_cache_mode(self) -> str:
+        """
+        [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        """
+        return pulumi.get(self, "metadata_cache_mode")
+
+    @property
+    @pulumi.getter(name="objectMetadata")
+    def object_metadata(self) -> str:
+        """
+        ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        """
+        return pulumi.get(self, "object_metadata")
 
     @property
     @pulumi.getter(name="parquetOptions")

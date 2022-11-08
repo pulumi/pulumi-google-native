@@ -35,6 +35,10 @@ type Feature struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// State of the Feature resource itself.
 	ResourceState FeatureResourceStateResponseOutput `pulumi:"resourceState"`
+	// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+	ScopeSpecs pulumi.StringMapOutput `pulumi:"scopeSpecs"`
+	// Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+	ScopeStates pulumi.StringMapOutput `pulumi:"scopeStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec CommonFeatureSpecResponseOutput `pulumi:"spec"`
 	// The Hub-wide Feature state.
@@ -97,6 +101,8 @@ type featureArgs struct {
 	Project         *string           `pulumi:"project"`
 	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+	ScopeSpecs map[string]string `pulumi:"scopeSpecs"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec *CommonFeatureSpec `pulumi:"spec"`
 }
@@ -113,6 +119,8 @@ type FeatureArgs struct {
 	Project         pulumi.StringPtrInput
 	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+	ScopeSpecs pulumi.StringMapInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec CommonFeatureSpecPtrInput
 }
@@ -205,6 +213,16 @@ func (o FeatureOutput) RequestId() pulumi.StringPtrOutput {
 // State of the Feature resource itself.
 func (o FeatureOutput) ResourceState() FeatureResourceStateResponseOutput {
 	return o.ApplyT(func(v *Feature) FeatureResourceStateResponseOutput { return v.ResourceState }).(FeatureResourceStateResponseOutput)
+}
+
+// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+func (o FeatureOutput) ScopeSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.ScopeSpecs }).(pulumi.StringMapOutput)
+}
+
+// Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
+func (o FeatureOutput) ScopeStates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.ScopeStates }).(pulumi.StringMapOutput)
 }
 
 // Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

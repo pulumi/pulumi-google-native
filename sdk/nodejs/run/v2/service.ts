@@ -124,7 +124,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+     * Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -293,7 +293,7 @@ export interface ServiceArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+     * Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
      */
     serviceId: pulumi.Input<string>;
     /**

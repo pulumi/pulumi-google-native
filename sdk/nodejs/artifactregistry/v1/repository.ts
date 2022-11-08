@@ -72,6 +72,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly repositoryId!: pulumi.Output<string | undefined>;
     /**
+     * If set, the repository satisfies physical zone separation.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
      */
     public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -114,6 +119,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["repositoryId"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

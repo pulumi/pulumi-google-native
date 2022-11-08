@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.AppDevExperienceFeatureStateResponse Appdevexperience;
         /// <summary>
+        /// FleetObservability feature state.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityFeatureStateResponse Fleetobservability;
+        /// <summary>
         /// Service Mesh-specific state.
         /// </summary>
         public readonly Outputs.ServiceMeshFeatureStateResponse Servicemesh;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         private CommonFeatureStateResponse(
             Outputs.AppDevExperienceFeatureStateResponse appdevexperience,
 
+            Outputs.FleetObservabilityFeatureStateResponse fleetobservability,
+
             Outputs.ServiceMeshFeatureStateResponse servicemesh,
 
             Outputs.FeatureStateResponse state)
         {
             Appdevexperience = appdevexperience;
+            Fleetobservability = fleetobservability;
             Servicemesh = servicemesh;
             State = state;
         }

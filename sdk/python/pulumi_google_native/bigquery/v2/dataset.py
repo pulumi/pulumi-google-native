@@ -29,6 +29,7 @@ class DatasetArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]] = None):
         """
         The set of arguments for constructing a Dataset resource.
@@ -42,6 +43,7 @@ class DatasetArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
+        :param pulumi.Input[str] storage_billing_model: [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         if access is not None:
@@ -68,6 +70,8 @@ class DatasetArgs:
             pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if storage_billing_model is not None:
+            pulumi.set(__self__, "storage_billing_model", storage_billing_model)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -210,6 +214,18 @@ class DatasetArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        """
+        return pulumi.get(self, "storage_billing_model")
+
+    @storage_billing_model.setter
+    def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_billing_model", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]]:
         """
@@ -239,6 +255,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
         """
@@ -257,6 +274,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
+        :param pulumi.Input[str] storage_billing_model: [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         ...
@@ -296,6 +314,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,6 +337,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
+            __props__.__dict__["storage_billing_model"] = storage_billing_model
             __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["default_collation"] = None
@@ -369,6 +389,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["storage_billing_model"] = None
         __props__.__dict__["tags"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
@@ -517,6 +538,14 @@ class Dataset(pulumi.CustomResource):
         A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> pulumi.Output[str]:
+        """
+        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        """
+        return pulumi.get(self, "storage_billing_model")
 
     @property
     @pulumi.getter

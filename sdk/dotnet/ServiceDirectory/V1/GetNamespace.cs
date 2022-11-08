@@ -71,15 +71,22 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The globally unique identifier of the namespace in the UUID4 format.
+        /// </summary>
+        public readonly string Uid;
 
         [OutputConstructor]
         private GetNamespaceResult(
             ImmutableDictionary<string, string> labels,
 
-            string name)
+            string name,
+
+            string uid)
         {
             Labels = labels;
             Name = name;
+            Uid = uid;
         }
     }
 }

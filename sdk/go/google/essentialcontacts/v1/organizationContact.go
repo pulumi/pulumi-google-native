@@ -16,7 +16,7 @@ import (
 type OrganizationContact struct {
 	pulumi.CustomResourceState
 
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringOutput `pulumi:"languageTag"`
@@ -40,6 +40,12 @@ func NewOrganizationContact(ctx *pulumi.Context,
 
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
+	}
+	if args.LanguageTag == nil {
+		return nil, errors.New("invalid value for required argument 'LanguageTag'")
+	}
+	if args.NotificationCategorySubscriptions == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationCategorySubscriptions'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -80,12 +86,10 @@ func (OrganizationContactState) ElementType() reflect.Type {
 }
 
 type organizationContactArgs struct {
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag *string `pulumi:"languageTag"`
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name *string `pulumi:"name"`
+	LanguageTag string `pulumi:"languageTag"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []OrganizationContactNotificationCategorySubscriptionsItem `pulumi:"notificationCategorySubscriptions"`
 	OrganizationId                    string                                                     `pulumi:"organizationId"`
@@ -97,12 +101,10 @@ type organizationContactArgs struct {
 
 // The set of arguments for constructing a OrganizationContact resource.
 type OrganizationContactArgs struct {
-	// The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. The email address does not need to be a Google Account.
 	Email pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag pulumi.StringPtrInput
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name pulumi.StringPtrInput
+	LanguageTag pulumi.StringInput
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions OrganizationContactNotificationCategorySubscriptionsItemArrayInput
 	OrganizationId                    pulumi.StringInput
@@ -149,7 +151,7 @@ func (o OrganizationContactOutput) ToOrganizationContactOutputWithContext(ctx co
 	return o
 }
 
-// The email address to send notifications to. This does not need to be a Google account.
+// The email address to send notifications to. The email address does not need to be a Google Account.
 func (o OrganizationContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationContact) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }

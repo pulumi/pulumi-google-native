@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        /// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -325,7 +325,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        /// Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;

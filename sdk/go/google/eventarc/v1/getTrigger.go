@@ -37,7 +37,7 @@ type LookupTriggerResult struct {
 	Destination DestinationResponse `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters []EventFilterResponse `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
@@ -115,7 +115,7 @@ func (o LookupTriggerResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 func (o LookupTriggerResultOutput) EventFilters() EventFilterResponseArrayOutput {
 	return o.ApplyT(func(v LookupTriggerResult) []EventFilterResponse { return v.EventFilters }).(EventFilterResponseArrayOutput)
 }

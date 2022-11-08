@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         }
 
         /// <summary>
+        /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        /// </summary>
+        [Input("securityLevel")]
+        public Input<Pulumi.GoogleNative.CloudFunctions.V2Alpha.ServiceConfigSecurityLevel>? SecurityLevel { get; set; }
+
+        /// <summary>
         /// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         /// </summary>
         [Input("serviceAccountEmail")]

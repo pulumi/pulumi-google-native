@@ -277,6 +277,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["size_bytes"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -312,6 +313,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["repository_id"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["update_time"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
@@ -389,6 +391,14 @@ class Repository(pulumi.CustomResource):
         The repository id to use for this repository.
         """
         return pulumi.get(self, "repository_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        If set, the repository satisfies physical zone separation.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="sizeBytes")

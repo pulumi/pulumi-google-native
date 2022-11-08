@@ -20,6 +20,7 @@ __all__ = [
     'IPAllocationPolicyResponse',
     'MaintenanceWindowResponse',
     'MasterAuthorizedNetworksConfigResponse',
+    'NetworkingConfigResponse',
     'NodeConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateEnvironmentConfigResponse',
@@ -621,6 +622,45 @@ class MasterAuthorizedNetworksConfigResponse(dict):
 
 
 @pulumi.output_type
+class NetworkingConfigResponse(dict):
+    """
+    Configuration options for networking connections in the Composer 2 environment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionType":
+            suggest = "connection_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_type: str):
+        """
+        Configuration options for networking connections in the Composer 2 environment.
+        :param str connection_type: Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        """
+        Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+        """
+        return pulumi.get(self, "connection_type")
+
+
+@pulumi.output_type
 class NodeConfigResponse(dict):
     """
     The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
@@ -853,6 +893,8 @@ class PrivateEnvironmentConfigResponse(dict):
             suggest = "enable_private_environment"
         elif key == "enablePrivatelyUsedPublicIps":
             suggest = "enable_privately_used_public_ips"
+        elif key == "networkingConfig":
+            suggest = "networking_config"
         elif key == "privateClusterConfig":
             suggest = "private_cluster_config"
         elif key == "webServerIpv4CidrBlock":
@@ -878,6 +920,7 @@ class PrivateEnvironmentConfigResponse(dict):
                  cloud_sql_ipv4_cidr_block: str,
                  enable_private_environment: bool,
                  enable_privately_used_public_ips: bool,
+                 networking_config: 'outputs.NetworkingConfigResponse',
                  private_cluster_config: 'outputs.PrivateClusterConfigResponse',
                  web_server_ipv4_cidr_block: str,
                  web_server_ipv4_reserved_range: str):
@@ -889,6 +932,7 @@ class PrivateEnvironmentConfigResponse(dict):
         :param str cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param bool enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param bool enable_privately_used_public_ips: Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        :param 'NetworkingConfigResponse' networking_config: Optional. Configuration for the network connections configuration in the environment.
         :param 'PrivateClusterConfigResponse' private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param str web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str web_server_ipv4_reserved_range: The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -899,6 +943,7 @@ class PrivateEnvironmentConfigResponse(dict):
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         pulumi.set(__self__, "enable_private_environment", enable_private_environment)
         pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
+        pulumi.set(__self__, "networking_config", networking_config)
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
         pulumi.set(__self__, "web_server_ipv4_reserved_range", web_server_ipv4_reserved_range)
@@ -950,6 +995,14 @@ class PrivateEnvironmentConfigResponse(dict):
         Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
         """
         return pulumi.get(self, "enable_privately_used_public_ips")
+
+    @property
+    @pulumi.getter(name="networkingConfig")
+    def networking_config(self) -> 'outputs.NetworkingConfigResponse':
+        """
+        Optional. Configuration for the network connections configuration in the environment.
+        """
+        return pulumi.get(self, "networking_config")
 
     @property
     @pulumi.getter(name="privateClusterConfig")

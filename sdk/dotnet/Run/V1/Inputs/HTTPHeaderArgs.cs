@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// <summary>
         /// The header field name
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The header field value

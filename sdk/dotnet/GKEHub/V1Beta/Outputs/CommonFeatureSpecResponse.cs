@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.AppDevExperienceFeatureSpecResponse Appdevexperience;
         /// <summary>
+        /// FleetObservability feature spec.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityFeatureSpecResponse Fleetobservability;
+        /// <summary>
         /// Multicluster Ingress-specific spec.
         /// </summary>
         public readonly Outputs.MultiClusterIngressFeatureSpecResponse Multiclusteringress;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 
             Outputs.AppDevExperienceFeatureSpecResponse appdevexperience,
 
+            Outputs.FleetObservabilityFeatureSpecResponse fleetobservability,
+
             Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
         {
             Anthosobservability = anthosobservability;
             Appdevexperience = appdevexperience;
+            Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
         }
     }

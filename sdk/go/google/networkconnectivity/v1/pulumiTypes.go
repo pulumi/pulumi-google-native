@@ -921,6 +921,8 @@ type LinkedInterconnectAttachmentsResponse struct {
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
 	Uris []string `pulumi:"uris"`
+	// The VPC network where these VLAN attachments are located.
+	VpcNetwork string `pulumi:"vpcNetwork"`
 }
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
@@ -946,6 +948,11 @@ func (o LinkedInterconnectAttachmentsResponseOutput) SiteToSiteDataTransfer() pu
 // The URIs of linked interconnect attachment resources
 func (o LinkedInterconnectAttachmentsResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+// The VPC network where these VLAN attachments are located.
+func (o LinkedInterconnectAttachmentsResponseOutput) VpcNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedInterconnectAttachmentsResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
 }
 
 // A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
@@ -1113,6 +1120,8 @@ type LinkedRouterApplianceInstancesResponse struct {
 	Instances []RouterApplianceInstanceResponse `pulumi:"instances"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
+	// The VPC network where these router appliance instances are located.
+	VpcNetwork string `pulumi:"vpcNetwork"`
 }
 
 // A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
@@ -1138,6 +1147,11 @@ func (o LinkedRouterApplianceInstancesResponseOutput) Instances() RouterApplianc
 // A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
 func (o LinkedRouterApplianceInstancesResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
+}
+
+// The VPC network where these router appliance instances are located.
+func (o LinkedRouterApplianceInstancesResponseOutput) VpcNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedRouterApplianceInstancesResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
 }
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
@@ -1305,6 +1319,8 @@ type LinkedVpnTunnelsResponse struct {
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
 	Uris []string `pulumi:"uris"`
+	// The VPC network where these VPN tunnels are located.
+	VpcNetwork string `pulumi:"vpcNetwork"`
 }
 
 // A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes.
@@ -1330,6 +1346,11 @@ func (o LinkedVpnTunnelsResponseOutput) SiteToSiteDataTransfer() pulumi.BoolOutp
 // The URIs of linked VPN tunnel resources.
 func (o LinkedVpnTunnelsResponseOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+// The VPC network where these VPN tunnels are located.
+func (o LinkedVpnTunnelsResponseOutput) VpcNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedVpnTunnelsResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
 }
 
 // A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.

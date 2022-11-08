@@ -39,6 +39,8 @@ type LookupEndpointResult struct {
 	Network string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port int `pulumi:"port"`
+	// The globally unique identifier of the endpoint in the UUID4 format.
+	Uid string `pulumi:"uid"`
 }
 
 func LookupEndpointOutput(ctx *pulumi.Context, args LookupEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointResultOutput {
@@ -103,6 +105,11 @@ func (o LookupEndpointResultOutput) Network() pulumi.StringOutput {
 // Optional. Service Directory rejects values outside of `[0, 65535]`.
 func (o LookupEndpointResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEndpointResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The globally unique identifier of the endpoint in the UUID4 format.
+func (o LookupEndpointResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 func init() {

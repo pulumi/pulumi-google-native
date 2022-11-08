@@ -29,12 +29,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HubIamMember{}
 	case "google-native:networkconnectivity/v1:HubIamPolicy":
 		r = &HubIamPolicy{}
+	case "google-native:networkconnectivity/v1:InternalRange":
+		r = &InternalRange{}
 	case "google-native:networkconnectivity/v1:PolicyBasedRouteIamBinding":
 		r = &PolicyBasedRouteIamBinding{}
 	case "google-native:networkconnectivity/v1:PolicyBasedRouteIamMember":
 		r = &PolicyBasedRouteIamMember{}
 	case "google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy":
 		r = &PolicyBasedRouteIamPolicy{}
+	case "google-native:networkconnectivity/v1:ServiceClassIamBinding":
+		r = &ServiceClassIamBinding{}
+	case "google-native:networkconnectivity/v1:ServiceClassIamMember":
+		r = &ServiceClassIamMember{}
+	case "google-native:networkconnectivity/v1:ServiceClassIamPolicy":
+		r = &ServiceClassIamPolicy{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionMapIamBinding":
+		r = &ServiceConnectionMapIamBinding{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionMapIamMember":
+		r = &ServiceConnectionMapIamMember{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionMapIamPolicy":
+		r = &ServiceConnectionMapIamPolicy{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamBinding":
+		r = &ServiceConnectionPolicyIamBinding{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamMember":
+		r = &ServiceConnectionPolicyIamMember{}
+	case "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamPolicy":
+		r = &ServiceConnectionPolicyIamPolicy{}
 	case "google-native:networkconnectivity/v1:Spoke":
 		r = &Spoke{}
 	case "google-native:networkconnectivity/v1:SpokeIamBinding":

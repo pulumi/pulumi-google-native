@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Contains information of the customer's network configurations.Next available ID: 4
+    /// Contains information of the customer's network configurations.
     /// </summary>
     public sealed class ConsumerArgs : global::Pulumi.ResourceArgs
     {

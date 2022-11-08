@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, size_bytes=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, satisfies_pzs=None, size_bytes=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +41,9 @@ class GetRepositoryResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if size_bytes and not isinstance(size_bytes, str):
             raise TypeError("Expected argument 'size_bytes' to be a str")
         pulumi.set(__self__, "size_bytes", size_bytes)
@@ -105,6 +108,14 @@ class GetRepositoryResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        If set, the repository satisfies physical zone separation.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> str:
         """
@@ -134,6 +145,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             labels=self.labels,
             maven_config=self.maven_config,
             name=self.name,
+            satisfies_pzs=self.satisfies_pzs,
             size_bytes=self.size_bytes,
             update_time=self.update_time)
 
@@ -160,6 +172,7 @@ def get_repository(location: Optional[str] = None,
         labels=__ret__.labels,
         maven_config=__ret__.maven_config,
         name=__ret__.name,
+        satisfies_pzs=__ret__.satisfies_pzs,
         size_bytes=__ret__.size_bytes,
         update_time=__ret__.update_time)
 

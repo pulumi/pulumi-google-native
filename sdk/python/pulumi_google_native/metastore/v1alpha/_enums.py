@@ -13,6 +13,7 @@ __all__ = [
     'ServiceDatabaseType',
     'ServiceReleaseChannel',
     'ServiceTier',
+    'TelemetryConfigLogFormat',
 ]
 
 
@@ -177,4 +178,19 @@ class ServiceTier(str, Enum):
     ENTERPRISE = "ENTERPRISE"
     """
     The enterprise tier provides multi-zone high availability, and sufficient scalability for enterprise-level Dataproc Metastore workloads.
+    """
+
+
+class TelemetryConfigLogFormat(str, Enum):
+    LOG_FORMAT_UNSPECIFIED = "LOG_FORMAT_UNSPECIFIED"
+    """
+    The LOG_FORMAT is not set.
+    """
+    LEGACY = "LEGACY"
+    """
+    Logging output uses the legacy textPayload format.
+    """
+    JSON = "JSON"
+    """
+    Logging output uses the jsonPayload format.
     """

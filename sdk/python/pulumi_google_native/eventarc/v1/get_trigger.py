@@ -101,7 +101,7 @@ class GetTriggerResult:
     @pulumi.getter(name="eventFilters")
     def event_filters(self) -> Sequence['outputs.EventFilterResponse']:
         """
-        null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+        Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         """
         return pulumi.get(self, "event_filters")
 

@@ -26,6 +26,26 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const BuildConfigDockerRegistry = {
+    /**
+     * Unspecified.
+     */
+    DockerRegistryUnspecified: "DOCKER_REGISTRY_UNSPECIFIED",
+    /**
+     * Docker images will be stored in multi-regional Container Registry repositories named `gcf`.
+     */
+    ContainerRegistry: "CONTAINER_REGISTRY",
+    /**
+     * Docker images will be stored in regional Artifact Registry repositories. By default, GCF will create and use repositories named `gcf-artifacts` in every region in which a function is deployed. But the repository to use can also be specified by the user using the `docker_repository` field.
+     */
+    ArtifactRegistry: "ARTIFACT_REGISTRY",
+} as const;
+
+/**
+ * Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+ */
+export type BuildConfigDockerRegistry = (typeof BuildConfigDockerRegistry)[keyof typeof BuildConfigDockerRegistry];
+
 export const EventTriggerRetryPolicy = {
     /**
      * Not specified.
@@ -89,6 +109,26 @@ export const ServiceConfigIngressSettings = {
  * The ingress settings for the function, controlling what traffic can reach it.
  */
 export type ServiceConfigIngressSettings = (typeof ServiceConfigIngressSettings)[keyof typeof ServiceConfigIngressSettings];
+
+export const ServiceConfigSecurityLevel = {
+    /**
+     * Unspecified.
+     */
+    SecurityLevelUnspecified: "SECURITY_LEVEL_UNSPECIFIED",
+    /**
+     * Requests for a URL that match this handler that do not use HTTPS are automatically redirected to the HTTPS URL with the same path. Query parameters are reserved for the redirect.
+     */
+    SecureAlways: "SECURE_ALWAYS",
+    /**
+     * Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
+     */
+    SecureOptional: "SECURE_OPTIONAL",
+} as const;
+
+/**
+ * Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+ */
+export type ServiceConfigSecurityLevel = (typeof ServiceConfigSecurityLevel)[keyof typeof ServiceConfigSecurityLevel];
 
 export const ServiceConfigVpcConnectorEgressSettings = {
     /**

@@ -9,8 +9,10 @@ from ._enums import *
 from .get_instance import *
 from .get_nfs_share import *
 from .get_provisioning_config import *
+from .get_snapshot import *
 from .instance import *
 from .nfs_share import *
 from .provisioning_config import *
+from .snapshot import *
 from ._inputs import *
 from . import outputs

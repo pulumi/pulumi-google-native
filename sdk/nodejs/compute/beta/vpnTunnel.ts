@@ -75,7 +75,7 @@ export class VpnTunnel extends pulumi.CustomResource {
      */
     public readonly peerExternalGateway!: pulumi.Output<string>;
     /**
-     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
      */
     public readonly peerExternalGatewayInterface!: pulumi.Output<number>;
     /**
@@ -125,7 +125,7 @@ export class VpnTunnel extends pulumi.CustomResource {
      */
     public readonly vpnGateway!: pulumi.Output<string>;
     /**
-     * The interface ID of the VPN gateway with which this VPN tunnel is associated.
+     * The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
      */
     public readonly vpnGatewayInterface!: pulumi.Output<number>;
 
@@ -231,7 +231,7 @@ export interface VpnTunnelArgs {
      */
     peerExternalGateway?: pulumi.Input<string>;
     /**
-     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created.
+     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by the client when the VPN tunnel is created. Possible values are: `0`, `1`, `2`, `3`. The number of IDs in use depends on the external VPN gateway redundancy type.
      */
     peerExternalGatewayInterface?: pulumi.Input<number>;
     /**
@@ -273,7 +273,7 @@ export interface VpnTunnelArgs {
      */
     vpnGateway?: pulumi.Input<string>;
     /**
-     * The interface ID of the VPN gateway with which this VPN tunnel is associated.
+     * The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
      */
     vpnGatewayInterface?: pulumi.Input<number>;
 }

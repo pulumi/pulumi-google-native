@@ -1130,7 +1130,7 @@ class ExecutionSpecResponse(dict):
         ExecutionSpec describes how the execution will look.
         :param int parallelism: Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
         :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
-        :param 'TaskTemplateSpecResponse' template: Optional. Describes the task(s) that will be created when executing an execution.
+        :param 'TaskTemplateSpecResponse' template: Optional. The template used to create tasks for this execution.
         """
         pulumi.set(__self__, "parallelism", parallelism)
         pulumi.set(__self__, "task_count", task_count)
@@ -1156,7 +1156,7 @@ class ExecutionSpecResponse(dict):
     @pulumi.getter
     def template(self) -> 'outputs.TaskTemplateSpecResponse':
         """
-        Optional. Describes the task(s) that will be created when executing an execution.
+        Optional. The template used to create tasks for this execution.
         """
         return pulumi.get(self, "template")
 
@@ -2832,7 +2832,7 @@ class TrafficTargetResponse(dict):
         """
         TrafficTarget holds a single entry of the routing table for a Route.
         :param str configuration_name: ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
-        :param bool latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        :param bool latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         :param int percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
         :param str revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
         :param str tag: Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
@@ -2857,7 +2857,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> bool:
         """
-        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
+        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
         """
         return pulumi.get(self, "latest_revision")
 

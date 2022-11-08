@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, tags=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -74,6 +74,9 @@ class GetDatasetResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if storage_billing_model and not isinstance(storage_billing_model, str):
+            raise TypeError("Expected argument 'storage_billing_model' to be a str")
+        pulumi.set(__self__, "storage_billing_model", storage_billing_model)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -220,6 +223,14 @@ class GetDatasetResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> str:
+        """
+        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        """
+        return pulumi.get(self, "storage_billing_model")
+
+    @property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.DatasetTagsItemResponse']:
         """
@@ -252,6 +263,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             max_time_travel_hours=self.max_time_travel_hours,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
+            storage_billing_model=self.storage_billing_model,
             tags=self.tags)
 
 
@@ -286,6 +298,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         max_time_travel_hours=__ret__.max_time_travel_hours,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
+        storage_billing_model=__ret__.storage_billing_model,
         tags=__ret__.tags)
 
 

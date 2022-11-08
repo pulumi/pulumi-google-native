@@ -193,3 +193,43 @@ export const ResourceInfoStatus = {
  * Overall health status. Overall status is derived based on the status of each sub level resources.
  */
 export type ResourceInfoStatus = (typeof ResourceInfoStatus)[keyof typeof ResourceInfoStatus];
+
+export const SubscriptionSku = {
+    /**
+     * Default value. This value is unused.
+     */
+    SkuUnspecified: "SKU_UNSPECIFIED",
+    /**
+     * Represents BeyondCorp Standard SKU.
+     */
+    BceStandardSku: "BCE_STANDARD_SKU",
+} as const;
+
+/**
+ * Required. SKU of subscription.
+ */
+export type SubscriptionSku = (typeof SubscriptionSku)[keyof typeof SubscriptionSku];
+
+export const SubscriptionType = {
+    /**
+     * Default value. This value is unused.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Represents a trial subscription.
+     */
+    Trial: "TRIAL",
+    /**
+     * Represents a paid subscription.
+     */
+    Paid: "PAID",
+    /**
+     * Reresents an allowlisted subscription.
+     */
+    Allowlist: "ALLOWLIST",
+} as const;
+
+/**
+ * Required. Type of subscription.
+ */
+export type SubscriptionType = (typeof SubscriptionType)[keyof typeof SubscriptionType];

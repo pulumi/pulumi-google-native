@@ -57,3 +57,23 @@ export const EnvironmentState = {
  * The current state of the environment.
  */
 export type EnvironmentState = (typeof EnvironmentState)[keyof typeof EnvironmentState];
+
+export const NetworkingConfigConnectionType = {
+    /**
+     * No specific connection type was requested, so the environment uses the default value corresponding to the rest of its configuration.
+     */
+    ConnectionTypeUnspecified: "CONNECTION_TYPE_UNSPECIFIED",
+    /**
+     * Requests the use of VPC peerings for connecting the Customer and Tenant projects.
+     */
+    VpcPeering: "VPC_PEERING",
+    /**
+     * Requests the use of Private Service Connect for connecting the Customer and Tenant projects.
+     */
+    PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
+} as const;
+
+/**
+ * Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
+ */
+export type NetworkingConfigConnectionType = (typeof NetworkingConfigConnectionType)[keyof typeof NetworkingConfigConnectionType];

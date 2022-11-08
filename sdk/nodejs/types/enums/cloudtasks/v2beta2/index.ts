@@ -161,3 +161,23 @@ export const UriOverrideScheme = {
  * Scheme override. When specified, the Uri scheme is replaced by the provided value.
  */
 export type UriOverrideScheme = (typeof UriOverrideScheme)[keyof typeof UriOverrideScheme];
+
+export const UriOverrideUriOverrideEnforceMode = {
+    /**
+     * OverrideMode Unspecified. Defaults to ALWAYS.
+     */
+    UriOverrideEnforceModeUnspecified: "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED",
+    /**
+     * In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+     */
+    IfNotExists: "IF_NOT_EXISTS",
+    /**
+     * In the ALWAYS mode, queue-level configuration overrides all task-level configuration
+     */
+    Always: "ALWAYS",
+} as const;
+
+/**
+ * Uri Override Enforce Mode Determines the Target UriOverride mode.
+ */
+export type UriOverrideUriOverrideEnforceMode = (typeof UriOverrideUriOverrideEnforceMode)[keyof typeof UriOverrideUriOverrideEnforceMode];

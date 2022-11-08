@@ -9,16 +9,20 @@ __all__ = [
     'AuditLogConfigLogType',
     'ConsentState',
     'DicomConfigFilterProfile',
+    'DicomTagConfigProfileType',
+    'FhirFieldConfigProfileType',
     'FhirStoreComplexDataTypeReferenceParsing',
     'FhirStoreVersion',
     'FieldMetadataAction',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition',
     'ImageConfigTextRedactionMode',
+    'OptionsPrimaryIds',
     'ParserConfigVersion',
     'SchemaConfigSchemaType',
     'SchemaPackageSchematizedParsingType',
     'SchemaPackageUnexpectedSegmentHandling',
+    'TextConfigProfileType',
     'TypePrimitive',
 ]
 
@@ -116,6 +120,54 @@ class DicomConfigFilterProfile(str, Enum):
     DEIDENTIFY_TAG_CONTENTS = "DEIDENTIFY_TAG_CONTENTS"
     """
     Inspect within tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following Value Representation names: AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+    """
+
+
+class DicomTagConfigProfileType(str, Enum):
+    """
+    Base profile type for handling DICOM tags.
+    """
+    PROFILE_TYPE_UNSPECIFIED = "PROFILE_TYPE_UNSPECIFIED"
+    """
+    No profile provided. Same as `ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE`.
+    """
+    MINIMAL_KEEP_LIST_PROFILE = "MINIMAL_KEEP_LIST_PROFILE"
+    """
+    Keep only the tags required to produce valid DICOM objects.
+    """
+    ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE = "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
+    """
+    Remove tags based on DICOM Standard's [Attribute Confidentiality Basic Profile (DICOM Standard Edition 2018e)](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html).
+    """
+    KEEP_ALL_PROFILE = "KEEP_ALL_PROFILE"
+    """
+    Keep all tags.
+    """
+    DEIDENTIFY_TAG_CONTENTS = "DEIDENTIFY_TAG_CONTENTS"
+    """
+    Inspect tag contents and replace sensitive text. The process can be configured using the TextConfig. Applies to all tags with the following [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT, DA, DT, AS
+    """
+
+
+class FhirFieldConfigProfileType(str, Enum):
+    """
+    Base profile type for handling FHIR fields.
+    """
+    PROFILE_TYPE_UNSPECIFIED = "PROFILE_TYPE_UNSPECIFIED"
+    """
+    No profile provided. Same as `BASIC`.
+    """
+    KEEP_ALL = "KEEP_ALL"
+    """
+    `Keep` all fields.
+    """
+    BASIC = "BASIC"
+    """
+    Transforms known HIPAA 18 fields and cleans known unstructured text fields.
+    """
+    CLEAN_ALL = "CLEAN_ALL"
+    """
+    Cleans all supported tags. Applies to types: Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
     """
 
 
@@ -245,6 +297,28 @@ class ImageConfigTextRedactionMode(str, Enum):
     """
     Do not redact text.
     """
+    REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS = "REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS"
+    """
+    This mode is like `REDACT_SENSITIVE_TEXT` with the addition of the [Clean Descriptors Option] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html) enabled: When cleaning text, the process attempts to transform phrases matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic Profile] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases are replaced with the token "[CTX]". This mode uses an additional InfoType during inspection.
+    """
+
+
+class OptionsPrimaryIds(str, Enum):
+    """
+    Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
+    """
+    PRIMARY_IDS_OPTION_UNSPECIFIED = "PRIMARY_IDS_OPTION_UNSPECIFIED"
+    """
+    No value provided. Default to the behavior specified by the base profile.
+    """
+    KEEP = "KEEP"
+    """
+    Keep primary IDs.
+    """
+    REGEN = "REGEN"
+    """
+    Regenerate primary IDs.
+    """
 
 
 class ParserConfigVersion(str, Enum):
@@ -328,6 +402,24 @@ class SchemaPackageUnexpectedSegmentHandling(str, Enum):
     PARSE = "PARSE"
     """
     Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
+    """
+
+
+class TextConfigProfileType(str, Enum):
+    """
+    Base profile type for text transformation.
+    """
+    PROFILE_TYPE_UNSPECIFIED = "PROFILE_TYPE_UNSPECIFIED"
+    """
+    Same as BASIC.
+    """
+    EMPTY = "EMPTY"
+    """
+    Empty profile which does not perform any transformations.
+    """
+    BASIC = "BASIC"
+    """
+    Basic profile applies: DATE -> DateShift Default -> ReplaceWithInfoType
     """
 
 

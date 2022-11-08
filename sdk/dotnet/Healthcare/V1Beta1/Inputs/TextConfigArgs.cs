@@ -15,6 +15,36 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// </summary>
     public sealed class TextConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalTransformations")]
+        private InputList<Inputs.InfoTypeTransformationArgs>? _additionalTransformations;
+
+        /// <summary>
+        /// Additional transformations to apply to the detected data, overriding `profile`.
+        /// </summary>
+        public InputList<Inputs.InfoTypeTransformationArgs> AdditionalTransformations
+        {
+            get => _additionalTransformations ?? (_additionalTransformations = new InputList<Inputs.InfoTypeTransformationArgs>());
+            set => _additionalTransformations = value;
+        }
+
+        [Input("excludeInfoTypes")]
+        private InputList<string>? _excludeInfoTypes;
+
+        /// <summary>
+        /// InfoTypes to skip transforming, overriding `profile`.
+        /// </summary>
+        public InputList<string> ExcludeInfoTypes
+        {
+            get => _excludeInfoTypes ?? (_excludeInfoTypes = new InputList<string>());
+            set => _excludeInfoTypes = value;
+        }
+
+        /// <summary>
+        /// Base profile type for text transformation.
+        /// </summary>
+        [Input("profileType")]
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.TextConfigProfileType>? ProfileType { get; set; }
+
         [Input("transformations")]
         private InputList<Inputs.InfoTypeTransformationArgs>? _transformations;
 

@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public Input<Inputs.DicomConfigArgs>? Dicom { get; set; }
 
         /// <summary>
+        /// Configures de-id of application/DICOM content.
+        /// </summary>
+        [Input("dicomTagConfig")]
+        public Input<Inputs.DicomTagConfigArgs>? DicomTagConfig { get; set; }
+
+        /// <summary>
         /// Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         /// </summary>
         [Input("fhir")]
         public Input<Inputs.FhirConfigArgs>? Fhir { get; set; }
+
+        /// <summary>
+        /// Configures de-id of application/FHIR content.
+        /// </summary>
+        [Input("fhirFieldConfig")]
+        public Input<Inputs.FhirFieldConfigArgs>? FhirFieldConfig { get; set; }
 
         /// <summary>
         /// Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.

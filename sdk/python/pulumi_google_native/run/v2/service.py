@@ -34,7 +34,7 @@ class ServiceArgs:
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Service resource.
-        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input['GoogleCloudRunV2RevisionTemplateArgs'] template: The template used to create revisions for this Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
@@ -81,7 +81,7 @@ class ServiceArgs:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
         """
-        Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         """
         return pulumi.get(self, "service_id")
 
@@ -287,7 +287,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
-        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
@@ -616,7 +616,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         """
-        Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        Required. The unique identifier for the Service. It must begin with letter, and may not end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         """
         return pulumi.get(self, "service_id")
 
