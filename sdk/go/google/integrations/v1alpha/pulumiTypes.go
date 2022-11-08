@@ -3484,7 +3484,7 @@ type EnterpriseCrmEventbusProtoNodeIdentifier struct {
 	// Configuration of the edge.
 	ElementIdentifier *string `pulumi:"elementIdentifier"`
 	// Destination node where the edge ends. It can only be a task config.
-	ElementType *EnterpriseCrmEventbusProtoNodeIdentifierElementType `pulumi:"elementType"`
+	ElementType_ *EnterpriseCrmEventbusProtoNodeIdentifierElementType `pulumi:"elementType"`
 }
 
 // EnterpriseCrmEventbusProtoNodeIdentifierInput is an input type that accepts EnterpriseCrmEventbusProtoNodeIdentifierArgs and EnterpriseCrmEventbusProtoNodeIdentifierOutput values.
@@ -3503,7 +3503,7 @@ type EnterpriseCrmEventbusProtoNodeIdentifierArgs struct {
 	// Configuration of the edge.
 	ElementIdentifier pulumi.StringPtrInput `pulumi:"elementIdentifier"`
 	// Destination node where the edge ends. It can only be a task config.
-	ElementType EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrInput `pulumi:"elementType"`
+	ElementType_ EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrInput `pulumi:"elementType"`
 }
 
 func (EnterpriseCrmEventbusProtoNodeIdentifierArgs) ElementType() reflect.Type {
@@ -3590,9 +3590,9 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierOutput) ElementIdentifier() pulu
 }
 
 // Destination node where the edge ends. It can only be a task config.
-func (o EnterpriseCrmEventbusProtoNodeIdentifierOutput) GetElementType() EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput {
+func (o EnterpriseCrmEventbusProtoNodeIdentifierOutput) GetElementType_() EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoNodeIdentifier) *EnterpriseCrmEventbusProtoNodeIdentifierElementType {
-		return v.ElementType
+		return v.ElementType_
 	}).(EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput)
 }
 
@@ -3636,7 +3636,7 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierPtrOutput) ElementTypeProp() Ent
 		if v == nil {
 			return nil
 		}
-		return v.ElementType
+		return v.ElementType_
 	}).(EnterpriseCrmEventbusProtoNodeIdentifierElementTypePtrOutput)
 }
 
@@ -3645,7 +3645,7 @@ type EnterpriseCrmEventbusProtoNodeIdentifierResponse struct {
 	// Configuration of the edge.
 	ElementIdentifier string `pulumi:"elementIdentifier"`
 	// Destination node where the edge ends. It can only be a task config.
-	ElementType string `pulumi:"elementType"`
+	ElementType_ string `pulumi:"elementType"`
 }
 
 // Represents a node identifier (type + id). Next highest id: 3
@@ -3669,8 +3669,8 @@ func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) ElementIdentifie
 }
 
 // Destination node where the edge ends. It can only be a task config.
-func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) GetElementType() pulumi.StringOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoNodeIdentifierResponse) string { return v.ElementType }).(pulumi.StringOutput)
+func (o EnterpriseCrmEventbusProtoNodeIdentifierResponseOutput) GetElementType_() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoNodeIdentifierResponse) string { return v.ElementType_ }).(pulumi.StringOutput)
 }
 
 type EnterpriseCrmEventbusProtoParamSpecEntryConfig struct {
