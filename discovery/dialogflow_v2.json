@@ -8077,7 +8077,7 @@
       }
     }
   },
-  "revision": "20221017",
+  "revision": "20221115",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {
@@ -12091,6 +12091,10 @@
           ],
           "type": "string"
         },
+        "cxCurrentPage": {
+          "description": "The unique identifier of the current Dialogflow CX conversation page. Format: `projects//locations//agents//flows//pages/`.",
+          "type": "string"
+        },
         "detectIntentResponse": {
           "$ref": "GoogleCloudDialogflowV2DetectIntentResponse",
           "description": "Response of the Dialogflow Sessions.DetectIntent call."
@@ -15490,6 +15494,10 @@
           "description": "Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.",
           "type": "string"
         },
+        "obfuscatedExternalUserId": {
+          "description": "Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow returns an error if you try to add a user id for a non-END_USER participant. Dialogflow uses this user id for billing and measurement purposes. For example, Dialogflow determines whether a user in one conversation returned in a later conversation. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be \u003c= 256 characters.",
+          "type": "string"
+        },
         "role": {
           "description": "Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.",
           "enum": [
@@ -15729,7 +15737,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2Sentiment": {
-      "description": "The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text.",
+      "description": "The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text. See: https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values for how to interpret the result.",
       "id": "GoogleCloudDialogflowV2Sentiment",
       "properties": {
         "magnitude": {
@@ -18378,7 +18386,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1Sentiment": {
-      "description": "The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text.",
+      "description": "The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text. See: https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values for how to interpret the result.",
       "id": "GoogleCloudDialogflowV2beta1Sentiment",
       "properties": {
         "magnitude": {
