@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a tag.
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:artifactregistry/v1:getTag", {
         "location": args.location,
         "packageId": args.packageId,

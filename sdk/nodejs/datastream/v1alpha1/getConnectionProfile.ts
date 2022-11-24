@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Use this method to get details about a connection profile.
  */
 export function getConnectionProfile(args: GetConnectionProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionProfileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datastream/v1alpha1:getConnectionProfile", {
         "connectionProfileId": args.connectionProfileId,
         "location": args.location,

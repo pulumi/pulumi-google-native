@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves an HMAC key's metadata
  */
 export function getHmacKey(args: GetHmacKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetHmacKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getHmacKey", {
         "accessId": args.accessId,
         "project": args.project,

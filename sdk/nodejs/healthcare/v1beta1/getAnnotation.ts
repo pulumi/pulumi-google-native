@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an Annotation.
  */
 export function getAnnotation(args: GetAnnotationArgs, opts?: pulumi.InvokeOptions): Promise<GetAnnotationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getAnnotation", {
         "annotationId": args.annotationId,
         "annotationStoreId": args.annotationStoreId,

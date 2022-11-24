@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the dataset specified by datasetID.
  */
 export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquery/v2:getDataset", {
         "datasetId": args.datasetId,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getDisk", {
         "disk": args.disk,
         "project": args.project,

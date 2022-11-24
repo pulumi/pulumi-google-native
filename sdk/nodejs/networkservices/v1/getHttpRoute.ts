@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single HttpRoute.
  */
 export function getHttpRoute(args: GetHttpRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getHttpRoute", {
         "httpRouteId": args.httpRouteId,
         "location": args.location,

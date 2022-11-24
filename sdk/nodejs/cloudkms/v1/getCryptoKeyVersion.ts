@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for a given CryptoKeyVersion.
  */
 export function getCryptoKeyVersion(args: GetCryptoKeyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeyVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getCryptoKeyVersion", {
         "cryptoKeyId": args.cryptoKeyId,
         "cryptoKeyVersionId": args.cryptoKeyVersionId,

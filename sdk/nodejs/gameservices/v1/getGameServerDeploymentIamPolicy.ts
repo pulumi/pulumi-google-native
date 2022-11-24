@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getGameServerDeploymentIamPolicy(args: GetGameServerDeploymentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetGameServerDeploymentIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gameservices/v1:getGameServerDeploymentIamPolicy", {
         "gameServerDeploymentId": args.gameServerDeploymentId,
         "location": args.location,

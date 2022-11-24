@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a mute config.
  */
 export function getOrganizationMuteConfig(args: GetOrganizationMuteConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationMuteConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getOrganizationMuteConfig", {
         "muteConfigId": args.muteConfigId,
         "organizationId": args.organizationId,

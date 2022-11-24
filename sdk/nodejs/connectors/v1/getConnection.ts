@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Connection.
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:connectors/v1:getConnection", {
         "connectionId": args.connectionId,
         "location": args.location,

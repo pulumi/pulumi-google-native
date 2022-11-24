@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
  */
 export function getQueueIamPolicy(args: GetQueueIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudtasks/v2:getQueueIamPolicy", {
         "location": args.location,
         "project": args.project,

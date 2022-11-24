@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Use this method to get details about a private connectivity configuration.
  */
 export function getPrivateConnection(args: GetPrivateConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datastream/v1alpha1:getPrivateConnection", {
         "location": args.location,
         "privateConnectionId": args.privateConnectionId,

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves the OAuth brand of the project.
  */
 export function getBrand(args: GetBrandArgs, opts?: pulumi.InvokeOptions): Promise<GetBrandResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iap/v1:getBrand", {
         "brandId": args.brandId,
         "project": args.project,

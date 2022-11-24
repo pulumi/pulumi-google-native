@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified AndroidApp.
  */
 export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAndroidAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getAndroidApp", {
         "androidAppId": args.androidAppId,
         "project": args.project,

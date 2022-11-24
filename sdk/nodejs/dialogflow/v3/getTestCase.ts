@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a test case.
  */
 export function getTestCase(args: GetTestCaseArgs, opts?: pulumi.InvokeOptions): Promise<GetTestCaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getTestCase", {
         "agentId": args.agentId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a custom class.
  */
 export function getCustomClass(args: GetCustomClassArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomClassResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:speech/v1:getCustomClass", {
         "customClassId": args.customClassId,
         "location": args.location,

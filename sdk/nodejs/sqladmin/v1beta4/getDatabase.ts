@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a resource containing information about a database inside a Cloud SQL instance.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1beta4:getDatabase", {
         "database": args.database,
         "instance": args.instance,

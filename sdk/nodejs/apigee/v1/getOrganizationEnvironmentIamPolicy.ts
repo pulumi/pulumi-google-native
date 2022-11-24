@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
  */
 export function getOrganizationEnvironmentIamPolicy(args: GetOrganizationEnvironmentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationEnvironmentIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", {
         "environmentId": args.environmentId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

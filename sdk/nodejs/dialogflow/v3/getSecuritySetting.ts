@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
  */
 export function getSecuritySetting(args: GetSecuritySettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSecuritySettingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getSecuritySetting", {
         "location": args.location,
         "project": args.project,

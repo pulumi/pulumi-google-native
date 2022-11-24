@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a Certificate.
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1:getCertificate", {
         "caPoolId": args.caPoolId,
         "certificateId": args.certificateId,

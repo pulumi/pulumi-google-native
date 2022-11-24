@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve an inbound SAML configuration for an Identity Toolkit project.
  */
 export function getInboundSamlConfig(args: GetInboundSamlConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundSamlConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:identitytoolkit/v2:getInboundSamlConfig", {
         "inboundSamlConfigId": args.inboundSamlConfigId,
         "project": args.project,

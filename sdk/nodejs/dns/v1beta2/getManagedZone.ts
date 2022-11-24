@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches the representation of an existing ManagedZone.
  */
 export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dns/v1beta2:getManagedZone", {
         "clientOperationId": args.clientOperationId,
         "managedZone": args.managedZone,

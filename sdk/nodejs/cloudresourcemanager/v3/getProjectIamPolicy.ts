@@ -12,11 +12,8 @@ import * as utilities from "../../utilities";
  */
 export function getProjectIamPolicy(args?: GetProjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIamPolicyResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getProjectIamPolicy", {
         "project": args.project,
     }, opts);

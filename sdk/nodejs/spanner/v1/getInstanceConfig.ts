@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a particular instance configuration.
  */
 export function getInstanceConfig(args: GetInstanceConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getInstanceConfig", {
         "instanceConfigId": args.instanceConfigId,
         "project": args.project,

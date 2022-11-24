@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
  */
 export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalForwardingRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getGlobalForwardingRule", {
         "forwardingRule": args.forwardingRule,
         "project": args.project,

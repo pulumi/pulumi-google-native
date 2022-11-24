@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDatasetAnnotationStoreIamPolicy(args: GetDatasetAnnotationStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetAnnotationStoreIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getDatasetAnnotationStoreIamPolicy", {
         "annotationStoreId": args.annotationStoreId,
         "datasetId": args.datasetId,

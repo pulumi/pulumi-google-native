@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getNodeIamPolicy(args: GetNodeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:batch/v1:getNodeIamPolicy", {
         "location": args.location,
         "nodeId": args.nodeId,

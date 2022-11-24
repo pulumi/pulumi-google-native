@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a phrase set.
  */
 export function getPhraseSet(args: GetPhraseSetArgs, opts?: pulumi.InvokeOptions): Promise<GetPhraseSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:speech/v1:getPhraseSet", {
         "location": args.location,
         "phraseSetId": args.phraseSetId,

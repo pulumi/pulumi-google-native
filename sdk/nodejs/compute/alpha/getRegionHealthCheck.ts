@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
  */
 export function getRegionHealthCheck(args: GetRegionHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionHealthCheckResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionHealthCheck", {
         "healthCheck": args.healthCheck,
         "project": args.project,

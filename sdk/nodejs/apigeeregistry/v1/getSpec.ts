@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns a specified spec.
  */
 export function getSpec(args: GetSpecArgs, opts?: pulumi.InvokeOptions): Promise<GetSpecResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigeeregistry/v1:getSpec", {
         "apiId": args.apiId,
         "location": args.location,

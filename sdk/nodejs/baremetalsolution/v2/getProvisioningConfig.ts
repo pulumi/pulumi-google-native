@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get ProvisioningConfig by name.
  */
 export function getProvisioningConfig(args: GetProvisioningConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisioningConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:baremetalsolution/v2:getProvisioningConfig", {
         "location": args.location,
         "project": args.project,

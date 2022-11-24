@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets information about a single variable.
  */
 export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetVariableResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getVariable", {
         "configId": args.configId,
         "project": args.project,

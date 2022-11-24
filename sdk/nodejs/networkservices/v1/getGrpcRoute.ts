@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single GrpcRoute.
  */
 export function getGrpcRoute(args: GetGrpcRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetGrpcRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getGrpcRoute", {
         "grpcRouteId": args.grpcRouteId,
         "location": args.location,

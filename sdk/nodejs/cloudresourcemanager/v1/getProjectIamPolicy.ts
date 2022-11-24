@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
  */
 export function getProjectIamPolicy(args: GetProjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v1:getProjectIamPolicy", {
         "resource": args.resource,
     }, opts);

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified document.
  */
 export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getDocument", {
         "documentId": args.documentId,
         "knowledgeBaseId": args.knowledgeBaseId,

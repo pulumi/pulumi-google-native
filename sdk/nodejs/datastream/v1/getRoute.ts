@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Use this method to get details about a route.
  */
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datastream/v1:getRoute", {
         "location": args.location,
         "privateConnectionId": args.privateConnectionId,

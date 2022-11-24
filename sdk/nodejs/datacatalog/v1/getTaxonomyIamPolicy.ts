@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy for a policy tag or a taxonomy.
  */
 export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getTaxonomyIamPolicy", {
         "location": args.location,
         "project": args.project,

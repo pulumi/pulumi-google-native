@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an analysis.
  */
 export function getAnalysis(args: GetAnalysisArgs, opts?: pulumi.InvokeOptions): Promise<GetAnalysisResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getAnalysis", {
         "analysisId": args.analysisId,
         "conversationId": args.conversationId,

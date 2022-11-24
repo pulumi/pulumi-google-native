@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified InstantSnapshot resource in the specified zone.
  */
 export function getInstantSnapshot(args: GetInstantSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetInstantSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getInstantSnapshot", {
         "instantSnapshot": args.instantSnapshot,
         "project": args.project,

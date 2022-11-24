@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
  */
 export function getInstanceBackupIamPolicy(args: GetInstanceBackupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceBackupIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getInstanceBackupIamPolicy", {
         "backupId": args.backupId,
         "instanceId": args.instanceId,

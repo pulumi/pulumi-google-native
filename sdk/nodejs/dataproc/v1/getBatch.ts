@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the batch workload resource representation.
  */
 export function getBatch(args: GetBatchArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getBatch", {
         "batchId": args.batchId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Source.
  */
 export function getSource(args: GetSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getSource", {
         "location": args.location,
         "project": args.project,

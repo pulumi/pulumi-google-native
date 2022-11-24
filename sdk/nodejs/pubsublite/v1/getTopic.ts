@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the topic configuration.
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsublite/v1:getTopic", {
         "location": args.location,
         "project": args.project,

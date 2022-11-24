@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a data collector.
  */
 export function getDataCollector(args: GetDataCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCollectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getDataCollector", {
         "datacollectorId": args.datacollectorId,
         "organizationId": args.organizationId,

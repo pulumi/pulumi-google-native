@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getEdgeCacheServiceIamPolicy(args: GetEdgeCacheServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeCacheServiceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getEdgeCacheServiceIamPolicy", {
         "edgeCacheServiceId": args.edgeCacheServiceId,
         "location": args.location,

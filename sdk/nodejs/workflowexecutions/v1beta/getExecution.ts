@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns an execution of the given name.
  */
 export function getExecution(args: GetExecutionArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workflowexecutions/v1beta:getExecution", {
         "executionId": args.executionId,
         "location": args.location,

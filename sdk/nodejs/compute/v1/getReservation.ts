@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves information about the specified reservation.
  */
 export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetReservationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getReservation", {
         "project": args.project,
         "reservation": args.reservation,

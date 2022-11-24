@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve a `BitbucketServerConfig`. This API is experimental.
  */
 export function getBitbucketServerConfig(args: GetBitbucketServerConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetBitbucketServerConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getBitbucketServerConfig", {
         "bitbucketServerConfigId": args.bitbucketServerConfigId,
         "location": args.location,

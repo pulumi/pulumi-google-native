@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ClientGateway.
  */
 export function getClientGateway(args: GetClientGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetClientGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1alpha:getClientGateway", {
         "clientGatewayId": args.clientGatewayId,
         "location": args.location,

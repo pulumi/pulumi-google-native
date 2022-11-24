@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
  */
 export function getFolderIamPolicy(args: GetFolderIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v2:getFolderIamPolicy", {
         "folderId": args.folderId,
     }, opts);

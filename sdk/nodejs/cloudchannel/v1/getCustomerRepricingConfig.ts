@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
  */
 export function getCustomerRepricingConfig(args: GetCustomerRepricingConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerRepricingConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudchannel/v1:getCustomerRepricingConfig", {
         "accountId": args.accountId,
         "customerId": args.customerId,

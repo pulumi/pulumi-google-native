@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get the IAM Access Control policy currently in effect for the given job. This result does not include any inherited policies.
  */
 export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJobIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:run/v1:getJobIamPolicy", {
         "jobId": args.jobId,
         "location": args.location,

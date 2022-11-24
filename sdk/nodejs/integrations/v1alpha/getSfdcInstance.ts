@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown.
  */
 export function getSfdcInstance(args: GetSfdcInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSfdcInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:integrations/v1alpha:getSfdcInstance", {
         "location": args.location,
         "productId": args.productId,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an annotation spec set by resource name.
  */
 export function getAnnotationSpecSet(args: GetAnnotationSpecSetArgs, opts?: pulumi.InvokeOptions): Promise<GetAnnotationSpecSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getAnnotationSpecSet", {
         "annotationSpecSetId": args.annotationSpecSetId,
         "project": args.project,

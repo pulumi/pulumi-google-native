@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details about a saved query.
  */
 export function getSavedQuery(args: GetSavedQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetSavedQueryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudasset/v1:getSavedQuery", {
         "savedQueryId": args.savedQueryId,
         "v1Id": args.v1Id,

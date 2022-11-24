@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getInstance", {
         "instanceId": args.instanceId,
         "organizationId": args.organizationId,

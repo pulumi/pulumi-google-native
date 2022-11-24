@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy.
  */
 export function getDataExchangeIamPolicy(args: GetDataExchangeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataExchangeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:analyticshub/v1:getDataExchangeIamPolicy", {
         "dataExchangeId": args.dataExchangeId,
         "location": args.location,

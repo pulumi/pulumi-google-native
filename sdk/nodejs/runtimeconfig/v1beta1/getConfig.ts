@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets information about a RuntimeConfig resource.
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getConfig", {
         "configId": args.configId,
         "project": args.project,

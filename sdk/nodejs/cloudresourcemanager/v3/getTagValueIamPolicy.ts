@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a TagValue. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have the `cloudresourcemanager.googleapis.com/tagValues.getIamPolicy` permission on the identified TagValue to get the access control policy.
  */
 export function getTagValueIamPolicy(args: GetTagValueIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagValueIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagValueIamPolicy", {
         "tagValueId": args.tagValueId,
     }, opts);

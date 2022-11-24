@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
  */
 export function getDlpJob(args: GetDlpJobArgs, opts?: pulumi.InvokeOptions): Promise<GetDlpJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dlp/v2:getDlpJob", {
         "dlpJobId": args.dlpJobId,
         "location": args.location,

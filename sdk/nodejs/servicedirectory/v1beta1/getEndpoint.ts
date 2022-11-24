@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an endpoint.
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getEndpoint", {
         "endpointId": args.endpointId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Replay. Each `Replay` is available for at least 7 days.
  */
 export function getReplay(args: GetReplayArgs, opts?: pulumi.InvokeOptions): Promise<GetReplayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:policysimulator/v1beta1:getReplay", {
         "location": args.location,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified ForwardingRule resource.
  */
 export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getForwardingRule", {
         "forwardingRule": args.forwardingRule,
         "project": args.project,

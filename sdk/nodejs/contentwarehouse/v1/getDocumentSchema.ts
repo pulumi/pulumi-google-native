@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a document schema. Returns NOT_FOUND if the document schema does not exist.
  */
 export function getDocumentSchema(args: GetDocumentSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentSchemaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contentwarehouse/v1:getDocumentSchema", {
         "documentSchemaId": args.documentSchemaId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a SynonymSet for a particular context. Throws a NOT_FOUND exception if the Synonymset does not exist
  */
 export function getSynonymSet(args: GetSynonymSetArgs, opts?: pulumi.InvokeOptions): Promise<GetSynonymSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contentwarehouse/v1:getSynonymSet", {
         "location": args.location,
         "project": args.project,

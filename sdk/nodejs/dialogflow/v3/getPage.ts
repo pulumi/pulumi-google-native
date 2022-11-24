@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified page.
  */
 export function getPage(args: GetPageArgs, opts?: pulumi.InvokeOptions): Promise<GetPageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getPage", {
         "agentId": args.agentId,
         "flowId": args.flowId,

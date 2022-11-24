@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a study.
  */
 export function getStudy(args: GetStudyArgs, opts?: pulumi.InvokeOptions): Promise<GetStudyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getStudy", {
         "location": args.location,
         "project": args.project,

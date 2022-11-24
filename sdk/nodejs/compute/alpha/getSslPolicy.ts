@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Lists all of the ordered rules present in a single specified policy.
  */
 export function getSslPolicy(args: GetSslPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSslPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getSslPolicy", {
         "project": args.project,
         "sslPolicy": args.sslPolicy,

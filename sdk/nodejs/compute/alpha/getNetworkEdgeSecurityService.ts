@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a specified NetworkEdgeSecurityService.
  */
 export function getNetworkEdgeSecurityService(args: GetNetworkEdgeSecurityServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEdgeSecurityServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getNetworkEdgeSecurityService", {
         "networkEdgeSecurityService": args.networkEdgeSecurityService,
         "project": args.project,

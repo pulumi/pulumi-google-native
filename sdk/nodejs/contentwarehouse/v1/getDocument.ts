@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a document. Returns NOT_FOUND if the document does not exist.
  */
 export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contentwarehouse/v1:getDocument", {
         "documentId": args.documentId,
         "location": args.location,

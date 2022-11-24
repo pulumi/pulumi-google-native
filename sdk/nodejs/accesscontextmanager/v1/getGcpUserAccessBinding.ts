@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the GcpUserAccessBinding with the given name.
  */
 export function getGcpUserAccessBinding(args: GetGcpUserAccessBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpUserAccessBindingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", {
         "gcpUserAccessBindingId": args.gcpUserAccessBindingId,
         "organizationId": args.organizationId,

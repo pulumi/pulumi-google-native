@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns an access policy based on the name.
  */
 export function getAccessPolicy(args: GetAccessPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getAccessPolicy", {
         "accessPolicyId": args.accessPolicyId,
     }, opts);

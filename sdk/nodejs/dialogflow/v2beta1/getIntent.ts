@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified intent.
  */
 export function getIntent(args: GetIntentArgs, opts?: pulumi.InvokeOptions): Promise<GetIntentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getIntent", {
         "intentId": args.intentId,
         "intentView": args.intentView,

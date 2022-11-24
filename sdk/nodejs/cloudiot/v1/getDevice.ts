@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details about a device.
  */
 export function getDevice(args: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudiot/v1:getDevice", {
         "deviceId": args.deviceId,
         "fieldMask": args.fieldMask,

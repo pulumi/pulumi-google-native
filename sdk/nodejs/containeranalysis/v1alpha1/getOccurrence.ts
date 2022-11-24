@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested `Occurrence`.
  */
 export function getOccurrence(args: GetOccurrenceArgs, opts?: pulumi.InvokeOptions): Promise<GetOccurrenceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:containeranalysis/v1alpha1:getOccurrence", {
         "occurrenceId": args.occurrenceId,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve the details of a single Backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkebackup/v1:getBackup", {
         "backupId": args.backupId,
         "backupPlanId": args.backupPlanId,

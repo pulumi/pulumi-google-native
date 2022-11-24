@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified Router resource. Gets a list of available routers by making a list() request.
  */
 export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRouter", {
         "project": args.project,
         "region": args.region,

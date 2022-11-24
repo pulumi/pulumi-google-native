@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single InternalRange.
  */
 export function getInternalRange(args: GetInternalRangeArgs, opts?: pulumi.InvokeOptions): Promise<GetInternalRangeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1:getInternalRange", {
         "internalRangeId": args.internalRangeId,
         "location": args.location,

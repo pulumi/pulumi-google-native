@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single AppGateway.
  */
 export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1:getAppGateway", {
         "appGatewayId": args.appGatewayId,
         "location": args.location,

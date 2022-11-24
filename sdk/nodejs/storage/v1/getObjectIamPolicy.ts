@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns an IAM policy for the specified object.
  */
 export function getObjectIamPolicy(args: GetObjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getObjectIamPolicy", {
         "bucket": args.bucket,
         "generation": args.generation,

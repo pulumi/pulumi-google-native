@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a processor detail.
  */
 export function getProcessor(args: GetProcessorArgs, opts?: pulumi.InvokeOptions): Promise<GetProcessorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:documentai/v1beta3:getProcessor", {
         "location": args.location,
         "processorId": args.processorId,

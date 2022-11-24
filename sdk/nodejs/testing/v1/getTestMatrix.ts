@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Checks the status of a test matrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
  */
 export function getTestMatrix(args: GetTestMatrixArgs, opts?: pulumi.InvokeOptions): Promise<GetTestMatrixResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:testing/v1:getTestMatrix", {
         "project": args.project,
         "testMatrixId": args.testMatrixId,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a model resource.
  */
 export function getModel(args: GetModelArgs, opts?: pulumi.InvokeOptions): Promise<GetModelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebaseml/v1beta2:getModel", {
         "modelId": args.modelId,
         "project": args.project,

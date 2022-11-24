@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a conversation participant.
  */
 export function getParticipant(args: GetParticipantArgs, opts?: pulumi.InvokeOptions): Promise<GetParticipantResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getParticipant", {
         "conversationId": args.conversationId,
         "location": args.location,

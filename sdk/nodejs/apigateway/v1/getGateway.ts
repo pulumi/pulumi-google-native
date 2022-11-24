@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Gateway.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigateway/v1:getGateway", {
         "gatewayId": args.gatewayId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified flow.
  */
 export function getFlow(args: GetFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getFlow", {
         "agentId": args.agentId,
         "flowId": args.flowId,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
  */
 export function getDeveloper(args: GetDeveloperArgs, opts?: pulumi.InvokeOptions): Promise<GetDeveloperResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getDeveloper", {
         "action": args.action,
         "developerId": args.developerId,

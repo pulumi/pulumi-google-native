@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified network. Gets a list of available networks by making a list() request.
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getNetwork", {
         "network": args.network,
         "project": args.project,

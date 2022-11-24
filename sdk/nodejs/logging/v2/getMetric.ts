@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a logs-based metric.
  */
 export function getMetric(args: GetMetricArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getMetric", {
         "metricId": args.metricId,
         "project": args.project,

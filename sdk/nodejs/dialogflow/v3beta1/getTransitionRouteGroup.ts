@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified TransitionRouteGroup.
  */
 export function getTransitionRouteGroup(args: GetTransitionRouteGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitionRouteGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getTransitionRouteGroup", {
         "agentId": args.agentId,
         "flowId": args.flowId,

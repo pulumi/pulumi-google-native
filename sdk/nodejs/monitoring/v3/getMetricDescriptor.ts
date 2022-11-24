@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a single metric descriptor.
  */
 export function getMetricDescriptor(args: GetMetricDescriptorArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricDescriptorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getMetricDescriptor", {
         "metricDescriptorId": args.metricDescriptorId,
         "project": args.project,

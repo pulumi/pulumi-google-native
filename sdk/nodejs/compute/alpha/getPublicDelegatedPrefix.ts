@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified PublicDelegatedPrefix resource in the given region.
  */
 export function getPublicDelegatedPrefix(args: GetPublicDelegatedPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicDelegatedPrefixResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getPublicDelegatedPrefix", {
         "project": args.project,
         "publicDelegatedPrefix": args.publicDelegatedPrefix,

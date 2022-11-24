@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDomainIamPolicy(args: GetDomainIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1beta1:getDomainIamPolicy", {
         "domainId": args.domainId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
