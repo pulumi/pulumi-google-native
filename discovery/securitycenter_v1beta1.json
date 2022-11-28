@@ -896,7 +896,7 @@
       }
     }
   },
-  "revision": "20221027",
+  "revision": "20221117",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Access": {
@@ -1058,6 +1058,10 @@
         },
         "findingCategory": {
           "description": "The additional taxonomy group within findings from a given source.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Full resource name of the finding.",
           "type": "string"
         }
       },
@@ -1674,6 +1678,13 @@
         "externalUri": {
           "description": "The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL.",
           "type": "string"
+        },
+        "files": {
+          "description": "File associated with the finding.",
+          "items": {
+            "$ref": "File"
+          },
+          "type": "array"
         },
         "findingClass": {
           "description": "The class of the finding.",
@@ -3016,7 +3027,8 @@
               "IMPAIR_DEFENSES",
               "NETWORK_SERVICE_DISCOVERY",
               "ACCESS_TOKEN_MANIPULATION",
-              "ABUSE_ELEVATION_CONTROL_MECHANISM"
+              "ABUSE_ELEVATION_CONTROL_MECHANISM",
+              "DEFAULT_ACCOUNTS"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3053,7 +3065,8 @@
               "T1562",
               "T1046",
               "T1134",
-              "T1548"
+              "T1548",
+              "T1078.001"
             ],
             "type": "string"
           },
@@ -3135,7 +3148,8 @@
               "IMPAIR_DEFENSES",
               "NETWORK_SERVICE_DISCOVERY",
               "ACCESS_TOKEN_MANIPULATION",
-              "ABUSE_ELEVATION_CONTROL_MECHANISM"
+              "ABUSE_ELEVATION_CONTROL_MECHANISM",
+              "DEFAULT_ACCOUNTS"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3172,7 +3186,8 @@
               "T1562",
               "T1046",
               "T1134",
-              "T1548"
+              "T1548",
+              "T1078.001"
             ],
             "type": "string"
           },
