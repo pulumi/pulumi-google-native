@@ -11,10 +11,10 @@ require (
 	github.com/iancoleman/strcase v0.2.0
 	github.com/jpillora/backoff v1.0.0
 	github.com/mitchellh/go-homedir v1.1.0
-	github.com/mitchellh/mapstructure v1.4.3
+	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi/pkg/v3 v3.46.1
-	github.com/pulumi/pulumi/sdk/v3 v3.46.1
+	github.com/pulumi/pulumi/pkg/v3 v3.48.0
+	github.com/pulumi/pulumi/sdk/v3 v3.48.0
 	github.com/stretchr/testify v1.8.0
 	golang.org/x/oauth2 v0.0.0-20220722155238-128564f6959c
 	google.golang.org/api v0.91.0
