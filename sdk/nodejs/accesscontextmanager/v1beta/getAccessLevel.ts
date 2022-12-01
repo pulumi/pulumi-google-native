@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get an Access Level by resource name.
  */
 export function getAccessLevel(args: GetAccessLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessLevelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1beta:getAccessLevel", {
         "accessLevelFormat": args.accessLevelFormat,
         "accessLevelId": args.accessLevelId,

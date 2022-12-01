@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
  */
 export function getServingConfig(args: GetServingConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetServingConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:retail/v2:getServingConfig", {
         "catalogId": args.catalogId,
         "location": args.location,

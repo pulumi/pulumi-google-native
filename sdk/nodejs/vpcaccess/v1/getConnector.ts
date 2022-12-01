@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vpcaccess/v1:getConnector", {
         "connectorId": args.connectorId,
         "location": args.location,

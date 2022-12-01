@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get details about a single server.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:baremetalsolution/v2:getInstance", {
         "instanceId": args.instanceId,
         "location": args.location,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * List all of the ordered rules present in a single specified policy.
  */
 export function getOrganizationSecurityPolicy(args: GetOrganizationSecurityPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSecurityPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getOrganizationSecurityPolicy", {
         "securityPolicy": args.securityPolicy,
     }, opts);

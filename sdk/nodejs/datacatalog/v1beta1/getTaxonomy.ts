@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a taxonomy.
  */
 export function getTaxonomy(args: GetTaxonomyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getTaxonomy", {
         "location": args.location,
         "project": args.project,

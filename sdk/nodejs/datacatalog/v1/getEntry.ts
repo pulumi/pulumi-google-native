@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an entry.
  */
 export function getEntry(args: GetEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getEntry", {
         "entryGroupId": args.entryGroupId,
         "entryId": args.entryId,

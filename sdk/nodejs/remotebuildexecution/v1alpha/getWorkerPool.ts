@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified worker pool.
  */
 export function getWorkerPool(args: GetWorkerPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:remotebuildexecution/v1alpha:getWorkerPool", {
         "instanceId": args.instanceId,
         "project": args.project,

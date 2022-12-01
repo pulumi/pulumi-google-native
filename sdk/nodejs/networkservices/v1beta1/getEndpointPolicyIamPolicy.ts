@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getEndpointPolicyIamPolicy(args: GetEndpointPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1beta1:getEndpointPolicyIamPolicy", {
         "endpointPolicyId": args.endpointPolicyId,
         "location": args.location,

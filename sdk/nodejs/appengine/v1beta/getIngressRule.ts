@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified firewall rule.
  */
 export function getIngressRule(args: GetIngressRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1beta:getIngressRule", {
         "appId": args.appId,
         "ingressRuleId": args.ingressRuleId,

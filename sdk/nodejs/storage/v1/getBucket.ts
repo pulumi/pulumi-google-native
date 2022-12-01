@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for the specified bucket.
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getBucket", {
         "bucket": args.bucket,
         "ifMetagenerationMatch": args.ifMetagenerationMatch,

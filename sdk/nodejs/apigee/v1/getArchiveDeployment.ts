@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified ArchiveDeployment.
  */
 export function getArchiveDeployment(args: GetArchiveDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetArchiveDeploymentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getArchiveDeployment", {
         "archiveDeploymentId": args.archiveDeploymentId,
         "environmentId": args.environmentId,

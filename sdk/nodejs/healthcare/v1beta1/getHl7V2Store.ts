@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified HL7v2 store.
  */
 export function getHl7V2Store(args: GetHl7V2StoreArgs, opts?: pulumi.InvokeOptions): Promise<GetHl7V2StoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getHl7V2Store", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,

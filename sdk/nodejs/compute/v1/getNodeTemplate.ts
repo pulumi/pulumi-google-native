@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified node template. Gets a list of available node templates by making a list() request.
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getNodeTemplate", {
         "nodeTemplate": args.nodeTemplate,
         "project": args.project,

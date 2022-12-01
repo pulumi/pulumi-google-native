@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns a specified artifact.
  */
 export function getArtifact(args: GetArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetArtifactResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigeeregistry/v1:getArtifact", {
         "apiId": args.apiId,
         "artifactId": args.artifactId,

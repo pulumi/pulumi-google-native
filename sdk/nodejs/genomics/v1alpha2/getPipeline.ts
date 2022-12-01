@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a pipeline based on ID. Caller must have READ permission to the project.
  */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:genomics/v1alpha2:getPipeline", {
         "pipelineId": args.pipelineId,
     }, opts);

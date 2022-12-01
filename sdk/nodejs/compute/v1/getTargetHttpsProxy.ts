@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
  */
 export function getTargetHttpsProxy(args: GetTargetHttpsProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetHttpsProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getTargetHttpsProxy", {
         "project": args.project,
         "targetHttpsProxy": args.targetHttpsProxy,

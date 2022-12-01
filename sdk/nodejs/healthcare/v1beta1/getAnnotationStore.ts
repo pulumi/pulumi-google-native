@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
  */
 export function getAnnotationStore(args: GetAnnotationStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetAnnotationStoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getAnnotationStore", {
         "annotationStoreId": args.annotationStoreId,
         "datasetId": args.datasetId,

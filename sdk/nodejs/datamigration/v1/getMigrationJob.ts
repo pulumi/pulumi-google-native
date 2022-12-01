@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single migration job.
  */
 export function getMigrationJob(args: GetMigrationJobArgs, opts?: pulumi.InvokeOptions): Promise<GetMigrationJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datamigration/v1:getMigrationJob", {
         "location": args.location,
         "migrationJobId": args.migrationJobId,

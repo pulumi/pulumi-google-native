@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a big query export.
  */
 export function getProjectBigQueryExport(args: GetProjectBigQueryExportArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectBigQueryExportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getProjectBigQueryExport", {
         "bigQueryExportId": args.bigQueryExportId,
         "project": args.project,

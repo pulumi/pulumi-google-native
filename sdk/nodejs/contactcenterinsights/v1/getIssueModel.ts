@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an issue model.
  */
 export function getIssueModel(args: GetIssueModelArgs, opts?: pulumi.InvokeOptions): Promise<GetIssueModelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getIssueModel", {
         "issueModelId": args.issueModelId,
         "location": args.location,

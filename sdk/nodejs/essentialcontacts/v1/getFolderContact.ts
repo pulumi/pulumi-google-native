@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a single contact.
  */
 export function getFolderContact(args: GetFolderContactArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderContactResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:essentialcontacts/v1:getFolderContact", {
         "contactId": args.contactId,
         "folderId": args.folderId,

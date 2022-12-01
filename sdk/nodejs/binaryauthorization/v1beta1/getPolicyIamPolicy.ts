@@ -12,11 +12,8 @@ import * as utilities from "../../utilities";
  */
 export function getPolicyIamPolicy(args?: GetPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyIamPolicyResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:binaryauthorization/v1beta1:getPolicyIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,

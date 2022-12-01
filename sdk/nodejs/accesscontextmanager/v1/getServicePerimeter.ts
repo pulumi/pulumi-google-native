@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a service perimeter based on the resource name.
  */
 export function getServicePerimeter(args: GetServicePerimeterArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePerimeterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getServicePerimeter", {
         "accessPolicyId": args.accessPolicyId,
         "servicePerimeterId": args.servicePerimeterId,

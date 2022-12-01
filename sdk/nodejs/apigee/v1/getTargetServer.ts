@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a TargetServer resource.
  */
 export function getTargetServer(args: GetTargetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetServerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getTargetServer", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,

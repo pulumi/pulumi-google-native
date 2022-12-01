@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a debug session.
  */
 export function getDebugSession(args: GetDebugSessionArgs, opts?: pulumi.InvokeOptions): Promise<GetDebugSessionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getDebugSession", {
         "apiId": args.apiId,
         "debugsessionId": args.debugsessionId,

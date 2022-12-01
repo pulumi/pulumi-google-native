@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
  */
 export function getHttpsHealthCheck(args: GetHttpsHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpsHealthCheckResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getHttpsHealthCheck", {
         "httpsHealthCheck": args.httpsHealthCheck,
         "project": args.project,

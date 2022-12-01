@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getBackup", {
         "backupId": args.backupId,
         "location": args.location,

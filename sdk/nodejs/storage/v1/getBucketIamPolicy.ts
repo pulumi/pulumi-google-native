@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns an IAM policy for the specified bucket.
  */
 export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketIamPolicy", {
         "bucket": args.bucket,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,

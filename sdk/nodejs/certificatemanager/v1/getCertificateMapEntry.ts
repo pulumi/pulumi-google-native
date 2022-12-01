@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single CertificateMapEntry.
  */
 export function getCertificateMapEntry(args: GetCertificateMapEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateMapEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:certificatemanager/v1:getCertificateMapEntry", {
         "certificateMapEntryId": args.certificateMapEntryId,
         "certificateMapId": args.certificateMapId,

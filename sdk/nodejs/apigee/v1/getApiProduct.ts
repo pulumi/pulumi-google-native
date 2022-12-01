@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.
  */
 export function getApiProduct(args: GetApiProductArgs, opts?: pulumi.InvokeOptions): Promise<GetApiProductResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getApiProduct", {
         "apiproductId": args.apiproductId,
         "organizationId": args.organizationId,

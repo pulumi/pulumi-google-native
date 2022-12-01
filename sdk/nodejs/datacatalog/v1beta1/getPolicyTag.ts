@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a policy tag.
  */
 export function getPolicyTag(args: GetPolicyTagArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyTagResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getPolicyTag", {
         "location": args.location,
         "policyTagId": args.policyTagId,

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves an SSH public key.
  */
 export function getSshPublicKey(args: GetSshPublicKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshPublicKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:oslogin/v1:getSshPublicKey", {
         "sshPublicKeyId": args.sshPublicKeyId,
         "userId": args.userId,

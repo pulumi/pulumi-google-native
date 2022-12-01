@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a particular instance.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getInstance", {
         "fieldMask": args.fieldMask,
         "instanceId": args.instanceId,

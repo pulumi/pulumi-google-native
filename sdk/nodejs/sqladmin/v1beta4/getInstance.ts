@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a resource containing information about a Cloud SQL instance.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1beta4:getInstance", {
         "instance": args.instance,
         "project": args.project,

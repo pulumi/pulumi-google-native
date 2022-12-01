@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
  */
 export function getSecurityReport(args: GetSecurityReportArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityReportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getSecurityReport", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,

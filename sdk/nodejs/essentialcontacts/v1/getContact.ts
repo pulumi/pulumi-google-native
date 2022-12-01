@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a single contact.
  */
 export function getContact(args: GetContactArgs, opts?: pulumi.InvokeOptions): Promise<GetContactResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:essentialcontacts/v1:getContact", {
         "contactId": args.contactId,
         "project": args.project,

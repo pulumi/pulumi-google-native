@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
  */
 export function getDebugToken(args: GetDebugTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetDebugTokenResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebaseappcheck/v1beta:getDebugToken", {
         "appId": args.appId,
         "debugTokenId": args.debugTokenId,

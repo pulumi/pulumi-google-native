@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of schedule
  */
 export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:notebooks/v1:getSchedule", {
         "location": args.location,
         "project": args.project,

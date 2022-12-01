@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ServerTlsPolicy.
  */
 export function getServerTlsPolicy(args: GetServerTlsPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServerTlsPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1beta1:getServerTlsPolicy", {
         "location": args.location,
         "project": args.project,

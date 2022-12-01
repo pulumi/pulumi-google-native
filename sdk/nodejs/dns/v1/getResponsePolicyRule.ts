@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches the representation of an existing Response Policy Rule.
  */
 export function getResponsePolicyRule(args: GetResponsePolicyRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetResponsePolicyRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dns/v1:getResponsePolicyRule", {
         "clientOperationId": args.clientOperationId,
         "project": args.project,

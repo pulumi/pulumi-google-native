@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a content resource.
  */
 export function getContent(args: GetContentArgs, opts?: pulumi.InvokeOptions): Promise<GetContentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getContent", {
         "contentId": args.contentId,
         "lakeId": args.lakeId,

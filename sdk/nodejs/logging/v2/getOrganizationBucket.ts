@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a log bucket.
  */
 export function getOrganizationBucket(args: GetOrganizationBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getOrganizationBucket", {
         "bucketId": args.bucketId,
         "location": args.location,

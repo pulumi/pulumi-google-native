@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get an OS Config guest policy.
  */
 export function getGuestPolicy(args: GetGuestPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:osconfig/v1beta:getGuestPolicy", {
         "guestPolicyId": args.guestPolicyId,
         "project": args.project,

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the endpoint attachment.
  */
 export function getEndpointAttachment(args: GetEndpointAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getEndpointAttachment", {
         "endpointAttachmentId": args.endpointAttachmentId,
         "organizationId": args.organizationId,

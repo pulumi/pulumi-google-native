@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:baremetalsolution/v2:getSnapshot", {
         "location": args.location,
         "project": args.project,

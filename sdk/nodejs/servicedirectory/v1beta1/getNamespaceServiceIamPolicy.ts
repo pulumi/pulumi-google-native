@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM Policy for a resource
  */
 export function getNamespaceServiceIamPolicy(args: GetNamespaceServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceServiceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getNamespaceServiceIamPolicy", {
         "location": args.location,
         "namespaceId": args.namespaceId,

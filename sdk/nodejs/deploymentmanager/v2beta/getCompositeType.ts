@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a specific composite type.
  */
 export function getCompositeType(args: GetCompositeTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetCompositeTypeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:deploymentmanager/v2beta:getCompositeType", {
         "compositeType": args.compositeType,
         "project": args.project,

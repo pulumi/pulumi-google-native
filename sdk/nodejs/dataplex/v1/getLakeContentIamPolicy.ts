@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
  */
 export function getLakeContentIamPolicy(args: GetLakeContentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLakeContentIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getLakeContentIamPolicy", {
         "contentId": args.contentId,
         "lakeId": args.lakeId,

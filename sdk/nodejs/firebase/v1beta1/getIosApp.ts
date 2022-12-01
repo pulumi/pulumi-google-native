@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified IosApp.
  */
 export function getIosApp(args: GetIosAppArgs, opts?: pulumi.InvokeOptions): Promise<GetIosAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getIosApp", {
         "iosAppId": args.iosAppId,
         "project": args.project,

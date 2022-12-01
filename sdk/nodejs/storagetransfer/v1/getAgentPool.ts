@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an agent pool.
  */
 export function getAgentPool(args: GetAgentPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetAgentPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storagetransfer/v1:getAgentPool", {
         "agentPoolId": args.agentPoolId,
         "project": args.project,

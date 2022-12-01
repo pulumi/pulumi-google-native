@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Domain.
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1alpha1:getDomain", {
         "domainId": args.domainId,
         "project": args.project,

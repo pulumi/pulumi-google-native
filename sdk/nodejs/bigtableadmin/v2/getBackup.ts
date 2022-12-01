@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets metadata on a pending or completed Cloud Bigtable Backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getBackup", {
         "backupId": args.backupId,
         "clusterId": args.clusterId,

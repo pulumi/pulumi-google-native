@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getKeyRingCryptoKeyIamPolicy(args: GetKeyRingCryptoKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingCryptoKeyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getKeyRingCryptoKeyIamPolicy", {
         "cryptoKeyId": args.cryptoKeyId,
         "keyRingId": args.keyRingId,

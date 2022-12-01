@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets metadata for a given Secret.
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:secretmanager/v1:getSecret", {
         "project": args.project,
         "secretId": args.secretId,

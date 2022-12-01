@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getMembershipIamPolicy(args: GetMembershipIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkehub/v1beta1:getMembershipIamPolicy", {
         "location": args.location,
         "membershipId": args.membershipId,

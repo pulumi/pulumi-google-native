@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
  */
 export function getEnvironmentEntry(args: GetEnvironmentEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getEnvironmentEntry", {
         "entryId": args.entryId,
         "environmentId": args.environmentId,

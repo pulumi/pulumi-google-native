@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
  */
 export function getInstanceGroupManager(args: GetInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getInstanceGroupManager", {
         "instanceGroupManager": args.instanceGroupManager,
         "project": args.project,

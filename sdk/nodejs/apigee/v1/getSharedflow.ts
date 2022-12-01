@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a shared flow by name, including a list of its revisions.
  */
 export function getSharedflow(args: GetSharedflowArgs, opts?: pulumi.InvokeOptions): Promise<GetSharedflowResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getSharedflow", {
         "organizationId": args.organizationId,
         "sharedflowId": args.sharedflowId,

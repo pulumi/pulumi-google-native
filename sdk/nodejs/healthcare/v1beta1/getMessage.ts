@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an HL7v2 message.
  */
 export function getMessage(args: GetMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMessageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getMessage", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,

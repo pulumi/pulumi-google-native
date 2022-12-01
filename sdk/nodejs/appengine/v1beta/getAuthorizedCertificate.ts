@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified SSL certificate.
  */
 export function getAuthorizedCertificate(args: GetAuthorizedCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizedCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1beta:getAuthorizedCertificate", {
         "appId": args.appId,
         "authorizedCertificateId": args.authorizedCertificateId,

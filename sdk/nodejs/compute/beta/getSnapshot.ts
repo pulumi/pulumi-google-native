@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getSnapshot", {
         "project": args.project,
         "snapshot": args.snapshot,

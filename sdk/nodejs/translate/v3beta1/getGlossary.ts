@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
  */
 export function getGlossary(args: GetGlossaryArgs, opts?: pulumi.InvokeOptions): Promise<GetGlossaryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:translate/v3beta1:getGlossary", {
         "glossaryId": args.glossaryId,
         "location": args.location,

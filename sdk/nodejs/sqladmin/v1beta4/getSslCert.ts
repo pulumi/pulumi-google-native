@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
  */
 export function getSslCert(args: GetSslCertArgs, opts?: pulumi.InvokeOptions): Promise<GetSslCertResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1beta4:getSslCert", {
         "instance": args.instance,
         "project": args.project,

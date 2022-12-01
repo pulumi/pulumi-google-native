@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a data exchange.
  */
 export function getDataExchange(args: GetDataExchangeArgs, opts?: pulumi.InvokeOptions): Promise<GetDataExchangeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:analyticshub/v1beta1:getDataExchange", {
         "dataExchangeId": args.dataExchangeId,
         "location": args.location,

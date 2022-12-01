@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an instruction by resource name.
  */
 export function getInstruction(args: GetInstructionArgs, opts?: pulumi.InvokeOptions): Promise<GetInstructionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getInstruction", {
         "instructionId": args.instructionId,
         "project": args.project,

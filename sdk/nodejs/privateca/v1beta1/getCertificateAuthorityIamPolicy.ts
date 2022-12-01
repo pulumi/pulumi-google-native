@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getCertificateAuthorityIamPolicy(args: GetCertificateAuthorityIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateAuthorityIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1beta1:getCertificateAuthorityIamPolicy", {
         "certificateAuthorityId": args.certificateAuthorityId,
         "location": args.location,

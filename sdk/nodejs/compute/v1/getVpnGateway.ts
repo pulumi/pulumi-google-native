@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list() request.
  */
 export function getVpnGateway(args: GetVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getVpnGateway", {
         "project": args.project,
         "region": args.region,

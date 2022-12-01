@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about an app profile.
  */
 export function getAppProfile(args: GetAppProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetAppProfileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getAppProfile", {
         "appProfileId": args.appProfileId,
         "instanceId": args.instanceId,

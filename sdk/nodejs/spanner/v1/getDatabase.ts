@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the state of a Cloud Spanner database.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getDatabase", {
         "databaseId": args.databaseId,
         "instanceId": args.instanceId,

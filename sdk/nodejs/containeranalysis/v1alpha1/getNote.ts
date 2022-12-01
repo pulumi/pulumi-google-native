@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested `Note`.
  */
 export function getNote(args: GetNoteArgs, opts?: pulumi.InvokeOptions): Promise<GetNoteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:containeranalysis/v1alpha1:getNote", {
         "noteId": args.noteId,
         "project": args.project,

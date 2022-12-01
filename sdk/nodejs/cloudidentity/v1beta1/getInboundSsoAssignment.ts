@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an InboundSsoAssignment.
  */
 export function getInboundSsoAssignment(args: GetInboundSsoAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundSsoAssignmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1beta1:getInboundSsoAssignment", {
         "inboundSsoAssignmentId": args.inboundSsoAssignmentId,
     }, opts);

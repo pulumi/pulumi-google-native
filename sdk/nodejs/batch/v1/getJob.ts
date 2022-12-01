@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a Job specified by its resource name.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:batch/v1:getJob", {
         "jobId": args.jobId,
         "location": args.location,

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the description of an exclusion in the _Default sink.
  */
 export function getExclusion(args: GetExclusionArgs, opts?: pulumi.InvokeOptions): Promise<GetExclusionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getExclusion", {
         "exclusionId": args.exclusionId,
         "project": args.project,
