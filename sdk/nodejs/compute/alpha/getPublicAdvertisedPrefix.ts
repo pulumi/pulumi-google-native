@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified PublicAdvertisedPrefix resource.
  */
 export function getPublicAdvertisedPrefix(args: GetPublicAdvertisedPrefixArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicAdvertisedPrefixResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getPublicAdvertisedPrefix", {
         "project": args.project,
         "publicAdvertisedPrefix": args.publicAdvertisedPrefix,

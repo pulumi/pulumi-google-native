@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRegionClusterIamPolicy(args: GetRegionClusterIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionClusterIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getRegionClusterIamPolicy", {
         "clusterId": args.clusterId,
         "project": args.project,

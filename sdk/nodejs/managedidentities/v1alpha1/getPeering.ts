@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Peering.
  */
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1alpha1:getPeering", {
         "peeringId": args.peeringId,
         "project": args.project,

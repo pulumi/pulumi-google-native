@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ServiceBinding.
  */
 export function getServiceBinding(args: GetServiceBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceBindingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getServiceBinding", {
         "location": args.location,
         "project": args.project,

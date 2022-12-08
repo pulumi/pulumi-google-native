@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Attribute definition.
  */
 export function getAttributeDefinition(args: GetAttributeDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetAttributeDefinitionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getAttributeDefinition", {
         "attributeDefinitionId": args.attributeDefinitionId,
         "consentStoreId": args.consentStoreId,

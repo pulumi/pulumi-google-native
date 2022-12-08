@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getKey", {
         "appId": args.appId,
         "developerId": args.developerId,

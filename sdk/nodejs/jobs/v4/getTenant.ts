@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves specified tenant.
  */
 export function getTenant(args: GetTenantArgs, opts?: pulumi.InvokeOptions): Promise<GetTenantResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:jobs/v4:getTenant", {
         "project": args.project,
         "tenantId": args.tenantId,

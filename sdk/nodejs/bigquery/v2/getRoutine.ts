@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified routine resource by routine ID.
  */
 export function getRoutine(args: GetRoutineArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutineResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquery/v2:getRoutine", {
         "datasetId": args.datasetId,
         "project": args.project,

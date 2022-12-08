@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a FeedbackMessage object.
  */
 export function getFeedbackMessage(args: GetFeedbackMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetFeedbackMessageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getFeedbackMessage", {
         "annotatedDatasetId": args.annotatedDatasetId,
         "datasetId": args.datasetId,

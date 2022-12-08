@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified network firewall policy.
  */
 export function getRegionNetworkFirewallPolicy(args: GetRegionNetworkFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNetworkFirewallPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionNetworkFirewallPolicy", {
         "firewallPolicy": args.firewallPolicy,
         "project": args.project,

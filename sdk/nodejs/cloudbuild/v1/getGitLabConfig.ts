@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a `GitLabConfig`. This API is experimental
  */
 export function getGitLabConfig(args: GetGitLabConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetGitLabConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getGitLabConfig", {
         "gitLabConfigId": args.gitLabConfigId,
         "location": args.location,

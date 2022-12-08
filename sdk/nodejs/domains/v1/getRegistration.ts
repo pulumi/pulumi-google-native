@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a `Registration` resource.
  */
 export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:domains/v1:getRegistration", {
         "location": args.location,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Release.
  */
 export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:clouddeploy/v1:getRelease", {
         "deliveryPipelineId": args.deliveryPipelineId,
         "location": args.location,

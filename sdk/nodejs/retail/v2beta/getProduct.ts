@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a Product.
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:retail/v2beta:getProduct", {
         "branchId": args.branchId,
         "catalogId": args.catalogId,

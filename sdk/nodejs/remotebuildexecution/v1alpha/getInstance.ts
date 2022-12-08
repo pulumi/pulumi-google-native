@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified instance.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:remotebuildexecution/v1alpha:getInstance", {
         "instanceId": args.instanceId,
         "project": args.project,

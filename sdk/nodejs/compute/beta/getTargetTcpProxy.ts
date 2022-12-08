@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
  */
 export function getTargetTcpProxy(args: GetTargetTcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetTcpProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getTargetTcpProxy", {
         "project": args.project,
         "targetTcpProxy": args.targetTcpProxy,

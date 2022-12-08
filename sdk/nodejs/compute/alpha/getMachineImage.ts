@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified machine image. Gets a list of available machine images by making a list() request.
  */
 export function getMachineImage(args: GetMachineImageArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineImageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getMachineImage", {
         "machineImage": args.machineImage,
         "project": args.project,

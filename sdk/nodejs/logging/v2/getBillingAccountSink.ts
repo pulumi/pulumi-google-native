@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a sink.
  */
 export function getBillingAccountSink(args: GetBillingAccountSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountSinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getBillingAccountSink", {
         "billingAccountId": args.billingAccountId,
         "sinkId": args.sinkId,

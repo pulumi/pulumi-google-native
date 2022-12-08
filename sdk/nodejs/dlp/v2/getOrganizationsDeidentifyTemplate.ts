@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
  */
 export function getOrganizationsDeidentifyTemplate(args: GetOrganizationsDeidentifyTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationsDeidentifyTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dlp/v2:getOrganizationsDeidentifyTemplate", {
         "deidentifyTemplateId": args.deidentifyTemplateId,
         "location": args.location,

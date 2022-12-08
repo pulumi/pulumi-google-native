@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a keystore or truststore.
  */
 export function getKeystore(args: GetKeystoreArgs, opts?: pulumi.InvokeOptions): Promise<GetKeystoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getKeystore", {
         "environmentId": args.environmentId,
         "keystoreId": args.keystoreId,

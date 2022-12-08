@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified entity type.
  */
 export function getEntityType(args: GetEntityTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityTypeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getEntityType", {
         "entityTypeId": args.entityTypeId,
         "languageCode": args.languageCode,

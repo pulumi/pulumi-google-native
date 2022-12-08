@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves specified company.
  */
 export function getCompany(args: GetCompanyArgs, opts?: pulumi.InvokeOptions): Promise<GetCompanyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:jobs/v3:getCompany", {
         "companyId": args.companyId,
         "project": args.project,

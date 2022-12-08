@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:jobs/v4:getJob", {
         "jobId": args.jobId,
         "project": args.project,

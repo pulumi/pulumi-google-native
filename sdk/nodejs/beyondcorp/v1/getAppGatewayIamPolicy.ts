@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getAppGatewayIamPolicy(args: GetAppGatewayIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1:getAppGatewayIamPolicy", {
         "appGatewayId": args.appGatewayId,
         "location": args.location,

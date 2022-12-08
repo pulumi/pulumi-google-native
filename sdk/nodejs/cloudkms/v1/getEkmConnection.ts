@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for a given EkmConnection.
  */
 export function getEkmConnection(args: GetEkmConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetEkmConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getEkmConnection", {
         "ekmConnectionId": args.ekmConnectionId,
         "location": args.location,

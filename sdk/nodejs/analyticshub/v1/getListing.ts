@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a listing.
  */
 export function getListing(args: GetListingArgs, opts?: pulumi.InvokeOptions): Promise<GetListingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:analyticshub/v1:getListing", {
         "dataExchangeId": args.dataExchangeId,
         "listingId": args.listingId,

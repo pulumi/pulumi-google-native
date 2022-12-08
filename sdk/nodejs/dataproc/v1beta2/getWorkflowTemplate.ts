@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
  */
 export function getWorkflowTemplate(args: GetWorkflowTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1beta2:getWorkflowTemplate", {
         "location": args.location,
         "project": args.project,

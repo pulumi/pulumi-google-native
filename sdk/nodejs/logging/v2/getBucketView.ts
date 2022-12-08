@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a view on a log bucket..
  */
 export function getBucketView(args: GetBucketViewArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketViewResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getBucketView", {
         "bucketId": args.bucketId,
         "location": args.location,

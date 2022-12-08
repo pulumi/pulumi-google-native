@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
  */
 export function getRuntime(args: GetRuntimeArgs, opts?: pulumi.InvokeOptions): Promise<GetRuntimeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:notebooks/v1:getRuntime", {
         "location": args.location,
         "project": args.project,

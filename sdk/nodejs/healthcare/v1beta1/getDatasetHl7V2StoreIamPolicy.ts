@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDatasetHl7V2StoreIamPolicy(args: GetDatasetHl7V2StoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetHl7V2StoreIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getDatasetHl7V2StoreIamPolicy", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,

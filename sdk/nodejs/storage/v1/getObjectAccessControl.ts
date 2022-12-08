@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the ACL entry for the specified entity on the specified object.
  */
 export function getObjectAccessControl(args: GetObjectAccessControlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectAccessControlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getObjectAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified BackendService resource. Gets a list of available backend services.
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getBackendService", {
         "backendService": args.backendService,
         "project": args.project,

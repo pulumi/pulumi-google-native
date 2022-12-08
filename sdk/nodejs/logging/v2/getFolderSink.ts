@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a sink.
  */
 export function getFolderSink(args: GetFolderSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderSinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getFolderSink", {
         "folderId": args.folderId,
         "sinkId": args.sinkId,

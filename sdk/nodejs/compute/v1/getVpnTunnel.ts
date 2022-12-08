@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
  */
 export function getVpnTunnel(args: GetVpnTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnTunnelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getVpnTunnel", {
         "project": args.project,
         "region": args.region,

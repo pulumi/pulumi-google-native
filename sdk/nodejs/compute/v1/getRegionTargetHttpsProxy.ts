@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
  */
 export function getRegionTargetHttpsProxy(args: GetRegionTargetHttpsProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionTargetHttpsProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionTargetHttpsProxy", {
         "project": args.project,
         "region": args.region,

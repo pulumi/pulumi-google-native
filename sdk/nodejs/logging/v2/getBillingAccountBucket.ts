@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a log bucket.
  */
 export function getBillingAccountBucket(args: GetBillingAccountBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getBillingAccountBucket", {
         "billingAccountId": args.billingAccountId,
         "bucketId": args.bucketId,

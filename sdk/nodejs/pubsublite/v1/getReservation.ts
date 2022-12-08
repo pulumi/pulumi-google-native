@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the reservation configuration.
  */
 export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetReservationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsublite/v1:getReservation", {
         "location": args.location,
         "project": args.project,

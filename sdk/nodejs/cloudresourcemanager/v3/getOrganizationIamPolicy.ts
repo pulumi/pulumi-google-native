@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization.
  */
 export function getOrganizationIamPolicy(args: GetOrganizationIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getOrganizationIamPolicy", {
         "organizationId": args.organizationId,
     }, opts);

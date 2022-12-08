@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified interconnect attachment.
  */
 export function getInterconnectAttachment(args: GetInterconnectAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getInterconnectAttachment", {
         "interconnectAttachment": args.interconnectAttachment,
         "project": args.project,

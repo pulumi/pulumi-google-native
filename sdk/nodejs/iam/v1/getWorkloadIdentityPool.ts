@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an individual WorkloadIdentityPool.
  */
 export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iam/v1:getWorkloadIdentityPool", {
         "location": args.location,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a specific type provider.
  */
 export function getTypeProvider(args: GetTypeProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetTypeProviderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:deploymentmanager/alpha:getTypeProvider", {
         "project": args.project,
         "typeProvider": args.typeProvider,

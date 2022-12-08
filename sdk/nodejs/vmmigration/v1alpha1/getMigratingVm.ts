@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single MigratingVm.
  */
 export function getMigratingVm(args: GetMigratingVmArgs, opts?: pulumi.InvokeOptions): Promise<GetMigratingVmResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getMigratingVm", {
         "location": args.location,
         "migratingVmId": args.migratingVmId,

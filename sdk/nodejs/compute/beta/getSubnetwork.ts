@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified subnetwork. Gets a list of available subnetworks list() request.
  */
 export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getSubnetwork", {
         "project": args.project,
         "region": args.region,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a resource containing information about a backup run.
  */
 export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupRunResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1beta4:getBackupRun", {
         "id": args.id,
         "instance": args.instance,

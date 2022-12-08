@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
  */
 export function getInstanceTableIamPolicy(args: GetInstanceTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTableIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getInstanceTableIamPolicy", {
         "instanceId": args.instanceId,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist.
  */
 export function getRuleSet(args: GetRuleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contentwarehouse/v1:getRuleSet", {
         "location": args.location,
         "project": args.project,

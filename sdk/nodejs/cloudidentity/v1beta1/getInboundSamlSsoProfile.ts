@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an InboundSamlSsoProfile.
  */
 export function getInboundSamlSsoProfile(args: GetInboundSamlSsoProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundSamlSsoProfileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1beta1:getInboundSamlSsoProfile", {
         "inboundSamlSsoProfileId": args.inboundSamlSsoProfileId,
     }, opts);

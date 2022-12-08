@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a datasource. **Note:** This API requires an admin account to execute.
  */
 export function getDataSource(args: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudsearch/v1:getDataSource", {
         "datasourceId": args.datasourceId,
         "debugOptionsEnableDebugging": args.debugOptionsEnableDebugging,

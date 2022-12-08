@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
  */
 export function getSslCertificate(args: GetSslCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetSslCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getSslCertificate", {
         "project": args.project,
         "sslCertificate": args.sslCertificate,

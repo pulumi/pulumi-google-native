@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a big query export.
  */
 export function getFolderBigQueryExport(args: GetFolderBigQueryExportArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderBigQueryExportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getFolderBigQueryExport", {
         "bigQueryExportId": args.bigQueryExportId,
         "folderId": args.folderId,

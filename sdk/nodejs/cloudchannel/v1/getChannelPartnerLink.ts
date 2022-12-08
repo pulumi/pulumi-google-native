@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return value: The ChannelPartnerLink resource.
  */
 export function getChannelPartnerLink(args: GetChannelPartnerLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelPartnerLinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudchannel/v1:getChannelPartnerLink", {
         "accountId": args.accountId,
         "channelPartnerLinkId": args.channelPartnerLinkId,

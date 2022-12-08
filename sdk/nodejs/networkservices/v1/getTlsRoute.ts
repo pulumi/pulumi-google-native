@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single TlsRoute.
  */
 export function getTlsRoute(args: GetTlsRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getTlsRoute", {
         "location": args.location,
         "project": args.project,

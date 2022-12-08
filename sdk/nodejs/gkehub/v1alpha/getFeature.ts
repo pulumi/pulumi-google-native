@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Feature.
  */
 export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkehub/v1alpha:getFeature", {
         "featureId": args.featureId,
         "location": args.location,

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a single entity row matching the entity type and entity id specified in the request.
  */
 export function getEntity(args: GetEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:connectors/v2:getEntity", {
         "connectionId": args.connectionId,
         "entityId": args.entityId,

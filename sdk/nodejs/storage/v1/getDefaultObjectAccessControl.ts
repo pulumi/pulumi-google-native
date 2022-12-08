@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the default object ACL entry for the specified entity on the specified bucket.
  */
 export function getDefaultObjectAccessControl(args: GetDefaultObjectAccessControlArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultObjectAccessControlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getDefaultObjectAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,

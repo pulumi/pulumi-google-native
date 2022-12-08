@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
  */
 export function getTargetInstance(args: GetTargetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getTargetInstance", {
         "project": args.project,
         "targetInstance": args.targetInstance,

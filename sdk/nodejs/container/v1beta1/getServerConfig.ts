@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns configuration info about the Google Kubernetes Engine service.
  */
 export function getServerConfig(args: GetServerConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetServerConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:container/v1beta1:getServerConfig", {
         "location": args.location,
         "project": args.project,

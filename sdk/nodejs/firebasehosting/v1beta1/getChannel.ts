@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves information for the specified channel of the specified site.
  */
 export function getChannel(args: GetChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebasehosting/v1beta1:getChannel", {
         "channelId": args.channelId,
         "project": args.project,

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a service configuration (version) for a managed service.
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicemanagement/v1:getConfig", {
         "configId": args.configId,
         "serviceName": args.serviceName,
