@@ -60,6 +60,8 @@ const (
 )
 
 type googleCloudProvider struct {
+	rpc.UnimplementedResourceProviderServer
+
 	host        *provider.HostClient
 	name        string
 	version     string
