@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve the specified case.
  */
 export function getCase(args: GetCaseArgs, opts?: pulumi.InvokeOptions): Promise<GetCaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudsupport/v2beta:getCase", {
         "caseId": args.caseId,
         "v2betaId1": args.v2betaId1,
@@ -89,9 +86,11 @@ export interface GetCaseResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieve the specified case.
+ */
 export function getCaseOutput(args: GetCaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaseResult> {
-    return pulumi.output(args).apply(a => getCase(a, opts))
+    return pulumi.output(args).apply((a: any) => getCase(a, opts))
 }
 
 export interface GetCaseOutputArgs {

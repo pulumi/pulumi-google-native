@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getEdgeCacheKeysetIamPolicy(args: GetEdgeCacheKeysetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEdgeCacheKeysetIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getEdgeCacheKeysetIamPolicy", {
         "edgeCacheKeysetId": args.edgeCacheKeysetId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetEdgeCacheKeysetIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getEdgeCacheKeysetIamPolicyOutput(args: GetEdgeCacheKeysetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeCacheKeysetIamPolicyResult> {
-    return pulumi.output(args).apply(a => getEdgeCacheKeysetIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getEdgeCacheKeysetIamPolicy(a, opts))
 }
 
 export interface GetEdgeCacheKeysetIamPolicyOutputArgs {

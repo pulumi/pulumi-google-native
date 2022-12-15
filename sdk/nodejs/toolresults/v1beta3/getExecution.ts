@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
  */
 export function getExecution(args: GetExecutionArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:toolresults/v1beta3:getExecution", {
         "executionId": args.executionId,
         "historyId": args.historyId,
@@ -63,9 +60,11 @@ export interface GetExecutionResult {
      */
     readonly testExecutionMatrixId: string;
 }
-
+/**
+ * Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
+ */
 export function getExecutionOutput(args: GetExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionResult> {
-    return pulumi.output(args).apply(a => getExecution(a, opts))
+    return pulumi.output(args).apply((a: any) => getExecution(a, opts))
 }
 
 export interface GetExecutionOutputArgs {

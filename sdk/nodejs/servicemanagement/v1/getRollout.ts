@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a service configuration rollout.
  */
 export function getRollout(args: GetRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetRolloutResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicemanagement/v1:getRollout", {
         "rolloutId": args.rolloutId,
         "serviceName": args.serviceName,
@@ -57,9 +54,11 @@ export interface GetRolloutResult {
      */
     readonly trafficPercentStrategy: outputs.servicemanagement.v1.TrafficPercentStrategyResponse;
 }
-
+/**
+ * Gets a service configuration rollout.
+ */
 export function getRolloutOutput(args: GetRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolloutResult> {
-    return pulumi.output(args).apply(a => getRollout(a, opts))
+    return pulumi.output(args).apply((a: any) => getRollout(a, opts))
 }
 
 export interface GetRolloutOutputArgs {

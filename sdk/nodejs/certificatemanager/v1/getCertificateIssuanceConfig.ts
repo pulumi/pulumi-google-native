@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single CertificateIssuanceConfig.
  */
 export function getCertificateIssuanceConfig(args: GetCertificateIssuanceConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateIssuanceConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:certificatemanager/v1:getCertificateIssuanceConfig", {
         "certificateIssuanceConfigId": args.certificateIssuanceConfigId,
         "location": args.location,
@@ -67,9 +64,11 @@ export interface GetCertificateIssuanceConfigResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single CertificateIssuanceConfig.
+ */
 export function getCertificateIssuanceConfigOutput(args: GetCertificateIssuanceConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateIssuanceConfigResult> {
-    return pulumi.output(args).apply(a => getCertificateIssuanceConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getCertificateIssuanceConfig(a, opts))
 }
 
 export interface GetCertificateIssuanceConfigOutputArgs {

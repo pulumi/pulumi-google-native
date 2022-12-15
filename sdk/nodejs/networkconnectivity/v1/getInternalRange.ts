@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single InternalRange.
  */
 export function getInternalRange(args: GetInternalRangeArgs, opts?: pulumi.InvokeOptions): Promise<GetInternalRangeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1:getInternalRange", {
         "internalRangeId": args.internalRangeId,
         "location": args.location,
@@ -80,9 +77,11 @@ export interface GetInternalRangeResult {
      */
     readonly users: string[];
 }
-
+/**
+ * Gets details of a single InternalRange.
+ */
 export function getInternalRangeOutput(args: GetInternalRangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInternalRangeResult> {
-    return pulumi.output(args).apply(a => getInternalRange(a, opts))
+    return pulumi.output(args).apply((a: any) => getInternalRange(a, opts))
 }
 
 export interface GetInternalRangeOutputArgs {

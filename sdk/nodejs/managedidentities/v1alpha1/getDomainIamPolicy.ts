@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDomainIamPolicy(args: GetDomainIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1alpha1:getDomainIamPolicy", {
         "domainId": args.domainId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -43,9 +40,11 @@ export interface GetDomainIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDomainIamPolicyOutput(args: GetDomainIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDomainIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainIamPolicy(a, opts))
 }
 
 export interface GetDomainIamPolicyOutputArgs {

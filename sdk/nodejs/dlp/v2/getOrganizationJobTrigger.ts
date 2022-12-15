@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
  */
 export function getOrganizationJobTrigger(args: GetOrganizationJobTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationJobTriggerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dlp/v2:getOrganizationJobTrigger", {
         "jobTriggerId": args.jobTriggerId,
         "location": args.location,
@@ -71,9 +68,11 @@ export interface GetOrganizationJobTriggerResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+ */
 export function getOrganizationJobTriggerOutput(args: GetOrganizationJobTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationJobTriggerResult> {
-    return pulumi.output(args).apply(a => getOrganizationJobTrigger(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationJobTrigger(a, opts))
 }
 
 export interface GetOrganizationJobTriggerOutputArgs {

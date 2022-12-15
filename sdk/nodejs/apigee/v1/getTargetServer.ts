@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a TargetServer resource.
  */
 export function getTargetServer(args: GetTargetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetServerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getTargetServer", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,
@@ -59,9 +56,11 @@ export interface GetTargetServerResult {
      */
     readonly sSLInfo: outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoResponse;
 }
-
+/**
+ * Gets a TargetServer resource.
+ */
 export function getTargetServerOutput(args: GetTargetServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetServerResult> {
-    return pulumi.output(args).apply(a => getTargetServer(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetServer(a, opts))
 }
 
 export interface GetTargetServerOutputArgs {

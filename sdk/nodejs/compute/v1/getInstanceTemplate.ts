@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
  */
 export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getInstanceTemplate", {
         "instanceTemplate": args.instanceTemplate,
         "project": args.project,
@@ -61,9 +58,11 @@ export interface GetInstanceTemplateResult {
      */
     readonly sourceInstanceParams: outputs.compute.v1.SourceInstanceParamsResponse;
 }
-
+/**
+ * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ */
 export function getInstanceTemplateOutput(args: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
-    return pulumi.output(args).apply(a => getInstanceTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTemplate(a, opts))
 }
 
 export interface GetInstanceTemplateOutputArgs {

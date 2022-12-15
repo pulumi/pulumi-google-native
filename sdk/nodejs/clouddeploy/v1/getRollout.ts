@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Rollout.
  */
 export function getRollout(args: GetRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetRolloutResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:clouddeploy/v1:getRollout", {
         "deliveryPipelineId": args.deliveryPipelineId,
         "location": args.location,
@@ -111,9 +108,11 @@ export interface GetRolloutResult {
      */
     readonly uid: string;
 }
-
+/**
+ * Gets details of a single Rollout.
+ */
 export function getRolloutOutput(args: GetRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolloutResult> {
-    return pulumi.output(args).apply(a => getRollout(a, opts))
+    return pulumi.output(args).apply((a: any) => getRollout(a, opts))
 }
 
 export interface GetRolloutOutputArgs {

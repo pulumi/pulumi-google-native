@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a phrase set.
  */
 export function getPhraseSet(args: GetPhraseSetArgs, opts?: pulumi.InvokeOptions): Promise<GetPhraseSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:speech/v1:getPhraseSet", {
         "location": args.location,
         "phraseSetId": args.phraseSetId,
@@ -43,9 +40,11 @@ export interface GetPhraseSetResult {
      */
     readonly phrases: outputs.speech.v1.PhraseResponse[];
 }
-
+/**
+ * Get a phrase set.
+ */
 export function getPhraseSetOutput(args: GetPhraseSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhraseSetResult> {
-    return pulumi.output(args).apply(a => getPhraseSet(a, opts))
+    return pulumi.output(args).apply((a: any) => getPhraseSet(a, opts))
 }
 
 export interface GetPhraseSetOutputArgs {

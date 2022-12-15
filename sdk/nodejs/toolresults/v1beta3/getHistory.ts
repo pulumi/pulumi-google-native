@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
  */
 export function getHistory(args: GetHistoryArgs, opts?: pulumi.InvokeOptions): Promise<GetHistoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:toolresults/v1beta3:getHistory", {
         "historyId": args.historyId,
         "project": args.project,
@@ -42,9 +39,11 @@ export interface GetHistoryResult {
      */
     readonly testPlatform: string;
 }
-
+/**
+ * Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
+ */
 export function getHistoryOutput(args: GetHistoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryResult> {
-    return pulumi.output(args).apply(a => getHistory(a, opts))
+    return pulumi.output(args).apply((a: any) => getHistory(a, opts))
 }
 
 export interface GetHistoryOutputArgs {

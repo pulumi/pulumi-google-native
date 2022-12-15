@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getModelIamPolicy(args: GetModelIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetModelIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getModelIamPolicy", {
         "modelId": args.modelId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -47,9 +44,11 @@ export interface GetModelIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getModelIamPolicyOutput(args: GetModelIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelIamPolicyResult> {
-    return pulumi.output(args).apply(a => getModelIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getModelIamPolicy(a, opts))
 }
 
 export interface GetModelIamPolicyOutputArgs {

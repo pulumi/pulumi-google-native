@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy for the specified Access Context Manager access policy.
  */
 export function getAccessPolicyIamPolicy(args: GetAccessPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy", {
         "accessPolicyId": args.accessPolicyId,
     }, opts);
@@ -43,9 +40,11 @@ export interface GetAccessPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM policy for the specified Access Context Manager access policy.
+ */
 export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getAccessPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccessPolicyIamPolicy(a, opts))
 }
 
 export interface GetAccessPolicyIamPolicyOutputArgs {

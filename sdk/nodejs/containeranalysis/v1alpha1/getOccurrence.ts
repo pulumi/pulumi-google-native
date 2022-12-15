@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested `Occurrence`.
  */
 export function getOccurrence(args: GetOccurrenceArgs, opts?: pulumi.InvokeOptions): Promise<GetOccurrenceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:containeranalysis/v1alpha1:getOccurrence", {
         "occurrenceId": args.occurrenceId,
         "project": args.project,
@@ -121,9 +118,11 @@ export interface GetOccurrenceResult {
      */
     readonly vulnerabilityDetails: outputs.containeranalysis.v1alpha1.VulnerabilityDetailsResponse;
 }
-
+/**
+ * Returns the requested `Occurrence`.
+ */
 export function getOccurrenceOutput(args: GetOccurrenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOccurrenceResult> {
-    return pulumi.output(args).apply(a => getOccurrence(a, opts))
+    return pulumi.output(args).apply((a: any) => getOccurrence(a, opts))
 }
 
 export interface GetOccurrenceOutputArgs {
