@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Lists all of the ordered rules present in a single specified policy.
  */
 export function getRegionSslPolicy(args: GetRegionSslPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSslPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionSslPolicy", {
         "project": args.project,
         "region": args.region,
@@ -87,9 +84,11 @@ export interface GetRegionSslPolicyResult {
      */
     readonly warnings: outputs.compute.alpha.RegionSslPolicyWarningsItemResponse[];
 }
-
+/**
+ * Lists all of the ordered rules present in a single specified policy.
+ */
 export function getRegionSslPolicyOutput(args: GetRegionSslPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSslPolicyResult> {
-    return pulumi.output(args).apply(a => getRegionSslPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionSslPolicy(a, opts))
 }
 
 export interface GetRegionSslPolicyOutputArgs {

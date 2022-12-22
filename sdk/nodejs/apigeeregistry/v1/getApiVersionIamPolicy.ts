@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getApiVersionIamPolicy(args: GetApiVersionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetApiVersionIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigeeregistry/v1:getApiVersionIamPolicy", {
         "apiId": args.apiId,
         "location": args.location,
@@ -47,9 +44,11 @@ export interface GetApiVersionIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getApiVersionIamPolicyOutput(args: GetApiVersionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiVersionIamPolicyResult> {
-    return pulumi.output(args).apply(a => getApiVersionIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getApiVersionIamPolicy(a, opts))
 }
 
 export interface GetApiVersionIamPolicyOutputArgs {

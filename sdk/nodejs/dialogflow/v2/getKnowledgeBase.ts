@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified knowledge base.
  */
 export function getKnowledgeBase(args: GetKnowledgeBaseArgs, opts?: pulumi.InvokeOptions): Promise<GetKnowledgeBaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getKnowledgeBase", {
         "knowledgeBaseId": args.knowledgeBaseId,
         "location": args.location,
@@ -40,9 +37,11 @@ export interface GetKnowledgeBaseResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieves the specified knowledge base.
+ */
 export function getKnowledgeBaseOutput(args: GetKnowledgeBaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKnowledgeBaseResult> {
-    return pulumi.output(args).apply(a => getKnowledgeBase(a, opts))
+    return pulumi.output(args).apply((a: any) => getKnowledgeBase(a, opts))
 }
 
 export interface GetKnowledgeBaseOutputArgs {

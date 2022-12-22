@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Get a single ChannelConnection.
  */
 export function getChannelConnection(args: GetChannelConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:eventarc/v1:getChannelConnection", {
         "channelConnectionId": args.channelConnectionId,
         "location": args.location,
@@ -52,9 +49,11 @@ export interface GetChannelConnectionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get a single ChannelConnection.
+ */
 export function getChannelConnectionOutput(args: GetChannelConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelConnectionResult> {
-    return pulumi.output(args).apply(a => getChannelConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getChannelConnection(a, opts))
 }
 
 export interface GetChannelConnectionOutputArgs {

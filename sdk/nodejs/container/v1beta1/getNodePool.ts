@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the requested node pool.
  */
 export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetNodePoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:container/v1beta1:getNodePool", {
         "clusterId": args.clusterId,
         "location": args.location,
@@ -111,9 +108,11 @@ export interface GetNodePoolResult {
      */
     readonly version: string;
 }
-
+/**
+ * Retrieves the requested node pool.
+ */
 export function getNodePoolOutput(args: GetNodePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodePoolResult> {
-    return pulumi.output(args).apply(a => getNodePool(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodePool(a, opts))
 }
 
 export interface GetNodePoolOutputArgs {

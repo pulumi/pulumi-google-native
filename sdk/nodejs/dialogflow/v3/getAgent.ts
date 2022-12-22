@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified agent.
  */
 export function getAgent(args: GetAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetAgentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getAgent", {
         "agentId": args.agentId,
         "location": args.location,
@@ -87,9 +84,11 @@ export interface GetAgentResult {
      */
     readonly timeZone: string;
 }
-
+/**
+ * Retrieves the specified agent.
+ */
 export function getAgentOutput(args: GetAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentResult> {
-    return pulumi.output(args).apply(a => getAgent(a, opts))
+    return pulumi.output(args).apply((a: any) => getAgent(a, opts))
 }
 
 export interface GetAgentOutputArgs {

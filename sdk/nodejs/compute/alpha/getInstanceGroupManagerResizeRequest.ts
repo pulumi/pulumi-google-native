@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns all of the details about the specified resize request.
  */
 export function getInstanceGroupManagerResizeRequest(args: GetInstanceGroupManagerResizeRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResizeRequestResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", {
         "instanceGroupManager": args.instanceGroupManager,
         "project": args.project,
@@ -77,9 +74,11 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns all of the details about the specified resize request.
+ */
 export function getInstanceGroupManagerResizeRequestOutput(args: GetInstanceGroupManagerResizeRequestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResizeRequestResult> {
-    return pulumi.output(args).apply(a => getInstanceGroupManagerResizeRequest(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceGroupManagerResizeRequest(a, opts))
 }
 
 export interface GetInstanceGroupManagerResizeRequestOutputArgs {

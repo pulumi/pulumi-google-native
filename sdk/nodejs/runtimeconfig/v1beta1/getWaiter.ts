@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a single waiter.
  */
 export function getWaiter(args: GetWaiterArgs, opts?: pulumi.InvokeOptions): Promise<GetWaiterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:runtimeconfig/v1beta1:getWaiter", {
         "configId": args.configId,
         "project": args.project,
@@ -59,9 +56,11 @@ export interface GetWaiterResult {
      */
     readonly timeout: string;
 }
-
+/**
+ * Gets information about a single waiter.
+ */
 export function getWaiterOutput(args: GetWaiterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWaiterResult> {
-    return pulumi.output(args).apply(a => getWaiter(a, opts))
+    return pulumi.output(args).apply((a: any) => getWaiter(a, opts))
 }
 
 export interface GetWaiterOutputArgs {

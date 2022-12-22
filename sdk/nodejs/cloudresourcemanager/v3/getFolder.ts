@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getFolder", {
         "folderId": args.folderId,
     }, opts);
@@ -56,9 +53,11 @@ export interface GetFolderResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
+ */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
-    return pulumi.output(args).apply(a => getFolder(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolder(a, opts))
 }
 
 export interface GetFolderOutputArgs {

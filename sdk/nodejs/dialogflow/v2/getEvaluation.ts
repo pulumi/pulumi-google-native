@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an evaluation of conversation model.
  */
 export function getEvaluation(args: GetEvaluationArgs, opts?: pulumi.InvokeOptions): Promise<GetEvaluationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getEvaluation", {
         "conversationModelId": args.conversationModelId,
         "evaluationId": args.evaluationId,
@@ -53,9 +50,11 @@ export interface GetEvaluationResult {
      */
     readonly smartReplyMetrics: outputs.dialogflow.v2.GoogleCloudDialogflowV2SmartReplyMetricsResponse;
 }
-
+/**
+ * Gets an evaluation of conversation model.
+ */
 export function getEvaluationOutput(args: GetEvaluationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEvaluationResult> {
-    return pulumi.output(args).apply(a => getEvaluation(a, opts))
+    return pulumi.output(args).apply((a: any) => getEvaluation(a, opts))
 }
 
 export interface GetEvaluationOutputArgs {

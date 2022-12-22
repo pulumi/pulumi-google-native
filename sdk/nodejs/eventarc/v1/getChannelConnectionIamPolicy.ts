@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getChannelConnectionIamPolicy(args: GetChannelConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelConnectionIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:eventarc/v1:getChannelConnectionIamPolicy", {
         "channelConnectionId": args.channelConnectionId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetChannelConnectionIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getChannelConnectionIamPolicyOutput(args: GetChannelConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelConnectionIamPolicyResult> {
-    return pulumi.output(args).apply(a => getChannelConnectionIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getChannelConnectionIamPolicy(a, opts))
 }
 
 export interface GetChannelConnectionIamPolicyOutputArgs {

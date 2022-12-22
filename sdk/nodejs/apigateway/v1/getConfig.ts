@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ApiConfig.
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigateway/v1:getConfig", {
         "apiId": args.apiId,
         "configId": args.configId,
@@ -79,9 +76,11 @@ export interface GetConfigResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single ApiConfig.
+ */
 export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
-    return pulumi.output(args).apply(a => getConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getConfig(a, opts))
 }
 
 export interface GetConfigOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
  */
 export function getRegionUrlMap(args: GetRegionUrlMapArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionUrlMapResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getRegionUrlMap", {
         "project": args.project,
         "region": args.region,
@@ -87,9 +84,11 @@ export interface GetRegionUrlMapResult {
      */
     readonly tests: outputs.compute.beta.UrlMapTestResponse[];
 }
-
+/**
+ * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+ */
 export function getRegionUrlMapOutput(args: GetRegionUrlMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionUrlMapResult> {
-    return pulumi.output(args).apply(a => getRegionUrlMap(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionUrlMap(a, opts))
 }
 
 export interface GetRegionUrlMapOutputArgs {

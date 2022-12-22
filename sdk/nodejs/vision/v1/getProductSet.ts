@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
  */
 export function getProductSet(args: GetProductSetArgs, opts?: pulumi.InvokeOptions): Promise<GetProductSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vision/v1:getProductSet", {
         "location": args.location,
         "productSetId": args.productSetId,
@@ -47,9 +44,11 @@ export interface GetProductSetResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
+ */
 export function getProductSetOutput(args: GetProductSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductSetResult> {
-    return pulumi.output(args).apply(a => getProductSet(a, opts))
+    return pulumi.output(args).apply((a: any) => getProductSet(a, opts))
 }
 
 export interface GetProductSetOutputArgs {

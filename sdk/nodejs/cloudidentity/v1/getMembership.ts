@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a `Membership`.
  */
 export function getMembership(args: GetMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1:getMembership", {
         "groupId": args.groupId,
         "membershipId": args.membershipId,
@@ -53,9 +50,11 @@ export interface GetMembershipResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a `Membership`.
+ */
 export function getMembershipOutput(args: GetMembershipOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipResult> {
-    return pulumi.output(args).apply(a => getMembership(a, opts))
+    return pulumi.output(args).apply((a: any) => getMembership(a, opts))
 }
 
 export interface GetMembershipOutputArgs {

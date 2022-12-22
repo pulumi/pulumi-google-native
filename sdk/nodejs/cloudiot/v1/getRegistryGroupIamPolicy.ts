@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRegistryGroupIamPolicy(args: GetRegistryGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryGroupIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudiot/v1:getRegistryGroupIamPolicy", {
         "groupId": args.groupId,
         "location": args.location,
@@ -45,9 +42,11 @@ export interface GetRegistryGroupIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getRegistryGroupIamPolicyOutput(args: GetRegistryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryGroupIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRegistryGroupIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistryGroupIamPolicy(a, opts))
 }
 
 export interface GetRegistryGroupIamPolicyOutputArgs {

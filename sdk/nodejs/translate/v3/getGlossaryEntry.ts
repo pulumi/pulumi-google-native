@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a single glossary entry by the given id.
  */
 export function getGlossaryEntry(args: GetGlossaryEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetGlossaryEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:translate/v3:getGlossaryEntry", {
         "glossaryEntryId": args.glossaryEntryId,
         "glossaryId": args.glossaryId,
@@ -49,9 +46,11 @@ export interface GetGlossaryEntryResult {
      */
     readonly termsSet: outputs.translate.v3.GlossaryTermsSetResponse;
 }
-
+/**
+ * Gets a single glossary entry by the given id.
+ */
 export function getGlossaryEntryOutput(args: GetGlossaryEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlossaryEntryResult> {
-    return pulumi.output(args).apply(a => getGlossaryEntry(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlossaryEntry(a, opts))
 }
 
 export interface GetGlossaryEntryOutputArgs {

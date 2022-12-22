@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
  */
 export function getTenantIamPolicy(args: GetTenantIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTenantIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:identitytoolkit/v2:getTenantIamPolicy", {
         "project": args.project,
         "tenantId": args.tenantId,
@@ -45,9 +42,11 @@ export interface GetTenantIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
+ */
 export function getTenantIamPolicyOutput(args: GetTenantIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantIamPolicyResult> {
-    return pulumi.output(args).apply(a => getTenantIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTenantIamPolicy(a, opts))
 }
 
 export interface GetTenantIamPolicyOutputArgs {

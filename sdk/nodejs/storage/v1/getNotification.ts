@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * View a notification configuration.
  */
 export function getNotification(args: GetNotificationArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getNotification", {
         "bucket": args.bucket,
         "notification": args.notification,
@@ -60,9 +57,11 @@ export interface GetNotificationResult {
      */
     readonly topic: string;
 }
-
+/**
+ * View a notification configuration.
+ */
 export function getNotificationOutput(args: GetNotificationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationResult> {
-    return pulumi.output(args).apply(a => getNotification(a, opts))
+    return pulumi.output(args).apply((a: any) => getNotification(a, opts))
 }
 
 export interface GetNotificationOutputArgs {

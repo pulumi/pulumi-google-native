@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a task.
  */
 export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudtasks/v2beta3:getTask", {
         "location": args.location,
         "project": args.project,
@@ -83,9 +80,11 @@ export interface GetTaskResult {
      */
     readonly view: string;
 }
-
+/**
+ * Gets a task.
+ */
 export function getTaskOutput(args: GetTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskResult> {
-    return pulumi.output(args).apply(a => getTask(a, opts))
+    return pulumi.output(args).apply((a: any) => getTask(a, opts))
 }
 
 export interface GetTaskOutputArgs {

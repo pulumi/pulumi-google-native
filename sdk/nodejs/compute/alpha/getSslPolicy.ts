@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Lists all of the ordered rules present in a single specified policy.
  */
 export function getSslPolicy(args: GetSslPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSslPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getSslPolicy", {
         "project": args.project,
         "sslPolicy": args.sslPolicy,
@@ -85,9 +82,11 @@ export interface GetSslPolicyResult {
      */
     readonly warnings: outputs.compute.alpha.SslPolicyWarningsItemResponse[];
 }
-
+/**
+ * Lists all of the ordered rules present in a single specified policy.
+ */
 export function getSslPolicyOutput(args: GetSslPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslPolicyResult> {
-    return pulumi.output(args).apply(a => getSslPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSslPolicy(a, opts))
 }
 
 export interface GetSslPolicyOutputArgs {

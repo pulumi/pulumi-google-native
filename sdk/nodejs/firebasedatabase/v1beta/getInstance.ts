@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the DatabaseInstance identified by the specified resource name.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebasedatabase/v1beta:getInstance", {
         "instanceId": args.instanceId,
         "location": args.location,
@@ -48,9 +45,11 @@ export interface GetInstanceResult {
      */
     readonly type: string;
 }
-
+/**
+ * Gets the DatabaseInstance identified by the specified resource name.
+ */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply(a => getInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 export interface GetInstanceOutputArgs {
