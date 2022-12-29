@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns all of the details about the specified managed instance group.
  */
 export function getRegionInstanceGroupManager(args: GetRegionInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupManagerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionInstanceGroupManager", {
         "instanceGroupManager": args.instanceGroupManager,
         "project": args.project,
@@ -119,9 +116,11 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns all of the details about the specified managed instance group.
+ */
 export function getRegionInstanceGroupManagerOutput(args: GetRegionInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupManagerResult> {
-    return pulumi.output(args).apply(a => getRegionInstanceGroupManager(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionInstanceGroupManager(a, opts))
 }
 
 export interface GetRegionInstanceGroupManagerOutputArgs {

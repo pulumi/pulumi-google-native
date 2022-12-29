@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a metadata entity.
  */
 export function getEntity(args: GetEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getEntity", {
         "entityId": args.entityId,
         "lakeId": args.lakeId,
@@ -97,9 +94,11 @@ export interface GetEntityResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get a metadata entity.
+ */
 export function getEntityOutput(args: GetEntityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntityResult> {
-    return pulumi.output(args).apply(a => getEntity(a, opts))
+    return pulumi.output(args).apply((a: any) => getEntity(a, opts))
 }
 
 export interface GetEntityOutputArgs {

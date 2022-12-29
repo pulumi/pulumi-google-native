@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
  */
 export function getLien(args: GetLienArgs, opts?: pulumi.InvokeOptions): Promise<GetLienResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getLien", {
         "lienId": args.lienId,
     }, opts);
@@ -48,9 +45,11 @@ export interface GetLienResult {
      */
     readonly restrictions: string[];
 }
-
+/**
+ * Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
+ */
 export function getLienOutput(args: GetLienOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLienResult> {
-    return pulumi.output(args).apply(a => getLien(a, opts))
+    return pulumi.output(args).apply((a: any) => getLien(a, opts))
 }
 
 export interface GetLienOutputArgs {

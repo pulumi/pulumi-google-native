@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified firewall rule.
  */
 export function getIngressRule(args: GetIngressRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1beta:getIngressRule", {
         "appId": args.appId,
         "ingressRuleId": args.ingressRuleId,
@@ -42,9 +39,11 @@ export interface GetIngressRuleResult {
      */
     readonly sourceRange: string;
 }
-
+/**
+ * Gets the specified firewall rule.
+ */
 export function getIngressRuleOutput(args: GetIngressRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIngressRuleResult> {
-    return pulumi.output(args).apply(a => getIngressRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getIngressRule(a, opts))
 }
 
 export interface GetIngressRuleOutputArgs {

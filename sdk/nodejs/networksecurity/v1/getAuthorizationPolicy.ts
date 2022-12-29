@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single AuthorizationPolicy.
  */
 export function getAuthorizationPolicy(args: GetAuthorizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1:getAuthorizationPolicy", {
         "authorizationPolicyId": args.authorizationPolicyId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetAuthorizationPolicyResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single AuthorizationPolicy.
+ */
 export function getAuthorizationPolicyOutput(args: GetAuthorizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationPolicyResult> {
-    return pulumi.output(args).apply(a => getAuthorizationPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthorizationPolicy(a, opts))
 }
 
 export interface GetAuthorizationPolicyOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified address resource.
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getAddress", {
         "address": args.address,
         "project": args.project,
@@ -104,9 +101,11 @@ export interface GetAddressResult {
      */
     readonly users: string[];
 }
-
+/**
+ * Returns the specified address resource.
+ */
 export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressResult> {
-    return pulumi.output(args).apply(a => getAddress(a, opts))
+    return pulumi.output(args).apply((a: any) => getAddress(a, opts))
 }
 
 export interface GetAddressOutputArgs {

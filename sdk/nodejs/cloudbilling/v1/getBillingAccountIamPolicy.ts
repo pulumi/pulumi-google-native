@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
  */
 export function getBillingAccountIamPolicy(args: GetBillingAccountIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbilling/v1:getBillingAccountIamPolicy", {
         "billingAccountId": args.billingAccountId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -45,9 +42,11 @@ export interface GetBillingAccountIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+ */
 export function getBillingAccountIamPolicyOutput(args: GetBillingAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountIamPolicyResult> {
-    return pulumi.output(args).apply(a => getBillingAccountIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getBillingAccountIamPolicy(a, opts))
 }
 
 export interface GetBillingAccountIamPolicyOutputArgs {

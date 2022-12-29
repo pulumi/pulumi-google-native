@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRowAccessPolicyIamPolicy(args: GetRowAccessPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRowAccessPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquery/v2:getRowAccessPolicyIamPolicy", {
         "datasetId": args.datasetId,
         "project": args.project,
@@ -49,9 +46,11 @@ export interface GetRowAccessPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getRowAccessPolicyIamPolicyOutput(args: GetRowAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRowAccessPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRowAccessPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRowAccessPolicyIamPolicy(a, opts))
 }
 
 export interface GetRowAccessPolicyIamPolicyOutputArgs {

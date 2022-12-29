@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an HL7v2 message.
  */
 export function getMessage(args: GetMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMessageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getMessage", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,
@@ -77,9 +74,11 @@ export interface GetMessageResult {
      */
     readonly sendTime: string;
 }
-
+/**
+ * Gets an HL7v2 message.
+ */
 export function getMessageOutput(args: GetMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMessageResult> {
-    return pulumi.output(args).apply(a => getMessage(a, opts))
+    return pulumi.output(args).apply((a: any) => getMessage(a, opts))
 }
 
 export interface GetMessageOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a repository.
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:artifactregistry/v1beta2:getRepository", {
         "location": args.location,
         "project": args.project,
@@ -71,9 +68,11 @@ export interface GetRepositoryResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a repository.
+ */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
-    return pulumi.output(args).apply(a => getRepository(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepository(a, opts))
 }
 
 export interface GetRepositoryOutputArgs {

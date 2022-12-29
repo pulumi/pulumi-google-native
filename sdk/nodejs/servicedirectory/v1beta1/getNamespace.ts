@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a namespace.
  */
 export function getNamespace(args: GetNamespaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getNamespace", {
         "location": args.location,
         "namespaceId": args.namespaceId,
@@ -44,9 +41,11 @@ export interface GetNamespaceResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a namespace.
+ */
 export function getNamespaceOutput(args: GetNamespaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceResult> {
-    return pulumi.output(args).apply(a => getNamespace(a, opts))
+    return pulumi.output(args).apply((a: any) => getNamespace(a, opts))
 }
 
 export interface GetNamespaceOutputArgs {

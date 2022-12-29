@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
  */
 export function getHostSecurityReport(args: GetHostSecurityReportArgs, opts?: pulumi.InvokeOptions): Promise<GetHostSecurityReportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getHostSecurityReport", {
         "hostSecurityReportId": args.hostSecurityReportId,
         "organizationId": args.organizationId,
@@ -81,9 +78,11 @@ export interface GetHostSecurityReportResult {
      */
     readonly updated: string;
 }
-
+/**
+ * Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+ */
 export function getHostSecurityReportOutput(args: GetHostSecurityReportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostSecurityReportResult> {
-    return pulumi.output(args).apply(a => getHostSecurityReport(a, opts))
+    return pulumi.output(args).apply((a: any) => getHostSecurityReport(a, opts))
 }
 
 export interface GetHostSecurityReportOutputArgs {

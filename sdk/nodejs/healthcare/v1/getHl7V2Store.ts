@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified HL7v2 store.
  */
 export function getHl7V2Store(args: GetHl7V2StoreArgs, opts?: pulumi.InvokeOptions): Promise<GetHl7V2StoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getHl7V2Store", {
         "datasetId": args.datasetId,
         "hl7V2StoreId": args.hl7V2StoreId,
@@ -53,9 +50,11 @@ export interface GetHl7V2StoreResult {
      */
     readonly rejectDuplicateMessage: boolean;
 }
-
+/**
+ * Gets the specified HL7v2 store.
+ */
 export function getHl7V2StoreOutput(args: GetHl7V2StoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreResult> {
-    return pulumi.output(args).apply(a => getHl7V2Store(a, opts))
+    return pulumi.output(args).apply((a: any) => getHl7V2Store(a, opts))
 }
 
 export interface GetHl7V2StoreOutputArgs {

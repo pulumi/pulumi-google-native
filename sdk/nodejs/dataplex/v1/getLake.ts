@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a lake resource.
  */
 export function getLake(args: GetLakeArgs, opts?: pulumi.InvokeOptions): Promise<GetLakeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getLake", {
         "lakeId": args.lakeId,
         "location": args.location,
@@ -79,9 +76,11 @@ export interface GetLakeResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a lake resource.
+ */
 export function getLakeOutput(args: GetLakeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLakeResult> {
-    return pulumi.output(args).apply(a => getLake(a, opts))
+    return pulumi.output(args).apply((a: any) => getLake(a, opts))
 }
 
 export interface GetLakeOutputArgs {

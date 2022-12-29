@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get the named Service.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getService", {
         "serviceId": args.serviceId,
         "v3Id": args.v3Id,
@@ -91,9 +88,11 @@ export interface GetServiceResult {
      */
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * Get the named Service.
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 export interface GetServiceOutputArgs {

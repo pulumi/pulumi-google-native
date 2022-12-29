@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getServiceDatabaseTableIamPolicy(args: GetServiceDatabaseTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceDatabaseTableIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getServiceDatabaseTableIamPolicy", {
         "databaseId": args.databaseId,
         "location": args.location,
@@ -53,9 +50,11 @@ export interface GetServiceDatabaseTableIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getServiceDatabaseTableIamPolicyOutput(args: GetServiceDatabaseTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceDatabaseTableIamPolicyResult> {
-    return pulumi.output(args).apply(a => getServiceDatabaseTableIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceDatabaseTableIamPolicy(a, opts))
 }
 
 export interface GetServiceDatabaseTableIamPolicyOutputArgs {

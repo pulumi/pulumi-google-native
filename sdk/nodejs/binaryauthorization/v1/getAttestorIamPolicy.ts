@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:binaryauthorization/v1:getAttestorIamPolicy", {
         "attestorId": args.attestorId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -43,9 +40,11 @@ export interface GetAttestorIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
-    return pulumi.output(args).apply(a => getAttestorIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAttestorIamPolicy(a, opts))
 }
 
 export interface GetAttestorIamPolicyOutputArgs {

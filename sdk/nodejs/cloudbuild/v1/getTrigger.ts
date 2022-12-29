@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns information about a `BuildTrigger`. This API is experimental.
  */
 export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getTrigger", {
         "location": args.location,
         "project": args.project,
@@ -133,9 +130,11 @@ export interface GetTriggerResult {
      */
     readonly webhookConfig: outputs.cloudbuild.v1.WebhookConfigResponse;
 }
-
+/**
+ * Returns information about a `BuildTrigger`. This API is experimental.
+ */
 export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerResult> {
-    return pulumi.output(args).apply(a => getTrigger(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrigger(a, opts))
 }
 
 export interface GetTriggerOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a integration in the specified project.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:integrations/v1alpha:getVersion", {
         "integrationId": args.integrationId,
         "location": args.location,
@@ -115,9 +112,11 @@ export interface GetVersionResult {
      */
     readonly userLabel: string;
 }
-
+/**
+ * Get a integration in the specified project.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {
