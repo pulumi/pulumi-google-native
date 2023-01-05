@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a single contact.
  */
 export function getOrganizationContact(args: GetOrganizationContactArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationContactResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:essentialcontacts/v1:getOrganizationContact", {
         "contactId": args.contactId,
         "organizationId": args.organizationId,
@@ -50,9 +47,11 @@ export interface GetOrganizationContactResult {
      */
     readonly validationState: string;
 }
-
+/**
+ * Gets a single contact.
+ */
 export function getOrganizationContactOutput(args: GetOrganizationContactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationContactResult> {
-    return pulumi.output(args).apply(a => getOrganizationContact(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationContact(a, opts))
 }
 
 export interface GetOrganizationContactOutputArgs {

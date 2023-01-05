@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified regional BackendService resource.
  */
 export function getRegionBackendService(args: GetRegionBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionBackendServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionBackendService", {
         "backendService": args.backendService,
         "project": args.project,
@@ -176,9 +173,11 @@ export interface GetRegionBackendServiceResult {
      */
     readonly timeoutSec: number;
 }
-
+/**
+ * Returns the specified regional BackendService resource.
+ */
 export function getRegionBackendServiceOutput(args: GetRegionBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceResult> {
-    return pulumi.output(args).apply(a => getRegionBackendService(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionBackendService(a, opts))
 }
 
 export interface GetRegionBackendServiceOutputArgs {

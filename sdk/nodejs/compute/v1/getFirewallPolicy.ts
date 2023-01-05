@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified firewall policy.
  */
 export function getFirewallPolicy(args: GetFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getFirewallPolicy", {
         "firewallPolicy": args.firewallPolicy,
     }, opts);
@@ -85,9 +82,11 @@ export interface GetFirewallPolicyResult {
      */
     readonly shortName: string;
 }
-
+/**
+ * Returns the specified firewall policy.
+ */
 export function getFirewallPolicyOutput(args: GetFirewallPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyResult> {
-    return pulumi.output(args).apply(a => getFirewallPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFirewallPolicy(a, opts))
 }
 
 export interface GetFirewallPolicyOutputArgs {

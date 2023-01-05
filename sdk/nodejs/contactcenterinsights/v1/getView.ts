@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a view.
  */
 export function getView(args: GetViewArgs, opts?: pulumi.InvokeOptions): Promise<GetViewResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getView", {
         "location": args.location,
         "project": args.project,
@@ -48,9 +45,11 @@ export interface GetViewResult {
      */
     readonly value: string;
 }
-
+/**
+ * Gets a view.
+ */
 export function getViewOutput(args: GetViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetViewResult> {
-    return pulumi.output(args).apply(a => getView(a, opts))
+    return pulumi.output(args).apply((a: any) => getView(a, opts))
 }
 
 export interface GetViewOutputArgs {

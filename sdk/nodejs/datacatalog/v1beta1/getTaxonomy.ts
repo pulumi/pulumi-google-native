@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a taxonomy.
  */
 export function getTaxonomy(args: GetTaxonomyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getTaxonomy", {
         "location": args.location,
         "project": args.project,
@@ -55,9 +52,11 @@ export interface GetTaxonomyResult {
      */
     readonly taxonomyTimestamps: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse;
 }
-
+/**
+ * Gets a taxonomy.
+ */
 export function getTaxonomyOutput(args: GetTaxonomyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyResult> {
-    return pulumi.output(args).apply(a => getTaxonomy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTaxonomy(a, opts))
 }
 
 export interface GetTaxonomyOutputArgs {

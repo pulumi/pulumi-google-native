@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a specific deployment.
  */
 export function getDeployment(args: GetDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:deploymentmanager/v2:getDeployment", {
         "deployment": args.deployment,
         "project": args.project,
@@ -73,9 +70,11 @@ export interface GetDeploymentResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets information about a specific deployment.
+ */
 export function getDeploymentOutput(args: GetDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentResult> {
-    return pulumi.output(args).apply(a => getDeployment(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeployment(a, opts))
 }
 
 export interface GetDeploymentOutputArgs {

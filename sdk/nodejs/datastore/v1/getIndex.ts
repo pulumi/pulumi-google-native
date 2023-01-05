@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an index.
  */
 export function getIndex(args: GetIndexArgs, opts?: pulumi.InvokeOptions): Promise<GetIndexResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datastore/v1:getIndex", {
         "indexId": args.indexId,
         "project": args.project,
@@ -53,9 +50,11 @@ export interface GetIndexResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets an index.
+ */
 export function getIndexOutput(args: GetIndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndexResult> {
-    return pulumi.output(args).apply(a => getIndex(a, opts))
+    return pulumi.output(args).apply((a: any) => getIndex(a, opts))
 }
 
 export interface GetIndexOutputArgs {

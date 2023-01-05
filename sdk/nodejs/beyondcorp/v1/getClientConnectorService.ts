@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ClientConnectorService.
  */
 export function getClientConnectorService(args: GetClientConnectorServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetClientConnectorServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1:getClientConnectorService", {
         "clientConnectorServiceId": args.clientConnectorServiceId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetClientConnectorServiceResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single ClientConnectorService.
+ */
 export function getClientConnectorServiceOutput(args: GetClientConnectorServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConnectorServiceResult> {
-    return pulumi.output(args).apply(a => getClientConnectorService(a, opts))
+    return pulumi.output(args).apply((a: any) => getClientConnectorService(a, opts))
 }
 
 export interface GetClientConnectorServiceOutputArgs {

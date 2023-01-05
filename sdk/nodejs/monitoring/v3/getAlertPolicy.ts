@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a single alerting policy.
  */
 export function getAlertPolicy(args: GetAlertPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getAlertPolicy", {
         "alertPolicyId": args.alertPolicyId,
         "project": args.project,
@@ -77,9 +74,11 @@ export interface GetAlertPolicyResult {
      */
     readonly validity: outputs.monitoring.v3.StatusResponse;
 }
-
+/**
+ * Gets a single alerting policy.
+ */
 export function getAlertPolicyOutput(args: GetAlertPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertPolicyResult> {
-    return pulumi.output(args).apply(a => getAlertPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAlertPolicy(a, opts))
 }
 
 export interface GetAlertPolicyOutputArgs {

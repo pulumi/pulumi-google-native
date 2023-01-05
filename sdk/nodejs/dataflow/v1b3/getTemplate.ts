@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get the template associated with a template.
  */
 export function getTemplate(args: GetTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataflow/v1b3:getTemplate", {
         "gcsPath": args.gcsPath,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetTemplateResult {
      */
     readonly templateType: string;
 }
-
+/**
+ * Get the template associated with a template.
+ */
 export function getTemplateOutput(args: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
-    return pulumi.output(args).apply(a => getTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getTemplate(a, opts))
 }
 
 export interface GetTemplateOutputArgs {

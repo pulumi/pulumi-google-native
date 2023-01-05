@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for a given KeyRing.
  */
 export function getKeyRing(args: GetKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getKeyRing", {
         "keyRingId": args.keyRingId,
         "location": args.location,
@@ -36,9 +33,11 @@ export interface GetKeyRingResult {
      */
     readonly name: string;
 }
-
+/**
+ * Returns metadata for a given KeyRing.
+ */
 export function getKeyRingOutput(args: GetKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingResult> {
-    return pulumi.output(args).apply(a => getKeyRing(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeyRing(a, opts))
 }
 
 export interface GetKeyRingOutputArgs {

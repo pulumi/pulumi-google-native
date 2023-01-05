@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.
  */
 export function getTagKeyIamPolicy(args: GetTagKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagKeyIamPolicy", {
         "tagKeyId": args.tagKeyId,
     }, opts);
@@ -43,9 +40,11 @@ export interface GetTagKeyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey.
+ */
 export function getTagKeyIamPolicyOutput(args: GetTagKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getTagKeyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagKeyIamPolicy(a, opts))
 }
 
 export interface GetTagKeyIamPolicyOutputArgs {

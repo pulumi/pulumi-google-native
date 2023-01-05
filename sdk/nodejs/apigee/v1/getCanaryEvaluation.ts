@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a CanaryEvaluation for an organization.
  */
 export function getCanaryEvaluation(args: GetCanaryEvaluationArgs, opts?: pulumi.InvokeOptions): Promise<GetCanaryEvaluationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getCanaryEvaluation", {
         "canaryevaluationId": args.canaryevaluationId,
         "instanceId": args.instanceId,
@@ -67,9 +64,11 @@ export interface GetCanaryEvaluationResult {
      */
     readonly verdict: string;
 }
-
+/**
+ * Gets a CanaryEvaluation for an organization.
+ */
 export function getCanaryEvaluationOutput(args: GetCanaryEvaluationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCanaryEvaluationResult> {
-    return pulumi.output(args).apply(a => getCanaryEvaluation(a, opts))
+    return pulumi.output(args).apply((a: any) => getCanaryEvaluation(a, opts))
 }
 
 export interface GetCanaryEvaluationOutputArgs {

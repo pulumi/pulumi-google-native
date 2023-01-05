@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getSnapshot", {
         "project": args.project,
         "snapshot": args.snapshot,
@@ -149,9 +146,11 @@ export interface GetSnapshotResult {
      */
     readonly userLicenses: string[];
 }
-
+/**
+ * Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+ */
 export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 export interface GetSnapshotOutputArgs {

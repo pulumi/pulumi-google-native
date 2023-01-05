@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Consent artifact.
  */
 export function getConsentArtifact(args: GetConsentArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetConsentArtifactResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getConsentArtifact", {
         "consentArtifactId": args.consentArtifactId,
         "consentStoreId": args.consentStoreId,
@@ -67,9 +64,11 @@ export interface GetConsentArtifactResult {
      */
     readonly witnessSignature: outputs.healthcare.v1.SignatureResponse;
 }
-
+/**
+ * Gets the specified Consent artifact.
+ */
 export function getConsentArtifactOutput(args: GetConsentArtifactOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentArtifactResult> {
-    return pulumi.output(args).apply(a => getConsentArtifact(a, opts))
+    return pulumi.output(args).apply((a: any) => getConsentArtifact(a, opts))
 }
 
 export interface GetConsentArtifactOutputArgs {

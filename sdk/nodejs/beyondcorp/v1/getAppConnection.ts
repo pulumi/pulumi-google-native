@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single AppConnection.
  */
 export function getAppConnection(args: GetAppConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1:getAppConnection", {
         "appConnectionId": args.appConnectionId,
         "location": args.location,
@@ -75,9 +72,11 @@ export interface GetAppConnectionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single AppConnection.
+ */
 export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectionResult> {
-    return pulumi.output(args).apply(a => getAppConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppConnection(a, opts))
 }
 
 export interface GetAppConnectionOutputArgs {

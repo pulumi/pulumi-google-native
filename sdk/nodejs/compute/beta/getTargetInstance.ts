@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
  */
 export function getTargetInstance(args: GetTargetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getTargetInstance", {
         "project": args.project,
         "targetInstance": args.targetInstance,
@@ -64,9 +61,11 @@ export interface GetTargetInstanceResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+ */
 export function getTargetInstanceOutput(args: GetTargetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetInstanceResult> {
-    return pulumi.output(args).apply(a => getTargetInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetInstance(a, opts))
 }
 
 export interface GetTargetInstanceOutputArgs {

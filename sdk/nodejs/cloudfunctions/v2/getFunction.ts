@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a function with the given name from the requested project.
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudfunctions/v2:getFunction", {
         "functionId": args.functionId,
         "location": args.location,
@@ -71,9 +68,11 @@ export interface GetFunctionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns a function with the given name from the requested project.
+ */
 export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
-    return pulumi.output(args).apply(a => getFunction(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunction(a, opts))
 }
 
 export interface GetFunctionOutputArgs {

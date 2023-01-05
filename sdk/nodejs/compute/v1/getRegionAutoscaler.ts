@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified autoscaler.
  */
 export function getRegionAutoscaler(args: GetRegionAutoscalerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionAutoscalerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionAutoscaler", {
         "autoscaler": args.autoscaler,
         "project": args.project,
@@ -83,9 +80,11 @@ export interface GetRegionAutoscalerResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified autoscaler.
+ */
 export function getRegionAutoscalerOutput(args: GetRegionAutoscalerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionAutoscalerResult> {
-    return pulumi.output(args).apply(a => getRegionAutoscaler(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionAutoscaler(a, opts))
 }
 
 export interface GetRegionAutoscalerOutputArgs {

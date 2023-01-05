@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Environment.
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:notebooks/v1:getEnvironment", {
         "environmentId": args.environmentId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetEnvironmentResult {
      */
     readonly vmImage: outputs.notebooks.v1.VmImageResponse;
 }
-
+/**
+ * Gets details of a single Environment.
+ */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
 }
 
 export interface GetEnvironmentOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
  */
 export function getVpnTunnel(args: GetVpnTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnTunnelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getVpnTunnel", {
         "project": args.project,
         "region": args.region,
@@ -120,9 +117,11 @@ export interface GetVpnTunnelResult {
      */
     readonly vpnGatewayInterface: number;
 }
-
+/**
+ * Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+ */
 export function getVpnTunnelOutput(args: GetVpnTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnTunnelResult> {
-    return pulumi.output(args).apply(a => getVpnTunnel(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpnTunnel(a, opts))
 }
 
 export interface GetVpnTunnelOutputArgs {

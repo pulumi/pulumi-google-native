@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details about a Network Connectivity Center spoke.
  */
 export function getSpoke(args: GetSpokeArgs, opts?: pulumi.InvokeOptions): Promise<GetSpokeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1alpha1:getSpoke", {
         "location": args.location,
         "project": args.project,
@@ -75,9 +72,11 @@ export interface GetSpokeResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details about a Network Connectivity Center spoke.
+ */
 export function getSpokeOutput(args: GetSpokeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpokeResult> {
-    return pulumi.output(args).apply(a => getSpoke(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpoke(a, opts))
 }
 
 export interface GetSpokeOutputArgs {

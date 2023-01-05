@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a CertificateTemplate.
  */
 export function getCertificateTemplate(args: GetCertificateTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1:getCertificateTemplate", {
         "certificateTemplateId": args.certificateTemplateId,
         "location": args.location,
@@ -63,9 +60,11 @@ export interface GetCertificateTemplateResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns a CertificateTemplate.
+ */
 export function getCertificateTemplateOutput(args: GetCertificateTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateResult> {
-    return pulumi.output(args).apply(a => getCertificateTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getCertificateTemplate(a, opts))
 }
 
 export interface GetCertificateTemplateOutputArgs {

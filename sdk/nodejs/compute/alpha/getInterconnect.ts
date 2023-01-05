@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified interconnect. Get a list of available interconnects by making a list() request.
  */
 export function getInterconnect(args: GetInterconnectArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getInterconnect", {
         "interconnect": args.interconnect,
         "project": args.project,
@@ -141,9 +138,11 @@ export interface GetInterconnectResult {
      */
     readonly state: string;
 }
-
+/**
+ * Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+ */
 export function getInterconnectOutput(args: GetInterconnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectResult> {
-    return pulumi.output(args).apply(a => getInterconnect(a, opts))
+    return pulumi.output(args).apply((a: any) => getInterconnect(a, opts))
 }
 
 export interface GetInterconnectOutputArgs {

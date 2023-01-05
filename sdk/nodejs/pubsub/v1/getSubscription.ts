@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the configuration details of a subscription.
  */
 export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsub/v1:getSubscription", {
         "project": args.project,
         "subscriptionId": args.subscriptionId,
@@ -97,9 +94,11 @@ export interface GetSubscriptionResult {
      */
     readonly topicMessageRetentionDuration: string;
 }
-
+/**
+ * Gets the configuration details of a subscription.
+ */
 export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
-    return pulumi.output(args).apply(a => getSubscription(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubscription(a, opts))
 }
 
 export interface GetSubscriptionOutputArgs {

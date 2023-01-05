@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified address resource. Gets a list of available addresses by making a list() request.
  */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getGlobalAddress", {
         "address": args.address,
         "project": args.project,
@@ -102,9 +99,11 @@ export interface GetGlobalAddressResult {
      */
     readonly users: string[];
 }
-
+/**
+ * Returns the specified address resource. Gets a list of available addresses by making a list() request.
+ */
 export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalAddressResult> {
-    return pulumi.output(args).apply(a => getGlobalAddress(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlobalAddress(a, opts))
 }
 
 export interface GetGlobalAddressOutputArgs {
