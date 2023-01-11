@@ -228,7 +228,7 @@
       }
     }
   },
-  "revision": "20221025",
+  "revision": "20230104",
   "rootUrl": "https://baremetalsolution.googleapis.com/",
   "schemas": {
     "CancelOperationRequest": {
@@ -292,6 +292,75 @@
           },
           "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "OperationMetadata": {
+      "description": "Represents the metadata of the long-running operation.",
+      "id": "OperationMetadata",
+      "properties": {
+        "apiVersion": {
+          "description": "Output only. API version used to start the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "cancelRequested": {
+          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "createTime": {
+          "description": "Output only. The time the operation was created.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "endTime": {
+          "description": "Output only. The time the operation finished running.",
+          "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "statusDetail": {
+          "description": "Output only. Human-readable status of the operation, if any.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "target": {
+          "description": "Output only. Server-defined resource path for the target of the operation.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "verb": {
+          "description": "Output only. Name of the verb executed by the operation.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ReconciliationOperationMetadata": {
+      "description": "Operation metadata returned by the CLH during resource state reconciliation.",
+      "id": "ReconciliationOperationMetadata",
+      "properties": {
+        "deleteResource": {
+          "description": "DEPRECATED. Use exclusive_action instead.",
+          "type": "boolean"
+        },
+        "exclusiveAction": {
+          "description": "Excluisive action returned by the CLH.",
+          "enum": [
+            "UNKNOWN_REPAIR_ACTION",
+            "DELETE",
+            "RETRY"
+          ],
+          "enumDescriptions": [
+            "Unknown repair action.",
+            "The resource has to be deleted. When using this bit, the CLH should fail the operation. DEPRECATED. Instead use DELETE_RESOURCE OperationSignal in SideChannel. For more information - go/ccfe-delete-on-upsert, go/ccfe-reconciliation-protocol-ug#apply_delete",
+            "This resource could not be repaired but the repair should be tried again at a later time. This can happen if there is a dependency that needs to be resolved first- e.g. if a parent resource must be repaired before a child resource."
+          ],
+          "type": "string"
         }
       },
       "type": "object"
