@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a service.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getService", {
         "location": args.location,
         "namespaceId": args.namespaceId,
@@ -53,9 +50,11 @@ export interface GetServiceResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a service.
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 export interface GetServiceOutputArgs {

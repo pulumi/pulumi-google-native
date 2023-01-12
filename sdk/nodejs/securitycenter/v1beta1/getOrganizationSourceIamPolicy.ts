@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy on the specified Source.
  */
 export function getOrganizationSourceIamPolicy(args: GetOrganizationSourceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSourceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1beta1:getOrganizationSourceIamPolicy", {
         "organizationId": args.organizationId,
         "sourceId": args.sourceId,
@@ -45,9 +42,11 @@ export interface GetOrganizationSourceIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy on the specified Source.
+ */
 export function getOrganizationSourceIamPolicyOutput(args: GetOrganizationSourceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSourceIamPolicyResult> {
-    return pulumi.output(args).apply(a => getOrganizationSourceIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationSourceIamPolicy(a, opts))
 }
 
 export interface GetOrganizationSourceIamPolicyOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../utilities";
  * Use this function to get an Google authentication token for the current login context.
  */
 export function getClientToken(opts?: pulumi.InvokeOptions): Promise<GetClientTokenResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:authorization:getClientToken", {
     }, opts);
 }

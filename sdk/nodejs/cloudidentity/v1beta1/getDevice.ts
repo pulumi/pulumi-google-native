@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified device.
  */
 export function getDevice(args: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1beta1:getDevice", {
         "deviceId": args.deviceId,
     }, opts);
@@ -147,9 +144,11 @@ export interface GetDeviceResult {
      */
     readonly wifiMacAddresses: string[];
 }
-
+/**
+ * Retrieves the specified device.
+ */
 export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
-    return pulumi.output(args).apply(a => getDevice(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevice(a, opts))
 }
 
 export interface GetDeviceOutputArgs {

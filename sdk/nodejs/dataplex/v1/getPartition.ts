@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Get a metadata partition of an entity.
  */
 export function getPartition(args: GetPartitionArgs, opts?: pulumi.InvokeOptions): Promise<GetPartitionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getPartition", {
         "entityId": args.entityId,
         "lakeId": args.lakeId,
@@ -50,9 +47,11 @@ export interface GetPartitionResult {
      */
     readonly values: string[];
 }
-
+/**
+ * Get a metadata partition of an entity.
+ */
 export function getPartitionOutput(args: GetPartitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPartitionResult> {
-    return pulumi.output(args).apply(a => getPartition(a, opts))
+    return pulumi.output(args).apply((a: any) => getPartition(a, opts))
 }
 
 export interface GetPartitionOutputArgs {

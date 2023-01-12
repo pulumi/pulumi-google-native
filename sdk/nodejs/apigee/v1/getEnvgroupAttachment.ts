@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an environment group attachment.
  */
 export function getEnvgroupAttachment(args: GetEnvgroupAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvgroupAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getEnvgroupAttachment", {
         "attachmentId": args.attachmentId,
         "envgroupId": args.envgroupId,
@@ -44,9 +41,11 @@ export interface GetEnvgroupAttachmentResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets an environment group attachment.
+ */
 export function getEnvgroupAttachmentOutput(args: GetEnvgroupAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvgroupAttachmentResult> {
-    return pulumi.output(args).apply(a => getEnvgroupAttachment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvgroupAttachment(a, opts))
 }
 
 export interface GetEnvgroupAttachmentOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getDiskIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -53,9 +50,11 @@ export interface GetDiskIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDiskIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDiskIamPolicy(a, opts))
 }
 
 export interface GetDiskIamPolicyOutputArgs {

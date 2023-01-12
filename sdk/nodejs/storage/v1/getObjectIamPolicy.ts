@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns an IAM policy for the specified object.
  */
 export function getObjectIamPolicy(args: GetObjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getObjectIamPolicy", {
         "bucket": args.bucket,
         "generation": args.generation,
@@ -53,9 +50,11 @@ export interface GetObjectIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Returns an IAM policy for the specified object.
+ */
 export function getObjectIamPolicyOutput(args: GetObjectIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectIamPolicyResult> {
-    return pulumi.output(args).apply(a => getObjectIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getObjectIamPolicy(a, opts))
 }
 
 export interface GetObjectIamPolicyOutputArgs {

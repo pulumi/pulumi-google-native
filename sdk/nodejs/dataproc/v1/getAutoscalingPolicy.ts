@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves autoscaling policy.
  */
 export function getAutoscalingPolicy(args: GetAutoscalingPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getAutoscalingPolicy", {
         "autoscalingPolicyId": args.autoscalingPolicyId,
         "location": args.location,
@@ -48,9 +45,11 @@ export interface GetAutoscalingPolicyResult {
      */
     readonly workerConfig: outputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigResponse;
 }
-
+/**
+ * Retrieves autoscaling policy.
+ */
 export function getAutoscalingPolicyOutput(args: GetAutoscalingPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyResult> {
-    return pulumi.output(args).apply(a => getAutoscalingPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAutoscalingPolicy(a, opts))
 }
 
 export interface GetAutoscalingPolicyOutputArgs {

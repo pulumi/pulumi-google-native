@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getSubnetworkIamPolicy(args: GetSubnetworkIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getSubnetworkIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -53,9 +50,11 @@ export interface GetSubnetworkIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
-    return pulumi.output(args).apply(a => getSubnetworkIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnetworkIamPolicy(a, opts))
 }
 
 export interface GetSubnetworkIamPolicyOutputArgs {

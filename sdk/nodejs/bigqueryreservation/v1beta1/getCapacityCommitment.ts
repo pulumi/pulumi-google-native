@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns information about the capacity commitment.
  */
 export function getCapacityCommitment(args: GetCapacityCommitmentArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityCommitmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigqueryreservation/v1beta1:getCapacityCommitment", {
         "capacityCommitmentId": args.capacityCommitmentId,
         "location": args.location,
@@ -67,9 +64,11 @@ export interface GetCapacityCommitmentResult {
      */
     readonly state: string;
 }
-
+/**
+ * Returns information about the capacity commitment.
+ */
 export function getCapacityCommitmentOutput(args: GetCapacityCommitmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityCommitmentResult> {
-    return pulumi.output(args).apply(a => getCapacityCommitment(a, opts))
+    return pulumi.output(args).apply((a: any) => getCapacityCommitment(a, opts))
 }
 
 export interface GetCapacityCommitmentOutputArgs {

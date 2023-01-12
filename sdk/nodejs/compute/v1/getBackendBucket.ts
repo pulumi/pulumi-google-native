@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
  */
 export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getBackendBucket", {
         "backendBucket": args.backendBucket,
         "project": args.project,
@@ -73,9 +70,11 @@ export interface GetBackendBucketResult {
      */
     readonly selfLink: string;
 }
-
+/**
+ * Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+ */
 export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
-    return pulumi.output(args).apply(a => getBackendBucket(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackendBucket(a, opts))
 }
 
 export interface GetBackendBucketOutputArgs {

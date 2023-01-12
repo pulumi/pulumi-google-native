@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Endpoint.
  */
 export function getEndpoint(args: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ids/v1:getEndpoint", {
         "endpointId": args.endpointId,
         "location": args.location,
@@ -72,9 +69,11 @@ export interface GetEndpointResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Endpoint.
+ */
 export function getEndpointOutput(args: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
-    return pulumi.output(args).apply(a => getEndpoint(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))
 }
 
 export interface GetEndpointOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
  */
 export function getTagTemplateIamPolicy(args: GetTagTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagTemplateIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getTagTemplateIamPolicy", {
         "location": args.location,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetTagTemplateIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups.
+ */
 export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
-    return pulumi.output(args).apply(a => getTagTemplateIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagTemplateIamPolicy(a, opts))
 }
 
 export interface GetTagTemplateIamPolicyOutputArgs {

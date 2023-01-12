@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getAutoscalingPolicyIamPolicy", {
         "autoscalingPolicyId": args.autoscalingPolicyId,
         "location": args.location,
@@ -43,9 +40,11 @@ export interface GetAutoscalingPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getAutoscalingPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAutoscalingPolicyIamPolicy(a, opts))
 }
 
 export interface GetAutoscalingPolicyIamPolicyOutputArgs {

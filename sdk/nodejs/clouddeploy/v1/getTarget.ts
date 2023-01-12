@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Target.
  */
 export function getTarget(args: GetTargetArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:clouddeploy/v1:getTarget", {
         "location": args.location,
         "project": args.project,
@@ -87,9 +84,11 @@ export interface GetTargetResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Target.
+ */
 export function getTargetOutput(args: GetTargetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetResult> {
-    return pulumi.output(args).apply(a => getTarget(a, opts))
+    return pulumi.output(args).apply((a: any) => getTarget(a, opts))
 }
 
 export interface GetTargetOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified agent environment.
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getEnvironment", {
         "environmentId": args.environmentId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetEnvironmentResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves the specified agent environment.
+ */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
 }
 
 export interface GetEnvironmentOutputArgs {

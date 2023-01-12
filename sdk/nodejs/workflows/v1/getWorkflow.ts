@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Workflow.
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workflows/v1:getWorkflow", {
         "location": args.location,
         "project": args.project,
@@ -68,9 +65,11 @@ export interface GetWorkflowResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Workflow.
+ */
 export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
-    return pulumi.output(args).apply(a => getWorkflow(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflow(a, opts))
 }
 
 export interface GetWorkflowOutputArgs {

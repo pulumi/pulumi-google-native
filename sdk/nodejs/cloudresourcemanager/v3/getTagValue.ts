@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
  */
 export function getTagValue(args: GetTagValueArgs, opts?: pulumi.InvokeOptions): Promise<GetTagValueResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagValue", {
         "tagValueId": args.tagValueId,
     }, opts);
@@ -56,9 +53,11 @@ export interface GetTagValueResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
+ */
 export function getTagValueOutput(args: GetTagValueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagValueResult> {
-    return pulumi.output(args).apply(a => getTagValue(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagValue(a, opts))
 }
 
 export interface GetTagValueOutputArgs {

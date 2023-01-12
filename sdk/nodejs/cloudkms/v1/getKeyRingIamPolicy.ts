@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getKeyRingIamPolicy(args: GetKeyRingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getKeyRingIamPolicy", {
         "keyRingId": args.keyRingId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetKeyRingIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingIamPolicyResult> {
-    return pulumi.output(args).apply(a => getKeyRingIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeyRingIamPolicy(a, opts))
 }
 
 export interface GetKeyRingIamPolicyOutputArgs {

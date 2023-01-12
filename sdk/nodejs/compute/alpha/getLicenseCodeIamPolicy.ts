@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
  */
 export function getLicenseCodeIamPolicy(args: GetLicenseCodeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseCodeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getLicenseCodeIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetLicenseCodeIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+ */
 export function getLicenseCodeIamPolicyOutput(args: GetLicenseCodeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseCodeIamPolicyResult> {
-    return pulumi.output(args).apply(a => getLicenseCodeIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getLicenseCodeIamPolicy(a, opts))
 }
 
 export interface GetLicenseCodeIamPolicyOutputArgs {

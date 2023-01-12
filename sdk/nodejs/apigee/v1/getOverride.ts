@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a trace configuration override.
  */
 export function getOverride(args: GetOverrideArgs, opts?: pulumi.InvokeOptions): Promise<GetOverrideResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getOverride", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,
@@ -43,9 +40,11 @@ export interface GetOverrideResult {
      */
     readonly samplingConfig: outputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigResponse;
 }
-
+/**
+ * Gets a trace configuration override.
+ */
 export function getOverrideOutput(args: GetOverrideOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOverrideResult> {
-    return pulumi.output(args).apply(a => getOverride(a, opts))
+    return pulumi.output(args).apply((a: any) => getOverride(a, opts))
 }
 
 export interface GetOverrideOutputArgs {

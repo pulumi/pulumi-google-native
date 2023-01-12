@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Use this method to get details about a stream.
  */
 export function getStream(args: GetStreamArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datastream/v1:getStream", {
         "location": args.location,
         "project": args.project,
@@ -79,9 +76,11 @@ export interface GetStreamResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Use this method to get details about a stream.
+ */
 export function getStreamOutput(args: GetStreamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamResult> {
-    return pulumi.output(args).apply(a => getStream(a, opts))
+    return pulumi.output(args).apply((a: any) => getStream(a, opts))
 }
 
 export interface GetStreamOutputArgs {

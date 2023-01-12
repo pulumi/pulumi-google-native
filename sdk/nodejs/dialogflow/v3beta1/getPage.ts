@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified page.
  */
 export function getPage(args: GetPageArgs, opts?: pulumi.InvokeOptions): Promise<GetPageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getPage", {
         "agentId": args.agentId,
         "flowId": args.flowId,
@@ -65,9 +62,11 @@ export interface GetPageResult {
      */
     readonly transitionRoutes: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse[];
 }
-
+/**
+ * Retrieves the specified page.
+ */
 export function getPageOutput(args: GetPageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPageResult> {
-    return pulumi.output(args).apply(a => getPage(a, opts))
+    return pulumi.output(args).apply((a: any) => getPage(a, opts))
 }
 
 export interface GetPageOutputArgs {
