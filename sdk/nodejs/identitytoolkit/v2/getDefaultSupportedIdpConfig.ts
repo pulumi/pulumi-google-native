@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve a default supported Idp configuration for an Identity Toolkit project.
  */
 export function getDefaultSupportedIdpConfig(args: GetDefaultSupportedIdpConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultSupportedIdpConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", {
         "defaultSupportedIdpConfigId": args.defaultSupportedIdpConfigId,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetDefaultSupportedIdpConfigResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieve a default supported Idp configuration for an Identity Toolkit project.
+ */
 export function getDefaultSupportedIdpConfigOutput(args: GetDefaultSupportedIdpConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultSupportedIdpConfigResult> {
-    return pulumi.output(args).apply(a => getDefaultSupportedIdpConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getDefaultSupportedIdpConfig(a, opts))
 }
 
 export interface GetDefaultSupportedIdpConfigOutputArgs {

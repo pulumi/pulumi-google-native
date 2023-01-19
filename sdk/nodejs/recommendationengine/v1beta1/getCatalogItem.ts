@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a specific catalog item.
  */
 export function getCatalogItem(args: GetCatalogItemArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogItemResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:recommendationengine/v1beta1:getCatalogItem", {
         "catalogId": args.catalogId,
         "catalogItemId": args.catalogItemId,
@@ -67,9 +64,11 @@ export interface GetCatalogItemResult {
      */
     readonly title: string;
 }
-
+/**
+ * Gets a specific catalog item.
+ */
 export function getCatalogItemOutput(args: GetCatalogItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogItemResult> {
-    return pulumi.output(args).apply(a => getCatalogItem(a, opts))
+    return pulumi.output(args).apply((a: any) => getCatalogItem(a, opts))
 }
 
 export interface GetCatalogItemOutputArgs {

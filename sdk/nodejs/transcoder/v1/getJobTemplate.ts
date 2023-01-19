@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the job template data.
  */
 export function getJobTemplate(args: GetJobTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetJobTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:transcoder/v1:getJobTemplate", {
         "jobTemplateId": args.jobTemplateId,
         "location": args.location,
@@ -43,9 +40,11 @@ export interface GetJobTemplateResult {
      */
     readonly name: string;
 }
-
+/**
+ * Returns the job template data.
+ */
 export function getJobTemplateOutput(args: GetJobTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplateResult> {
-    return pulumi.output(args).apply(a => getJobTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getJobTemplate(a, opts))
 }
 
 export interface GetJobTemplateOutputArgs {

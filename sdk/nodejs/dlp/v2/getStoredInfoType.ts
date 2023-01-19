@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
  */
 export function getStoredInfoType(args: GetStoredInfoTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetStoredInfoTypeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dlp/v2:getStoredInfoType", {
         "location": args.location,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetStoredInfoTypeResult {
      */
     readonly pendingVersions: outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse[];
 }
-
+/**
+ * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+ */
 export function getStoredInfoTypeOutput(args: GetStoredInfoTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoredInfoTypeResult> {
-    return pulumi.output(args).apply(a => getStoredInfoType(a, opts))
+    return pulumi.output(args).apply((a: any) => getStoredInfoType(a, opts))
 }
 
 export interface GetStoredInfoTypeOutputArgs {

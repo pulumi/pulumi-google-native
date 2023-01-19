@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getLakeTaskIamPolicy(args: GetLakeTaskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLakeTaskIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getLakeTaskIamPolicy", {
         "lakeId": args.lakeId,
         "location": args.location,
@@ -51,9 +48,11 @@ export interface GetLakeTaskIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getLakeTaskIamPolicyOutput(args: GetLakeTaskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLakeTaskIamPolicyResult> {
-    return pulumi.output(args).apply(a => getLakeTaskIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getLakeTaskIamPolicy(a, opts))
 }
 
 export interface GetLakeTaskIamPolicyOutputArgs {

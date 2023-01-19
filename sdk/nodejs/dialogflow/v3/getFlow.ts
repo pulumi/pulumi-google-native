@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified flow.
  */
 export function getFlow(args: GetFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getFlow", {
         "agentId": args.agentId,
         "flowId": args.flowId,
@@ -63,9 +60,11 @@ export interface GetFlowResult {
      */
     readonly transitionRoutes: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteResponse[];
 }
-
+/**
+ * Retrieves the specified flow.
+ */
 export function getFlowOutput(args: GetFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowResult> {
-    return pulumi.output(args).apply(a => getFlow(a, opts))
+    return pulumi.output(args).apply((a: any) => getFlow(a, opts))
 }
 
 export interface GetFlowOutputArgs {

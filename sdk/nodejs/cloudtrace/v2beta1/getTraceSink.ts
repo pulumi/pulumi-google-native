@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a trace sink by name under the parent resource (GCP project).
  */
 export function getTraceSink(args: GetTraceSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetTraceSinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudtrace/v2beta1:getTraceSink", {
         "project": args.project,
         "traceSinkId": args.traceSinkId,
@@ -41,9 +38,11 @@ export interface GetTraceSinkResult {
      */
     readonly writerIdentity: string;
 }
-
+/**
+ * Get a trace sink by name under the parent resource (GCP project).
+ */
 export function getTraceSinkOutput(args: GetTraceSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTraceSinkResult> {
-    return pulumi.output(args).apply(a => getTraceSink(a, opts))
+    return pulumi.output(args).apply((a: any) => getTraceSink(a, opts))
 }
 
 export interface GetTraceSinkOutputArgs {

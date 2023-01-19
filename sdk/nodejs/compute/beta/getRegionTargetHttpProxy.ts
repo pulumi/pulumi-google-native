@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
  */
 export function getRegionTargetHttpProxy(args: GetRegionTargetHttpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionTargetHttpProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getRegionTargetHttpProxy", {
         "project": args.project,
         "region": args.region,
@@ -68,9 +65,11 @@ export interface GetRegionTargetHttpProxyResult {
      */
     readonly urlMap: string;
 }
-
+/**
+ * Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+ */
 export function getRegionTargetHttpProxyOutput(args: GetRegionTargetHttpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionTargetHttpProxyResult> {
-    return pulumi.output(args).apply(a => getRegionTargetHttpProxy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionTargetHttpProxy(a, opts))
 }
 
 export interface GetRegionTargetHttpProxyOutputArgs {

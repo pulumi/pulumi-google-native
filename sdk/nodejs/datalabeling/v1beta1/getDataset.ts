@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets dataset by resource name.
  */
 export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getDataset", {
         "datasetId": args.datasetId,
         "project": args.project,
@@ -61,9 +58,11 @@ export interface GetDatasetResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets dataset by resource name.
+ */
 export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {
-    return pulumi.output(args).apply(a => getDataset(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataset(a, opts))
 }
 
 export interface GetDatasetOutputArgs {

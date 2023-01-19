@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get information about a domain mapping.
  */
 export function getDomainMapping(args: GetDomainMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainMappingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:run/v1:getDomainMapping", {
         "domainmappingId": args.domainmappingId,
         "location": args.location,
@@ -51,9 +48,11 @@ export interface GetDomainMappingResult {
      */
     readonly status: outputs.run.v1.DomainMappingStatusResponse;
 }
-
+/**
+ * Get information about a domain mapping.
+ */
 export function getDomainMappingOutput(args: GetDomainMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainMappingResult> {
-    return pulumi.output(args).apply(a => getDomainMapping(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainMapping(a, opts))
 }
 
 export interface GetDomainMappingOutputArgs {

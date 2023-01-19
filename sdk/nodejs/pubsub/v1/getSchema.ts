@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a schema.
  */
 export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetSchemaResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsub/v1:getSchema", {
         "project": args.project,
         "schemaId": args.schemaId,
@@ -48,9 +45,11 @@ export interface GetSchemaResult {
      */
     readonly type: string;
 }
-
+/**
+ * Gets a schema.
+ */
 export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchemaResult> {
-    return pulumi.output(args).apply(a => getSchema(a, opts))
+    return pulumi.output(args).apply((a: any) => getSchema(a, opts))
 }
 
 export interface GetSchemaOutputArgs {

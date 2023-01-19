@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single CloneJob.
  */
 export function getCloneJob(args: GetCloneJobArgs, opts?: pulumi.InvokeOptions): Promise<GetCloneJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getCloneJob", {
         "cloneJobId": args.cloneJobId,
         "location": args.location,
@@ -79,9 +76,11 @@ export interface GetCloneJobResult {
      */
     readonly targetDetails: outputs.vmmigration.v1alpha1.TargetVMDetailsResponse;
 }
-
+/**
+ * Gets details of a single CloneJob.
+ */
 export function getCloneJobOutput(args: GetCloneJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloneJobResult> {
-    return pulumi.output(args).apply(a => getCloneJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getCloneJob(a, opts))
 }
 
 export interface GetCloneJobOutputArgs {

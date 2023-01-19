@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specific conversation.
  */
 export function getConversation(args: GetConversationArgs, opts?: pulumi.InvokeOptions): Promise<GetConversationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getConversation", {
         "conversationId": args.conversationId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetConversationResult {
      */
     readonly startTime: string;
 }
-
+/**
+ * Retrieves the specific conversation.
+ */
 export function getConversationOutput(args: GetConversationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationResult> {
-    return pulumi.output(args).apply(a => getConversation(a, opts))
+    return pulumi.output(args).apply((a: any) => getConversation(a, opts))
 }
 
 export interface GetConversationOutputArgs {

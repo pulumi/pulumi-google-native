@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the ACL entry for the specified entity on the specified bucket.
  */
 export function getBucketAccessControl(args: GetBucketAccessControlArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketAccessControlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,
@@ -82,9 +79,11 @@ export interface GetBucketAccessControlResult {
      */
     readonly selfLink: string;
 }
-
+/**
+ * Returns the ACL entry for the specified entity on the specified bucket.
+ */
 export function getBucketAccessControlOutput(args: GetBucketAccessControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketAccessControlResult> {
-    return pulumi.output(args).apply(a => getBucketAccessControl(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucketAccessControl(a, opts))
 }
 
 export interface GetBucketAccessControlOutputArgs {

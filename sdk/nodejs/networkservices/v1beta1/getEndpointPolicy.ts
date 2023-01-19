@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single EndpointPolicy.
  */
 export function getEndpointPolicy(args: GetEndpointPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1beta1:getEndpointPolicy", {
         "endpointPolicyId": args.endpointPolicyId,
         "location": args.location,
@@ -75,9 +72,11 @@ export interface GetEndpointPolicyResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single EndpointPolicy.
+ */
 export function getEndpointPolicyOutput(args: GetEndpointPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointPolicyResult> {
-    return pulumi.output(args).apply(a => getEndpointPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpointPolicy(a, opts))
 }
 
 export interface GetEndpointPolicyOutputArgs {

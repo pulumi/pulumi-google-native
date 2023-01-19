@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified firewall.
  */
 export function getFirewall(args: GetFirewallArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getFirewall", {
         "firewall": args.firewall,
         "project": args.project,
@@ -107,9 +104,11 @@ export interface GetFirewallResult {
      */
     readonly targetTags: string[];
 }
-
+/**
+ * Returns the specified firewall.
+ */
 export function getFirewallOutput(args: GetFirewallOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallResult> {
-    return pulumi.output(args).apply(a => getFirewall(a, opts))
+    return pulumi.output(args).apply((a: any) => getFirewall(a, opts))
 }
 
 export interface GetFirewallOutputArgs {

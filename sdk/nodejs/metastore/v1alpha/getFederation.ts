@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a single federation.
  */
 export function getFederation(args: GetFederationArgs, opts?: pulumi.InvokeOptions): Promise<GetFederationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getFederation", {
         "federationId": args.federationId,
         "location": args.location,
@@ -68,9 +65,11 @@ export interface GetFederationResult {
      */
     readonly version: string;
 }
-
+/**
+ * Gets the details of a single federation.
+ */
 export function getFederationOutput(args: GetFederationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFederationResult> {
-    return pulumi.output(args).apply(a => getFederation(a, opts))
+    return pulumi.output(args).apply((a: any) => getFederation(a, opts))
 }
 
 export interface GetFederationOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
  */
 export function getBudget(args: GetBudgetArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:billingbudgets/v1:getBudget", {
         "billingAccountId": args.billingAccountId,
         "budgetId": args.budgetId,
@@ -57,9 +54,11 @@ export interface GetBudgetResult {
      */
     readonly thresholdRules: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleResponse[];
 }
-
+/**
+ * Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
+ */
 export function getBudgetOutput(args: GetBudgetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBudgetResult> {
-    return pulumi.output(args).apply(a => getBudget(a, opts))
+    return pulumi.output(args).apply((a: any) => getBudget(a, opts))
 }
 
 export interface GetBudgetOutputArgs {

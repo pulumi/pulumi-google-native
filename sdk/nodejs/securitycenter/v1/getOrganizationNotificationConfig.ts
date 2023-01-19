@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a notification config.
  */
 export function getOrganizationNotificationConfig(args: GetOrganizationNotificationConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationNotificationConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getOrganizationNotificationConfig", {
         "notificationConfigId": args.notificationConfigId,
         "organizationId": args.organizationId,
@@ -49,9 +46,11 @@ export interface GetOrganizationNotificationConfigResult {
      */
     readonly streamingConfig: outputs.securitycenter.v1.StreamingConfigResponse;
 }
-
+/**
+ * Gets a notification config.
+ */
 export function getOrganizationNotificationConfigOutput(args: GetOrganizationNotificationConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationNotificationConfigResult> {
-    return pulumi.output(args).apply(a => getOrganizationNotificationConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationNotificationConfig(a, opts))
 }
 
 export interface GetOrganizationNotificationConfigOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified PacketMirroring resource.
  */
 export function getPacketMirroring(args: GetPacketMirroringArgs, opts?: pulumi.InvokeOptions): Promise<GetPacketMirroringResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getPacketMirroring", {
         "packetMirroring": args.packetMirroring,
         "project": args.project,
@@ -83,9 +80,11 @@ export interface GetPacketMirroringResult {
      */
     readonly selfLinkWithId: string;
 }
-
+/**
+ * Returns the specified PacketMirroring resource.
+ */
 export function getPacketMirroringOutput(args: GetPacketMirroringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPacketMirroringResult> {
-    return pulumi.output(args).apply(a => getPacketMirroring(a, opts))
+    return pulumi.output(args).apply((a: any) => getPacketMirroring(a, opts))
 }
 
 export interface GetPacketMirroringOutputArgs {

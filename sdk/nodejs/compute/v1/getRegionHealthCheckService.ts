@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified regional HealthCheckService resource.
  */
 export function getRegionHealthCheckService(args: GetRegionHealthCheckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionHealthCheckServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionHealthCheckService", {
         "healthCheckService": args.healthCheckService,
         "project": args.project,
@@ -72,9 +69,11 @@ export interface GetRegionHealthCheckServiceResult {
      */
     readonly selfLink: string;
 }
-
+/**
+ * Returns the specified regional HealthCheckService resource.
+ */
 export function getRegionHealthCheckServiceOutput(args: GetRegionHealthCheckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionHealthCheckServiceResult> {
-    return pulumi.output(args).apply(a => getRegionHealthCheckService(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionHealthCheckService(a, opts))
 }
 
 export interface GetRegionHealthCheckServiceOutputArgs {
