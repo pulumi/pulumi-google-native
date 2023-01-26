@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single import.
  */
 export function getMetadataImport(args: GetMetadataImportArgs, opts?: pulumi.InvokeOptions): Promise<GetMetadataImportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:metastore/v1beta:getMetadataImport", {
         "location": args.location,
         "metadataImportId": args.metadataImportId,
@@ -61,9 +58,11 @@ export interface GetMetadataImportResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single import.
+ */
 export function getMetadataImportOutput(args: GetMetadataImportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetadataImportResult> {
-    return pulumi.output(args).apply(a => getMetadataImport(a, opts))
+    return pulumi.output(args).apply((a: any) => getMetadataImport(a, opts))
 }
 
 export interface GetMetadataImportOutputArgs {

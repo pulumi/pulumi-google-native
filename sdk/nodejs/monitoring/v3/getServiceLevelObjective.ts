@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a ServiceLevelObjective by name.
  */
 export function getServiceLevelObjective(args: GetServiceLevelObjectiveArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceLevelObjectiveResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getServiceLevelObjective", {
         "serviceId": args.serviceId,
         "serviceLevelObjectiveId": args.serviceLevelObjectiveId,
@@ -63,9 +60,11 @@ export interface GetServiceLevelObjectiveResult {
      */
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * Get a ServiceLevelObjective by name.
+ */
 export function getServiceLevelObjectiveOutput(args: GetServiceLevelObjectiveOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceLevelObjectiveResult> {
-    return pulumi.output(args).apply(a => getServiceLevelObjective(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceLevelObjective(a, opts))
 }
 
 export interface GetServiceLevelObjectiveOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an environment group.
  */
 export function getEnvgroup(args: GetEnvgroupArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvgroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getEnvgroup", {
         "envgroupId": args.envgroupId,
         "organizationId": args.organizationId,
@@ -46,9 +43,11 @@ export interface GetEnvgroupResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets an environment group.
+ */
 export function getEnvgroupOutput(args: GetEnvgroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvgroupResult> {
-    return pulumi.output(args).apply(a => getEnvgroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvgroup(a, opts))
 }
 
 export interface GetEnvgroupOutputArgs {

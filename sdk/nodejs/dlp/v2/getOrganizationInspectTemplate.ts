@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
  */
 export function getOrganizationInspectTemplate(args: GetOrganizationInspectTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationInspectTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dlp/v2:getOrganizationInspectTemplate", {
         "inspectTemplateId": args.inspectTemplateId,
         "location": args.location,
@@ -55,9 +52,11 @@ export interface GetOrganizationInspectTemplateResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+ */
 export function getOrganizationInspectTemplateOutput(args: GetOrganizationInspectTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationInspectTemplateResult> {
-    return pulumi.output(args).apply(a => getOrganizationInspectTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationInspectTemplate(a, opts))
 }
 
 export interface GetOrganizationInspectTemplateOutputArgs {

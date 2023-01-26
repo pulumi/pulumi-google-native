@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
  */
 export function getRegionInstanceTemplate(args: GetRegionInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionInstanceTemplate", {
         "instanceTemplate": args.instanceTemplate,
         "project": args.project,
@@ -71,9 +68,11 @@ export interface GetRegionInstanceTemplateResult {
      */
     readonly sourceInstanceParams: outputs.compute.alpha.SourceInstanceParamsResponse;
 }
-
+/**
+ * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ */
 export function getRegionInstanceTemplateOutput(args: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
-    return pulumi.output(args).apply(a => getRegionInstanceTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionInstanceTemplate(a, opts))
 }
 
 export interface GetRegionInstanceTemplateOutputArgs {

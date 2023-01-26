@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
  */
 export function getRegionCommitment(args: GetRegionCommitmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionCommitmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getRegionCommitment", {
         "commitment": args.commitment,
         "project": args.project,
@@ -107,9 +104,11 @@ export interface GetRegionCommitmentResult {
      */
     readonly type: string;
 }
-
+/**
+ * Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+ */
 export function getRegionCommitmentOutput(args: GetRegionCommitmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionCommitmentResult> {
-    return pulumi.output(args).apply(a => getRegionCommitment(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionCommitment(a, opts))
 }
 
 export interface GetRegionCommitmentOutputArgs {

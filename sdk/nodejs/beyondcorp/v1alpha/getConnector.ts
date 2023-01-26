@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Connector.
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1alpha:getConnector", {
         "connectorId": args.connectorId,
         "location": args.location,
@@ -67,9 +64,11 @@ export interface GetConnectorResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Connector.
+ */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
-    return pulumi.output(args).apply(a => getConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnector(a, opts))
 }
 
 export interface GetConnectorOutputArgs {

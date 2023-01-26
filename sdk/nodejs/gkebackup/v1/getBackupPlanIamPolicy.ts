@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getBackupPlanIamPolicy(args: GetBackupPlanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlanIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkebackup/v1:getBackupPlanIamPolicy", {
         "backupPlanId": args.backupPlanId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetBackupPlanIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getBackupPlanIamPolicyOutput(args: GetBackupPlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlanIamPolicyResult> {
-    return pulumi.output(args).apply(a => getBackupPlanIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackupPlanIamPolicy(a, opts))
 }
 
 export interface GetBackupPlanIamPolicyOutputArgs {

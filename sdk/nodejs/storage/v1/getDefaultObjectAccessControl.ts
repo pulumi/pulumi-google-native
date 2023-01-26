@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the default object ACL entry for the specified entity on the specified bucket.
  */
 export function getDefaultObjectAccessControl(args: GetDefaultObjectAccessControlArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultObjectAccessControlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getDefaultObjectAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,
@@ -90,9 +87,11 @@ export interface GetDefaultObjectAccessControlResult {
      */
     readonly selfLink: string;
 }
-
+/**
+ * Returns the default object ACL entry for the specified entity on the specified bucket.
+ */
 export function getDefaultObjectAccessControlOutput(args: GetDefaultObjectAccessControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultObjectAccessControlResult> {
-    return pulumi.output(args).apply(a => getDefaultObjectAccessControl(a, opts))
+    return pulumi.output(args).apply((a: any) => getDefaultObjectAccessControl(a, opts))
 }
 
 export interface GetDefaultObjectAccessControlOutputArgs {

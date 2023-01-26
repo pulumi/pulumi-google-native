@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Hosting Site.
  */
 export function getSite(args: GetSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetSiteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebasehosting/v1beta1:getSite", {
         "project": args.project,
         "siteId": args.siteId,
@@ -46,9 +43,11 @@ export interface GetSiteResult {
      */
     readonly type: string;
 }
-
+/**
+ * Gets the specified Hosting Site.
+ */
 export function getSiteOutput(args: GetSiteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSiteResult> {
-    return pulumi.output(args).apply(a => getSite(a, opts))
+    return pulumi.output(args).apply((a: any) => getSite(a, opts))
 }
 
 export interface GetSiteOutputArgs {

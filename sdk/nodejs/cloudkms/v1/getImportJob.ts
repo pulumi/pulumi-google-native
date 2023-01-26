@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for a given ImportJob.
  */
 export function getImportJob(args: GetImportJobArgs, opts?: pulumi.InvokeOptions): Promise<GetImportJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudkms/v1:getImportJob", {
         "importJobId": args.importJobId,
         "keyRingId": args.keyRingId,
@@ -73,9 +70,11 @@ export interface GetImportJobResult {
      */
     readonly state: string;
 }
-
+/**
+ * Returns metadata for a given ImportJob.
+ */
 export function getImportJobOutput(args: GetImportJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImportJobResult> {
-    return pulumi.output(args).apply(a => getImportJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getImportJob(a, opts))
 }
 
 export interface GetImportJobOutputArgs {

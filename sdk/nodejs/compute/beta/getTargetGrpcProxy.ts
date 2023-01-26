@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetGrpcProxy resource in the given scope.
  */
 export function getTargetGrpcProxy(args: GetTargetGrpcProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetGrpcProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getTargetGrpcProxy", {
         "project": args.project,
         "targetGrpcProxy": args.targetGrpcProxy,
@@ -62,9 +59,11 @@ export interface GetTargetGrpcProxyResult {
      */
     readonly validateForProxyless: boolean;
 }
-
+/**
+ * Returns the specified TargetGrpcProxy resource in the given scope.
+ */
 export function getTargetGrpcProxyOutput(args: GetTargetGrpcProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetGrpcProxyResult> {
-    return pulumi.output(args).apply(a => getTargetGrpcProxy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetGrpcProxy(a, opts))
 }
 
 export interface GetTargetGrpcProxyOutputArgs {

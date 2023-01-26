@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets any metadata associated with a dataset.
  */
 export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getDataset", {
         "datasetId": args.datasetId,
         "location": args.location,
@@ -36,9 +33,11 @@ export interface GetDatasetResult {
      */
     readonly timeZone: string;
 }
-
+/**
+ * Gets any metadata associated with a dataset.
+ */
 export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {
-    return pulumi.output(args).apply(a => getDataset(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataset(a, opts))
 }
 
 export interface GetDatasetOutputArgs {

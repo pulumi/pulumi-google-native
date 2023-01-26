@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the details of a fleet.
  */
 export function getFleet(args: GetFleetArgs, opts?: pulumi.InvokeOptions): Promise<GetFleetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkehub/v1alpha:getFleet", {
         "fleetId": args.fleetId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetFleetResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns the details of a fleet.
+ */
 export function getFleetOutput(args: GetFleetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFleetResult> {
-    return pulumi.output(args).apply(a => getFleet(a, opts))
+    return pulumi.output(args).apply((a: any) => getFleet(a, opts))
 }
 
 export interface GetFleetOutputArgs {

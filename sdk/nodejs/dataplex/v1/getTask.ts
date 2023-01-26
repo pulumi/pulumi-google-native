@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get task resource.
  */
 export function getTask(args: GetTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getTask", {
         "lakeId": args.lakeId,
         "location": args.location,
@@ -85,9 +82,11 @@ export interface GetTaskResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get task resource.
+ */
 export function getTaskOutput(args: GetTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskResult> {
-    return pulumi.output(args).apply(a => getTask(a, opts))
+    return pulumi.output(args).apply((a: any) => getTask(a, opts))
 }
 
 export interface GetTaskOutputArgs {

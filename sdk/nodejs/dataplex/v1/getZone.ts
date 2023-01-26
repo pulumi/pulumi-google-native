@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a zone resource.
  */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getZone", {
         "lakeId": args.lakeId,
         "location": args.location,
@@ -81,9 +78,11 @@ export interface GetZoneResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a zone resource.
+ */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
-    return pulumi.output(args).apply(a => getZone(a, opts))
+    return pulumi.output(args).apply((a: any) => getZone(a, opts))
 }
 
 export interface GetZoneOutputArgs {

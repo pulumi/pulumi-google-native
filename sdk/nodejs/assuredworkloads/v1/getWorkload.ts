@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets Assured Workload associated with a CRM Node
  */
 export function getWorkload(args: GetWorkloadArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:assuredworkloads/v1:getWorkload", {
         "location": args.location,
         "organizationId": args.organizationId,
@@ -101,9 +98,11 @@ export interface GetWorkloadResult {
      */
     readonly saaEnrollmentResponse: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse;
 }
-
+/**
+ * Gets Assured Workload associated with a CRM Node
+ */
 export function getWorkloadOutput(args: GetWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadResult> {
-    return pulumi.output(args).apply(a => getWorkload(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkload(a, opts))
 }
 
 export interface GetWorkloadOutputArgs {

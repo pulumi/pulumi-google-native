@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
  */
 export function getQuery(args: GetQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetQueryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getQuery", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,
@@ -83,9 +80,11 @@ export interface GetQueryResult {
      */
     readonly updated: string;
 }
-
+/**
+ * Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+ */
 export function getQueryOutput(args: GetQueryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueryResult> {
-    return pulumi.output(args).apply(a => getQuery(a, opts))
+    return pulumi.output(args).apply((a: any) => getQuery(a, opts))
 }
 
 export interface GetQueryOutputArgs {

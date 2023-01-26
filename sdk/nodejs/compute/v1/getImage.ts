@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified image. Gets a list of available images by making a list() request.
  */
 export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getImage", {
         "image": args.image,
         "project": args.project,
@@ -153,9 +150,11 @@ export interface GetImageResult {
      */
     readonly storageLocations: string[];
 }
-
+/**
+ * Returns the specified image. Gets a list of available images by making a list() request.
+ */
 export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
-    return pulumi.output(args).apply(a => getImage(a, opts))
+    return pulumi.output(args).apply((a: any) => getImage(a, opts))
 }
 
 export interface GetImageOutputArgs {
