@@ -3,6 +3,163 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.28.0 (2023-02-01)
+
+### BREAKING CHANGE
+Resource "google-native:batch/v1:NodeIamMember" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamBinding" missing
+Resource "google-native:batch/v1:TaskIamPolicy" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamBinding" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamMember" missing
+Resource "google-native:batch/v1:TaskIamBinding" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceClassIamMember" missing
+Resource "google-native:batch/v1:NodeIamBinding" missing
+Resource "google-native:contentwarehouse/v1:Document" missing input "asyncEnabled"
+Resource "google-native:contentwarehouse/v1:Document" missing input "structuredContentUri"
+Resource "google-native:contentwarehouse/v1:Document" missing output "structuredContentUri"
+Resource "google-native:contentwarehouse/v1:Document" missing output "asyncEnabled"
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamPolicy" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceClassIamBinding" missing
+Resource "google-native:batch/v1:TaskIamMember" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamPolicy" missing
+Resource "google-native:batch/v1:NodeIamPolicy" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamMember" missing
+Resource "google-native:networkconnectivity/v1alpha1:ServiceClassIamPolicy" missing
+Function "google-native:networkconnectivity/v1alpha1:getServiceConnectionPolicyIamPolicy" missing
+Function "google-native:networkconnectivity/v1alpha1:getServiceConnectionMapIamPolicy" missing
+Function "google-native:batch/v1:getTaskIamPolicy" missing
+Function "google-native:batch/v1:getNodeIamPolicy" missing
+Function "google-native:contentwarehouse/v1:getDocument" missing output "structuredContentUri"
+Function "google-native:contentwarehouse/v1:getDocument" missing output "asyncEnabled"
+Function "google-native:networkconnectivity/v1alpha1:getServiceClassIamPolicy" missing
+Type "google-native:cloudtasks/v2beta2:UriOverride" missing property "query"
+Type "google-native:cloudtasks/v2beta2:UriOverride" missing property "path"
+Type "google-native:cloudtasks/v2beta2:UriOverrideResponse" missing property "path"
+Type "google-native:cloudtasks/v2beta2:UriOverrideResponse" missing property "query"
+Type "google-native:compute/alpha:InterconnectAttachmentConfigurationConstraintsResponse" missing property "networkConnectivityCenter"
+
+### New resources:
+
+- `accesscontextmanager/v1.AuthorizedOrgsDesc`
+- `cloudidentity/v1.InboundSamlSsoProfile`
+- `cloudidentity/v1.InboundSsoAssignment`
+- `compute/beta.NetworkAttachment`
+- `compute/beta.NetworkAttachmentIamBinding`
+- `compute/beta.NetworkAttachmentIamMember`
+- `compute/beta.NetworkAttachmentIamPolicy`
+- `compute/v1.NetworkAttachment`
+- `compute/v1.NetworkAttachmentIamBinding`
+- `compute/v1.NetworkAttachmentIamMember`
+- `compute/v1.NetworkAttachmentIamPolicy`
+- `contactcenteraiplatform/v1alpha1.ContactCenter`
+- `dataform/v1beta1.CompilationResult`
+- `dataform/v1beta1.ReleaseConfig`
+- `dataform/v1beta1.Repository`
+- `dataform/v1beta1.WorkflowConfig`
+- `dataform/v1beta1.WorkflowInvocation`
+- `dataform/v1beta1.Workspace`
+- `datamigration/v1.ConversionWorkspace`
+- `datamigration/v1.PrivateConnection`
+- `dataplex/v1.Attribute`
+- `dataplex/v1.DataAttributeBinding`
+- `dataplex/v1.DataAttributeBindingIamBinding`
+- `dataplex/v1.DataAttributeBindingIamMember`
+- `dataplex/v1.DataAttributeBindingIamPolicy`
+- `dataplex/v1.DataScan`
+- `dataplex/v1.DataScanIamBinding`
+- `dataplex/v1.DataScanIamMember`
+- `dataplex/v1.DataScanIamPolicy`
+- `dataplex/v1.DataTaxonomy`
+- `dataplex/v1.DataTaxonomyAttributeIamBinding`
+- `dataplex/v1.DataTaxonomyAttributeIamMember`
+- `dataplex/v1.DataTaxonomyAttributeIamPolicy`
+- `dataplex/v1.DataTaxonomyIamBinding`
+- `dataplex/v1.DataTaxonomyIamMember`
+- `dataplex/v1.DataTaxonomyIamPolicy`
+- `dataproc/v1.NodeGroup`
+- `discoveryengine/v1alpha.Document`
+- `discoveryengine/v1beta.Document`
+- `metastore/v1.Backup`
+- `metastore/v1.Federation`
+- `metastore/v1.FederationIamBinding`
+- `metastore/v1.FederationIamMember`
+- `metastore/v1.FederationIamPolicy`
+- `metastore/v1.MetadataImport`
+- `metastore/v1.Service`
+- `metastore/v1.ServiceBackupIamBinding`
+- `metastore/v1.ServiceBackupIamMember`
+- `metastore/v1.ServiceBackupIamPolicy`
+- `metastore/v1.ServiceIamBinding`
+- `metastore/v1.ServiceIamMember`
+- `metastore/v1.ServiceIamPolicy`
+- `monitoring/v3.Snooze`
+- `networkconnectivity/v1alpha1.InternalRange`
+- `networksecurity/v1beta1.AddressGroupIamBinding`
+- `networksecurity/v1beta1.AddressGroupIamMember`
+- `networksecurity/v1beta1.AddressGroupIamPolicy`
+- `tpu/v2alpha1.QueuedResource`
+- `translate/v3.Dataset`
+- `translate/v3.Model`
+- `workloadmanager/v1.Evaluation`
+- `workstations/v1beta.Workstation`
+- `workstations/v1beta.WorkstationCluster`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigIamBinding`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigIamMember`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigIamPolicy`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigWorkstationIamBinding`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigWorkstationIamMember`
+- `workstations/v1beta.WorkstationClusterWorkstationConfigWorkstationIamPolicy`
+- `workstations/v1beta.WorkstationConfig`
+
+### New functions:
+
+- `accesscontextmanager/v1.getAuthorizedOrgsDesc`
+- `cloudidentity/v1.getInboundSamlSsoProfile`
+- `cloudidentity/v1.getInboundSsoAssignment`
+- `compute/beta.getNetworkAttachment`
+- `compute/beta.getNetworkAttachmentIamPolicy`
+- `compute/v1.getNetworkAttachment`
+- `compute/v1.getNetworkAttachmentIamPolicy`
+- `contactcenteraiplatform/v1alpha1.getContactCenter`
+- `dataform/v1beta1.getCompilationResult`
+- `dataform/v1beta1.getReleaseConfig`
+- `dataform/v1beta1.getRepository`
+- `dataform/v1beta1.getWorkflowConfig`
+- `dataform/v1beta1.getWorkflowInvocation`
+- `dataform/v1beta1.getWorkspace`
+- `datamigration/v1.getConversionWorkspace`
+- `datamigration/v1.getPrivateConnection`
+- `dataplex/v1.getAttribute`
+- `dataplex/v1.getDataAttributeBinding`
+- `dataplex/v1.getDataAttributeBindingIamPolicy`
+- `dataplex/v1.getDataScan`
+- `dataplex/v1.getDataScanIamPolicy`
+- `dataplex/v1.getDataTaxonomy`
+- `dataplex/v1.getDataTaxonomyAttributeIamPolicy`
+- `dataplex/v1.getDataTaxonomyIamPolicy`
+- `dataproc/v1.getNodeGroup`
+- `discoveryengine/v1alpha.getDocument`
+- `discoveryengine/v1beta.getDocument`
+- `metastore/v1.getBackup`
+- `metastore/v1.getFederation`
+- `metastore/v1.getFederationIamPolicy`
+- `metastore/v1.getMetadataImport`
+- `metastore/v1.getService`
+- `metastore/v1.getServiceBackupIamPolicy`
+- `metastore/v1.getServiceIamPolicy`
+- `monitoring/v3.getSnooze`
+- `networkconnectivity/v1alpha1.getInternalRange`
+- `networksecurity/v1beta1.getAddressGroupIamPolicy`
+- `tpu/v2alpha1.getQueuedResource`
+- `translate/v3.getDataset`
+- `translate/v3.getModel`
+- `workloadmanager/v1.getEvaluation`
+- `workstations/v1beta.getWorkstation`
+- `workstations/v1beta.getWorkstationCluster`
+- `workstations/v1beta.getWorkstationClusterWorkstationConfigIamPolicy`
+- `workstations/v1beta.getWorkstationClusterWorkstationConfigWorkstationIamPolicy`
+- `workstations/v1beta.getWorkstationConfig`
+
 ## 0.27.0 (2022-10-21)
 ### BREAKING CHANGE
 Upstream API changes affected the following:
