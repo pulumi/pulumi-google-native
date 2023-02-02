@@ -491,7 +491,7 @@
                   "type": "string"
                 },
                 "name": {
-                  "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                  "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                   "required": true,
@@ -526,7 +526,7 @@
                   "type": "string"
                 },
                 "name": {
-                  "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                  "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                   "required": true,
@@ -586,7 +586,7 @@
               ],
               "parameters": {
                 "name": {
-                  "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                  "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                   "location": "path",
                   "pattern": "^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
                   "required": true,
@@ -1389,7 +1389,7 @@
                       "type": "string"
                     },
                     "name": {
-                      "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                      "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                       "required": true,
@@ -1424,7 +1424,7 @@
                       "type": "string"
                     },
                     "name": {
-                      "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                      "description": "This field should contain the name of the enterprise config resource. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                       "required": true,
@@ -1484,7 +1484,7 @@
                   ],
                   "parameters": {
                     "name": {
-                      "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+                      "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
                       "required": true,
@@ -1752,7 +1752,7 @@
                   ]
                 },
                 "run": {
-                  "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
+                  "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}:run",
                   "httpMethod": "POST",
                   "id": "cloudbuild.projects.locations.triggers.run",
@@ -2186,7 +2186,7 @@
               ]
             },
             "run": {
-              "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path. The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
+              "description": "Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers.",
               "flatPath": "v1/projects/{projectId}/triggers/{triggerId}:run",
               "httpMethod": "POST",
               "id": "cloudbuild.projects.triggers.run",
@@ -2295,7 +2295,7 @@
       }
     }
   },
-  "revision": "20221020",
+  "revision": "20230125",
   "rootUrl": "https://cloudbuild.googleapis.com/",
   "schemas": {
     "ApprovalConfig": {
@@ -2869,7 +2869,7 @@
           "type": "array"
         },
         "timeout": {
-          "description": "Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.",
+          "description": "Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.",
           "format": "google-duration",
           "type": "string"
         },
@@ -2944,7 +2944,7 @@
       "id": "BuildOptions",
       "properties": {
         "diskSizeGb": {
-          "description": "Requested disk size for the VM that runs the build. Note that this is *NOT* \"disk free\"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.",
+          "description": "Requested disk size for the VM that runs the build. Note that this is *NOT* \"disk free\"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.",
           "format": "int64",
           "type": "string"
         },
@@ -3312,6 +3312,10 @@
           "$ref": "PubsubConfig",
           "description": "PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published."
         },
+        "repositoryEventConfig": {
+          "$ref": "RepositoryEventConfig",
+          "description": "The configuration of a trigger that creates a build whenever an event from Repo API is received."
+        },
         "resourceName": {
           "description": "The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service.",
           "type": "string"
@@ -3667,13 +3671,15 @@
             "UNKNOWN",
             "CLOUD_SOURCE_REPOSITORIES",
             "GITHUB",
-            "BITBUCKET_SERVER"
+            "BITBUCKET_SERVER",
+            "GITLAB"
           ],
           "enumDescriptions": [
             "The default, unknown repo type.",
             "A Google Cloud Source Repositories-hosted repo.",
             "A GitHub-hosted repo not necessarily on \"github.com\" (i.e. GitHub Enterprise).",
-            "A Bitbucket Server-hosted repo."
+            "A Bitbucket Server-hosted repo.",
+            "A GitLab-hosted repo."
           ],
           "type": "string"
         },
@@ -3712,7 +3718,7 @@
           "type": "string"
         },
         "name": {
-          "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+          "description": "Optional. The full resource name for the GitHubEnterpriseConfig For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
           "type": "string"
         },
         "peeredNetwork": {
@@ -3778,7 +3784,7 @@
       "id": "GitHubEventsConfig",
       "properties": {
         "enterpriseConfigResourceName": {
-          "description": "Optional. The resource name of the github enterprise config that should be applied to this installation. For example: \"projects/{$project_id}/githubEnterpriseConfigs/{$config_id}\"",
+          "description": "Optional. The resource name of the github enterprise config that should be applied to this installation. For example: \"projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}\"",
           "type": "string"
         },
         "installationId": {
@@ -4002,73 +4008,20 @@
             "UNKNOWN",
             "CLOUD_SOURCE_REPOSITORIES",
             "GITHUB",
-            "BITBUCKET_SERVER"
+            "BITBUCKET_SERVER",
+            "GITLAB"
           ],
           "enumDescriptions": [
             "The default, unknown repo type.",
             "A Google Cloud Source Repositories-hosted repo.",
             "A GitHub-hosted repo not necessarily on \"github.com\" (i.e. GitHub Enterprise).",
-            "A Bitbucket Server-hosted repo."
+            "A Bitbucket Server-hosted repo.",
+            "A GitLab-hosted repo."
           ],
           "type": "string"
         },
         "uri": {
           "description": "The URI of the repo. Either uri or repository can be specified and is required.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "GoogleDevtoolsCloudbuildV2OperationMetadata": {
-      "description": "Represents the metadata of the long-running operation.",
-      "id": "GoogleDevtoolsCloudbuildV2OperationMetadata",
-      "properties": {
-        "apiVersion": {
-          "description": "Output only. API version used to start the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "createTime": {
-          "description": "Output only. The time the operation was created.",
-          "format": "google-datetime",
-          "readOnly": true,
-          "type": "string"
-        },
-        "endTime": {
-          "description": "Output only. The time the operation finished running.",
-          "format": "google-datetime",
-          "readOnly": true,
-          "type": "string"
-        },
-        "requestedCancellation": {
-          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "readOnly": true,
-          "type": "boolean"
-        },
-        "statusMessage": {
-          "description": "Output only. Human-readable status of the operation, if any.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "target": {
-          "description": "Output only. Server-defined resource path for the target of the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "verb": {
-          "description": "Output only. Name of the verb executed by the operation.",
-          "readOnly": true,
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "HTTPDelivery": {
-      "description": "HTTPDelivery is the delivery configuration for an HTTP notification.",
-      "id": "HTTPDelivery",
-      "properties": {
-        "uri": {
-          "description": "The URI to which JSON-containing HTTP POST requests should be sent.",
           "type": "string"
         }
       },
@@ -4334,119 +4287,10 @@
         "peeredNetwork": {
           "description": "Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "Notification": {
-      "description": "Notification is the container which holds the data that is relevant to this particular notification.",
-      "id": "Notification",
-      "properties": {
-        "filter": {
-          "description": "The filter string to use for notification filtering. Currently, this is assumed to be a CEL program. See https://opensource.google/projects/cel for more.",
+        },
+        "peeredNetworkIpRange": {
+          "description": "Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.",
           "type": "string"
-        },
-        "httpDelivery": {
-          "$ref": "HTTPDelivery",
-          "description": "Configuration for HTTP delivery."
-        },
-        "slackDelivery": {
-          "$ref": "SlackDelivery",
-          "description": "Configuration for Slack delivery."
-        },
-        "smtpDelivery": {
-          "$ref": "SMTPDelivery",
-          "description": "Configuration for SMTP (email) delivery."
-        },
-        "structDelivery": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "Escape hatch for users to supply custom delivery configs.",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "NotifierConfig": {
-      "description": "NotifierConfig is the top-level configuration message.",
-      "id": "NotifierConfig",
-      "properties": {
-        "apiVersion": {
-          "description": "The API version of this configuration format.",
-          "type": "string"
-        },
-        "kind": {
-          "description": "The type of notifier to use (e.g. SMTPNotifier).",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "NotifierMetadata",
-          "description": "Metadata for referring to/handling/deploying this notifier."
-        },
-        "spec": {
-          "$ref": "NotifierSpec",
-          "description": "The actual configuration for this notifier."
-        }
-      },
-      "type": "object"
-    },
-    "NotifierMetadata": {
-      "description": "NotifierMetadata contains the data which can be used to reference or describe this notifier.",
-      "id": "NotifierMetadata",
-      "properties": {
-        "name": {
-          "description": "The human-readable and user-given name for the notifier. For example: \"repo-merge-email-notifier\".",
-          "type": "string"
-        },
-        "notifier": {
-          "description": "The string representing the name and version of notifier to deploy. Expected to be of the form of \"/:\". For example: \"gcr.io/my-project/notifiers/smtp:1.2.34\".",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "NotifierSecret": {
-      "description": "NotifierSecret is the container that maps a secret name (reference) to its Google Cloud Secret Manager resource path.",
-      "id": "NotifierSecret",
-      "properties": {
-        "name": {
-          "description": "Name is the local name of the secret, such as the verbatim string \"my-smtp-password\".",
-          "type": "string"
-        },
-        "value": {
-          "description": "Value is interpreted to be a resource path for fetching the actual (versioned) secret data for this secret. For example, this would be a Google Cloud Secret Manager secret version resource path like: \"projects/my-project/secrets/my-secret/versions/latest\".",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "NotifierSecretRef": {
-      "description": "NotifierSecretRef contains the reference to a secret stored in the corresponding NotifierSpec.",
-      "id": "NotifierSecretRef",
-      "properties": {
-        "secretRef": {
-          "description": "The value of `secret_ref` should be a `name` that is registered in a `Secret` in the `secrets` list of the `Spec`.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "NotifierSpec": {
-      "description": "NotifierSpec is the configuration container for notifications.",
-      "id": "NotifierSpec",
-      "properties": {
-        "notification": {
-          "$ref": "Notification",
-          "description": "The configuration of this particular notifier."
-        },
-        "secrets": {
-          "description": "Configurations for secret resources used by this particular notifier.",
-          "items": {
-            "$ref": "NotifierSecret"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -4751,6 +4595,42 @@
       },
       "type": "object"
     },
+    "RepositoryEventConfig": {
+      "description": "The configuration of a trigger that creates a build whenever an event from Repo API is received.",
+      "id": "RepositoryEventConfig",
+      "properties": {
+        "pullRequest": {
+          "$ref": "PullRequestFilter",
+          "description": "Filter to match changes in pull requests."
+        },
+        "push": {
+          "$ref": "PushFilter",
+          "description": "Filter to match changes in refs like branches, tags."
+        },
+        "repository": {
+          "description": "The resource name of the Repo API resource.",
+          "type": "string"
+        },
+        "repositoryType": {
+          "description": "Output only. The type of the SCM vendor the repository points to.",
+          "enum": [
+            "REPOSITORY_TYPE_UNSPECIFIED",
+            "GITHUB",
+            "GITHUB_ENTERPRISE",
+            "GITLAB_ENTERPRISE"
+          ],
+          "enumDescriptions": [
+            "If unspecified, RepositoryType defaults to GITHUB.",
+            "The SCM repo is GITHUB.",
+            "The SCM repo is GITHUB Enterprise.",
+            "The SCM repo is GITLAB Enterprise."
+          ],
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Results": {
       "description": "Artifacts created by the build pipeline.",
       "id": "Results",
@@ -4845,84 +4725,6 @@
       },
       "type": "object"
     },
-    "RunWorkflowCustomOperationMetadata": {
-      "description": "Represents the custom metadata of the RunWorkflow long-running operation.",
-      "id": "RunWorkflowCustomOperationMetadata",
-      "properties": {
-        "apiVersion": {
-          "description": "Output only. API version used to start the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "createTime": {
-          "description": "Output only. The time the operation was created.",
-          "format": "google-datetime",
-          "readOnly": true,
-          "type": "string"
-        },
-        "endTime": {
-          "description": "Output only. The time the operation finished running.",
-          "format": "google-datetime",
-          "readOnly": true,
-          "type": "string"
-        },
-        "pipelineRunId": {
-          "description": "Output only. ID of the pipeline run created by RunWorkflow.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "requestedCancellation": {
-          "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
-          "readOnly": true,
-          "type": "boolean"
-        },
-        "target": {
-          "description": "Output only. Server-defined resource path for the target of the operation.",
-          "readOnly": true,
-          "type": "string"
-        },
-        "verb": {
-          "description": "Output only. Name of the verb executed by the operation.",
-          "readOnly": true,
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "SMTPDelivery": {
-      "description": "SMTPDelivery is the delivery configuration for an SMTP (email) notification.",
-      "id": "SMTPDelivery",
-      "properties": {
-        "fromAddress": {
-          "description": "This is the SMTP account/email that appears in the `From:` of the email. If empty, it is assumed to be sender.",
-          "type": "string"
-        },
-        "password": {
-          "$ref": "NotifierSecretRef",
-          "description": "The SMTP sender's password."
-        },
-        "port": {
-          "description": "The SMTP port of the server.",
-          "type": "string"
-        },
-        "recipientAddresses": {
-          "description": "This is the list of addresses to which we send the email (i.e. in the `To:` of the email).",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "senderAddress": {
-          "description": "This is the SMTP account/email that is used to send the message.",
-          "type": "string"
-        },
-        "server": {
-          "description": "The address of the SMTP server.",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "Secret": {
       "description": "Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.",
       "id": "Secret",
@@ -4985,17 +4787,6 @@
         "service": {
           "description": "The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "SlackDelivery": {
-      "description": "SlackDelivery is the delivery configuration for delivering Slack messages via webhooks. See Slack webhook documentation at: https://api.slack.com/messaging/webhooks.",
-      "id": "SlackDelivery",
-      "properties": {
-        "webhookUri": {
-          "$ref": "NotifierSecretRef",
-          "description": "The secret reference for the Slack webhook URI for sending messages to a channel."
         }
       },
       "type": "object"
@@ -5326,7 +5117,7 @@
       "id": "WorkerConfig",
       "properties": {
         "diskSizeGb": {
-          "description": "Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.",
+          "description": "Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.",
           "format": "int64",
           "type": "string"
         },
