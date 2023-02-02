@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list() request.
  */
 export function getVpnGateway(args: GetVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getVpnGateway", {
         "project": args.project,
         "region": args.region,
@@ -75,9 +72,11 @@ export interface GetVpnGatewayResult {
      */
     readonly vpnInterfaces: outputs.compute.beta.VpnGatewayVpnGatewayInterfaceResponse[];
 }
-
+/**
+ * Returns the specified VPN gateway. Gets a list of available VPN gateways by making a list() request.
+ */
 export function getVpnGatewayOutput(args: GetVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnGatewayResult> {
-    return pulumi.output(args).apply(a => getVpnGateway(a, opts))
+    return pulumi.output(args).apply((a: any) => getVpnGateway(a, opts))
 }
 
 export interface GetVpnGatewayOutputArgs {

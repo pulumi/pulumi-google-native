@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified InstantSnapshot resource in the specified region.
  */
 export function getRegionInstantSnapshot(args: GetRegionInstantSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstantSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionInstantSnapshot", {
         "instantSnapshot": args.instantSnapshot,
         "project": args.project,
@@ -103,9 +100,11 @@ export interface GetRegionInstantSnapshotResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified InstantSnapshot resource in the specified region.
+ */
 export function getRegionInstantSnapshotOutput(args: GetRegionInstantSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstantSnapshotResult> {
-    return pulumi.output(args).apply(a => getRegionInstantSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionInstantSnapshot(a, opts))
 }
 
 export interface GetRegionInstantSnapshotOutputArgs {

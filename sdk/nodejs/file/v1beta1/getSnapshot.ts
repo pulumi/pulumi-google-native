@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a specific snapshot.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:file/v1beta1:getSnapshot", {
         "instanceId": args.instanceId,
         "location": args.location,
@@ -54,9 +51,11 @@ export interface GetSnapshotResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the details of a specific snapshot.
+ */
 export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 export interface GetSnapshotOutputArgs {

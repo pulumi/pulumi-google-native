@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified WebApp.
  */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getWebApp", {
         "project": args.project,
         "webAppId": args.webAppId,
@@ -58,9 +55,11 @@ export interface GetWebAppResult {
      */
     readonly webId: string;
 }
-
+/**
+ * Gets the specified WebApp.
+ */
 export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
-    return pulumi.output(args).apply(a => getWebApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getWebApp(a, opts))
 }
 
 export interface GetWebAppOutputArgs {

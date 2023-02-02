@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getReusableConfigIamPolicy(args: GetReusableConfigIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetReusableConfigIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1beta1:getReusableConfigIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -49,9 +46,11 @@ export interface GetReusableConfigIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getReusableConfigIamPolicyOutput(args: GetReusableConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReusableConfigIamPolicyResult> {
-    return pulumi.output(args).apply(a => getReusableConfigIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getReusableConfigIamPolicy(a, opts))
 }
 
 export interface GetReusableConfigIamPolicyOutputArgs {

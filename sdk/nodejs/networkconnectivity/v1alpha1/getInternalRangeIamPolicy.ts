@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getInternalRangeIamPolicy(args: GetInternalRangeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInternalRangeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1alpha1:getInternalRangeIamPolicy", {
         "internalRangeId": args.internalRangeId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetInternalRangeIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getInternalRangeIamPolicyOutput(args: GetInternalRangeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInternalRangeIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInternalRangeIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInternalRangeIamPolicy(a, opts))
 }
 
 export interface GetInternalRangeIamPolicyOutputArgs {

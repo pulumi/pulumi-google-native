@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a tenant. Requires read permission on the Tenant resource.
  */
 export function getTenant(args: GetTenantArgs, opts?: pulumi.InvokeOptions): Promise<GetTenantResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:identitytoolkit/v2:getTenant", {
         "project": args.project,
         "tenantId": args.tenantId,
@@ -85,9 +82,11 @@ export interface GetTenantResult {
      */
     readonly testPhoneNumbers: {[key: string]: string};
 }
-
+/**
+ * Get a tenant. Requires read permission on the Tenant resource.
+ */
 export function getTenantOutput(args: GetTenantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantResult> {
-    return pulumi.output(args).apply(a => getTenant(a, opts))
+    return pulumi.output(args).apply((a: any) => getTenant(a, opts))
 }
 
 export interface GetTenantOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified Instance resource. Gets a list of available instances by making a list() request.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getInstance", {
         "instance": args.instance,
         "project": args.project,
@@ -227,9 +224,11 @@ export interface GetInstanceResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+ */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply(a => getInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 export interface GetInstanceOutputArgs {

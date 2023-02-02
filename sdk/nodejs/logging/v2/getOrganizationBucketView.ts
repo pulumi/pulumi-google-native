@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a view on a log bucket..
  */
 export function getOrganizationBucketView(args: GetOrganizationBucketViewArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBucketViewResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getOrganizationBucketView", {
         "bucketId": args.bucketId,
         "location": args.location,
@@ -50,9 +47,11 @@ export interface GetOrganizationBucketViewResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a view on a log bucket..
+ */
 export function getOrganizationBucketViewOutput(args: GetOrganizationBucketViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationBucketViewResult> {
-    return pulumi.output(args).apply(a => getOrganizationBucketView(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationBucketView(a, opts))
 }
 
 export interface GetOrganizationBucketViewOutputArgs {

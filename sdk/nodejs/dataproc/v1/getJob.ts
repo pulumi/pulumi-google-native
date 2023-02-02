@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the resource representation for a job in a project.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getJob", {
         "jobId": args.jobId,
         "project": args.project,
@@ -111,9 +108,11 @@ export interface GetJobResult {
      */
     readonly yarnApplications: outputs.dataproc.v1.YarnApplicationResponse[];
 }
-
+/**
+ * Gets the resource representation for a job in a project.
+ */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply(a => getJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getJob(a, opts))
 }
 
 export interface GetJobOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified context.
  */
 export function getContext(args: GetContextArgs, opts?: pulumi.InvokeOptions): Promise<GetContextResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getContext", {
         "contextId": args.contextId,
         "environmentId": args.environmentId,
@@ -46,9 +43,11 @@ export interface GetContextResult {
      */
     readonly parameters: {[key: string]: string};
 }
-
+/**
+ * Retrieves the specified context.
+ */
 export function getContextOutput(args: GetContextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContextResult> {
-    return pulumi.output(args).apply(a => getContext(a, opts))
+    return pulumi.output(args).apply((a: any) => getContext(a, opts))
 }
 
 export interface GetContextOutputArgs {

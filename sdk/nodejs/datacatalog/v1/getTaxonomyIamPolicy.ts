@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy for a policy tag or a taxonomy.
  */
 export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1:getTaxonomyIamPolicy", {
         "location": args.location,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetTaxonomyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM policy for a policy tag or a taxonomy.
+ */
 export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getTaxonomyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTaxonomyIamPolicy(a, opts))
 }
 
 export interface GetTaxonomyIamPolicyOutputArgs {

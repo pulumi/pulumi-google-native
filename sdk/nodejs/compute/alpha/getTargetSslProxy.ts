@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
  */
 export function getTargetSslProxy(args: GetTargetSslProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetSslProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getTargetSslProxy", {
         "project": args.project,
         "targetSslProxy": args.targetSslProxy,
@@ -66,9 +63,11 @@ export interface GetTargetSslProxyResult {
      */
     readonly sslPolicy: string;
 }
-
+/**
+ * Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+ */
 export function getTargetSslProxyOutput(args: GetTargetSslProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetSslProxyResult> {
-    return pulumi.output(args).apply(a => getTargetSslProxy(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetSslProxy(a, opts))
 }
 
 export interface GetTargetSslProxyOutputArgs {

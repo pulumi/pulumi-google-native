@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * List all of the ordered rules present in a single specified policy.
  */
 export function getSecurityPolicy(args: GetSecurityPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getSecurityPolicy", {
         "project": args.project,
         "securityPolicy": args.securityPolicy,
@@ -97,9 +94,11 @@ export interface GetSecurityPolicyResult {
      */
     readonly type: string;
 }
-
+/**
+ * List all of the ordered rules present in a single specified policy.
+ */
 export function getSecurityPolicyOutput(args: GetSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPolicyResult> {
-    return pulumi.output(args).apply(a => getSecurityPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecurityPolicy(a, opts))
 }
 
 export interface GetSecurityPolicyOutputArgs {

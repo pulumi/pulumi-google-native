@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Gateway.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1beta1:getGateway", {
         "gatewayId": args.gatewayId,
         "location": args.location,
@@ -68,9 +65,11 @@ export interface GetGatewayResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Gateway.
+ */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
-    return pulumi.output(args).apply(a => getGateway(a, opts))
+    return pulumi.output(args).apply((a: any) => getGateway(a, opts))
 }
 
 export interface GetGatewayOutputArgs {

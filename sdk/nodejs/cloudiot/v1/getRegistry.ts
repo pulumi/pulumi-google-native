@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a device registry configuration.
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudiot/v1:getRegistry", {
         "location": args.location,
         "project": args.project,
@@ -59,9 +56,11 @@ export interface GetRegistryResult {
      */
     readonly stateNotificationConfig: outputs.cloudiot.v1.StateNotificationConfigResponse;
 }
-
+/**
+ * Gets a device registry configuration.
+ */
 export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
-    return pulumi.output(args).apply(a => getRegistry(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistry(a, opts))
 }
 
 export interface GetRegistryOutputArgs {

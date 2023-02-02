@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single TcpRoute.
  */
 export function getTcpRoute(args: GetTcpRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetTcpRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getTcpRoute", {
         "location": args.location,
         "project": args.project,
@@ -67,9 +64,11 @@ export interface GetTcpRouteResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single TcpRoute.
+ */
 export function getTcpRouteOutput(args: GetTcpRouteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTcpRouteResult> {
-    return pulumi.output(args).apply(a => getTcpRoute(a, opts))
+    return pulumi.output(args).apply((a: any) => getTcpRoute(a, opts))
 }
 
 export interface GetTcpRouteOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a tag template.
  */
 export function getTagTemplate(args: GetTagTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetTagTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getTagTemplate", {
         "location": args.location,
         "project": args.project,
@@ -40,9 +37,11 @@ export interface GetTagTemplateResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets a tag template.
+ */
 export function getTagTemplateOutput(args: GetTagTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateResult> {
-    return pulumi.output(args).apply(a => getTagTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagTemplate(a, opts))
 }
 
 export interface GetTagTemplateOutputArgs {

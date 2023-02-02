@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified webhook.
  */
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getWebhook", {
         "agentId": args.agentId,
         "location": args.location,
@@ -57,9 +54,11 @@ export interface GetWebhookResult {
      */
     readonly timeout: string;
 }
-
+/**
+ * Retrieves the specified webhook.
+ */
 export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookResult> {
-    return pulumi.output(args).apply(a => getWebhook(a, opts))
+    return pulumi.output(args).apply((a: any) => getWebhook(a, opts))
 }
 
 export interface GetWebhookOutputArgs {

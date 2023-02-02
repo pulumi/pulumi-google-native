@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a ServiceAccount.
  */
 export function getServiceAccount(args: GetServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iam/v1:getServiceAccount", {
         "project": args.project,
         "serviceAccountId": args.serviceAccountId,
@@ -64,9 +61,11 @@ export interface GetServiceAccountResult {
      */
     readonly uniqueId: string;
 }
-
+/**
+ * Gets a ServiceAccount.
+ */
 export function getServiceAccountOutput(args: GetServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAccountResult> {
-    return pulumi.output(args).apply(a => getServiceAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceAccount(a, opts))
 }
 
 export interface GetServiceAccountOutputArgs {

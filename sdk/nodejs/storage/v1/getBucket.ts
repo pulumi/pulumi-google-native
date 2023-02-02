@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns metadata for the specified bucket.
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getBucket", {
         "bucket": args.bucket,
         "ifMetagenerationMatch": args.ifMetagenerationMatch,
@@ -151,9 +148,11 @@ export interface GetBucketResult {
      */
     readonly website: outputs.storage.v1.BucketWebsiteResponse;
 }
-
+/**
+ * Returns metadata for the specified bucket.
+ */
 export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
-    return pulumi.output(args).apply(a => getBucket(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucket(a, opts))
 }
 
 export interface GetBucketOutputArgs {
